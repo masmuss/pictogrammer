@@ -1,11 +1,8 @@
 ---
-import Card from "@/components/ui/card/Card.astro";
-import CardContent from "@/components/ui/card/CardContent.astro";
-import CardDescription from "@/components/ui/card/CardDescription.astro";
-import CardHeader from "@/components/ui/card/CardHeader.astro";
-import CardTitle from "@/components/ui/card/CardTitle.astro";
+import Badge from "@/components/ui/Badge.astro";
 import Heading from "@/components/ui/Heading.astro";
 import { getExperienceGroups } from "@/lib/contents/experiences";
+import { cn } from "@/lib/utils";
 import type { Experience } from "@/types";
 
 interface Props {
@@ -17,85 +14,109 @@ const { experiences }: Props = Astro.props;
 const groupedByCompany = getExperienceGroups(experiences);
 ---
 
-<div class="relative pl-6 md:pl-8">
-	<div class="bg-border absolute top-0 bottom-0 left-5 w-px" aria-hidden="true">
-	</div>
-
+<div class="flex flex-col gap-y-10">
 	{
 		groupedByCompany.map((organization) => (
-			<article class="relative pb-8 last:pb-0">
-				<div
-					class="bg-primary absolute top-1.5 -left-4 h-2.5 w-2.5 rounded-full"
-					aria-hidden="true"
-				/>
-
-				<Card class="p-0 ring-0">
-					<CardHeader class="pb-0">
-						<div class="flex flex-wrap items-center gap-x-2 gap-y-1">
-							<CardTitle as="h3" class="leading-tight">
-								{organization.company}
-							</CardTitle>
-							{organization.kind === "campus" && organization.umbrellaOrg && (
-								<span class="text-muted-foreground rounded-full border px-2 py-0.5 text-[11px]">
-									Campus Experience · {organization.umbrellaOrg}
-								</span>
-							)}
-						</div>
-						<CardDescription class="text-sm leading-relaxed">
+			<div class="group/org flex flex-col gap-y-3">
+				<div class="flex flex-col gap-y-1">
+					<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
+						<Heading as="h3">{organization.company}</Heading>
+						<span class="text-muted-foreground text-sm font-medium">
 							{organization.location ?? "Remote"}
-							<span aria-hidden="true"> · </span>
-							{organization.positions.length} role
+						</span>
+					</div>
+					<div class="flex items-center gap-x-2">
+						<p class="text-muted-foreground text-sm">
+							{organization.positions.length} Role
 							{organization.positions.length > 1 ? "s" : ""}
-						</CardDescription>
-					</CardHeader>
+						</p>
+						{organization.kind === "campus" && (
+							<Badge
+								variant="outline"
+								class="bg-accent/30 border-accent-foreground/10 text-muted-foreground text-[10px] tracking-wider uppercase"
+							>
+								Campus{" "}
+								{organization.umbrellaOrg
+									? `· ${organization.umbrellaOrg}`
+									: ""}
+							</Badge>
+						)}
+					</div>
+				</div>
 
-					<CardContent class="pt-3">
-						<div class="space-y-3">
-							{organization.positions.map((position) => (
-								<div class="border-border/40 border-l pl-4">
-									<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-										<div class="min-w-0">
-											<Heading
-												as="h4"
-												weight="medium"
-												size="base"
-												class="leading-tight"
-											>
-												{position.title}
-											</Heading>
-											<p class="text-muted-foreground mt-2 text-sm leading-relaxed">
-												{position.summary ?? position.highlights[0]}
-											</p>
-										</div>
-										<span class="text-muted-foreground inline-flex w-fit shrink-0 text-xs font-medium">
+				<div class="flex flex-col gap-y-1">
+					{organization.positions.map((position) => (
+						<div class="group/pos relative">
+							<div
+								class={cn(
+									"relative block",
+									"-mx-4 rounded-xl p-4",
+									"transition-all duration-200",
+									"hover:bg-muted/40"
+								)}
+							>
+								{/* The Accent Bar from Experience design */}
+								<span
+									aria-hidden="true"
+									class={cn(
+										"absolute top-1/2 left-0 -translate-y-1/2",
+										"h-1/2 w-0.5 rounded-full",
+										"origin-center scale-y-0 group-hover/pos:scale-y-100",
+										"transition-transform duration-300",
+										"bg-accent-cta"
+									)}
+								/>
+
+								<div class="flex flex-col gap-y-1.5">
+									<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
+										<Heading
+											as="h4"
+											size="base"
+											weight="medium"
+											class="text-foreground"
+										>
+											{position.title}
+										</Heading>
+										<span class="text-muted-foreground font-mono text-xs tabular-nums">
 											{position.period}
 										</span>
 									</div>
 
+									<p class="text-muted-foreground max-w-2xl text-sm leading-relaxed">
+										{position.summary ?? position.highlights[0]}
+									</p>
+
 									{position.skills && position.skills.length > 0 && (
-										<p class="text-muted-foreground mt-2 text-xs leading-relaxed">
-											Tech: {position.skills.join(" · ")}
-										</p>
+										<div class="flex flex-wrap gap-x-3 gap-y-1 pt-0.5">
+											{position.skills.map((skill) => (
+												<span class="text-muted-foreground/60 font-mono text-xs">
+													#{skill}
+												</span>
+											))}
+										</div>
 									)}
 
 									{position.highlights.length > 0 && (
-										<details class="mt-2">
-											<summary class="text-muted-foreground cursor-pointer text-xs">
-												Show details
+										<details class="group/details mt-2">
+											<summary class="text-accent-cta-text decoration-accent-cta/30 cursor-pointer list-none text-xs font-medium underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
+												<span class="flex items-center gap-1">
+													<span>View details</span>
+													<span class="iconify ri--arrow-down-s-line transition-transform duration-200 group-open/details:rotate-180" />
+												</span>
 											</summary>
-											<ul class="text-muted-foreground mt-2 ml-4 list-disc space-y-1.5 text-sm leading-relaxed">
+											<ul class="text-muted-foreground mt-3 ml-4 list-disc space-y-2 text-sm">
 												{position.highlights.map((highlight) => (
-													<li>{highlight}</li>
+													<li class="pl-1 leading-relaxed">{highlight}</li>
 												))}
 											</ul>
 										</details>
 									)}
 								</div>
-							))}
+							</div>
 						</div>
-					</CardContent>
-				</Card>
-			</article>
+					))}
+				</div>
+			</div>
 		))
 	}
 </div>
