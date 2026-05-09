@@ -1,5 +1,6 @@
 ---
 import About from "@/components/features/home/About.astro";
+import FeaturedProjects from "@/components/features/home/FeaturedProjects.astro";
 import Hero from "@/components/features/home/Hero.astro";
 import Posts from "@/components/features/home/Posts.astro";
 import Section from "@/components/ui/Section.astro";
@@ -21,7 +22,7 @@ const allPosts = await getAllPosts(MAX_POSTS);
 			titleAs="h1"
 			titleSize="2xl"
 			titleWeight="semibold"
-			transitionDelay={150}
+			transitionDelay={0}
 		>
 			<Hero />
 		</Section>
@@ -31,10 +32,19 @@ const allPosts = await getAllPosts(MAX_POSTS);
 		</Section>
 
 		<Section
+			title="Featured Projects"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={250}
+		>
+			<FeaturedProjects />
+		</Section>
+
+		<Section
 			title="Latest Posts"
 			titleAs="h2"
 			titleUppercase
-			transitionDelay={300}
+			transitionDelay={350}
 		>
 			<Posts posts={allPosts} />
 		</Section>
