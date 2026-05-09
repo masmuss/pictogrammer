@@ -1,8 +1,8 @@
 ---
 import Badge from "@/components/ui/Badge.astro";
+import Card from "@/components/ui/card/Card.astro";
 import Heading from "@/components/ui/Heading.astro";
 import { getExperienceGroups } from "@/lib/contents/experiences";
-import { cn } from "@/lib/utils";
 import type { Experience } from "@/types";
 
 interface Props {
@@ -18,9 +18,17 @@ const groupedByCompany = getExperienceGroups(experiences);
 	{
 		groupedByCompany.map((organization) => (
 			<div class="group/org flex flex-col gap-y-3">
+				{/* Company & Info */}
 				<div class="flex flex-col gap-y-1">
 					<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
-						<Heading as="h3">{organization.company}</Heading>
+						<Heading
+							as="h3"
+							size="lg"
+							weight="semibold"
+							class="text-foreground"
+						>
+							{organization.company}
+						</Heading>
 						<span class="text-muted-foreground text-sm font-medium">
 							{organization.location ?? "Remote"}
 						</span>
@@ -44,76 +52,56 @@ const groupedByCompany = getExperienceGroups(experiences);
 					</div>
 				</div>
 
+				{/* Positions */}
 				<div class="flex flex-col gap-y-1">
 					{organization.positions.map((position) => (
-						<div class="group/pos relative">
-							<div
-								class={cn(
-									"relative block",
-									"-mx-4 rounded-xl p-4",
-									"transition-all duration-200",
-									"hover:bg-muted/40"
-								)}
-							>
-								{/* The Accent Bar from Experience design */}
-								<span
-									aria-hidden="true"
-									class={cn(
-										"absolute top-1/2 left-0 -translate-y-1/2",
-										"h-1/2 w-0.5 rounded-full",
-										"origin-center scale-y-0 group-hover/pos:scale-y-100",
-										"transition-transform duration-300",
-										"bg-accent-cta"
-									)}
-								/>
-
-								<div class="flex flex-col gap-y-1.5">
-									<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
-										<Heading
-											as="h4"
-											size="base"
-											weight="medium"
-											class="text-foreground"
-										>
-											{position.title}
-										</Heading>
-										<span class="text-muted-foreground font-mono text-xs tabular-nums">
-											{position.period}
-										</span>
-									</div>
-
-									<p class="text-muted-foreground max-w-2xl text-sm leading-relaxed">
-										{position.summary ?? position.highlights[0]}
-									</p>
-
-									{position.skills && position.skills.length > 0 && (
-										<div class="flex flex-wrap gap-x-3 gap-y-1 pt-0.5">
-											{position.skills.map((skill) => (
-												<span class="text-muted-foreground/60 font-mono text-xs">
-													#{skill}
-												</span>
-											))}
-										</div>
-									)}
-
-									{position.highlights.length > 0 && (
-										<details class="group/details mt-2">
-											<summary class="text-accent-cta-text decoration-accent-cta/30 cursor-pointer list-none text-xs font-medium underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
-												<span class="flex items-center gap-1">
-													<span>View details</span>
-													<span class="iconify ri--arrow-down-s-line transition-transform duration-200 group-open/details:rotate-180" />
-												</span>
-											</summary>
-											<ul class="text-muted-foreground mt-3 ml-4 list-disc space-y-2 text-sm">
-												{position.highlights.map((highlight) => (
-													<li class="pl-1 leading-relaxed">{highlight}</li>
-												))}
-											</ul>
-										</details>
-									)}
+						<Card variant="interactive" class="group/pos">
+							<div class="flex flex-col gap-y-1.5">
+								<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
+									<Heading
+										as="h4"
+										size="base"
+										weight="medium"
+										class="text-foreground"
+									>
+										{position.title}
+									</Heading>
+									<span class="text-muted-foreground font-mono text-xs tabular-nums">
+										{position.period}
+									</span>
 								</div>
+
+								<p class="text-muted-foreground max-w-2xl text-sm leading-relaxed">
+									{position.summary ?? position.highlights[0]}
+								</p>
+
+								{position.skills && position.skills.length > 0 && (
+									<div class="flex flex-wrap gap-x-3 gap-y-1 pt-0.5">
+										{position.skills.map((skill) => (
+											<span class="text-muted-foreground/60 font-mono text-xs">
+												#{skill}
+											</span>
+										))}
+									</div>
+								)}
+
+								{position.highlights.length > 0 && (
+									<details class="group/details mt-2">
+										<summary class="text-accent-cta-text decoration-accent-cta/30 cursor-pointer list-none text-xs font-medium underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
+											<span class="flex items-center gap-1">
+												<span>View details</span>
+												<span class="iconify ri--arrow-down-s-line transition-transform duration-200 group-open/details:rotate-180" />
+											</span>
+										</summary>
+										<ul class="text-muted-foreground mt-3 ml-4 list-disc space-y-2 text-sm">
+											{position.highlights.map((highlight) => (
+												<li class="pl-1 leading-relaxed">{highlight}</li>
+											))}
+										</ul>
+									</details>
+								)}
 							</div>
-						</div>
+						</Card>
 					))}
 				</div>
 			</div>

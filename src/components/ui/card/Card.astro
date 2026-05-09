@@ -1,11 +1,14 @@
 ---
 import { cn } from "@/lib/utils";
 
+type Variant = "default" | "interactive";
+
 type Props = {
 	as?: keyof HTMLElementTagNameMap;
 	class?: string;
 	href?: string;
 	size?: "default" | "sm";
+	variant?: Variant;
 	reload?: boolean;
 	[key: string]: unknown;
 };
@@ -15,10 +18,21 @@ const {
 	class: className,
 	href,
 	size = "default",
+	variant = "default",
 	reload = false,
 	...attrs
 }: Props = Astro.props;
+
 const isAnchor = Tag === "a";
+
+const baseStyles = "relative flex flex-col transition-all duration-200";
+
+const variants: Record<Variant, string> = {
+	default:
+		"group/card bg-card text-card-foreground ring-foreground/10 overflow-hidden rounded-xl py-4 text-sm ring-1 gap-4 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+	interactive:
+		"group/interactive -mx-4 rounded-xl p-4 bg-transparent hover:bg-muted/40 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2"
+};
 ---
 
 {
@@ -29,11 +43,21 @@ const isAnchor = Tag === "a";
 			data-astro-reload={reload ? true : undefined}
 			data-slot="card"
 			data-size={size}
-			class={cn(
-				"group/card bg-card text-card-foreground ring-foreground/10 flex flex-col gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
-				className
-			)}
+			data-variant={variant}
+			class={cn(baseStyles, variants[variant], className)}
 		>
+			{variant === "interactive" && (
+				<span
+					aria-hidden="true"
+					class={cn(
+						"absolute top-1/2 left-0 -translate-y-1/2",
+						"h-1/2 w-0.5 rounded-full",
+						"origin-center scale-y-0 group-hover/interactive:scale-y-100",
+						"transition-transform duration-300",
+						"bg-accent-cta"
+					)}
+				/>
+			)}
 			<slot />
 		</a>
 	) : (
@@ -41,11 +65,21 @@ const isAnchor = Tag === "a";
 			{...attrs}
 			data-slot="card"
 			data-size={size}
-			class={cn(
-				"group/card bg-card text-card-foreground ring-foreground/10 flex flex-col gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
-				className
-			)}
+			data-variant={variant}
+			class={cn(baseStyles, variants[variant], className)}
 		>
+			{variant === "interactive" && (
+				<span
+					aria-hidden="true"
+					class={cn(
+						"absolute top-1/2 left-0 -translate-y-1/2",
+						"h-1/2 w-0.5 rounded-full",
+						"origin-center scale-y-0 group-hover/interactive:scale-y-100",
+						"transition-transform duration-300",
+						"bg-accent-cta"
+					)}
+				/>
+			)}
 			<slot />
 		</Tag>
 	)

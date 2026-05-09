@@ -16,33 +16,18 @@ const { post, showDescription } = Astro.props;
 <li>
 	<Card
 		as="a"
+		variant="interactive"
 		href={getPostUrl(post)}
 		reload
 		class={cn(
-			"group/link relative block",
-			"-mx-4 rounded-lg p-4",
-			"ring-0",
 			"space-y-2",
 			"border-border/40 border-b last:border-b-0",
-			"bg-transparent transition-colors duration-150",
-			"hover:bg-muted/50 hover:border-transparent",
-			"focus-visible:ring-2 focus-visible:outline-none",
-			"focus-visible:ring-ring focus-visible:ring-offset-2"
+			"bg-transparent"
 		)}
 	>
-		<span
-			aria-hidden="true"
-			class={cn(
-				"absolute top-1/2 left-0 -translate-y-1/2",
-				"h-1/2 w-0.5 rounded-full",
-				"origin-center scale-y-0 group-hover/link:scale-y-100",
-				"transition-transform duration-300",
-				"bg-accent-cta"
-			)}></span>
-
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span
-				class="group-hover:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1"
+				class="group-hover/interactive:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1"
 			>
 				{post.data.title}
 			</span>
@@ -56,7 +41,7 @@ const { post, showDescription } = Astro.props;
 				<p
 					class={cn(
 						"line-clamp-2 text-sm leading-relaxed",
-						"text-muted-foreground group-hover/link:text-muted-foreground",
+						"text-muted-foreground group-hover/interactive:text-muted-foreground",
 						"transition-colors duration-150"
 					)}
 				>
