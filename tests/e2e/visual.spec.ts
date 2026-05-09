@@ -56,7 +56,9 @@ test.describe("Visual Regression", () => {
 					// Mask elements that are known to be unstable or huge font sizes
 					mask: [
 						page.locator('section div:has-text("20")'), // Mask the year background numbers
-						page.locator("#giscus-container") // Mask giscus if it exists
+						page.locator("#giscus-container"), // Mask giscus if it exists
+						page.locator('section:has(h2:has-text("Contribution Activity"))'), // Mask GitHub Calendar (dynamic data)
+						page.locator('aside:has-text("Current Work")') // Mask current work (prone to change)
 					],
 					// Account for minor anti-aliasing differences between Mac and Linux
 					maxDiffPixelRatio: 0.05,
