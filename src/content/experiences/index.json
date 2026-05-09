@@ -58,6 +58,31 @@
 		]
 	},
 	{
+		"id": "apbl-product-owner-assistant",
+		"period": "Feb 2023 - Nov 2023",
+		"title": "Product Owner Assistant",
+		"company": "PENS Agile Project Based Learning (APBL)",
+		"location": "Surabaya",
+		"kind": "campus",
+		"umbrellaOrg": "PENS",
+		"summary": "Assisted in product strategy and backlog management for an Agile-based project, bridge the gap between stakeholders and the development team.",
+		"skills": [
+			"Agile",
+			"Scrum",
+			"Backlog Management",
+			"Stakeholder Management"
+		],
+		"highlights": [
+			"Defined product goals to maximize value for customers, users, and the organization",
+			"Collaborated with stakeholders throughout the development lifecycle to ensure alignment and transparency",
+			"Maintained and managed the Product Backlog, ensuring requirements were clearly documented",
+			"Prioritized backlog items based on project scope, budget constraints, and delivery timelines",
+			"Facilitated backlog refinement sessions and actively participated in all Scrum ceremonies",
+			"Evaluated development progress and conducted acceptance testing for product increments",
+			"Took responsibility for development stages and iterations to ensure successful delivery"
+		]
+	},
+	{
 		"id": "pens-aquaculture-fullstack-developer",
 		"period": "Sep 2022 - Jan 2023",
 		"title": "Fullstack Developer",
