@@ -14,7 +14,7 @@ const { posts }: Props = Astro.props;
 		<Fragment>
 			<ul class="flex flex-col">
 				{posts.map((p) => (
-					<PostPreview post={p} />
+					<PostPreview post={p} showDescription />
 				))}
 			</ul>
 			<div class="flex w-full items-end justify-end">

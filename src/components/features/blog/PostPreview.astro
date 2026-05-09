@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PostMetadata from "@/components/common/PostMetadata.astro";
+import Badge from "@/components/ui/Badge.astro";
 import Card from "@/components/ui/card/Card.astro";
-import { getPostUrl } from "@/lib/utils";
+import { cn, getPostUrl } from "@/lib/utils";
 
 type Props = {
 	post: CollectionEntry<"post">;
+	showDescription?: boolean;
 };
 
-const { post } = Astro.props;
+const { post, showDescription } = Astro.props;
 ---
 
 <li>
@@ -16,7 +18,7 @@ const { post } = Astro.props;
 		as="a"
 		href={getPostUrl(post)}
 		reload
-		class="group -mx-3 overflow-visible rounded-none border-0 bg-transparent px-3 py-3 text-base opacity-90 ring-0 transition-opacity hover:opacity-100"
+		class="group -mx-3 overflow-visible rounded-none border-0 bg-transparent px-3 py-5 text-base opacity-90 ring-0 transition-opacity hover:opacity-100"
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span
@@ -24,9 +26,33 @@ const { post } = Astro.props;
 			>
 				{post.data.title}
 			</span>
-			<span class="text-muted-foreground shrink-0">
+			<span class="text-muted-foreground shrink-0 text-sm">
 				<PostMetadata post={post} />
 			</span>
 		</div>
+
+		{
+			showDescription && (
+				<p
+					class={cn(
+						"line-clamp-2 text-sm leading-relaxed",
+						"text-muted-foreground group-hover/link:text-muted-foreground",
+						"transition-colors duration-150"
+					)}
+				>
+					{post.data.description}
+				</p>
+			)
+		}
+
+		{
+			post.data.tags.length > 0 && (
+				<div class="mt-0.5 flex flex-wrap gap-1.5" aria-label="tags">
+					{post.data.tags.map((tag) => (
+						<Badge variant="outline">#{tag}</Badge>
+					))}
+				</div>
+			)
+		}
 	</Card>
 </li>
