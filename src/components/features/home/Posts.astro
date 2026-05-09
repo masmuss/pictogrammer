@@ -15,7 +15,7 @@ const { posts }: Props = Astro.props;
 		<Fragment>
 			<ul class="flex flex-col">
 				{posts.map((p) => (
-					<PostPreview post={p} showDescription />
+					<PostPreview post={p} />
 				))}
 			</ul>
 			<div class="flex w-full items-end justify-end">
@@ -25,9 +25,9 @@ const { posts }: Props = Astro.props;
 						"group/seeall inline-flex items-center gap-1.5",
 						"text-sm transition-all duration-150",
 						"focus-visible:ring-2 focus-visible:outline-none",
-						"focus-visible:ring-ring rounded focus-visible:ring-offset-2"
+						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+						"text-accent-cta"
 					)}
-					style="color: var(--color-accent-cta, #3aa99f);"
 				>
 					<span>See all posts</span>
 					<span
