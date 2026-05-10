@@ -6,9 +6,11 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	workers: process.env.CI ? 1 : undefined,
-	reporter: [["html", { open: "never" }]],
+	reporter: process.env.CI
+		? [["github"], ["html", { open: "never" }]]
+		: [["html", { open: "never" }]],
 	use: {
-		baseURL: "http://localhost:4321",
+		baseURL: "http://127.0.0.1:4321",
 		trace: "on-first-retry"
 	},
 	/* Configure visual regression tests */
@@ -26,9 +28,9 @@ export default defineConfig({
 	],
 	webServer: {
 		command: process.env.CI
-			? "bun run preview"
+			? "bun run preview --host 127.0.0.1"
 			: "bun run build && bun run preview",
-		url: "http://localhost:4321",
+		url: "http://127.0.0.1:4321",
 		reuseExistingServer: !process.env.CI,
 		timeout: 120 * 1000
 	}
