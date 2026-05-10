@@ -14,7 +14,10 @@ export function sortPostsByDate(
 
 export async function getAllPosts(limit?: number) {
 	const posts = await getCollection("post", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
+		const isNotDraft = data.draft !== true;
+		const isPublished = new Date(data.date) <= new Date();
+
+		return import.meta.env.PROD ? isNotDraft && isPublished : true;
 	});
 
 	const sortedPosts = posts.sort(sortPostsByDate);
