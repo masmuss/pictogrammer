@@ -2,10 +2,6 @@
 import type { CollectionEntry } from "astro:content";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import Card from "@/components/ui/card/Card.astro";
-import CardContent from "@/components/ui/card/CardContent.astro";
-import CardDescription from "@/components/ui/card/CardDescription.astro";
-import CardHeader from "@/components/ui/card/CardHeader.astro";
-import CardTitle from "@/components/ui/card/CardTitle.astro";
 import Heading from "@/components/ui/Heading.astro";
 import PageLayout from "@/layouts/BaseLayout.astro";
 import { getAllSeries } from "@/lib/contents";
@@ -43,27 +39,24 @@ type SeriesEntry = CollectionEntry<"series">;
 				allSeries.map((series: SeriesEntry) => (
 					<Card
 						as="a"
+						variant="interactive"
 						href={`/blog/series/${series.id}`}
 						class={cn(
 							"bg-secondary/30 hover:bg-secondary/50 flex flex-col gap-y-2"
 						)}
 						data-testid="series-item"
 					>
-						<CardHeader>
-							<CardTitle>
-								<Heading
-									as="h2"
-									weight="semibold"
-									size="lg"
-									class="group-hover/interactive:text-primary transition-colors"
-								>
-									{series.data.title}
-								</Heading>
-							</CardTitle>
-							<CardDescription class="line-clamp-2 text-sm">
-								{series.data.description}
-							</CardDescription>
-						</CardHeader>
+						<Heading
+							as="h2"
+							weight="semibold"
+							size="lg"
+							class="group-hover/interactive:text-primary transition-colors"
+						>
+							{series.data.title}
+						</Heading>
+						<p class="text-muted-foreground line-clamp-2 text-sm">
+							{series.data.description}
+						</p>
 					</Card>
 				))
 			}
