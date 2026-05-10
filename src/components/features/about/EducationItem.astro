@@ -1,0 +1,35 @@
+---
+import Heading from "@/components/ui/Heading.astro";
+import type { Education } from "@/types";
+
+interface Props {
+	education: Education;
+}
+
+const { education: edu } = Astro.props;
+---
+
+<div class="flex flex-col gap-y-1" data-testid="education-item">
+	<div
+		class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between"
+	>
+		<Heading as="h3" weight="medium">
+			{edu.degree}
+		</Heading>
+		<span class="text-muted-foreground text-sm">{edu.period}</span>
+	</div>
+	<p class="text-muted-foreground text-sm">
+		{edu.institution}
+		{edu.gpa && ` · GPA: ${edu.gpa}`}
+	</p>
+	{
+		edu.coursework && edu.coursework.length > 0 && (
+			<div class="mt-2">
+				<p class="text-muted-foreground text-sm font-medium">
+					Relevant Coursework:
+				</p>
+				<p class="text-muted-foreground text-sm">{edu.coursework.join(", ")}</p>
+			</div>
+		)
+	}
+</div>

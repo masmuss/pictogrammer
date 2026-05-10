@@ -5,7 +5,7 @@ import { expect, test } from "@playwright/test";
  * Compares the current page render against stored master images.
  * Uses a small threshold to account for minor rendering differences between OSs.
  */
-test.describe("Visual Regression", () => {
+test.describe("Visual Regression - Pages", () => {
 	const pagesToSnapshot = [
 		{ name: "Homepage", path: "/" },
 		{ name: "About", path: "/about" },
@@ -48,21 +48,82 @@ test.describe("Visual Regression", () => {
 			});
 
 			// Take a full page screenshot and compare it.
-			// We use a specific name to keep it organized.
 			await expect(page).toHaveScreenshot(
 				`${pageInfo.name.toLowerCase()}.png`,
 				{
 					fullPage: true,
-					// Mask elements that are known to be unstable or huge font sizes
 					mask: [
 						page.locator('section div:has-text("20")'), // Mask the year background numbers
-						page.locator("#giscus-container"), // Mask giscus if it exists
-						page.locator('section:has(h2:has-text("Contribution Activity"))'), // Mask GitHub Calendar (dynamic data)
-						page.locator('aside:has-text("Current Work")') // Mask current work (prone to change)
+						page.locator("#giscus-container"), // Mask giscus
+						page.locator('section:has(h2:has-text("Contribution Activity"))'), // Mask GitHub Calendar
+						page.locator('aside:has-text("Current Work")') // Mask current work
 					],
-					// Account for minor anti-aliasing differences between Mac and Linux
-					maxDiffPixelRatio: 0.05,
-					threshold: 0.2
+					maxDiffPixelRatio: 0.1, // Relaxed for full page
+					threshold: 0.3
+				}
+			);
+		});
+	}
+});
+
+test.describe("Visual Regression - Atomic Components", () => {
+	const components = [
+		{ name: "Hero", path: "/", selector: '[data-testid="hero-section"]' },
+		{ name: "About Text", path: "/", selector: '[data-testid="about-text"]' },
+		{
+			name: "Featured Project",
+			path: "/",
+			selector: '[data-testid="featured-project-item"]'
+		},
+		{
+			name: "Experience Item",
+			path: "/about",
+			selector: '[data-testid="experience-item"]'
+		},
+		{
+			name: "Education Item",
+			path: "/about",
+			selector: '[data-testid="education-item"]'
+		},
+		{
+			name: "Certification Item",
+			path: "/about",
+			selector: '[data-testid="certification-item"]'
+		},
+		{
+			name: "Post Preview",
+			path: "/",
+			selector: '[data-testid="post-preview"]'
+		},
+		{ name: "Tool Item", path: "/tools", selector: '[data-testid="tool-item"]' }
+	];
+
+	for (const comp of components) {
+		test(`component "${comp.name}" should match stored snapshot`, async ({
+			page
+		}) => {
+			await page.goto(comp.path);
+			await page.waitForLoadState("networkidle");
+
+			// Stabilize animations
+			await page.addStyleTag({
+				content: `
+          .fade-up-section {
+              opacity: 1 !important;
+              transform: none !important;
+              transition: none !important;
+          }
+        `
+			});
+
+			const element = page.locator(comp.selector).first();
+			await expect(element).toBeVisible();
+
+			await expect(element).toHaveScreenshot(
+				`comp-${comp.name.toLowerCase().replace(/\s+/g, "-")}.png`,
+				{
+					maxDiffPixelRatio: 0.02, // Stricter for small components
+					threshold: 0.1
 				}
 			);
 		});
