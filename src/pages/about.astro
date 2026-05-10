@@ -53,6 +53,7 @@ const githubCalendarTheme = {
 					titleSize="2xl"
 					titleWeight="bold"
 					transitionDelay={0}
+					data-testid="about-me-section"
 				>
 					<div class="prose-sm prose-a:underline max-w-none underline-offset-2">
 						<AboutContent />
@@ -64,6 +65,7 @@ const githubCalendarTheme = {
 					titleUppercase
 					titleAs="h2"
 					transitionDelay={150}
+					data-testid="contribution-activity-section"
 				>
 					<GitHubCalendar
 						username={githubUsername}
@@ -77,11 +79,21 @@ const githubCalendarTheme = {
 			</div>
 
 			<div class="flex flex-col gap-6">
-				<AsideListPanel title="Current Work" items={currentWorkItems} />
+				<AsideListPanel
+					title="Current Work"
+					items={currentWorkItems}
+					data-testid="current-work-panel"
+				/>
 			</div>
 		</div>
 
-		<Section title="Skills" titleAs="h2" titleUppercase transitionDelay={150}>
+		<Section
+			title="Skills"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={150}
+			data-testid="skills-section"
+		>
 			<SkillsTabs collections={TECH_STACK} />
 		</Section>
 
@@ -90,6 +102,7 @@ const githubCalendarTheme = {
 			titleAs="h2"
 			titleUppercase
 			transitionDelay={150}
+			data-testid="experiences-section"
 		>
 			<Experiences experiences={experiences} />
 		</Section>
@@ -99,6 +112,7 @@ const githubCalendarTheme = {
 			titleAs="h2"
 			titleUppercase
 			transitionDelay={150}
+			data-testid="educations-section"
 		>
 			<Educations educations={educations} />
 		</Section>
@@ -108,6 +122,7 @@ const githubCalendarTheme = {
 			titleAs="h2"
 			titleUppercase
 			transitionDelay={150}
+			data-testid="certifications-section"
 		>
 			<Certifications certifications={certifications} />
 		</Section>
@@ -117,6 +132,7 @@ const githubCalendarTheme = {
 			titleAs="h2"
 			titleUppercase
 			transitionDelay={150}
+			data-testid="get-in-touch-section"
 		>
 			<div class="text-muted-foreground flex flex-col gap-y-4">
 				<p>

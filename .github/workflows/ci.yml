@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build-and-test:
@@ -61,7 +61,7 @@ jobs:
         run: bun run build
 
       - name: Run E2E Tests
-        run: bun run test:e2e -- --reporter=list
+        run: bun run test:e2e
         env:
           CI: true
 
