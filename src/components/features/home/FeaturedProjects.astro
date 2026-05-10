@@ -1,0 +1,111 @@
+---
+import Badge from "@/components/ui/Badge.astro";
+import Card from "@/components/ui/card/Card.astro";
+import { projectData } from "@/lib/constants/projects";
+import { cn } from "@/lib/utils";
+import type { Project } from "@/types";
+
+interface Props {
+	max?: number;
+}
+
+const { max = 3 } = Astro.props;
+
+const featured: Project[] = projectData
+	.flatMap((c) => c.projects)
+	.filter((p) => p.featured)
+	.slice(0, max);
+---
+
+{
+	featured.length > 0 && (
+		<div class="flex flex-col gap-y-1">
+			{featured.map((project) => {
+				const href = project.liveHref ?? project.repoHref ?? "#";
+				const isLive = Boolean(project.liveHref);
+				const hasRepo = Boolean(project.repoHref);
+
+				return (
+					<div class="list-none">
+						<Card
+							as="a"
+							variant="interactive"
+							href={href}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={project.text}
+							class="border-border/40 hover:bg-muted/50 -mx-3 border-b px-3 py-3 last:border-b-0 hover:border-transparent"
+						>
+							<div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+								<div class="flex min-w-0 flex-col gap-0.5">
+									<span
+										class={cn(
+											"leading-snug font-medium",
+											"text-foreground group-hover/interactive:text-foreground",
+											"transition-colors duration-150"
+										)}
+									>
+										{project.text}
+									</span>
+									{project.description && (
+										<span class="text-muted-foreground line-clamp-1 text-sm leading-snug">
+											{project.description}
+										</span>
+									)}
+								</div>
+
+								{/* Right: link badges */}
+								<div class="flex shrink-0 items-center gap-1.5">
+									{isLive && (
+										<Badge
+											variant="outline"
+											class="gap-1 font-mono text-[0.6875rem]"
+										>
+											<span
+												class="iconify ri--external-link-line text-[0.75rem]"
+												aria-hidden="true"
+											/>
+											Live
+										</Badge>
+									)}
+									{hasRepo && (
+										<Badge
+											variant="outline"
+											class="gap-1 font-mono text-[0.6875rem]"
+										>
+											<span
+												class="iconify ri--github-line text-[0.75rem]"
+												aria-hidden="true"
+											/>
+											Repo
+										</Badge>
+									)}
+								</div>
+							</div>
+						</Card>
+					</div>
+				);
+			})}
+
+			{/* See all projects link */}
+			<div class="mt-2 flex w-full justify-end">
+				<a
+					href="/projects"
+					class={cn(
+						"group/seeall inline-flex items-center gap-1.5",
+						"text-sm transition-all duration-150",
+						"focus-visible:ring-2 focus-visible:outline-none",
+						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+						"text-accent-cta-text"
+					)}
+				>
+					<span>See all projects</span>
+					<span
+						class="iconify ri--arrow-right-long-line transition-transform duration-200 group-hover/seeall:translate-x-1"
+						aria-hidden="true"
+					/>
+				</a>
+			</div>
+		</div>
+	)
+}

@@ -41,7 +41,8 @@ export const projectData: ProjectCollection[] = [
 					"A job application tracking web app built with Laravel and React, designed to help users manage their job applications effectively.",
 				thumbnail: "applyst.png",
 				liveHref: "https://applyst.khoirul.me",
-				repoHref: "https://github.com/masmuss/applyst.git"
+				repoHref: "https://github.com/masmuss/applyst.git",
+				featured: true
 			}
 		]
 	},
@@ -89,7 +90,8 @@ export const projectData: ProjectCollection[] = [
 				description:
 					"Decision Support System for analyzing environmental data in hydroponic system using Sugeno Fuzzy Inference System",
 				thumbnail: "dss-hydroponic.png",
-				repoHref: "https://github.com/masmuss/sugeno-fuzzy-simulator"
+				repoHref: "https://github.com/masmuss/sugeno-fuzzy-simulator",
+				featured: true
 			}
 		]
 	}

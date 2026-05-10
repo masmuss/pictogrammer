@@ -1,5 +1,6 @@
 ---
 import PostPreview from "@/components/features/blog/PostPreview.astro";
+import { cn } from "@/lib/utils";
 import type { CollectionPosts } from "@/types";
 
 interface Props {
@@ -18,9 +19,21 @@ const { posts }: Props = Astro.props;
 				))}
 			</ul>
 			<div class="flex w-full items-end justify-end">
-				<a href="/blog" class="flex items-center gap-x-2 text-sm">
+				<a
+					href="/blog"
+					class={cn(
+						"group/seeall inline-flex items-center gap-1.5",
+						"text-sm transition-all duration-150",
+						"focus-visible:ring-2 focus-visible:outline-none",
+						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+						"text-accent-cta-text"
+					)}
+				>
 					<span>See all posts</span>
-					<span class="iconify ri--arrow-right-long-line" />
+					<span
+						class="iconify ri--arrow-right-long-line transition-transform duration-200 group-hover/seeall:translate-x-1"
+						aria-hidden="true"
+					/>
 				</a>
 			</div>
 		</Fragment>

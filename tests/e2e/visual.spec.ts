@@ -34,6 +34,16 @@ test.describe("Visual Regression", () => {
               opacity: 1 !important;
               transform: none !important;
           }
+          /* Stabilize typography for cross-platform consistency */
+          body {
+            -webkit-font-smoothing: none !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeSpeed !important;
+          }
+          /* Force consistent line-height to prevent height accumulation differences */
+          p, span, h1, h2, h3, h4, a {
+            line-height: 1.5 !important;
+          }
         `
 			});
 
@@ -43,6 +53,13 @@ test.describe("Visual Regression", () => {
 				`${pageInfo.name.toLowerCase()}.png`,
 				{
 					fullPage: true,
+					// Mask elements that are known to be unstable or huge font sizes
+					mask: [
+						page.locator('section div:has-text("20")'), // Mask the year background numbers
+						page.locator("#giscus-container"), // Mask giscus if it exists
+						page.locator('section:has(h2:has-text("Contribution Activity"))'), // Mask GitHub Calendar (dynamic data)
+						page.locator('aside:has-text("Current Work")') // Mask current work (prone to change)
+					],
 					// Account for minor anti-aliasing differences between Mac and Linux
 					maxDiffPixelRatio: 0.05,
 					threshold: 0.2

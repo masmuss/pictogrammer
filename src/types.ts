@@ -19,6 +19,7 @@ export type Project = {
 	href?: string;
 	liveHref?: string;
 	repoHref?: string;
+	featured?: boolean;
 };
 
 export type ProjectCollection = {

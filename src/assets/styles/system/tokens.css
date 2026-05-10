@@ -1,12 +1,100 @@
 /* ========================================
-   Theme Tokens
+   Theme Tokens — pictogrammmer
+   Enhanced design system v2
    ======================================== */
+
 @theme {
+	/* ── Typography ─────────────────────────── */
 	--font-sans: var(--font-ia-writer-quattro);
 	--font-mono: var(--font-ibm-plex-mono);
 	--container-2xl: 1400px;
 
-	/* Flexoki accents (400 for light mode, 600 for dark mode use-cases) */
+	/* ── Spacing Scale ───────────────────────
+     Consistent rhythm built on a 4px base.
+     Use these instead of arbitrary px values.
+  */
+	--space-1: 0.25rem; /*  4px */
+	--space-2: 0.5rem; /*  8px */
+	--space-3: 0.75rem; /* 12px */
+	--space-4: 1rem; /* 16px */
+	--space-5: 1.25rem; /* 20px */
+	--space-6: 1.5rem; /* 24px */
+	--space-8: 2rem; /* 32px */
+	--space-10: 2.5rem; /* 40px */
+	--space-12: 3rem; /* 48px */
+	--space-16: 4rem; /* 64px */
+	--space-20: 5rem; /* 80px */
+	--space-24: 6rem; /* 96px */
+
+	/* ── Motion Tokens ───────────────────────
+     Centralised durations and easings.
+     Reference these instead of hardcoding
+     transition values in components.
+  */
+
+	/* Durations */
+	--duration-instant: 50ms;
+	--duration-fast: 150ms;
+	--duration-base: 250ms;
+	--duration-slow: 400ms;
+	--duration-slower: 600ms;
+	--duration-page: 300ms; /* Used by Astro ClientRouter fade */
+
+	/* Easings */
+	--ease-default: cubic-bezier(0.4, 0, 0.2, 1); /* Material standard */
+	--ease-in: cubic-bezier(0.4, 0, 1, 1);
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* Slight overshoot */
+	--ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+	/* Composite shorthands (duration ease) */
+	--transition-fast: var(--duration-fast) var(--ease-default);
+	--transition-base: var(--duration-base) var(--ease-default);
+	--transition-slow: var(--duration-slow) var(--ease-out);
+	--transition-spring: var(--duration-slow) var(--ease-spring);
+
+	/* ── Keyframe Animations ─────────────────
+     Named animations available globally.
+  */
+	--animate-fade-up: fade-up var(--duration-slower) var(--ease-out) forwards;
+	--animate-fade-in: fade-in var(--duration-slow) var(--ease-out) forwards;
+	--animate-slide-in: slide-in var(--duration-slow) var(--ease-spring) forwards;
+
+	@keyframes fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes slide-in {
+		from {
+			opacity: 0;
+			transform: translateX(-8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	/* ── Flexoki Accent Palette ──────────────
+     All 8 hues in 400 (light-mode) and
+     600 (dark-mode) variants. Unchanged.
+  */
 	--color-flexoki-red-400: #d14d41;
 	--color-flexoki-red-600: #af3029;
 	--color-flexoki-orange-400: #da702c;
@@ -24,7 +112,25 @@
 	--color-flexoki-magenta-400: #ce5d97;
 	--color-flexoki-magenta-600: #a02f6f;
 
-	/* Semantic colors mapping */
+	/* ── Semantic Accent (NEW) ───────────────
+     A single CTA accent derived from the
+     Flexoki cyan hue. Used for primary
+     interactive elements (links, buttons,
+     active states, focus rings) instead of
+     the bare foreground color.
+
+     Usage:
+       color: var(--color-accent-cta)
+       border-color: var(--color-accent-cta)
+       background: var(--color-accent-cta-subtle)
+  */
+	--color-accent-cta: var(--accent-cta);
+	--color-accent-cta-subtle: var(--accent-cta-subtle);
+	--color-accent-cta-text: var(--accent-cta-text);
+
+	/* 
+		Semantic colors mapping
+  	*/
 	--color-border: hsl(var(--border) / 0.8);
 	--color-input: hsl(var(--input));
 	--color-ring: hsl(var(--ring));
@@ -45,12 +151,16 @@
 	--color-card: hsl(var(--card));
 	--color-card-foreground: hsl(var(--card-foreground));
 
-	/* shadcn compatibility tokens */
+	/* ── Radius Scale ────────────────────────
+     Unchanged from v1.
+  */
 	--radius: 0.625rem;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
+
+	/* shadcn compat */
 	--color-chart-1: hsl(var(--primary));
 	--color-chart-2: hsl(var(--secondary));
 	--color-chart-3: hsl(var(--accent));
@@ -76,6 +186,7 @@
 		-webkit-text-size-adjust: 100%;
 		color-scheme: light;
 
+		/* ── Light Mode ───────────────────── */
 		&:not(.dark) {
 			--background: #fffcf0;
 			--foreground: 0 3% 6%;
@@ -96,8 +207,14 @@
 			--border: 50 14% 83%;
 			--input: 50 14% 83%;
 			--ring: 55 10% 79%;
+
+			/* Accent CTA — Flexoki cyan for light mode */
+			--accent-cta: #3aa99f;
+			--accent-cta-subtle: rgba(58, 169, 159, 0.1);
+			--accent-cta-text: #1a5f5a;
 		}
 
+		/* ── Dark Mode ────────────────────── */
 		&.dark {
 			color-scheme: dark;
 			--background: #100f0f;
@@ -119,6 +236,11 @@
 			--border: 40 3% 20%;
 			--input: 40 3% 20%;
 			--ring: 30 3% 24%;
+
+			/* Accent CTA — Flexoki cyan for dark mode */
+			--accent-cta: #24837b;
+			--accent-cta-subtle: rgba(36, 131, 123, 0.15);
+			--accent-cta-text: #3aa99f;
 		}
 	}
 }
