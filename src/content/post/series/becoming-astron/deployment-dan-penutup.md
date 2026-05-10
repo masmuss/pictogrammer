@@ -1,7 +1,7 @@
 ---
 title: "Becoming Astron #16 — Deployment: Meluncurkan Pesawat ke internet"
 description: "Setelah perjalanan panjang dari nol, saatnya kita menunjukkan karya kita kepada dunia. Mari belajar berbagai cara meluncurkan project Astro ke internet secara rinci."
-date: 18 January 2026
+date: 14 May 2026
 tags: ["astro", "tech"]
 ---
 

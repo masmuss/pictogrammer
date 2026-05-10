@@ -97,6 +97,11 @@ test.describe("Visual Regression - Atomic Components", () => {
 			path: "/",
 			selector: '[data-testid="post-preview"]'
 		},
+		{
+			name: "Series Item",
+			path: "/blog/series",
+			selector: '[data-testid="series-item"]'
+		},
 		{ name: "Tool Item", path: "/tools", selector: '[data-testid="tool-item"]' }
 	];
 
