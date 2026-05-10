@@ -1,7 +1,6 @@
 ---
-import Card from "@/components/ui/card/Card.astro";
-import CardContent from "@/components/ui/card/CardContent.astro";
 import type { Certification } from "@/types";
+import CertificationItem from "./CertificationItem.astro";
 
 interface Props {
 	certifications: Certification[];
@@ -11,46 +10,5 @@ const { certifications } = Astro.props;
 ---
 
 <div class="flex flex-col gap-y-2">
-	{
-		certifications.map((cert) => {
-			const dateText = cert.expiredDate
-				? `${cert.date} - ${cert.expiredDate}`
-				: cert.date;
-
-			const content = (
-				<div class="group flex flex-col gap-y-0.5">
-					<div class="flex items-center gap-2">
-						<span class="font-medium">{cert.title}</span>
-						{cert.credentialUrl && (
-							<span class="iconify text-muted-foreground ri--external-link-line text-sm opacity-0 transition-opacity group-hover:opacity-100" />
-						)}
-					</div>
-					<div class="text-muted-foreground flex items-center gap-x-2 text-sm">
-						<span>{cert.issuer}</span>
-						<span>·</span>
-						<span>{dateText}</span>
-					</div>
-					{cert.description && (
-						<p class="text-muted-foreground mt-1 text-sm">{cert.description}</p>
-					)}
-				</div>
-			);
-
-			return cert.credentialUrl ? (
-				<Card
-					as="a"
-					href={cert.credentialUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="hover:bg-muted/20 -mx-3 border-0 bg-transparent px-3 py-0 ring-0 transition-colors"
-				>
-					<CardContent class="px-0 py-2">{content}</CardContent>
-				</Card>
-			) : (
-				<Card class="-mx-3 border-0 bg-transparent px-3 py-0 ring-0">
-					<CardContent class="px-0 py-2">{content}</CardContent>
-				</Card>
-			);
-		})
-	}
+	{certifications.map((cert) => <CertificationItem certification={cert} />)}
 </div>

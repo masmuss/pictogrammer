@@ -2,6 +2,7 @@
 import Heading from "@/components/ui/Heading.astro";
 import Section from "@/components/ui/Section.astro";
 import { cn } from "@/lib/utils";
+import ToolItem from "./ToolItem.astro";
 
 interface Tool {
 	name: string;
@@ -26,7 +27,7 @@ const {
 }: Props = Astro.props;
 ---
 
-<Section transitionDelay={transitionDelay}>
+<Section transitionDelay={transitionDelay} data-testid="tool-section">
 	<div
 		class={cn(
 			"grid grid-cols-1 gap-y-4 py-3 md:py-8 first:pt-0 md:grid-cols-4 md:gap-x-12"
@@ -45,23 +46,11 @@ const {
 			<ul class={cn(`grid grid-cols-1 gap-3 sm:grid-cols-2`, className)}>
 				{
 					tools.map((tool) => (
-						<li class="flex flex-col">
-							<div class="flex flex-col">
-								<Heading
-									as="h3"
-									size="sm"
-									weight="medium"
-									class="text-foreground font-medium"
-								>
-									{tool.name}
-								</Heading>
-								{showDescription && (
-									<p class="text-muted-foreground mt-px text-xs leading-relaxed">
-										{tool.description}
-									</p>
-								)}
-							</div>
-						</li>
+						<ToolItem
+							name={tool.name}
+							description={tool.description}
+							showDescription={showDescription}
+						/>
 					))
 				}
 			</ul>

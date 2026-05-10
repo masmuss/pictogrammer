@@ -23,11 +23,18 @@ const allPosts = await getAllPosts(MAX_POSTS);
 			titleSize="2xl"
 			titleWeight="semibold"
 			transitionDelay={0}
+			data-testid="hero-section"
 		>
 			<Hero />
 		</Section>
 
-		<Section title="About" titleAs="h2" titleUppercase transitionDelay={150}>
+		<Section
+			title="About"
+			titleAs="h2"
+			titleUppercase
+			transitionDelay={150}
+			data-testid="about-section"
+		>
 			<About />
 		</Section>
 
@@ -36,6 +43,7 @@ const allPosts = await getAllPosts(MAX_POSTS);
 			titleAs="h2"
 			titleUppercase
 			transitionDelay={250}
+			data-testid="featured-projects-section"
 		>
 			<FeaturedProjects />
 		</Section>
@@ -45,6 +53,7 @@ const allPosts = await getAllPosts(MAX_POSTS);
 			titleAs="h2"
 			titleUppercase
 			transitionDelay={350}
+			data-testid="latest-posts-section"
 		>
 			<Posts posts={allPosts} />
 		</Section>
