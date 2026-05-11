@@ -38,3 +38,14 @@
 		{@html result.excerpt}
 	</p>
 </a>
+
+<style>
+	:global(mark) {
+		background-color: var(--accent-cta-subtle);
+		color: var(--accent-cta-text);
+		border-radius: 0.125rem;
+		padding-left: 0.125rem;
+		padding-right: 0.125rem;
+		font-weight: 500;
+	}
+</style>

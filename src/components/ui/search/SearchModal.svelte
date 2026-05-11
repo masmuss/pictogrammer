@@ -10,7 +10,7 @@
 
 {#if search.isOpen}
 	<div
-		class="bg-background/80 fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 backdrop-blur-lg sm:pt-24"
+		class="bg-background/80 fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24"
 		transition:fade={{ duration: 200 }}
 		onclick={search.handleBackdropClick}
 		role="button"
@@ -73,7 +73,6 @@
 {/if}
 
 <style>
-	/* Optional: Custom scrollbar for results */
 	div::-webkit-scrollbar {
 		width: 8px;
 	}
