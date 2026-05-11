@@ -10,11 +10,27 @@
 	let { result, index, search }: Props = $props();
 
 	function sanitizeExcerpt(excerpt: string) {
-		return excerpt
-			.replaceAll("&", "&amp;")
-			.replaceAll("<", "&lt;")
-			.replaceAll(">", "&gt;")
-			.replaceAll(/&lt;(\/?)mark&gt;/gi, "<$1mark>");
+		if (typeof window === "undefined") {
+			return excerpt.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "");
+		}
+
+		const template = window.document.createElement("template");
+		template.innerHTML = excerpt;
+
+		for (const element of template.content.querySelectorAll("*")) {
+			if (element.tagName !== "MARK") {
+				element.replaceWith(
+					window.document.createTextNode(element.textContent ?? "")
+				);
+				continue;
+			}
+
+			for (const attr of [...element.attributes]) {
+				element.removeAttribute(attr.name);
+			}
+		}
+
+		return template.innerHTML;
 	}
 </script>
 

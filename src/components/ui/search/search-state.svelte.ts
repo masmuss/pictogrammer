@@ -86,7 +86,7 @@ export function createSearch() {
 		const trimmedQuery = query.trim();
 
 		if (!pagefind || trimmedQuery.length < 2) {
-			searchRequestId += 1;
+			++searchRequestId;
 			results = [];
 			selectedIndex = -1;
 			isSearching = false;
