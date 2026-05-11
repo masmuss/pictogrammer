@@ -5,15 +5,15 @@ pre-commit:
   parallel: true
   commands:
     typecheck:
-      glob: "*.{ts,tsx,astro}"
+      glob: "*.{ts,tsx,astro,svelte}"
       run: bun run check
     
     lint:
-      glob: "*.{ts,tsx,js,jsx,astro}"
+      glob: "*.{ts,tsx,js,jsx,astro,svelte}"
       run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
 
     format:
-      glob: "*.{ts,tsx,js,jsx,astro,css,json,md,mdx}"
+      glob: "*.{ts,tsx,js,jsx,astro,svelte,css,json,md,mdx}"
       run: bunx prettier --write --ignore-unknown {staged_files}
 
 pre-push:

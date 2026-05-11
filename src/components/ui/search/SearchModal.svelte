@@ -18,7 +18,7 @@
 		onkeydown={(e) => e.key === "Escape" && search.closeSearch()}
 	>
 		<div
-			class="border-border bg-card w-full max-w-7/12 overflow-hidden rounded-xl border shadow-2xl"
+			class="border-border bg-card w-full max-w-4xl overflow-hidden rounded-xl border shadow-2xl"
 			transition:fly={{ y: -20, duration: 300 }}
 		>
 			<SearchBar {search} />
@@ -35,7 +35,7 @@
 							<SearchResultItem {result} index={i} {search} />
 						{/each}
 					</div>
-				{:else if search.query.length > 2}
+				{:else if search.query.trim().length >= 2}
 					<div class="py-12 text-center">
 						<span
 							class="iconify ri--search-line text-muted-foreground/30 mx-auto h-8 w-8"

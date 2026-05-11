@@ -1,4 +1,4 @@
-import { onMount } from "svelte";
+import { onDestroy, onMount, tick } from "svelte";
 
 export interface PagefindResultData {
 	url: string;
@@ -26,11 +26,13 @@ export function createSearch() {
 	let selectedIndex = $state(-1);
 	let pagefind = $state<Pagefind | null>(null);
 	let searchInput = $state<HTMLInputElement | null>(null);
+	let previousBodyOverflow = $state<string | null>(null);
+	let searchRequestId = $state(0);
 
 	onMount(async () => {
 		try {
 			if (typeof window !== "undefined") {
-				const pagefindPath = "/dist/pagefind/pagefind.js";
+				const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
 				// @ts-ignore
 				const pf = await import(/* @vite-ignore */ pagefindPath);
 				pagefind = pf as Pagefind;
@@ -46,17 +48,30 @@ export function createSearch() {
 	// Declarative scroll lock
 	$effect(() => {
 		if (isOpen) {
+			if (previousBodyOverflow === null) {
+				previousBodyOverflow = document.body.style.overflow;
+			}
 			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "";
+		} else if (previousBodyOverflow !== null) {
+			document.body.style.overflow = previousBodyOverflow;
+			previousBodyOverflow = null;
+		}
+	});
+
+	onDestroy(() => {
+		if (previousBodyOverflow !== null) {
+			document.body.style.overflow = previousBodyOverflow;
+		}
+	});
+
+	$effect(() => {
+		if (isOpen && searchInput) {
+			void tick().then(() => searchInput?.focus());
 		}
 	});
 
 	function toggleSearch() {
 		isOpen = !isOpen;
-		if (isOpen) {
-			setTimeout(() => searchInput?.focus(), 150);
-		}
 	}
 
 	function closeSearch() {
@@ -68,18 +83,23 @@ export function createSearch() {
 	}
 
 	async function handleSearch() {
-		if (!pagefind || query.trim().length < 2) {
+		const trimmedQuery = query.trim();
+
+		if (!pagefind || trimmedQuery.length < 2) {
+			searchRequestId += 1;
 			results = [];
 			selectedIndex = -1;
 			isSearching = false;
 			return;
 		}
 
+		const requestId = ++searchRequestId;
 		isSearching = true;
 		try {
-			const search = await pagefind.search(query);
+			const search = await pagefind.search(trimmedQuery);
 			const limitedResults = search.results.slice(0, 10);
 			const rawResults = await Promise.all(limitedResults.map((r) => r.data()));
+			if (requestId !== searchRequestId) return;
 
 			results = rawResults.map((result) => {
 				let url = result.url;
@@ -94,9 +114,12 @@ export function createSearch() {
 
 			selectedIndex = results.length > 0 ? 0 : -1;
 		} catch (e) {
+			if (requestId !== searchRequestId) return;
 			console.error("Search failed", e);
 		} finally {
-			isSearching = false;
+			if (requestId === searchRequestId) {
+				isSearching = false;
+			}
 		}
 	}
 

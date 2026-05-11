@@ -8,6 +8,14 @@
 	}
 
 	let { result, index, search }: Props = $props();
+
+	function sanitizeExcerpt(excerpt: string) {
+		return excerpt
+			.replaceAll("&", "&amp;")
+			.replaceAll("<", "&lt;")
+			.replaceAll(">", "&gt;")
+			.replaceAll(/&lt;(\/?)mark&gt;/gi, "<$1mark>");
+	}
 </script>
 
 <a
@@ -34,13 +42,13 @@
 				: 'group-hover:translate-x-1'}"
 		></span>
 	</div>
-	<p class="text-muted-foreground mt-1 line-clamp-2 text-xs">
-		{@html result.excerpt}
+	<p class="excerpt text-muted-foreground mt-1 line-clamp-2 text-xs">
+		{@html sanitizeExcerpt(result.excerpt)}
 	</p>
 </a>
 
 <style>
-	:global(mark) {
+	.excerpt :global(mark) {
 		background-color: var(--accent-cta-subtle);
 		color: var(--accent-cta-text);
 		border-radius: 0.125rem;

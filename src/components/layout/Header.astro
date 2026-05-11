@@ -46,8 +46,6 @@ const { navLinks } = siteConfig.header;
 					</a>
 				))
 			}
-			<Search client:load />
-			<ThemeToggle />
 		</div>
 
 		<!-- Mobile Navigation -->
@@ -66,8 +64,11 @@ const { navLinks } = siteConfig.header;
 					</a>
 				))
 			}
+		</nav>
+
+		<div class="flex flex-row items-center justify-center gap-x-4">
 			<Search client:load />
 			<ThemeToggle />
-		</nav>
+		</div>
 	</nav>
 </header>
