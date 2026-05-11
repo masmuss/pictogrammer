@@ -7,26 +7,22 @@ pre-commit:
     typecheck:
       glob: "*.{ts,tsx,astro}"
       run: bun run check
-      stage_fixed: true
-
+    
     lint:
       glob: "*.{ts,tsx,js,jsx,astro}"
-      run: bun run lint
-      stage_fixed: true
+      run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
 
     format:
       glob: "*.{ts,tsx,js,jsx,astro,css,json,md,mdx}"
-      run: bun run format
-      stage_fixed: true
+      run: bunx prettier --write --ignore-unknown {staged_files}
 
 pre-push:
-  # Sequential execution is safer for resource-heavy tasks like builds and E2E
   parallel: false
   commands:
-    # 1. Run unit tests first (fastest)
+    # 1. Run unit tests
     test:unit:
       run: bun run test:unit:run
 
-    # 2. Run E2E tests (this automatically builds the site as per playwright.config.ts)
+    # 2. Run E2E tests (Playwright handles build + preview with 180s timeout)
     test:e2e:
       run: bun run test:e2e

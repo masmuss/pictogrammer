@@ -12,6 +12,7 @@
 		"format:code": "prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache",
 		"format:imports": "biome check --formatter-enabled=false --write",
 		"check": "astro check",
+		"test": "bun run test:unit:run && bun run build && CI=true bun run test:e2e",
 		"test:unit": "vitest",
 		"test:unit:run": "vitest run",
 		"test:e2e": "playwright test",
