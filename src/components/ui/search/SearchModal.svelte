@@ -9,10 +9,15 @@
 </script>
 
 {#if search.isOpen}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="bg-background/80 fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24"
 		transition:fade={{ duration: 200 }}
+		tabindex="-1"
 		onclick={search.handleBackdropClick}
+		onkeydown={(e) => {
+			if (e.key === "Escape") search.closeSearch();
+		}}
 	>
 		<div
 			class="border-border bg-card w-full max-w-4xl overflow-hidden rounded-xl border shadow-2xl"
