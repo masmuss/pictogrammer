@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logoDark from "@/assets/images/logo-dark.svg";
 import logoLight from "@/assets/images/logo-light.svg";
+import NavLink from "@/components/layout/NavLink.astro";
 import Search from "@/components/ui/search/Search.svelte";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 import siteConfig from "@/config/site-config";
@@ -13,7 +14,7 @@ const { navLinks } = siteConfig.header;
 	class="mb-10 flex w-full flex-wrap py-8 text-sm sm:flex-nowrap sm:justify-start md:py-12"
 >
 	<nav
-		class="relative mx-auto flex w-full items-center justify-between sm:flex sm:items-center"
+		class="relative mx-auto flex w-full items-center justify-between gap-x-3 sm:flex sm:items-center md:gap-5"
 		aria-label="global"
 	>
 		<a class="flex flex-none" href="/" aria-label="pictogrammer logo">
@@ -33,40 +34,14 @@ const { navLinks } = siteConfig.header;
 			/>
 		</a>
 
-		<!-- Desktop Navigation -->
-		<div class="hidden flex-row items-center justify-center gap-x-5 md:flex">
+		<div class="ml-auto flex flex-row items-center gap-x-5">
+			<!-- Navigation -->
 			{
 				navLinks.map((link) => (
-					<a
-						href={link.href}
-						class="text-muted-foreground hover:text-foreground flex-none font-medium transition-colors"
-						aria-label={link.text}
-					>
-						{link.text}
-					</a>
+					<NavLink href={link.href} text={link.text} icon={link.icon} />
 				))
 			}
-		</div>
 
-		<!-- Mobile Navigation -->
-		<nav
-			class="flex flex-row items-center justify-center gap-x-4 md:hidden"
-			aria-label="Mobile Navigation"
-		>
-			{
-				navLinks.map((link) => (
-					<a
-						href={link.href}
-						class="text-muted-foreground hover:text-foreground flex items-center p-2 transition-colors focus:ring-1 focus:ring-offset-1 focus:outline-none"
-						aria-label={link.text}
-					>
-						<span class={`iconify ${link.icon}`} />
-					</a>
-				))
-			}
-		</nav>
-
-		<div class="flex flex-row items-center justify-center gap-x-4">
 			<Search client:load />
 			<ThemeToggle />
 		</div>

@@ -9,10 +9,15 @@
 </script>
 
 {#if search.isOpen}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="bg-background/80 fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24"
 		transition:fade={{ duration: 200 }}
+		tabindex="-1"
 		onclick={search.handleBackdropClick}
+		onkeydown={(e) => {
+			if (e.key === "Escape") search.closeSearch();
+		}}
 	>
 		<div
 			class="border-border bg-card w-full max-w-4xl overflow-hidden rounded-xl border shadow-2xl"
@@ -27,7 +32,7 @@
 			<div class="search-results max-h-[60vh] overflow-y-auto p-2">
 				{#if search.results.length > 0}
 					<div
-						class="text-muted-foreground p-3 text-[10px] font-medium tracking-wider uppercase"
+						class="text-muted-foreground p-3 text-xs font-medium tracking-wider uppercase"
 					>
 						{search.results.length} results found
 					</div>
@@ -54,7 +59,7 @@
 
 			<div
 				id="search-modal-instructions"
-				class="border-border bg-muted/50 text-muted-foreground flex items-center justify-between border-t px-4 py-2 text-[10px]"
+				class="border-border bg-muted/50 text-muted-foreground flex items-center justify-between border-t px-4 py-2 text-xs"
 			>
 				<div class="flex items-center gap-4">
 					<span class="flex items-center gap-1">
