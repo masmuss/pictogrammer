@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"files": "**/*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		},
+		{
 			"files": ["*.mdx", "*.md"],
 			"options": {
 				"printWidth": 80
@@ -23,6 +29,7 @@
 	],
 	"plugins": [
 		"prettier-plugin-astro",
+		"prettier-plugin-svelte",
 		"prettier-plugin-organize-attributes",
 		"prettier-plugin-organize-imports",
 		"prettier-plugin-packagejson",
