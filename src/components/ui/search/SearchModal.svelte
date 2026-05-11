@@ -13,17 +13,18 @@
 		class="bg-background/80 fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24"
 		transition:fade={{ duration: 200 }}
 		onclick={search.handleBackdropClick}
-		role="button"
-		tabindex="-1"
-		onkeydown={(e) => e.key === "Escape" && search.closeSearch()}
 	>
 		<div
 			class="border-border bg-card w-full max-w-4xl overflow-hidden rounded-xl border shadow-2xl"
 			transition:fly={{ y: -20, duration: 300 }}
+			role="dialog"
+			aria-modal="true"
+			aria-label="Search"
+			aria-describedby="search-modal-instructions"
 		>
 			<SearchBar {search} />
 
-			<div class="max-h-[60vh] overflow-y-auto p-2">
+			<div class="search-results max-h-[60vh] overflow-y-auto p-2">
 				{#if search.results.length > 0}
 					<div
 						class="text-muted-foreground p-3 text-[10px] font-medium tracking-wider uppercase"
@@ -52,6 +53,7 @@
 			</div>
 
 			<div
+				id="search-modal-instructions"
 				class="border-border bg-muted/50 text-muted-foreground flex items-center justify-between border-t px-4 py-2 text-[10px]"
 			>
 				<div class="flex items-center gap-4">
@@ -73,17 +75,22 @@
 {/if}
 
 <style>
-	div::-webkit-scrollbar {
+	.search-results {
+		scrollbar-width: thin;
+		scrollbar-color: hsl(var(--muted)) transparent;
+	}
+
+	.search-results::-webkit-scrollbar {
 		width: 8px;
 	}
-	div::-webkit-scrollbar-track {
+	.search-results::-webkit-scrollbar-track {
 		background: transparent;
 	}
-	div::-webkit-scrollbar-thumb {
+	.search-results::-webkit-scrollbar-thumb {
 		background: hsl(var(--muted));
 		border-radius: 4px;
 	}
-	div::-webkit-scrollbar-thumb:hover {
+	.search-results::-webkit-scrollbar-thumb:hover {
 		background: hsl(var(--muted-foreground) / 0.5);
 	}
 </style>

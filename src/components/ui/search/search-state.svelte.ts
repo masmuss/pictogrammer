@@ -40,7 +40,7 @@ export function createSearch() {
 			}
 		} catch (_e) {
 			console.log(
-				"Pagefind index not found. This is normal in development mode. Run 'npm run build' to generate the search index."
+				"Pagefind index not found. This is normal in development mode. Run 'bun run build' to generate the search index."
 			);
 		}
 	});

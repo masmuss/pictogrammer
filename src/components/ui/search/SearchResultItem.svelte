@@ -11,7 +11,9 @@
 
 	function sanitizeExcerpt(excerpt: string) {
 		if (typeof window === "undefined") {
-			return excerpt.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "");
+			return excerpt
+				.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "")
+				.replaceAll(/<mark\b[^>]*>/gi, "<mark>");
 		}
 
 		const template = window.document.createElement("template");

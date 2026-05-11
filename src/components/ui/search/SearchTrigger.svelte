@@ -3,6 +3,17 @@
 	import type { createSearch } from "./search-state.svelte";
 
 	let { search }: { search: ReturnType<typeof createSearch> } = $props();
+
+	const platform =
+		typeof navigator === "undefined"
+			? ""
+			: ("userAgentData" in navigator
+					? ((navigator as Navigator & { userAgentData?: { platform?: string } })
+							.userAgentData?.platform ?? "")
+					: navigator.platform);
+	const isApplePlatform =
+		/Mac|iPhone|iPad|iPod/i.test(platform);
+	const modifierKey = isApplePlatform ? "⌘" : "Ctrl";
 </script>
 
 <button
@@ -13,5 +24,5 @@
 >
 	<span class="iconify ri--search-line h-4 w-4"></span>
 	<span class="ml-2 hidden text-xs lg:inline-block">Search</span>
-	<Kbd keys={["⌘", "K"]} class="ml-2 hidden lg:flex" />
+	<Kbd keys={[modifierKey, "K"]} class="ml-2 hidden lg:flex" />
 </button>
