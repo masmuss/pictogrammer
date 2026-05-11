@@ -2,9 +2,11 @@
 
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import astroMermaid from "astro-mermaid";
+import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
@@ -51,7 +53,9 @@ export default defineConfig({
 			gfm: true,
 			remarkPlugins: [remarkGfm]
 		}),
-		sitemap()
+		sitemap(),
+		svelte(),
+		pagefind()
 	],
 	markdown: {
 		gfm: true,

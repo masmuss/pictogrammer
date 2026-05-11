@@ -54,3 +54,36 @@ test("theme toggle changes mode", async ({ page }) => {
 		await expect(html).toHaveClass(/dark/);
 	}
 });
+
+test("search modal supports open, close, no-results, and keyboard navigation", async ({
+	page
+}) => {
+	await page.goto("/");
+
+	const searchTrigger = page.getByRole("button", { name: "Search" });
+	await searchTrigger.click();
+
+	const modal = page.getByRole("dialog", { name: "Search" });
+	await expect(modal).toBeVisible();
+
+	const searchInput = page.getByPlaceholder("Search articles, projects...");
+	await expect(searchInput).toBeFocused();
+
+	await page.keyboard.press("Escape");
+	await expect(modal).not.toBeVisible();
+
+	await page.keyboard.press("ControlOrMeta+KeyK");
+	await expect(modal).toBeVisible();
+
+	await searchInput.fill("zzzzzzzz-no-match-987654321");
+	await expect(page.getByText(/No results for/)).toBeVisible();
+
+	await searchInput.fill("Ahmad Musafir");
+	await expect(page.getByText(/\d+ results found/)).toBeVisible();
+
+	const initialURL = page.url();
+	await page.keyboard.press("Enter");
+	// Verify navigation occurred by checking that the URL changed
+	await page.waitForLoadState("networkidle");
+	expect(page.url()).not.toBe(initialURL);
+});

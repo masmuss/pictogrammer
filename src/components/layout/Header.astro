@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logoDark from "@/assets/images/logo-dark.svg";
 import logoLight from "@/assets/images/logo-light.svg";
+import Search from "@/components/ui/search/Search.svelte";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 import siteConfig from "@/config/site-config";
 
@@ -45,7 +46,6 @@ const { navLinks } = siteConfig.header;
 					</a>
 				))
 			}
-			<ThemeToggle />
 		</div>
 
 		<!-- Mobile Navigation -->
@@ -64,7 +64,11 @@ const { navLinks } = siteConfig.header;
 					</a>
 				))
 			}
-			<ThemeToggle />
 		</nav>
+
+		<div class="flex flex-row items-center justify-center gap-x-4">
+			<Search client:load />
+			<ThemeToggle />
+		</div>
 	</nav>
 </header>

@@ -10,7 +10,7 @@ export default defineConfig({
 		? [["github"], ["html", { open: "never" }]]
 		: [["html", { open: "never" }]],
 	use: {
-		baseURL: "http://127.0.0.1:4321",
+		baseURL: "http://localhost:4321",
 		trace: "on-first-retry"
 	},
 	/* Configure visual regression tests */
@@ -27,11 +27,9 @@ export default defineConfig({
 		}
 	],
 	webServer: {
-		command: process.env.CI
-			? "bun run preview --host 127.0.0.1"
-			: "bun run build && bun run preview",
-		url: "http://127.0.0.1:4321",
+		command: "bun run build && bun run preview",
+		url: "http://localhost:4321",
 		reuseExistingServer: !process.env.CI,
-		timeout: 120 * 1000
+		timeout: 180 * 1000
 	}
 });
