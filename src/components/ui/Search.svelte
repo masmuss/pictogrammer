@@ -24,6 +24,7 @@
 	let query = $state("");
 	let results = $state<PagefindResultData[]>([]);
 	let isSearching = $state(false);
+	let selectedIndex = $state(-1);
 	let pagefind = $state<Pagefind | null>(null);
 	let searchInput = $state<HTMLInputElement | null>(null);
 
@@ -59,8 +60,28 @@
 			e.preventDefault();
 			toggleSearch();
 		}
-		if (e.key === "Escape" && isOpen) {
+
+		if (!isOpen) return;
+
+		if (e.key === "Escape") {
 			closeSearch();
+		}
+
+		if (results.length > 0) {
+			if (e.key === "ArrowDown") {
+				e.preventDefault();
+				selectedIndex = (selectedIndex + 1) % results.length;
+			} else if (e.key === "ArrowUp") {
+				e.preventDefault();
+				selectedIndex = (selectedIndex - 1 + results.length) % results.length;
+			} else if (e.key === "Enter" && selectedIndex >= 0) {
+				e.preventDefault();
+				const result = results[selectedIndex];
+				if (result) {
+					window.location.href = result.url;
+					closeSearch();
+				}
+			}
 		}
 	}
 
@@ -76,12 +97,13 @@
 		isOpen = false;
 		query = "";
 		results = [];
+		selectedIndex = -1;
 		isSearching = false;
 	}
-
 	async function handleSearch() {
 		if (!pagefind || query.trim().length < 2) {
 			results = [];
+			selectedIndex = -1;
 			isSearching = false;
 			return;
 		}
@@ -91,7 +113,26 @@
 			const search = await pagefind.search(query);
 			// Limit to 10 results for performance, or show all if desired
 			const limitedResults = search.results.slice(0, 10);
-			results = await Promise.all(limitedResults.map((r) => r.data()));
+			const rawResults = await Promise.all(limitedResults.map((r) => r.data()));
+
+			// Sanitize URLs: remove /dist/ prefix and handle trailing slashes
+			results = rawResults.map((result) => {
+				let url = result.url;
+
+				// Remove /dist/ prefix if it exists (common issue with some Pagefind setups)
+				if (url.startsWith("/dist/")) {
+					url = url.replace("/dist/", "/");
+				}
+
+				// Handle trailing slash based on site config (trailingSlash: "never")
+				if (url.length > 1 && url.endsWith("/")) {
+					url = url.slice(0, -1);
+				}
+
+				return { ...result, url };
+			});
+
+			selectedIndex = results.length > 0 ? 0 : -1;
 		} catch (e) {
 			console.error("Search failed", e);
 		} finally {
@@ -171,20 +212,29 @@
 						{results.length} results found
 					</div>
 					<div class="space-y-1">
-						{#each results as result}
+						{#each results as result, i}
 							<a
 								href={result.url}
-								class="group hover:bg-muted block rounded-lg p-3 transition-colors"
+								class="group block rounded-lg p-3 transition-colors {selectedIndex ===
+								i
+									? 'bg-muted ring-border ring-1'
+									: 'hover:bg-muted'}"
 								onclick={closeSearch}
 							>
 								<div class="flex items-center justify-between">
 									<h3
-										class="group-hover:text-accent-cta text-sm font-semibold transition-colors"
+										class="text-sm font-semibold transition-colors {selectedIndex ===
+										i
+											? 'text-accent-cta'
+											: 'group-hover:text-accent-cta'}"
 									>
 										{result.meta.title}
 									</h3>
 									<span
-										class="iconify ri--arrow-right-s-line text-muted-foreground h-4 w-4 transition-transform group-hover:translate-x-1"
+										class="iconify ri--arrow-right-s-line text-muted-foreground h-4 w-4 transition-transform {selectedIndex ===
+										i
+											? 'translate-x-1'
+											: 'group-hover:translate-x-1'}"
 									></span>
 								</div>
 								<p class="text-muted-foreground mt-1 line-clamp-2 text-xs">
