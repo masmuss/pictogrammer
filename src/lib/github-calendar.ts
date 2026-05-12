@@ -53,10 +53,18 @@ function logCacheEvent(enableLogging: boolean, message: string): void {
 
 async function fetchFromGitHubApi(
 	username: string,
-	year: number | "last"
+	year: number | "last",
+	forceRefresh: boolean
 ): Promise<Activity[]> {
+	// Add no-cache header only if forceRefresh is true
+	const headers: HeadersInit = {};
+	if (forceRefresh) {
+		headers["Cache-Control"] = "no-cache";
+	}
+
 	const response = await fetch(
-		`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`
+		`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`,
+		{ headers }
 	);
 
 	if (!response.ok) {
@@ -108,7 +116,11 @@ export async function fetchGitHubContributions(
 	}
 
 	try {
-		const contributions = await fetchFromGitHubApi(username, year);
+		const contributions = await fetchFromGitHubApi(
+			username,
+			year,
+			forceRefresh
+		);
 		contributionsCache.set(cacheKey, {
 			data: contributions,
 			fetchedAt: Date.now()

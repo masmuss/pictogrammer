@@ -7,7 +7,7 @@ pre-commit:
     typecheck:
       glob: "*.{ts,tsx,astro,svelte}"
       run: bun run check
-    
+
     lint:
       glob: "*.{ts,tsx,js,jsx,astro,svelte}"
       run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}

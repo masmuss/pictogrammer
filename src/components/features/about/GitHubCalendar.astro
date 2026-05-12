@@ -42,6 +42,12 @@ const {
 } = Astro.props;
 
 const activities = await fetchGitHubContributions(username, year);
+
+// Check if data is empty or failed to load
+if (!activities || activities.length === 0) {
+	return null; // Don't render anything if data is empty or failed to load
+}
+
 const weeks = groupByWeeks(activities);
 const totalCount = getTotalCount(activities);
 
@@ -116,7 +122,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 		"--calendar-level-4-dark": resolvedTheme.dark[4]
 	}}
 >
-	<div class="w-full min-w-0">
+	<div class="w-full min-w-0 overflow-x-auto pb-4">
 		<svg
 			class="mb-2"
 			width="100%"
@@ -199,6 +205,7 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 	svg {
 		display: block;
 		margin: 0 auto;
+		min-width: 700px; /* Mencegah SVG terlalu gepeng/berantakan saat layar kecil */
 	}
 
 	rect {
