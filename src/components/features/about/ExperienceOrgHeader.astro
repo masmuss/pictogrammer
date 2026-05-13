@@ -9,13 +9,18 @@ interface Props {
 }
 
 const { company, logo, class: className } = Astro.props;
+const isImage = logo?.startsWith("http") || logo?.startsWith("/");
 ---
 
 <div class={cn("flex items-center gap-x-3", className)}>
 	{
 		logo && (
-			<div class="bg-card border-border/50 flex size-9 items-center justify-center overflow-hidden rounded-full border p-1 shadow-sm">
-				<span class={cn(logo, "size-full")} />
+			<div class="bg-card border-border/50 flex size-9 items-center justify-center overflow-hidden rounded-full border p-1 shadow-sm shrink-0">
+				{isImage ? (
+					<img src={logo} alt={company} class="size-full object-contain" />
+				) : (
+					<span class={cn(logo, "size-full")} />
+				)}
 			</div>
 		)
 	}
