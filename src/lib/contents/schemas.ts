@@ -1,5 +1,5 @@
-import { z } from "astro/zod";
 import type { SchemaContext } from "astro:content";
+import { z } from "astro/zod";
 
 function removeDupsAndLowerCase(array: string[]) {
 	if (!array.length) return array;

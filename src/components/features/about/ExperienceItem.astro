@@ -7,16 +7,14 @@ import ExperienceSkillPills from "./ExperienceSkillPills.astro";
 
 interface Props {
 	experience: Experience;
+	isOpen?: boolean;
 }
 
-const { experience } = Astro.props;
+const { experience, isOpen = false } = Astro.props;
 const duration = calculateDuration(experience.period);
 ---
 
-<div
-	class="bg-card/30 border-border/50 hover:bg-card/50 rounded-xl border p-4 transition-all"
-	data-testid="experience-item"
->
+<div class="transition-all" data-testid="experience-item">
 	<div class="flex gap-4">
 		{/* Icon Column */}
 		{
@@ -31,7 +29,7 @@ const duration = calculateDuration(experience.period);
 
 		{/* Content Column */}
 		<div class="flex flex-1 flex-col gap-y-3">
-			<details class="group/details" open>
+			<details class="group/details" open={isOpen}>
 				<summary
 					class="flex cursor-pointer list-none items-center justify-between outline-none [&::-webkit-details-marker]:hidden"
 				>
