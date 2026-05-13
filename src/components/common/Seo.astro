@@ -49,10 +49,10 @@ const {
 } = Astro.props;
 
 // Normalization Constants (Retained from original BaseHead)
-const titleMinLength = 30;
 const titleMaxLength = 60;
 const descriptionMinLength = 120;
 const descriptionMaxLength = 160;
+const titleSeparator = " | ";
 
 function truncateByWordBoundary(text: string, maxLength: number) {
 	if (text.length <= maxLength) return text;
@@ -70,19 +70,23 @@ function truncateByWordBoundary(text: string, maxLength: number) {
 	return `${safeText}...`;
 }
 
-function normalizeTitle(raw: string | undefined, type: typeof ogType) {
+function normalizeTitle(raw: string | undefined) {
 	if (!raw) return siteConfig.title;
 
-	let normalized = raw;
-	const suffix =
-		type === "article" ? " | Articles by Khoirul" : ` | ${titleTemplate}`;
+	const baseTitle = raw.trim();
+	const siteTitle = titleTemplate.trim();
+	const hasSiteName = baseTitle.toLowerCase().includes(siteTitle.toLowerCase());
 
-	if (normalized.length < titleMinLength) {
-		normalized = `${normalized}${suffix}`;
-	}
+	if (hasSiteName) return baseTitle;
+
+	const suffix = `${titleSeparator}${siteTitle}`;
+	let normalized = `${baseTitle}${suffix}`;
 
 	if (normalized.length > titleMaxLength) {
-		normalized = truncateByWordBoundary(normalized, titleMaxLength - 3);
+		const maxBaseLength = titleMaxLength - suffix.length;
+		if (maxBaseLength <= 0) return siteTitle;
+		const trimmedBase = truncateByWordBoundary(baseTitle, maxBaseLength - 3);
+		normalized = `${trimmedBase}${suffix}`;
 	}
 
 	return normalized;
@@ -111,7 +115,7 @@ function normalizeDescription(raw: string | undefined, type: typeof ogType) {
 	return normalized;
 }
 
-const title = normalizeTitle(rawTitle, ogType);
+const title = normalizeTitle(rawTitle);
 const description = normalizeDescription(rawDescription, ogType);
 
 // Canonical URL logic
