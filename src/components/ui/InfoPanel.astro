@@ -23,20 +23,14 @@ const {
 }: Props = Astro.props;
 ---
 
-<section
-	{...attrs}
-	class={cn(
-		"gap-0 rounded-none border-0 bg-transparent py-0 ring-0",
-		className
-	)}
->
-	<Card class="ring-0">
-		<CardHeader class="border-border/70 border-b px-0 py-3">
+<section {...attrs} class={className}>
+	<Card class="gap-0 ring-0">
+		<CardHeader class="border-border/70 border-b px-0">
 			<CardTitle as={titleAs} class={titleClass}>
 				{title}
 			</CardTitle>
 		</CardHeader>
-		<CardContent class={cn("p-4", contentClass)}>
+		<CardContent class={cn("px-4", contentClass)}>
 			<slot />
 		</CardContent>
 	</Card>

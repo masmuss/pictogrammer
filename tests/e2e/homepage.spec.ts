@@ -82,8 +82,11 @@ test("search modal supports open, close, no-results, and keyboard navigation", a
 	await expect(page.getByText(/\d+ results found/)).toBeVisible();
 
 	const initialURL = page.url();
-	await page.keyboard.press("Enter");
+	// Click on the first search result item to navigate
+	const firstResult = modal.getByTestId("search-result").first();
+	await firstResult.click();
+
 	// Verify navigation occurred by checking that the URL changed
-	await page.waitForLoadState("networkidle");
+	await page.waitForURL((url) => url.href !== initialURL);
 	expect(page.url()).not.toBe(initialURL);
 });

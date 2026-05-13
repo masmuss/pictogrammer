@@ -16,8 +16,8 @@ export default defineConfig({
 	/* Configure visual regression tests */
 	expect: {
 		toHaveScreenshot: {
-			maxDiffPixelRatio: 0.05, // Toleransi 5% perbedaan pixel (aman buat beda OS)
-			threshold: 0.2 // Sensitivitas warna
+			maxDiffPixelRatio: 0.05, // pixel difference tolerance
+			threshold: 0.2 // color tolerance
 		}
 	},
 	projects: [

@@ -20,7 +20,7 @@ test.describe("Accessibility Audit", () => {
 			await page.goto(pageInfo.path);
 
 			// Wait for the page to be fully loaded and settled
-			await page.waitForLoadState("networkidle");
+			await page.waitForLoadState("domcontentloaded");
 
 			// Force visibility and disable animations for consistent audit
 			await page.addStyleTag({
@@ -50,7 +50,7 @@ test("individual blog post should be accessible", async ({ page }) => {
 	const firstPostLink = page.locator("main ul li a").first();
 	await firstPostLink.click();
 
-	await page.waitForLoadState("networkidle");
+	await page.waitForLoadState("domcontentloaded");
 
 	// Force visibility and disable animations for consistent audit
 	await page.addStyleTag({

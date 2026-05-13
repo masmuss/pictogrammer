@@ -22,6 +22,32 @@ const currentWorkItems = currentWork.map((work) => ({
 	meta: work.company
 }));
 
+const learningFocusItems = [
+	{
+		title: "Backend engineering",
+		meta: "APIs, background jobs, scaling"
+	},
+	{
+		title: "Data architecture",
+		meta: "PostgreSQL, Redis, caching"
+	},
+	{
+		title: "Observability",
+		meta: "Logs, metrics, tracing"
+	}
+];
+
+const nowReadingBooks = [
+	{
+		title: "The Alchemist",
+		meta: "Paulo Coelho"
+	},
+	{
+		title: "Pulang",
+		meta: "Leila S. Chudori"
+	}
+];
+
 const githubProfile = siteConfig.socialLinks.find(
 	(social) => social.text === "GitHub"
 )?.href;
@@ -44,7 +70,7 @@ const githubCalendarTheme = {
 		<Heading as="h1" class="sr-only">About Khoirul Fattah</Heading>
 
 		<div
-			class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-10"
+			class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-12"
 		>
 			<div class="flex flex-col gap-y-10">
 				<Section
@@ -85,6 +111,16 @@ const githubCalendarTheme = {
 					title="Current Work"
 					items={currentWorkItems}
 					data-testid="current-work-panel"
+				/>
+				<AsideListPanel
+					title="Currently Learning & Focus"
+					items={learningFocusItems}
+					data-testid="learning-focus-panel"
+				/>
+				<AsideListPanel
+					title="Now Reading"
+					items={nowReadingBooks}
+					data-testid="now-reading-panel"
 				/>
 			</div>
 		</div>
