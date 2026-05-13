@@ -1,6 +1,7 @@
 type Skill = {
 	name: string;
 	description: string;
+	icon?: string;
 };
 
 type SkillCollection = {
@@ -14,27 +15,33 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "JavaScript",
-				description: "Versatile scripting language"
+				description: "Versatile scripting language",
+				icon: "logos--javascript"
 			},
 			{
 				name: "TypeScript",
-				description: "Typed superset of JavaScript"
+				description: "Typed superset of JavaScript",
+				icon: "logos--typescript-icon"
 			},
 			{
 				name: "Go",
-				description: "Language for scalable systems"
+				description: "Language for scalable systems",
+				icon: "logos--go"
 			},
 			{
 				name: "PHP",
-				description: "Server-side scripting language"
+				description: "Server-side scripting language",
+				icon: "logos--php"
 			},
 			{
 				name: "Dart",
-				description: "Language for Flutter apps"
+				description: "Language for Flutter apps",
+				icon: "logos--dart"
 			},
 			{
 				name: "Bash",
-				description: "Unix shell and scripting language"
+				description: "Unix shell and scripting language",
+				icon: "logos--bash-icon"
 			}
 		]
 	},
@@ -43,23 +50,28 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "PostgreSQL",
-				description: "Advanced relational database"
+				description: "Advanced relational database",
+				icon: "logos--postgresql"
 			},
 			{
 				name: "MySQL",
-				description: "Popular relational database"
+				description: "Popular relational database",
+				icon: "logos--mysql-icon"
 			},
 			{
 				name: "MongoDB",
-				description: "NoSQL document database"
+				description: "NoSQL document database",
+				icon: "logos--mongodb-icon"
 			},
 			{
 				name: "Redis",
-				description: "In-memory data store"
+				description: "In-memory data store",
+				icon: "logos--redis"
 			},
 			{
 				name: "Supabase",
-				description: "Open source Firebase alternative"
+				description: "Open source Firebase alternative",
+				icon: "logos--supabase-icon"
 			}
 		]
 	},
@@ -68,51 +80,63 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "Next.js",
-				description: "React framework for production"
+				description: "React framework for production",
+				icon: "logos--nextjs-icon"
 			},
 			{
 				name: "Astro",
-				description: "Static site generator"
+				description: "Static site generator",
+				icon: "logos--astro-icon"
 			},
 			{
 				name: "React.js",
-				description: "Library for building UIs"
+				description: "Library for building UIs",
+				icon: "logos--react"
 			},
 			{
 				name: "Vue.js",
-				description: "Progressive JavaScript framework"
+				description: "Progressive JavaScript framework",
+				icon: "logos--vue"
 			},
 			{
 				name: "Svelte",
-				description: "Compiler-based UI framework"
+				description: "Compiler-based UI framework",
+				icon: "logos--svelte-icon"
 			},
 			{
 				name: "Redux",
-				description: "State container for JS apps"
+				description: "State container for JS apps",
+				icon: "logos--redux"
 			},
 			{
 				name: "NestJS",
-				description: "Progressive Node.js framework"
+				description: "Progressive Node.js framework",
+				icon: "logos--nestjs"
 			},
 			{
 				name: "Hono",
-				description: "Lightweight web framework"
+				description: "Lightweight web framework",
+				icon: "logos--hono"
 			},
 			{
 				name: "Express.js",
-				description: "Minimal Node.js framework"
+				description: "Minimal Node.js framework",
+				icon: "logos--express"
 			},
 			{
 				name: "Laravel",
-				description: "PHP web application framework"
+				description: "PHP web application framework",
+				icon: "logos--laravel"
 			},
 			{
 				name: "Flutter",
-				description: "Cross-platform UI toolkit"
+				description: "Cross-platform UI toolkit",
+				icon: "logos--flutter"
 			},
 			{
 				name: "Tailwind CSS",
-				description: "Utility-first CSS framework"
+				description: "Utility-first CSS framework",
+				icon: "logos--tailwindcss-icon"
 			}
 		]
 	},
@@ -121,51 +145,63 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "Bun",
-				description: "Fast JavaScript runtime"
+				description: "Fast JavaScript runtime",
+				icon: "logos--bun"
 			},
 			{
 				name: "Node.js",
-				description: "JavaScript runtime engine"
+				description: "JavaScript runtime engine",
+				icon: "logos--nodejs-icon"
 			},
 			{
 				name: "Drizzle ORM",
-				description: "TypeScript ORM for SQL"
+				description: "TypeScript ORM for SQL",
+				icon: "logos--drizzle-icon"
 			},
 			{
 				name: "Prisma",
-				description: "Next-gen Node.js ORM"
+				description: "Next-gen Node.js ORM",
+				icon: "logos--prisma"
 			},
 			{
 				name: "TanStack",
-				description: "Headless UI libraries"
+				description: "Headless UI libraries",
+				icon: "logos--react-query-icon"
 			},
 			{
 				name: "Zod",
-				description: "TypeScript schema validation"
+				description: "TypeScript schema validation",
+				icon: "logos--zod"
 			},
 			{
 				name: "Vitest",
-				description: "Fast unit test framework"
+				description: "Fast unit test framework",
+				icon: "logos--vitest"
 			},
 			{
 				name: "Playwright",
-				description: "End-to-end testing for modern web apps"
+				description: "End-to-end testing for modern web apps",
+				icon: "logos--playwright"
 			},
 			{
 				name: "Better Auth",
-				description: "Authentication library"
+				description: "Authentication library",
+				icon: "logos--better-auth"
 			},
 			{
 				name: "Shadcn UI",
-				description: "Radix UI + Tailwind components"
+				description: "Radix UI + Tailwind components",
+				icon: "logos--shadcn-ui"
 			},
 			{
 				name: "Swagger",
-				description: "API design and documentation"
+				description: "API design and documentation",
+				icon: "logos--swagger"
 			},
 			{
 				name: "Prettier",
-				description: "Opinionated code formatter"
+				description: "Opinionated code formatter",
+				icon: "logos--prettier"
 			}
 		]
 	},
@@ -174,27 +210,33 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "OpenTelemetry",
-				description: "Open-source observability framework"
+				description: "Open-source observability framework",
+				icon: "logos--opentelemetry-icon"
 			},
 			{
 				name: "Prometheus",
-				description: "Open-source monitoring and alerting toolkit"
+				description: "Open-source monitoring and alerting toolkit",
+				icon: "logos--prometheus"
 			},
 			{
 				name: "Grafana",
-				description: "Open source analytics and monitoring solution"
+				description: "Open source analytics and monitoring solution",
+				icon: "logos--grafana"
 			},
 			{
 				name: "Loki",
-				description: "Log aggregation system"
+				description: "Log aggregation system",
+				icon: "logos--grafana"
 			},
 			{
 				name: "Tempo",
-				description: "Distributed tracing backend"
+				description: "Distributed tracing backend",
+				icon: "logos--grafana"
 			},
 			{
 				name: "Sentry",
-				description: "Application monitoring and error tracking"
+				description: "Application monitoring and error tracking",
+				icon: "logos--sentry-icon"
 			}
 		]
 	},
@@ -203,15 +245,18 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "ChartJS",
-				description: "Simple HTML5 charts"
+				description: "Simple HTML5 charts",
+				icon: "logos--chartjs"
 			},
 			{
 				name: "D3",
-				description: "Data-driven documents"
+				description: "Data-driven documents",
+				icon: "logos--d3"
 			},
 			{
 				name: "Mermaid",
-				description: "Diagrams from text"
+				description: "Diagrams from text",
+				icon: "logos--mermaid"
 			}
 		]
 	},
@@ -220,11 +265,13 @@ const TECH_STACK: SkillCollection[] = [
 		skills: [
 			{
 				name: "Vercel",
-				description: "Frontend cloud platform"
+				description: "Frontend cloud platform",
+				icon: "logos--vercel-icon"
 			},
 			{
 				name: "Cloudflare",
-				description: "CDN and edge computing"
+				description: "CDN and edge computing",
+				icon: "logos--cloudflare-icon"
 			}
 		]
 	}

@@ -1,9 +1,8 @@
 ---
-import Badge from "@/components/ui/Badge.astro";
-import Heading from "@/components/ui/Heading.astro";
 import { getExperienceGroups } from "@/lib/contents/experiences";
 import type { Experience } from "@/types";
 import ExperienceItem from "./ExperienceItem.astro";
+import ExperienceOrgHeader from "./ExperienceOrgHeader.astro";
 
 interface Props {
 	experiences: Experience[];
@@ -14,48 +13,22 @@ const { experiences }: Props = Astro.props;
 const groupedByCompany = getExperienceGroups(experiences);
 ---
 
-<div class="flex flex-col gap-y-10">
+<div class="flex flex-col gap-y-12">
 	{
-		groupedByCompany.map((organization) => (
-			<div class="group/org flex flex-col gap-y-3">
-				{/* Company & Info */}
-				<div class="flex flex-col gap-y-1">
-					<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
-						<Heading
-							as="h3"
-							size="lg"
-							weight="semibold"
-							class="text-foreground"
-						>
-							{organization.company}
-						</Heading>
-						<span class="text-muted-foreground text-sm font-medium">
-							{organization.location ?? "Remote"}
-						</span>
-					</div>
-					<div class="flex items-center gap-x-2">
-						<p class="text-muted-foreground text-sm">
-							{organization.positions.length} Role
-							{organization.positions.length > 1 ? "s" : ""}
-						</p>
-						{organization.kind === "campus" && (
-							<Badge
-								variant="outline"
-								class="bg-accent/30 border-accent-foreground/10 text-muted-foreground text-[10px] tracking-wider uppercase"
-							>
-								Campus{" "}
-								{organization.umbrellaOrg
-									? `· ${organization.umbrellaOrg}`
-									: ""}
-							</Badge>
-						)}
-					</div>
-				</div>
+		groupedByCompany.map((organization, orgIndex) => (
+			<div class="group/org flex flex-col gap-y-5">
+				<ExperienceOrgHeader
+					company={organization.company}
+					logo={organization.logo}
+				/>
 
 				{/* Positions */}
-				<div class="flex flex-col gap-y-1">
-					{organization.positions.map((exp) => (
-						<ExperienceItem experience={exp} />
+				<div class="flex flex-col gap-y-4">
+					{organization.positions.map((exp, posIndex) => (
+						<ExperienceItem
+							experience={exp}
+							isOpen={orgIndex === 0 && posIndex === 0}
+						/>
 					))}
 				</div>
 			</div>

@@ -48,6 +48,8 @@ export const experiencesSchema = z.array(
 		period: z.string(),
 		title: z.string(),
 		company: z.string(),
+		logo: z.string().optional(),
+		icon: z.string().optional(),
 		location: z.string().optional(),
 		kind: z.enum(["professional", "campus"]).optional(),
 		umbrellaOrg: z.string().optional(),

@@ -46,11 +46,17 @@ const tabs = getSkillsTabs(collections);
 				aria-labelledby={`skills-tab-${tab.id}`}
 				data-panel={tab.id}
 			>
-				<div class="flex flex-wrap gap-2">
+				<div class="flex flex-wrap gap-3">
 					{tab.skills.map((skill) => (
-						<span class="bg-card text-foreground border-border/60 inline-flex items-center rounded-full border px-3 py-1 text-sm">
-							{skill.name}
-						</span>
+						<div
+							class="bg-card/50 border-border/50 hover:border-border hover:bg-card flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-sm transition-colors select-none"
+							title={skill.description}
+						>
+							{skill.icon && (
+								<span class={cn("iconify-color", skill.icon, "size-4")} />
+							)}
+							<span class="text-foreground/90 font-medium">{skill.name}</span>
+						</div>
 					))}
 				</div>
 			</div>

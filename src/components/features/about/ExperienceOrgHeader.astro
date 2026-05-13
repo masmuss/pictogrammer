@@ -1,0 +1,30 @@
+---
+import Heading from "@/components/ui/Heading.astro";
+import { cn } from "@/lib/utils";
+
+interface Props {
+	company: string;
+	logo?: string;
+	class?: string;
+}
+
+const { company, logo, class: className } = Astro.props;
+const isImage = logo?.startsWith("http") || logo?.startsWith("/");
+---
+
+<div class={cn("flex items-center gap-x-3", className)}>
+	{
+		logo && (
+			<div class="bg-card border-border/50 flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full border p-1 shadow-sm">
+				{isImage ? (
+					<img src={logo} alt={company} class="size-full object-contain" />
+				) : (
+					<span class={cn(logo, "size-full")} />
+				)}
+			</div>
+		)
+	}
+	<Heading as="h3" size="lg" weight="semibold" class="text-foreground">
+		{company}
+	</Heading>
+</div>

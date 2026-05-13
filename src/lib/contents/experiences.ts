@@ -7,6 +7,7 @@ export async function getAllExperiences(): Promise<Experience[]> {
 
 export type ExperienceOrgGroup = {
 	company: string;
+	logo?: string;
 	location?: string;
 	kind?: Experience["kind"];
 	umbrellaOrg?: string;
@@ -37,6 +38,7 @@ export function getExperienceGroups(
 				if (!existing) {
 					acc.set(experience.company, {
 						company: experience.company,
+						logo: experience.logo,
 						location: experience.location,
 						kind: experience.kind,
 						umbrellaOrg: experience.umbrellaOrg,
@@ -46,6 +48,9 @@ export function getExperienceGroups(
 				}
 
 				existing.positions.push(experience);
+				if (!existing.logo && experience.logo) {
+					existing.logo = experience.logo;
+				}
 				if (!existing.location && experience.location) {
 					existing.location = experience.location;
 				}

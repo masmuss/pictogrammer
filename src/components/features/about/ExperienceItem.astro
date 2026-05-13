@@ -1,60 +1,82 @@
 ---
-import Card from "@/components/ui/card/Card.astro";
 import Heading from "@/components/ui/Heading.astro";
+import { cn } from "@/lib/utils";
+import { calculateDuration } from "@/lib/utils/date";
 import type { Experience } from "@/types";
+import ExperienceSkillPills from "./ExperienceSkillPills.astro";
 
 interface Props {
 	experience: Experience;
+	isOpen?: boolean;
 }
 
-const { experience } = Astro.props;
+const { experience, isOpen = false } = Astro.props;
+const duration = calculateDuration(experience.period);
 ---
 
-<Card variant="interactive" class="group/pos" data-testid="experience-item">
-	<div class="flex flex-col gap-y-1.5">
-		<div
-			class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between"
-		>
-			<Heading as="h4" size="base" weight="medium" class="text-foreground">
-				{experience.title}
-			</Heading>
-			<span class="text-muted-foreground font-mono text-xs tabular-nums">
-				{experience.period}
-			</span>
-		</div>
-
-		<p class="text-muted-foreground max-w-2xl text-sm leading-relaxed">
-			{experience.summary ?? experience.highlights[0]}
-		</p>
-
+<div class="transition-all" data-testid="experience-item">
+	<div class="flex gap-4">
+		{/* Icon Column */}
 		{
-			experience.skills && experience.skills.length > 0 && (
-				<div class="flex flex-wrap gap-x-3 gap-y-1 pt-0.5">
-					{experience.skills.map((skill) => (
-						<span class="text-muted-foreground/90 font-mono text-[10px]">
-							#{skill}
-						</span>
-					))}
+			experience.icon && (
+				<div class="bg-muted border-border/50 mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg border shadow-sm">
+					<span
+						class={cn("iconify", experience.icon, "text-foreground/80 size-4")}
+					/>
 				</div>
 			)
 		}
 
-		{
-			experience.highlights.length > 0 && (
-				<details class="group/details mt-2">
-					<summary class="text-accent-cta-text decoration-accent-cta/30 cursor-pointer list-none text-xs font-medium underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
-						<span class="flex items-center gap-1">
-							<span>View details</span>
-							<span class="iconify ri--arrow-down-s-line transition-transform duration-200 group-open/details:rotate-180" />
-						</span>
-					</summary>
-					<ul class="text-muted-foreground mt-3 ml-4 list-disc space-y-2 text-sm">
-						{experience.highlights.map((highlight) => (
-							<li class="pl-1 leading-relaxed">{highlight}</li>
-						))}
-					</ul>
-				</details>
-			)
-		}
+		{/* Content Column */}
+		<div class="flex flex-1 flex-col gap-y-3">
+			<details class="group/details" open={isOpen}>
+				<summary
+					class="flex cursor-pointer list-none items-center justify-between outline-none [&::-webkit-details-marker]:hidden"
+				>
+					<div class="flex flex-col gap-y-1.5">
+						<Heading as="h4" weight="semibold">
+							{experience.title}
+						</Heading>
+						<div
+							class="text-muted-foreground flex flex-wrap items-center gap-x-2 font-mono text-xs tabular-nums"
+						>
+							<span class="capitalize">{experience.kind ?? "Professional"}</span
+							>
+							<span class="text-border">|</span>
+							<span>{experience.period}</span>
+							{
+								duration && (
+									<>
+										<span class="text-border">|</span>
+										<span>{duration}</span>
+									</>
+								)
+							}
+						</div>
+					</div>
+					<span
+						class="iconify ri--arrow-up-s-line text-muted-foreground size-5 rotate-180 transition-transform duration-300 group-open/details:rotate-0"
+					></span>
+				</summary>
+
+				<div class="pt-4 pl-2 md:pl-4">
+					{
+						experience.highlights.length > 0 && (
+							<ul class="text-muted-foreground/90 list-disc space-y-2 text-sm">
+								{experience.highlights.map((highlight) => (
+									<li class="pl-1 leading-relaxed">{highlight}</li>
+								))}
+							</ul>
+						)
+					}
+				</div>
+			</details>
+
+			{
+				experience.skills && experience.skills.length > 0 && (
+					<ExperienceSkillPills skills={experience.skills} class="pt-1" />
+				)
+			}
+		</div>
 	</div>
-</Card>
+</div>
