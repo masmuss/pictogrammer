@@ -87,6 +87,6 @@ test("search modal supports open, close, no-results, and keyboard navigation", a
 	await firstResult.click();
 
 	// Verify navigation occurred by checking that the URL changed
-	await page.waitForURL((url) => url.origin + url.pathname !== initialURL);
+	await page.waitForURL((url) => url.href !== initialURL);
 	expect(page.url()).not.toBe(initialURL);
 });
