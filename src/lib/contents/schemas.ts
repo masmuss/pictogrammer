@@ -1,5 +1,5 @@
-import type { SchemaContext } from "astro:content";
 import { z } from "astro/zod";
+import type { SchemaContext } from "astro:content";
 
 function removeDupsAndLowerCase(array: string[]) {
 	if (!array.length) return array;
@@ -48,6 +48,8 @@ export const experiencesSchema = z.array(
 		period: z.string(),
 		title: z.string(),
 		company: z.string(),
+		logo: z.string().optional(),
+		icon: z.string().optional(),
 		location: z.string().optional(),
 		kind: z.enum(["professional", "campus"]).optional(),
 		umbrellaOrg: z.string().optional(),

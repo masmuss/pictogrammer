@@ -1,7 +1,7 @@
 ---
-import Badge from "@/components/ui/Badge.astro";
 import Heading from "@/components/ui/Heading.astro";
 import { getExperienceGroups } from "@/lib/contents/experiences";
+import { cn } from "@/lib/utils";
 import type { Experience } from "@/types";
 import ExperienceItem from "./ExperienceItem.astro";
 
@@ -14,46 +14,23 @@ const { experiences }: Props = Astro.props;
 const groupedByCompany = getExperienceGroups(experiences);
 ---
 
-<div class="flex flex-col gap-y-10">
+<div class="flex flex-col gap-y-8">
 	{
 		groupedByCompany.map((organization) => (
-			<div class="group/org flex flex-col gap-y-3">
-				{/* Company & Info */}
-				<div class="flex flex-col gap-y-1">
-					<div class="flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:justify-between">
-						<Heading
-							as="h3"
-							size="lg"
-							weight="semibold"
-							class="text-foreground"
-						>
-							{organization.company}
-						</Heading>
-						<span class="text-muted-foreground text-sm font-medium">
-							{organization.location ?? "Remote"}
-						</span>
-					</div>
-					<div class="flex items-center gap-x-2">
-						<p class="text-muted-foreground text-sm">
-							{organization.positions.length} Role
-							{organization.positions.length > 1 ? "s" : ""}
-						</p>
-						{organization.kind === "campus" && (
-							<Badge
-								variant="outline"
-								class="bg-accent/30 border-accent-foreground/10 text-muted-foreground text-[10px] tracking-wider uppercase"
-							>
-								Campus{" "}
-								{organization.umbrellaOrg
-									? `· ${organization.umbrellaOrg}`
-									: ""}
-							</Badge>
-						)}
-					</div>
+			<div class="group/org flex flex-col gap-y-2">
+				<div class="flex items-center gap-x-3">
+					{organization.logo && (
+						<div class="bg-card border-border/50 flex size-9 items-center justify-center overflow-hidden rounded-full border p-1 shadow-sm">
+							<span class={cn("iconify", organization.logo, "size-full")} />
+						</div>
+					)}
+					<Heading as="h3" size="lg" weight="semibold" class="text-foreground">
+						{organization.company}
+					</Heading>
 				</div>
 
 				{/* Positions */}
-				<div class="flex flex-col gap-y-1">
+				<div class="flex flex-col gap-y-3">
 					{organization.positions.map((exp) => (
 						<ExperienceItem experience={exp} />
 					))}

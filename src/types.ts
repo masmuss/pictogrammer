@@ -32,6 +32,8 @@ export type Experience = {
 	period: string;
 	title: string;
 	company: string;
+	logo?: string;
+	icon?: string;
 	location?: string;
 	kind?: "professional" | "campus";
 	umbrellaOrg?: string;
