@@ -36,7 +36,7 @@
 					>
 						{search.results.length} results found
 					</div>
-					<div class="space-y-1">
+					<div class="space-y-1" role="listbox">
 						{#each search.results as result, i}
 							<SearchResultItem {result} index={i} {search} />
 						{/each}

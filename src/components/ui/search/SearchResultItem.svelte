@@ -38,11 +38,15 @@
 
 <a
 	href={result.url}
+	data-testid="search-result"
+	role="option"
+	aria-selected={search.selectedIndex === index}
 	class="group block rounded-lg p-3 transition-colors {search.selectedIndex ===
 	index
 		? 'bg-muted ring-border ring-1'
 		: 'hover:bg-muted'}"
 	onclick={search.closeSearch}
+	onmouseenter={() => (search.selectedIndex = index)}
 >
 	<div class="flex items-center justify-between">
 		<h3

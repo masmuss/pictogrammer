@@ -20,7 +20,7 @@ test.describe("Visual Regression - Pages", () => {
 			await page.goto(pageInfo.path);
 
 			// Wait for the page to be fully loaded and settled
-			await page.waitForLoadState("networkidle");
+			await page.waitForLoadState("domcontentloaded");
 
 			await page.addStyleTag({
 				content: `
@@ -110,7 +110,7 @@ test.describe("Visual Regression - Atomic Components", () => {
 			page
 		}) => {
 			await page.goto(comp.path);
-			await page.waitForLoadState("networkidle");
+			await page.waitForLoadState("domcontentloaded");
 
 			// Stabilize animations and fonts
 			await page.addStyleTag({

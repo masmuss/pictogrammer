@@ -181,6 +181,9 @@ export function createSearch() {
 		get selectedIndex() {
 			return selectedIndex;
 		},
+		set selectedIndex(value: number) {
+			selectedIndex = value;
+		},
 		get searchInput() {
 			return searchInput;
 		},
