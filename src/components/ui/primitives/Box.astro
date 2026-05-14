@@ -1,0 +1,172 @@
+---
+/**
+ * Box - Layout primitive for consistent spacing and layout
+ *
+ * Basic building block for creating layouts with semantic spacing,
+ * borders, and flex/grid properties. Combines common layout needs.
+ *
+ * @example
+ * ```astro
+ * <Box padding="md" rounded="lg" border="border" bg="surface">
+ *   Content here
+ * </Box>
+ * ```
+ */
+
+import { cn } from "@/lib/utils/tailwind";
+
+interface Props {
+	/** Padding token: xs, sm, md, lg, xl */
+	padding?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
+	/** Margin token: xs, sm, md, lg, xl */
+	margin?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
+	/** Border radius: none, sm, md, lg, xl, full */
+	rounded?: "none" | "sm" | "md" | "lg" | "xl" | "full";
+	/** Border style: border, ring */
+	border?: "border" | "ring" | "none";
+	/** Background: surface, surface-alt, muted */
+	bg?: "surface" | "surface-alt" | "muted" | "none";
+	/** Max width constraint */
+	maxWidth?: "sm" | "md" | "lg" | "xl" | "full" | "none";
+	/** Display mode: flex, grid, block */
+	display?: "flex" | "grid" | "block";
+	/** Flex direction (flex only) */
+	flexDirection?: "row" | "col";
+	flexWrap?: "wrap" | "nowrap";
+	justifyContent?: "start" | "center" | "between" | "end";
+	alignItems?: "start" | "center" | "end" | "stretch";
+	/** Gap between children */
+	gap?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
+	/** Additional classes */
+	class?: string;
+}
+
+type HTMLDivElement = astroHTML.JSX.IntrinsicElements["div"];
+
+const {
+	padding = "none",
+	margin = "none",
+	rounded = "none",
+	border = "none",
+	bg = "none",
+	maxWidth = "none",
+	display = "block",
+	flexDirection = "row",
+	flexWrap = "nowrap",
+	justifyContent = "start",
+	alignItems = "start",
+	gap = "none",
+	class: className,
+	...attrs
+} = Astro.props as Props & HTMLDivElement;
+
+const paddingMap: Record<string, string> = {
+	xs: "p-1",
+	sm: "p-2",
+	md: "p-3",
+	lg: "p-4",
+	xl: "p-6",
+	none: ""
+};
+
+const marginMap: Record<string, string> = {
+	xs: "m-1",
+	sm: "m-2",
+	md: "m-3",
+	lg: "m-4",
+	xl: "m-6",
+	none: ""
+};
+
+const roundedMap: Record<string, string> = {
+	none: "",
+	sm: "rounded-sm",
+	md: "rounded",
+	lg: "rounded-lg",
+	xl: "rounded-xl",
+	full: "rounded-full"
+};
+
+const borderMap: Record<string, string> = {
+	none: "",
+	border: "border border-border",
+	ring: "ring-1 ring-ring"
+};
+
+const bgMap: Record<string, string> = {
+	none: "",
+	surface: "bg-surface",
+	"surface-alt": "bg-surface/50",
+	muted: "bg-muted"
+};
+
+const maxWidthMap: Record<string, string> = {
+	none: "",
+	sm: "max-w-sm",
+	md: "max-w-md",
+	lg: "max-w-lg",
+	xl: "max-w-xl",
+	full: "max-w-full"
+};
+
+const displayMap: Record<string, string> = {
+	flex: "flex",
+	grid: "grid",
+	block: "block"
+};
+
+const directionMap: Record<string, string> = {
+	row: "flex-row",
+	col: "flex-col"
+};
+
+const wrapMap: Record<string, string> = {
+	wrap: "flex-wrap",
+	nowrap: "flex-nowrap"
+};
+
+const justifyMap: Record<string, string> = {
+	start: "justify-start",
+	center: "justify-center",
+	between: "justify-between",
+	end: "justify-end"
+};
+
+const alignMap: Record<string, string> = {
+	start: "items-start",
+	center: "items-center",
+	end: "items-end",
+	stretch: "items-stretch"
+};
+
+const gapMap: Record<string, string> = {
+	xs: "gap-1",
+	sm: "gap-2",
+	md: "gap-3",
+	lg: "gap-4",
+	xl: "gap-6",
+	none: ""
+};
+
+const classes = cn(
+	paddingMap[padding],
+	marginMap[margin],
+	roundedMap[rounded],
+	borderMap[border],
+	bgMap[bg],
+	maxWidthMap[maxWidth],
+	displayMap[display],
+	display === "flex" && [
+		directionMap[flexDirection],
+		wrapMap[flexWrap],
+		justifyMap[justifyContent],
+		alignMap[alignItems]
+	],
+	gapMap[gap],
+	className
+);
+---
+
+<div class={classes} {...attrs}>
+	<slot />
+</div>
