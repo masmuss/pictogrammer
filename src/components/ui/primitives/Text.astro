@@ -14,8 +14,8 @@
 import { cn } from "@/lib/utils/tailwind";
 
 interface Props {
-	/** Semantic text role: p, span, div, label */
-	as?: "p" | "span" | "div" | "label";
+	/** Semantic text role: p, span, div, label, h1-h6 */
+	as?: "p" | "span" | "div" | "label" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 	/** Text size: xs, sm, base, lg, xl */
 	size?: "xs" | "sm" | "base" | "lg" | "xl";
 	/** Font weight: regular, medium, semibold, bold */
@@ -34,7 +34,13 @@ type HTMLElements =
 	| astroHTML.JSX.IntrinsicElements["p"]
 	| astroHTML.JSX.IntrinsicElements["span"]
 	| astroHTML.JSX.IntrinsicElements["div"]
-	| astroHTML.JSX.IntrinsicElements["label"];
+	| astroHTML.JSX.IntrinsicElements["label"]
+	| astroHTML.JSX.IntrinsicElements["h1"]
+	| astroHTML.JSX.IntrinsicElements["h2"]
+	| astroHTML.JSX.IntrinsicElements["h3"]
+	| astroHTML.JSX.IntrinsicElements["h4"]
+	| astroHTML.JSX.IntrinsicElements["h5"]
+	| astroHTML.JSX.IntrinsicElements["h6"];
 
 const {
 	as: Component = "p",
