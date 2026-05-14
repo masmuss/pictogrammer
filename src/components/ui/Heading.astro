@@ -1,39 +1,50 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+/**
+ * Heading - Semantic heading component (backward compatibility wrapper)
+ *
+ * Re-exports Text component for backward compatibility.
+ * New code should use: <Text as="h1" size="2xl" weight="semibold">
+ *
+ * @deprecated Use Text component with heading tags instead
+ * @example
+ * ```astro
+ * // Old way (still works, but deprecated)
+ * <Heading as="h2" size="2xl" weight="semibold">Title</Heading>
+ *
+ * // New way (preferred)
+ * <Text as="h2" size="2xl" weight="semibold">Title</Text>
+ * ```
+ */
 
-const weights = {
-	bold: "font-bold",
-	semibold: "font-semibold",
-	medium: "font-medium",
-	light: "font-light"
-};
+import Text from "./primitives/Text.astro";
 
-const sizes = {
-	"6xl": "text-6xl",
-	"5xl": "text-5xl",
-	"4xl": "text-4xl",
-	"3xl": "text-3xl",
-	"2xl": "text-2xl",
-	xl: "text-xl",
-	lg: "text-lg",
-	base: "text-base",
-	sm: "text-sm"
-};
-
-interface Props extends HTMLAttributes<"h1"> {
+interface Props {
 	as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-	weight?: keyof typeof weights;
-	size?: keyof typeof sizes;
+	size?:
+		| "xs"
+		| "sm"
+		| "base"
+		| "lg"
+		| "xl"
+		| "2xl"
+		| "3xl"
+		| "4xl"
+		| "5xl"
+		| "6xl";
+	weight?: "light" | "regular" | "medium" | "semibold" | "bold";
+	color?: "default" | "muted" | "subtle" | "accent";
+	class?: string;
 }
 
 const {
-	as: As = "h2",
-	weight = "medium",
+	as = "h2",
 	size = "base",
-	...attrs
+	weight = "medium",
+	color = "default",
+	class: className
 }: Props = Astro.props;
 ---
 
-<As class:list={[sizes[size], weights[weight]]} {...attrs}>
+<Text as={as} size={size} weight={weight} color={color} class={className}>
 	<slot />
-</As>
+</Text>
