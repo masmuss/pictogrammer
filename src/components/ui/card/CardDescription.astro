@@ -1,5 +1,5 @@
 ---
-import { cn } from "@/lib/utils";
+import Text from "../primitives/Text.astro";
 
 interface Props {
 	class?: string;
@@ -8,9 +8,6 @@ interface Props {
 const { class: className }: Props = Astro.props;
 ---
 
-<p
-	data-slot="card-description"
-	class={cn("text-muted-foreground text-sm", className)}
->
+<Text data-slot="card-description" size="sm" color="muted" class={className}>
 	<slot />
-</p>
+</Text>
