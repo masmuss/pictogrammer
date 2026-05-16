@@ -1,6 +1,5 @@
 // @ts-check
 
-import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
@@ -8,8 +7,11 @@ import { defineConfig, fontProviders } from "astro/config";
 import astroMermaid from "astro-mermaid";
 import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
+import remarkAbbr from "@richardtowers/remark-abbr";
+import remarkDeflist from "remark-deflist";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
+import remarkSupersub from "remark-supersub";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
 
@@ -49,10 +51,6 @@ export default defineConfig({
 				}
 			}
 		}),
-		mdx({
-			gfm: true,
-			remarkPlugins: [remarkGfm]
-		}),
 		sitemap(),
 		svelte(),
 		pagefind()
@@ -74,6 +72,9 @@ export default defineConfig({
 		],
 		remarkPlugins: [
 			remarkGfm,
+			remarkSupersub,
+			remarkAbbr,
+			remarkDeflist,
 			remarkDirective,
 			remarkGithubCard,
 			remarkAdmonitions
