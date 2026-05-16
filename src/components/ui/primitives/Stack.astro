@@ -1,0 +1,92 @@
+---
+/**
+ * Stack - Flex wrapper for consistent vertical/horizontal spacing
+ *
+ * Convenience wrapper for common flex patterns. Use for consistent
+ * spacing between sibling elements without manual flex classes.
+ *
+ * @example
+ * ```astro
+ * <Stack gap="md" alignItems="center">
+ *   <Button>First</Button>
+ *   <Button>Second</Button>
+ * </Stack>
+ * ```
+ */
+
+import { cn } from "@/lib/utils/tailwind";
+
+interface Props {
+	/** Flex direction: column or row */
+	direction?: "row" | "col";
+	/** Gap between children: xs, sm, md, lg, xl */
+	gap?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
+	/** Align items (flex alignment) */
+	alignItems?: "start" | "center" | "end" | "stretch";
+	/** Justify content (flex distribution) */
+	justifyContent?: "start" | "center" | "between" | "end";
+	/** Flex wrap behavior */
+	wrap?: "wrap" | "nowrap";
+	/** Additional classes */
+	class?: string;
+}
+
+type HTMLDivElement = astroHTML.JSX.IntrinsicElements["div"];
+
+const {
+	direction = "col",
+	gap = "md",
+	alignItems = "start",
+	justifyContent = "start",
+	wrap = "nowrap",
+	class: className,
+	...attrs
+} = Astro.props as Props & HTMLDivElement;
+
+const directionMap: Record<string, string> = {
+	row: "flex-row",
+	col: "flex-col"
+};
+
+const gapMap: Record<string, string> = {
+	xs: "gap-1",
+	sm: "gap-2",
+	md: "gap-3",
+	lg: "gap-4",
+	xl: "gap-6",
+	none: ""
+};
+
+const alignMap: Record<string, string> = {
+	start: "items-start",
+	center: "items-center",
+	end: "items-end",
+	stretch: "items-stretch"
+};
+
+const justifyMap: Record<string, string> = {
+	start: "justify-start",
+	center: "justify-center",
+	between: "justify-between",
+	end: "justify-end"
+};
+
+const wrapMap: Record<string, string> = {
+	wrap: "flex-wrap",
+	nowrap: "flex-nowrap"
+};
+
+const classes = cn(
+	"flex",
+	directionMap[direction],
+	gapMap[gap],
+	alignMap[alignItems],
+	justifyMap[justifyContent],
+	wrapMap[wrap],
+	className
+);
+---
+
+<div class={classes} {...attrs}>
+	<slot />
+</div>

@@ -1,5 +1,6 @@
 ---
-import Heading from "./Heading.astro";
+import Stack from "./primitives/Stack.astro";
+import Text from "./primitives/Text.astro";
 
 interface Props {
 	title: string;
@@ -16,7 +17,13 @@ const {
 }: Props = Astro.props;
 ---
 
-<div class={className}>
-	<Heading as={as} size="2xl" weight="semibold" class="mb-2">{title}</Heading>
-	{description && <p class="text-muted-foreground">{description}</p>}
-</div>
+<Stack gap="xs" class={className}>
+	<Text as={as} size="xl" weight="semibold">{title}</Text>
+	{
+		description && (
+			<Text size="base" color="muted">
+				{description}
+			</Text>
+		)
+	}
+</Stack>

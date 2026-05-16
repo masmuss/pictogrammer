@@ -1,16 +1,17 @@
 ---
-import type { HTMLAttributes } from "astro/types";
 import Card from "@/components/ui/card/Card.astro";
 import CardContent from "@/components/ui/card/CardContent.astro";
 import CardHeader from "@/components/ui/card/CardHeader.astro";
 import CardTitle from "@/components/ui/card/CardTitle.astro";
 import { cn } from "@/lib/utils";
+import Stack from "./primitives/Stack.astro";
 
-interface Props extends HTMLAttributes<"section"> {
+interface Props {
 	title: string;
 	titleAs?: keyof HTMLElementTagNameMap;
 	titleClass?: string;
 	contentClass?: string;
+	class?: string;
 }
 
 const {
@@ -31,7 +32,9 @@ const {
 			</CardTitle>
 		</CardHeader>
 		<CardContent class={cn("px-4", contentClass)}>
-			<slot />
+			<Stack gap="md">
+				<slot />
+			</Stack>
 		</CardContent>
 	</Card>
 </section>

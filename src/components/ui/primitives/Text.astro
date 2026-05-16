@@ -1,0 +1,122 @@
+---
+/**
+ * Text - Semantic text wrapper with token-based sizing and weights
+ *
+ * Semantic wrapper for text content with consistent sizing, weights,
+ * and color variants. Use instead of <p> or <span> for semantic meaning.
+ *
+ * @example
+ * ```astro
+ * <Text variant="lg" weight="medium" color="muted">Subtitle</Text>
+ * ```
+ */
+
+import { cn } from "@/lib/utils/tailwind";
+
+interface Props {
+	/** Semantic text role: p, span, div, label, h1-h6 */
+	as?: "p" | "span" | "div" | "label" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	/** Text size: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl */
+	size?:
+		| "xs"
+		| "sm"
+		| "base"
+		| "lg"
+		| "xl"
+		| "2xl"
+		| "3xl"
+		| "4xl"
+		| "5xl"
+		| "6xl";
+	/** Font weight: light, regular, medium, semibold, bold */
+	weight?: "light" | "regular" | "medium" | "semibold" | "bold";
+	/** Text color variant */
+	color?: "default" | "muted" | "subtle" | "accent";
+	/** Line clamp for truncation */
+	lineClamp?: 1 | 2 | 3 | 4 | 5 | "none";
+	/** Text alignment */
+	align?: "left" | "center" | "right" | "justify";
+	/** Additional classes */
+	class?: string;
+}
+
+type HTMLElements =
+	| astroHTML.JSX.IntrinsicElements["p"]
+	| astroHTML.JSX.IntrinsicElements["span"]
+	| astroHTML.JSX.IntrinsicElements["div"]
+	| astroHTML.JSX.IntrinsicElements["label"]
+	| astroHTML.JSX.IntrinsicElements["h1"]
+	| astroHTML.JSX.IntrinsicElements["h2"]
+	| astroHTML.JSX.IntrinsicElements["h3"]
+	| astroHTML.JSX.IntrinsicElements["h4"]
+	| astroHTML.JSX.IntrinsicElements["h5"]
+	| astroHTML.JSX.IntrinsicElements["h6"];
+
+const {
+	as: Component = "p",
+	size = "base",
+	weight = "regular",
+	color = "default",
+	lineClamp = "none",
+	align = "left",
+	class: className,
+	...attrs
+} = Astro.props as Props & HTMLElements;
+
+const sizeMap: Record<string, string> = {
+	xs: "text-xs",
+	sm: "text-sm",
+	base: "text-base",
+	lg: "text-lg",
+	xl: "text-xl",
+	"2xl": "text-2xl",
+	"3xl": "text-3xl",
+	"4xl": "text-4xl",
+	"5xl": "text-5xl",
+	"6xl": "text-6xl"
+};
+
+const weightMap: Record<string, string> = {
+	light: "font-light",
+	regular: "font-normal",
+	medium: "font-medium",
+	semibold: "font-semibold",
+	bold: "font-bold"
+};
+
+const colorMap: Record<string, string> = {
+	default: "text-foreground",
+	muted: "text-muted-foreground",
+	subtle: "text-subtle",
+	accent: "text-accent"
+};
+
+const lineClampMap: Record<string, string> = {
+	none: "",
+	"1": "line-clamp-1",
+	"2": "line-clamp-2",
+	"3": "line-clamp-3",
+	"4": "line-clamp-4",
+	"5": "line-clamp-5"
+};
+
+const alignMap: Record<string, string> = {
+	left: "text-left",
+	center: "text-center",
+	right: "text-right",
+	justify: "text-justify"
+};
+
+const classes = cn(
+	sizeMap[size],
+	weightMap[weight],
+	colorMap[color],
+	lineClampMap[lineClamp],
+	alignMap[align],
+	className
+);
+---
+
+<Component class={classes} {...attrs}>
+	<slot />
+</Component>

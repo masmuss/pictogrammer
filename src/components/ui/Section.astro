@@ -37,14 +37,19 @@ const {
 ---
 
 <SectionTag
+	data-fade-up="true"
 	class={cn(
 		className,
 		"flex flex-col gap-y-4",
-		"fade-up-section opacity-0 translate-y-4 transition-all duration-500 ease-out"
+		"opacity-0 translate-y-4 transition-all ease-out",
+		"data-[fade-up=true]:opacity-100 data-[fade-up=true]:translate-y-0"
 	)}
 	style={transitionDelay > 0
-		? { transitionDelay: `${transitionDelay}ms` }
-		: undefined}
+		? {
+				transitionDuration: "var(--duration-slower)",
+				transitionDelay: `${transitionDelay}ms`
+			}
+		: { transitionDuration: "var(--duration-slower)" }}
 	{...attrs}
 >
 	{
@@ -68,14 +73,21 @@ const {
 </SectionTag>
 
 <script>
-	function setupFadeUpObserver() {
+	function observeFadeUp() {
+		if (document.readyState !== "loading") {
+			setupObserver();
+		} else {
+			document.addEventListener("DOMContentLoaded", setupObserver);
+		}
+	}
+
+	function setupObserver() {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.remove("opacity-0", "translate-y-4");
 						entry.target.classList.add("opacity-100", "translate-y-0");
-
 						observer.unobserve(entry.target);
 					}
 				});
@@ -86,13 +98,15 @@ const {
 			}
 		);
 
-		const fadeUpSections = document.querySelectorAll(".fade-up-section");
-		fadeUpSections.forEach((section) => {
-			observer.observe(section);
+		// Only observe elements with data-fade-up attribute
+		document.querySelectorAll('[data-fade-up="true"]').forEach((element) => {
+			observer.observe(element);
 		});
 	}
 
-	setupFadeUpObserver();
+	// Initial setup
+	observeFadeUp();
 
-	document.addEventListener("astro:page-load", setupFadeUpObserver);
+	// Handle Astro ViewTransitions
+	document.addEventListener("astro:page-load", observeFadeUp);
 </script>

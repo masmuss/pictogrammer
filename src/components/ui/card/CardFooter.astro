@@ -1,5 +1,6 @@
 ---
 import { cn } from "@/lib/utils";
+import Box from "../primitives/Box.astro";
 
 interface Props {
 	class?: string;
@@ -8,11 +9,14 @@ interface Props {
 const { class: className }: Props = Astro.props;
 ---
 
-<div
-	class={cn(
-		"flex items-center rounded-b-xl px-4 group-data-[size=sm]/card:p-3",
-		className
-	)}
+<Box
+	data-slot="card-footer"
+	display="flex"
+	flexDirection="row"
+	alignItems="center"
+	gap="md"
+	padding="md"
+	class={cn("rounded-b-xl group-data-[size=sm]/card:p-3", className)}
 >
 	<slot />
-</div>
+</Box>
