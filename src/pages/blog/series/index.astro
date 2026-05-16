@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import Card from "@/components/ui/card/Card.astro";
 import Heading from "@/components/ui/Heading.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllSeries } from "@/lib/contents";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,7 @@ const allSeries = await getAllSeries();
 type SeriesEntry = CollectionEntry<"series">;
 ---
 
-<PageLayout
+<BaseLayout
 	title="Learning Series and Writing Collections"
 	description="Discover grouped writing series that help you learn a topic step by step, from Astro and Go fundamentals to deeper engineering concepts and practices."
 	image={{ src: "/og/series.png", alt: "Series - pictogrammmer" }}
@@ -62,4 +62,4 @@ type SeriesEntry = CollectionEntry<"series">;
 			}
 		</div>
 	</div>
-</PageLayout>
+</BaseLayout>

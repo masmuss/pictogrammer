@@ -20,16 +20,21 @@ test.describe("Blog Post Details", () => {
 		const targetUrl = await firstPostLink.getAttribute("href");
 		console.log("Navigating to post:", targetUrl);
 
-		// Click the link
-		await firstPostLink.click();
-
-		// Wait for the URL to change to the detail page
+		// Click the link and wait for the URL to change to the detail page
 		if (targetUrl) {
-			await page.waitForURL(`**${targetUrl}`, { timeout: 15000 });
+			await Promise.all([
+				page.waitForURL(`**${targetUrl}`, {
+					timeout: 15000,
+					waitUntil: "domcontentloaded"
+				}),
+				firstPostLink.click()
+			]);
+		} else {
+			await firstPostLink.click();
 		}
 
-		// Wait for the page to fully load, including images
-		await page.waitForLoadState("load");
+		// Wait for the page to fully load
+		await page.waitForLoadState("domcontentloaded");
 
 		// 3. Verify detail page rendering
 		// Scroll slightly to handle large images and wait for stability

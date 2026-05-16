@@ -1,13 +1,13 @@
 ---
 import PageHeader from "@/components/ui/PageHeader.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getUniqueTagsWithCount } from "@/lib/contents";
 
 const allPosts = await getAllPosts();
 const sortedTags = getUniqueTagsWithCount(allPosts);
 ---
 
-<PageLayout
+<BaseLayout
 	title="All Blog Tags and Topics"
 	description="Browse every topic tag used across the blog to quickly find posts about Astro, Go, software engineering, personal growth, and reflective writing themes."
 	image={{ src: "/og/tags.png", alt: "All Tags - pictogrammmer" }}
@@ -52,4 +52,4 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 			)
 		}
 	</div>
-</PageLayout>
+</BaseLayout>

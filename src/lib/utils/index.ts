@@ -7,5 +7,4 @@ export {
 	getPostRouteId,
 	getPostUrl
 } from "./post-route";
-export { getAllProjects } from "./project";
 export { cn } from "./tailwind";

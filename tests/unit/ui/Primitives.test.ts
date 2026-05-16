@@ -1,8 +1,8 @@
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
+import { expect, test } from "vitest";
 import Box from "@/components/ui/primitives/Box.astro";
 import Stack from "@/components/ui/primitives/Stack.astro";
 import Text from "@/components/ui/primitives/Text.astro";
-import { experimental_AstroContainer as AstroContainer } from "astro/container";
-import { expect, test } from "vitest";
 
 // Box Tests
 test("Box renders with default props", async () => {

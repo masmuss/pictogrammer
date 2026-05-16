@@ -1,10 +1,10 @@
 ---
 import Button from "@/components/ui/Button.astro";
 import Heading from "@/components/ui/Heading.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<PageLayout
+<BaseLayout
 	title="404 - Not Found"
 	description="The page you are looking for does not exist."
 	pageType="website"
@@ -17,4 +17,4 @@ import PageLayout from "@/layouts/BaseLayout.astro";
 			<span class="iconify ri--arrow-right-long-line" slot="icon-after"></span>
 		</Button>
 	</div>
-</PageLayout>
+</BaseLayout>

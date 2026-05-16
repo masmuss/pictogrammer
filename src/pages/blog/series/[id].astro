@@ -1,7 +1,7 @@
 ---
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getPostsBySeries, getSeriesById } from "@/lib/contents";
 
 export async function getStaticPaths() {
@@ -21,7 +21,7 @@ if (!series) {
 }
 ---
 
-<PageLayout title={series.data.title} description={series.data.description}>
+<BaseLayout title={series.data.title} description={series.data.description}>
 	<div class="flex w-full flex-col gap-y-8">
 		<div class="flex w-full flex-col">
 			<BlogTabs activeTab="series" />
@@ -50,4 +50,4 @@ if (!series) {
 			</ul>
 		</section>
 	</div>
-</PageLayout>
+</BaseLayout>
