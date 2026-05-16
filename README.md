@@ -7,15 +7,15 @@ Personal portfolio and blog built with Astro. Features technical writing, projec
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Astro 6 |
-| UI Engine | Svelte 5 (interactive islands) |
-| Styling | Tailwind CSS 4 |
-| Language | TypeScript 5 |
-| Content | Astro Content Collections (MD + JSON) |
-| Search | Pagefind |
-| Testing | Vitest + Playwright |
+| Layer     | Technology                            |
+| --------- | ------------------------------------- |
+| Framework | Astro 6                               |
+| UI Engine | Svelte 5 (interactive islands)        |
+| Styling   | Tailwind CSS 4                        |
+| Language  | TypeScript 5                          |
+| Content   | Astro Content Collections (MD + JSON) |
+| Search    | Pagefind                              |
+| Testing   | Vitest + Playwright                   |
 
 ## Getting Started
 
@@ -26,16 +26,16 @@ bun run dev
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `bun run dev` | Start dev server |
-| `bun run build` | Production build |
-| `bun run preview` | Preview production build |
-| `bun run check` | Astro type checking |
-| `bun run lint` | Biome linting |
-| `bun run format` | Prettier + Biome formatting |
+| Command                 | Description                 |
+| ----------------------- | --------------------------- |
+| `bun run dev`           | Start dev server            |
+| `bun run build`         | Production build            |
+| `bun run preview`       | Preview production build    |
+| `bun run check`         | Astro type checking         |
+| `bun run lint`          | Biome linting               |
+| `bun run format`        | Prettier + Biome formatting |
 | `bun run test:unit:run` | Run unit tests (single run) |
-| `bun run test:e2e` | Run Playwright E2E tests |
+| `bun run test:e2e`      | Run Playwright E2E tests    |
 
 ## Project Structure
 
