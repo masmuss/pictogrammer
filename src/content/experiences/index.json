@@ -62,7 +62,9 @@
 		"summary": "Built a productivity app for web and mobile with mind mapping capabilities.",
 		"skills": ["Fullstack", "Web", "Mobile"],
 		"highlights": [
-			"Built a mind mapping productivity app for mobile and web platforms"
+			"Designed and developed a cross-platform mind mapping application to enhance user productivity",
+			"Implemented real-time data synchronization between web and mobile versions",
+			"Utilized agile methodologies to manage feature iterations and ensure timely delivery"
 		]
 	},
 	{
@@ -105,7 +107,9 @@
 		"summary": "Developed monitoring tools for IoT-based aquaculture operations.",
 		"skills": ["IoT", "Web", "Monitoring"],
 		"highlights": [
-			"Developed web-based monitoring for IoT-enabled shrimp farming"
+			"Engineered a web-based dashboard for real-time monitoring of water quality parameters in shrimp farming",
+			"Integrated IoT sensor data using MQTT and REST APIs for seamless data visualization",
+			"Implemented automated alerting systems to notify farmers of critical environmental changes"
 		]
 	},
 	{
@@ -121,7 +125,9 @@
 		"summary": "Built backend systems for student organization digital elections.",
 		"skills": ["Backend", "API", "Auth"],
 		"highlights": [
-			"Created an online election platform for campus student organization elections"
+			"Architected and implemented a secure backend system for campus-wide student organization elections",
+			"Developed robust authentication and authorization mechanisms to ensure voting integrity and prevent fraud",
+			"Optimized API performance to handle high concurrent traffic during peak voting periods"
 		]
 	},
 	{
@@ -137,9 +143,9 @@
 		"summary": "Built and maintained official campus digital products, from public sites to internal incident tools.",
 		"skills": ["Fullstack", "CMS", "Operations"],
 		"highlights": [
-			"Built the official campus profile website and news portal",
-			"Developed internal systems including CIRT for network incident reporting",
-			"Maintains the official website: http://pens.ac.id"
+			"Developed and maintained the official campus news portal and public profile website, serving thousands of visitors monthly",
+			"Built internal operational tools like CIRT (Cyber Incident Response Team) to streamline network incident reporting and resolution",
+			"Collaborated with cross-functional teams to migrate legacy systems to modern tech stacks, improving overall performance and security"
 		]
 	}
 ]
