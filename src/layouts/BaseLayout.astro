@@ -3,6 +3,7 @@ import { ClientRouter, fade } from "astro:transitions";
 import BaseHead from "@/components/layout/BaseHead.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
+import { Container } from "@/components/ui/primitives";
 import ThemeProvider from "@/components/ui/ThemeProvider.astro";
 
 const { ...head } = Astro.props;
@@ -20,14 +21,16 @@ const { ...head } = Astro.props;
 		class="bg-background flex flex-col justify-center antialiased transition-all"
 	>
 		<main
-			class="relative z-10 mx-auto flex min-h-screen w-full max-w-2xl flex-col items-center px-5 leading-relaxed md:max-w-5xl md:px-10 lg:px-0"
+			class="relative z-10 flex min-h-screen flex-col leading-relaxed"
 			transition:animate={fade({ duration: 300 })}
 		>
-			<div id="progress"></div>
-			<Header />
-			<div class="w-full flex-1">
-				<slot />
-			</div>
+			<Container class="flex flex-1 flex-col">
+				<div id="progress"></div>
+				<Header />
+				<div class="w-full flex-1">
+					<slot />
+				</div>
+			</Container>
 		</main>
 		<Footer />
 	</body>
