@@ -1,43 +1,75 @@
-
-**[khoirul.me](https://khoirul.me)**
+# [khoirul.me](https://khoirul.me)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Content%20License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-my personal website
+Personal portfolio and blog built with Astro. Features technical writing, project showcases, and reflective essays on software engineering.
 
----
+## Stack
 
-## 🧪 Testing & Quality
+| Layer | Technology |
+|---|---|
+| Framework | Astro 6 |
+| UI Engine | Svelte 5 (interactive islands) |
+| Styling | Tailwind CSS 4 |
+| Language | TypeScript 5 |
+| Content | Astro Content Collections (MD + JSON) |
+| Search | Pagefind |
+| Testing | Vitest + Playwright |
 
-This project implements a robust testing suite to ensure code quality and prevent regressions.
+## Getting Started
 
-### **Types of Tests**
-- **Unit Tests (`Vitest`)**: Validates core logic in `src/lib/utils` and Astro components using the Container API.
-- **E2E Tests (`Playwright`)**: Full browser automation testing UI, navigation, and core features.
-- **Visual Regression**: Snapshot testing to ensure the UI design remains consistent.
-- **Accessibility (a11y)**: Automated audits using `axe-core` to maintain WCAG standards.
-- **Discovery & SEO**: Validation for RSS feeds, Sitemaps, and Meta Tags.
-- **Link Integrity**: Automatic broken link checker for internal navigation.
+```bash
+bun install
+bun run dev
+```
 
-### **Available Commands**
+## Commands
+
 | Command | Description |
-| :--- | :--- |
-| `bun run test:unit` | Run all unit and component tests |
-| `bun run test:unit:run` | Run unit tests once (for CI) |
-| `bun run test:e2e` | Run all Playwright browser tests |
-| `bun run test:e2e:ui` | Run Playwright with a visual UI |
-| `bun run check` | Run Astro's type and template checker |
-| `bun run lint` | Check code style using Biome |
+|---|---|
+| `bun run dev` | Start dev server |
+| `bun run build` | Production build |
+| `bun run preview` | Preview production build |
+| `bun run check` | Astro type checking |
+| `bun run lint` | Biome linting |
+| `bun run format` | Prettier + Biome formatting |
+| `bun run test:unit:run` | Run unit tests (single run) |
+| `bun run test:e2e` | Run Playwright E2E tests |
 
-### **Git Hooks**
-We use [Lefthook](https://github.com/evilmartians/lefthook) to automate checks:
-- **Pre-commit**: Runs type-checking, linting, and formatting.
-- **Pre-push**: Runs unit tests and full E2E automation.
+## Project Structure
 
----
+```
+src/
+├── components/       # UI components (4-tier hierarchy)
+│   ├── ui/primitives/  # Box, Container, Stack, Text
+│   ├── ui/             # Button, Badge, Card, etc.
+│   ├── shell/          # Header, Footer, BaseHead
+│   ├── common/         # PostMetadata, Seo, SocialLinks
+│   └── features/       # Page-specific components
+├── layouts/          # BaseLayout, BlogPost
+├── pages/            # File-based routing
+├── content/          # Blog posts, series, experiences
+├── lib/              # Utilities, constants, content access
+├── config/           # Site-wide configuration
+└── assets/           # Styles, images, scripts
+```
 
-**License**
+## AI Context Docs
 
-- Source code is licensed under the [MIT License](LICENSE).
-- All content (posts, images, etc) is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Reference documentation used as AI development context lives in `docs/`. See `docs/index.md` for an overview.
+
+- `docs/design-system.md` — Design tokens and component library
+- `docs/component-inventory.md` — Full component hierarchy
+- `docs/astro-best-practices.md` — Development patterns and templates
+
+## Testing
+
+- **Unit tests**: Vitest for components and utilities
+- **E2E tests**: Playwright with visual regression and a11y audits
+- **Git hooks**: Lefthook runs checks pre-commit and pre-push
+
+## License
+
+- Source code: [MIT License](LICENSE)
+- Content (posts, images): [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
