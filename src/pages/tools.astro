@@ -1,12 +1,12 @@
 ---
 import ToolSection from "@/components/features/tools/ToolSection.astro";
 import PageHeader from "@/components/ui/PageHeader.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import TOOLS from "@/lib/constants/tools";
 ---
 
-<PageLayout
+<BaseLayout
 	title="Daily Tools for Development and Creativity"
 	description="Explore the software and hardware I use every day for coding, writing, and creative work, including practical tools that improve workflow and focus."
 	image={{ src: "/og/tools.png", alt: "Tools - pictogrammmer" }}
@@ -32,4 +32,4 @@ import TOOLS from "@/lib/constants/tools";
 			))
 		}
 	</div>
-</PageLayout>
+</BaseLayout>

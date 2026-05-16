@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/features/blog/Hero.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/contents";
 import { getPostOgImagePath } from "@/lib/utils/post-route";
 
@@ -42,7 +42,7 @@ const coverImageForMeta = coverImage
 const ogImage = coverImageForMeta || socialImage;
 ---
 
-<PageLayout
+<BaseLayout
 	title={title}
 	description={description}
 	date={date}
@@ -85,7 +85,7 @@ const ogImage = coverImageForMeta || socialImage;
 			<span class="iconify ri--arrow-up-line"></span>
 		</button>
 	</div>
-</PageLayout>
+</BaseLayout>
 
 <script>
 	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;

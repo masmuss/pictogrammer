@@ -4,14 +4,14 @@ import FeaturedProjects from "@/components/features/home/FeaturedProjects.astro"
 import Hero from "@/components/features/home/Hero.astro";
 import Posts from "@/components/features/home/Posts.astro";
 import Section from "@/components/ui/Section.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts } from "@/lib/contents";
 
 const MAX_POSTS = 5;
 const allPosts = await getAllPosts(MAX_POSTS);
 ---
 
-<PageLayout
+<BaseLayout
 	title="Home of Khoirul Fattah"
 	description="Explore the personal website of Khoirul Fattah: full-stack projects, technical writing, reflective stories, and practical notes on building better software."
 	pageType="website"
@@ -58,4 +58,4 @@ const allPosts = await getAllPosts(MAX_POSTS);
 			<Posts posts={allPosts} />
 		</Section>
 	</div>
-</PageLayout>
+</BaseLayout>

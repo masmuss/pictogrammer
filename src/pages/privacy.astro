@@ -1,7 +1,7 @@
 ---
 import PageHeader from "@/components/ui/PageHeader.astro";
 import Section from "@/components/ui/Section.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getFormattedDate } from "@/lib/utils";
 
 const lastUpdated = getFormattedDate(new Date(), {
@@ -11,7 +11,7 @@ const lastUpdated = getFormattedDate(new Date(), {
 });
 ---
 
-<PageLayout
+<BaseLayout
 	title="Privacy Policy and Data Usage"
 	description="Read how khoirul.me handles privacy, external links, and contact information, with a clear commitment to minimal data collection and transparent usage practices."
 	pageType="website"
@@ -65,4 +65,4 @@ const lastUpdated = getFormattedDate(new Date(), {
 			</Section>
 		</div>
 	</div>
-</PageLayout>
+</BaseLayout>

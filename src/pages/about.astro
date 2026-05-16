@@ -10,7 +10,7 @@ import Heading from "@/components/ui/Heading.astro";
 import Section from "@/components/ui/Section.astro";
 import siteConfig from "@/config/site-config";
 import AboutContent from "@/content/pages/about.md";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import TECH_STACK from "@/lib/constants/tech-stack";
 import { getAboutPageData } from "@/lib/contents";
 
@@ -60,7 +60,7 @@ const githubCalendarTheme = {
 } as const;
 ---
 
-<PageLayout
+<BaseLayout
 	title="About Khoirul Fattah"
 	description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
 	image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
@@ -181,4 +181,4 @@ const githubCalendarTheme = {
 			</div>
 		</Section>
 	</div>
-</PageLayout>
+</BaseLayout>

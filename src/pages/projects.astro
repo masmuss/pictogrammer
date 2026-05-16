@@ -2,11 +2,11 @@
 import ProjectCard from "@/components/features/projects/ProjectCard.astro";
 import PageHeader from "@/components/ui/PageHeader.astro";
 import Section from "@/components/ui/Section.astro";
-import PageLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { projectData } from "@/lib/constants/projects";
 ---
 
-<PageLayout
+<BaseLayout
 	title="Projects in Web and Backend Development"
 	description="Browse selected projects built by Khoirul Fattah, including web applications, backend services, and technical experiments focused on real-world problem solving."
 	image={{ src: "/og/projects.png", alt: "Projects - pictogrammmer" }}
@@ -47,4 +47,4 @@ import { projectData } from "@/lib/constants/projects";
 			))
 		}
 	</div>
-</PageLayout>
+</BaseLayout>
