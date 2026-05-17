@@ -2,7 +2,7 @@
 import type { MarkdownHeading } from "astro";
 import { generateToc } from "@/lib/utils";
 
-import TOCHeading from "./TOCHeading.astro";
+import TocHeading from "./TocHeading.astro";
 
 interface Props {
 	headings: MarkdownHeading[];
@@ -37,7 +37,7 @@ const toc = generateToc(headings);
 					id="toc-list"
 					class="flex max-h-[70vh] flex-col overflow-y-auto text-pretty"
 				>
-					{toc.map((heading) => <TOCHeading heading={heading} />)}
+					{toc.map((heading) => <TocHeading heading={heading} />)}
 				</ul>
 			</div>
 		</div>

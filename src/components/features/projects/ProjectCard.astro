@@ -2,11 +2,13 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Button from "@/components/ui/Button.astro";
-import Card from "@/components/ui/card/Card.astro";
-import CardDescription from "@/components/ui/card/CardDescription.astro";
-import CardFooter from "@/components/ui/card/CardFooter.astro";
-import CardHeader from "@/components/ui/card/CardHeader.astro";
-import CardTitle from "@/components/ui/card/CardTitle.astro";
+import {
+	Card,
+	CardDescription,
+	CardFooter, 
+	CardHeader,
+	CardTitle
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils/tailwind";
 
 interface Props {

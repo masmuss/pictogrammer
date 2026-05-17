@@ -1,6 +1,6 @@
 export { getFormattedDate } from "./date";
-export type { TocItem } from "./generateToc";
-export { generateToc } from "./generateToc";
+export type { TocItem } from "./generate-toc";
+export { generateToc } from "./generate-toc";
 export {
 	getPostDisplaySlug,
 	getPostOgImagePath,

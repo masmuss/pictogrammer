@@ -1,5 +1,5 @@
 ---
-import JSONLD from "@/components/shell/JSONLD.astro";
+import JsonLd from "@/components/shell/JsonLd.astro";
 import siteConfig from "@/config/site-config";
 
 interface Props {
@@ -207,7 +207,7 @@ const resolvedOgImageAlt = ogImageAlt || siteConfig.image.alt;
 {twitter.creator && <meta name="twitter:creator" content={twitter.creator} />}
 
 <!-- JSON-LD -->
-<JSONLD
+<JsonLd
 	title={title}
 	description={description}
 	image={resolvedOgImage}

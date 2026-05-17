@@ -1,6 +1,6 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { expect, test } from "vitest";
-import Card from "@/components/ui/card/Card.astro";
+import { Card } from "@/components/ui/card";
 
 test("Card renders as div by default", async () => {
 	const container = await AstroContainer.create();
