@@ -128,7 +128,7 @@
 	--color-accent-cta-subtle: var(--accent-cta-subtle);
 	--color-accent-cta-text: var(--accent-cta-text);
 
-	/* 
+	/*
 		Semantic colors mapping
   	*/
 	--color-border: hsl(var(--border) / 0.8);
@@ -153,7 +153,7 @@
 
 	/* ── Radius Scale ────────────────────────
      Unchanged from v1.
-  */
+   */
 	--radius: 0.625rem;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
@@ -243,4 +243,24 @@
 			--accent-cta-text: #3aa99f;
 		}
 	}
+}
+
+/* ── Duration Utilities ───────────────────
+   Maps semantic motion tokens to Tailwind
+   utility classes.
+*/
+@utility duration-instant {
+	transition-duration: var(--duration-instant);
+}
+@utility duration-fast {
+	transition-duration: var(--duration-fast);
+}
+@utility duration-base {
+	transition-duration: var(--duration-base);
+}
+@utility duration-slow {
+	transition-duration: var(--duration-slow);
+}
+@utility duration-slower {
+	transition-duration: var(--duration-slower);
 }

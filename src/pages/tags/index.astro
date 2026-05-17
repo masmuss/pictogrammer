@@ -40,7 +40,7 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 							href={`/tags/${tag}`}
 							title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
 							data-astro-prefetch
-							class="group bg-secondary/50 hover:bg-secondary text-foreground/80 hover:text-foreground flex items-center gap-2 rounded-lg px-4 py-2 transition-all"
+							class="group bg-secondary/50 hover:bg-secondary text-foreground/80 hover:text-foreground flex items-center gap-2 rounded-lg px-4 py-2 transition-colors"
 						>
 							<span class="font-medium">#{tag}</span>
 							<span class="bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground rounded-full px-2 py-0.5 text-sm transition-colors">
