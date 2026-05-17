@@ -58,7 +58,7 @@ const hasSingleAction =
 
 <Card
 	class={cn(
-		"mx-auto w-full max-w-sm pt-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
+		"mx-auto w-full max-w-sm gap-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
 		className
 	)}
 >
@@ -81,12 +81,7 @@ const hasSingleAction =
 
 	{
 		(effectiveRepoHref || effectiveLiveHref) && (
-			<CardFooter
-				class={cn(
-					"grid w-full gap-2 pt-3",
-					hasSingleAction ? "grid-cols-1" : "grid-cols-2"
-				)}
-			>
+			<CardFooter>
 				{effectiveRepoHref && (
 					<Button
 						as="a"
@@ -95,7 +90,7 @@ const hasSingleAction =
 						rel="noopener noreferrer"
 						variant={hasSingleAction ? "default" : "secondary"}
 						size="sm"
-						class="w-full"
+						class="flex-1"
 					>
 						<span
 							slot="icon-before"
@@ -114,7 +109,7 @@ const hasSingleAction =
 						rel="noopener noreferrer"
 						variant="default"
 						size="sm"
-						class="w-full"
+						class="flex-1"
 					>
 						<span
 							slot="icon-before"
