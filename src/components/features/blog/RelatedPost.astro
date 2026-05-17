@@ -1,6 +1,11 @@
 ---
 import PostMetadata from "@/components/common/PostMetadata.astro";
-import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardDescription,
+	CardHeader,
+	CardTitle
+} from "@/components/ui/card";
 import Heading from "@/components/ui/Heading.astro";
 import { getPostUrl } from "@/lib/utils";
 import type { CollectionPosts } from "@/types";
@@ -25,13 +30,13 @@ const { relatedPosts } = Astro.props;
 			</Heading>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				{relatedPosts.map((post) => (
-					<Card as="a" href={getPostUrl(post)} reload>
-						<CardHeader>
-							<CardTitle>{post.data.title}</CardTitle>
+					<Card as="a" href={getPostUrl(post)} reload class="h-full">
+						<CardHeader class="flex h-full flex-col items-stretch justify-between gap-3">
+							<CardTitle class="line-clamp-2">{post.data.title}</CardTitle>
+							<CardDescription class="line-clamp-2">
+								<PostMetadata post={post} readTimeStyle="long" />
+							</CardDescription>
 						</CardHeader>
-						<CardFooter>
-							<PostMetadata post={post} readTimeStyle="long" />
-						</CardFooter>
 					</Card>
 				))}
 			</div>
