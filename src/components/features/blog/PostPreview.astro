@@ -19,10 +19,7 @@ const { post, showDescription } = Astro.props;
 		variant="interactive"
 		href={getPostUrl(post)}
 		reload
-		class={cn(
-			"space-y-2",
-			"border-border/40 border-b last:border-b-0"
-		)}
+		class={cn("space-y-2", "border-border/40 border-b last:border-b-0")}
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span
