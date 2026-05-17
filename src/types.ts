@@ -17,26 +17,11 @@ export type PaginationLink = {
 	srLabel?: string;
 };
 
-export type Tool = {
-	name: string;
-	description: string;
-};
+export type Tool = CollectionEntry<"tools">["data"][number]["tools"][number];
+export type ToolsCollection = CollectionEntry<"tools">["data"][number];
 
-export type ToolsCollection = {
-	title: string;
-	tools: Tool[];
-};
-
-export type Skill = {
-	name: string;
-	description: string;
-	icon?: string;
-};
-
-export type SkillCollection = {
-	title: string;
-	skills: Skill[];
-};
+export type Skill = CollectionEntry<"skills">["data"][number]["skills"][number];
+export type SkillCollection = CollectionEntry<"skills">["data"][number];
 
 export type AdmonitionType =
 	| "tip"
