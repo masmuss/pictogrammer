@@ -1,6 +1,6 @@
+import ProjectCard from "@/components/features/projects/ProjectCard.astro";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { expect, test } from "vitest";
-import ProjectCard from "@/components/features/projects/ProjectCard.astro";
 
 test("ProjectCard renders heading and subheading", async () => {
 	const container = await AstroContainer.create();
