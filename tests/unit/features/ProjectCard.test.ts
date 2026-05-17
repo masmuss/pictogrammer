@@ -34,7 +34,7 @@ test("ProjectCard renders Live link when liveHref is provided", async () => {
 	expect(result).toContain("Live"); // Button label
 });
 
-test("ProjectCard renders fallback image when thumbnail is missing", async () => {
+test("ProjectCard renders icon placeholder when thumbnail is missing", async () => {
 	const container = await AstroContainer.create();
 
 	const result = await container.renderToString(ProjectCard, {
@@ -43,6 +43,6 @@ test("ProjectCard renders fallback image when thumbnail is missing", async () =>
 		}
 	});
 
-	// Check if fallback image appears (its alt text is "No Image Project thumbnail")
-	expect(result).toContain('alt="No Image Project thumbnail"');
+	expect(result).toContain("bg-muted");
+	expect(result).not.toContain("thumbnail");
 });
