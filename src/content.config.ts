@@ -7,7 +7,8 @@ import {
 	postSchema,
 	projectsSchema,
 	seriesSchema,
-	skillsSchema
+	skillsSchema,
+	toolsSchema
 } from "@/lib/contents/schemas";
 
 const post = defineCollection({
@@ -54,6 +55,14 @@ const skills = defineCollection({
 	schema: skillsSchema
 });
 
+const tools = defineCollection({
+	loader: glob({
+		pattern: "**/**/*.json",
+		base: "./src/content/tools"
+	}),
+	schema: toolsSchema
+});
+
 export const collections = {
 	post,
 	series,
@@ -61,5 +70,6 @@ export const collections = {
 	educations,
 	certifications,
 	projects,
-	skills
+	skills,
+	tools
 };

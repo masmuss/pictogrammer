@@ -2,12 +2,8 @@
 import Heading from "@/components/ui/Heading.astro";
 import Section from "@/components/ui/Section.astro";
 import { cn } from "@/lib/utils";
+import type { Tool } from "@/types";
 import ToolItem from "./ToolItem.astro";
-
-interface Tool {
-	name: string;
-	description: string;
-}
 
 interface Props {
 	showDescription?: boolean;

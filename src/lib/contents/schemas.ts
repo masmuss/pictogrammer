@@ -87,6 +87,18 @@ export const projectsSchema = z.array(
 	})
 );
 
+export const toolsSchema = z.array(
+	z.object({
+		title: z.string(),
+		tools: z.array(
+			z.object({
+				name: z.string(),
+				description: z.string()
+			})
+		)
+	})
+);
+
 export const skillsSchema = z.array(
 	z.object({
 		title: z.string(),

@@ -17,6 +17,16 @@ export type PaginationLink = {
 	srLabel?: string;
 };
 
+export type Tool = {
+	name: string;
+	description: string;
+};
+
+export type ToolsCollection = {
+	title: string;
+	tools: Tool[];
+};
+
 export type Skill = {
 	name: string;
 	description: string;
