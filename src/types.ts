@@ -17,6 +17,17 @@ export type PaginationLink = {
 	srLabel?: string;
 };
 
+export type Skill = {
+	name: string;
+	description: string;
+	icon?: string;
+};
+
+export type SkillCollection = {
+	title: string;
+	skills: Skill[];
+};
+
 export type AdmonitionType =
 	| "tip"
 	| "note"

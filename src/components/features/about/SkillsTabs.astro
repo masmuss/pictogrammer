@@ -1,8 +1,8 @@
 ---
 import Button from "@/components/ui/Button.astro";
-import type { SkillCollection } from "@/lib/constants/tech-stack";
+import { getSkillsTabs } from "@/lib/contents/skills";
 import { cn } from "@/lib/utils";
-import { getSkillsTabs } from "@/lib/utils/skills";
+import type { SkillCollection } from "@/types";
 
 interface Props {
 	collections: SkillCollection[];
