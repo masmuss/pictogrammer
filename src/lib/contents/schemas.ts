@@ -75,7 +75,7 @@ export const certificationsSchema = z.array(
 		issuer: z.string(),
 		date: z.string(),
 		expiredDate: z.string().optional(),
-		credentialUrl: z.url().optional(),
+		credentialUrl: z.string().url().optional(),
 		description: z.string().optional()
 	})
 );
