@@ -2,12 +2,12 @@
 
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
+import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import astroMermaid from "astro-mermaid";
 import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
-import remarkAbbr from "@richardtowers/remark-abbr";
 import remarkDeflist from "remark-deflist";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";

@@ -2,7 +2,7 @@
 import { type CollectionEntry, render } from "astro:content";
 import Comment from "@/components/features/blog/Comment.astro";
 import RelatedPost from "@/components/features/blog/RelatedPost.astro";
-import TOC from "@/components/features/blog/TOC.astro";
+import Toc from "@/components/features/blog/Toc.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
 import { getAllPosts, getRelatedPosts } from "@/lib/contents/post";
 import { getPostRouteId } from "@/lib/utils/post-route";
@@ -37,7 +37,7 @@ const { Content, headings } = await render(post);
 					class="fixed top-24 left-8 hidden w-1/6 xl:block"
 					aria-label="Table of Contents"
 				>
-					<TOC {headings} />
+					<Toc {headings} />
 				</aside>
 			)
 		}
