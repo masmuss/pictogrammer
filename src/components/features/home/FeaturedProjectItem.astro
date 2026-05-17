@@ -32,7 +32,7 @@ const hasRepo = Boolean(project.repoHref);
 				<span
 					class={cn(
 						"leading-snug font-medium",
-						"text-foreground group-hover/interactive:text-foreground",
+						"text-foreground",
 						"transition-colors duration-fast"
 					)}
 				>
@@ -51,9 +51,9 @@ const hasRepo = Boolean(project.repoHref);
 			<div class="flex shrink-0 items-center gap-1.5">
 				{
 					isLive && (
-						<Badge variant="outline" class="gap-1 font-mono text-[0.6875rem]">
+						<Badge variant="outline" class="font-mono text-[0.6875rem]">
 							<span
-								class="iconify ri--external-link-line text-[0.75rem]"
+								class="iconify ri--external-link-line text-xs"
 								aria-hidden="true"
 							/>
 							Live
@@ -62,9 +62,9 @@ const hasRepo = Boolean(project.repoHref);
 				}
 				{
 					hasRepo && (
-						<Badge variant="outline" class="gap-1 font-mono text-[0.6875rem]">
+						<Badge variant="outline" class="font-mono text-[0.6875rem]">
 							<span
-								class="iconify ri--github-line text-[0.75rem]"
+								class="iconify ri--github-line text-xs"
 								aria-hidden="true"
 							/>
 							Repo
