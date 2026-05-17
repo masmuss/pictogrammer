@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/masmuss/pictogrammer/compare/v1.1.0...v1.2.0) (2026-05-17)
+
+
+### Features
+
+* migrate projects to content collection with Zod schema ([bc8e54b](https://github.com/masmuss/pictogrammer/commit/bc8e54b4bb421982c82a27d0e6dba82daa7abecb))
+* migrate skills to content collection with Zod schema ([f1ed9f5](https://github.com/masmuss/pictogrammer/commit/f1ed9f56f02b1d1fa021c432cbb073c83e067896))
+* migrate tools to content collection with Zod schema ([c4ae957](https://github.com/masmuss/pictogrammer/commit/c4ae957fe5ce870c5feadc9e64538f506bfc8ad2))
+* replace hardcoded durations with motion tokens, scope transitions ([a1d39e2](https://github.com/masmuss/pictogrammer/commit/a1d39e26d518c9fe2e9d80a687194e600eadbe5b))
+
 # [1.1.0](https://github.com/masmuss/pictogrammer/compare/v1.0.0...v1.1.0) (2026-05-17)
 
 
