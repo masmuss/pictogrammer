@@ -52,13 +52,13 @@ const thumbnailImage = await images[thumbnailPath]();
 const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 const effectiveRepoHref = repoHref;
 
-const hasSingleAction =
-	Number(Boolean(effectiveLiveHref)) + Number(Boolean(effectiveRepoHref)) === 1;
+const actionCount = (effectiveLiveHref ? 1 : 0) + (effectiveRepoHref ? 1 : 0);
+const hasSingleAction = actionCount === 1;
 ---
 
 <Card
 	class={cn(
-		"mx-auto w-full max-w-sm pt-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
+		"w-full gap-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
 		className
 	)}
 >
@@ -81,12 +81,7 @@ const hasSingleAction =
 
 	{
 		(effectiveRepoHref || effectiveLiveHref) && (
-			<CardFooter
-				class={cn(
-					"grid w-full gap-2 pt-3",
-					hasSingleAction ? "grid-cols-1" : "grid-cols-2"
-				)}
-			>
+			<CardFooter class="items-stretch">
 				{effectiveRepoHref && (
 					<Button
 						as="a"
@@ -95,7 +90,7 @@ const hasSingleAction =
 						rel="noopener noreferrer"
 						variant={hasSingleAction ? "default" : "secondary"}
 						size="sm"
-						class="w-full"
+						class="flex-1"
 					>
 						<span
 							slot="icon-before"
@@ -114,7 +109,7 @@ const hasSingleAction =
 						rel="noopener noreferrer"
 						variant="default"
 						size="sm"
-						class="w-full"
+						class="flex-1"
 					>
 						<span
 							slot="icon-before"
