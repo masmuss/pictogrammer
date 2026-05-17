@@ -52,13 +52,13 @@ const thumbnailImage = await images[thumbnailPath]();
 const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 const effectiveRepoHref = repoHref;
 
-const hasSingleAction =
-	Number(Boolean(effectiveLiveHref)) + Number(Boolean(effectiveRepoHref)) === 1;
+const actionCount = (effectiveLiveHref ? 1 : 0) + (effectiveRepoHref ? 1 : 0);
+const hasSingleAction = actionCount === 1;
 ---
 
 <Card
 	class={cn(
-		"mx-auto w-full max-w-sm gap-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
+		"w-full gap-0 transition-all duration-300 hover:-translate-y-0.5 hover:ring-primary/40",
 		className
 	)}
 >
@@ -81,7 +81,7 @@ const hasSingleAction =
 
 	{
 		(effectiveRepoHref || effectiveLiveHref) && (
-			<CardFooter>
+			<CardFooter class="items-stretch">
 				{effectiveRepoHref && (
 					<Button
 						as="a"
