@@ -8,20 +8,8 @@ export type Experience = CollectionEntry<"experiences">["data"][number];
 export type Education = CollectionEntry<"educations">["data"][number];
 export type Certification = CollectionEntry<"certifications">["data"][number];
 
-export type Project = {
-	text: string;
-	description?: string;
-	thumbnail?: string;
-	href?: string;
-	liveHref?: string;
-	repoHref?: string;
-	featured?: boolean;
-};
-
-export type ProjectCollection = {
-	title: string;
-	projects: Project[];
-};
+export type ProjectCollection = CollectionEntry<"projects">["data"][number];
+export type Project = ProjectCollection["projects"][number];
 
 export type PaginationLink = {
 	url: string;

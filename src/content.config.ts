@@ -5,6 +5,7 @@ import {
 	educationsSchema,
 	experiencesSchema,
 	postSchema,
+	projectsSchema,
 	seriesSchema
 } from "@/lib/contents/schemas";
 
@@ -36,10 +37,19 @@ const certifications = defineCollection({
 	schema: certificationsSchema
 });
 
+const projects = defineCollection({
+	loader: glob({
+		pattern: "**/**/*.json",
+		base: "./src/content/projects"
+	}),
+	schema: projectsSchema
+});
+
 export const collections = {
 	post,
 	series,
 	experiences,
 	educations,
-	certifications
+	certifications,
+	projects
 };

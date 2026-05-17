@@ -1,7 +1,6 @@
 ---
-import { projectData } from "@/lib/constants/projects";
+import { getAllProjects } from "@/lib/constants/projects";
 import { cn } from "@/lib/utils";
-import type { Project } from "@/types";
 import FeaturedProjectItem from "./FeaturedProjectItem.astro";
 
 interface Props {
@@ -10,7 +9,8 @@ interface Props {
 
 const { max = 3 } = Astro.props;
 
-const featured: Project[] = projectData
+const allProjects = await getAllProjects();
+const featured = allProjects
 	.flatMap((c) => c.projects)
 	.filter((p) => p.featured)
 	.slice(0, max);

@@ -69,13 +69,30 @@ export const educationsSchema = z.array(
 	})
 );
 
+export const projectSchema = z.object({
+	text: z.string(),
+	description: z.string().optional(),
+	thumbnail: z.string().optional(),
+	href: z.string().optional(),
+	liveHref: z.url().optional(),
+	repoHref: z.url().optional(),
+	featured: z.boolean().optional()
+});
+
+export const projectsSchema = z.array(
+	z.object({
+		title: z.string(),
+		projects: z.array(projectSchema)
+	})
+);
+
 export const certificationsSchema = z.array(
 	z.object({
 		title: z.string(),
 		issuer: z.string(),
 		date: z.string(),
 		expiredDate: z.string().optional(),
-		credentialUrl: z.string().url().optional(),
+		credentialUrl: z.url().optional(),
 		description: z.string().optional()
 	})
 );
