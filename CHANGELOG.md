@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/masmuss/pictogrammer/compare/v1.0.0...v1.1.0) (2026-05-17)
+
+
+### Features
+
+* replace coming-soon fallback with category-based icon placeholder ([4afe166](https://github.com/masmuss/pictogrammer/commit/4afe1665cbcca07bbfda3c68f6839245537025a0))
+* replace coming-soon fallback with category-based icon placeholder ([1b84917](https://github.com/masmuss/pictogrammer/commit/1b849179ef5942eda3229dbcbd66db9f9b87d694))
+
 # 1.0.0 (2026-05-17)
 
 
