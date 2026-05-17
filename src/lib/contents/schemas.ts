@@ -69,6 +69,49 @@ export const educationsSchema = z.array(
 	})
 );
 
+export const projectSchema = z.object({
+	text: z.string(),
+	description: z.string().optional(),
+	thumbnail: z.string().optional(),
+	href: z.string().optional(),
+	liveHref: z.url().optional(),
+	repoHref: z.url().optional(),
+	featured: z.boolean().optional(),
+	stacks: z.array(z.string()).optional()
+});
+
+export const projectsSchema = z.array(
+	z.object({
+		title: z.string(),
+		projects: z.array(projectSchema)
+	})
+);
+
+export const toolsSchema = z.array(
+	z.object({
+		title: z.string(),
+		tools: z.array(
+			z.object({
+				name: z.string(),
+				description: z.string()
+			})
+		)
+	})
+);
+
+export const skillsSchema = z.array(
+	z.object({
+		title: z.string(),
+		skills: z.array(
+			z.object({
+				name: z.string(),
+				description: z.string(),
+				icon: z.string().optional()
+			})
+		)
+	})
+);
+
 export const certificationsSchema = z.array(
 	z.object({
 		title: z.string(),

@@ -19,11 +19,7 @@ const { post, showDescription } = Astro.props;
 		variant="interactive"
 		href={getPostUrl(post)}
 		reload
-		class={cn(
-			"space-y-2",
-			"border-border/40 border-b last:border-b-0",
-			"bg-transparent"
-		)}
+		class={cn("space-y-2", "border-border/40 border-b last:border-b-0")}
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span
@@ -41,8 +37,8 @@ const { post, showDescription } = Astro.props;
 				<p
 					class={cn(
 						"line-clamp-2 text-sm leading-relaxed",
-						"text-muted-foreground group-hover/interactive:text-muted-foreground",
-						"transition-colors duration-150"
+						"text-muted-foreground",
+						"duration-fast transition-colors"
 					)}
 				>
 					{post.data.description}

@@ -32,4 +32,15 @@
 	a {
 		@apply focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
 	}
+
+	html.theme-transitioning *,
+	html.theme-transitioning *::before,
+	html.theme-transitioning *::after {
+		transition:
+			background-color var(--duration-base) var(--ease-default),
+			border-color var(--duration-base) var(--ease-default),
+			color var(--duration-base) var(--ease-default),
+			fill var(--duration-base) var(--ease-default),
+			stroke var(--duration-base) var(--ease-default) !important;
+	}
 }

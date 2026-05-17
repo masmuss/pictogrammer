@@ -11,10 +11,10 @@ import Section from "@/components/ui/Section.astro";
 import siteConfig from "@/config/site-config";
 import AboutContent from "@/content/pages/about.md";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import TECH_STACK from "@/lib/constants/tech-stack";
-import { getAboutPageData } from "@/lib/contents";
+import { getAboutPageData, getAllSkillCollections } from "@/lib/contents";
 
 const { experiences, educations, certifications } = await getAboutPageData();
+const TECH_STACK = await getAllSkillCollections();
 const currentWork = experiences.slice(0, 1);
 
 const currentWorkItems = currentWork.map((work) => ({

@@ -25,7 +25,7 @@ const {
 
 const isAnchor = Tag === "a";
 
-const baseStyles = "relative flex flex-col transition-all duration-200";
+const baseStyles = "relative flex flex-col transition-all duration-base";
 
 const variants: Record<Variant, string> = {
 	default:
@@ -53,7 +53,7 @@ const variants: Record<Variant, string> = {
 						"absolute top-1/2 left-0 -translate-y-1/2",
 						"h-1/2 w-0.5 rounded-full",
 						"origin-center scale-y-0 group-hover/interactive:scale-y-100",
-						"transition-transform duration-300",
+						"duration-slow transition-transform",
 						"bg-accent-cta"
 					)}
 				/>
@@ -75,7 +75,7 @@ const variants: Record<Variant, string> = {
 						"absolute top-1/2 left-0 -translate-y-1/2",
 						"h-1/2 w-0.5 rounded-full",
 						"origin-center scale-y-0 group-hover/interactive:scale-y-100",
-						"transition-transform duration-300",
+						"duration-slow transition-transform",
 						"bg-accent-cta"
 					)}
 				/>

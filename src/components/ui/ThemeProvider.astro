@@ -22,14 +22,20 @@
 		const root = document.documentElement;
 		const isDark = newTheme === "dark";
 
-		// root already set to newTheme, exit early
 		if (isDark === root.classList.contains("dark")) {
 			root.setAttribute("data-theme", newTheme);
 			return;
 		}
 
+		root.classList.add("theme-transitioning");
 		root.classList.toggle("dark", isDark);
 		root.setAttribute("data-theme", newTheme);
+
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				root.classList.remove("theme-transitioning");
+			});
+		});
 
 		if (typeof localStorage !== "undefined") {
 			localStorage.setItem("theme", newTheme);

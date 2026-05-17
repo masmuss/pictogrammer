@@ -1,4 +1,5 @@
-import type { Skill, SkillCollection } from "@/lib/constants/tech-stack";
+import { getEntry } from "astro:content";
+import type { Skill, SkillCollection } from "@/types";
 
 export type SkillsTab = {
 	id: string;
@@ -25,6 +26,16 @@ const slugify = (text: string) =>
 		.replace(/&/g, "and")
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/(^-|-$)/g, "");
+
+export async function getAllSkillCollections() {
+	const entry = await getEntry("skills", "index");
+
+	if (!entry) {
+		throw new Error("Missing skills content at src/content/skills/index.json");
+	}
+
+	return entry.data;
+}
 
 export function getSkillsTabs(collections: SkillCollection[]): SkillsTab[] {
 	const allSkills = Array.from(

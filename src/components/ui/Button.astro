@@ -52,7 +52,7 @@ const baseClasses = {
 	layout: "group/button inline-flex shrink-0 items-center justify-center",
 	shape: "rounded-lg border border-transparent bg-clip-padding",
 	text: "text-sm font-medium whitespace-nowrap",
-	transition: "transition-all outline-none select-none",
+	transition: "transition-colors outline-none select-none",
 	focus:
 		"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
 	active: "active:not-aria-[haspopup]:translate-y-px",
@@ -106,7 +106,7 @@ const resolvedSize = size;
 const legacyClass = cn(
 	style === "pill" && "rounded-full",
 	style === "tab" &&
-		"rounded-full border-border/60 bg-transparent text-muted-foreground hover:text-foreground data-[active=true]:border-primary/40 data-[active=true]:bg-primary/10 data-[active=true]:text-foreground"
+		"rounded-full border-border/60 text-muted-foreground hover:text-foreground data-[active=true]:border-primary/40 data-[active=true]:bg-primary/10 data-[active=true]:text-foreground"
 );
 
 const isButton = as === "button";

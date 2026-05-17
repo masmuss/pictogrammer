@@ -2,8 +2,9 @@
 import ToolSection from "@/components/features/tools/ToolSection.astro";
 import PageHeader from "@/components/ui/PageHeader.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getAllTools } from "@/lib/contents/tools";
 
-import TOOLS from "@/lib/constants/tools";
+const TOOLS = await getAllTools();
 ---
 
 <BaseLayout
