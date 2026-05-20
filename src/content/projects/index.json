@@ -17,11 +17,13 @@
 			{
 				"text": "PENS Aquaculture",
 				"description": "Dashboard for realtime water quality monitoring",
+				"thumbnail": "aquaculture.png",
 				"liveHref": "https://aquaculturepens.com"
 			},
 			{
 				"text": "ENT Satu Atap",
 				"description": "Super app used for administration at EEPIS News and Network Team",
+				"thumbnail": "ent.png",
 				"liveHref": "https://ent.pens.ac.id"
 			},
 			{
@@ -38,6 +40,11 @@
 				"liveHref": "https://applyst.khoirul.me",
 				"repoHref": "https://github.com/masmuss/applyst.git",
 				"featured": true
+			},
+			{
+				"text": "MoneyFlow",
+				"description": "A personal finance tracking web application featuring beautiful charts, monthly budgets, and financial insights built with SvelteKit 2, Svelte 5, and Drizzle ORM.",
+				"repoHref": "https://github.com/masmuss/moneyflow"
 			}
 		]
 	},
@@ -59,6 +66,12 @@
 				"description": "An API for eLibrary system built with Hono, Bun, and Scalar API reference",
 				"thumbnail": "elibrary.png",
 				"repoHref": "https://github.com/masmuss/hono-elibrary.git"
+			},
+			{
+				"text": "Gokit Starter",
+				"description": "Modern Go API boilerplate with Chi, Ent, Uber Fx, and automated testing, designed with Clean Architecture principles.",
+				"repoHref": "https://github.com/masmuss/gokit-starter",
+				"featured": true
 			}
 		]
 	},
@@ -82,6 +95,21 @@
 				"thumbnail": "dss-hydroponic.png",
 				"repoHref": "https://github.com/masmuss/sugeno-fuzzy-simulator",
 				"featured": true
+			}
+		]
+	},
+	{
+		"title": "System & Tooling",
+		"projects": [
+			{
+				"text": "Micro PaaS",
+				"description": "Lightweight PaaS built in Go for managing Docker containers with web dashboard, automatic subdomain proxying, and self-healing.",
+				"repoHref": "https://github.com/masmuss/micro-paas"
+			},
+			{
+				"text": "Gokit Install",
+				"description": "Interactive CLI tool to bootstrap new Go projects using Gokit Starter.",
+				"repoHref": "https://github.com/masmuss/gokit-install"
 			}
 		]
 	}

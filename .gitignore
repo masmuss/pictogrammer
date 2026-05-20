@@ -32,3 +32,6 @@ pnpm-debug.log*
 # deploy scripts
 deploy.sh
 screens/
+
+# AI generated files
+.antigravitycli
