@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/masmuss/pictogrammer/compare/v1.2.0...v1.3.0) (2026-05-20)
+
+
+### Features
+
+* add new projects (MoneyFlow, Gokit Starter, Micro PaaS, and Gokit Install) and configure System & Tooling category ([70f89d9](https://github.com/masmuss/pictogrammer/commit/70f89d92a6b375f04cf2fcfd06c89c657babf710))
+
 # [1.2.0](https://github.com/masmuss/pictogrammer/compare/v1.1.0...v1.2.0) (2026-05-17)
 
 
