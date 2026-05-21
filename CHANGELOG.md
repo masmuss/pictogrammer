@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/masmuss/pictogrammer/compare/v1.3.0...v1.4.0) (2026-05-21)
+
+
+### Features
+
+* update resume/cv button layout and text in hero and about page ([72e84ea](https://github.com/masmuss/pictogrammer/commit/72e84ea25570688e4a670e031e8480c0b8932767))
+
 # [1.3.0](https://github.com/masmuss/pictogrammer/compare/v1.2.0...v1.3.0) (2026-05-20)
 
 
