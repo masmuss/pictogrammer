@@ -1,9 +1,8 @@
 ---
 import SocialLinks from "@/components/common/SocialLinks.astro";
+import Button from "@/components/ui/Button.astro";
 
-interface Props {
-	transitionDelay?: number;
-}
+import siteConfig from "@/config/site-config";
 ---
 
 <div class="flex flex-col gap-y-4">
@@ -11,5 +10,15 @@ interface Props {
 		Full-stack developer & photographer based in Surabaya. Building web
 		experiences and capturing moments through a lens.
 	</p>
-	<SocialLinks variant="icon" showEmail />
+	<div class="flex flex-wrap items-center gap-4">
+		{
+			siteConfig.cvLink && (
+				<Button href={siteConfig.cvLink} variant="outline">
+					Resume
+					<span slot="icon-after" class="iconify ri--file-download-line" />
+				</Button>
+			)
+		}
+		<SocialLinks variant="icon" showEmail />
+	</div>
 </div>
