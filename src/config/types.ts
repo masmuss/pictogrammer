@@ -39,6 +39,7 @@ export type SiteConfig = {
 	subtitle: string;
 	description: string;
 	email: string;
+	cvLink?: string;
 	image: Image;
 	date: DateConfig;
 	socialLinks: SocialLink[];
