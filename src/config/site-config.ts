@@ -7,6 +7,8 @@ export const siteConfig: SiteConfig = {
 	description:
 		"Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.",
 	email: "ahmusafir.khoirul@gmail.com",
+	cvLink:
+		"https://github.com/masmuss/curriculum-vitae/releases/latest/download/main.pdf",
 	image: {
 		src: "/og.png",
 		alt: "Open Graph"
