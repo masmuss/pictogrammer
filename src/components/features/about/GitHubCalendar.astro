@@ -31,34 +31,7 @@ const defaultTheme: CalendarTheme = {
 	dark: ["rgba(22, 27, 34, 0.8)", "#0e4429", "#006d32", "#26a641", "#39d353"]
 };
 
-const {
-	username,
-	year = "last",
-	blockSize = 14,
-	blockMargin = 3,
-	showTotalCount = true,
-	showMonthLabels = true,
-	theme = defaultTheme
-} = Astro.props;
-
-const activities = await fetchGitHubContributions(username, year);
-
-// Check if data is empty or failed to load
-if (!activities || activities.length === 0) {
-	return null; // Don't render anything if data is empty or failed to load
-}
-
-const weeks = groupByWeeks(activities);
-const totalCount = getTotalCount(activities);
-
-const yearLabel = year === "last" ? "the last year" : `${year}`;
-
-const resolvedTheme: Required<CalendarTheme> = {
-	light: theme.light,
-	dark: theme.dark ?? theme.light
-};
-
-const monthLabels = [
+const MONTH_LABELS = [
 	"Jan",
 	"Feb",
 	"Mar",
@@ -73,53 +46,75 @@ const monthLabels = [
 	"Dec"
 ];
 
+const {
+	username,
+	year = "last",
+	blockSize = 16,
+	blockMargin = 3,
+	showTotalCount = true,
+	showMonthLabels = true,
+	theme = defaultTheme
+} = Astro.props;
+
+const activities = await fetchGitHubContributions(username, year);
+
+if (!activities || activities.length === 0) {
+	return null;
+}
+
+const weeks = groupByWeeks(activities);
+const totalCount = getTotalCount(activities);
+const yearLabel = year === "last" ? "the last year" : `${year}`;
+
+const resolvedTheme: Required<CalendarTheme> = {
+	light: theme.light,
+	dark: theme.dark ?? theme.light
+};
+
+const firstActivityInWeek = (week: (typeof weeks)[number]) =>
+	week.find((activity) => activity !== undefined);
+
 const monthLabelWeeks = new Map<number, number>();
-
 weeks.forEach((week, weekIndex) => {
-	const firstActivityInWeek = week.find((activity) => activity !== undefined);
-	if (!firstActivityInWeek) return;
-
-	const month = new Date(`${firstActivityInWeek.date}T00:00:00`).getMonth();
+	const activity = firstActivityInWeek(week);
+	if (!activity) return;
+	const month = new Date(`${activity.date}T00:00:00`).getMonth();
 	if (!monthLabelWeeks.has(month)) {
 		monthLabelWeeks.set(month, weekIndex);
 	}
 });
 
-const monthLabelEntries = Array.from(monthLabelWeeks.entries())
-	.sort(
-		([, leftWeekIndex], [, rightWeekIndex]) => leftWeekIndex - rightWeekIndex
-	)
-	.map(([month, weekIndex], entryIndex, entries) => {
-		const nextWeekIndex = entries[entryIndex + 1]?.[1];
-		const span = (nextWeekIndex ?? weekIndex + 4) - weekIndex;
-		return {
-			month,
-			weekIndex,
-			centerX: (weekIndex + span / 2) * (blockSize + blockMargin)
-		};
-	});
-
-const svgWidth = Math.max(
-	blockSize,
-	weeks.length * (blockSize + blockMargin) - blockMargin
+const sortedMonthEntries = Array.from(monthLabelWeeks.entries()).sort(
+	([, a], [, b]) => a - b
 );
-const svgHeight = 7 * (blockSize + blockMargin) - blockMargin;
+
+const cell = blockSize + blockMargin;
+
+const monthLabelEntries = sortedMonthEntries.map(
+	([month, weekIndex], index, entries) => {
+		const nextWeek = entries[index + 1]?.[1];
+		const span = (nextWeek ?? weekIndex + 4) - weekIndex;
+		return { month, centerX: (weekIndex + span / 2) * cell };
+	}
+);
+const svgWidth = Math.max(blockSize, weeks.length * cell - blockMargin);
+const svgHeight = 7 * cell - blockMargin;
 const topPadding = showMonthLabels ? blockSize + 8 : 0;
 ---
 
 <div
 	class="w-full"
 	style={{
-		"--calendar-level-0-light": resolvedTheme.light[0],
-		"--calendar-level-1-light": resolvedTheme.light[1],
-		"--calendar-level-2-light": resolvedTheme.light[2],
-		"--calendar-level-3-light": resolvedTheme.light[3],
-		"--calendar-level-4-light": resolvedTheme.light[4],
-		"--calendar-level-0-dark": resolvedTheme.dark[0],
-		"--calendar-level-1-dark": resolvedTheme.dark[1],
-		"--calendar-level-2-dark": resolvedTheme.dark[2],
-		"--calendar-level-3-dark": resolvedTheme.dark[3],
-		"--calendar-level-4-dark": resolvedTheme.dark[4]
+		"--cl-0-light": resolvedTheme.light[0],
+		"--cl-1-light": resolvedTheme.light[1],
+		"--cl-2-light": resolvedTheme.light[2],
+		"--cl-3-light": resolvedTheme.light[3],
+		"--cl-4-light": resolvedTheme.light[4],
+		"--cl-0-dark": resolvedTheme.dark[0],
+		"--cl-1-dark": resolvedTheme.dark[1],
+		"--cl-2-dark": resolvedTheme.dark[2],
+		"--cl-3-dark": resolvedTheme.dark[3],
+		"--cl-4-dark": resolvedTheme.dark[4]
 	}}
 >
 	<div class="w-full min-w-0 overflow-x-auto pb-4" tabindex="0">
@@ -131,30 +126,28 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 			preserveAspectRatio="xMidYMid meet"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			<!-- Month labels -->
 			{
 				showMonthLabels &&
 					monthLabelEntries.map((entry) => (
 						<text
 							x={entry.centerX}
 							y={blockSize * 0.7}
-							class="calendar-month-label"
+							class="month-label"
 							font-size="11"
 							font-weight="400"
 							text-anchor="middle"
 							dominant-baseline="middle"
 						>
-							{monthLabels[entry.month]}
+							{MONTH_LABELS[entry.month]}
 						</text>
 					))
 			}
 
-			<!-- Contribution blocks -->
 			{
 				weeks.map((week, weekIndex) =>
 					week.map((activity, dayIndex) => {
-						const x = weekIndex * (blockSize + blockMargin);
-						const y = topPadding + dayIndex * (blockSize + blockMargin);
+						const x = weekIndex * cell;
+						const y = topPadding + dayIndex * cell;
 						const level = activity?.level ?? 0;
 
 						return (
@@ -165,9 +158,6 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 								height={blockSize}
 								rx="2"
 								ry="2"
-								class={`calendar-level-${level} transition-opacity hover:opacity-80`}
-								data-date={activity?.date ?? ""}
-								data-count={activity?.count ?? 0}
 								data-level={level}
 							/>
 						);
@@ -175,37 +165,33 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 				)
 			}
 		</svg>
-
-		<!-- Stats -->
-		{
-			showTotalCount && (
-				<div class="text-muted-foreground mt-4 flex flex-col items-center justify-between gap-1 text-xs md:flex-row">
-					<p>
-						<strong>{totalCount}</strong> contributions in {yearLabel}
-					</p>
-					<div class="flex items-center gap-3">
-						<span>Less</span>
-						<div class="flex items-center space-x-1">
-							{[0, 1, 2, 3, 4].map((level) => (
-								<div
-									class={`calendar-legend-level-${level} h-3 w-3 rounded`}
-									title={`Level ${level}`}
-								/>
-							))}
-						</div>
-						<span>More</span>
-					</div>
-				</div>
-			)
-		}
 	</div>
+
+	{
+		showTotalCount && (
+			<div class="text-muted-foreground mt-4 flex flex-col items-center justify-between gap-1 text-xs md:flex-row">
+				<p>
+					<strong>{totalCount}</strong> contributions in {yearLabel}
+				</p>
+				<div class="flex items-center gap-3">
+					<span>Less</span>
+					<div class="flex items-center space-x-1">
+						{[0, 1, 2, 3, 4].map((level) => (
+							<div class="legend-level" data-level={level} />
+						))}
+					</div>
+					<span>More</span>
+				</div>
+			</div>
+		)
+	}
 </div>
 
 <style>
 	svg {
 		display: block;
 		margin: 0 auto;
-		min-width: 700px; /* Mencegah SVG terlalu gepeng/berantakan saat layar kecil */
+		min-width: 700px;
 	}
 
 	rect {
@@ -213,87 +199,77 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 		stroke-width: 0;
 	}
 
-	.calendar-level-0 {
-		fill: var(--calendar-level-0-light);
+	rect[data-level="0"] {
+		fill: var(--cl-0-light);
+	}
+	rect[data-level="1"] {
+		fill: var(--cl-1-light);
+	}
+	rect[data-level="2"] {
+		fill: var(--cl-2-light);
+	}
+	rect[data-level="3"] {
+		fill: var(--cl-3-light);
+	}
+	rect[data-level="4"] {
+		fill: var(--cl-4-light);
 	}
 
-	.calendar-level-1 {
-		fill: var(--calendar-level-1-light);
+	:global(.dark) rect[data-level="0"] {
+		fill: var(--cl-0-dark);
+	}
+	:global(.dark) rect[data-level="1"] {
+		fill: var(--cl-1-dark);
+	}
+	:global(.dark) rect[data-level="2"] {
+		fill: var(--cl-2-dark);
+	}
+	:global(.dark) rect[data-level="3"] {
+		fill: var(--cl-3-dark);
+	}
+	:global(.dark) rect[data-level="4"] {
+		fill: var(--cl-4-dark);
 	}
 
-	.calendar-level-2 {
-		fill: var(--calendar-level-2-light);
+	.legend-level {
+		height: 0.75rem;
+		width: 0.75rem;
+		border-radius: 0.25rem;
 	}
 
-	.calendar-level-3 {
-		fill: var(--calendar-level-3-light);
+	.legend-level[data-level="0"] {
+		background-color: var(--cl-0-light);
+	}
+	.legend-level[data-level="1"] {
+		background-color: var(--cl-1-light);
+	}
+	.legend-level[data-level="2"] {
+		background-color: var(--cl-2-light);
+	}
+	.legend-level[data-level="3"] {
+		background-color: var(--cl-3-light);
+	}
+	.legend-level[data-level="4"] {
+		background-color: var(--cl-4-light);
 	}
 
-	.calendar-level-4 {
-		fill: var(--calendar-level-4-light);
+	:global(.dark) .legend-level[data-level="0"] {
+		background-color: var(--cl-0-dark);
+	}
+	:global(.dark) .legend-level[data-level="1"] {
+		background-color: var(--cl-1-dark);
+	}
+	:global(.dark) .legend-level[data-level="2"] {
+		background-color: var(--cl-2-dark);
+	}
+	:global(.dark) .legend-level[data-level="3"] {
+		background-color: var(--cl-3-dark);
+	}
+	:global(.dark) .legend-level[data-level="4"] {
+		background-color: var(--cl-4-dark);
 	}
 
-	:global(.dark) .calendar-level-0 {
-		fill: var(--calendar-level-0-dark);
-	}
-
-	:global(.dark) .calendar-level-1 {
-		fill: var(--calendar-level-1-dark);
-	}
-
-	:global(.dark) .calendar-level-2 {
-		fill: var(--calendar-level-2-dark);
-	}
-
-	:global(.dark) .calendar-level-3 {
-		fill: var(--calendar-level-3-dark);
-	}
-
-	:global(.dark) .calendar-level-4 {
-		fill: var(--calendar-level-4-dark);
-	}
-
-	.calendar-legend-level-0 {
-		background-color: var(--calendar-level-0-light);
-	}
-
-	.calendar-legend-level-1 {
-		background-color: var(--calendar-level-1-light);
-	}
-
-	.calendar-legend-level-2 {
-		background-color: var(--calendar-level-2-light);
-	}
-
-	.calendar-legend-level-3 {
-		background-color: var(--calendar-level-3-light);
-	}
-
-	.calendar-legend-level-4 {
-		background-color: var(--calendar-level-4-light);
-	}
-
-	:global(.dark) .calendar-legend-level-0 {
-		background-color: var(--calendar-level-0-dark);
-	}
-
-	:global(.dark) .calendar-legend-level-1 {
-		background-color: var(--calendar-level-1-dark);
-	}
-
-	:global(.dark) .calendar-legend-level-2 {
-		background-color: var(--calendar-level-2-dark);
-	}
-
-	:global(.dark) .calendar-legend-level-3 {
-		background-color: var(--calendar-level-3-dark);
-	}
-
-	:global(.dark) .calendar-legend-level-4 {
-		background-color: var(--calendar-level-4-dark);
-	}
-
-	.calendar-month-label {
+	.month-label {
 		fill: hsl(var(--foreground));
 	}
 </style>
