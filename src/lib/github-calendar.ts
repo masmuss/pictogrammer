@@ -51,21 +51,33 @@ function logCacheEvent(enableLogging: boolean, message: string): void {
 	console.info(`[github-calendar] ${message}`);
 }
 
+const GITHUB_FETCH_TIMEOUT_MS = 10_000;
+
 async function fetchFromGitHubApi(
 	username: string,
 	year: number | "last",
 	forceRefresh: boolean
 ): Promise<Activity[]> {
-	// Add no-cache header only if forceRefresh is true
 	const headers: HeadersInit = {};
 	if (forceRefresh) {
 		headers["Cache-Control"] = "no-cache";
 	}
 
-	const response = await fetch(
-		`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`,
-		{ headers }
+	const controller = new AbortController();
+	const timeoutId = setTimeout(
+		() => controller.abort(),
+		GITHUB_FETCH_TIMEOUT_MS
 	);
+
+	let response: Response;
+	try {
+		response = await fetch(
+			`${GITHUB_API_BASE_URL}${username}?y=${String(year)}`,
+			{ headers, signal: controller.signal }
+		);
+	} finally {
+		clearTimeout(timeoutId);
+	}
 
 	if (!response.ok) {
 		throw new Error(
