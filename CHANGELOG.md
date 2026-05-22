@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/masmuss/pictogrammer/compare/v1.4.0...v1.4.1) (2026-05-22)
+
+
+### Bug Fixes
+
+* text item terakhir terpotong di side panel card ([b94ba63](https://github.com/masmuss/pictogrammer/commit/b94ba631b764151d384772f504b85f2663e64433))
+
 # [1.4.0](https://github.com/masmuss/pictogrammer/compare/v1.3.0...v1.4.0) (2026-05-21)
 
 
