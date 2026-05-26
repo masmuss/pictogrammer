@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/masmuss/pictogrammer/compare/v1.4.1...v1.5.0) (2026-05-26)
+
+
+### Features
+
+* **blog:** add weekend project note for trak ([28ae82e](https://github.com/masmuss/pictogrammer/commit/28ae82e2891e81b4ddc8ba5ca36262f6be3d78e7))
+
 ## [1.4.1](https://github.com/masmuss/pictogrammer/compare/v1.4.0...v1.4.1) (2026-05-22)
 
 
