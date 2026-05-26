@@ -24,6 +24,14 @@ bun install
 bun run dev
 ```
 
+## Branching & Workflow
+
+Semua perubahan kode atau konten harus dilakukan di branch terpisah sebelum digabungkan ke `main`. Gunakan penamaan branch berikut sesuai kebutuhan:
+
+- `post/`: Khusus untuk menambah atau mengedit file Markdown/MDX (contoh: `post/review-frankenphp`).
+- `feat/`: Untuk penambahan fitur baru di Astro atau perubahan UI (contoh: `feat/dark-mode`).
+- `fix/`: Untuk memperbaiki bug (contoh: `fix/broken-links`).
+
 ## Commands
 
 | Command                 | Description                 |
