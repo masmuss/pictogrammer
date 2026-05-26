@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/masmuss/pictogrammer/compare/v1.5.0...v1.5.1) (2026-05-26)
+
+
+### Bug Fixes
+
+* **search:** lazy load pagefind on search open and add 300ms search debounce ([e6ee73f](https://github.com/masmuss/pictogrammer/commit/e6ee73f16ccc2a30be8eb7d922046760c52ed9a7))
+
 # [1.5.0](https://github.com/masmuss/pictogrammer/compare/v1.4.1...v1.5.0) (2026-05-26)
 
 
