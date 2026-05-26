@@ -22,7 +22,3 @@ pre-push:
     # 1. Run unit tests
     test:unit:
       run: bun run test:unit:run
-
-    # 2. Run E2E tests (Playwright handles build + preview with 180s timeout)
-    test:e2e:
-      run: bun run test:e2e

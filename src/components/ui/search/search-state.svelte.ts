@@ -1,4 +1,4 @@
-import { onDestroy, onMount, tick } from "svelte";
+import { onDestroy, tick } from "svelte";
 
 export interface PagefindResultData {
 	url: string;
@@ -28,20 +28,35 @@ export function createSearch() {
 	let searchInput = $state<HTMLInputElement | null>(null);
 	let previousBodyOverflow = $state<string | null>(null);
 	let searchRequestId = $state(0);
+	let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+	let initPromise: Promise<void> | null = null;
 
-	onMount(async () => {
-		try {
-			if (typeof window !== "undefined") {
-				const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
-				// @ts-ignore
-				const pf = await import(/* @vite-ignore */ pagefindPath);
-				pagefind = pf as Pagefind;
-				await pagefind.init();
+	function initPagefind(): Promise<void> {
+		if (initPromise) return initPromise;
+
+		initPromise = (async () => {
+			try {
+				if (typeof window !== "undefined") {
+					const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
+					// @ts-ignore
+					const pf = await import(/* @vite-ignore */ pagefindPath);
+					pagefind = pf as Pagefind;
+					await pagefind.init();
+				}
+			} catch (_e) {
+				console.log(
+					"Pagefind index not found. This is normal in development mode. Run 'bun run build' to generate the search index."
+				);
 			}
-		} catch (_e) {
-			console.log(
-				"Pagefind index not found. This is normal in development mode. Run 'bun run build' to generate the search index."
-			);
+		})();
+
+		return initPromise;
+	}
+
+	// Trigger Pagefind initialization when the search modal is opened
+	$effect(() => {
+		if (isOpen) {
+			void initPagefind();
 		}
 	});
 
@@ -62,6 +77,9 @@ export function createSearch() {
 		if (previousBodyOverflow !== null) {
 			document.body.style.overflow = previousBodyOverflow;
 		}
+		if (debounceTimer) {
+			clearTimeout(debounceTimer);
+		}
 	});
 
 	$effect(() => {
@@ -77,6 +95,10 @@ export function createSearch() {
 	function closeSearch() {
 		isOpen = false;
 		query = "";
+		if (debounceTimer) {
+			clearTimeout(debounceTimer);
+			debounceTimer = null;
+		}
 		results = [];
 		selectedIndex = -1;
 		isSearching = false;
@@ -85,42 +107,66 @@ export function createSearch() {
 	async function handleSearch() {
 		const trimmedQuery = query.trim();
 
-		if (!pagefind || trimmedQuery.length < 2) {
+		if (trimmedQuery.length < 2) {
 			++searchRequestId;
+			if (debounceTimer) {
+				clearTimeout(debounceTimer);
+				debounceTimer = null;
+			}
 			results = [];
 			selectedIndex = -1;
 			isSearching = false;
 			return;
 		}
 
+		if (debounceTimer) {
+			clearTimeout(debounceTimer);
+		}
+
 		const requestId = ++searchRequestId;
 		isSearching = true;
-		try {
-			const search = await pagefind.search(trimmedQuery);
-			const limitedResults = search.results.slice(0, 10);
-			const rawResults = await Promise.all(limitedResults.map((r) => r.data()));
+
+		debounceTimer = setTimeout(async () => {
 			if (requestId !== searchRequestId) return;
 
-			results = rawResults.map((result) => {
-				let url = result.url;
-				if (url.startsWith("/dist/")) {
-					url = url.replace("/dist/", "/");
-				}
-				if (url.length > 1 && url.endsWith("/")) {
-					url = url.slice(0, -1);
-				}
-				return { ...result, url };
-			});
-
-			selectedIndex = results.length > 0 ? 0 : -1;
-		} catch (e) {
-			if (requestId !== searchRequestId) return;
-			console.error("Search failed", e);
-		} finally {
-			if (requestId === searchRequestId) {
-				isSearching = false;
+			if (!pagefind) {
+				await initPagefind();
 			}
-		}
+
+			if (!pagefind || requestId !== searchRequestId) {
+				isSearching = false;
+				return;
+			}
+
+			try {
+				const search = await pagefind.search(trimmedQuery);
+				const limitedResults = search.results.slice(0, 10);
+				const rawResults = await Promise.all(
+					limitedResults.map((r) => r.data())
+				);
+				if (requestId !== searchRequestId) return;
+
+				results = rawResults.map((result) => {
+					let url = result.url;
+					if (url.startsWith("/dist/")) {
+						url = url.replace("/dist/", "/");
+					}
+					if (url.length > 1 && url.endsWith("/")) {
+						url = url.slice(0, -1);
+					}
+					return { ...result, url };
+				});
+
+				selectedIndex = results.length > 0 ? 0 : -1;
+			} catch (e) {
+				if (requestId !== searchRequestId) return;
+				console.error("Search failed", e);
+			} finally {
+				if (requestId === searchRequestId) {
+					isSearching = false;
+				}
+			}
+		}, 300);
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
