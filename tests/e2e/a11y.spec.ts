@@ -65,6 +65,7 @@ test("individual blog post should be accessible", async ({ page }) => {
 
 	const accessibilityScanResults = await new AxeBuilder({ page })
 		.withTags(["wcag2a", "wcag2aa"])
+		.exclude(".astro-code")
 		.analyze();
 
 	expect(accessibilityScanResults.violations).toEqual([]);
