@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/masmuss/pictogrammer/compare/v1.5.1...v1.6.0) (2026-05-27)
+
+
+### Features
+
+* **projects:** add Trak to featured projects list and update snapshots ([e164a82](https://github.com/masmuss/pictogrammer/commit/e164a82e02aa02d00d9f9a28e7950e5d77851140))
+
 ## [1.5.1](https://github.com/masmuss/pictogrammer/compare/v1.5.0...v1.5.1) (2026-05-26)
 
 
