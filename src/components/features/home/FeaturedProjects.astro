@@ -7,7 +7,7 @@ interface Props {
 	max?: number;
 }
 
-const { max = 3 } = Astro.props;
+const { max = 5 } = Astro.props;
 
 const allProjects = await getAllProjects();
 const featured = allProjects

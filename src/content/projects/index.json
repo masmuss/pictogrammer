@@ -45,6 +45,13 @@
 				"text": "MoneyFlow",
 				"description": "A personal finance tracking web application featuring beautiful charts, monthly budgets, and financial insights built with SvelteKit 2, Svelte 5, and Drizzle ORM.",
 				"repoHref": "https://github.com/masmuss/moneyflow"
+			},
+			{
+				"text": "Trak",
+				"description": "A modern ticketing and reporting platform with Telegram bot integration, built using Turborepo, SvelteKit (Runes), grammY, and Drizzle ORM.",
+				"thumbnail": "trak/dashboard.png",
+				"repoHref": "https://github.com/masmuss/trak.git",
+				"featured": true
 			}
 		]
 	},
