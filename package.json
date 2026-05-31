@@ -29,7 +29,7 @@
 		"@richardtowers/remark-abbr": "^1.1.5",
 		"@tailwindcss/vite": "^4.3.0",
 		"astro": "6.4.2",
-		"astro-mermaid": "^1.4.0",
+		"astro-mermaid": "^2.0.1",
 		"astro-pagefind": "^2.0.0",
 		"mermaid": "^11.15.0",
 		"rehype-external-links": "^3.0.0",
