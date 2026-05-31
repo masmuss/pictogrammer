@@ -1,16 +1,16 @@
 // @ts-check
 
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, fontProviders } from "astro/config";
 import astroMermaid from "astro-mermaid";
 import pagefind from "astro-pagefind";
+import { defineConfig, fontProviders } from "astro/config";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDeflist from "remark-deflist";
 import remarkDirective from "remark-directive";
-import remarkGfm from "remark-gfm";
 import remarkSupersub from "remark-supersub";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
@@ -56,33 +56,33 @@ export default defineConfig({
 		pagefind()
 	],
 	markdown: {
-		gfm: true,
+		processor: unified({
+			rehypePlugins: [
+				[
+					rehypeExternalLinks,
+					{
+						rel: ["noreferrer", "noopener"],
+						target: "_blank"
+					}
+				]
+			],
+			remarkPlugins: [
+				remarkSupersub,
+				remarkAbbr,
+				remarkDeflist,
+				remarkDirective,
+				remarkGithubCard,
+				remarkAdmonitions
+			],
+			remarkRehype: {
+				footnoteLabelProperties: {
+					className: [""]
+				}
+			}
+		}),
 		shikiConfig: {
 			theme: "dracula-soft",
 			wrap: true
-		},
-		rehypePlugins: [
-			[
-				rehypeExternalLinks,
-				{
-					rel: ["noreferrer", "noopener"],
-					target: "_blank"
-				}
-			]
-		],
-		remarkPlugins: [
-			remarkGfm,
-			remarkSupersub,
-			remarkAbbr,
-			remarkDeflist,
-			remarkDirective,
-			remarkGithubCard,
-			remarkAdmonitions
-		],
-		remarkRehype: {
-			footnoteLabelProperties: {
-				className: [""]
-			}
 		}
 	},
 	vite: {
