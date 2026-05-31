@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/masmuss/pictogrammer/compare/v1.6.0...v1.6.1) (2026-05-31)
+
+
+### Bug Fixes
+
+* deduplicate playwright-core types ([3720527](https://github.com/masmuss/pictogrammer/commit/3720527beae7482a6c4c56331015ce26b80469d3))
+* **remark:** augment ParagraphData type for hName/hProperties ([872cd66](https://github.com/masmuss/pictogrammer/commit/872cd66020bed59864024aafc696200c89d8188f))
+
 # [1.6.0](https://github.com/masmuss/pictogrammer/compare/v1.5.1...v1.6.0) (2026-05-27)
 
 
