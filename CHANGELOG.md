@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/masmuss/pictogrammer/compare/v1.6.2...v1.7.0) (2026-06-05)
+
+
+### Features
+
+* self-contained RelatedPost with score-based algorithm ([450ecdb](https://github.com/masmuss/pictogrammer/commit/450ecdbc4829a0bc0b2903238b14841b907341d1))
+
 ## [1.6.2](https://github.com/masmuss/pictogrammer/compare/v1.6.1...v1.6.2) (2026-06-05)
 
 
