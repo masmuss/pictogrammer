@@ -8,14 +8,12 @@
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
 	prefix: "iconify";
-	/* biome-ignore lint/correctness/noUnknownProperty: This is a valid Tailwind CSS plugin configuration */
 	prefixes: ri, carbon, logos;
 	scale: 1.2;
-	/* biome-ignore lint/correctness/noUnknownProperty: This is a valid Tailwind CSS plugin configuration */
 	colors: true;
 }
 
-@variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @utility container {
 	@apply mx-auto p-8;

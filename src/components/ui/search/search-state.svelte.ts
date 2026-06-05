@@ -38,7 +38,6 @@ export function createSearch() {
 			try {
 				if (typeof window !== "undefined") {
 					const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
-					// @ts-ignore
 					const pf = await import(/* @vite-ignore */ pagefindPath);
 					pagefind = pf as Pagefind;
 					await pagefind.init();
