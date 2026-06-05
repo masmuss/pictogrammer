@@ -1,3 +1,11 @@
+## [1.6.2](https://github.com/masmuss/pictogrammer/compare/v1.6.1...v1.6.2) (2026-06-05)
+
+
+### Bug Fixes
+
+* biome lint error ([ce20615](https://github.com/masmuss/pictogrammer/commit/ce20615a9a0ad8dc5fc2c4dee64ba08df5ea0bc5))
+* resolve biome CSS lint, unused ts-expect-error, and tailwind v4 syntax ([bc20d5f](https://github.com/masmuss/pictogrammer/commit/bc20d5fe093fec51fe91b4554a073895c16f49fb))
+
 ## [1.6.1](https://github.com/masmuss/pictogrammer/compare/v1.6.0...v1.6.1) (2026-05-31)
 
 
