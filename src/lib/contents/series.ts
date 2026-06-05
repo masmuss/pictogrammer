@@ -1,5 +1,5 @@
-import { getCollection, getEntry } from "astro:content";
 import type { CollectionPosts } from "@/types";
+import { getCollection, getEntry } from "astro:content";
 import { getAllPosts } from "./post";
 
 const SERIES_PREFIX = "series";
