@@ -1,5 +1,5 @@
-import { getCollection, getEntry } from "astro:content";
 import type { CollectionPosts } from "@/types";
+import { getCollection, getEntry } from "astro:content";
 import { getAllPosts } from "./post";
 
 const SERIES_PREFIX = "series";
@@ -38,7 +38,7 @@ export async function getPostsBySeries(seriesId: string) {
 			const matchA = a.data.title.match(/#(\d+)/);
 			const matchB = b.data.title.match(/#(\d+)/);
 			if (matchA && matchB) {
-				return Number.parseInt(matchA[1]) - Number.parseInt(matchB[1]);
+				return Number.parseInt(matchA[1], 10) - Number.parseInt(matchB[1], 10);
 			}
 
 			return 0;
