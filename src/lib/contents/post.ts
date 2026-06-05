@@ -1,5 +1,5 @@
-import { type CollectionEntry, getCollection } from "astro:content";
 import type { CollectionPosts } from "@/types";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 const AVERAGE_READING_WORDS_PER_MINUTE = 200;
 
@@ -27,17 +27,36 @@ export async function getAllPosts(limit?: number) {
 
 export function getRelatedPosts(
 	posts: CollectionPosts[],
-	tags: string[],
-	title: string,
-	limit = 3
+	currentPost: CollectionPosts,
+	limit = 4
 ): CollectionPosts[] {
-	return posts
-		.filter((post) => {
-			const hasMatchingTags = post.data.tags.some((tag) => tags.includes(tag));
-			const hasMatchingTitle = post.data.title === title;
-			return hasMatchingTags && !hasMatchingTitle;
+	const currentTags = currentPost.data.tags;
+	const currentId = currentPost.id;
+	const currentCategory = currentId.split("/")[0];
+
+	const postsWithScore = posts
+		.filter((post) => post.id !== currentId)
+		.map((post) => {
+			let score = 0;
+
+			const matchingTags = post.data.tags.filter((tag) =>
+				currentTags.includes(tag)
+			);
+			score += matchingTags.length * 10;
+
+			const postCategory = post.id.split("/")[0];
+			if (currentCategory && postCategory && currentCategory === postCategory) {
+				score += 5;
+			}
+
+			return { post, score };
 		})
-		.slice(0, limit);
+		.filter((item) => item.score > 0)
+		.sort((a, b) => b.score - a.score)
+		.slice(0, limit)
+		.map((item) => item.post);
+
+	return postsWithScore;
 }
 
 export async function getPostsByPath(
