@@ -58,42 +58,32 @@ const quickLinks: QuickLink[] = [
 	description="The page you are looking for does not exist. Find your way back through the homepage, blog, or projects."
 	pageType="website"
 >
-	<div class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
-		<!-- Decorative element -->
-		<div class="mb-6 flex items-center gap-2" aria-hidden="true">
-			<span class="bg-accent-cta/20 inline-flex size-3 rounded-full" />
-			<span class="bg-accent-cta/40 inline-flex size-2 rounded-full" />
-			<span class="bg-accent-cta/60 inline-flex size-3 rounded-full" />
-			<span class="bg-accent-cta/40 inline-flex size-2 rounded-full" />
-			<span class="bg-accent-cta/20 inline-flex size-3 rounded-full" />
-		</div>
-
-		<!-- 404 Heading -->
+	<div
+		class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center sm:px-6"
+	>
 		<h1
 			class="text-accent-cta text-9xl leading-none font-bold tracking-tighter"
 		>
 			404
 		</h1>
-		<p
-			class="text-foreground mt-2 text-lg font-medium sm:text-xl"
-		>
+		<p class="text-foreground mt-2 text-lg font-medium sm:text-xl">
 			Frame Not Found
 		</p>
 
 		<!-- Message -->
 		<div class="text-muted-foreground mt-4 space-y-1 text-sm leading-relaxed">
 			<p>
-				This page got lost in the darkroom — it
-				doesn't exist anymore or never did.
+				This page got lost in the darkroom — it doesn't exist anymore or never
+				did.
 			</p>
-			<p>
-				Let's get you back on track.
-			</p>
+			<p>Let's get you back on track.</p>
 		</div>
 
 		<!-- Quick Links -->
 		<div class="mt-10 w-full">
-			<p class="text-muted-foreground mb-4 text-xs font-medium tracking-wider uppercase">
+			<p
+				class="text-muted-foreground mb-4 text-xs font-medium tracking-wider uppercase"
+			>
 				Try one of these instead
 			</p>
 			<div class="grid grid-cols-2 gap-3">
@@ -104,15 +94,12 @@ const quickLinks: QuickLink[] = [
 							class={cn(
 								"group relative flex flex-col items-start gap-1.5 rounded-xl p-4 text-left text-sm",
 								"border-border/50 hover:border-border bg-card/50 hover:bg-card",
-								"border transition-all duration-base",
+								"duration-base border transition-all",
 								"focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 							)}
 						>
 							<span
-								class={cn(
-									"iconify text-accent-cta size-4",
-									link.icon
-								)}
+								class={cn("iconify text-accent-cta size-4", link.icon)}
 								aria-hidden="true"
 							/>
 							<CardTitle class="text-foreground text-sm font-medium">
@@ -129,7 +116,10 @@ const quickLinks: QuickLink[] = [
 
 		<!-- Keyboard shortcut hint -->
 		<p class="text-muted-foreground/60 mt-8 text-xs">
-			Or press <kbd class="bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[10px] font-medium">⌘K</kbd> to search
+			Or press <kbd
+				class="bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[10px] font-medium"
+				>⌘K</kbd
+			> to search
 		</p>
 	</div>
 </BaseLayout>
