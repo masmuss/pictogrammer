@@ -16,10 +16,17 @@ interface Props {
 	posts?: CollectionEntry<"post">[];
 }
 
-const { activeTab, title, description, image, path, emptyMessage, posts: providedPosts } =
-	Astro.props;
+const {
+	activeTab,
+	title,
+	description,
+	image,
+	path,
+	emptyMessage,
+	posts: providedPosts
+} = Astro.props;
 
-const allPosts = providedPosts ?? await getPostsByPath(path);
+const allPosts = providedPosts ?? (await getPostsByPath(path));
 const postsByYear = groupPostsByYear(allPosts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
