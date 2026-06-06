@@ -1,3 +1,16 @@
+# [1.8.0](https://github.com/masmuss/pictogrammer/compare/v1.7.0...v1.8.0) (2026-06-06)
+
+
+### Bug Fixes
+
+* correct button icon syntax and reorder imports in blog index ([cd795b1](https://github.com/masmuss/pictogrammer/commit/cd795b17c63509fcaf56504ed58bc5883cd1062b))
+
+
+### Features
+
+* add link from blog to archive page ([c63536b](https://github.com/masmuss/pictogrammer/commit/c63536b55675a251e4c3f9737d452b1347777e5e))
+* add prerendering, blog archive pagination, and code cleanup ([86b3114](https://github.com/masmuss/pictogrammer/commit/86b3114fa231d9c1735c6ce2c69b81c7835eeb5c)), closes [#performance](https://github.com/masmuss/pictogrammer/issues/performance) [#code-quality](https://github.com/masmuss/pictogrammer/issues/code-quality)
+
 # [1.7.0](https://github.com/masmuss/pictogrammer/compare/v1.6.2...v1.7.0) (2026-06-05)
 
 
