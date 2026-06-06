@@ -27,9 +27,13 @@ test("navigation to blog works", async ({ page }) => {
 test("404 page shows correct content", async ({ page }) => {
 	await page.goto("/non-existent-page");
 
-	// Verify that the 404 heading and return link are visible
+	// Verify that the 404 heading is visible
 	await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
-	await expect(page.locator("text=Back to home")).toBeVisible();
+	await expect(page.getByText("Frame Not Found")).toBeVisible();
+
+	// Verify navigation link cards are visible
+	await expect(page.locator("a[href='/'] h3").first()).toBeVisible();
+	await expect(page.locator("a[href='/blog'] h3").first()).toBeVisible();
 });
 
 test("theme toggle changes mode", async ({ page }) => {

@@ -1,22 +1,125 @@
 ---
 export const prerender = true;
 
-import Button from "@/components/ui/Button.astro";
-import Heading from "@/components/ui/Heading.astro";
+import CardDescription from "@/components/ui/card/CardDescription.astro";
+import CardTitle from "@/components/ui/card/CardTitle.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { cn } from "@/lib/utils";
+
+interface QuickLink {
+	title: string;
+	href: string;
+	description: string;
+	icon: string;
+}
+
+const quickLinks: QuickLink[] = [
+	{
+		title: "Home",
+		href: "/",
+		description: "Back to the starting point",
+		icon: "ri--home-line"
+	},
+	{
+		title: "Blog",
+		href: "/blog",
+		description: "Notes, tutorials & stories",
+		icon: "ri--article-line"
+	},
+	{
+		title: "Projects",
+		href: "/projects",
+		description: "Things I've built",
+		icon: "ri--code-line"
+	},
+	{
+		title: "About",
+		href: "/about",
+		description: "Who I am & what I do",
+		icon: "ri--user-line"
+	},
+	{
+		title: "Tags",
+		href: "/tags",
+		description: "Browse by topic",
+		icon: "ri--price-tag-3-line"
+	},
+	{
+		title: "Archive",
+		href: "/blog/archive",
+		description: "All posts, paginated",
+		icon: "ri--archive-line"
+	}
+];
 ---
 
 <BaseLayout
-	title="404 - Not Found"
-	description="The page you are looking for does not exist."
+	title="404 — Frame Not Found"
+	description="The page you are looking for does not exist. Find your way back through the homepage, blog, or projects."
 	pageType="website"
 >
-	<div class="px-4 py-10 text-center sm:px-6 lg:px-8">
-		<Heading class="text-7xl sm:text-9xl" weight="bold">404</Heading>
-		<p class="text-muted-foreground mt-3">Oops, something went wrong.</p>
-		<p class="">Sorry, we couldn't find your page.</p>
-		<Button title="Back to home" href="/" style="button" class="mt-5">
-			<span class="iconify ri--arrow-right-long-line" slot="icon-after"></span>
-		</Button>
+	<div
+		class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center sm:px-6"
+	>
+		<h1
+			class="text-accent-cta text-9xl leading-none font-bold tracking-tighter"
+		>
+			404
+		</h1>
+		<p class="text-foreground mt-2 text-lg font-medium sm:text-xl">
+			Frame Not Found
+		</p>
+
+		<!-- Message -->
+		<div class="text-muted-foreground mt-4 space-y-1 text-sm leading-relaxed">
+			<p>
+				This page got lost in the darkroom — it doesn't exist anymore or never
+				did.
+			</p>
+			<p>Let's get you back on track.</p>
+		</div>
+
+		<!-- Quick Links -->
+		<div class="mt-10 w-full">
+			<p
+				class="text-muted-foreground mb-4 text-xs font-medium tracking-wider uppercase"
+			>
+				Try one of these instead
+			</p>
+			<div class="grid grid-cols-2 gap-3">
+				{
+					quickLinks.map((link) => (
+						<a
+							href={link.href}
+							class={cn(
+								"group relative flex flex-col items-start gap-1.5 rounded-xl p-4 text-left text-sm",
+								"border-border/50 hover:border-border bg-card/50 hover:bg-card",
+								"duration-base border transition-all",
+								"focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+							)}
+						>
+							<span
+								class={cn("iconify text-accent-cta size-4", link.icon)}
+								aria-hidden="true"
+							/>
+							<CardTitle class="text-foreground text-sm font-medium">
+								{link.title}
+							</CardTitle>
+							<CardDescription class="text-muted-foreground text-xs">
+								{link.description}
+							</CardDescription>
+						</a>
+					))
+				}
+			</div>
+		</div>
+
+		<!-- Keyboard shortcut hint -->
+		<p class="text-muted-foreground/60 mt-8 text-xs">
+			Or press <kbd
+				class="bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[10px] font-medium"
+				>⌘K</kbd
+			> to search
+		</p>
 	</div>
 </BaseLayout>
