@@ -30,16 +30,7 @@ const coverImageResolved = coverImage
 			alt: coverImage.alt
 		}
 	: undefined;
-const coverImageForMeta = coverImage
-	? {
-			src:
-				typeof coverImage.src === "string"
-					? coverImage.src
-					: coverImage.src.src,
-			alt: coverImage.alt
-		}
-	: undefined;
-const ogImage = coverImageForMeta || socialImage;
+const ogImage = coverImageResolved || socialImage;
 ---
 
 <BaseLayout

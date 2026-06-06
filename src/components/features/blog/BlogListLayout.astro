@@ -1,4 +1,5 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
 import Heading from "@/components/ui/Heading.astro";
@@ -12,12 +13,13 @@ interface Props {
 	image?: { src: string; alt?: string };
 	path?: string;
 	emptyMessage?: string;
+	posts?: CollectionEntry<"post">[];
 }
 
-const { activeTab, title, description, image, path, emptyMessage } =
+const { activeTab, title, description, image, path, emptyMessage, posts: providedPosts } =
 	Astro.props;
 
-const allPosts = await getPostsByPath(path);
+const allPosts = providedPosts ?? await getPostsByPath(path);
 const postsByYear = groupPostsByYear(allPosts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
@@ -53,5 +55,7 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 				</div>
 			)
 		}
+
+		<slot name="after-posts" />
 	</div>
 </BaseLayout>
