@@ -31,6 +31,7 @@
 		"astro": "6.4.4",
 		"astro-mermaid": "^2.0.2",
 		"astro-pagefind": "^2.0.0",
+		"clsx": "^2.1.1",
 		"mermaid": "^11.15.0",
 		"rehype-external-links": "^3.0.0",
 		"remark-deflist": "^1.0.0",
