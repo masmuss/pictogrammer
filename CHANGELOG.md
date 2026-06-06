@@ -1,3 +1,11 @@
+# [1.9.0](https://github.com/masmuss/pictogrammer/compare/v1.8.0...v1.9.0) (2026-06-06)
+
+
+### Features
+
+* enhance 404 page layout and messaging for better user experience ([a041e7b](https://github.com/masmuss/pictogrammer/commit/a041e7b4fe46e3b8d5ed1476b60ff7ff7b101b9c))
+* redesign 404 page with navigation and personality ([09c3139](https://github.com/masmuss/pictogrammer/commit/09c313946906bcd3d00571135f6b50d031197817))
+
 # [1.8.0](https://github.com/masmuss/pictogrammer/compare/v1.7.0...v1.8.0) (2026-06-06)
 
 
