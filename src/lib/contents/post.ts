@@ -1,5 +1,5 @@
-import type { CollectionPosts } from "@/types";
 import { type CollectionEntry, getCollection } from "astro:content";
+import type { CollectionPosts } from "@/types";
 
 const AVERAGE_READING_WORDS_PER_MINUTE = 200;
 
