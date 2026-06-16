@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/masmuss/pictogrammer/compare/v1.13.0...v1.13.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* make share buttons responsive with horizontal layout on mobile ([5b95d9a](https://github.com/masmuss/pictogrammer/commit/5b95d9a35596621deb36f20173ba8c693794bf29))
+
 # [1.13.0](https://github.com/masmuss/pictogrammer/compare/v1.12.0...v1.13.0) (2026-06-16)
 
 
