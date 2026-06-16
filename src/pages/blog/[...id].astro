@@ -4,6 +4,7 @@ export const prerender = true;
 import { render } from "astro:content";
 import Comment from "@/components/features/blog/Comment.astro";
 import RelatedPost from "@/components/features/blog/RelatedPost.astro";
+import ShareButtons from "@/components/features/blog/ShareButtons.astro";
 import Toc from "@/components/features/blog/Toc.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
 import { getAllPosts } from "@/lib/contents/post";
@@ -28,7 +29,7 @@ const { Content, headings } = await render(post);
 		{
 			headings.length > 0 && (
 				<aside
-					class="fixed top-24 left-8 hidden w-1/6 xl:block"
+					class="fixed top-1/4 left-8 hidden w-1/12 xl:block"
 					aria-label="Table of Contents"
 				>
 					<Toc {headings} />
@@ -41,6 +42,13 @@ const { Content, headings } = await render(post);
 				<Content />
 			</div>
 		</article>
+
+		<aside
+			class="fixed top-1/4 right-8 hidden flex-col items-end xl:flex"
+			aria-label="Share this post"
+		>
+			<ShareButtons title={post.data.title} url={Astro.url} class="mr-8" />
+		</aside>
 	</div>
 	<footer class="mx-auto mt-16 max-w-3xl">
 		<RelatedPost {post} />
