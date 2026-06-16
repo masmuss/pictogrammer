@@ -41,6 +41,10 @@ const { Content, headings } = await render(post);
 			<div class="custom-prose mx-auto">
 				<Content />
 			</div>
+
+			<div class="mt-12 flex justify-center xl:hidden">
+				<ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
+			</div>
 		</article>
 
 		<aside
