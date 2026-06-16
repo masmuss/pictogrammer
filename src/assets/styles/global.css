@@ -5,6 +5,7 @@
 @import "./system/base.css";
 @import "./components/prose.css";
 @import "./components/progress.css";
+@import "./components/scroll-reveal.css";
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
 	prefix: "iconify";

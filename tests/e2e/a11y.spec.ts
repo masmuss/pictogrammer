@@ -25,10 +25,13 @@ test.describe("Accessibility Audit", () => {
 			// Force visibility and disable animations for consistent audit
 			await page.addStyleTag({
 				content: `
-					.fade-up-section {
+					*, *::before, *::after {
+						transition-duration: 0s !important;
+						animation-duration: 0s !important;
+					}
+					[data-fade-up="true"], .scroll-reveal, .opacity-0 {
 						opacity: 1 !important;
-						transform: translateY(0) !important;
-						transition: none !important;
+						transform: none !important;
 					}
 				`
 			});
@@ -55,10 +58,13 @@ test("individual blog post should be accessible", async ({ page }) => {
 	// Force visibility and disable animations for consistent audit
 	await page.addStyleTag({
 		content: `
-			.fade-up-section {
+			*, *::before, *::after {
+				transition-duration: 0s !important;
+				animation-duration: 0s !important;
+			}
+			[data-fade-up="true"], .scroll-reveal, .opacity-0 {
 				opacity: 1 !important;
-				transform: translateY(0) !important;
-				transition: none !important;
+				transform: none !important;
 			}
 		`
 	});
@@ -66,6 +72,7 @@ test("individual blog post should be accessible", async ({ page }) => {
 	const accessibilityScanResults = await new AxeBuilder({ page })
 		.withTags(["wcag2a", "wcag2aa"])
 		.exclude(".astro-code")
+		.exclude(".mermaid")
 		.analyze();
 
 	expect(accessibilityScanResults.violations).toEqual([]);

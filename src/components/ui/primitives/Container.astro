@@ -9,7 +9,7 @@ type HTMLDivElement = astroHTML.JSX.IntrinsicElements["div"];
 
 const { class: className, ...attrs } = Astro.props as Props & HTMLDivElement;
 
-const classes = cn("mx-auto w-full max-w-5xl px-4 sm:px-6 md:px-8", className);
+const classes = cn("mx-auto w-full max-w-5xl px-6 sm:px-8 md:px-12", className);
 ---
 
 <div class={classes} {...attrs}>

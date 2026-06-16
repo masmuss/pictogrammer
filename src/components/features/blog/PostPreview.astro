@@ -18,12 +18,16 @@ const { post, showDescription } = Astro.props;
 		as="a"
 		variant="interactive"
 		href={getPostUrl(post)}
-		reload
-		class={cn("space-y-2", "border-border/40 border-b last:border-b-0")}
+		class={cn(
+			"space-y-2",
+			"border-border/40 border-b last:border-b-0",
+			"scroll-reveal"
+		)}
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span
 				class="group-hover/interactive:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1"
+				transition:name={`title-${post.id}`}
 			>
 				{post.data.title}
 			</span>

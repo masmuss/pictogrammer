@@ -50,15 +50,14 @@ const {
 
 const baseClasses = {
 	layout: "group/button inline-flex shrink-0 items-center justify-center",
-	shape: "rounded-lg border border-transparent bg-clip-padding",
+	shape: "rounded-lg ring-1 ring-inset ring-transparent bg-clip-padding",
 	text: "text-sm font-medium whitespace-nowrap",
 	transition: "transition-colors outline-none select-none",
-	focus:
-		"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
+	focus: "focus-visible:ring-3 focus-visible:ring-ring/50",
 	active: "active:not-aria-[haspopup]:translate-y-px",
 	disabled: "disabled:pointer-events-none disabled:opacity-50",
 	validation:
-		"aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+		"aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
 	icon: "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 };
 
@@ -67,7 +66,7 @@ const baseClass = Object.values(baseClasses).join(" ");
 const variantClass: Record<NonNullable<Props["variant"]>, string> = {
 	default: "bg-primary text-primary-foreground hover:bg-primary/80",
 	outline:
-		"border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+		"ring-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:ring-input dark:bg-input/30 dark:hover:bg-input/50",
 	secondary:
 		"bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 	ghost:
@@ -106,7 +105,7 @@ const resolvedSize = size;
 const legacyClass = cn(
 	style === "pill" && "rounded-full",
 	style === "tab" &&
-		"rounded-full border-border/60 text-muted-foreground hover:text-foreground data-[active=true]:border-primary/40 data-[active=true]:bg-primary/10 data-[active=true]:text-foreground"
+		"rounded-full ring-1 ring-inset ring-border/60 text-muted-foreground hover:text-foreground data-[active=true]:ring-primary/40 data-[active=true]:bg-primary/10 data-[active=true]:text-foreground"
 );
 
 const isButton = as === "button";
