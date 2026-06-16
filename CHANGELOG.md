@@ -1,3 +1,19 @@
+# [1.11.0](https://github.com/masmuss/pictogrammer/compare/v1.10.0...v1.11.0) (2026-06-16)
+
+
+### Bug Fixes
+
+* **a11y:** resolve color contrast issues in hero and disable animations for test ([0be55fe](https://github.com/masmuss/pictogrammer/commit/0be55feb8859ca436a3de57494d92f16686eda50))
+
+
+### Features
+
+* **experience:** support local company logos via dynamic import ([4da7a7f](https://github.com/masmuss/pictogrammer/commit/4da7a7fadebaaad56e17161d547dccec623803da))
+* **ui:** add scroll-driven animations to cards ([b8d54e7](https://github.com/masmuss/pictogrammer/commit/b8d54e79f3e188defa7a720d0cb2607360b273c9))
+* **ui:** add view transitions to blog post titles ([de2baed](https://github.com/masmuss/pictogrammer/commit/de2baed23167667c77065056f10bcfc6bfd26e2a))
+* **ui:** implement native dialog with top-layer starting-style animation for search modal ([4857ca7](https://github.com/masmuss/pictogrammer/commit/4857ca7511f9b90ce08c2cb15b2be98f71507ac9))
+* **ui:** update typography, spacing, and layout to modern minimalist ([4a810f9](https://github.com/masmuss/pictogrammer/commit/4a810f960400b528a11674436fae9f4b25485dfd))
+
 # [1.10.0](https://github.com/masmuss/pictogrammer/compare/v1.9.0...v1.10.0) (2026-06-16)
 
 
