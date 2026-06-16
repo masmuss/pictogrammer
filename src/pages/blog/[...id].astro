@@ -43,7 +43,11 @@ const { Content, headings } = await render(post);
 			</div>
 
 			<div class="mt-12 flex justify-center xl:hidden">
-				<ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
+				<ShareButtons
+					title={post.data.title}
+					url={Astro.url}
+					layout="horizontal"
+				/>
 			</div>
 		</article>
 

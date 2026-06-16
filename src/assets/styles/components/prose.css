@@ -3,8 +3,15 @@
    ======================================== */
 @layer components {
 	.custom-prose {
-		@apply prose dark:prose-invert;
+		@apply prose-sm md:prose dark:prose-invert;
 		@apply prose-headings:font-semibold prose-headings:text-foreground prose-headings:before:absolute prose-headings:before:-ms-4;
+
+		/* Heading sizes balancing for mobile and desktop */
+		@apply prose-h1:text-2xl md:prose-h1:text-4xl;
+		@apply prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 md:prose-h2:text-2xl md:prose-h2:mt-10;
+		@apply prose-h3:text-lg md:prose-h3:text-xl;
+		@apply prose-h4:text-base md:prose-h4:text-lg;
+
 		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
 		@apply prose-td:text-sm md:prose-td:text-base;
 		/* Blockquote: Elegant minimal line, no ugly quotes, using muted text */
@@ -15,5 +22,8 @@
 
 		/* Inline code: Subtly highlighted with IBM Plex Mono */
 		@apply prose-code:font-mono prose-code:text-primary/90 prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal prose-code:before:content-none prose-code:after:content-none;
+
+		/* Fix for lists disappearing on mobile */
+		@apply prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1;
 	}
 }
