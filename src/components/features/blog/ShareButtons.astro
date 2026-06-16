@@ -1,0 +1,124 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+	title: string;
+	url: URL | string;
+	class?: string;
+}
+
+const { title, url, class: className } = Astro.props;
+
+const encodedUrl = encodeURIComponent(url.toString());
+const encodedTitle = encodeURIComponent(title);
+
+const shareLinks = [
+	{
+		id: "twitter",
+		name: "Share on X",
+		icon: "ri--twitter-x-line",
+		href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
+	},
+	{
+		id: "linkedin",
+		name: "Share on LinkedIn",
+		icon: "ri--linkedin-fill",
+		href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`
+	}
+];
+---
+
+<div class={cn("flex flex-col items-center gap-y-4", className)}>
+	<span
+		class="text-muted-foreground text-xs font-semibold tracking-widest uppercase"
+		style="writing-mode: vertical-rl; transform: rotate(180deg);"
+	>
+		Share
+	</span>
+	<div class="bg-border/50 h-8 w-px"></div>
+
+	<div class="flex flex-col gap-y-3">
+		{
+			shareLinks.map((link) => (
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="border-border/40 bg-card text-muted-foreground hover:bg-muted hover:text-foreground flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 hover:shadow-md"
+					title={link.name}
+					aria-label={link.name}
+				>
+					<span class={`iconify ${link.icon} text-lg`} />
+				</a>
+			))
+		}
+
+		<button
+			type="button"
+			class="copy-url-btn border-border/40 bg-card text-muted-foreground hover:bg-muted hover:text-foreground flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 hover:shadow-md"
+			title="Copy link"
+			aria-label="Copy link"
+			data-url={url.toString()}
+		>
+			<span class="iconify ri--links-line pointer-events-none text-lg"></span>
+		</button>
+
+		<button
+			type="button"
+			class="native-share-btn border-border/40 bg-card text-muted-foreground hover:bg-muted hover:text-foreground hidden h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 hover:shadow-md"
+			title="Share via device"
+			aria-label="Share via device"
+			data-url={url.toString()}
+			data-title={title}
+		>
+			<span class="iconify ri--share-forward-line pointer-events-none text-lg"
+			></span>
+		</button>
+	</div>
+</div>
+
+<script>
+	const copyButtons = document.querySelectorAll(".copy-url-btn");
+	copyButtons.forEach((btn) => {
+		btn.addEventListener("click", async (e) => {
+			const target = e.currentTarget as HTMLButtonElement;
+			const url = target.dataset.url;
+			if (!url) return;
+
+			try {
+				await navigator.clipboard.writeText(url);
+				const icon = target.querySelector(".iconify");
+				if (icon) {
+					const oldIcon = icon.className;
+					icon.className =
+						"iconify ri--check-line text-lg text-primary pointer-events-none";
+					setTimeout(() => {
+						icon.className = oldIcon;
+					}, 2000);
+				}
+			} catch (err) {
+				console.error("Failed to copy", err);
+			}
+		});
+	});
+
+	// Enable native share button if supported
+	const shareButtons = document.querySelectorAll(".native-share-btn");
+	if (navigator.share) {
+		shareButtons.forEach((btn) => {
+			btn.classList.remove("hidden");
+			btn.classList.add("flex");
+			btn.addEventListener("click", async (e) => {
+				const target = e.currentTarget as HTMLButtonElement;
+				try {
+					await navigator.share({
+						title: target.dataset.title,
+						url: target.dataset.url
+					});
+				} catch (err) {
+					console.log("Error sharing:", err);
+				}
+			});
+		});
+	}
+</script>
