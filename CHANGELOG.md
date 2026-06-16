@@ -1,3 +1,11 @@
+# [1.14.0](https://github.com/masmuss/pictogrammer/compare/v1.13.1...v1.14.0) (2026-06-16)
+
+
+### Features
+
+* implement dynamic responsive typography for prose component ([c3cdec0](https://github.com/masmuss/pictogrammer/commit/c3cdec0a8db46b1f433ff5e60fc9c0b5a6f0085c))
+* implement responsive base font size at HTML level and adjust tabs size ([9e03e67](https://github.com/masmuss/pictogrammer/commit/9e03e67a5133ddfde032da8f81eb3078015dca5b))
+
 ## [1.13.1](https://github.com/masmuss/pictogrammer/compare/v1.13.0...v1.13.1) (2026-06-16)
 
 
