@@ -1,0 +1,135 @@
+---
+export const prerender = true;
+
+import type { CollectionEntry } from "astro:content";
+import ArchiveSidebar, {
+	type YearGroup
+} from "@/components/features/blog/ArchiveSidebar.astro";
+import BlogTabs from "@/components/features/blog/BlogTabs.astro";
+import PostPreview from "@/components/features/blog/PostPreview.astro";
+import Heading from "@/components/ui/Heading.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getAllPosts } from "@/lib/contents";
+
+const title = "Blog Archive";
+const description =
+	"Browse all blog posts by Khoirul Fattah, organized by year and month.";
+const allPosts = await getAllPosts();
+
+// Group by year and then month
+
+const groupedPosts = new Map<number, Map<number, CollectionEntry<"post">[]>>();
+const monthNames = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
+];
+
+for (const post of allPosts) {
+	const date = new Date(post.data.date);
+	const year = date.getFullYear();
+	const month = date.getMonth(); // 0-11
+
+	let yearMap = groupedPosts.get(year);
+	if (!yearMap) {
+		yearMap = new Map();
+		groupedPosts.set(year, yearMap);
+	}
+
+	let monthPosts = yearMap.get(month);
+	if (!monthPosts) {
+		monthPosts = [];
+		yearMap.set(month, monthPosts);
+	}
+
+	monthPosts.push(post);
+}
+
+const archiveData: YearGroup[] = Array.from(groupedPosts.entries())
+	.sort(([yearA], [yearB]) => yearB - yearA)
+	.map(([year, monthsMap]) => {
+		const months = Array.from(monthsMap.entries())
+			.sort(([monthA], [monthB]) => monthB - monthA)
+			.map(([month, posts]) => ({
+				month,
+				monthName: monthNames[month],
+				posts
+			}));
+		const count = months.reduce((acc, m) => acc + m.posts.length, 0);
+		return { year, months, count };
+	});
+---
+
+<BaseLayout
+	{title}
+	{description}
+	image={{ src: "/og/blog.png", alt: "Blog - pictogrammmer" }}
+	pageType="website"
+>
+	<div class="flex w-full flex-col gap-y-12">
+		<Heading as="h1" class="sr-only">{title}</Heading>
+		<div class="flex w-full flex-col">
+			<BlogTabs activeTab="posts" />
+
+			<div class="flex max-w-xl flex-col">
+				<p class="text-muted-foreground">{description}</p>
+			</div>
+		</div>
+
+		{
+			allPosts.length === 0 && (
+				<p class="text-muted-foreground">No posts yet.</p>
+			)
+		}
+
+		{
+			allPosts.length > 0 && (
+				<div class="relative grid grid-cols-1 gap-8 lg:grid-cols-3">
+					{/* Main Content */}
+					<div class="flex flex-col gap-y-20 lg:col-span-2">
+						{archiveData.map(({ year, months }) => (
+							<section class="flex flex-col gap-y-8" id={`year-${year}`}>
+								<h2 class="relative text-3xl font-bold tracking-tight md:text-4xl">
+									<span class="text-muted-foreground/10 absolute -top-8 -left-4 -z-10 text-7xl select-none md:-top-10 md:-left-6 md:text-8xl">
+										{year}
+									</span>
+								</h2>
+								<div class="flex flex-col gap-y-12">
+									{months.map(({ month, monthName, posts }) => (
+										<div
+											class="flex flex-col gap-y-4"
+											id={`month-${year}-${month}`}
+										>
+											<h3 class="text-muted-foreground text-xl font-semibold">
+												{monthName}
+											</h3>
+											<ul class="group/list relative flex flex-col">
+												{posts.map((post) => (
+													<PostPreview post={post} showDescription />
+												))}
+											</ul>
+										</div>
+									))}
+								</div>
+							</section>
+						))}
+					</div>
+
+					<ArchiveSidebar
+						archiveData={archiveData}
+						class="sticky top-16 w-full self-start lg:col-span-1"
+					/>
+				</div>
+			)
+		}
+	</div>
+</BaseLayout>
