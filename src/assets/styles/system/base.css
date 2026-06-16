@@ -22,7 +22,7 @@
 	}
 
 	body {
-		@apply bg-background text-foreground text-base leading-7;
+		@apply bg-background text-foreground text-sm leading-relaxed md:text-base md:leading-7;
 	}
 
 	:where(p, li, dd, dt, figcaption) {
