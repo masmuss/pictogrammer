@@ -57,10 +57,11 @@ const {
 			<Heading
 				as={titleAs}
 				size={titleSize}
-				weight={titleWeight}
+				weight={titleUppercase ? "semibold" : titleWeight}
 				class={cn(
-					"text-muted-foreground tracking-wider",
-					titleUppercase ? "uppercase" : ""
+					titleUppercase
+						? "text-muted-foreground text-xs tracking-widest uppercase"
+						: "text-foreground tracking-tight"
 				)}
 			>
 				{title}
