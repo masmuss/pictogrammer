@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/masmuss/pictogrammer/compare/v1.11.0...v1.12.0) (2026-06-16)
+
+
+### Features
+
+* single page archive with sticky sidebar TOC ([87abf35](https://github.com/masmuss/pictogrammer/commit/87abf35bd0ae8f2712175937de78c9f92c095b4c))
+
 # [1.11.0](https://github.com/masmuss/pictogrammer/compare/v1.10.0...v1.11.0) (2026-06-16)
 
 
