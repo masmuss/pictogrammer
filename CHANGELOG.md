@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/masmuss/pictogrammer/compare/v1.12.0...v1.13.0) (2026-06-16)
+
+
+### Features
+
+* add sticky share buttons on right side of blog post ([cb03286](https://github.com/masmuss/pictogrammer/commit/cb03286844a7b6aa72ca727d5f8fdf0304cfd043))
+
 # [1.12.0](https://github.com/masmuss/pictogrammer/compare/v1.11.0...v1.12.0) (2026-06-16)
 
 
