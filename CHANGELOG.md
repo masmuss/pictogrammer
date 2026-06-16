@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/masmuss/pictogrammer/compare/v1.9.0...v1.10.0) (2026-06-16)
+
+
+### Features
+
+* **blog:** add devlog update for trak project ([01c21e1](https://github.com/masmuss/pictogrammer/commit/01c21e164ee225f52322184896c0385e66f78801))
+
 # [1.9.0](https://github.com/masmuss/pictogrammer/compare/v1.8.0...v1.9.0) (2026-06-06)
 
 
