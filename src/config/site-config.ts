@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Khoirul's Personal Website",
 	description:
 		"Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.",
-	email: "ahmusafir.khoirul@gmail.com",
+	email: "hello@khoirul.me",
 	cvLink:
 		"https://github.com/masmuss/curriculum-vitae/releases/latest/download/main.pdf",
 	image: {
