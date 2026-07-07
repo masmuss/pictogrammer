@@ -1,7 +1,7 @@
 ---
 title: Kenapa aku bikin Veka - Weekend Projects
 description: Kadang, kita tidak butuh framework dokumentasi berskala enterprise. Kita hanya butuh tempat sepi untuk merajut isi kepala. Inilah cerita akhir pekan di balik lahirnya Veka
-date: 07 June 2026
+date: 07 July 2026
 coverImage:
   src: ../../../../assets/images/projects/veka/thumbnail.png
   alt: Thumbnail Veka
