@@ -52,6 +52,14 @@
 				"thumbnail": "trak/dashboard.png",
 				"repoHref": "https://github.com/masmuss/trak.git",
 				"featured": true
+			},
+			{
+				"text": "Veka",
+				"description": "A minimalist, ultra-fast Digital Garden & Wiki starter for Astro. Features automatic folder-based routing, local Pagefind search, and Obsidian-style WikiLinks.",
+				"thumbnail": "veka/thumbnail.png",
+				"liveHref": "https://veka-9tg.pages.dev",
+				"repoHref": "https://github.com/masmuss/veka.git",
+				"featured": true
 			}
 		]
 	},
