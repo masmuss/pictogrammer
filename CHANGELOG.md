@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/masmuss/pictogrammer/compare/v1.15.0...v1.15.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* fix Shiki code block styling ([a033033](https://github.com/masmuss/pictogrammer/commit/a033033c11d977915f35dec4983187dc19881619))
+
 # [1.15.0](https://github.com/masmuss/pictogrammer/compare/v1.14.0...v1.15.0) (2026-07-07)
 
 
