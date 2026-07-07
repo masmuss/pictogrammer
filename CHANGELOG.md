@@ -1,3 +1,11 @@
+# [1.15.0](https://github.com/masmuss/pictogrammer/compare/v1.14.0...v1.15.0) (2026-07-07)
+
+
+### Features
+
+* add blog post about Veka project ([9910a75](https://github.com/masmuss/pictogrammer/commit/9910a754a1e011ac74cb646d4bfa5b9095fc7642))
+* add Veka project to portfolio ([4d5675a](https://github.com/masmuss/pictogrammer/commit/4d5675af5d158a809b4b3f0893c77b266ba9cc2d))
+
 # [1.14.0](https://github.com/masmuss/pictogrammer/compare/v1.13.1...v1.14.0) (2026-06-16)
 
 
