@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { cn } from "@/lib/utils/tailwind";
+import { cn } from "@/lib/utils/tailwind";
 
-	interface Props {
-		keys: string[];
-		class?: string;
-	}
+interface Props {
+	keys: string[];
+	class?: string;
+}
 
-	let { keys, class: className = "" }: Props = $props();
+let { keys, class: className = "" }: Props = $props();
 </script>
 
 <span

@@ -1,39 +1,39 @@
 <script lang="ts">
-	import type { createSearch, PagefindResultData } from "./search-state.svelte";
+import type { createSearch, PagefindResultData } from "./search-state.svelte";
 
-	interface Props {
-		result: PagefindResultData;
-		index: number;
-		search: ReturnType<typeof createSearch>;
+interface Props {
+	result: PagefindResultData;
+	index: number;
+	search: ReturnType<typeof createSearch>;
+}
+
+let { result, index, search }: Props = $props();
+
+function sanitizeExcerpt(excerpt: string) {
+	if (typeof window === "undefined") {
+		return excerpt
+			.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "")
+			.replaceAll(/<mark\b[^>]*>/gi, "<mark>");
 	}
 
-	let { result, index, search }: Props = $props();
+	const template = window.document.createElement("template");
+	template.innerHTML = excerpt;
 
-	function sanitizeExcerpt(excerpt: string) {
-		if (typeof window === "undefined") {
-			return excerpt
-				.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "")
-				.replaceAll(/<mark\b[^>]*>/gi, "<mark>");
+	for (const element of template.content.querySelectorAll("*")) {
+		if (element.tagName !== "MARK") {
+			element.replaceWith(
+				window.document.createTextNode(element.textContent ?? "")
+			);
+			continue;
 		}
 
-		const template = window.document.createElement("template");
-		template.innerHTML = excerpt;
-
-		for (const element of template.content.querySelectorAll("*")) {
-			if (element.tagName !== "MARK") {
-				element.replaceWith(
-					window.document.createTextNode(element.textContent ?? "")
-				);
-				continue;
-			}
-
-			for (const attr of [...element.attributes]) {
-				element.removeAttribute(attr.name);
-			}
+		for (const attr of [...element.attributes]) {
+			element.removeAttribute(attr.name);
 		}
-
-		return template.innerHTML;
 	}
+
+	return template.innerHTML;
+}
 </script>
 
 <a

@@ -1,6 +1,12 @@
 *.min.js
 node_modules
 dist
+public
+build
+coverage
+docs
+playwright-report
+test-results
 
 **/.cache
 
