@@ -15,9 +15,9 @@ export type ExperienceOrgGroup = {
 	positions: Experience[];
 };
 
-function getEndSortValue(period: string): number {
+function getEndYear(period: string): number {
 	if (/present/i.test(period)) {
-		return 999999;
+		return Number.MAX_SAFE_INTEGER;
 	}
 
 	const dates = period.match(/(\d{4})/g);
@@ -28,55 +28,65 @@ function getEndSortValue(period: string): number {
 	return 0;
 }
 
-export function getExperienceGroups(
+function fillOrgDefaults(
+	existing: ExperienceOrgGroup,
+	experience: Experience
+): void {
+	const keys = ["logo", "location", "kind", "umbrellaOrg"] as const;
+	for (const key of keys) {
+		if (!existing[key] && experience[key]) {
+			(existing as Record<string, unknown>)[key] = experience[key];
+		}
+	}
+}
+
+function groupExperiencesByOrg(
 	experiences: Experience[]
+): Map<string, ExperienceOrgGroup> {
+	return experiences.reduce((acc, experience) => {
+		const existing = acc.get(experience.company);
+
+		if (!existing) {
+			acc.set(experience.company, {
+				company: experience.company,
+				logo: experience.logo,
+				location: experience.location,
+				kind: experience.kind,
+				umbrellaOrg: experience.umbrellaOrg,
+				positions: [experience]
+			});
+			return acc;
+		}
+
+		existing.positions.push(experience);
+		fillOrgDefaults(existing, experience);
+
+		return acc;
+	}, new Map<string, ExperienceOrgGroup>());
+}
+
+function sortGroupedExperiences(
+	groups: Map<string, ExperienceOrgGroup>
 ): ExperienceOrgGroup[] {
-	return Array.from(
-		experiences
-			.reduce((acc, experience) => {
-				const existing = acc.get(experience.company);
-
-				if (!existing) {
-					acc.set(experience.company, {
-						company: experience.company,
-						logo: experience.logo,
-						location: experience.location,
-						kind: experience.kind,
-						umbrellaOrg: experience.umbrellaOrg,
-						positions: [experience]
-					});
-					return acc;
-				}
-
-				existing.positions.push(experience);
-				if (!existing.logo && experience.logo) {
-					existing.logo = experience.logo;
-				}
-				if (!existing.location && experience.location) {
-					existing.location = experience.location;
-				}
-				if (!existing.kind && experience.kind) {
-					existing.kind = experience.kind;
-				}
-				if (!existing.umbrellaOrg && experience.umbrellaOrg) {
-					existing.umbrellaOrg = experience.umbrellaOrg;
-				}
-
-				return acc;
-			}, new Map<string, ExperienceOrgGroup>())
-			.values()
-	)
+	return Array.from(groups.values())
 		.map((organization) => ({
 			...organization,
 			positions: [...organization.positions].sort(
-				(a, b) => getEndSortValue(b.period) - getEndSortValue(a.period)
+				(a, b) => getEndYear(b.period) - getEndYear(a.period)
 			)
 		}))
 		.sort(
 			(a, b) =>
-				getEndSortValue(b.positions[0]?.period ?? "") -
-				getEndSortValue(a.positions[0]?.period ?? "")
+				getEndYear(b.positions[0]?.period ?? "") -
+				getEndYear(a.positions[0]?.period ?? "")
 		);
+}
+
+export function getExperienceGroups(
+	experiences: Experience[]
+): ExperienceOrgGroup[] {
+	const groups = groupExperiencesByOrg(experiences);
+	return sortGroupedExperiences(groups);
 }
 
 export async function getCurrentRole(): Promise<Experience | undefined> {
