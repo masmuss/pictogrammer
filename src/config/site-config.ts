@@ -1,6 +1,6 @@
 import type { SiteConfig } from "./types";
 
-export const siteConfig: SiteConfig = {
+export const siteConfig = {
 	author: "Ahmad Musafir Khoirul Fattah",
 	title: "pictogrammmer",
 	subtitle: "Khoirul's Personal Website",
@@ -91,6 +91,6 @@ export const siteConfig: SiteConfig = {
 			}
 		]
 	}
-};
+} satisfies SiteConfig;
 
 export default siteConfig;

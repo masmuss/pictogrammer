@@ -12,7 +12,7 @@ export function sortPostsByDate(
 	);
 }
 
-export async function getAllPosts(limit?: number) {
+export async function getAllPosts(limit?: number): Promise<CollectionPosts[]> {
 	const posts = await getCollection("post", ({ data }) => {
 		const isNotDraft = data.draft !== true;
 		const isPublished = new Date(data.date) <= new Date();

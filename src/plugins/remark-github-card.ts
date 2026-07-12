@@ -22,9 +22,9 @@ export const remarkGithubCard: Plugin<[], Root> = () => (tree) => {
 		const repoParts = repoName.split("/");
 		const realUrl = `https://github.com/${repoName}`;
 		const isRepo = repoParts.length > 1;
-		const displayName = isRepo
-			? `${repoParts[0]}/${repoParts[1]}`
-			: repoParts[0];
+		const [owner, repo] = repoParts;
+		const displayName =
+			isRepo && owner && repo ? `${owner}/${repo}` : (owner ?? repoName);
 
 		const attrs: Record<string, string> = isRepo
 			? { repo: repoName, class: "github-card" }
