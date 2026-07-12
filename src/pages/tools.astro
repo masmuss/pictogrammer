@@ -10,29 +10,28 @@ const TOOLS = await getAllTools();
 ---
 
 <BaseLayout
-	title="Daily Tools for Development and Creativity"
-	description="Explore the software and hardware I use every day for coding, writing, and creative work, including practical tools that improve workflow and focus."
-	image={{ src: "/og/tools.png", alt: "Tools - pictogrammmer" }}
-	pageType="website"
+  title="Daily Tools for Development and Creativity"
+  description="Explore the software and hardware I use every day for coding, writing, and creative work, including practical tools that improve workflow and focus."
+  image={{ src: "/og/tools.png", alt: "Tools - pictogrammmer" }}
+  pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-10">
-		<PageHeader
-			title="Tools"
-			description="Software and hardware I use daily."
-			as="h1"
-			class="mb-6"
-		/>
+  <div class="flex w-full flex-col gap-y-10">
+    <PageHeader
+      title="Tools"
+      description="Software and hardware I use daily."
+      as="h1"
+      class="mb-6"
+    />
 
-		{
-			// Ambil "index" dari fungsi map
-			TOOLS.map((tool, index) => (
-				<ToolSection
-					showDescription
-					title={tool.title}
-					tools={tool.tools}
-					transitionDelay={index * 150}
-				/>
-			))
-		}
-	</div>
+    {
+      TOOLS.map((tool, index) => (
+        <ToolSection
+          showDescription
+          title={tool.title}
+          tools={tool.tools}
+          transitionDelay={index * 150}
+        />
+      ))
+    }
+  </div>
 </BaseLayout>

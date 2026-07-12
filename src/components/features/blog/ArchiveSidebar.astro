@@ -1,13 +1,6 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { YearGroup } from "@/lib/contents";
 import { cn } from "@/lib/utils";
-
-export type MonthGroup = {
-	month: number;
-	monthName: string;
-	posts: CollectionEntry<"post">[];
-};
-export type YearGroup = { year: number; months: MonthGroup[]; count: number };
 
 interface Props {
 	archiveData: YearGroup[];
@@ -18,37 +11,37 @@ const { archiveData, class: className } = Astro.props;
 ---
 
 <aside class={cn("sticky top-16 hidden w-64 shrink-0 lg:block", className)}>
-	<div class="p-6">
-		<h3 class="mb-4 font-semibold">Timeline</h3>
-		<nav
-			class="flex max-h-[calc(100vh-12rem)] flex-col gap-y-4 overflow-y-auto pr-2 text-sm"
-		>
-			{
-				archiveData.map(({ year, months, count }) => (
-					<div class="flex flex-col gap-y-2">
-						<a
-							href={`#year-${year}`}
-							class="text-foreground hover:text-primary flex items-center justify-between font-medium transition-colors"
-						>
-							<span>{year}</span>
-							<span class="text-muted-foreground text-xs">{count}</span>
-						</a>
-						<ul class="border-border/50 ml-3 flex flex-col gap-y-1.5 border-l pl-3">
-							{months.map(({ month, monthName, posts }) => (
-								<li>
-									<a
-										href={`#month-${year}-${month}`}
-										class="text-muted-foreground hover:text-foreground flex items-center justify-between transition-colors"
-									>
-										<span>{monthName}</span>
-										<span class="text-xs">{posts.length}</span>
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				))
-			}
-		</nav>
-	</div>
+  <div class="p-6">
+    <h3 class="mb-4 font-semibold">Timeline</h3>
+    <nav
+      class="flex max-h-[calc(100vh-12rem)] flex-col gap-y-4 overflow-y-auto pr-2 text-sm"
+    >
+      {
+        archiveData.map(({ year, months, count }) => (
+          <div class="flex flex-col gap-y-2">
+            <a
+              href={`#year-${year}`}
+              class="text-foreground hover:text-primary flex items-center justify-between font-medium transition-colors"
+            >
+              <span>{year}</span>
+              <span class="text-muted-foreground text-xs">{count}</span>
+            </a>
+            <ul class="border-border/50 ml-3 flex flex-col gap-y-1.5 border-l pl-3">
+              {months.map(({ month, monthName, posts }) => (
+                <li>
+                  <a
+                    href={`#month-${year}-${month}`}
+                    class="text-muted-foreground hover:text-foreground flex items-center justify-between transition-colors"
+                  >
+                    <span>{monthName}</span>
+                    <span class="text-xs">{posts.length}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
 </aside>

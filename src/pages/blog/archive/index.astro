@@ -1,72 +1,19 @@
 ---
 export const prerender = true;
 
-import type { CollectionEntry } from "astro:content";
-import ArchiveSidebar, {
-	type YearGroup
-} from "@/components/features/blog/ArchiveSidebar.astro";
+import ArchiveSidebar from "@/components/features/blog/ArchiveSidebar.astro";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
 import Heading from "@/components/ui/Heading.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getAllPosts } from "@/lib/contents";
+import { getAllPosts, groupPostsForArchive } from "@/lib/contents";
 
 const title = "Blog Archive";
 const description =
 	"Browse all blog posts by Khoirul Fattah, organized by year and month.";
 const allPosts = await getAllPosts();
 
-// Group by year and then month
-
-const groupedPosts = new Map<number, Map<number, CollectionEntry<"post">[]>>();
-const monthNames = [
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December"
-];
-
-for (const post of allPosts) {
-	const date = new Date(post.data.date);
-	const year = date.getFullYear();
-	const month = date.getMonth(); // 0-11
-
-	let yearMap = groupedPosts.get(year);
-	if (!yearMap) {
-		yearMap = new Map();
-		groupedPosts.set(year, yearMap);
-	}
-
-	let monthPosts = yearMap.get(month);
-	if (!monthPosts) {
-		monthPosts = [];
-		yearMap.set(month, monthPosts);
-	}
-
-	monthPosts.push(post);
-}
-
-const archiveData: YearGroup[] = Array.from(groupedPosts.entries())
-	.sort(([yearA], [yearB]) => yearB - yearA)
-	.map(([year, monthsMap]) => {
-		const months = Array.from(monthsMap.entries())
-			.sort(([monthA], [monthB]) => monthB - monthA)
-			.map(([month, posts]) => ({
-				month,
-				monthName: monthNames[month] ?? "Unknown",
-				posts
-			}));
-		const count = months.reduce((acc, m) => acc + m.posts.length, 0);
-		return { year, months, count };
-	});
+const archiveData = groupPostsForArchive(allPosts);
 ---
 
 <BaseLayout

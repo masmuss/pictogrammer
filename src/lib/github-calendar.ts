@@ -21,8 +21,12 @@ type FetchGitHubContributionsOptions = {
 
 const GITHUB_CACHE_TTL_MS = 60 * 60 * 1000;
 const GITHUB_STALE_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const ACTIVITY_LEVEL_THRESHOLDS = [0.25, 0.5, 0.75] as const;
 const contributionsCache = new Map<string, CacheEntry>();
 const GITHUB_API_BASE_URL = "https://github-contributions-api.jogruber.de/v4/";
+
+const WEEK_START_SUNDAY = 0;
+const WEEK_START_MONDAY = 1;
 
 export const GITHUB_CACHE_POLICY = {
 	sMaxAge: 60 * 60,
@@ -56,10 +60,10 @@ const GITHUB_FETCH_TIMEOUT_MS = 10_000;
 async function fetchFromGitHubApi(
 	username: string,
 	year: number | "last",
-	forceRefresh: boolean
+	options: { forceRefresh: boolean } = { forceRefresh: false }
 ): Promise<Activity[]> {
 	const headers: HeadersInit = {};
-	if (forceRefresh) {
+	if (options.forceRefresh) {
 		headers["Cache-Control"] = "no-cache";
 	}
 
@@ -128,11 +132,9 @@ export async function fetchGitHubContributions(
 	}
 
 	try {
-		const contributions = await fetchFromGitHubApi(
-			username,
-			year,
+		const contributions = await fetchFromGitHubApi(username, year, {
 			forceRefresh
-		);
+		});
 		contributionsCache.set(cacheKey, {
 			data: contributions,
 			fetchedAt: Date.now()
@@ -157,36 +159,31 @@ export async function fetchGitHubContributions(
 	}
 }
 
-export function groupByWeeks(
-	activities: Activity[],
-	weekStart: 0 | 1 = 0 // 0 = Sunday, 1 = Monday
+function buildActivityMap(activities: Activity[]): Map<string, Activity> {
+	return new Map(activities.map((a) => [a.date, a]));
+}
+
+function getWeekRange(
+	firstDate: Date,
+	lastDate: Date,
+	weekStart: number
+): { start: Date; end: Date } {
+	const start = new Date(firstDate);
+	const dayDiff = (start.getDay() - weekStart + 7) % 7;
+	start.setDate(start.getDate() - dayDiff);
+
+	const end = new Date(lastDate);
+	const endDayDiff = (6 - ((end.getDay() - weekStart + 7) % 7)) % 7;
+	end.setDate(end.getDate() + endDayDiff);
+
+	return { start, end };
+}
+
+function buildWeekGrid(
+	startDate: Date,
+	endDate: Date,
+	activityMap: Map<string, Activity>
 ): Array<Array<Activity | undefined>> {
-	if (activities.length === 0) return [];
-
-	const sortedActivities = [...activities].sort((a, b) =>
-		a.date.localeCompare(b.date)
-	);
-	const firstActivity = sortedActivities[0];
-	const lastActivity = sortedActivities[sortedActivities.length - 1];
-	if (!firstActivity || !lastActivity) return [];
-
-	const firstDate = new Date(firstActivity.date);
-	const lastDate = new Date(lastActivity.date);
-
-	// Get to start of week
-	const startDate = new Date(firstDate);
-	const dayDiff = (startDate.getDay() - weekStart + 7) % 7;
-	startDate.setDate(startDate.getDate() - dayDiff);
-
-	// Get to end of week
-	const endDate = new Date(lastDate);
-	const endDayDiff = (6 - ((endDate.getDay() - weekStart + 7) % 7)) % 7;
-	endDate.setDate(endDate.getDate() + endDayDiff);
-
-	// Create activity map
-	const activityMap = new Map(activities.map((a) => [a.date, a]));
-
-	// Build weeks
 	const weeks: Array<Array<Activity | undefined>> = [];
 	const currentDate = new Date(startDate);
 
@@ -205,6 +202,30 @@ export function groupByWeeks(
 	return weeks;
 }
 
+export function groupByWeeks(
+	activities: Activity[],
+	weekStart:
+		| typeof WEEK_START_SUNDAY
+		| typeof WEEK_START_MONDAY = WEEK_START_SUNDAY
+): Array<Array<Activity | undefined>> {
+	if (activities.length === 0) return [];
+
+	const sortedActivities = [...activities].sort((a, b) =>
+		a.date.localeCompare(b.date)
+	);
+	const firstActivity = sortedActivities[0];
+	const lastActivity = sortedActivities[sortedActivities.length - 1];
+	if (!firstActivity || !lastActivity) return [];
+
+	const firstDate = new Date(firstActivity.date);
+	const lastDate = new Date(lastActivity.date);
+
+	const { start, end } = getWeekRange(firstDate, lastDate, weekStart);
+	const activityMap = buildActivityMap(activities);
+
+	return buildWeekGrid(start, end, activityMap);
+}
+
 export function getActivityLevel(
 	count: number,
 	allCounts: number[]
@@ -215,9 +236,9 @@ export function getActivityLevel(
 	if (maxCount === 0) return 0;
 
 	const normalized = count / maxCount;
-	if (normalized < 0.25) return 1;
-	if (normalized < 0.5) return 2;
-	if (normalized < 0.75) return 3;
+	if (normalized < ACTIVITY_LEVEL_THRESHOLDS[0]) return 1;
+	if (normalized < ACTIVITY_LEVEL_THRESHOLDS[1]) return 2;
+	if (normalized < ACTIVITY_LEVEL_THRESHOLDS[2]) return 3;
 	return 4;
 }
 
