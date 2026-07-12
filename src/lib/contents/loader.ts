@@ -1,11 +1,13 @@
 import { getEntry } from "astro:content";
+import type { z } from "astro/zod";
 
 type SupportedCollection = "certifications" | "educations" | "experiences";
 
-export async function getContentEntryData<T>(
+export async function getContentEntryData<T extends z.ZodType>(
 	collection: SupportedCollection,
+	schema: T,
 	id = "index"
-): Promise<T> {
+): Promise<z.output<T>> {
 	const entry = await getEntry(collection, id);
 
 	if (!entry) {
@@ -14,5 +16,5 @@ export async function getContentEntryData<T>(
 		);
 	}
 
-	return entry.data as T;
+	return schema.parse(entry.data);
 }

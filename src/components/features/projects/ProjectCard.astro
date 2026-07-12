@@ -46,7 +46,8 @@ if (thumbnail) {
 	];
 	const path = candidates.find((candidate) => Boolean(images[candidate]));
 	if (path) {
-		thumbnailImage = await images[path]();
+		const loader = images[path];
+		if (loader) thumbnailImage = await loader();
 	}
 }
 
@@ -67,82 +68,82 @@ const hasSingleAction = actionCount === 1;
 ---
 
 <Card
-	class={cn(
-		"w-full gap-0 transition-all duration-fast hover:-translate-y-0.5 hover:ring-primary/40 scroll-reveal",
-		className
-	)}
+  class={cn(
+    "w-full gap-0 transition-all duration-fast hover:-translate-y-0.5 hover:ring-primary/40 scroll-reveal",
+    className,
+  )}
 >
-	{
-		thumbnailImage ? (
-			<Image
-				src={thumbnailImage.default}
-				alt={`${heading} thumbnail`}
-				class="aspect-video w-full object-cover"
-				loading="lazy"
-			/>
-		) : (
-			<div class="bg-muted flex aspect-video w-full items-center justify-center rounded-t-xl">
-				{placeholderIcon && (
-					<span
-						class={`iconify ${placeholderIcon} text-muted-foreground/40 text-4xl`}
-						aria-hidden="true"
-					/>
-				)}
-			</div>
-		)
-	}
-	<CardHeader class="flex flex-1 flex-col">
-		<CardTitle class="text-base">{heading}</CardTitle>
-		{
-			subheading && (
-				<CardDescription class="line-clamp-2 text-xs">
-					{subheading}
-				</CardDescription>
-			)
-		}
-	</CardHeader>
+  {
+    thumbnailImage ? (
+      <Image
+        src={thumbnailImage.default}
+        alt={`${heading} thumbnail`}
+        class="aspect-video w-full object-cover"
+        loading="lazy"
+      />
+    ) : (
+      <div class="bg-muted flex aspect-video w-full items-center justify-center rounded-t-xl">
+        {placeholderIcon && (
+          <span
+            class={`iconify ${placeholderIcon} text-muted-foreground/40 text-4xl`}
+            aria-hidden="true"
+          />
+        )}
+      </div>
+    )
+  }
+  <CardHeader class="flex flex-1 flex-col">
+    <CardTitle class="text-base">{heading}</CardTitle>
+    {
+      subheading && (
+        <CardDescription class="line-clamp-2 text-xs">
+          {subheading}
+        </CardDescription>
+      )
+    }
+  </CardHeader>
 
-	{
-		(effectiveRepoHref || effectiveLiveHref) && (
-			<CardFooter class="items-stretch">
-				{effectiveRepoHref && (
-					<Button
-						as="a"
-						href={effectiveRepoHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						variant={hasSingleAction ? "default" : "secondary"}
-						size="sm"
-						class="flex-1"
-					>
-						<span
-							slot="icon-before"
-							class="iconify ri--github-line"
-							aria-hidden="true"
-						/>
-						Repo
-					</Button>
-				)}
+  {
+    (effectiveRepoHref || effectiveLiveHref) && (
+      <CardFooter class="items-stretch">
+        {effectiveRepoHref && (
+          <Button
+            as="a"
+            href={effectiveRepoHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant={hasSingleAction ? "default" : "secondary"}
+            size="sm"
+            class="flex-1"
+          >
+            <span
+              slot="icon-before"
+              class="iconify ri--github-line"
+              aria-hidden="true"
+            />
+            Repo
+          </Button>
+        )}
 
-				{effectiveLiveHref && (
-					<Button
-						as="a"
-						href={effectiveLiveHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						variant="default"
-						size="sm"
-						class="flex-1"
-					>
-						<span
-							slot="icon-before"
-							class="iconify ri--external-link-line"
-							aria-hidden="true"
-						/>
-						Live
-					</Button>
-				)}
-			</CardFooter>
-		)
-	}
+        {effectiveLiveHref && (
+          <Button
+            as="a"
+            href={effectiveLiveHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="default"
+            size="sm"
+            class="flex-1"
+          >
+            <span
+              slot="icon-before"
+              class="iconify ri--external-link-line"
+              aria-hidden="true"
+            />
+            Live
+          </Button>
+        )}
+      </CardFooter>
+    )
+  }
 </Card>

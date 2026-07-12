@@ -1,7 +1,7 @@
 import type { SchemaContext } from "astro:content";
 import { z } from "astro/zod";
 
-function removeDupsAndLowerCase(array: string[]) {
+function removeDupsAndLowerCase(array: string[]): string[] {
 	if (!array.length) return array;
 	const lowercaseItems = array.map((str) => str.toLowerCase());
 	const distinctItems = new Set(lowercaseItems);

@@ -38,7 +38,11 @@ export async function getPostsBySeries(seriesId: string) {
 			const matchA = a.data.title.match(/#(\d+)/);
 			const matchB = b.data.title.match(/#(\d+)/);
 			if (matchA && matchB) {
-				return Number.parseInt(matchA[1], 10) - Number.parseInt(matchB[1], 10);
+				const a = matchA[1];
+				const b = matchB[1];
+				if (a && b) {
+					return Number.parseInt(a, 10) - Number.parseInt(b, 10);
+				}
 			}
 
 			return 0;

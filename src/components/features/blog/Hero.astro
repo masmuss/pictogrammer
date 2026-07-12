@@ -7,7 +7,7 @@ import PostImage from "./PostImage.astro";
 
 interface Props {
 	content: CollectionEntry<"post">;
-	coverImageResolved: {
+	coverImageResolved?: {
 		src: string;
 		alt: string;
 	};
@@ -21,48 +21,48 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 ---
 
 <header class="flex flex-col items-center justify-center gap-4">
-	<div class="flex flex-col items-center gap-3">
-		<div class="text-muted-foreground flex items-center gap-2 text-sm">
-			<span class="sr-only">{siteConfig.author}</span>
-			<PostMetadata
-				post={content}
-				dateTimeOptions={dateTimeOptions}
-				readTimeStyle="long"
-			/>
-		</div>
-		<Heading
-			as="h1"
-			size="lg"
-			weight="semibold"
-			class="text-center leading-tight md:text-2xl"
-			transition:name={`title-${content.id}`}
-		>
-			{content.data.title}
-		</Heading>
-		{
-			content.data.tags.length > 0 && (
-				<div class="flex flex-wrap items-center justify-center gap-2">
-					{content.data.tags.map((tag) => (
-						<a
-							href={`/tags/${tag}`}
-							class="text-muted-foreground hover:text-foreground px-3 py-1 text-xs transition-colors"
-						>
-							# {tag}
-						</a>
-					))}
-				</div>
-			)
-		}
-	</div>
+  <div class="flex flex-col items-center gap-3">
+    <div class="text-muted-foreground flex items-center gap-2 text-sm">
+      <span class="sr-only">{siteConfig.author}</span>
+      <PostMetadata
+        post={content}
+        dateTimeOptions={dateTimeOptions}
+        readTimeStyle="long"
+      />
+    </div>
+    <Heading
+      as="h1"
+      size="lg"
+      weight="semibold"
+      class="text-center leading-tight md:text-2xl"
+      transition:name={`title-${content.id}`}
+    >
+      {content.data.title}
+    </Heading>
+    {
+      content.data.tags.length > 0 && (
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          {content.data.tags.map((tag) => (
+            <a
+              href={`/tags/${tag}`}
+              class="text-muted-foreground hover:text-foreground px-3 py-1 text-xs transition-colors"
+            >
+              # {tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
 </header>
 
 <>
-	{
-		content.data.coverImage && (
-			<PostImage
-				src={coverImageResolved.src}
-				alt={coverImageResolved.alt || content.data.title}
-			/>
-		)
-	}
+  {
+    content.data.coverImage && coverImageResolved && (
+      <PostImage
+        src={coverImageResolved.src}
+        alt={coverImageResolved.alt || content.data.title}
+      />
+    )
+  }
 </>

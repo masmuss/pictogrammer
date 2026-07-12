@@ -8,7 +8,7 @@ const dateFormat = new Intl.DateTimeFormat(
 export function getFormattedDate(
 	date: Date,
 	options?: Intl.DateTimeFormatOptions
-) {
+): string {
 	if (typeof options !== "undefined") {
 		return new Date(date).toLocaleDateString(siteConfig.date.locale, {
 			...(siteConfig.date.options as Intl.DateTimeFormatOptions),
@@ -21,10 +21,8 @@ export function getFormattedDate(
 
 export function calculateDuration(period: string): string {
 	const parts = period.split("-").map((p) => p.trim());
-	if (parts.length !== 2) return "";
-
-	const startStr = parts[0];
-	const endStr = parts[1];
+	const [startStr, endStr] = parts;
+	if (!startStr || !endStr) return "";
 
 	const parseDate = (dateStr: string) => {
 		if (/present/i.test(dateStr)) return new Date();

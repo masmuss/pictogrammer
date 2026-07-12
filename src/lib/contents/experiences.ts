@@ -1,8 +1,9 @@
 import type { Experience } from "@/types";
 import { getContentEntryData } from "./loader";
+import { experiencesSchema } from "./schemas";
 
 export async function getAllExperiences(): Promise<Experience[]> {
-	return getContentEntryData<Experience[]>("experiences");
+	return getContentEntryData("experiences", experiencesSchema);
 }
 
 export type ExperienceOrgGroup = {
@@ -78,11 +79,10 @@ export function getExperienceGroups(
 		);
 }
 
-export async function getCurrentRole(): Promise<Experience> {
+export async function getCurrentRole(): Promise<Experience | undefined> {
 	const experiences = await getAllExperiences();
-	const currentRole =
-		experiences.find((exp) => exp.period.toLowerCase().includes("present")) ||
-		experiences[0];
-
-	return currentRole;
+	return (
+		experiences.find((exp) => exp.period.toLowerCase().includes("present")) ??
+		experiences[0]
+	);
 }
