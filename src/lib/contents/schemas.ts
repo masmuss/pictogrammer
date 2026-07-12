@@ -69,7 +69,7 @@ export const educationsSchema = z.array(
 	})
 );
 
-export const projectSchema = z.object({
+const projectSchema = z.object({
 	text: z.string(),
 	description: z.string().optional(),
 	thumbnail: z.string().optional(),
