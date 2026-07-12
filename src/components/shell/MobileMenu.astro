@@ -1,10 +1,11 @@
 ---
 import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
+import type { NavLink } from "@/config/types";
 import { getCurrentRole } from "@/lib/contents";
 import MobileMenuStatus from "./MobileMenuStatus.astro";
 
-const { navLinks } = siteConfig.header;
+const { navLinks } = Astro.props;
 const { socialLinks, email } = siteConfig;
 
 const githubLink = socialLinks.find((l) => l.text === "GitHub");
@@ -12,6 +13,7 @@ const linkedinLink = socialLinks.find((l) => l.text === "LinkedIn");
 const instagramLink = socialLinks.find((l) => l.text === "Instagram");
 
 const currentRole = await getCurrentRole();
+const isActive = Astro.url.pathname;
 ---
 
 <mobile-menu class="lg:hidden">
@@ -53,15 +55,20 @@ const currentRole = await getCurrentRole();
 			</div>
 
 			<div class="flex flex-1 flex-col justify-between space-y-8 px-6 py-8">
-				<nav class="flex flex-col divide-y" aria-label="mobile navigation">
+				<nav class="flex flex-col gap-6" aria-label="mobile navigation">
 					{
-						navLinks.map((link, i) => (
+						navLinks.map((link: NavLink, i: number) => (
 							<a
 								href={link.href}
-								class="group hover:text-accent-cta-text translate-y-4 py-4 text-xl font-semibold tracking-tight opacity-0 transition-all duration-300 ease-out"
+								class:list={[
+									"group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-300 ease-out",
+									isActive === link.href && "text-accent-cta"
+								]}
 								style={`transition-delay: ${150 + i * 75}ms`}
 							>
-								<span class="bg-flexoki-orange-400 h-6 w-6 shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
+								{isActive === link.href && (
+									<div class="bg-accent-cta h-5 w-5 shrink-0 rounded-sm" />
+								)}
 								{link.text}
 							</a>
 						))
