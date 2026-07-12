@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, develop]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # BUILD & TEST
   build-and-test:
@@ -26,20 +30,28 @@ jobs:
           bun-version: latest
 
       - name: Cache Bun dependencies
+        id: bun-cache
         uses: actions/cache@v4
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          path: |
+            ~/.bun/install/cache
+            node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-bun-
 
       - name: Install dependencies
+        if: steps.bun-cache.outputs.cache-hit != 'true'
         run: bun install --frozen-lockfile
 
-      - name: Lint and Typecheck
-        run: |
-          bun run lint
-          bun run check
+      - name: Lint
+        run: bun run lint
+
+      - name: Check Formatting
+        run: bunx biome format .
+
+      - name: Typecheck
+        run: bun run check
 
       - name: Run Unit Tests
         run: bun run test:unit:run
