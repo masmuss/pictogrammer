@@ -29,7 +29,7 @@ const currentRole = await getCurrentRole();
 
 	<div
 		id="mobile-nav"
-		class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-[opacity,transform] duration-300 ease-out"
+		class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-all duration-300 ease-out will-change-transform"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Navigation menu"
@@ -205,10 +205,13 @@ const currentRole = await getCurrentRole();
 						"pointer-events-none"
 					);
 					nav.setAttribute("inert", "");
-					animateLinks.forEach((link) => {
-						link.classList.remove("translate-y-0", "opacity-100");
-						link.classList.add("translate-y-4", "opacity-0");
-					});
+					// Reset link classes after overlay transition ends
+					setTimeout(() => {
+						animateLinks.forEach((link) => {
+							link.classList.add("translate-y-4", "opacity-0");
+							link.classList.remove("translate-y-0", "opacity-100");
+						});
+					}, 300);
 				}
 				document.body.style.overflow = open ? "hidden" : "";
 			};
@@ -224,7 +227,21 @@ const currentRole = await getCurrentRole();
 			});
 
 			nav.querySelectorAll("a").forEach((link) => {
-				link.addEventListener("click", close);
+				link.addEventListener("click", (e) => {
+					const href = link.getAttribute("href");
+					const isExternal =
+						link.getAttribute("target") === "_blank" ||
+						(href && (href.startsWith("http") || href.startsWith("mailto")));
+					if (!isExternal) {
+						e.preventDefault();
+						close();
+						setTimeout(() => {
+							if (href) window.location.href = href;
+						}, 300);
+					} else {
+						close();
+					}
+				});
 			});
 
 			document.addEventListener("keydown", (e) => {
