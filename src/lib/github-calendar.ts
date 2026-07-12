@@ -21,17 +21,11 @@ type FetchGitHubContributionsOptions = {
 
 const GITHUB_CACHE_TTL_MS = 60 * 60 * 1000;
 const GITHUB_STALE_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
-const ACTIVITY_LEVEL_THRESHOLDS = [0.25, 0.5, 0.75] as const;
 const contributionsCache = new Map<string, CacheEntry>();
 const GITHUB_API_BASE_URL = "https://github-contributions-api.jogruber.de/v4/";
 
 const WEEK_START_SUNDAY = 0;
 const WEEK_START_MONDAY = 1;
-
-export const GITHUB_CACHE_POLICY = {
-	sMaxAge: 60 * 60,
-	staleWhileRevalidate: 24 * 60 * 60
-} as const;
 
 function getCacheKey(username: string, year: number | "last"): string {
 	return `${username}:${year}`;
@@ -224,31 +218,6 @@ export function groupByWeeks(
 	const activityMap = buildActivityMap(activities);
 
 	return buildWeekGrid(start, end, activityMap);
-}
-
-export function getActivityLevel(
-	count: number,
-	allCounts: number[]
-): 0 | 1 | 2 | 3 | 4 {
-	if (count === 0) return 0;
-
-	const maxCount = Math.max(...allCounts);
-	if (maxCount === 0) return 0;
-
-	const normalized = count / maxCount;
-	if (normalized < ACTIVITY_LEVEL_THRESHOLDS[0]) return 1;
-	if (normalized < ACTIVITY_LEVEL_THRESHOLDS[1]) return 2;
-	if (normalized < ACTIVITY_LEVEL_THRESHOLDS[2]) return 3;
-	return 4;
-}
-
-export function formatDate(dateStr: string): string {
-	const date = new Date(`${dateStr}T00:00:00`);
-	return date.toLocaleDateString("id-ID", {
-		day: "numeric",
-		month: "short",
-		year: "numeric"
-	});
 }
 
 export function getTotalCount(activities: Activity[]): number {

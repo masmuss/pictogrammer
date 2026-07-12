@@ -4,7 +4,7 @@ import { getAllPosts } from "./post";
 
 const SERIES_PREFIX = "series";
 
-export function getSeriesIdFromPostId(postId: string): string | null {
+function getSeriesIdFromPostId(postId: string): string | null {
 	const parts = postId.split("/");
 
 	if (parts[0] !== SERIES_PREFIX) return null;

@@ -3,7 +3,7 @@ import type { CollectionPosts } from "@/types";
 
 const AVERAGE_READING_WORDS_PER_MINUTE = 200;
 
-export function sortPostsByDate(
+function sortPostsByDate(
 	itemA: CollectionPosts,
 	itemB: CollectionPosts
 ): number {
@@ -88,7 +88,7 @@ export function groupPostsByYear(
 	return new Map([...grouped.entries()].sort((a, b) => b[0] - a[0]));
 }
 
-export function getAllTags(posts: Array<CollectionEntry<"post">>) {
+function getAllTags(posts: Array<CollectionEntry<"post">>) {
 	return posts.flatMap((post) => [...post.data.tags]);
 }
 

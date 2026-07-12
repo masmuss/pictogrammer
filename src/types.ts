@@ -18,7 +18,6 @@ export type PaginationLink = {
 };
 
 export type Tool = CollectionEntry<"tools">["data"][number]["tools"][number];
-export type ToolsCollection = CollectionEntry<"tools">["data"][number];
 
 export type Skill = CollectionEntry<"skills">["data"][number]["skills"][number];
 export type SkillCollection = CollectionEntry<"skills">["data"][number];
