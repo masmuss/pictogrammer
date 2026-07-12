@@ -79,10 +79,10 @@ export function getExperienceGroups(
 }
 
 export async function getCurrentRole(): Promise<Experience> {
-  const experiences = await getAllExperiences()
-  const currentRole = experiences
-    .find((exp) => exp.period.toLowerCase().includes("present")) ||
-    experiences[0];
+	const experiences = await getAllExperiences();
+	const currentRole =
+		experiences.find((exp) => exp.period.toLowerCase().includes("present")) ||
+		experiences[0];
 
-  return currentRole;
+	return currentRole;
 }

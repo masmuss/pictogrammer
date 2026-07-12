@@ -57,6 +57,11 @@ export const siteConfig: SiteConfig = {
 		},
 		navLinks: [
 			{
+				text: "Home",
+				href: "/",
+				icon: "ri--home-line"
+			},
+			{
 				text: "About",
 				href: "/about",
 				icon: "ri--user-line"

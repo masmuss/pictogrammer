@@ -2,6 +2,7 @@
 import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
 import { getCurrentRole } from "@/lib/contents";
+import MobileMenuStatus from "./MobileMenuStatus.astro";
 
 const { navLinks } = siteConfig.header;
 const { socialLinks, email } = siteConfig;
@@ -28,136 +29,130 @@ const currentRole = await getCurrentRole();
 
 	<div
 		id="mobile-nav"
-		class="bg-background fixed inset-0 z-50 hidden flex-col overflow-y-auto"
+		class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-[opacity,transform] duration-300 ease-out"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Navigation menu"
+		inert
 	>
-		<!-- Mobile Header -->
-		<div
-			class="bg-background/90 sticky top-0 z-50 flex items-center justify-between p-8 backdrop-blur-sm"
-		>
-			<a href="/" class="text-2xl font-semibold">pictogrammer</a>
-			<Button
-				variant="ghost"
-				size="icon-lg"
-				type="button"
-				id="menu-close"
-				aria-label="Close navigation menu"
+		<div class="bg-background flex flex-1 flex-col rounded-xl">
+			<!-- Mobile Header -->
+			<div
+				class="bg-background/90 sticky top-0 z-50 flex items-center justify-between rounded-t-xl p-6 backdrop-blur-sm transition delay-75 duration-300"
 			>
-				<span class="iconify ri--close-line" aria-hidden="true"></span>
-			</Button>
-		</div>
-
-		<div class="flex flex-1 flex-col justify-between px-8 py-12">
-			<nav class="flex flex-col divide-y" aria-label="mobile navigation">
-				{
-					navLinks.map((link) => (
-						<a
-							href={link.href}
-							class="group hover:text-accent-cta-text py-4 text-xl font-semibold tracking-tight transition-colors"
-						>
-							<span class="bg-flexoki-orange-400 h-6 w-6 shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
-							{link.text}
-						</a>
-					))
-				}
-			</nav>
-
-			<!-- Extra Sections -->
-			<div class="grid grid-cols-1 gap-12 sm:grid-cols-2">
-				<!-- Contact -->
-				<div class="flex flex-col gap-y-4">
-					<h3
-						class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-					>
-						Contact
-					</h3>
-					<div class="flex flex-col gap-y-2 text-sm">
-						<a
-							href={`mailto:${email}`}
-							class="hover:text-accent-cta-text transition-colors"
-						>
-							{email}
-						</a>
-					</div>
-				</div>
-
-				<!-- Socials -->
-				<div class="flex flex-col gap-y-4">
-					<h3
-						class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-					>
-						Connect
-					</h3>
-					<div class="flex flex-col gap-y-2 text-sm">
-						{
-							instagramLink && (
-								<a
-									href={instagramLink.href}
-									target="_blank"
-									rel="noopener"
-									class="hover:text-accent-cta-text transition-colors"
-								>
-									Instagram
-								</a>
-							)
-						}
-						{
-							linkedinLink && (
-								<a
-									href={linkedinLink.href}
-									target="_blank"
-									rel="noopener"
-									class="hover:text-accent-cta-text transition-colors"
-								>
-									LinkedIn
-								</a>
-							)
-						}
-						{
-							githubLink && (
-								<a
-									href={githubLink.href}
-									target="_blank"
-									rel="noopener"
-									class="hover:text-accent-cta-text transition-colors"
-								>
-									GitHub
-								</a>
-							)
-						}
-					</div>
-				</div>
+				<a href="/" class="text-2xl font-semibold">pictogrammer</a>
+				<Button
+					variant="ghost"
+					size="icon-lg"
+					type="button"
+					id="menu-close"
+					aria-label="Close navigation menu"
+				>
+					<span class="iconify ri--close-line" aria-hidden="true"></span>
+				</Button>
 			</div>
 
-			<!-- Status -->
-			<div class="border-border/50 mt-20 flex flex-col gap-y-6 border-t pt-10">
-				<p
-					class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-				>
-					Status
-				</p>
-				<div class="flex flex-col gap-y-4">
-					<div
-						class="flex items-center gap-x-3 text-xs font-medium tracking-tight uppercase"
+			<div class="flex flex-1 flex-col justify-between space-y-8 px-6 py-8">
+				<nav class="flex flex-col divide-y" aria-label="mobile navigation">
+					{
+						navLinks.map((link, i) => (
+							<a
+								href={link.href}
+								class="group hover:text-accent-cta-text translate-y-4 py-4 text-xl font-semibold tracking-tight opacity-0 transition-all duration-300 ease-out"
+								style={`transition-delay: ${150 + i * 75}ms`}
+							>
+								<span class="bg-flexoki-orange-400 h-6 w-6 shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
+								{link.text}
+							</a>
+						))
+					}
+				</nav>
+
+				<!-- Extra Sections -->
+				<div class="grid grid-cols-1 gap-12 sm:grid-cols-2">
+					<!-- Contact -->
+					<div class="flex flex-col gap-y-4">
+						<h3
+							class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
+						>
+							Contact
+						</h3>
+						<div class="flex flex-col gap-y-2 text-sm">
+							<a
+								href={`mailto:${email}`}
+								class="hover:text-accent-cta-text transition-colors"
+							>
+								{email}
+							</a>
+						</div>
+					</div>
+
+					<!-- Socials -->
+					<div class="flex flex-col gap-y-4">
+						<h3
+							class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
+						>
+							Connect
+						</h3>
+						<div class="flex flex-col gap-y-2 text-sm">
+							{
+								instagramLink && (
+									<a
+										href={instagramLink.href}
+										target="_blank"
+										rel="noopener"
+										class="hover:text-accent-cta-text transition-colors"
+									>
+										Instagram
+									</a>
+								)
+							}
+							{
+								linkedinLink && (
+									<a
+										href={linkedinLink.href}
+										target="_blank"
+										rel="noopener"
+										class="hover:text-accent-cta-text transition-colors"
+									>
+										LinkedIn
+									</a>
+								)
+							}
+							{
+								githubLink && (
+									<a
+										href={githubLink.href}
+										target="_blank"
+										rel="noopener"
+										class="hover:text-accent-cta-text transition-colors"
+									>
+										GitHub
+									</a>
+								)
+							}
+						</div>
+					</div>
+				</div>
+
+				<!-- Status -->
+				<div class="border-border/50 flex flex-col gap-y-6 border-t pt-8">
+					<p
+						class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
 					>
-						<span class="bg-flexoki-orange-400 h-3 w-3 shrink-0"></span>
-						{
-							currentRole == null ? (
+						Status
+					</p>
+					<div class="flex flex-col gap-y-4">
+						<MobileMenuStatus
+							status={currentRole == null ? (
 								<span>Accepting new projects</span>
 							) : (
 								<span>
 									{currentRole.title} at {currentRole.company}
 								</span>
-							)
-						}
-					</div>
-					<div
-						class="flex items-center gap-x-3 text-xs font-medium tracking-tight uppercase"
-					>
-						<span class="bg-flexoki-orange-400 h-3 w-3 shrink-0"></span>
-						Surabaya, Indonesia (UTC+7)
+							)}
+						/>
+						<MobileMenuStatus status="Surabaya, Indonesia (UTC+7)" />
 					</div>
 				</div>
 			</div>
@@ -177,15 +172,43 @@ const currentRole = await getCurrentRole();
 
 			let isOpen = false;
 
+			const animateLinks = nav.querySelectorAll<HTMLAnchorElement>("nav a");
+
 			const setOpen = (open: boolean) => {
 				isOpen = open;
 				toggle.setAttribute("aria-expanded", String(open));
 				if (open) {
-					nav.classList.remove("hidden");
-					nav.classList.add("flex");
+					nav.classList.remove(
+						"translate-x-full",
+						"opacity-0",
+						"pointer-events-none"
+					);
+					nav.classList.add(
+						"translate-x-0",
+						"opacity-100",
+						"pointer-events-auto"
+					);
+					nav.removeAttribute("inert");
+					animateLinks.forEach((link) => {
+						link.classList.remove("translate-y-4", "opacity-0");
+						link.classList.add("translate-y-0", "opacity-100");
+					});
 				} else {
-					nav.classList.remove("flex");
-					nav.classList.add("hidden");
+					nav.classList.remove(
+						"translate-x-0",
+						"opacity-100",
+						"pointer-events-auto"
+					);
+					nav.classList.add(
+						"translate-x-full",
+						"opacity-0",
+						"pointer-events-none"
+					);
+					nav.setAttribute("inert", "");
+					animateLinks.forEach((link) => {
+						link.classList.remove("translate-y-0", "opacity-100");
+						link.classList.add("translate-y-4", "opacity-0");
+					});
 				}
 				document.body.style.overflow = open ? "hidden" : "";
 			};

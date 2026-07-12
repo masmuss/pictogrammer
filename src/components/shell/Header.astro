@@ -39,9 +39,11 @@ const { navLinks } = siteConfig.header;
 			<!-- Desktop Navigation -->
 			<div class="hidden items-center gap-x-5 lg:flex">
 				{
-					navLinks.map((link) => (
-						<NavLink href={link.href} text={link.text} icon={link.icon} />
-					))
+					navLinks
+						.slice(1, navLinks.length)
+						.map((link) => (
+							<NavLink href={link.href} text={link.text} icon={link.icon} />
+						))
 				}
 			</div>
 
