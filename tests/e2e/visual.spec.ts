@@ -71,7 +71,11 @@ test.describe("Visual Regression - Pages", () => {
 test.describe("Visual Regression - Atomic Components", () => {
 	const components = [
 		{ name: "Hero", path: "/", selector: '[data-testid="hero-section"]' },
-		{ name: "About Text", path: "/", selector: '[data-testid="about-text"]' },
+		{
+			name: "About Text",
+			path: "/",
+			selector: '[data-testid="about-text"]'
+		},
 		{
 			name: "Featured Project",
 			path: "/",
@@ -102,7 +106,11 @@ test.describe("Visual Regression - Atomic Components", () => {
 			path: "/blog/series",
 			selector: '[data-testid="series-item"]'
 		},
-		{ name: "Tool Item", path: "/tools", selector: '[data-testid="tool-item"]' }
+		{
+			name: "Tool Item",
+			path: "/tools",
+			selector: '[data-testid="tool-item"]'
+		}
 	];
 
 	for (const comp of components) {

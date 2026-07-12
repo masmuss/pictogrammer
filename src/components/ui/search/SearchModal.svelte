@@ -1,22 +1,22 @@
 <script lang="ts">
-	import Kbd from "./Kbd.svelte";
-	import SearchBar from "./SearchBar.svelte";
-	import SearchResultItem from "./SearchResultItem.svelte";
-	import type { createSearch } from "./search-state.svelte";
+import Kbd from "./Kbd.svelte";
+import SearchBar from "./SearchBar.svelte";
+import SearchResultItem from "./SearchResultItem.svelte";
+import type { createSearch } from "./search-state.svelte";
 
-	let { search }: { search: ReturnType<typeof createSearch> } = $props();
-	let dialogElement: HTMLDialogElement;
+let { search }: { search: ReturnType<typeof createSearch> } = $props();
+let dialogElement: HTMLDialogElement;
 
-	$effect(() => {
-		if (search.isOpen && dialogElement && !dialogElement.open) {
-			dialogElement.showModal();
-			// Prevent body scroll when open
-			document.body.style.overflow = "hidden";
-		} else if (!search.isOpen && dialogElement && dialogElement.open) {
-			dialogElement.close();
-			document.body.style.overflow = "";
-		}
-	});
+$effect(() => {
+	if (search.isOpen && dialogElement && !dialogElement.open) {
+		dialogElement.showModal();
+		// Prevent body scroll when open
+		document.body.style.overflow = "hidden";
+	} else if (!search.isOpen && dialogElement && dialogElement.open) {
+		dialogElement.close();
+		document.body.style.overflow = "";
+	}
+});
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->

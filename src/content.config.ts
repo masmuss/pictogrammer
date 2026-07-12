@@ -22,7 +22,10 @@ const series = defineCollection({
 });
 
 const experiences = defineCollection({
-	loader: glob({ pattern: "**/**/*.json", base: "./src/content/experiences" }),
+	loader: glob({
+		pattern: "**/**/*.json",
+		base: "./src/content/experiences"
+	}),
 	schema: experiencesSchema
 });
 

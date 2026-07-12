@@ -9,10 +9,10 @@ Personal portfolio and blog built with Astro. Features technical writing, projec
 
 | Layer     | Technology                            |
 | --------- | ------------------------------------- |
-| Framework | Astro 6                               |
+| Framework | Astro 7                               |
 | UI Engine | Svelte 5 (interactive islands)        |
 | Styling   | Tailwind CSS 4                        |
-| Language  | TypeScript 5                          |
+| Language  | TypeScript 6                          |
 | Content   | Astro Content Collections (MD + JSON) |
 | Search    | Pagefind                              |
 | Testing   | Vitest + Playwright                   |
@@ -41,7 +41,7 @@ Semua perubahan kode atau konten harus dilakukan di branch terpisah sebelum diga
 | `bun run preview`       | Preview production build    |
 | `bun run check`         | Astro type checking         |
 | `bun run lint`          | Biome linting               |
-| `bun run format`        | Prettier + Biome formatting |
+| `bun run format`        | Biome formatting            |
 | `bun run test:unit:run` | Run unit tests (single run) |
 | `bun run test:e2e`      | Run Playwright E2E tests    |
 

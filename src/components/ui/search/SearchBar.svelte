@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { createSearch } from "./search-state.svelte";
+import type { createSearch } from "./search-state.svelte";
 
-	let { search }: { search: ReturnType<typeof createSearch> } = $props();
+let { search }: { search: ReturnType<typeof createSearch> } = $props();
 </script>
 
 <div class="border-border relative flex items-center border-b px-4">
