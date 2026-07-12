@@ -1,3 +1,17 @@
+# [1.16.0](https://github.com/masmuss/pictogrammer/compare/v1.15.1...v1.16.0) (2026-07-12)
+
+
+### Bug Fixes
+
+* improve mobile menu navigation with delayed transitions and proper routing ([c3d5da2](https://github.com/masmuss/pictogrammer/commit/c3d5da2ba658141557afe5b1c7a8b32694b999e5))
+
+
+### Features
+
+* add Home nav link and redesign mobile menu with animations ([45e1750](https://github.com/masmuss/pictogrammer/commit/45e1750890b353487b458387667699b132a309da))
+* add mobile navigation menu and improve blog post UX ([081aebb](https://github.com/masmuss/pictogrammer/commit/081aebbe9a9a6cf8e62c2824eb675e6b3694e274))
+* **mobile-menu:** add active state indicator and pass navLinks as prop ([b33a1e2](https://github.com/masmuss/pictogrammer/commit/b33a1e2d2ade86b993ba40c16a23e02e0000b98c))
+
 ## [1.15.1](https://github.com/masmuss/pictogrammer/compare/v1.15.0...v1.15.1) (2026-07-07)
 
 
