@@ -115,3 +115,68 @@ export function getReadTimeCount(content: string): number {
 	const readTime = words.length / AVERAGE_READING_WORDS_PER_MINUTE;
 	return Math.ceil(readTime);
 }
+
+export type YearGroup = {
+	year: number;
+	months: MonthGroup[];
+	count: number;
+};
+
+export type MonthGroup = {
+	month: number;
+	monthName: string;
+	posts: CollectionPosts[];
+};
+
+const MONTH_NAMES = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
+] as const;
+
+export function groupPostsForArchive(posts: CollectionPosts[]): YearGroup[] {
+	const grouped = new Map<number, Map<number, CollectionPosts[]>>();
+
+	for (const post of posts) {
+		const date = new Date(post.data.date);
+		const year = date.getFullYear();
+		const month = date.getMonth();
+
+		let yearMap = grouped.get(year);
+		if (!yearMap) {
+			yearMap = new Map();
+			grouped.set(year, yearMap);
+		}
+
+		let monthPosts = yearMap.get(month);
+		if (!monthPosts) {
+			monthPosts = [];
+			yearMap.set(month, monthPosts);
+		}
+
+		monthPosts.push(post);
+	}
+
+	return Array.from(grouped.entries())
+		.sort(([a], [b]) => b - a)
+		.map(([year, monthsMap]) => {
+			const months = Array.from(monthsMap.entries())
+				.sort(([a], [b]) => b - a)
+				.map(([month, monthPosts]) => ({
+					month,
+					monthName: MONTH_NAMES[month] ?? "Unknown",
+					posts: monthPosts
+				}));
+			const count = months.reduce((acc, m) => acc + m.posts.length, 0);
+			return { year, months, count };
+		});
+}
