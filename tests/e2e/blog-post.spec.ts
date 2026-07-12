@@ -68,10 +68,7 @@ test.describe("Blog Post Details", () => {
 		await page.waitForTimeout(1000);
 
 		const toTopBtn = page.locator("#to-top-btn");
-		// Ensure button is visible (triggered by data-show attribute)
-		await expect(toTopBtn).toHaveAttribute("data-show", "true", {
-			timeout: 10000
-		});
+		await expect(toTopBtn).toBeVisible({ timeout: 10000 });
 
 		await toTopBtn.click();
 

@@ -1,5 +1,5 @@
 .github-card {
-	@apply bg-foreground/5 rounded-md px-4 py-3;
+	@apply bg-foreground/5 border-foreground/10 block rounded-lg border px-4 py-3;
 
 	.gh-title {
 		@apply relative flex items-center gap-2 text-base;

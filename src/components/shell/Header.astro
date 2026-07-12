@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logoDark from "@/assets/images/logo-dark.svg";
 import logoLight from "@/assets/images/logo-light.svg";
+import MobileMenu from "@/components/shell/MobileMenu.astro";
 import NavLink from "@/components/shell/NavLink.astro";
 import { Search } from "@/components/ui/search";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
@@ -35,15 +36,20 @@ const { navLinks } = siteConfig.header;
 		</a>
 
 		<div class="ml-auto flex flex-row items-center gap-x-5">
-			<!-- Navigation -->
-			{
-				navLinks.map((link) => (
-					<NavLink href={link.href} text={link.text} icon={link.icon} />
-				))
-			}
+			<!-- Desktop Navigation -->
+			<div class="hidden items-center gap-x-5 lg:flex">
+				{
+					navLinks
+						.slice(1, navLinks.length)
+						.map((link) => (
+							<NavLink href={link.href} text={link.text} icon={link.icon} />
+						))
+				}
+			</div>
 
 			<Search client:load />
 			<ThemeToggle />
+			<MobileMenu navLinks={navLinks} />
 		</div>
 	</nav>
 </header>
