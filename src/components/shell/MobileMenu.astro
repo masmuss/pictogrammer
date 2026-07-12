@@ -1,6 +1,7 @@
 ---
 import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
+import { getCurrentRole } from "@/lib/contents";
 
 const { navLinks } = siteConfig.header;
 const { socialLinks, email } = siteConfig;
@@ -8,6 +9,8 @@ const { socialLinks, email } = siteConfig;
 const githubLink = socialLinks.find((l) => l.text === "GitHub");
 const linkedinLink = socialLinks.find((l) => l.text === "LinkedIn");
 const instagramLink = socialLinks.find((l) => l.text === "Instagram");
+
+const currentRole = await getCurrentRole();
 ---
 
 <mobile-menu class="lg:hidden">
@@ -140,7 +143,15 @@ const instagramLink = socialLinks.find((l) => l.text === "Instagram");
 						class="flex items-center gap-x-3 text-xs font-medium tracking-tight uppercase"
 					>
 						<span class="bg-flexoki-orange-400 h-3 w-3 shrink-0"></span>
-						Accepting new projects
+						{
+							currentRole == null ? (
+								<span>Accepting new projects</span>
+							) : (
+								<span>
+									{currentRole.title} at {currentRole.company}
+								</span>
+							)
+						}
 					</div>
 					<div
 						class="flex items-center gap-x-3 text-xs font-medium tracking-tight uppercase"

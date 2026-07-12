@@ -3,12 +3,9 @@ import SocialLinks from "@/components/common/SocialLinks.astro";
 import Button from "@/components/ui/Button.astro";
 
 import siteConfig from "@/config/site-config";
-import { getAllExperiences } from "@/lib/contents";
+import { getAllExperiences, getCurrentRole } from "@/lib/contents";
 
-const experiences = await getAllExperiences();
-const currentRole =
-	experiences.find((exp) => exp.period.toLowerCase().includes("present")) ||
-	experiences[0];
+const currentRole = await getCurrentRole();
 ---
 
 <div class="flex flex-col gap-y-6">

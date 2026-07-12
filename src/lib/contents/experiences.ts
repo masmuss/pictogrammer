@@ -77,3 +77,12 @@ export function getExperienceGroups(
 				getEndSortValue(a.positions[0]?.period ?? "")
 		);
 }
+
+export async function getCurrentRole(): Promise<Experience> {
+  const experiences = await getAllExperiences()
+  const currentRole = experiences
+    .find((exp) => exp.period.toLowerCase().includes("present")) ||
+    experiences[0];
+
+  return currentRole;
+}
