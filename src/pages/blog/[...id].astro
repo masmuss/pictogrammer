@@ -6,6 +6,7 @@ import Comment from "@/components/features/blog/Comment.astro";
 import RelatedPost from "@/components/features/blog/RelatedPost.astro";
 import ShareButtons from "@/components/features/blog/ShareButtons.astro";
 import Toc from "@/components/features/blog/Toc.astro";
+import TocMobile from "@/components/features/blog/TocMobile.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
 import { getAllPosts } from "@/lib/contents/post";
 import { getPostRouteId } from "@/lib/utils/post-route";
@@ -25,6 +26,14 @@ const { Content, headings } = await render(post);
 ---
 
 <PostLayout post={post}>
+	{
+		headings.length > 0 && (
+			<div class="mb-8">
+				<TocMobile {headings} />
+			</div>
+		)
+	}
+
 	<div class:list={["relative mt-8 grid grid-cols-1"]}>
 		{
 			headings.length > 0 && (

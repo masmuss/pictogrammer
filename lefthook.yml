@@ -8,6 +8,10 @@ pre-commit:
       glob: "*.{ts,tsx,astro,svelte}"
       run: bun run check
 
+    astro-check:
+      glob: "*.astro"
+      run: bunx astro check
+
     lint:
       glob: "*.{ts,tsx,js,jsx,astro,svelte}"
       run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}

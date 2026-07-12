@@ -1,0 +1,43 @@
+---
+import type { MarkdownHeading } from "astro";
+import { generateToc } from "@/lib/utils";
+import TocHeading from "./TocHeading.astro";
+
+interface Props {
+	headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+const toc = generateToc(headings);
+---
+
+<details class="toc-mobile group xl:hidden" data-testid="toc-mobile">
+	<summary
+		class="text-muted-foreground hover:text-foreground border-border bg-card/50 flex cursor-pointer items-center gap-x-2 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors select-none"
+	>
+		<span class="iconify ri--list-unordered text-base" aria-hidden="true"
+		></span>
+		Table of Contents
+		<span
+			class="iconify ri--arrow-down-s-line ml-auto text-sm transition-transform duration-200 group-open:rotate-180"
+			aria-hidden="true"></span>
+	</summary>
+
+	<nav
+		class="border-border bg-card/30 mt-2 rounded-lg border p-4"
+		aria-label="Table of Contents"
+	>
+		<ul class="flex flex-col text-pretty">
+			{toc.map((heading) => <TocHeading heading={heading} />)}
+		</ul>
+	</nav>
+</details>
+
+<style>
+	.toc-mobile summary::-webkit-details-marker {
+		display: none;
+	}
+	.toc-mobile summary::marker {
+		content: none;
+	}
+</style>
