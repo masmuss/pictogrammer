@@ -22,7 +22,7 @@ Karena nggak nemu _template_ yang benar-benar pas—yang nggak penuh sama _bloat
 
 Aku kasih nama **Veka**.
 
-Lihat Demo-nya di [Veka](https://veka-9tg.pages.dev)
+Lihat Demo-nya di [Veka](https://demo-veka.khoirul.me)
 
 Dan lihat kodenya di
 
