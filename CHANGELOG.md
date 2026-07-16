@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/masmuss/pictogrammer/compare/v1.16.0...v1.16.1) (2026-07-16)
+
+
+### Bug Fixes
+
+* **veka:** update demo URL to new domain ([7d489ac](https://github.com/masmuss/pictogrammer/commit/7d489ac7bc92b44e49bbcebc963051508d065f7a))
+
 # [1.16.0](https://github.com/masmuss/pictogrammer/compare/v1.15.1...v1.16.0) (2026-07-12)
 
 
