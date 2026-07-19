@@ -26,48 +26,33 @@ const { Content, headings } = await render(post);
 ---
 
 <PostLayout post={post}>
-  {
-    headings.length > 0 && (
-      <div class="mt-8">
-        <TocMobile {headings} />
-      </div>
-    )
-  }
-
-  <div class:list={["relative mt-8 grid grid-cols-1"]}>
+  <div slot="toc-mobile">
     {
       headings.length > 0 && (
-        <aside
-          class="fixed top-28 left-10 hidden w-1/12 xl:block"
-          aria-label="Table of Contents"
-        >
-          <Toc {headings} />
-        </aside>
+        <div class="mt-8 mx-auto max-w-3xl">
+          <TocMobile {headings} />
+        </div>
       )
     }
-
-    <article class="space-y-12">
-      <div class="custom-prose mx-auto">
-        <Content />
-      </div>
-
-      <div class="mt-12 flex justify-center xl:hidden">
-        <ShareButtons
-          title={post.data.title}
-          url={Astro.url}
-          layout="horizontal"
-        />
-      </div>
-    </article>
-
-    <aside
-      class="fixed top-1/4 right-8 hidden flex-col items-end xl:flex"
-      aria-label="Share this post"
-    >
-      <ShareButtons title={post.data.title} url={Astro.url} class="mr-8" />
-    </aside>
   </div>
-  <footer class="mx-auto mt-16 max-w-3xl">
+
+  <div slot="toc">
+    {headings.length > 0 && <Toc {headings} />}
+  </div>
+
+  <div class="custom-prose">
+    <Content />
+  </div>
+
+  <div class="flex justify-center xl:hidden">
+    <ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
+  </div>
+
+  <div slot="share">
+    <ShareButtons title={post.data.title} url={Astro.url} />
+  </div>
+
+  <footer slot="footer" class="mx-auto mt-16 max-w-3xl">
     <RelatedPost {post} />
     <Comment />
   </footer>

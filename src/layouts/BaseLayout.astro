@@ -6,7 +6,7 @@ import Header from "@/components/shell/Header.astro";
 import { Container } from "@/components/ui/primitives";
 import ThemeProvider from "@/components/ui/ThemeProvider.astro";
 
-const { ...head } = Astro.props;
+const { wide = false, ...head } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,7 +25,10 @@ const { ...head } = Astro.props;
       transition:animate={fade({ duration: 300 })}
     >
       <Header />
-      <Container class="flex flex-1 flex-col">
+      <Container
+        class="flex flex-1 flex-col"
+        maxWidth={wide ? "w-full" : "max-w-5xl"}
+      >
         <div id="progress"></div>
         <div class="w-full flex-1">
           <slot />

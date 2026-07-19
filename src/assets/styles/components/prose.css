@@ -19,7 +19,7 @@
 		@apply prose-h2:text-xl md:prose-h2:text-2xl lg:prose-h2:text-3xl;
 		@apply prose-h3:text-lg md:prose-h3:text-xl;
 		@apply prose-h4:text-base prose-h4:font-semibold;
-		@apply prose-h5:text-sm prose-h5:uppercase prose-h5:tracking-wider prose-h5:font-semibold;
+		@apply prose-h5:text-sm prose-h5:font-semibold;
 
 		/* Table */
 		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;

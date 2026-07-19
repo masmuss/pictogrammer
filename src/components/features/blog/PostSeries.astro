@@ -1,0 +1,15 @@
+---
+const { series, seriesId } = Astro.props;
+---
+
+<div class="mt-4 mb-8 border-l-2 border-accent-cta/40 py-2 pl-4">
+  <p class="text-muted-foreground text-sm">
+    Part of the series:{" "}
+    <a
+      href={`/blog/series/${seriesId}`}
+      class="text-foreground font-medium underline underline-offset-4 hover:opacity-75"
+    >
+      {series.data.title}
+    </a>
+  </p>
+</div>
