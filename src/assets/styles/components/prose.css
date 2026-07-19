@@ -3,7 +3,7 @@
    ======================================== */
 @layer components {
 	.custom-prose {
-		@apply prose dark:prose-invert;
+		@apply prose max-w-none dark:prose-invert;
 
 		--tw-prose-body: var(--color-foreground);
 		font-size: 0.9375rem;
