@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/masmuss/pictogrammer/compare/v1.16.1...v1.17.0) (2026-07-20)
+
+
+### Features
+
+* **blog:** refactor post layout with slots and add Giscus comments ([35d05d7](https://github.com/masmuss/pictogrammer/commit/35d05d784af96120d61b86f1c3c64bfd6db35e01))
+
 ## [1.16.1](https://github.com/masmuss/pictogrammer/compare/v1.16.0...v1.16.1) (2026-07-16)
 
 
