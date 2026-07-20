@@ -90,6 +90,19 @@ export const siteConfig = {
 				href: "/blog"
 			}
 		]
+	},
+	giscus: {
+		repo: "masmuss/pictogrammer",
+		repoId: "R_kgDOPKC8fg",
+		category: "General",
+		categoryId: "DIC_kwDOPKC8fs4Ct6-3",
+		mapping: "title",
+		strict: "0",
+		reactionsEnabled: "1",
+		emitMetadata: "0",
+		inputPosition: "bottom",
+		lang: "en",
+		loading: "lazy"
 	}
 } satisfies SiteConfig;
 

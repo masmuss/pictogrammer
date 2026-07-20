@@ -6,32 +6,35 @@ import Header from "@/components/shell/Header.astro";
 import { Container } from "@/components/ui/primitives";
 import ThemeProvider from "@/components/ui/ThemeProvider.astro";
 
-const { ...head } = Astro.props;
+const { wide = false, ...head } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<BaseHead {...head} />
-		<ThemeProvider />
-		<ClientRouter />
-		<script src="/src/assets/scripts/mermaid-theme-fix.js" is:inline></script>
-	</head>
-	<body
-		class="bg-background flex flex-col justify-center antialiased transition-colors"
-	>
-		<main
-			class="relative z-10 flex min-h-screen flex-col leading-relaxed"
-			transition:animate={fade({ duration: 300 })}
-		>
-			<Container class="flex flex-1 flex-col">
-				<div id="progress"></div>
-				<Header />
-				<div class="w-full flex-1">
-					<slot />
-				</div>
-			</Container>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead {...head} />
+    <ThemeProvider />
+    <ClientRouter />
+    <script src="/src/assets/scripts/mermaid-theme-fix.js" is:inline></script>
+  </head>
+  <body
+    class="bg-background flex flex-col justify-center antialiased transition-colors"
+  >
+    <main
+      class="relative z-10 flex min-h-screen flex-col leading-relaxed"
+      transition:animate={fade({ duration: 300 })}
+    >
+      <Header />
+      <Container
+        class="flex flex-1 flex-col"
+        maxWidth={wide ? "w-full" : "max-w-5xl"}
+      >
+        <div id="progress"></div>
+        <div class="w-full flex-1">
+          <slot />
+        </div>
+      </Container>
+    </main>
+    <Footer />
+  </body>
 </html>

@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/features/blog/Hero.astro";
+import PostSeries from "@/components/features/blog/PostSeries.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/contents";
 import { getPostOgImagePath } from "@/lib/utils/post-route";
@@ -34,76 +35,85 @@ const ogImage = coverImageResolved || socialImage;
 ---
 
 <BaseLayout
-	title={title}
-	description={description}
-	date={date}
-	updatedDate={updatedDate}
-	pageType="article"
-	image={ogImage}
+  title={title}
+  description={description}
+  date={date}
+  updatedDate={updatedDate}
+  pageType="article"
+  image={ogImage}
+  wide
 >
-	<div class="w-full space-y-6">
-		<div class="w-full md:flex md:items-center md:justify-center">
-			<article class="max-w-3xl grow wrap-break-word" data-pagefind-body>
-				<div id="blog-hero">
-					<BlogHero content={post} coverImageResolved={coverImageResolved} />
-				</div>
-				{
-					series && (
-						<div class="mt-4 mb-8 p-4 text-center">
-							<p class="text-muted-foreground text-sm">
-								Part of the series:{" "}
-								<a
-									href={`/blog/series/${seriesId}`}
-									class="text-foreground font-medium underline underline-offset-4 hover:opacity-75"
-								>
-									{series.data.title}
-								</a>
-							</p>
-						</div>
-					)
-				}
-				<div>
-					<slot />
-				</div>
-			</article>
-		</div>
-		<a
-			aria-label="Back to Top"
-			href="#"
-			class="back-to-top bg-muted hover:border-border/75 duration-slow fixed inset-e-12 bottom-16 z-90 flex h-12 w-12 items-center justify-center rounded-full text-2xl opacity-0 transition-all md:inset-e-16"
-			id="to-top-btn"
-		>
-			<span class="iconify ri--arrow-up-line"></span>
-		</a>
-	</div>
-	<script async is:inline src="/github-card.js"></script>
+  <div class="w-full space-y-6">
+    <div
+      class="grid grid-cols-1 gap-8 xl:grid-cols-[0.33fr_1fr_0.33fr] xl:gap-10"
+    >
+      <aside class="hidden xl:block" aria-label="Table of Contents">
+        <div class="sticky top-28 max-h-[calc(100vh-8rem)]">
+          <slot name="toc" />
+        </div>
+      </aside>
+
+      <article class="min-w-0 space-y-12 max-w-3xl mx-auto">
+        <div data-pagefind-body>
+          <div id="blog-hero">
+            <BlogHero content={post} coverImageResolved={coverImageResolved} />
+          </div>
+          {series && <PostSeries {series} {seriesId} />}
+        </div>
+
+        <div class="xl:hidden">
+          <slot name="toc-mobile" />
+        </div>
+
+        <slot />
+      </article>
+
+      <aside class="hidden xl:block" aria-label="Share this post">
+        <div class="sticky top-1/3">
+          <slot name="share" />
+        </div>
+      </aside>
+    </div>
+
+    <slot name="footer" />
+
+    <a
+      aria-label="Back to Top"
+      href="#"
+      class="back-to-top bg-muted hover:border-border/75 duration-slow fixed inset-e-12 bottom-16 z-90 flex h-12 w-12 items-center justify-center rounded-full text-2xl opacity-0 transition-all md:inset-e-16"
+      id="to-top-btn"
+    >
+      <span class="iconify ri--arrow-up-line"></span>
+    </a>
+  </div>
+  <script async is:inline src="/github-card.js"></script>
 </BaseLayout>
 
 <style>
-	@supports (animation-timeline: scroll()) {
-		.back-to-top {
-			animation: reveal-back-to-top linear forwards;
-			animation-timeline: scroll(root);
-			animation-range: 150px 500px;
-		}
-	}
+  @supports (animation-timeline: scroll()) {
+    .back-to-top {
+      animation: reveal-back-to-top linear forwards;
+      animation-timeline: scroll(root);
+      animation-range: 150px 500px;
+    }
+  }
 
-	@keyframes reveal-back-to-top {
-		from {
-			opacity: 0;
-			transform: translateY(28px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+  @keyframes reveal-back-to-top {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-	/* Fallback: always visible when scroll-driven animations unsupported */
-	@supports not (animation-timeline: scroll()) {
-		.back-to-top {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+  /* Fallback: always visible when scroll-driven animations unsupported */
+  @supports not (animation-timeline: scroll()) {
+    .back-to-top {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>

@@ -33,6 +33,20 @@ export type Page = {
 	blogLinks: Omit<NavLink, "icon">[];
 };
 
+export type GiscusConfig = {
+	repo: string;
+	repoId: string;
+	category: string;
+	categoryId: string;
+	mapping: string;
+	strict: string;
+	reactionsEnabled: string;
+	emitMetadata: string;
+	inputPosition: string;
+	lang: string;
+	loading: string;
+};
+
 export type SiteConfig = {
 	author: string;
 	title: string;
@@ -45,4 +59,5 @@ export type SiteConfig = {
 	socialLinks: SocialLink[];
 	header: Header;
 	page: Page;
+	giscus: GiscusConfig;
 };

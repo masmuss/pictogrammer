@@ -12,44 +12,44 @@ const { navLinks } = siteConfig.header;
 ---
 
 <header
-	class="mb-10 flex w-full flex-wrap py-8 text-sm sm:flex-nowrap sm:justify-start md:py-12"
+  class="flex w-full flex-wrap p-8 text-sm sm:flex-nowrap sm:justify-start"
 >
-	<nav
-		class="relative mx-auto flex w-full items-center justify-between gap-x-3 md:gap-5"
-		aria-label="global"
-	>
-		<a class="flex flex-none" href="/" aria-label="pictogrammer logo">
-			<Image
-				src={logoLight}
-				alt="pictogrammer logo"
-				class="w-12 md:w-14 lg:w-16 dark:hidden"
-				loading="eager"
-				fetchpriority="high"
-			/>
-			<Image
-				src={logoDark}
-				alt="pictogrammer logo"
-				class="hidden w-12 md:w-14 lg:w-16 dark:block"
-				loading="eager"
-				fetchpriority="high"
-			/>
-		</a>
+  <nav
+    class="relative mx-auto flex w-full items-center justify-between gap-x-3 md:gap-5"
+    aria-label="global"
+  >
+    <a class="flex flex-none" href="/" aria-label="pictogrammer logo">
+      <Image
+        src={logoLight}
+        alt="pictogrammer logo"
+        class="w-12 md:w-14 lg:w-16 dark:hidden"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <Image
+        src={logoDark}
+        alt="pictogrammer logo"
+        class="hidden w-12 md:w-14 lg:w-16 dark:block"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </a>
 
-		<div class="ml-auto flex flex-row items-center gap-x-5">
-			<!-- Desktop Navigation -->
-			<div class="hidden items-center gap-x-5 lg:flex">
-				{
-					navLinks
-						.slice(1, navLinks.length)
-						.map((link) => (
-							<NavLink href={link.href} text={link.text} icon={link.icon} />
-						))
-				}
-			</div>
+    <div class="ml-auto flex flex-row items-center gap-x-5">
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-x-5 lg:flex">
+        {
+          navLinks
+            .slice(1, navLinks.length)
+            .map((link) => (
+              <NavLink href={link.href} text={link.text} icon={link.icon} />
+            ))
+        }
+      </div>
 
-			<Search client:load />
-			<ThemeToggle />
-			<MobileMenu navLinks={navLinks} />
-		</div>
-	</nav>
+      <Search client:load />
+      <ThemeToggle />
+      <MobileMenu navLinks={navLinks} />
+    </div>
+  </nav>
 </header>
