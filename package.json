@@ -7,7 +7,7 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint": "biome lint .",
+		"lint": "biome lint --write",
 		"format": "biome format --write .",
 		"check": "astro check",
 		"test": "bun run test:unit:run && CI=true bun run test:e2e",

@@ -1,6 +1,12 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.5.3/schema.json",
-	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -42,7 +48,11 @@
 			"nursery": {
 				"useSortedClasses": {
 					"level": "warn",
-					"fix": "safe"
+					"fix": "safe",
+					"options": {
+						"attributes": ["class", "class:list"],
+						"functions": ["cn"]
+					}
 				}
 			}
 		}
@@ -60,7 +70,9 @@
 	"overrides": [
 		{
 			"includes": ["**/*.svg"],
-			"linter": { "enabled": false }
+			"linter": {
+				"enabled": false
+			}
 		},
 		{
 			"includes": ["**/*.astro"],

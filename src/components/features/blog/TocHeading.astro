@@ -11,28 +11,28 @@ const {
 ---
 
 <li class="flex flex-col">
-	<a
-		aria-label={`Scroll to section: ${text}`}
-		class:list={[
-			"toc-link block transition-colors",
-			"mb-2 text-sm",
-			"text-foreground/70 hover:underline"
-		]}
-		href={`#${slug}`}>{text}</a
-	>
-	{
-		!!subheadings.length && (
-			<ul class="ms-2 line-clamp-1">
-				{subheadings.map((subheading) => (
-					<Astro.self heading={subheading} />
-				))}
-			</ul>
-		)
-	}
+  <a
+    aria-label={`Scroll to section: ${text}`}
+    class:list={[
+      "toc-link block transition-colors",
+      "mb-2 text-xs",
+      "text-foreground/60 hover:text-foreground",
+    ]}
+    href={`#${slug}`}>{text}</a
+  >
+  {
+    !!subheadings.length && (
+      <ul class="ms-2 line-clamp-1">
+        {subheadings.map((subheading) => (
+          <Astro.self heading={subheading} />
+        ))}
+      </ul>
+    )
+  }
 </li>
 
 <style>
-	.toc-link.active {
-		color: var(--color-foreground);
-	}
+  .toc-link.active {
+    color: var(--color-foreground);
+  }
 </style>

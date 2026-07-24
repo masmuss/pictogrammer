@@ -81,7 +81,7 @@ export default defineConfig({
 			}
 		}),
 		shikiConfig: {
-			theme: "dracula-soft",
+			theme: "dark-plus",
 			wrap: true
 		}
 	},

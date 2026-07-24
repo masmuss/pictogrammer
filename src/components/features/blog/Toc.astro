@@ -17,7 +17,7 @@ const toc = generateToc(headings);
   <div class="toc-group group relative w-fit" data-open="false">
     <button
       id="toc-toggle"
-      class="text-muted-foreground hover:text-foreground focus-visible:text-foreground flex cursor-pointer items-center gap-2 pb-2 transition-colors"
+      class="text-muted-foreground hover:text-foreground focus-visible:text-foreground flex cursor-pointer items-center gap-2 transition-colors"
       aria-label="Toggle table of contents"
       aria-controls="toc-list"
       aria-haspopup="true"
@@ -25,13 +25,12 @@ const toc = generateToc(headings);
       type="button"
     >
       <span
-        class="iconify ri--menu-line duration-slow text-lg transition-transform"
+        class="iconify ri--menu-line duration-slow text-sm transition-transform"
       ></span>
-      <span class="text-xs">Contents</span>
     </button>
 
     <div
-      class="toc-popover duration-base pointer-events-none absolute top-full left-0 z-20 w-72 py-0 opacity-0 transition-all group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
+      class="toc-popover duration-base absolute top-full left-0 z-20 w-72 py-0 transition-all group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
     >
       <div class="py-4">
         <ul
