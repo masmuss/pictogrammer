@@ -23,7 +23,7 @@ $effect(() => {
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <dialog
 	bind:this={dialogElement}
-	class="border-border bg-card w-full max-w-4xl overflow-hidden rounded-xl border shadow-2xl backdrop:bg-background/80 mt-16 sm:mt-24 p-0 open:flex flex-col"
+	class="border-border mx-auto bg-card w-[calc(100%-2rem)] max-w-4xl overflow-hidden rounded-xl border shadow-2xl backdrop:bg-background/80 mt-16 sm:mt-24 p-0 open:flex flex-col"
 	aria-label="Search"
 	aria-describedby="search-modal-instructions"
 	onclose={() => search.closeSearch()}
