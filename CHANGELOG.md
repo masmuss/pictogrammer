@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/masmuss/pictogrammer/compare/v1.17.0...v1.18.0) (2026-07-24)
+
+
+### Features
+
+* **skills:** Add Biome to skills list ([74e7fbe](https://github.com/masmuss/pictogrammer/commit/74e7fbee6011fc795d0aae6ced4f799b298d6a1b))
+
 # [1.17.0](https://github.com/masmuss/pictogrammer/compare/v1.16.1...v1.17.0) (2026-07-20)
 
 
