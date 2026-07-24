@@ -191,6 +191,11 @@
 				"name": "Prettier",
 				"description": "Opinionated code formatter",
 				"icon": "logos--prettier"
+			},
+			{
+				"name": "Biome",
+				"description": "Fast, all-in-one web toolchain",
+				"icon": "logos--biomejs-icon"
 			}
 		]
 	},
