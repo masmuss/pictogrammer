@@ -3,7 +3,7 @@ title: "Trak: Kabur dari 'Tutorial Hell' Svelte & Solusi Bug yang Suka Kelupaan 
 description: Cerita santai di balik pembuatan Trak, platform ticketing dengan Telegram Bot yang lahir dari keresahan keluhan verbal di tempat kerja dan misi belajar Svelte 5.
 date: 26 May 2026
 coverImage:
-  src: ../../../../assets/images/projects/trak/dashboard.png
+  src: ../../../../../assets/images/projects/trak/dashboard.png
   alt: Trak Dashboard & Bot Preview
 tags: ["tech", "svelte", "devlog", "telegram-bot", "monorepo"]
 ---
@@ -26,7 +26,7 @@ Masalah klasiknya muncul: **Aku sering lupa nyatet.**
 
 Selang beberapa hari, bug yang sama ditanyain lagi, disampaikan berulang-ulang, dan aku cuma bisa mikir, _"Aduh, kemarin kelupaan ditaruh di mana ya catatannya?"_ Gara-gara keresahan pribadi inilah aku mutusin buat ngisi waktu akhir pekan kemarin dengan bikin **Trak**—sebuah platform ticketing & reporting terpusat.
 
-![Trak Web Dashboard](../../../../assets/images/projects/trak/dashboard.png)
+![Trak Web Dashboard](../../../../../assets/images/projects/trak/dashboard.png)
 
 Mumpung lagi _weekend project_, ini juga sekalian jadi kesempatan emas buatku nyoba teknologi baru yang udah lama masuk _reading list_: **Svelte**.
 
@@ -108,7 +108,7 @@ Prosesnya dibagi jadi dua tahap utama:
 
 Staf kantor bisa langsung pakai bot ini cukup dengan mengetik perintah `/start` di Telegram buat mendaftarkan akun mereka sebagai `Reporter`. Tapi khusus buat para **tester**, ada opsional `invite_code` (kode undangan) pas registrasi buat nyoba fitur-fitur eksperimental sebelum dirilis ke staf umum.
 
-![Proses Registrasi Telegram Bot](../../../../assets/images/projects/trak/bot-start.png)
+![Proses Registrasi Telegram Bot](../../../../../assets/images/projects/trak/bot-start.png)
 
 ### 2. Kirim Laporan & Terima Notifikasi Update
 
@@ -119,13 +119,13 @@ Pas status tiketnya aku ubah di Web Dashboard SvelteKit (misal dari _Open_ ke _I
 Berikut adalah beberapa cuplikan interaksi Telegram bot-nya saat pelapor membuat tiket hingga mendapatkan notifikasi otomatis:
 
 - **Pilih Kategori Isu**: Ketika melapor, bot bakal nampilin pilihan kategori yang interaktif.
-  ![Memilih Kategori Tiket](../../../../assets/images/projects/trak/bot-choosing-category.png)
+  ![Memilih Kategori Tiket](../../../../../assets/images/projects/trak/bot-choosing-category.png)
 - **Kirim Detail & Lampiran**: User bisa upload gambar/screenshot sebagai bukti pendukung bug.
-  ![Kirim Screenshot Bug](../../../../assets/images/projects/trak/bot-send-attachment.png)
+  ![Kirim Screenshot Bug](../../../../../assets/images/projects/trak/bot-send-attachment.png)
 - **Konfirmasi Pembuatan Tiket**: Begitu selesai, bot ngasih konfirmasi sukses beserta ID tiket unik.
-  ![Konfirmasi Nomor Tiket Berhasil Terbuat](../../../../assets/images/projects/trak/bot-confirmation.png)
+  ![Konfirmasi Nomor Tiket Berhasil Terbuat](../../../../../assets/images/projects/trak/bot-confirmation.png)
 - **Notifikasi Update Status**: Bot otomatis ngirim pesan kalau status tiketnya diubah sama admin di web.
-  ![Notifikasi Otomatis Pas Status Tiket Diubah Admin](../../../../assets/images/projects/trak/bot-update-status-notification.png)
+  ![Notifikasi Otomatis Pas Status Tiket Diubah Admin](../../../../../assets/images/projects/trak/bot-update-status-notification.png)
 
 ```mermaid
 sequenceDiagram
