@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/masmuss/pictogrammer/compare/v1.19.0...v1.20.0) (2026-07-25)
+
+
+### Features
+
+* **content:** add three reflective blog posts ([248c6e9](https://github.com/masmuss/pictogrammer/commit/248c6e9495c59d4da7823ab08791c34ee5622993))
+
 # [1.19.0](https://github.com/masmuss/pictogrammer/compare/v1.18.0...v1.19.0) (2026-07-25)
 
 
