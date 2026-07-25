@@ -3,9 +3,9 @@ title: Di Antara
 description: Di tengah langit jingga dan lorong laboratorium yang hening, ia berdiri diam. Bukan karena pintu tak terbuka, tapi karena ia belum tahu ke mana ingin pergi.
 date: 20 September 2024
 coverImage:
-    src: ./cover_image.webp
-    alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
-tags: ["reflection"]
+  src: ./cover_image.webp
+  alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
+tags: ["reflection", "story"]
 ---
 
 Di sebuah laboratorium yang mulai kehilangan suara, seorang laki-laki duduk sendiri di depan laptop yang layarnya menyala tanpa gerak. Di sebelahnya, secangkir kopi yang sudah dingin dan sebatang rokok yang belum sempat habis. Senja menyelinap lewat jendela kaca, membasuh meja kerja dengan cahaya jingga yang lembut dan menyakitkan.

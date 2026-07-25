@@ -5,7 +5,7 @@ date: 05 December 2023
 coverImage:
   src: https://images.unsplash.com/photo-1605256428594-fce1cc48c8b9?q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@brett_jordan?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Brett Jordan</a> on <a href="https://unsplash.com/photos/brown-wooden-blocks-on-white-surface-hMmsCFYJBb8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["growth"]
+tags: ["growth", "reflection"]
 ---
 
 Semester lima bukan semester yang ringan.

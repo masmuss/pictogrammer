@@ -5,7 +5,7 @@ date: 04 February 2024
 coverImage:
   src: https://images.unsplash.com/photo-1508558936510-0af1e3cccbab?q=80&=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D,
   alt: Photo by <a href="https://unsplash.com/@xangriffin?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Xan Griffin</a> on <a href="https://unsplash.com/photos/person-standing-on-rock-raising-both-hands-eA2t5EvcxU4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["life", "reflection"]
+tags: ["reflection"]
 ---
 
 Patah hati tidak dramatis seperti di film.

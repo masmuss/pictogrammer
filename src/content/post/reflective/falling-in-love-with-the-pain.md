@@ -5,7 +5,7 @@ date: 14 February 2024
 coverImage:
   src: https://images.unsplash.com/photo-1482440308425-276ad0f28b19?&auto=format&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@garrhetsampson?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Garrhet Sampson</a> on <a href="https://unsplash.com/photos/black-and-white-hustle-printed-ceramic-mug-on-table-CmF_5GYc6c0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["growth", "life"]
+tags: ["reflection", "growth"]
 ---
 
 Aku tersenyum ketika menyadari bahwa aku sedang jatuh cinta — bukan dengan kebahagiaan yang mudah diperoleh, tetapi dengan rasa sakit yang turut mewarnai perjalananku. Aku tahu "masochism" bukanlah konsep yang normal, tapi bagiku, ini tentang memilih untuk tidak menghindar.

@@ -3,9 +3,9 @@ title: Lift
 description: Malam dan lift kala itu.
 date: 24 May 2025
 coverImage:
-    src: https://images.unsplash.com/photo-1562654501-9a587e8638d8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: Photo by <a href="https://unsplash.com/@golfarisa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Arisa Chattasa</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-metal-elevator-with-buttons-BoQ3FmPQgZI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["reflection"]
+  src: https://images.unsplash.com/photo-1562654501-9a587e8638d8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  alt: Photo by <a href="https://unsplash.com/@golfarisa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Arisa Chattasa</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-metal-elevator-with-buttons-BoQ3FmPQgZI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+tags: ["reflection", "story"]
 ---
 
 Di depan pintu lift yang tertutup rapat, seorang lelaki berdiri membisu. Lorong itu sepi, hanya ditemani lampu redup dan bayang-bayang panjang yang menari di dinding. Waktu terasa berhenti, seperti lift yang tak kunjung datang, dan di dalam dirinya, kekosongan mulai tumbuh.

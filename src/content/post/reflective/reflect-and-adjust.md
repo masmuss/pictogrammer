@@ -5,7 +5,7 @@ date: 22 October 2023
 coverImage:
   src: https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@markuswinkler?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Markus Winkler</a> on <a href="https://unsplash.com/photos/black-and-white-typewriter-on-white-table--fRAIQHKcc0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["growth"]
+tags: ["growth", "reflection"]
 ---
 
 Aku benci mengakui kegagalan.

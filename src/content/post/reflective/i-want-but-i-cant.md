@@ -5,7 +5,7 @@ date: 21 September 2023
 coverImage:
   src: https://images.unsplash.com/photo-1492176273113-2d51f47b23b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9wZXxlbnwwfHwwfHx8MA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@marcojodoin?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Marc-Olivier Jodoin</a> on <a href="https://unsplash.com/photos/landscape-photography-of-persons-hand-in-front-of-sun-TStNU7H4UEE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["Resilience", "Acceptance", "Life Realities"]
+tags: ["reflection", "growth"]
 ---
 
 Dulu aku pikir kalau aku cukup menginginkan sesuatu, aku pasti bisa.

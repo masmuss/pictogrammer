@@ -3,9 +3,9 @@ title: Jendela
 description: Siang itu terang dan biasa saja. Di depan jendela, ia berdiri diam—menatap keluar, bukan untuk melihat dunia, tapi untuk bertanya tentang dirinya sendiri:/ bagaimana jika jalan yang dulu tidak diambil... justru yang sebenarnya ia butuhkan?
 date: 25 November 2024
 coverImage:
-    src: ./cover_image.webp
-    alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
-tags: ["story", "reflection"]
+  src: ./cover_image.webp
+  alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
+tags: ["reflection", "story"]
 ---
 
 Siang itu terang dan biasa saja. Matahari menggantung tinggi di langit, menembus kaca jendela besar di ujung lorong lantai tujuh. Udara di dalam ruangan tak bergerak, sepi, nyaris hampa, seperti tak ada yang benar-benar hidup kecuali bayangan daun di luar yang menari pelan tertiup angin.

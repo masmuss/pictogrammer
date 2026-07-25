@@ -5,7 +5,7 @@ date: 13 September 2023
 coverImage:
   src: https://images.unsplash.com/photo-1517669375942-946a1f02d705?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@elevantarts?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">christopher lemercier</a> on <a href="https://unsplash.com/photos/man-sitting-on-chair-covering-his-eyes-12yvdCiLaVE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["life"]
+tags: ["reflection"]
 ---
 
 Ada hari-hari di mana semuanya terasa salah.

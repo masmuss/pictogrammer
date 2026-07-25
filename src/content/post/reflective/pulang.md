@@ -5,7 +5,7 @@ date: 09 September 2023
 coverImage:
   src: https://images.unsplash.com/photo-1469401258206-4e0cc14e9358?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGhvdXNlJTIwYmVzaWRlJTIwbGFrZXxlbnwwfHwwfHx8MA%3D%3D
   alt: Photo by <a href="https://unsplash.com/@nathananderson?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nathan Anderson</a> on <a href="https://unsplash.com/photos/house-on-grass-field-under-gray-sky-iAW5QyehNcc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-tags: ["life", "reflection"]
+tags: ["reflection"]
 ---
 
 Aku lahir di sebuah desa kecil di kabupaten Sidoarjo. Tidak banyak yang bisa kuingat dari sana — hanya sedikit teman yang aku tidak yakin mereka masih ingat aku.

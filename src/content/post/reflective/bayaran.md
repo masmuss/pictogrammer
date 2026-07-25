@@ -2,7 +2,7 @@
 title: Bayaran
 description: Tak semua keberhasilan terasa utuh. Kadang yang kita sebut pencapaian… hanyalah cara hal-hal berharga diambil perlahan.
 date: 03 July 2025
-tags: ["life"]
+tags: ["reflection", "story"]
 ---
 
 Ada yang bilang hidup itu adil.
@@ -52,5 +52,5 @@ Tapi kamu tetap bangun esok hari. Tetap kerja. Tetap hidup.
 
 Karena di ujung segalanya, kamu tahu:
 
->  Kamu bukan sedang merayakan kemenangan.
->  Kamu hanya sedang menunggu—giliran kehilangan yang berikutnya.
+> Kamu bukan sedang merayakan kemenangan.
+> Kamu hanya sedang menunggu—giliran kehilangan yang berikutnya.
