@@ -5,7 +5,16 @@ date: 16 July 2025
 tags: ["tech", "devlog", "backend", "bun", "testing"]
 ---
 
-Di [artikel sebelumnya](/blog/notes/weekend-projects/elibrary/api), aku sudah membedah arsitektur dasar E-Library API yang kubangun dengan Hono, Bun, dan Drizzle. Saat itu fokusnya: bikin semua fitur inti berjalan.
+##### tl;dr
+
+- **Audit log**: Middleware Hono terpusat — lacak setiap aksi dengan correlationId, payload, dan query SQL mentah.
+- **Load testing**: Artillery.io dengan skenario realistik (browse → register). 100% gagal di percobaan pertama karena mismatch data.
+- **Race condition fix**: Unique violation handler — `500 Internal Server Error` jadi `409 Conflict`.
+- **Hasil**: 0 error 500, avg response 3.8ms, p99 13.9ms di bawah beban tinggi.
+
+---
+
+Di [artikel sebelumnya](/blog/notes/weekend-projects/elibrary), aku sudah membedah arsitektur dasar E-Library API yang kubangun dengan Hono, Bun, dan Drizzle. Saat itu fokusnya: bikin semua fitur inti berjalan.
 
 Tapi aplikasi yang siap produksi butuh lebih dari sekadar fitur yang berfungsi. Ia perlu ketangguhan, keamanan, dan performa yang teruji. Artikel ini catatan teknis proses hardening-nya.
 

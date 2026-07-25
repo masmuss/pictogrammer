@@ -1,8 +1,17 @@
 ---
-title: E-Library API - Weekend Projects
+title: "E-Library API: Backend Modern dengan Bun, Hono & Drizzle - Weekend Projects"
 description: A technical breakdown of building a modern backend API over several focused development sessions.
 date: 25 June 2025
 tags: ["tech", "devlog", "backend", "bun", "hono"]
+---
+
+##### tl;dr
+
+- **Tech stack**: Bun + Hono + Drizzle + PostgreSQL + Redis — ringan, cepat, DX minimal.
+- **Fitur**: Auth (JWT + refresh token + lupa password), RBAC (Admin/Librarian/Member), manajemen buku & kategori, siklus peminjaman lengkap.
+- **Arsitektur**: Routes (Zod OpenAPI) → Handlers → Repositories. Cache-aside Redis di layer Repository.
+- **Tooling**: Biome (lint/format) + Husky (pre-commit) + Bun test.
+
 ---
 
 Proyek ini dimulai sebagai studi kasus: membangun backend API untuk sistem E-Library dari awal. Aku pengen lebih dari sekadar endpoint yang berfungsi — aku mau arsitektur yang bersih, teruji, dan mengikuti praktik modern tanpa over-engineering.

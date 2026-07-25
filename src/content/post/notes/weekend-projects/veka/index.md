@@ -1,11 +1,20 @@
 ---
-title: Kenapa aku bikin Veka - Weekend Projects
+title: "Veka: Digital Garden Minimalis di Atas Astro - Weekend Projects"
 description: Kadang, kita tidak butuh framework dokumentasi berskala enterprise. Kita hanya butuh tempat sepi untuk merajut isi kepala. Inilah cerita akhir pekan di balik lahirnya Veka
 date: 07 July 2026
 coverImage:
   src: ../../../../../assets/images/projects/veka/thumbnail.png
   alt: Thumbnail Veka
 tags: ["tech", "astro", "devlog", "digital-garden"]
+---
+
+##### tl;dr
+
+- **Latar belakang**: Frustrasi pakai Starlight — terlalu berat untuk sekadar nyimpen coretan pikiran.
+- **Veka**: Digital garden berbasis Astro dengan navigasi otomatis, wiki-link ala Obsidian, dan Pagefind search.
+- **Filosofi**: Buang semua yang bikin ribet. Konten tumbuh dari `seedling` → `budding` → `evergreen`.
+- **Coba langsung**: `npx degit masmuss/veka my-digital-garden` — selesai dalam 10 detik.
+
 ---
 
 Akhir pekan lalu, aku cuma duduk diam natap layar editor yang kosong. Ada beberapa ide arsitektur sistem dan _snippet_ kode yang pengen banget aku dokumentasiin biar nggak nguap gitu aja.
