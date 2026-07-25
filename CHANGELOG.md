@@ -1,3 +1,11 @@
+# [1.19.0](https://github.com/masmuss/pictogrammer/compare/v1.18.0...v1.19.0) (2026-07-25)
+
+
+### Features
+
+* **shell:** extract Logo component and refactor Footer ([87b2155](https://github.com/masmuss/pictogrammer/commit/87b21557ff4eb27013eedcb2c337a848b2658f2d))
+* **SocialLinks:** add optional CV/resume link support ([949c8f8](https://github.com/masmuss/pictogrammer/commit/949c8f830a536ea5004d14814db3a8aefe167d38))
+
 # [1.18.0](https://github.com/masmuss/pictogrammer/compare/v1.17.0...v1.18.0) (2026-07-24)
 
 
