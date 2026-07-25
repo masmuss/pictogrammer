@@ -11,9 +11,10 @@ Ini adalah topik yang akan menjawab pertanyaan yang mungkin pernah muncul di ben
 
 ## Mengapa Kita Butuh Generics?
 
-Pernahkah kamu berpikir saat menulis kode, *"Duh, fungsi ini logikanya sama persis, tapi kenapa aku harus menulisnya dua kali hanya karena satu untuk `int` dan satu lagi untuk `float64`?"*
+Pernahkah kamu berpikir saat menulis kode, _"Duh, fungsi ini logikanya sama persis, tapi kenapa aku harus menulisnya dua kali hanya karena satu untuk `int` dan satu lagi untuk `float64`?"_
 
 Misalnya, kita punya dua fungsi ini:
+
 ```go
 func SumInts(numbers []int) int {
     var total int
@@ -32,14 +33,15 @@ func SumFloats(numbers []float64) float64 {
 }
 ```
 
-Logikanya 100% identik! Ini melanggar prinsip *Don't Repeat Yourself* (DRY). Sebelum Go 1.18, solusinya adalah menggunakan `interface{}` yang merepotkan dan tidak aman secara tipe. Tapi sekarang, kita punya solusi yang elegan: **Generics**.
+Logikanya 100% identik! Ini melanggar prinsip _Don't Repeat Yourself_ (DRY). Sebelum Go 1.18, solusinya adalah menggunakan `interface{}` yang merepotkan dan tidak aman secara tipe. Tapi sekarang, kita punya solusi yang elegan: **Generics**.
 
-**Generics** adalah cara untuk menulis kode yang bisa bekerja dengan berbagai macam tipe data, tanpa harus mengorbankan keamanan tipe (*type safety*) yang menjadi ciri khas Go.
+**Generics** adalah cara untuk menulis kode yang bisa bekerja dengan berbagai macam tipe data, tanpa harus mengorbankan keamanan tipe (_type safety_) yang menjadi ciri khas Go.
 
 Di postingan 'pengetahuan tambahan' ini, kita akan mengupas tuntas Generics sesuai peta di atas. Mari kita tambahkan satu lagi 'jurus sakti' ke dalam koleksi kita!
 
 ## Fungsi Generik (Generic Functions)
-Mari kita ubah dua fungsi `Sum` di atas menjadi satu fungsi generik. Sintaksnya menggunakan kurung siku `[]` setelah nama fungsi untuk mendeklarasikan *type parameter*.
+
+Mari kita ubah dua fungsi `Sum` di atas menjadi satu fungsi generik. Sintaksnya menggunakan kurung siku `[]` setelah nama fungsi untuk mendeklarasikan _type parameter_.
 
 ```go
 // T adalah 'type parameter' yang kita definisikan.
@@ -55,7 +57,7 @@ func Sum[T Number](numbers []T) T {
 
 Dengan satu fungsi ini, kita sekarang bisa memanggilnya untuk berbagai tipe angka. Keren, kan?
 
-Bentuk paling dasar dari *type parameter* adalah `any`, yang merupakan alias untuk `interface{}`. Ini berarti tipe tersebut bisa apa saja.
+Bentuk paling dasar dari _type parameter_ adalah `any`, yang merupakan alias untuk `interface{}`. Ini berarti tipe tersebut bisa apa saja.
 
 ```go
 // Fungsi ini bisa menerima nilai dengan tipe apa pun.
@@ -71,9 +73,10 @@ func main() {
 ```
 
 ## Batasan Tipe (Type Constraints)
+
 Pada fungsi `Sum` kita, mengapa kita tidak bisa menggunakan `any`? Karena operator `+` tidak bisa digunakan untuk semua tipe data (misalnya, kita tidak bisa menjumlahkan `struct`).
 
-Di sinilah **Type Constraint** berperan. *Constraint* adalah sebuah *interface* yang mendefinisikan "aturan main" untuk *type parameter* kita. Aturan ini bisa berupa kumpulan tipe atau kumpulan *method* yang harus dimiliki.
+Di sinilah **Type Constraint** berperan. _Constraint_ adalah sebuah _interface_ yang mendefinisikan "aturan main" untuk _type parameter_ kita. Aturan ini bisa berupa kumpulan tipe atau kumpulan _method_ yang harus dimiliki.
 
 ```go
 // Kita definisikan sebuah constraint bernama 'Number'.
@@ -98,12 +101,13 @@ func main() {
 }
 ```
 
-Dengan *constraint*, kita mendapatkan yang terbaik dari dua dunia: kode yang fleksibel dan tetap aman secara tipe. Go juga menyediakan *constraint* bawaan seperti `comparable` untuk tipe-tipe yang bisa dibandingkan dengan `==` dan `!=`.
+Dengan _constraint_, kita mendapatkan yang terbaik dari dua dunia: kode yang fleksibel dan tetap aman secara tipe. Go juga menyediakan _constraint_ bawaan seperti `comparable` untuk tipe-tipe yang bisa dibandingkan dengan `==` dan `!=`.
 
 ## Tipe dan Interface Generik (Generic Types / Interfaces)
-Generics tidak hanya untuk fungsi. Kita juga bisa membuat `struct`, `interface`, atau tipe data lain yang generik. Ini sangat berguna untuk membuat struktur data seperti *stack*, *queue*, atau *linked list*.
 
-Mari kita buat `struct` untuk *Stack* (tumpukan) yang bisa menampung tipe data apa pun.
+Generics tidak hanya untuk fungsi. Kita juga bisa membuat `struct`, `interface`, atau tipe data lain yang generik. Ini sangat berguna untuk membuat struktur data seperti _stack_, _queue_, atau _linked list_.
+
+Mari kita buat `struct` untuk _Stack_ (tumpukan) yang bisa menampung tipe data apa pun.
 
 ```go
 // Mendefinisikan struct Stack yang generik.
@@ -147,6 +151,7 @@ func main() {
 ```
 
 ## Inferensi Tipe (Type Inference)
+
 Kalian mungkin sadar saat memanggil fungsi `Sum`, kita tidak perlu menulis `Sum[int](...)` atau `Sum[float64](...)`. Kita cukup menulis `Sum(...)`.
 
 Ini karena Go memiliki **Type Inference**. Compiler Go cukup pintar untuk "menebak" atau menyimpulkan tipe apa yang seharusnya digunakan untuk `T` berdasarkan argumen yang kita berikan.
@@ -160,14 +165,14 @@ Sum([]int{1, 2, 3})
 ```
 
 ## Jurus Pamungkas Telah Dikuasai!
-Luar biasa! Kita baru saja menambahkan salah satu 'jurus' paling modern di Go ke dalam repertoar kita. Generics mungkin terlihat rumit pada awalnya, tetapi intinya sangat sederhana: menulis kode yang lebih sedikit namun tetap aman.
+
+Kita baru saja menambahkan salah satu 'jurus' paling modern di Go ke dalam repertoar kita. Generics mungkin terlihat rumit pada awalnya, tetapi intinya sangat sederhana: menulis kode yang lebih sedikit namun tetap aman.
 
 Singkatnya, kita sudah belajar:
-- *Mengapa* Generics dibutuhkan untuk menulis kode yang DRY (*Don't Repeat Yourself*).
+
+- _Mengapa_ Generics dibutuhkan untuk menulis kode yang DRY (_Don't Repeat Yourself_).
 - Cara membuat **fungsi** dan **tipe data** yang generik.
 - Pentingnya **Type Constraints** untuk menjamin keamanan tipe.
 - Kemudahan yang diberikan oleh **Type Inference**.
 
-Generics adalah alat yang sangat kuat. Gunakan saat kalian benar-benar membutuhkannya untuk menghindari duplikasi kode. Ini benar-benar penutup dari seri "Becoming Gopher". Selamat atas semua pencapaianmu, dan selamat melanjutkan petualangan *ngoding*-mu di dunia Go yang luas!
-
-<!-- Apa ide fungsi generik pertama yang akan kamu buat? Bagikan di kolom komentar! -->
+Generics adalah alat yang sangat kuat. Gunakan saat kalian benar-benar membutuhkannya untuk menghindari duplikasi kode.

@@ -5,7 +5,7 @@ date: 26 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]
 ---
 
-Selamat datang kembali di seri konkurensi **Becoming Gopher**! Di [episode sebelumnya](./pengenalan-konkurensi-goroutine), kita berhasil melepaskan kekuatan `goroutine` untuk menjalankan banyak pekerjaan sekaligus. Tapi, kita juga menemukan masalah besar: para 'pekerja' kita saling berebut data (*race condition*) dan 'bos' (`main goroutine`) tidak tahu kapan mereka selesai.
+Selamat datang kembali di seri konkurensi **Becoming Gopher**! Di [episode sebelumnya](./pengenalan-konkurensi-goroutine), kita berhasil melepaskan kekuatan `goroutine` untuk menjalankan banyak pekerjaan sekaligus. Tapi, kita juga menemukan masalah besar: para 'pekerja' kita saling berebut data (_race condition_) dan 'bos' (`main goroutine`) tidak tahu kapan mereka selesai.
 
 Bagaimana cara kita membuat para pekerja ini berinteraksi dengan tertib? Di dunia Go, ada sebuah filosofi yang sangat terkenal:
 
@@ -17,7 +17,7 @@ Artinya, daripada membiarkan banyak `goroutine` menyentuh variabel yang sama (be
 
 ![go channel illustation](./image.webp)
 
-Bayangkan *channel* seperti **ban berjalan (conveyor belt)** di sebuah pabrik. Satu `goroutine` (pekerja) menaruh barang di ban berjalan, dan `goroutine` lain mengambilnya di ujung. Semuanya aman, teratur, dan tidak ada yang saling sikut.
+Bayangkan _channel_ seperti **ban berjalan (conveyor belt)** di sebuah pabrik. Satu `goroutine` (pekerja) menaruh barang di ban berjalan, dan `goroutine` lain mengambilnya di ujung. Semuanya aman, teratur, dan tidak ada yang saling sikut.
 
 ## Dasar-Dasar Channel
 
@@ -25,7 +25,7 @@ Mari kita lihat cara kerja 'pipa' data ini.
 
 ### Membuat, Mengirim, dan Menerima
 
-Kita membuat *channel* menggunakan fungsi `make`. Tanda panah `<-` adalah operatornya.
+Kita membuat _channel_ menggunakan fungsi `make`. Tanda panah `<-` adalah operatornya.
 
 ```go
 package main
@@ -49,9 +49,11 @@ func main() {
 ```
 
 ### Keajaiban Sinkronisasi (Unbuffered Channel)
+
 Secara default, channel bersifat **unbuffered** dan **memblokir**. Artinya:
-- Saat sebuah `goroutine` mengirim data ke *channel* (`ch <- data`), **ia akan berhenti dan menunggu** sampai ada `goroutine` lain yang siap menerima data tersebut.
-- Saat sebuah `goroutine` mencoba menerima data dari *channel* (`data := <-ch`), **ia akan berhenti dan menunggu** sampai ada data yang dikirim.
+
+- Saat sebuah `goroutine` mengirim data ke _channel_ (`ch <- data`), **ia akan berhenti dan menunggu** sampai ada `goroutine` lain yang siap menerima data tersebut.
+- Saat sebuah `goroutine` mencoba menerima data dari _channel_ (`data := <-ch`), **ia akan berhenti dan menunggu** sampai ada data yang dikirim.
 
 Perilaku 'saling menunggu' ini adalah mekanisme sinkronisasi yang sangat kuat. Mari kita selesaikan masalah "main goroutine tidak menunggu" dari postingan sebelumnya, kali ini dengan cara yang benar.
 
@@ -60,7 +62,7 @@ func worker(done chan bool) {
 	fmt.Println("Bekerja...")
 	time.Sleep(1 * time.Second)
 	fmt.Println("Selesai.")
-	
+
 	// Kirim sinyal bahwa pekerjaan sudah selesai
 	done <- true
 }
@@ -70,7 +72,7 @@ func main() {
 	go worker(done)
 
 	// Main goroutine akan berhenti di sini dan menunggu sinyal dari channel 'done'
-	<-done 
+	<-done
 	fmt.Println("Main goroutine juga selesai.")
 }
 ```
@@ -78,9 +80,10 @@ func main() {
 Tidak perlu lagi `time.Sleep()` yang tidak pasti. `main` akan menunggu persis sampai `worker` selesai.
 
 ## Buffered Channel: Kotak Surat dengan Kapasitas
+
 Terkadang, kita tidak ingin si pengirim langsung berhenti. Kita ingin ia bisa menaruh beberapa pesan terlebih dahulu sebelum menunggu. Di sinilah **Buffered Channel** berperan.
 
-Bayangkan *buffered channel* seperti kotak surat. Kalian bisa memasukkan beberapa surat (sesuai kapasitasnya) tanpa harus menunggu tukang pos datang. Tapi jika kotak surat sudah penuh, Kalian harus menunggu.
+Bayangkan _buffered channel_ seperti kotak surat. Kalian bisa memasukkan beberapa surat (sesuai kapasitasnya) tanpa harus menunggu tukang pos datang. Tapi jika kotak surat sudah penuh, Kalian harus menunggu.
 
 ```go
 // Membuat buffered channel dengan kapasitas 2
@@ -98,12 +101,13 @@ fmt.Println(<-ch) // Pesan kedua
 ```
 
 ## Iterasi dan Menutup Channel
-Bagaimana jika sebuah `goroutine` mengirim banyak pesan dan kita ingin membacanya semua? Kita bisa menggunakan perulangan `for range` pada *channel*.
 
-Perulangan ini akan otomatis berhenti jika *channel* ditutup.
+Bagaimana jika sebuah `goroutine` mengirim banyak pesan dan kita ingin membacanya semua? Kita bisa menggunakan perulangan `for range` pada _channel_.
 
-:::note 
-Penting: Hanya si pengirim yang boleh menutup *channel* menggunakan `close(ch)`. Ini adalah sinyal bagi si penerima bahwa tidak akan ada lagi data yang datang.
+Perulangan ini akan otomatis berhenti jika _channel_ ditutup.
+
+:::note
+Penting: Hanya si pengirim yang boleh menutup _channel_ menggunakan `close(ch)`. Ini adalah sinyal bagi si penerima bahwa tidak akan ada lagi data yang datang.
 :::
 
 ```go
@@ -125,13 +129,15 @@ func main() {
 	for number := range myChannel {
 		fmt.Printf("Menerima: %d\n", number)
 	}
-	
+
 	fmt.Println("Channel sudah ditutup. Program selesai.")
 }
 ```
 
 ## Petualangan Berlanjut
-Luar biasa! Kita baru saja menguasai *channels*, alat komunikasi utama di dunia konkurensi Go. Kita sudah bisa:
+
+Kita baru saja menguasai _channels_, alat komunikasi utama di dunia konkurensi Go. Kita sudah bisa:
+
 - Mengirim dan menerima data antar `goroutine` dengan aman.
 - Melakukan sinkronisasi tanpa perlu "trik kotor".
 - Menggunakan buffered channel untuk komunikasi yang lebih fleksibel.

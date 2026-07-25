@@ -16,7 +16,7 @@ Di seri blog **Becoming Gopher** ini, saya akan mengajak kamu untuk belajar Go d
 Berikut adalah beberapa hal yang perlu diketahui sebelum membahas detail bahasa ini lebih lanjut.
 Pertama, [https://go.dev](https://go.dev/) yang merupakan situs resmi bahasa ini dan akan menjadi sumber utama untuk:
 
-- Mengunduh binary Go (yang berisi perintah `go` dan *tools* terkait lainnya) dari https://go.dev/doc/install
+- Mengunduh binary Go (yang berisi perintah `go` dan _tools_ terkait lainnya) dari https://go.dev/doc/install
 - Melihat dokumentasi resmi Go https://go.dev/doc/
 - Melihat semua package Go https://pkg.go.dev/
 - Mengakses Go Playground https://go.dev/play/
@@ -48,7 +48,7 @@ Project di golang biasa disebut dengan **module**. Untuk membuat module, bisa me
 go mod init <nama-module>
 ```
 
-Atau jika menggunakan IDE GoLand, membuat project baru bisa melalui tombol `New Project` di halaman pertama saat kita membuka GoLand. Kemudian akan diarahkan ke halaman untuk memasukkan informasi terkait project, seperti nama, GOROOT, dan *environment variables.* 
+Atau jika menggunakan IDE GoLand, membuat project baru bisa melalui tombol `New Project` di halaman pertama saat kita membuka GoLand. Kemudian akan diarahkan ke halaman untuk memasukkan informasi terkait project, seperti nama, GOROOT, dan _environment variables._
 
 Di halaman ini juga terdapat opsi centang (checkbox) `Add sample code` jika ingin membuat file contoh dari bahasa Go ini. Jika sudah selesai, lanjutkan dengan menekan tombol `Create` di pojok kanan bawah halaman, dan akan secara otomatis project dibuka di window yang sama.
 
@@ -76,6 +76,4 @@ go 1.24.5
 
 Selamat! Arena ngoding Go kamu sudah siap. Semua alat yang kita butuhkan sudah terpasang dan kita sudah punya sebuah modul kosong yang siap diisi.
 
-Di postingan berikutnya, kita akan benar-benar menulis kode pertama kita dan berkenalan dengan konsep paling dasar di Go. Jangan sampai ketinggalan, ya!
-
-<!-- Punya pertanyaan atau kesulitan saat instalasi? Jangan ragu untuk bertanya di kolom komentar di bawah! -->
+Di postingan berikutnya, kita akan benar-benar menulis kode pertama kita dan berkenalan dengan konsep paling dasar di Go.

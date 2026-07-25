@@ -14,15 +14,15 @@ type User struct {
 }
 ```
 
-Teks di dalam tanda petik miring (backticks) itu disebut **Struct Tags**. Tapi, bagaimana caranya fungsi `json.Marshal` atau library database tahu kalau field `Name` harus diubah menjadi `full_name`? 
+Teks di dalam tanda petik miring (backticks) itu disebut **Struct Tags**. Tapi, bagaimana caranya fungsi `json.Marshal` atau library database tahu kalau field `Name` harus diubah menjadi `full_name`?
 
 Jawabannya adalah: **Reflection**.
 
 ## Apa itu Reflection?
 
-**Reflection** adalah kemampuan sebuah program untuk memeriksa struktur dan nilai dari variabelnya sendiri saat sedang berjalan (*runtime*). Di Go, fitur ini disediakan oleh paket `reflect`.
+**Reflection** adalah kemampuan sebuah program untuk memeriksa struktur dan nilai dari variabelnya sendiri saat sedang berjalan (_runtime_). Di Go, fitur ini disediakan oleh paket `reflect`.
 
-Meskipun Go adalah bahasa yang *statically-typed* (tipe data ditentukan saat kompilasi), Reflection memungkinkan kita untuk melakukan hal-hal dinamis yang biasanya hanya ada di bahasa seperti Python atau JavaScript.
+Meskipun Go adalah bahasa yang _statically-typed_ (tipe data ditentukan saat kompilasi), Reflection memungkinkan kita untuk melakukan hal-hal dinamis yang biasanya hanya ada di bahasa seperti Python atau JavaScript.
 
 ## Dua Konsep Utama: Type dan Value
 
@@ -66,6 +66,7 @@ Reflection adalah alat yang sangat kuat, tapi juga berbahaya. Ada dua alasan uta
 2.  **Keamanan (Panic)**: Jika kamu salah melakukan operasi (misal mencoba mengambil nilai dari field yang tidak ada), program kamu bisa langsung `panic` saat runtime.
 
 **Gunakan Reflection hanya jika:**
+
 - Kamu sedang membangun library yang harus menangani tipe data apa pun (seperti serializer, ORM, atau DI container).
 - Tidak ada cara lain untuk menyelesaikan masalah tersebut dengan kode biasa atau Generics.
 
@@ -73,6 +74,6 @@ Reflection adalah alat yang sangat kuat, tapi juga berbahaya. Ada dua alasan uta
 
 Reflection memberikan Go fleksibilitas yang luar biasa di balik dinding sistem tipenya yang ketat. Struct Tags adalah contoh nyata bagaimana reflection mempermudah hidup kita sehari-hari.
 
-Namun ingat pepatah lama Gopher: *"Clear is better than clever. Reflection is never clear."*
+Namun ingat pepatah lama Gopher: _"Clear is better than clever. Reflection is never clear."_
 
-Di postingan selanjutnya, kita akan membahas hal yang lebih praktis untuk manajemen proyek besar: **Go Modules & Workspace**. Sampai jumpa! 🚀
+Di postingan selanjutnya, kita akan membahas hal yang lebih praktis untuk manajemen proyek besar: **Go Modules & Workspace**. Sampai jumpa!

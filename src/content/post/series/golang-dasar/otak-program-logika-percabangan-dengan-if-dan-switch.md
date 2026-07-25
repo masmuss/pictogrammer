@@ -24,13 +24,13 @@ Sebelum program bisa membuat keputusan, ia harus bisa mengolah data terlebih dah
 
 Ini adalah operasi yang paling kita kenal. Go mendukung semua operasi aritmetika standar.
 
-| Operator | Keterangan |
-| :--- | :--- |
-| `+` | Penjumlahan |
-| `-` | Pengurangan |
-| `*` | Perkalian |
-| `/` | Pembagian |
-| `%` | Sisa Pembagian (modulus) |
+| Operator | Keterangan               |
+| :------- | :----------------------- |
+| `+`      | Penjumlahan              |
+| `-`      | Pengurangan              |
+| `*`      | Perkalian                |
+| `/`      | Pembagian                |
+| `%`      | Sisa Pembagian (modulus) |
 
 ```go
 a := 10
@@ -57,14 +57,14 @@ fmt.Println("Nilai y:", y) // Nilai y: 6
 
 Inilah kunci dari pengambilan keputusan. Operasi perbandingan selalu menghasilkan nilai boolean (true atau false), yang nantinya akan kita gunakan di if atau switch.
 
-| Operator |	Keterangan |
-| :--- | :--- |
-| `>` |	Lebih Dari |
-| `<` |	Kurang Dari |
-| `>=` |	Lebih Dari Sama Dengan |
-| `<=` |	Kurang Dari Sama Dengan |
-| `==` |	Sama Dengan |
-| `!=` |	Tidak Sama Dengan |
+| Operator | Keterangan              |
+| :------- | :---------------------- |
+| `>`      | Lebih Dari              |
+| `<`      | Kurang Dari             |
+| `>=`     | Lebih Dari Sama Dengan  |
+| `<=`     | Kurang Dari Sama Dengan |
+| `==`     | Sama Dengan             |
+| `!=`     | Tidak Sama Dengan       |
 
 ```go
 nilaiUjian := 85
@@ -74,13 +74,14 @@ fmt.Println("Status kelulusan:", lulus) // Status kelulusan: true
 ```
 
 ### 3. Operasi Logika
+
 Operasi ini digunakan untuk menggabungkan beberapa hasil perbandingan.
 
-| Operator |	Keterangan |
-| :--- | :--- |
-| `\|\|` |	Atau (salah satu kondisi harus true) |
-| `&&` |	Dan (kedua kondisi harus true) |
-| `!` |	Tidak (membalikkan nilai true menjadi false, dan sebaliknya) |
+| Operator | Keterangan                                                   |
+| :------- | :----------------------------------------------------------- |
+| `\|\|`   | Atau (salah satu kondisi harus true)                         |
+| `&&`     | Dan (kedua kondisi harus true)                               |
+| `!`      | Tidak (membalikkan nilai true menjadi false, dan sebaliknya) |
 
 ```go
 absensi := 80
@@ -201,14 +202,14 @@ default:
 ```
 
 ## Petualangan Hari Ini Selesai!
-Luar biasa! Hari ini kita sudah berhasil memberikan 'otak' pada program kita. Perjalanan kita tidak lagi lurus-lurus saja; sekarang kode kita bisa memilih jalan dan bereaksi terhadap kondisi yang berbeda.
+
+Hari ini kita sudah berhasil memberikan 'otak' pada program kita. Perjalanan kita tidak lagi lurus-lurus saja; sekarang kode kita bisa memilih jalan dan bereaksi terhadap kondisi yang berbeda.
 
 Secara singkat, kita sudah belajar:
+
 - Melakukan operasi matematika, perbandingan, dan logika.
 - Mengonversi tipe data agar bisa diolah bersama.
 - Membuat keputusan sederhana dengan if-else.
 - Menangani banyak pilihan secara elegan dengan switch.
 
-Di petualangan selanjutnya, kita akan belajar cara membuat program kita melakukan tugas berulang-ulang tanpa lelah. Kita akan mengupas tuntas satu-satunya perulangan di Go, yaitu `for`, dan mulai menyimpan data dalam jumlah banyak menggunakan `array`.
-
-<!-- Ada bagian yang membuatmu bingung? Atau punya pertanyaan lain? Tinggalkan jejak di kolom komentar, ya! Sampai jumpa di pos berikutnya! -->
+Di petualangan selanjutnya, kita akan belajar cara membuat program kita melakukan tugas berulang-ulang tanpa lelah.

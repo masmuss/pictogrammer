@@ -7,7 +7,7 @@ tags: ["tech", "golang", "internals"]
 
 Kita telah sampai di akhir perjalanan seri **Deep Dive**. Untuk menutupnya dengan berkesan, kita akan membahas salah satu fitur paling ikonik di Go: **Interface**.
 
-Secara penggunaan, interface sangat simpel. Namun, pernahkah kamu bertanya-tanya: *Bagaimana Go tahu kalau suatu tipe data memenuhi suatu interface tanpa kita harus menulis kata kunci 'implements'?*
+Secara penggunaan, interface sangat simpel. Namun, pernahkah kamu bertanya-tanya: _Bagaimana Go tahu kalau suatu tipe data memenuhi suatu interface tanpa kita harus menulis kata kunci 'implements'?_
 
 ## Struktur Memori Interface
 
@@ -31,7 +31,7 @@ Sejak Go 1.18, `any` hanyalah alias untuk `interface{}`. Saat kita menggunakan `
 
 ## Dynamic Dispatch: Bagaimana Method Dipanggil?
 
-Saat kamu memanggil method dari sebuah interface, Go melakukan proses yang disebut **Dynamic Dispatch**. 
+Saat kamu memanggil method dari sebuah interface, Go melakukan proses yang disebut **Dynamic Dispatch**.
 Go tidak langsung tahu fungsi mana yang harus dijalankan saat kompilasi. Ia melihat ke dalam **Method Table** di dalam **itab** saat runtime untuk menemukan fungsi yang benar.
 
 Meskipun ini sangat fleksibel, ada biaya performa kecil dibandingkan memanggil fungsi secara langsung. Namun, bagi sebagian besar aplikasi, perbedaan ini tidak terasa dan sebanding dengan fleksibilitas yang didapat.
@@ -51,10 +51,8 @@ Inilah kenapa terkadang kamu mengecek `if err != nil` dan hasilnya true, padahal
 
 ## Penutup Seri Deep Dive
 
-Luar biasa! Kamu telah menuntaskan perjalanan mendalam di dunia Go. Dari Generics, Context, hingga jeroan Interface.
+Kamu telah menuntaskan perjalanan mendalam di dunia Go. Dari Generics, Context, hingga jeroan Interface.
 
 Dengan memahami apa yang terjadi di bawah kap mesin, kamu bukan lagi sekadar menulis kode yang "jalan", tapi menulis kode yang kamu mengerti sepenuhnya perilakunya.
 
-Terima kasih telah mengikuti seri **Becoming Gopher**. Teruslah bereksplorasi, teruslah membangun hal-hal hebat, dan tetaplah menjadi Gopher yang rendah hati.
-
-**Happy Coding!** 🚀✨
+Terima kasih telah mengikuti seri **Becoming Gopher**.

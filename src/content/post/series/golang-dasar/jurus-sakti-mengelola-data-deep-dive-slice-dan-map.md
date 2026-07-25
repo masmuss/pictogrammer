@@ -20,12 +20,13 @@ Ini adalah salah satu episode terpenting dalam seri ini. Jika kamu menguasai `sl
 
 Pertama, mari kita luruskan satu hal: **`slice` bukanlah pengganti `array`, melainkan sebuah 'pembungkus' cerdas untuk `array`**.
 
-Sebuah `slice` tidak benar-benar menyimpan datanya sendiri. Ia hanya sebuah struktur ringan yang menunjuk ke sebagian (atau seluruh) elemen dari sebuah `array` yang ada di belakang layar (disebut *backing array*).
+Sebuah `slice` tidak benar-benar menyimpan datanya sendiri. Ia hanya sebuah struktur ringan yang menunjuk ke sebagian (atau seluruh) elemen dari sebuah `array` yang ada di belakang layar (disebut _backing array_).
 
 `Slice` memiliki tiga komponen utama:
-1.  **Pointer**: Penunjuk ke elemen pertama di *backing array* yang bisa diakses oleh `slice`.
+
+1.  **Pointer**: Penunjuk ke elemen pertama di _backing array_ yang bisa diakses oleh `slice`.
 2.  **Length (Panjang)**: Jumlah elemen yang ada di dalam `slice`.
-3.  **Capacity (Kapasitas)**: Jumlah elemen dari `pointer` hingga akhir *backing array*. `Length` tidak boleh lebih dari `Capacity`.
+3.  **Capacity (Kapasitas)**: Jumlah elemen dari `pointer` hingga akhir _backing array_. `Length` tidak boleh lebih dari `Capacity`.
 
 ### Cara Membuat dan Memanipulasi Slice
 
@@ -35,12 +36,12 @@ Ada beberapa cara untuk membuat `slice`. Mari kita lihat satu per satu.
 
 Ini adalah cara paling harfiah untuk melihat `slice` sebagai "potongan" dari `array`.
 
-| Sintaks | Keterangan |
-| :--- | :--- |
+| Sintaks           | Keterangan                                                  |
+| :---------------- | :---------------------------------------------------------- |
 | `array[low:high]` | Membuat slice dari index `low` sampai sebelum index `high`. |
-| `array[low:]` | Membuat slice dari index `low` sampai akhir `array`. |
-| `array[:high]` | Membuat slice dari index 0 sampai sebelum index `high`. |
-| `array[:]` | Membuat slice dari seluruh elemen `array`. |
+| `array[low:]`     | Membuat slice dari index `low` sampai akhir `array`.        |
+| `array[:high]`    | Membuat slice dari index 0 sampai sebelum index `high`.     |
+| `array[:]`        | Membuat slice dari seluruh elemen `array`.                  |
 
 Untuk memahaminya, mari kita lihat diagram berikut. Bayangkan kita punya sebuah `array` berisi nama-nama bulan. Dua `slice` yang berbeda bisa merujuk ke `array` yang sama sebagai backing `array`-nya.
 
@@ -138,14 +139,14 @@ fmt.Println(cap(nama))  // 5
 ```
 
 #### Fungsi-Fungsi Penting untuk Slice
-|Fungsi |	Keterangan|
-| :--- | :--- |
-| `len(slice)` | Mendapatkan panjang (jumlah elemen yang digunakan) slice.
-| `cap(slice)` | Mendapatkan kapasitas (jumlah maksimum elemen sebelum perlu alokasi ulang).
-| `append(slice, data...)` | Menambahkan data ke akhir slice.
-| `make([]Type, length, capacity)` | Membuat slice baru dengan length dan capacity tertentu.
-| `copy(destination, source)` | Menyalin isi slice dari source ke destination.
 
+| Fungsi                           | Keterangan                                                                  |
+| :------------------------------- | :-------------------------------------------------------------------------- |
+| `len(slice)`                     | Mendapatkan panjang (jumlah elemen yang digunakan) slice.                   |
+| `cap(slice)`                     | Mendapatkan kapasitas (jumlah maksimum elemen sebelum perlu alokasi ulang). |
+| `append(slice, data...)`         | Menambahkan data ke akhir slice.                                            |
+| `make([]Type, length, capacity)` | Membuat slice baru dengan length dan capacity tertentu.                     |
+| `copy(destination, source)`      | Menyalin isi slice dari source ke destination.                              |
 
 Fungsi andalan `slice` adalah `append` yang membuatnya terasa dinamis.
 
@@ -157,10 +158,11 @@ fmt.Println(angka) // Output: [1 2 3]
 
 :::warning
 Perilaku `append` yang Wajib Diketahui!
+
 - Jika kapasitas `slice` masih cukup, `append` akan menggunakan backing array yang sama.
-- Jika kapasitas tidak cukup, Go akan membuat *backing array* baru (biasanya 2x lipat lebih besar), menyalin semua elemen lama, lalu menambahkan elemen baru.
+- Jika kapasitas tidak cukup, Go akan membuat _backing array_ baru (biasanya 2x lipat lebih besar), menyalin semua elemen lama, lalu menambahkan elemen baru.
 - Karena itu, selalu simpan hasil `append` ke variabel `slice` yang sama (`slice = append(slice, ...)`).
-:::
+  :::
 
 Fungsi `copy` berguna untuk membuat duplikat `slice` yang benar-benar terpisah (dengan backing array yang berbeda).
 
@@ -177,18 +179,22 @@ fmt.Println("Slice Salinan:", sliceSalinan) // Slice Salinan: [x b c]
 ```
 
 ## `Map`: Lemari Arsip Berbasis Key-Value
+
 Kita sudah bisa menyimpan data berurutan dengan `slice`. Tapi, bagaimana jika kita ingin menyimpan data umur seseorang dan mengaksesnya dengan nama `"Budi"`, bukan dengan `data[0]`? Untuk inilah `map` diciptakan.
 
 `Map` adalah tipe data koleksi yang menyimpan data dalam format pasangan **key-value**.
+
 - **Key**: Penanda unik untuk mengakses data (seperti nama kontak di HP).
 - **Value**: Data yang disimpan.
 
 **Karakteristik Map**
+
 - Key Harus Unik: Jika kita menambahkan data dengan key yang sama, data lama akan ditimpa.
 - Tipe Key Fleksibel: Key bisa berupa `string`, `int`, atau tipe lain yang bisa dibandingkan.
-- Ukuran Dinamis: Kita bisa menambah atau menghapus pasangan *key-value* kapan saja.
+- Ukuran Dinamis: Kita bisa menambah atau menghapus pasangan _key-value_ kapan saja.
 
 **Membuat dan Menggunakan Map**
+
 ```go
 // Membuat map dengan key string dan value int
 dataUmur := map[string]int{
@@ -234,14 +240,14 @@ if ok {
 `ok` akan bernilai `true` jika `key` ditemukan, dan `false` jika tidak. Ini adalah cara paling aman untuk memeriksa keberadaan data di `map`.
 
 ## Petualangan Hari Ini Selesai!
-Luar biasa! Hari ini kita sudah menguasai dua 'jurus sakti' paling fundamental di Go: `slice` untuk koleksi data yang fleksibel dan `map` untuk penyimpanan data berbasis *key-value*. Dengan dua alat ini di dalam 'ransel' kita, kita sekarang bisa menangani hampir semua skenario pengelolaan data.
+
+Hari ini kita sudah menguasai dua 'jurus sakti' paling fundamental di Go: `slice` untuk koleksi data yang fleksibel dan `map` untuk penyimpanan data berbasis _key-value_. Dengan dua alat ini di dalam 'ransel' kita, kita sekarang bisa menangani hampir semua skenario pengelolaan data.
 
 Singkatnya, kita sudah belajar:
+
 - Perbedaan mendasar antara `array` dan `slice`.
 - Cara membuat dan memanipulasi `slice` menggunakan `append`, `copy` dan `make`.
-- Menyimpan dan mengakses data dengan `map` menggunakan *key* yang unik.
+- Menyimpan dan mengakses data dengan `map` menggunakan _key_ yang unik.
 - Jurus penting "comma ok" untuk memeriksa data di `map` dengan aman.
 
-Setelah kita bisa mengelola data dengan canggih, langkah selanjutnya adalah membungkus logika kita ke dalam blok-blok yang bisa digunakan kembali. Di petualangan berikutnya, kita akan melakukan *deep dive* ke dunia `function`!
-
-<!-- Punya kasus penggunaan menarik untuk `slice` atau `map`? Bagikan idemu di kolom komentar! Sampai jumpa di bagian keenam! -->
+Setelah kita bisa mengelola data dengan canggih, langkah selanjutnya adalah membungkus logika kita ke dalam blok-blok yang bisa digunakan kembali. Di petualangan berikutnya, kita akan melakukan _deep dive_ ke dunia `function`!

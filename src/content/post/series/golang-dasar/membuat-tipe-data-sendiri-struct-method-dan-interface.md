@@ -15,11 +15,11 @@ Di sinilah kita naik level dari sekadar 'programmer' menjadi 'desainer sistem'. 
 2.  **`Method`**: Lalu, kita akan memberikan 'kemampuan' atau 'perilaku' pada data kita dengan menempelkan fungsi langsung padanya.
 3.  **`Interface`**: Terakhir, kita akan belajar mendefinisikan 'kontrak' atau 'aturan main' yang bisa diikuti oleh tipe data apa pun.
 
-Ini adalah fondasi dari *Object-Oriented Programming* (OOP) ala Go. Siap untuk mulai merancang duniamu sendiri di dalam kode? Ayo kita mulai!
+Ini adalah fondasi dari _Object-Oriented Programming_ (OOP) ala Go. Siap untuk mulai merancang duniamu sendiri di dalam kode? Ayo kita mulai!
 
 ## `Struct`: Cetakan untuk Datamu
 
-**Struct** (struktur) adalah sebuah *template* data yang digunakan untuk menggabungkan beberapa tipe data berbeda menjadi satu kesatuan yang logis. Anggap saja `struct` adalah cara kita membuat tipe data baru yang lebih kompleks.
+**Struct** (struktur) adalah sebuah _template_ data yang digunakan untuk menggabungkan beberapa tipe data berbeda menjadi satu kesatuan yang logis. Anggap saja `struct` adalah cara kita membuat tipe data baru yang lebih kompleks.
 
 Misalnya, kita ingin merepresentasikan sebuah buku. Sebuah buku memiliki judul (`string`), penulis (`string`), tahun terbit (`int`), dan status ketersediaan (`bool`). Dengan `struct`, kita bisa membungkus semua informasi itu.
 
@@ -60,6 +60,7 @@ func main() {
 ```
 
 #### Praktik Terbaik: Fungsi Konstruktor
+
 Meskipun kita bisa membuat `struct` secara langsung seperti di atas, praktik yang umum di Go adalah menggunakan fungsi konstruktor. Ini adalah sebuah fungsi konvensional yang bertujuan untuk membuat instance dari `struct` dengan cara yang terpusat dan valid.
 
 ```go
@@ -83,7 +84,8 @@ func main() {
 Pola ini sangat berguna untuk menjaga konsistensi saat membuat objek yang kompleks.
 
 #### Sekilas Info: `Struct Tags`
-Sebelum lanjut, ada satu fitur keren dari `struct` yang akan sangat berguna saat kamu membuat aplikasi web, yaitu *struct tags*. Ini adalah anotasi metadata yang kita berikan pada *field* untuk memberi instruksi pada package lain, misalnya saat mengubah `struct` menjadi JSON.
+
+Sebelum lanjut, ada satu fitur keren dari `struct` yang akan sangat berguna saat kamu membuat aplikasi web, yaitu _struct tags_. Ini adalah anotasi metadata yang kita berikan pada _field_ untuk memberi instruksi pada package lain, misalnya saat mengubah `struct` menjadi JSON.
 
 ```go
 import "encoding/json"
@@ -99,9 +101,11 @@ type Product struct {
 Tidak perlu pusing sekarang, cukup tahu bahwa fitur ini ada dan sangat powerful.
 
 ### `Method`: Memberi Kemampuan pada Struct
+
 Data tanpa perilaku itu pasif. Kita bisa memberi 'kemampuan' atau 'perilaku' pada `struct` kita dengan menempelkan fungsi langsung padanya. Fungsi yang 'terikat' pada sebuah `struct` inilah yang disebut **method**.
 
 Perbedaannya sederhana:
+
 - **Fungsi biasa**: `lakukanSesuatu(data)`
 - **Method**: `data.lakukanSesuatu()`
 
@@ -129,7 +133,7 @@ func (b Book) PrintInfo() {
 
 func main() {
 	book := Book{Title: "Go untuk Pemula", Author: "Khoirul Anwar", Available: true}
-	
+
     // Memanggil method langsung dari variabel struct
 	book.PrintInfo()
 }
@@ -138,9 +142,10 @@ func main() {
 Dengan `method`, `struct` kita kini tidak hanya menyimpan data, tapi juga tahu bagaimana cara memproses datanya sendiri.
 
 ## `Interface`: Kontrak Perilaku Universal
+
 Konsep ini sedikit abstrak, tapi sangat kuat. Bayangkan sebuah stopkontak di dinding. Stopkontak itu tidak peduli apa yang akan kalian colok: charger HP, adaptor laptop, atau kipas angin. Ia hanya punya satu aturan atau **kontrak**: "Jika kamu punya dua pin logam yang sesuai, kamu bisa terhubung denganku."
 
-**Interface** di Go adalah persis seperti itu: sebuah kontrak perilaku. Ia hanya mendefinisikan sekumpulan *method* yang *harus dimiliki*, tanpa peduli siapa yang memilikinya.
+**Interface** di Go adalah persis seperti itu: sebuah kontrak perilaku. Ia hanya mendefinisikan sekumpulan _method_ yang _harus dimiliki_, tanpa peduli siapa yang memilikinya.
 
 ```go
 // Siapapun yang punya method PrintInfo(), dia adalah seorang 'Printable'
@@ -150,7 +155,8 @@ type Printable interface {
 ```
 
 ### Implementasi Interface yang Ajaib
-Inilah keunikan Go. Sebuah `struct` tidak perlu secara eksplisit bilang, "Hei, saya mengimplementasikan interface Printable!". Cukup dengan **memiliki semua method yang disyaratkan oleh interface tersebut**, maka Go secara otomatis menganggapnya patuh pada kontrak. Ini disebut *implicit interface implementation*.
+
+Inilah keunikan Go. Sebuah `struct` tidak perlu secara eksplisit bilang, "Hei, saya mengimplementasikan interface Printable!". Cukup dengan **memiliki semua method yang disyaratkan oleh interface tersebut**, maka Go secara otomatis menganggapnya patuh pada kontrak. Ini disebut _implicit interface implementation_.
 
 Mari kita lihat contohnya. Kita punya `Book` dan `Magazine`.
 
@@ -199,6 +205,7 @@ func main() {
 Fungsi `displayItem` tidak perlu tahu detail tentang `Book` atau `Magazine`. Ia hanya peduli satu hal: "Apakah benda ini bisa di-`PrintInfo()`?". Fleksibilitas inilah yang membuat interface menjadi pilar utama dalam membangun software yang modular di Go.
 
 ### Menggabungkan Interface (Embedding Interfaces)
+
 Kita bisa membangun interface yang lebih kompleks dengan menyatukan beberapa interface yang lebih kecil. Ini disebut **embedding**. Praktik ini sangat dianjurkan di Go karena mendorong kita untuk membuat interface kecil yang bisa digunakan kembali.
 
 Bayangkan kita butuh sesuatu yang bisa membaca dan menulis data.
@@ -242,7 +249,8 @@ func main() {
 ```
 
 ### `interface{}` - Si Super Fleksibel
-Ada satu interface spesial: `interface{}`. Karena ia tidak mensyaratkan *method* apa pun (kontraknya kosong), maka **semua tipe data** di Go secara otomatis memenuhinya. `interface{}` bisa menampung nilai apa saja, menjadikannya tipe data paling fleksibel di Go.
+
+Ada satu interface spesial: `interface{}`. Karena ia tidak mensyaratkan _method_ apa pun (kontraknya kosong), maka **semua tipe data** di Go secara otomatis memenuhinya. `interface{}` bisa menampung nilai apa saja, menjadikannya tipe data paling fleksibel di Go.
 
 ```go
 func printAnything(data interface{}) {
@@ -255,13 +263,15 @@ printAnything(Book{Title: "Go", Author: "X"})
 ```
 
 ## Petualangan Hari Ini Selesai!
-Luar biasa! Kita baru saja menyelesaikan salah satu bab paling konseptual dalam perjalanan "Becoming Gopher". Kita tidak lagi hanya menggunakan tipe data bawaan, tapi sudah bisa **menciptakan tipe data kita sendiri** yang merepresentasikan dunia nyata.
+
+Kita baru saja menyelesaikan salah satu bab paling konseptual dalam perjalanan "Becoming Gopher". Kita tidak lagi hanya menggunakan tipe data bawaan, tapi sudah bisa **menciptakan tipe data kita sendiri** yang merepresentasikan dunia nyata.
 
 Singkatnya, hari ini kita sudah belajar:
+
 - Membungkus kumpulan data terkait ke dalam sebuah 'cetakan' bernama `struct`.
 - Memberikan 'kemampuan' atau perilaku pada `struct` dengan `method`.
 - Mendefinisikan 'kontrak' perilaku universal yang membuat kode kita fleksibel dengan `interface`.
 
-Kita sudah bisa merancang data dan perilakunya. Tapi, ada satu topik fundamental yang sengaja kita simpan sampai sekarang karena butuh pemahaman yang matang: `pointer`. Di episode selanjutnya, kita akan membongkar misteri *pointer* dan melihat bagaimana ia bisa membuat program kita jauh lebih efisien.
+Kita sudah bisa merancang data dan perilakunya. Tapi, ada satu topik fundamental yang sengaja kita simpan sampai sekarang karena butuh pemahaman yang matang: `pointer`. Di episode selanjutnya, kita akan membongkar misteri _pointer_ dan melihat bagaimana ia bisa membuat program kita jauh lebih efisien.
 
-Coba pikirkan, objek apa dari dunia nyata yang bisa kamu modelkan dengan `struct` dan `interface`? Bagikan idemu di kolom komentar!
+Coba pikirkan, objek apa dari dunia nyata yang bisa kamu modelkan dengan `struct` dan `interface`?

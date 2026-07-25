@@ -12,17 +12,18 @@ Ransel kita sudah penuh dengan berbagai 'alat' dan 'jurus sakti'. Sekarang, saat
 1.  **Membangun Sesuatu:** Kita akan merangkai semua yang telah kita pelajari untuk membangun proyek pertama kita: sebuah aplikasi To-Do List sederhana di terminal.
 2.  **Melihat ke Horison:** Setelah proyek selesai, kita akan melihat sekilas ke 'dunia setelah ini', yaitu kekuatan super Go yang membuatnya begitu istimewa: Konkurensi.
 
-Ini adalah momen pembuktian. Mari kita gabungkan semua kepingan puzzle yang telah kita kumpulkan dan ciptakan sesuatu yang nyata. Siap untuk *build* terakhir kita di seri ini?
+Ini adalah momen pembuktian. Mari kita gabungkan semua kepingan puzzle yang telah kita kumpulkan dan ciptakan sesuatu yang nyata. Siap untuk _build_ terakhir kita di seri ini?
 
 ## Proyek Pertama Kita: Aplikasi To-Do List di Terminal (CLI)
 
-Proyek terbaik untuk memulai adalah yang tidak memerlukan antarmuka visual (UI) yang rumit, sehingga kita bisa fokus pada logika inti. Karena itu, kita akan membuat aplikasi *Command-Line Interface* (CLI).
+Proyek terbaik untuk memulai adalah yang tidak memerlukan antarmuka visual (UI) yang rumit, sehingga kita bisa fokus pada logika inti. Karena itu, kita akan membuat aplikasi _Command-Line Interface_ (CLI).
 
 ### Blueprint Proyek
 
 Kita akan membangun aplikasi ini langkah demi langkah, menggunakan konsep yang sudah kita pelajari di bab-bab sebelumnya.
 
 #### Langkah 1: `struct` - Cetak Biru untuk 'Todo' Kita
+
 Pertama, kita butuh 'cetakan' untuk setiap tugas. Sebuah tugas memiliki ID, deskripsi pekerjaan, dan status selesai.
 
 ```go
@@ -45,6 +46,7 @@ type Todo struct {
 ```
 
 #### Langkah 2: `slice` - Wadah untuk Semua 'Todo'
+
 Kita butuh tempat untuk menyimpan semua tugas kita. `slice` adalah pilihan yang sempurna karena jumlah tugas kita bisa bertambah. Kita juga butuh variabel untuk melacak ID berikutnya.
 
 ```go
@@ -56,6 +58,7 @@ var nextID int = 1
 ```
 
 #### Langkah 3: `function` - Memecah Logika Menjadi Bagian Kecil
+
 Sekarang, mari kita buat fungsi untuk setiap aksi yang bisa dilakukan pengguna.
 
 Fungsi untuk Menambah Tugas:
@@ -109,6 +112,7 @@ func completeTodo(id int) {
 ```
 
 #### Langkah 4: `main` - Menyatukan Semuanya (The Main Loop)
+
 Inilah inti dari aplikasi kita. Kita akan membuat perulangan tak terbatas yang akan terus menampilkan menu, menunggu input pengguna, dan memanggil fungsi yang sesuai menggunakan `switch`.
 
 ```go
@@ -162,10 +166,11 @@ Proyek di atas adalah awal yang sangat baik dan fungsional! Namun, seiring kita 
 Saya telah membuat versi yang lebih canggih dari aplikasi ini yang menerapkan konsep `pointer` dan `error handling` secara lebih mendalam, seperti yang telah kita bahas di bab-bab sebelumnya.
 
 Beberapa peningkatan utama dalam versi baru ini adalah:
-* **Penggunaan Pointer pada Fungsi:** Perhatikan bagaimana fungsi seperti `addTodo` kini menerima `*[]Todo` (pointer ke slice) dan `*int` (pointer ke int). Ini adalah cara yang lebih idiomatis untuk secara eksplisit menunjukkan bahwa sebuah fungsi akan memodifikasi data asli yang dikirimkan kepadanya.
-* **Error Handling Eksplisit:** Setiap fungsi kini mengembalikan nilai `error`. Ini adalah cara standar Go untuk memberi sinyal jika terjadi kesalahan. Di dalam fungsi `main`, kita sekarang selalu memeriksa `if err != nil` setelah setiap pemanggilan fungsi. Ini membuat program kita lebih tangguh karena tidak mengabaikan potensi masalah.
-* **Penggunaan `panic` dan `recover` yang Terkendali:** Untuk kasus-kasus yang seharusnya tidak terjadi (seperti mencoba menyelesaikan tugas dengan ID yang tidak ada), versi ini menggunakan `panic`. Namun, `panic` tersebut langsung ditangkap dengan `defer` dan `recover`, lalu diubah menjadi nilai `error` yang rapi. Ini adalah pola lanjutan yang menunjukkan bagaimana `panic` bisa digunakan untuk mengontrol alur dalam kasus-kasus ekstrem tanpa membuat program *crash*.
-* **Manajemen Variabel yang Lebih Baik:** Alih-alih menggunakan variabel global, `todos` dan `nextID` sekarang dimiliki oleh fungsi `main` dan dikirimkan sebagai pointer ke fungsi lain yang membutuhkannya. Ini adalah praktik yang lebih baik karena membuat alur data lebih jelas dan mengurangi *side effects*.
+
+- **Penggunaan Pointer pada Fungsi:** Perhatikan bagaimana fungsi seperti `addTodo` kini menerima `*[]Todo` (pointer ke slice) dan `*int` (pointer ke int). Ini adalah cara yang lebih idiomatis untuk secara eksplisit menunjukkan bahwa sebuah fungsi akan memodifikasi data asli yang dikirimkan kepadanya.
+- **Error Handling Eksplisit:** Setiap fungsi kini mengembalikan nilai `error`. Ini adalah cara standar Go untuk memberi sinyal jika terjadi kesalahan. Di dalam fungsi `main`, kita sekarang selalu memeriksa `if err != nil` setelah setiap pemanggilan fungsi. Ini membuat program kita lebih tangguh karena tidak mengabaikan potensi masalah.
+- **Penggunaan `panic` dan `recover` yang Terkendali:** Untuk kasus-kasus yang seharusnya tidak terjadi (seperti mencoba menyelesaikan tugas dengan ID yang tidak ada), versi ini menggunakan `panic`. Namun, `panic` tersebut langsung ditangkap dengan `defer` dan `recover`, lalu diubah menjadi nilai `error` yang rapi. Ini adalah pola lanjutan yang menunjukkan bagaimana `panic` bisa digunakan untuk mengontrol alur dalam kasus-kasus ekstrem tanpa membuat program _crash_.
+- **Manajemen Variabel yang Lebih Baik:** Alih-alih menggunakan variabel global, `todos` dan `nextID` sekarang dimiliki oleh fungsi `main` dan dikirimkan sebagai pointer ke fungsi lain yang membutuhkannya. Ini adalah praktik yang lebih baik karena membuat alur data lebih jelas dan mengurangi _side effects_.
 
 Mempelajari dan membandingkan kedua versi kode ini adalah latihan yang sangat bagus untuk memahami evolusi dari kode pemula menjadi kode yang lebih matang dan idiomatis.
 
@@ -177,25 +182,22 @@ Kalian bisa melihat, mengunduh, dan mencoba versi yang lebih canggih ini langsun
 ---
 
 ## Melihat ke Horison - Kekuatan Super Go: Konkurensi
+
 Selamat atas proyek pertamamu! Perjalananmu sebagai Gopher baru saja dimulai. Sekarang, mari kita lihat sekilas ke mana jalan ini bisa membawamu. Salah satu alasan terbesar mengapa perusahaan besar seperti Google, Gojek, dan Netflix memilih Go adalah karena **konkurensi**.
 
 Bayangkan kamu punya satu koki yang memasak satu hidangan satu per satu. Itulah program biasa (sekuensial). Sekarang bayangkan kamu punya 10 koki yang bekerja bersamaan di dapur yang sama. Itulah **konkurensi**, dan Go adalah ahlinya.
 
 Di Go, ini dicapai dengan dua fitur utama:
+
 - `goroutine`: Bayangkan `goroutine` sebagai sebuah fungsi yang bisa berjalan 'bersamaan' dengan fungsi lainnya, tanpa saling menunggu. Mereka sangat ringan dan mudah dibuat, cukup dengan `go namaFungsi()`.
 - channel: Ini adalah 'pipa' aman bagi para `goroutine` untuk berkomunikasi dan mengirim data satu sama lain tanpa risiko tabrakan data.
 
-Kalian tidak perlu memahaminya sekarang, tetapi ketahuilah bahwa konsep inilah yang membuat Go sangat *powerful* untuk membangun server web yang bisa melayani ribuan pengguna sekaligus, memproses data dalam jumlah besar, dan banyak lagi. Inilah petualangan kalian selanjutnya.
+Kalian tidak perlu memahaminya sekarang, tetapi ketahuilah bahwa konsep inilah yang membuat Go sangat _powerful_ untuk membangun server web yang bisa melayani ribuan pengguna sekaligus, memproses data dalam jumlah besar, dan banyak lagi. Inilah petualangan kalian selanjutnya.
 
 ---
 
 ## Penutup Seri "Becoming Gopher"
-Dan dengan itu, seri petualangan **Becoming Gopher** kita sampai pada akhirnya. Kita sudah menempuh perjalanan yang luar biasa, dari halaman kosong hingga aplikasi yang berfungsi.
 
-Ilmu yang paling berharga adalah ilmu yang dipraktikkan. Teruslah *ngoding*, buat proyek-proyek kecil lainnya, baca kode orang lain, dan yang terpenting, jangan pernah takut membuat kesalahan. Jalan untuk menjadi Gopher sejati adalah sebuah maraton, bukan sprint.
+Dan dengan itu, seri petualangan **Becoming Gopher** kita sampai pada akhirnya. Kita sudah menempuh perjalanan yang panjang, dari halaman kosong hingga aplikasi yang berfungsi.
 
 Terima kasih sudah mengikuti perjalanan ini dari awal hingga akhir. Semoga seri ini bermanfaat dan bisa menjadi pijakan yang kokoh untuk petualangan Go selanjutnya.
-
-Selamat *ngoding*, Gopher!
-
-<!-- Punya ide untuk memodifikasi aplikasi To-Do List ini? Atau punya ide proyek lain? Bagikan di kolom komentar! -->
