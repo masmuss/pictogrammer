@@ -6,65 +6,81 @@ import { cn } from "@/lib/utils";
 interface Props {
 	variant?: "icon" | "button";
 	showEmail?: boolean;
+	showCV?: boolean;
 	class?: string;
 }
 
-const { variant = "icon", showEmail = false, class: className } = Astro.props;
+const {
+	variant = "icon",
+	showEmail = false,
+	showCV = false,
+	class: className
+} = Astro.props;
+
+const isButton = variant === "button";
+const buttonVariant = isButton ? "outline" : "ghost";
+const buttonSize = isButton ? "default" : "icon-sm";
+const buttonClass = cn(
+	"text-muted-foreground hover:text-foreground",
+	isButton && "gap-x-2"
+);
+const iconClass = cn("iconify", !isButton && "text-xl");
+
+const links = [
+	...(showEmail
+		? [
+				{
+					href: `mailto:${siteConfig.email}`,
+					text: "Email",
+					icon: "ri--mail-line"
+				}
+			]
+		: []),
+	...siteConfig.socialLinks.map((link) => ({
+		href: link.href,
+		text: link.text,
+		icon: link.icon
+	}))
+];
 ---
 
 <div
-	class={cn(
-		"flex items-center",
-		variant === "button" ? "flex-wrap gap-3" : "gap-4",
-		className
-	)}
+  class={cn(
+    "flex items-center",
+    isButton ? "flex-wrap gap-3" : "gap-4",
+    className,
+  )}
 >
-	{
-		showEmail && (
-			<Button
-				as="a"
-				href={`mailto:${siteConfig.email}`}
-				target="_blank"
-				rel="noopener noreferrer"
-				variant={variant === "button" ? "outline" : "ghost"}
-				size={variant === "button" ? "default" : "icon-sm"}
-				class={cn(
-					"text-muted-foreground hover:text-foreground",
-					variant === "button" && "gap-x-2"
-				)}
-				aria-label="Email"
-				title={variant === "button" ? "Email" : undefined}
-			>
-				<span
-					slot="icon-before"
-					class={cn("iconify ri--mail-line", variant === "icon" && "text-xl")}
-				/>
-				{variant === "icon" && <span class="sr-only">Email</span>}
-			</Button>
-		)
-	}
-	{
-		siteConfig.socialLinks.map((link) => (
-			<Button
-				as="a"
-				href={link.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				variant={variant === "button" ? "outline" : "ghost"}
-				size={variant === "button" ? "default" : "icon-sm"}
-				class={cn(
-					"text-muted-foreground hover:text-foreground",
-					variant === "button" && "gap-x-2"
-				)}
-				aria-label={link.text}
-				title={variant === "button" ? link.text : undefined}
-			>
-				<span
-					slot="icon-before"
-					class={cn("iconify", link.icon, variant === "icon" && "text-xl")}
-				/>
-				{variant === "icon" && <span class="sr-only">{link.text}</span>}
-			</Button>
-		))
-	}
+  {
+    showCV && siteConfig.cvLink && (
+      <Button
+        as="a"
+        href={siteConfig.cvLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="outline"
+      >
+        <span slot="icon-before" class="iconify ri--file-download-line" />
+        View Resume
+      </Button>
+    )
+  }
+  {
+    links.map((link) => (
+      <Button
+        as="a"
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant={buttonVariant}
+        size={buttonSize}
+        class={buttonClass}
+        aria-label={link.text}
+        title={isButton ? link.text : undefined}
+      >
+        <span slot="icon-before" class={cn(iconClass, link.icon)} />
+        {!isButton && <span class="sr-only">{link.text}</span>}
+      </Button>
+    ))
+  }
 </div>
