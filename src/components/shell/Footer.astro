@@ -1,122 +1,100 @@
 ---
+import SocialLinks from "@/components/common/SocialLinks.astro";
+import Logo from "@/components/shell/Logo.astro";
 import { Container } from "@/components/ui/primitives";
 import siteConfig from "@/config/site-config";
 
-const navigateLinks = [
-	{ text: "Home", href: "/" },
-	{ text: "Blog", href: "/blog" },
-	{ text: "Projects", href: "/projects" },
-	{ text: "About", href: "/about" }
-];
-
-const connectLinks = [
-	{ text: "GitHub", href: "https://github.com/masmuss", external: true },
-	{
-		text: "LinkedIn",
-		href: "https://www.linkedin.com/in/masmuss",
-		external: true
-	},
-	{ text: "Twitter", href: "https://x.com/rexbocho", external: true },
-	{ text: "RSS Feed", href: "/rss.xml", external: false }
-];
+const pageLinks = siteConfig.header.navLinks;
 ---
 
-<footer class="border-border bg-card/70 mt-18 border-t">
-	<Container class="flex flex-col gap-4 pt-12 pb-8 text-sm md:pt-16">
-		<div class="mx-auto">
-			<div class="grid grid-cols-1 gap-8 pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
-				<div class="space-y-4">
-					<h2 class="text-base font-semibold">{siteConfig.title}</h2>
-					<p class="text-muted-foreground leading-relaxed">
-						Thoughts, stories, and ideas.
-					</p>
-				</div>
-				<div class="space-y-4">
-					<h3
-						class="text-foreground text-sm font-semibold tracking-widest uppercase"
-					>
-						Navigate
-					</h3>
-					<ul class="space-y-3">
-						{
-							navigateLinks.map((link) => (
-								<li>
-									<a
-										href={link.href}
-										class="text-muted-foreground hover:text-foreground transition-colors"
-									>
-										{link.text}
-									</a>
-								</li>
-							))
-						}
-					</ul>
-				</div>
-				<div class="space-y-4">
-					<h3
-						class="text-foreground text-sm font-semibold tracking-widest uppercase"
-					>
-						Connect
-					</h3>
-					<ul class="space-y-3">
-						{
-							connectLinks.map((link) => (
-								<li>
-									<a
-										href={link.href}
-										class="text-muted-foreground hover:text-foreground transition-colors"
-										target={link.external ? "_blank" : undefined}
-										rel={link.external ? "noopener noreferrer" : undefined}
-									>
-										{link.text}
-									</a>
-								</li>
-							))
-						}
-					</ul>
-				</div>
-				<div class="space-y-4">
-					<h3
-						class="text-foreground text-sm font-semibold tracking-widest uppercase"
-					>
-						About
-					</h3>
-					<p class="text-muted-foreground leading-relaxed">
-						Fullstack notes, visual experiments, and stories behind the lens.
-					</p>
-				</div>
-			</div>
-		</div>
-		<div
-			class="border-border mx-auto flex w-full flex-col gap-4 border-t pt-8 md:flex-row md:items-center md:justify-between"
-		>
-			<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-				<span class="text-muted-foreground">
-					2018&nbsp;&mdash;&nbsp;{new Date().getFullYear()}&nbsp;&copy;&nbsp;{
-						siteConfig.author
-					}.
-				</span>
-				<span class="text-muted-foreground">|</span>
-				<a
-					href="/privacy"
-					class="text-muted-foreground hover:text-foreground transition-colors"
-				>
-					Privacy
-				</a>
-			</div>
-			<div class="text-muted-foreground text-sm md:mt-0 md:text-right">
-				<p>
-					Content licensed under&nbsp;
-					<a
-						href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="underline underline-offset-2"
-					>
-						CC BY-NC-SA 4.0
-					</a>
-				</p>
-			</div>
-		</div>
-	</Container>
+<footer class="border-border/50 bg-card/70 mt-18 border-t">
+  <Container class="flex flex-col gap-4 pt-12 pb-8 text-sm md:pt-16">
+    <div>
+      <div
+        class="grid grid-cols-1 gap-8 pb-12 md:grid-cols-[1fr_0.25fr_0.25fr]"
+      >
+        <div class="space-y-4">
+          <h2 class="text-base font-semibold">{siteConfig.title}</h2>
+          <p class="text-muted-foreground leading-relaxed">
+            Thoughts, stories, and ideas.
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h3
+            class="text-foreground text-sm font-semibold tracking-widest uppercase"
+          >
+            Navigate
+          </h3>
+          <ul>
+            {
+              pageLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <h3
+            class="text-foreground text-sm font-semibold tracking-widest uppercase"
+          >
+            Connect
+          </h3>
+          <ul>
+            {
+              siteConfig.socialLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      class="border-border/70 mx-auto flex w-full flex-col gap-4 border-t pt-8 md:flex-row md:items-center md:justify-between"
+    >
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+        <span class="text-muted-foreground">
+          2018&nbsp;&mdash;&nbsp;{new Date().getFullYear()}&nbsp;&copy;&nbsp;{
+            siteConfig.author
+          }.
+        </span>
+        <span class="text-muted-foreground">|</span>
+        <a
+          href="/privacy"
+          class="text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Privacy
+        </a>
+      </div>
+      <div class="text-muted-foreground text-sm md:mt-0 md:text-right">
+        <p>
+          Content licensed under&nbsp;
+          <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline underline-offset-2"
+          >
+            CC BY-NC-SA 4.0
+          </a>
+        </p>
+      </div>
+    </div>
+  </Container>
 </footer>

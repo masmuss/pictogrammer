@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import logoDark from "@/assets/images/logo-dark.svg";
+import logoLight from "@/assets/images/logo-light.svg";
+
+interface Props {
+	class?: string;
+	href?: string;
+	loading?: "eager" | "lazy";
+	fetchpriority?: "high" | "low" | "auto";
+}
+
+const {
+	class: className = "w-12 md:w-14 lg:w-16",
+	href = "/",
+	loading = "lazy",
+	fetchpriority = "auto"
+} = Astro.props;
+---
+
+<a href={href} class="inline-block shrink-0" aria-label="pictogrammer logo">
+  <Image
+    src={logoLight}
+    alt="pictogrammer logo"
+    class={`${className} dark:hidden`}
+    loading={loading}
+    fetchpriority={fetchpriority}
+  />
+  <Image
+    src={logoDark}
+    alt="pictogrammer logo"
+    class={`${className} hidden dark:block`}
+    loading={loading}
+    fetchpriority={fetchpriority}
+  />
+</a>

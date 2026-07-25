@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import logoDark from "@/assets/images/logo-dark.svg";
-import logoLight from "@/assets/images/logo-light.svg";
+import Logo from "@/components/shell/Logo.astro";
 import MobileMenu from "@/components/shell/MobileMenu.astro";
 import NavLink from "@/components/shell/NavLink.astro";
 import { Search } from "@/components/ui/search";
@@ -18,22 +16,7 @@ const { navLinks } = siteConfig.header;
     class="relative mx-auto flex w-full items-center justify-between gap-x-3 md:gap-5"
     aria-label="global"
   >
-    <a class="flex flex-none" href="/" aria-label="pictogrammer logo">
-      <Image
-        src={logoLight}
-        alt="pictogrammer logo"
-        class="w-12 md:w-14 lg:w-16 dark:hidden"
-        loading="eager"
-        fetchpriority="high"
-      />
-      <Image
-        src={logoDark}
-        alt="pictogrammer logo"
-        class="hidden w-12 md:w-14 lg:w-16 dark:block"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </a>
+    <Logo loading="eager" fetchpriority="high" />
 
     <div class="ml-auto flex flex-row items-center gap-x-5">
       <!-- Desktop Navigation -->
