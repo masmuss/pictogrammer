@@ -2,12 +2,12 @@
 title: E-Library API - Weekend Projects
 description: A technical breakdown of building a modern backend API over several focused development sessions.
 date: 25 June 2025
-tags: ["tech"]
+tags: ["tech", "devlog", "backend", "bun", "hono"]
 ---
 
-Proyek ini dimulai sebagai sebuah studi kasus: membangun backend API untuk sistem E-Library dari awal. Tujuannya bukan hanya untuk membuat endpoint yang fungsional, tetapi untuk merancang sebuah sistem yang kokoh, teruji, dan menerapkan praktik terbaik dalam pengembangan perangkat lunak modern.
+Proyek ini dimulai sebagai studi kasus: membangun backend API untuk sistem E-Library dari awal. Aku pengen lebih dari sekadar endpoint yang berfungsi — aku mau arsitektur yang bersih, teruji, dan mengikuti praktik modern tanpa over-engineering.
 
-Fokus utama adalah pada pemilihan *tech-stack* yang efisien dan pembentukan arsitektur yang bersih. Untuk itu, teknologi yang dipilih adalah **Bun** sebagai runtime, **Hono** sebagai web framework, dan **Drizzle** sebagai ORM. Kombinasi ini menawarkan performa tinggi dan pengalaman pengembangan yang cepat.
+Tech stack-nya: **Bun** sebagai runtime, **Hono** sebagai web framework, **Drizzle** sebagai ORM. Kombinasi ini ringan, cepat, dan DX-nya enak — terutama `bun test` yang built-in tanpa perlu Jest config berlembar-lembar.
 
 ```mermaid
 graph TD;
@@ -31,17 +31,32 @@ graph TD;
     User([User]) --> Hono;
 ```
 
-Pembangunan dimulai dari lapisan fondasi, yaitu sistem **otentikasi**. Alur kerja standar seperti registrasi dan login diimplementasikan, kemudian diperkuat dengan mekanisme **Refresh Token** berbasis `HttpOnly` cookie dan alur **Lupa Password** yang aman menggunakan token sekali pakai.
+## Fondasi: Otentikasi Dulu
 
-Selanjutnya, arsitektur dipecah menjadi beberapa lapisan yang jelas untuk memastikan *separation of concerns*. **Routes** mendefinisikan "kontrak" API menggunakan `@hono/zod-openapi`, **Handlers** bertindak sebagai jembatan antara lapisan HTTP dan logika bisnis, dan **Repositories** menjadi satu-satunya lapisan yang bertanggung jawab atas akses data.
+Aku mulai dari layer paling dasar: otentikasi. Registrasi dan login standar, lalu diperkuat dengan **Refresh Token** via `HttpOnly` cookie dan alur **Lupa Password** pakai token sekali pakai. Tidak ada yang fancy — tapi semuanya harus solid sebelum lanjut ke fitur bisnis.
 
-Fungsionalitas inti, seperti **manajemen buku dan kategori**, dibangun dengan otorisasi berbasis peran (RBAC) yang ketat, di mana hanya `ADMIN` yang dapat melakukan operasi tulis. **Siklus peminjaman buku** diimplementasikan secara penuh, mulai dari permintaan oleh `MEMBER` hingga persetujuan oleh `LIBRARIAN`, lengkap dengan aturan bisnis seperti batas maksimal peminjaman.
+## Arsitektur: Pisah Tanggung Jawab
 
-Untuk optimasi, **Redis** diintegrasikan sebagai lapisan *caching* pada *resource* yang sering dibaca. Logika *cache-aside* dan *cache invalidation* ditempatkan di dalam *Repository* untuk menjaga agar *Handler* tetap tidak mengetahui detail implementasi caching. Untuk keamanan, **Rate Limiting** per alamat IP juga diterapkan sebagai *middleware* global.
+Kode dipecah jadi beberapa layer:
 
-Kualitas kode dijaga secara otomatis. **Biome** digunakan untuk *linting* dan *formatting*, sementara **Husky** berdiri sebagai penjaga gerbang *commit*, memastikan hanya kode terbaik yang bisa masuk. Setiap fitur diuji dengan saksama, memastikan setiap bagian dari mesin ini bekerja tanpa cela.
+- **Routes** — definisi "kontrak" API pakai `@hono/zod-openapi`. Setiap endpoint punya skema request/response yang tervalidasi.
+- **Handlers** — jembatan antara HTTP dan logika bisnis. Tidak boleh tahu soal database.
+- **Repositories** — satu-satunya layer yang menyentuh database. Kalau mau ganti ORM, cukup ganti di sini.
 
-Hasil akhirnya adalah sebuah backend API yang tidak hanya fungsional tetapi juga terstruktur dengan baik, aman, dan memiliki performa yang dioptimalkan. Fondasi ini sekarang sudah siap untuk langkah selanjutnya, baik itu dihubungkan dengan aplikasi frontend maupun dipersiapkan untuk *deployment* ke lingkungan produksi.
+## Fitur Inti: Buku, Kategori, Peminjaman
 
-Kamu dapat melihat kode lengkapnya di GitHub
+Manajemen buku dan kategori pakai RBAC — hanya `ADMIN` yang bisa operasi tulis. Siklus peminjaman lengkap: `MEMBER` mengajukan, `LIBRARIAN` menyetujui, lengkap dengan aturan bisnis seperti batas maksimal peminjaman.
+
+## Optimasi: Redis & Rate Limiting
+
+Redis dipasang sebagai cache untuk resource yang sering dibaca. Pola cache-aside: cek cache dulu, kalau tidak ada baru query database. Cache invalidation dilakukan di layer Repository — handler tidak perlu tahu.
+
+Rate limiting per IP diterapkan sebagai middleware global biar API tidak disalahgunakan.
+
+## Tooling: Biome + Husky
+
+Biome untuk linting dan formatting — cepat, tanpa konfigurasi ribet. Husky sebagai penjaga commit: setiap commit otomatis dijalankan `bun test` dan `biome check`. Kalau ada yang gagal, commit ditolak.
+
+Hasil akhirnya: sebuah backend API yang terstruktur, aman, dan siap dihubungkan ke frontend atau di-deploy. Kode lengkapnya di GitHub:
+
 ::github{repo="masmuss/hono-elibrary"}
