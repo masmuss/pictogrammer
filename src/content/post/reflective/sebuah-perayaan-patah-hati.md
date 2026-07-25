@@ -1,6 +1,6 @@
 ---
 title: Sebuah Perayaan Patah Hati
-description: Adalah tentang perjalanan panjang melalui labirin emosi, melukis kehidupan. Hingga saatnya merayakan pertumbuhan, menemukan kembali diri, dan menghargai dukungan orang-orang terkasih.
+description: Patah hati tidak dramatis seperti di film. Tapi bukan berarti ia tidak layak diakui.
 date: 04 February 2024
 coverImage:
   src: https://images.unsplash.com/photo-1508558936510-0af1e3cccbab?q=80&=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D,

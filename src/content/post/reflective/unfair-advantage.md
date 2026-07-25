@@ -1,6 +1,6 @@
 ---
 title: Aku lebih suka menyebutnya "Unfair Advantage"
-description: Hidup adalah kompetisi, setidaknya itulah yang sering dibicarakan orang diluar sana. Apa yang terjadi jika aku (dan orang lain tentunya) memiliki kartu AS yang tak bisa dipelajari, diperoleh, atau diusahakan? Apakah itu adalah sebuah kecurangan? Ataukah itu adalah sebuah keberuntungan
+description: Tentang relasi, privilege, dan kenapa "orang dalam" tidak selalu berarti curang.
 date: 23 March 2024
 coverImage:
   src: https://assets-global.website-files.com/645e149147e48297f40d7e8c/645e149147e48297f40d8027_miles-framework.jpeg

@@ -1,6 +1,6 @@
 ---
 title: Falling in love with the pain
-description: Mencintai rasa sakit adalah salah satu kunci untuk tumbuh, karena sejatinya kita tak pernah benar-benar kalah selama kita berani bertaruh pada diri sendiri.
+description: Tentang memilih untuk tidak menghindar dari hal-hal yang sulit.
 date: 14 February 2024
 coverImage:
   src: https://images.unsplash.com/photo-1482440308425-276ad0f28b19?&auto=format&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
