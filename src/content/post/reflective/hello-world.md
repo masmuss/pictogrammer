@@ -18,7 +18,9 @@ Aku tidak punya rencana besar untuk blog ini. Tidak ada target posting, tidak ad
 
 Dan itu tidak apa-apa.
 
-Aku menulis ini di penghujung 2023, setelah beberapa bulan berkutat dengan kode dan keputusan. Banyak hal terjadi tahun ini yang belum selesai kupahami. Mungkin dengan menulis, aku bisa melihatnya lebih jelas. Atau setidaknya, menerima bahwa tidak semuanya harus jelas sekarang.
+Aku menulis ini di September 2023, setelah beberapa bulan berkutat dengan kode dan keputusan. Banyak hal terjadi tahun ini yang belum selesai kupahami. Mungkin dengan menulis, aku bisa melihatnya lebih jelas. Atau setidaknya, menerima bahwa tidak semuanya harus jelas sekarang.
+
+Aku pernah menulis sebelumnya — di Blogger, setahun lalu, ikut 30 hari writing challenge. Tapi itu platform pinjaman. Blog ini ruang yang kubangun sendiri, dari nol. Tidak ada template yang kupakai mentah-mentah, tidak ada batasan yang kuikuti karena platform memaksanya.
 
 Kalau kamu membaca ini — entah sekarang, besok, atau bertahun-tahun setelah tulisan ini terbit — anggap saja ini ajakan ngobrol. Bukan ceramah, bukan tutorial, bukan ajaran hidup. Hanya satu orang yang sedang mencoba merapikan pikirannya sendiri, dan kebetulan melakukannya di tempat yang bisa kamu lihat.
 
