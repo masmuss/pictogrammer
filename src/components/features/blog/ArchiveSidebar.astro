@@ -14,7 +14,7 @@ const { archiveData, class: className } = Astro.props;
   <div class="p-6">
     <h3 class="mb-4 font-semibold">Timeline</h3>
     <nav
-      class="flex max-h-[calc(100vh-12rem)] flex-col gap-y-4 overflow-y-auto pr-2 text-sm"
+      class="flex max-h-[calc(100vh-2rem)] flex-col gap-y-4 overflow-y-auto pr-2 text-sm"
     >
       {
         archiveData.map(({ year, months, count }) => (

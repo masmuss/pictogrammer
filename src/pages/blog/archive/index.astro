@@ -40,9 +40,9 @@ const archiveData = groupPostsForArchive(allPosts);
 
     {
       allPosts.length > 0 && (
-        <div class="relative grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div class="relative grid grid-cols-1 gap-8 lg:grid-cols-[1fr_0.5fr]">
           {/* Main Content */}
-          <div class="flex flex-col gap-y-20 lg:col-span-2">
+          <div class="flex flex-col gap-y-20">
             {archiveData.map(({ year, months }) => (
               <section class="flex flex-col gap-y-8" id={`year-${year}`}>
                 <h2 class="relative text-2xl font-bold tracking-tight md:text-2xl">
@@ -73,7 +73,7 @@ const archiveData = groupPostsForArchive(allPosts);
 
           <ArchiveSidebar
             archiveData={archiveData}
-            class="sticky top-16 w-full self-start lg:col-span-1"
+            class="sticky top-0 w-full self-start"
           />
         </div>
       )
