@@ -64,137 +64,126 @@ const githubCalendarTheme = {
 ---
 
 <BaseLayout
-	title="About Khoirul Fattah"
-	description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
-	image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
-	pageType="website"
+  title="About Khoirul Fattah"
+  description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
+  image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
+  pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-10">
-		<Heading as="h1" class="sr-only">About Khoirul Fattah</Heading>
+  <div class="flex w-full flex-col gap-y-10">
+    <Heading as="h1" class="sr-only">About Khoirul Fattah</Heading>
 
-		<div
-			class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-12"
-		>
-			<div class="flex flex-col gap-y-10">
-				<Section
-					title="About Me"
-					titleAs="h2"
-					titleSize="2xl"
-					titleWeight="bold"
-					transitionDelay={0}
-					data-testid="about-me-section"
-				>
-					<div
-						class="custom-prose prose-a:underline max-w-none underline-offset-2"
-					>
-						<AboutContent />
-					</div>
-				</Section>
+    <div
+      class="grid w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_256px] lg:gap-12"
+    >
+      <div class="flex flex-col gap-y-10">
+        <Section
+          title="About Me"
+          titleAs="h2"
+          titleSize="2xl"
+          titleWeight="bold"
+          transitionDelay={0}
+          data-testid="about-me-section"
+        >
+          <div
+            class="custom-prose prose-a:underline max-w-none underline-offset-2"
+          >
+            <AboutContent />
+          </div>
+        </Section>
 
-				<Section
-					title="Contribution Activity"
-					titleUppercase
-					titleAs="h2"
-					transitionDelay={150}
-					data-testid="contribution-activity-section"
-				>
-					<GitHubCalendar
-						username={githubUsername}
-						blockSize={10}
-						blockMargin={2}
-						showMonthLabels={true}
-						year="last"
-						theme={githubCalendarTheme}
-					/>
-				</Section>
-			</div>
+        <Section
+          title="Contribution Activity"
+          titleUppercase
+          titleAs="h2"
+          transitionDelay={150}
+          data-testid="contribution-activity-section"
+        >
+          <GitHubCalendar
+            username={githubUsername}
+            blockSize={10}
+            blockMargin={2}
+            showMonthLabels={true}
+            year="last"
+            theme={githubCalendarTheme}
+          />
+        </Section>
 
-			<div class="flex flex-col gap-6">
-				<AsideListPanel
-					title="Current Work"
-					items={currentWorkItems}
-					data-testid="current-work-panel"
-				/>
-				<AsideListPanel
-					title="Currently Learning & Focus"
-					items={learningFocusItems}
-					data-testid="learning-focus-panel"
-				/>
-				<AsideListPanel
-					title="Now Reading"
-					items={nowReadingBooks}
-					data-testid="now-reading-panel"
-				/>
-			</div>
-		</div>
+        <Section
+          title="Skills"
+          titleAs="h2"
+          titleUppercase
+          transitionDelay={150}
+          data-testid="skills-section"
+        >
+          <SkillsTabs collections={TECH_STACK} />
+        </Section>
 
-		<Section
-			title="Skills"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={150}
-			data-testid="skills-section"
-		>
-			<SkillsTabs collections={TECH_STACK} />
-		</Section>
+        <Section
+          title="Experiences"
+          titleAs="h2"
+          titleUppercase
+          transitionDelay={150}
+          data-testid="experiences-section"
+        >
+          <Experiences experiences={experiences} />
+        </Section>
 
-		<Section
-			title="Experiences"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={150}
-			data-testid="experiences-section"
-		>
-			<Experiences experiences={experiences} />
-		</Section>
+        <Section
+          title="Educations"
+          titleAs="h2"
+          titleUppercase
+          transitionDelay={150}
+          data-testid="educations-section"
+        >
+          <Educations educations={educations} />
+        </Section>
 
-		<Section
-			title="Educations"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={150}
-			data-testid="educations-section"
-		>
-			<Educations educations={educations} />
-		</Section>
+        <Section
+          title="Certifications"
+          titleAs="h2"
+          titleUppercase
+          transitionDelay={150}
+          data-testid="certifications-section"
+        >
+          <Certifications certifications={certifications} />
+        </Section>
 
-		<Section
-			title="Certifications"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={150}
-			data-testid="certifications-section"
-		>
-			<Certifications certifications={certifications} />
-		</Section>
+        <Section
+          title="Get in Touch"
+          titleAs="h2"
+          titleUppercase
+          transitionDelay={150}
+          data-testid="get-in-touch-section"
+        >
+          <div class="text-muted-foreground flex flex-col gap-y-4">
+            <p>
+              Feel free to reach out if you want to collaborate, have a project
+              in mind, or just want to say hi!
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <SocialLinks variant="button" showEmail showCV />
+            </div>
+          </div>
+        </Section>
+      </div>
 
-		<Section
-			title="Get in Touch"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={150}
-			data-testid="get-in-touch-section"
-		>
-			<div class="text-muted-foreground flex flex-col gap-y-4">
-				<p>
-					Feel free to reach out if you want to collaborate, have a project in
-					mind, or just want to say hi!
-				</p>
-				<div class="flex flex-wrap items-center gap-3">
-					{
-						siteConfig.cvLink && (
-							<Button href={siteConfig.cvLink} variant="outline">
-								<span
-									slot="icon-before"
-									class="iconify ri--file-download-line"
-								/>
-								View Resume
-							</Button>
-						)
-					}
-					<SocialLinks variant="button" showEmail />
-				</div>
-			</div>
-		</Section>
-	</div>
+      <div class="flex flex-col gap-6">
+        <AsideListPanel
+          title="Current Work"
+          items={currentWorkItems}
+          data-testid="current-work-panel"
+        />
+        <AsideListPanel
+          title="Currently Learning & Focus"
+          items={learningFocusItems}
+          data-testid="learning-focus-panel"
+        />
+        <AsideListPanel
+          title="Now Reading"
+          items={nowReadingBooks}
+          data-testid="now-reading-panel"
+        />
+      </div>
+    </div>
+  </div>
 </BaseLayout>
