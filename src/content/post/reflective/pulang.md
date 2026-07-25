@@ -8,34 +8,24 @@ coverImage:
 tags: ["life", "reflection"]
 ---
 
-> Kemanapun kau pergi. Sejauh manapun kau pergi melangkah. Kerinduan tetap pada tempat pertama.
+Aku lahir di sebuah desa kecil di kabupaten Sidoarjo. Tidak banyak yang bisa kuingat dari sana — hanya sedikit teman yang aku tidak yakin mereka masih ingat aku.
 
-Sebelumnya aku akan menceritakan sedikit perjalanan singkat ku selama 19 tahun ini.
+Lalu aku pindah ke Tuban. Di kota ini aku menghabiskan sebelas tahun, dari SD sampai lulus SMA. Lebih lama dari kota kelahiranku sendiri. Di sinilah sebagian besar kenanganku terbentuk — teman, sekolah, warung kopi, jalanan yang kuhafal tanpa GPS.
 
-Aku lahir di sebuah desa kecil di kabupaten Sidoarjo dan aku sedikit menghabiskan masa kecilku disana. Tak ada yang bisa aku ingat apa saja yang udah ku lewati disini karena memang disini aku hanya punya sedikit teman yang aku ga yakin mereka masih ingat aku.
+Setelah lulus SMA, aku masih menunda kepindahan. Kuliah masih online, jadi aku tetap di Tuban. Tapi akhirnya aku harus kembali ke Sidoarjo — ke rumah yang secara teknis adalah rumahku, tapi tidak terasa seperti rumah.
 
-Kenapa aku menyebut kata "sedikit"? Karena selanjutnya aku pindah di kota yang saat ini punya kisah tersendiri bagiku, Tuban.
+Culture shock kecil terjadi. Kebiasaan dari Tuban yang terbawa, interaksi dengan orang rumah yang canggung, dan fakta bahwa aku lebih sering di rumah sepupu daripada di rumah sendiri. Semester pertama kuliah kujalani seperti tamu di kota sendiri.
 
-Di kota kedua ini aku menghabiskan kurang lebih selama 11 tahun lamanya. Mulai dari SD sampai lulus SMA aku berada di kota ini. Kiranya kota ini lebih berkesan daripada kota kelahiranku sendiri karena aku lebih banyak menghabiskan waktuku disini.
+Lalu perkuliahan offline dimulai dan aku pindah lagi — kali ini ke Surabaya. Kota yang sebelumnya hanya kukenal dari cerita: panas, macet, mahal. Tiga hal yang tidak kusukai, dan Surabaya punya ketiganya.
 
-Setelah lulus SMA, aku masih menghabiskan sisa-sisa liburanku disana sebelum masuk kuliah (kebetulan masih kuliah online) karena belum ingin cepat-cepat pindah dan sedikit perlu sedikit persiapan ke tempat yang baru. Kemudian aku kembali lagi ke kota kelahiranku, Sidoarjo.
+Teman-teman sering tanya: "Ga pulang?", "Kenapa ke Tuban?", "Aslinya orang mana sih?"
 
-Kembali ke kota ini agaknya sedikit membuatku culture shock, masih banyak hal dari Tuban yang masih terbawa sampai ke rumah yang beberapa hal bisa sangat berbeda dan harus adaptasi lagi. Kemudian setelah kuliah tahun pertamaku dimulai sampai liburan semester 1, aku sangat jarang berinteraksi dengan orang rumahku sendiri (orang tua, red) karena aku lebih banyak berada di rumah sepupu daripada di rumah sendiri dan libur semester pun masih ke Tuban, bukan rumah sendiri.
+Pertanyaan yang sederhana, tapi selalu membuatku berhenti sejenak. Karena aku sendiri tidak tahu jawabannya.
 
-Dilanjut ketika perkuliahan mulai offline, aku bermigrasi lagi ke kota yang sebelumnya aku belum pernah singgah disana, kota pahlawan Surabaya. Awalnya tidak ada yang spesial dari kota ini, identik dengan hawa panas, macet di jam kerja serta apapun serba mahal yang mana aku tak menyukai ketiganya.
+Sidoarjo adalah kota lahirku, tapi aku tidak punya banyak kenangan di sana. Tuban adalah kota yang kusebut rumah, tapi secara administrasi bukan. Surabaya adalah tempat tinggalku sekarang, tapi belum tentu selamanya.
 
-Lalu, sering ada pertanyaan dari teman-teman "ga pulang?", "kenapa ke Tuban?", "aslinya orang mana sih?"
+Jadi di mana aku pulang?
 
-Aku yang sedari kecil tak sempat merasakan "hawa rumah" yang sebenarnya memang rumahku, menjadi bertanya-tanya apa itu "tempat pulang" atau apapun yang disebut dengan rumah, tempat dimana kita bisa melepas penat setelah melewati hari-hari yang panjang atau sekedar menengok raut wajah orang tua dan meminta doa kepada mereka.
+Aku belum bisa menjawabnya. Mungkin tidak perlu. Mungkin "pulang" bukan tentang lokasi — tapi tentang tempat di mana kamu merasa tidak perlu menjelaskan siapa dirimu.
 
-Sidoarjo adalah kota lahirku, tapi aku tak banyak berada disana, tak banyak pula aku berinteraksi bahkan dengan orang tuaku sendiri. Haruskah aku pulang di tempat yang aku sendiri merasa tak nyaman disana?
-
-Tuban, kota yang sebelumnya aku tak tahu apapun tentang kota ini, sekarang aku malah merindukannya. Bisakah aku pulang kesana, itu bukan tempat lahirku, tapi aku lebih lama disana. Entahlah.
-
-Surabaya yang akan kutinggali selama 4 tahun kedepan, akankah aku akan menetap lebih dari itu?
-
-Kini akhirnya aku paham, ruang pulang paling nyaman itu bernama hati yang lapang, juga diri yang makin hari makin berdamai dengan semua keadaan.
-
-Bagiku, Surabaya, Sidoarjo maupun Tuban itu hanya tempat. Yang bikin spesial bukan masalah lokasi, tapi teman-temanku. Yang aku rindu bukan warkop dan cafe nya, tapi obrolan kita disitu.
-
-Pulang bukan hanya berarti tempat dimana kita bisa melepas penat, tapi bisa jadi ke seseorang yang mengerti keadaanku, yang menjadi tempatku berkeluh kesah, yang bisa membuatku sedikit lupa akan hiruk pikuknya dunia sebelum akhirnya aku harus kembali lagi.
+Dan untuk sekarang, aku masih mencarinya.
