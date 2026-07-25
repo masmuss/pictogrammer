@@ -8,16 +8,20 @@ coverImage:
 tags: ["life"]
 ---
 
-> With peace of mind so hard to find, We're dwelling on the drastic signs, Another way to numb our mind, And as you close your eyes tonight, And pray for a better life, You'll see it flying helplessly away
+Ada hari-hari di mana semuanya terasa salah.
 
-Kutipan lirik diatas adalah penggambaran suatu kondisi dan tantangan seseorang untuk mencari kedamaian pikiran. Di dunia yang penuh dengan dinamika perubahan, orang cenderung mencoba mencari solusi lain untuk mengatasi kecemasan dan stres yang mereka alami. Setiap malam, mereka merenung dan berharap untuk kehidupan yang lebih baik, namun mereka juga merasakan kekecewaan karena impian-impian mereka terasa menjauh tanpa ada harapan akan keselamatan pada akhirnya.
+Bangun terlambat. Laptop lemot. Kode yang kemarin jalan, hari ini error tanpa alasan. Meeting yang harusnya setengah jam molor jadi dua jam. Di perjalanan pulang, hujan turun dan kamu tidak bawa jas hujan.
 
-"Kenapa gini?", "_Kok ngene se?_", "_Wes mbo lah_", ketiga kata itu tak jarang keluar dari mulut kita, atau minimal terbesit di benak kita. Sering kali kita sudah susah-susah ngatur, nyiapin, nge-rapi-in hidup, tapi tetep aja akhirnya ketebak. Ya, selalu berantakan dan selalu sukses untuk menambah sesi _overthinking_ kita di malam hari.
+Di hari seperti itu, gampang sekali untuk menyimpulkan bahwa hidupmu berantakan. Bahwa kamu tidak cukup mampu, tidak cukup disiplin, tidak cukup apa pun. Satu hari buruk terasa seperti representasi seluruh hidupmu.
 
-Sedikit aku pernah membaca mengenai kondisi **VUCA** yang salah satu poinnya adalah _Uncertainty_ atau "ketidakpastian". Saat ini kita berada di tengah-tengah keadaan yang segalanya tidak pasti, dan yang pasti adalah ketidakpastian itu sendiri. Tak jarang kita tak dapat memprediksi apa yang akan terjadi nantinya.
+Padahal tidak.
 
-Perubahan kondisi lingkungan yang mendadak, banyak pengaruh hal-hal diluar diri kita sampai ketidakjelasan akan situasi kondisi maupun informasi yang ada adalah sekian faktor lain penyebab ketiga kata diatas bisa terbesit keluar di benak kita.
+Hari buruk tidak membatalkan semua hari baik yang sudah kamu lewati. Ia juga tidak menentukan semua hari yang akan datang. Ia hanya satu hari. Satu titik. Satu halaman jelek di buku yang masih panjang.
 
-Tapi, bukankah akan selalu begitu? Di waktu semuanya dituntut untuk serba cepat, kita dituntut untuk lebih bisa beradaptasi dengan banyak kemungkinan yang bisa saja sesuai atau bahkan berlawanan dengan apa yang kita mau. Pada hakikatnya, se-berusaha apapun kita mencari cara, mencari jalan untuk kedepannya agar sesuai sama yang kita mau, atau minimal baik-baik aja, ada aja yang bikin jalannya berlubang.
+Aku belajar ini dengan susah payah. Karena aku tipe orang yang gampang tenggelam dalam satu kegagalan kecil. Satu feedback negatif bisa membuatku mempertanyakan seluruh kompetensiku. Satu rencana yang batal bisa membuatku merasa semua usahaku sia-sia.
 
-Memang. Kita harus tetap berusaha. Dan tentu juga kita harus berdamai dengan naik turunnya dinamika hidup, menikmati tiap belokan yang muncul tanpa tanda sebelumnya dan jangan terlalu gegabah untuk memutuskan sesuatu. Karena tujuan kita bukan untuk mencapai suatu **"tempat"** tujuan, namun untuk selamat pada akhirnya.
+Tapi itu tidak benar. Itu cuma lelah yang sedang berbicara.
+
+Besok pagi, matahari tetap terbit. Laptop tetap menyala. Kode yang error kemarin akan ketemu solusinya — atau tidak, dan kita pakai cara lain. Hujan mungkin turun lagi, tapi kali ini kamu bawa payung.
+
+Satu hari buruk tidak mendefinisikan apa pun. Ia hanya mengingatkan bahwa kamu manusia — dan manusia kadang punya hari yang buruk.

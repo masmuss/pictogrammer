@@ -8,22 +8,14 @@ coverImage:
 tags: ["growth"]
 ---
 
-Hari ini, ketika aku duduk di bangku kuliah semester 5, terbersit dalam pikiranku bahwa perjalanan hidup ini memang tak pernah lurus. Aku memandang masa depanku dengan rasa penasaran dan ketidakpastian. Di usiaku yang sudah menginjak kepala dua, bisa dibilang, masa ini adalah saatnya untuk menjalani pencarian jati diri yang sesungguhnya.
+Semester lima bukan semester yang ringan.
 
-Perjalanan hidupku sejauh ini tidaklah mudah. Setiap hari, aku dihadapkan pada berbagai macam tantangan dan rintangan yang menguji ketangguhanku. Tapi, inilah yang membuatku semakin yakin bahwa keberanian dan ketangguhan adalah kunci untuk tetap bertahan di tengah badai kehidupan.
+Tugas numpuk, ekspektasi tinggi, dan pertanyaan "setelah lulus mau ke mana?" mulai muncul dari segala arah — orang tua, teman, bahkan diri sendiri. Aku belum tahu jawabannya. Dan itu menakutkan.
 
-Di dunia perkuliahan, aku merasakan tekanan yang begitu besar. Tugas-tugas yang menumpuk, ujian yang menantang, dan ekspektasi yang tinggi dari diri sendiri serta orang-orang di sekitarku. Namun, aku memilih untuk tidak tenggelam dalam tekanan tersebut. Sebaliknya, aku memilih untuk menganggapnya sebagai peluang untuk tumbuh dan berkembang.
+Ada minggu-minggu di mana aku merasa tidak cukup. Nilai yang biasa saja, proyek yang stuck, teman-teman yang sepertinya sudah punya rencana matang sementara aku masih meraba-raba. Di titik itu, menyerah terasa seperti opsi yang masuk akal — bukan menyerah secara harfiah, tapi menurunkan standar. Menerima bahwa mungkin ini memang batasku.
 
-Resilience, bagi ku, adalah kemampuan untuk bangkit setelah jatuh. Ketika mendapati diriku lelah dan hampir menyerah, aku mengingat bahwa setiap kesulitan adalah ujian yang membentuk karakterku. Aku tidak lagi melihat kegagalan sebagai akhir dari segalanya, melainkan sebagai langkah menuju keberhasilan yang lebih besar.
+Tapi setiap kali aku hampir berhenti, ada sesuatu yang menahan. Bukan motivasi heroik, bukan kutipan inspiratif. Hanya kebiasaan: bangun, mandi, buka laptop, kerjakan apa yang bisa dikerjakan hari ini. Kadang itu cukup.
 
-Selama perjalanan pencarian jati diri ini, aku belajar untuk menerima diri sendiri apa adanya. Aku menyadari bahwa tidak semua hal dapat berjalan sesuai rencana, dan terkadang kita harus memilih untuk beradaptasi dengan perubahan. Ini adalah pelajaran berharga yang tidak diajarkan di dalam buku-buku kuliah.
+Resilience ternyata bukan soal menjadi kuat setiap saat. Ia lebih mirip otot yang dilatih pelan-pelan. Hari ini gagal, besok coba lagi. Minggu ini kalah, minggu depan mulai dari awal. Tidak ada momen dramatis di mana semuanya tiba-tiba membaik — hanya proses lambat yang hasilnya baru terasa setelah berbulan-bulan.
 
-Ketangguhanku juga diuji di luar kelas. Hidup di masa pandemi lalu memberiku banyak pelajaran berharga. Terbatasnya interaksi sosial, keterbatasan akses ke sumber daya, dan ketidakpastian mengenai masa depan menciptakan lingkungan yang tidak mudah. Namun, aku memilih untuk tetap fokus pada hal-hal yang dapat ku kontrol dan menjadikan setiap hari sebagai kesempatan untuk belajar sesuatu yang baru.
-
-Pada akhirnya, aku menyadari bahwa resilience adalah proses yang terus-menerus. Bukan hanya sekadar melalui masa sulit, tetapi juga melibatkan kemampuan untuk terus tumbuh dan berkembang seiring berjalannya waktu. Aku belajar untuk tidak hanya bertahan hidup, tetapi juga untuk hidup dengan penuh makna dan tujuan.
-
-Jadi, di tengah kebimbangan dan ketidakpastian, aku memilih untuk melihat masa pencarian jati diri ini sebagai petualangan yang menarik. Dengan hati penuh ketangguhan, aku yakin bahwa setiap langkahku membawaku lebih dekat kepada versi terbaik dari diriku sendiri. Resilience adalah kuncinya, dan aku siap menghadapi apapun yang akan datang.
-
-> "Life doesn't get easier or more forgiving; we get stronger and more resilient."
->
-> Steve Maraboli
+Aku masih di semester lima. Masih belum tahu mau ke mana setelah lulus. Tapi aku sudah tidak setakut dulu. Bukan karena jawabannya sudah muncul, tapi karena aku mulai percaya bahwa aku akan menemukannya — pelan-pelan, dengan caraku sendiri.

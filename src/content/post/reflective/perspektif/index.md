@@ -3,25 +3,23 @@ title: Perspektif
 description: Mendengarkan masukan orang lain itu penting, namun tidak semua yang mereka inginkan harus aku penuhi
 date: 08 October 2023
 coverImage:
-    src: ./cover_image.webp
-    alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
+  src: ./cover_image.webp
+  alt: Dokumentasi pribadi <a href='https://instagram.com/pictogrammmer'>@pictogrammmer</a>
 tags: ["reflection"]
 ---
 
-Sebagai makhluk sosial, aku akan selalu berinteraksi dan bersinggungan dengan orang lain. Tak jarang meski pun aku melakukan sesuatu sendirian, aku selalu akan mendapatkan masukan maupun masukan dari orang lain. Apalagi jika harus bekerja dalam tim interaksi akan menjadi lebih intens karena tiap hari bertemu, entah sekadar untuk rapat harian atau pun mengerjakan sesuatu dengan rekan kerja.
+Ada masukan yang datang seperti air — dingin, menyegarkan, membuat segalanya lebih jelas.
 
-Dalam situasi seperti ini, penting bagi aku untuk memiliki perspektif yang terbuka. Bagaimana pun aku harus siap menerima pendapat dan masukan dari sudut pandang orang lain, bahkan jika berbeda dengan pandanganku sendiri. Dengan demikian, aku dapat belajar dan tumbuh sebagai individu yang lebih baik, serta dapat mencapai hasil yang lebih baik dalam kerja tim.
+Dan ada masukan yang datang seperti batu — keras, tidak nyaman, dan kamu tidak yakin harus ditaruh di mana.
 
-Tak jarang masukan yang aku dapat kurang sesuai atau bahkan dengan yang aku ingin. Tak jarang juga masukan yang ada terasa “pedas” untuk diterima. Inilah yang mengharuskan aku untuk pintar-pintar memilih dan memilah mana masukan yang harus ditindaklanjuti atau pun harus diabaikan.
+Aku sering dapat keduanya. Di kampus, dari dosen. Di proyek tim, dari teman sekelompok. Di media sosial, dari orang yang bahkan tidak kukenal. Beberapa membantu. Beberapa hanya membuatku mempertanyakan diri sendiri tanpa alasan yang jelas.
 
-Namun, tidak selalu mudah untuk membedakan antara masukan yang berharga dan masukan yang tidak relevan. Oleh karena itu, aku perlu mengembangkan kemampuan kritis dalam mengevaluasi setiap masukan yang aku terima. Aku harus melihatnya dari berbagai sudut pandang dan mempertimbangkan kepentinganku pribadi maupun tim serta tujuan akhir yang ingin dicapai.
+Dulu aku menerima semuanya. Semua masukan kucatat, kupikirkan, kucoba terapkan — sampai akhirnya aku bingung sendiri. Karena masukan dari dua orang bisa saling bertentangan, dan mencoba menyenangkan keduanya hanya membuatku kehilangan arah.
 
-Dalam proses mengevaluasi masukan, aku harus memberikan prioritas pada masukan yang lebih baru. Hal ini karena masukan yang lebih baru cenderung lebih relevan dengan situasi dan keadaan terkini. Ketika aku menerima masukan yang baru, aku harus segera merespon dan mempertimbangkan apakah masukan tersebut dapat membantu mencapai hasil yang lebih baik kedepannya.
+Sekarang aku lebih memilih.
 
-Selain itu, penting juga untuk memperhatikan sumber masukan. Masukan yang berasal dari orang-orang yang memiliki pengalaman dan pengetahuan yang relevan dalam bidang yang sedang dikerjakan akan lebih berharga. Aku perlu menghargai dan mempertimbangkan masukan dari mereka yang memiliki keahlian dan kecakapan yang dapat berkontribusi positif dalam pencapaian tujuan tim.
+Aku dengar semuanya — karena menutup telinga tidak membuatmu lebih pintar. Tapi tidak semuanya harus ditindaklanjuti. Ada masukan yang kusimpan untuk nanti, ada yang langsung kupakai, dan ada yang kubiarkan lewat begitu saja.
 
-Saat mengevaluasi masukan, aku juga harus menghindari kecenderungan untuk terlalu defensif atau terlalu mudah menerima semua masukan tanpa kritis. Aku harus tetap objektif dan terbuka terhadap sudut pandang orang lain, namun juga memiliki keberanian untuk menyuarakan pendapatku jika aku merasa ada kekurangan atau ketidakcocokan dalam masukan yang diberikan.
+Caranya sederhana: aku tanya ke diri sendiri, "Apakah ini membuatku lebih baik, atau hanya membuatku ragu?" Kalau jawabannya yang pertama, aku ambil. Kalau yang kedua, aku lepaskan.
 
-Dalam situasi di mana aku mendapatkan masukan yang kurang sesuai atau terasa "pedas", aku perlu menjaga emosi dan berkomunikasi dengan baik. Aku harus berusaha untuk memahami niat baik di balik masukan tersebut dan mencari cara untuk memperbaiki situasi atau meningkatkan kualitas kerja tim.
-
-Terakhir, mendengarkan masukan orang lain itu penting, namun tidak semua yang mereka inginkan harus aku penuhi. Aku harus ingat bahwa proses menerima dan mengevaluasi masukan adalah bagian dari pertumbuhan pribadi dan profesionalku. Dengan menerima masukan dengan sikap terbuka dan kritis, aku dapat terus belajar, berkembang, dan mencapai hasil yang lebih baik dalam kerja tim.
+Tidak semua orang akan setuju dengan caraku. Tapi tidak apa-apa — ini hidupku, bukan proyek kelompok yang harus disetujui semua anggota tim.

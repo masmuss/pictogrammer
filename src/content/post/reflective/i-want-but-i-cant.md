@@ -1,5 +1,5 @@
 ---
-title: I want, but I can’t
+title: I want, but I can't
 description: Kita tak selalu dapat apa yang kita inginkan, begitulah cara dunia bekerja
 date: 21 September 2023
 coverImage:
@@ -8,18 +8,18 @@ coverImage:
 tags: ["Resilience", "Acceptance", "Life Realities"]
 ---
 
-Saat masih TK dulu, sering kali kita ditanya bu guru tentang nanti mau jadi apa kalau sudah besar, dan kita dan teman-teman kita juga tentunya dengan antusias menjawab ingin menjadi ini itu. Ada yang ingin jadi dokter, pilot, masinis, polisi, tentara atau sekedar ingin jadi pengusaha biasa.
+Dulu aku pikir kalau aku cukup menginginkan sesuatu, aku pasti bisa.
 
-Waktu itu adalah masa dimana kita bisa bebas bermimpi setinggi mungkin. Tak kisah seberapa tinggi mimpi itu, seberapa mustahil hal itu untuk dicapai. Kala itu kita tak peduli hal tersebut bisa dicapai atau tidak. Masa kecil memang menjadi salah satu periode dalam hidup kita yang penuh dengan imajinasi dan impian yang tinggi.
+Ternyata tidak.
 
-Namun seiring berjalannya waktu, kita mulai menyadari jika realita yang kita hadapi tak sederhana itu. Banyak realita tak diundang menghadang, namun bukan berarti harus menyerah.
+Ada hal-hal yang tidak terjadi bukan karena aku kurang berusaha. Bukan karena aku tidak cukup pantas. Tapi karena memang tidak semua keinginan harus — atau bisa — jadi kenyataan. Dan menerima itu lebih sulit daripada berusaha.
 
-> Kita tak selalu dapat apa yang kita inginkan, begitulah cara dunia bekerja
+Aku ingat beberapa target yang kubuat awal tahun ini. Beberapa tercapai, tapi lebih banyak yang tidak. Di antaranya ada yang gagal karena aku malas. Tapi ada juga yang gagal meskipun aku sudah melakukan semua yang kubisa — dan itu lebih menyakitkan. Karena kalau gagal karena malas, setidaknya aku tahu penyebabnya. Kalau gagal setelah berusaha keras, yang tersisa cuma pertanyaan: "Apa yang kurang?"
 
-Di hidup yang singkat ini, terlalu rakus jika kita menginginkan semua hal yang ada, dan tentunya juga semua hal yang kita inginkan akan menjadi milik kita seutuhnya, bahkan sesuatu yang sebelumnya sudah kita miliki. Begitulah dunia bekerja dengan segala kejutannya. Dunia tak akan selalu sesuai dengan harapan dan keinginan. Realita terlalu kompleks, penuh hambatan, keterbatasan dan hal tak terduga.
+Tidak ada jawabannya. Atau lebih tepatnya, jawabannya ada tapi tidak enak didengar: kadang usaha saja tidak cukup. Kadang kita butuh waktu yang lebih tepat, koneksi yang lebih pas, atau sekadar keberuntungan yang tidak bisa direncanakan.
 
-Sebagai pengingat, pada akhirnya seberapa-pun kita berusaha, berharap dan bekerja keras, hasil tak selalu dengan harapan yang kita mau. Bukan berarti harus menyerah dan hilang semangat kala itu juga. Kita masih memiliki kendali akan bagaimana cara menghadapi situasi tersebut, dan tentunya kita akan belajar, berkembang, dan mencoba cara lain untuk mencapai tujuan sebenarnya.
+Ini bukan berarti kita harus berhenti berusaha. Tapi mungkin kita perlu berhenti menganggap bahwa hasil selalu sebanding dengan usaha — karena hidup tidak bekerja seperti rumus matematika.
 
-Penuh ambisi terkadang perlu, namun sebagai pengingat, kita juga harus realistis terhadap keadaan yang ada. Tetap teguh menghadapi tantangan yang mungkin muncul adalah kunci untuk menggapai impian.
+Beberapa keinginan akan tetap jadi keinginan. Dan tidak apa-apa. Mungkin bukan sekarang waktunya. Mungkin bukan ini jalannya. Mungkin nanti, dalam bentuk yang berbeda, sesuatu yang lebih baik akan datang.
 
-> "Shanks selalu bilang, kalau jalan menuju tujuan kita terlalu mudah, berarti kita salah jalan." - Luffy.
+Atau mungkin tidak. Dan itu pun tidak apa-apa.

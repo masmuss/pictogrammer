@@ -8,20 +8,16 @@ coverImage:
 tags: ["growth"]
 ---
 
-> At regular intervals, the team **reflects** on how to become more effective, then tunes **and adjusts** its behavior accordingly.
->
-> [agilealliance.org](agilealliance.org)
+Aku benci mengakui kegagalan.
 
-Ini adalah poin ke-12 dari Agile Principle yang tercantum di laman web resmi Agile Alliance. Secara singkat, Agile Alliance adalah organisasi global non-profit yang didirikan berdasarkan Manifesto of Agile Software Development, kerangka kerja model yang telah saya pelajari kurang lebih selama 3 semester terakhir.
+Bukan karena gengsi — meskipun mungkin ada sedikit. Tapi karena setiap kali aku menengok ke belakang, aku hanya melihat hal-hal yang seharusnya bisa kulakukan lebih baik. Proyek yang tidak selesai. Target yang meleset. Keputusan yang ternyata salah.
 
-Keyword utama adalah "reflect and adjust" yang bentuk penerapannya adalah dengan mengadakan [Sprint Retrospective](https://www.scrum.org/resources/what-is-a-sprint-retrospective) setiap akhir Sprint. Kegiatan ini bertujuan untuk melakukan evaluasi terhadap produk dan proses pengembangan produk tersebut.
+Lebih mudah untuk tidak melihat. Fokus ke depan, anggap yang sudah terjadi biarlah berlalu.
 
-Yang akan saya bahas di sini adalah evaluasi. Apa sebenarnya evaluasi itu? Dan mengapa penting untuk melakukan evaluasi?
+Tapi belakangan aku sadar: kegagalan yang tidak direfleksikan cuma akan terulang dalam bentuk yang berbeda. Masalah yang sama, hanya berganti warna. Aku bisa menghindarinya untuk sementara, tapi cepat atau lambat dia akan muncul lagi — dan kali ini mungkin lebih besar.
 
-Mari kita sementara mengesampingkan tentang agile. Evaluasi adalah suatu proses di mana kita secara sistematis dan kritis mengumpulkan data atau informasi untuk mengevaluasi, mengukur, atau menilai sesuatu.
+Jadi aku mulai mencatat. Bukan jurnal yang rapi dan puitis — lebih mirip daftar kasar: apa yang terjadi, kenapa gagal, apa yang bisa kulakukan beda. Kadang jawabannya sederhana: aku kurang tidur, aku terlalu ambisius, aku tidak minta bantuan. Kadang lebih dalam: aku takut ditolak, jadi aku tidak pernah benar-benar mencoba.
 
-Jika kita membahas tentang pengembangan produk, seperti yang telah disebutkan sebelumnya, evaluasi akan menjadi metode yang digunakan untuk mengukur dan mengevaluasi kualitas produk yang dihasilkan setelah melakukan sprint. Namun, hal ini berbeda jika kita melihatnya dalam konteks kehidupan sehari-hari kita.
+Proses ini tidak menyenangkan. Seperti membersihkan luka — perih, tapi perlu. Karena dari situ aku tahu bagian mana yang harus diperbaiki, dan bagian mana yang memang di luar kendaliku.
 
-Dalam kehidupan sehari-hari, evaluasi memiliki peran yang sangat penting dalam membantu kita untuk menjadi pribadi yang lebih baik dan sukses. Evaluasi dapat membantu kita mengevaluasi keberhasilan dan kegagalan kita dalam mencapai tujuan yang telah ditetapkan. Dengan melakukan evaluasi secara teratur, kita dapat melihat dengan jelas apa yang telah kita capai dan apa yang masih perlu diperbaiki.
-
-Evaluasi juga bisa membantu kita untuk lebih berdamai dengan kegagalan yang dialami. Harapannya, dengan kegagalan yang terjadi, tidak menjadikan kita tenggelam ke rasa penyesalan. Dengan evaluasi, kita dapat menemukan penyebab mengapa hasil yang diinginkan kurang sesuai atau tidak sesuai harapan. Setelah itu kita bisa menyiapkan strategi baru untuk menjadi versi baru dari diri.
+Aku masih benci mengakui kegagalan. Tapi sekarang aku lebih benci mengulanginya.
