@@ -10,7 +10,7 @@ import { getAllPosts, groupPostsForArchive } from "@/lib/contents";
 
 const title = "Blog Archive";
 const description =
-	"Browse all blog posts by Khoirul Fattah, organized by year and month.";
+  "Browse all blog posts by Khoirul Fattah, organized by year and month.";
 const allPosts = await getAllPosts();
 
 const archiveData = groupPostsForArchive(allPosts);
@@ -45,11 +45,16 @@ const archiveData = groupPostsForArchive(allPosts);
           <div class="flex flex-col gap-y-20">
             {archiveData.map(({ year, months }) => (
               <section class="flex flex-col gap-y-8" id={`year-${year}`}>
-                <h2 class="relative text-2xl font-bold tracking-tight md:text-2xl">
-                  <span class="text-muted-foreground/10 absolute -top-8 -left-4 -z-10 text-7xl select-none md:-top-10 md:-left-6 md:text-8xl">
+                <h2 class="relative text-2xl font-bold tracking-tight">
+                  <span
+                    class="text-muted-foreground/10 absolute -top-8 -left-4 -z-10 text-7xl select-none md:-top-10 md:-left-6 md:text-8xl"
+                    aria-hidden="true"
+                  >
                     {year}
                   </span>
+                  {year}
                 </h2>
+
                 <div class="flex flex-col gap-y-12">
                   {months.map(({ month, monthName, posts }) => (
                     <div
@@ -61,7 +66,7 @@ const archiveData = groupPostsForArchive(allPosts);
                       </h3>
                       <ul class="group/list relative flex flex-col">
                         {posts.map((post) => (
-                          <PostPreview post={post} showDescription />
+                          <PostPreview post={post} />
                         ))}
                       </ul>
                     </div>
@@ -73,7 +78,7 @@ const archiveData = groupPostsForArchive(allPosts);
 
           <ArchiveSidebar
             archiveData={archiveData}
-            class="sticky top-0 w-full self-start"
+            class="sticky top-8 w-full self-start"
           />
         </div>
       )
