@@ -1,0 +1,13 @@
+---
+export const prerender = true;
+
+import BlogListLayout from "@/components/features/blog/BlogListLayout.astro";
+---
+
+<BlogListLayout
+  activeTab="reflections"
+  title="Reflective Writing and Life Stories"
+  description="Explore reflective essays about perspective, resilience, identity, and personal growth, written from lived experiences and ongoing self-evaluation."
+  image={{ src: "/og/reflective.png", alt: "Reflective - pictogrammmer" }}
+  path="reflections"
+/>

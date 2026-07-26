@@ -10,7 +10,7 @@ import { getAllPosts, groupPostsForArchive } from "@/lib/contents";
 
 const title = "Blog Archive";
 const description =
-  "Browse all blog posts by Khoirul Fattah, organized by year and month.";
+	"Browse all blog posts by Khoirul Fattah, organized by year and month.";
 const allPosts = await getAllPosts();
 
 const archiveData = groupPostsForArchive(allPosts);

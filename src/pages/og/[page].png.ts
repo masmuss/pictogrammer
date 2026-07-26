@@ -23,8 +23,8 @@ const STATIC_PAGE_OG = {
 		description:
 			"Explore my projects that showcase my skills and creativity in various domains."
 	},
-	reflective: {
-		title: "Reflective",
+	reflections: {
+		title: "Reflections",
 		description: "Personal thoughts, reflections, and life experiences."
 	},
 	series: {
