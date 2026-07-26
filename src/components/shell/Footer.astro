@@ -4,6 +4,10 @@ import { Container } from "@/components/ui/primitives";
 import siteConfig from "@/config/site-config";
 import FooterLinkGroup from "./FooterLinkGroup.astro";
 
+const navigationLinks = [
+	...siteConfig.header.navLinks.slice(1, 5),
+	{ href: "/rss.xml", text: "RSS" }
+];
 const legalLink = [{ href: "/legal", text: "Legal" }];
 ---
 
@@ -17,10 +21,7 @@ const legalLink = [{ href: "/legal", text: "Legal" }];
         </p>
       </div>
 
-      <FooterLinkGroup
-        title="Navigate"
-        pageLinks={siteConfig.header.navLinks}
-      />
+      <FooterLinkGroup title="Navigate" pageLinks={navigationLinks} />
       <FooterLinkGroup title="Connect" pageLinks={siteConfig.socialLinks} />
       <FooterLinkGroup title="Legal" pageLinks={legalLink} />
     </div>
