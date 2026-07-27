@@ -28,6 +28,11 @@
 				"icon": "logos--dart"
 			},
 			{
+				"name": "C#",
+				"description": "Modern, type-safe language for .NET",
+				"icon": "logos--c-sharp"
+			},
+			{
 				"name": "Bash",
 				"description": "Shell scripting and automation",
 				"icon": "logos--bash-icon"
@@ -46,6 +51,16 @@
 				"name": "MySQL",
 				"description": "Reliable open-source relational DB",
 				"icon": "logos--mysql-icon"
+			},
+			{
+				"name": "SQLite",
+				"description": "Lightweight relational DB",
+				"icon": "logos--sqlite"
+			},
+			{
+				"name": "SQL Server",
+				"description": "Microsoft's relational DB",
+				"icon": "logos--sql-server"
 			},
 			{
 				"name": "MongoDB",
@@ -126,6 +141,11 @@
 				"name": "Tailwind CSS",
 				"description": "Utility-first CSS framework",
 				"icon": "logos--tailwindcss-icon"
+			},
+			{
+				"name": ".NET",
+				"description": "Cross-platform app development framework",
+				"icon": "logos--dotnet"
 			}
 		]
 	},
@@ -266,6 +286,16 @@
 				"name": "Cloudflare",
 				"description": "Global CDN and edge workers",
 				"icon": "logos--cloudflare-icon"
+			},
+			{
+				"name": "Docker",
+				"description": "Container platform for packaging and deploying apps",
+				"icon": "logos--docker-icon"
+			},
+			{
+				"name": "Firebase",
+				"description": "Backend-as-a-service by Google",
+				"icon": "logos--firebase-icon"
 			}
 		]
 	}

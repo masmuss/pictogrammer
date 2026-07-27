@@ -51,7 +51,7 @@ export const experiencesSchema = z.array(
 		logo: z.string().optional(),
 		icon: z.string().optional(),
 		location: z.string().optional(),
-		kind: z.enum(["professional", "campus"]).optional(),
+		kind: z.enum(["professional", "campus", "internship"]).optional(),
 		umbrellaOrg: z.string().optional(),
 		summary: z.string().optional(),
 		skills: z.array(z.string()).optional(),

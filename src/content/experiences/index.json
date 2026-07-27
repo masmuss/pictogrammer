@@ -23,8 +23,9 @@
 		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
 		"icon": "ri--smartphone-line",
 		"location": "Pasuruan",
+		"kind": "internship",
 		"summary": "Built IoT-driven web and mobile systems for real-time environmental monitoring and remote control.",
-		"skills": ["Flutter", "IoT", "MQTT", "Dashboard"],
+		"skills": ["Flutter", "IoT", "MQTT", "Data Visualization"],
 		"highlights": [
 			"Developed a web-based monitoring platform to track real-time environmental conditions in melon hydroponic systems",
 			"Built a mobile application to monitor temperature, humidity, water quality, and receive condition-based alerts",
@@ -40,8 +41,9 @@
 		"logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Panasonic_logo_%28Blue%29.svg/1280px-Panasonic_logo_%28Blue%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
 		"icon": "ri--settings-3-line",
 		"location": "Jakarta",
+		"kind": "internship",
 		"summary": "Improved production performance by analyzing assembly workflows and building software plus IoT-based tracking support.",
-		"skills": ["Process Optimization", "IoT", "Data Tracking"],
+		"skills": ["Process Optimization", "IoT", "Data Analysis"],
 		"highlights": [
 			"Analyzed workflow and operational sequence across the air conditioner production line, from part assembly to packing",
 			"Developed software tools to improve production efficiency, track part flow, and reduce bottlenecks",
@@ -60,7 +62,7 @@
 		"kind": "campus",
 		"umbrellaOrg": "PENS",
 		"summary": "Built a productivity app for web and mobile with mind mapping capabilities.",
-		"skills": ["Fullstack", "Web", "Mobile"],
+		"skills": ["Fullstack Development", "Web", "Mobile"],
 		"highlights": [
 			"Designed and developed a cross-platform mind mapping application to enhance user productivity",
 			"Implemented real-time data synchronization between web and mobile versions",
@@ -85,13 +87,10 @@
 			"Stakeholder Management"
 		],
 		"highlights": [
-			"Defined product goals to maximize value for customers, users, and the organization",
-			"Collaborated with stakeholders throughout the development lifecycle to ensure alignment and transparency",
-			"Maintained and managed the Product Backlog, ensuring requirements were clearly documented",
+			"Defined product goals and managed the Product Backlog to maximize value for customers and the organization",
 			"Prioritized backlog items based on project scope, budget constraints, and delivery timelines",
 			"Facilitated backlog refinement sessions and actively participated in all Scrum ceremonies",
-			"Evaluated development progress and conducted acceptance testing for product increments",
-			"Took responsibility for development stages and iterations to ensure successful delivery"
+			"Conducted acceptance testing for product increments and evaluated development progress"
 		]
 	},
 	{
@@ -105,7 +104,7 @@
 		"kind": "campus",
 		"umbrellaOrg": "PENS",
 		"summary": "Developed monitoring tools for IoT-based aquaculture operations.",
-		"skills": ["IoT", "Web", "Monitoring"],
+		"skills": ["IoT", "MQTT", "REST API", "Dashboard"],
 		"highlights": [
 			"Engineered a web-based dashboard for real-time monitoring of water quality parameters in shrimp farming",
 			"Integrated IoT sensor data using MQTT and REST APIs for seamless data visualization",
@@ -123,7 +122,7 @@
 		"kind": "campus",
 		"umbrellaOrg": "PENS",
 		"summary": "Built backend systems for student organization digital elections.",
-		"skills": ["Backend", "API", "Auth"],
+		"skills": ["Backend Development", "REST API", "Authentication"],
 		"highlights": [
 			"Architected and implemented a secure backend system for campus-wide student organization elections",
 			"Developed robust authentication and authorization mechanisms to ensure voting integrity and prevent fraud",
@@ -141,7 +140,7 @@
 		"kind": "campus",
 		"umbrellaOrg": "PENS",
 		"summary": "Built and maintained official campus digital products, from public sites to internal incident tools.",
-		"skills": ["Fullstack", "CMS", "Operations"],
+		"skills": ["Fullstack Development", "CMS", "System Operations"],
 		"highlights": [
 			"Developed and maintained the official campus news portal and public profile website, serving thousands of visitors monthly",
 			"Built internal operational tools like CIRT (Cyber Incident Response Team) to streamline network incident reporting and resolution",
