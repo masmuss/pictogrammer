@@ -8,9 +8,18 @@ import { cn, getPostUrl } from "@/lib/utils";
 type Props = {
 	post: CollectionEntry<"post">;
 	showDescription?: boolean;
+	clampTitle?: boolean;
+	hasReadTime?: boolean;
+	readTimeStyle?: "short" | "long";
 };
 
-const { post, showDescription } = Astro.props;
+const {
+	post,
+	showDescription,
+	clampTitle = true,
+	hasReadTime = false,
+	readTimeStyle = "short"
+} = Astro.props;
 ---
 
 <li data-testid="post-preview">
@@ -22,13 +31,16 @@ const { post, showDescription } = Astro.props;
   >
     <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
       <span
-        class="group-hover/interactive:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1"
+        class:list={[
+          "group-hover/interactive:text-foreground flex-1 font-medium transition-colors",
+          clampTitle ? "sm:line-clamp-1" : undefined,
+        ]}
         transition:name={`title-${post.id}`}
       >
         {post.data.title}
       </span>
       <span class="text-muted-foreground shrink-0 text-sm">
-        <PostMetadata post={post} />
+        <PostMetadata {post} {hasReadTime} {readTimeStyle} />
       </span>
     </div>
 

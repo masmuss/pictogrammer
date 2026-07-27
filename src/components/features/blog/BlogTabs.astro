@@ -31,11 +31,20 @@ const tabs = [
       ))
     }
   </div>
-  <a
-    href="/tags"
-    class="text-muted-foreground hover:text-foreground hidden items-center gap-1.5 text-sm transition-colors md:flex"
-  >
-    <span class="iconify ri--price-tag-3-line"></span>
-    <span>Tags</span>
-  </a>
+  <div class="hidden items-center gap-3 text-sm md:flex">
+    <a
+      href="/blog/archive"
+      class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+    >
+      <span class="iconify ri--archive-line"></span>
+      <span>Archive</span>
+    </a>
+    <a
+      href="/tags"
+      class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+    >
+      <span class="iconify ri--price-tag-3-line"></span>
+      <span>Tags</span>
+    </a>
+  </div>
 </nav>

@@ -4,32 +4,32 @@
 		"skills": [
 			{
 				"name": "JavaScript",
-				"description": "Versatile scripting language",
+				"description": "The web's native language",
 				"icon": "logos--javascript"
 			},
 			{
 				"name": "TypeScript",
-				"description": "Typed superset of JavaScript",
+				"description": "Type safety at scale",
 				"icon": "logos--typescript-icon"
 			},
 			{
 				"name": "Go",
-				"description": "Language for scalable systems",
+				"description": "Concise language for systems and APIs",
 				"icon": "logos--go"
 			},
 			{
 				"name": "PHP",
-				"description": "Server-side scripting language",
+				"description": "Battle-tested web backend language",
 				"icon": "logos--php"
 			},
 			{
 				"name": "Dart",
-				"description": "Language for Flutter apps",
+				"description": "Client-optimized language for mobile",
 				"icon": "logos--dart"
 			},
 			{
 				"name": "Bash",
-				"description": "Unix shell and scripting language",
+				"description": "Shell scripting and automation",
 				"icon": "logos--bash-icon"
 			}
 		]
@@ -44,7 +44,7 @@
 			},
 			{
 				"name": "MySQL",
-				"description": "Popular relational database",
+				"description": "Reliable open-source relational DB",
 				"icon": "logos--mysql-icon"
 			},
 			{
@@ -79,37 +79,37 @@
 			},
 			{
 				"name": "React.js",
-				"description": "Library for building UIs",
+				"description": "Declarative component-based UI",
 				"icon": "logos--react"
 			},
 			{
 				"name": "Vue.js",
-				"description": "Progressive JavaScript framework",
+				"description": "Approachable, versatile framework",
 				"icon": "logos--vue"
 			},
 			{
 				"name": "Svelte",
-				"description": "Compiler-based UI framework",
+				"description": "Compiled reactive components",
 				"icon": "logos--svelte-icon"
 			},
 			{
 				"name": "Redux",
-				"description": "State container for JS apps",
+				"description": "Predictable app state management",
 				"icon": "logos--redux"
 			},
 			{
 				"name": "NestJS",
-				"description": "Progressive Node.js framework",
+				"description": "Opinionated enterprise-grade framework",
 				"icon": "logos--nestjs"
 			},
 			{
 				"name": "Hono",
-				"description": "Lightweight web framework",
+				"description": "Ultrafast edge-native framework",
 				"icon": "logos--hono"
 			},
 			{
 				"name": "Express.js",
-				"description": "Minimal Node.js framework",
+				"description": "Minimalist HTTP server",
 				"icon": "logos--express"
 			},
 			{
@@ -139,7 +139,7 @@
 			},
 			{
 				"name": "Node.js",
-				"description": "JavaScript runtime engine",
+				"description": "Server-side JS runtime",
 				"icon": "logos--nodejs-icon"
 			},
 			{
@@ -149,22 +149,22 @@
 			},
 			{
 				"name": "Prisma",
-				"description": "Next-gen Node.js ORM",
+				"description": "Declarative database toolkit",
 				"icon": "logos--prisma"
 			},
 			{
 				"name": "TanStack",
-				"description": "Headless UI libraries",
+				"description": "Type-safe headless primitives",
 				"icon": "logos--react-query-icon"
 			},
 			{
 				"name": "Zod",
-				"description": "TypeScript schema validation",
+				"description": "Schema-first validation",
 				"icon": "logos--zod"
 			},
 			{
 				"name": "Vitest",
-				"description": "Fast unit test framework",
+				"description": "Vite-native test runner",
 				"icon": "logos--vitest"
 			},
 			{
@@ -174,12 +174,12 @@
 			},
 			{
 				"name": "Better Auth",
-				"description": "Authentication library",
+				"description": "Framework-agnostic auth library",
 				"icon": "logos--better-auth"
 			},
 			{
 				"name": "Shadcn UI",
-				"description": "Radix UI + Tailwind components",
+				"description": "Copy-paste component primitives",
 				"icon": "logos--shadcn-ui"
 			},
 			{
@@ -214,7 +214,7 @@
 			},
 			{
 				"name": "Grafana",
-				"description": "Open source analytics and monitoring solution",
+				"description": "Observability dashboards",
 				"icon": "logos--grafana"
 			},
 			{
@@ -229,7 +229,7 @@
 			},
 			{
 				"name": "Sentry",
-				"description": "Application monitoring and error tracking",
+				"description": "Real-time error tracking",
 				"icon": "logos--sentry-icon"
 			}
 		]
@@ -259,12 +259,12 @@
 		"skills": [
 			{
 				"name": "Vercel",
-				"description": "Frontend cloud platform",
+				"description": "Edge deployment platform",
 				"icon": "logos--vercel-icon"
 			},
 			{
 				"name": "Cloudflare",
-				"description": "CDN and edge computing",
+				"description": "Global CDN and edge workers",
 				"icon": "logos--cloudflare-icon"
 			}
 		]

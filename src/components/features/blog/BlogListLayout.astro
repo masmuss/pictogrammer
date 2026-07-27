@@ -54,7 +54,12 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
               </div>
               <ul class="group/list relative flex flex-col">
                 {posts.map((post) => (
-                  <PostPreview post={post} showDescription />
+                  <PostPreview
+                    post={post}
+                    showDescription
+                    hasReadTime
+                    readTimeStyle="short"
+                  />
                 ))}
               </ul>
             </section>

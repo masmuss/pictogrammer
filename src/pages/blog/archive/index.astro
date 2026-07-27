@@ -52,7 +52,6 @@ const archiveData = groupPostsForArchive(allPosts);
                   >
                     {year}
                   </span>
-                  {year}
                 </h2>
 
                 <div class="flex flex-col gap-y-12">
@@ -61,12 +60,15 @@ const archiveData = groupPostsForArchive(allPosts);
                       class="flex flex-col gap-y-4"
                       id={`month-${year}-${month}`}
                     >
-                      <h3 class="text-muted-foreground text-xl font-semibold">
-                        {monthName}
-                      </h3>
+                      <div class="flex items-center gap-5">
+                        <h3 class="text-muted-foreground text-xl font-semibold">
+                          {monthName}
+                        </h3>
+                        <div class="flex-1 h-px bg-muted-foreground/20" />
+                      </div>
                       <ul class="group/list relative flex flex-col">
                         {posts.map((post) => (
-                          <PostPreview post={post} />
+                          <PostPreview post={post} clampTitle={false} />
                         ))}
                       </ul>
                     </div>
