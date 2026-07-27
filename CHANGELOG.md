@@ -1,3 +1,17 @@
+# [1.21.0](https://github.com/masmuss/pictogrammer/compare/v1.20.0...v1.21.0) (2026-07-27)
+
+
+### Bug Fixes
+
+* **BlogPost:** lower back-to-top button z-index from 90 to 50 ([909389c](https://github.com/masmuss/pictogrammer/commit/909389c301849f29258098396b9cd9f2c9eaa52a))
+
+
+### Features
+
+* **blog:** enhance post metadata display and update site content ([30da47f](https://github.com/masmuss/pictogrammer/commit/30da47ff38e23e4f163efeb6d608f222502d36db))
+* **blog:** update tab label, fix tag rendering and archive ([e508147](https://github.com/masmuss/pictogrammer/commit/e5081478964ba9ab1bb6211ebb77590c55a33281))
+* **mobile-menu:** add entrance animations to contact and status ([f568243](https://github.com/masmuss/pictogrammer/commit/f568243fe699f49159837dcc06b4ac9abe28b11b))
+
 # [1.20.0](https://github.com/masmuss/pictogrammer/compare/v1.19.0...v1.20.0) (2026-07-25)
 
 
