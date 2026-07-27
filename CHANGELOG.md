@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/masmuss/pictogrammer/compare/v1.21.0...v1.22.0) (2026-07-27)
+
+
+### Features
+
+* **reflections:** add 7 new personal reflection posts ([ff05fc7](https://github.com/masmuss/pictogrammer/commit/ff05fc7ff155e4d394f27bb851f2fcbb6b8b48ca))
+
 # [1.21.0](https://github.com/masmuss/pictogrammer/compare/v1.20.0...v1.21.0) (2026-07-27)
 
 
