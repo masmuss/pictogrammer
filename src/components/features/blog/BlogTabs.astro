@@ -1,6 +1,6 @@
 ---
 interface Props {
-	activeTab?: "posts" | "notes" | "reflective" | "series";
+	activeTab?: "posts" | "notes" | "reflections" | "series";
 }
 
 const { activeTab = "posts" } = Astro.props;
@@ -8,34 +8,43 @@ const { activeTab = "posts" } = Astro.props;
 const tabs = [
 	{ id: "posts", label: "Posts", href: "/blog" },
 	{ id: "notes", label: "Notes", href: "/blog/notes" },
-	{ id: "reflective", label: "Reflective", href: "/blog/reflective" },
+	{ id: "reflections", label: "Reflections", href: "/blog/reflections" },
 	{ id: "series", label: "Series", href: "/blog/series" }
 ];
 ---
 
 <nav class="mb-6 flex items-center justify-between">
-	<div class="flex items-center gap-4">
-		{
-			tabs.map((tab) => (
-				<a
-					href={tab.href}
-					class:list={[
-						"text-lg transition-colors md:text-xl",
-						activeTab === tab.id
-							? "text-foreground font-semibold"
-							: "text-muted-foreground hover:text-foreground"
-					]}
-				>
-					{tab.label}
-				</a>
-			))
-		}
-	</div>
-	<a
-		href="/tags"
-		class="text-muted-foreground hover:text-foreground hidden items-center gap-1.5 text-sm transition-colors md:flex"
-	>
-		<span class="iconify ri--price-tag-3-line"></span>
-		<span>Tags</span>
-	</a>
+  <div class="flex items-center gap-4">
+    {
+      tabs.map((tab) => (
+        <a
+          href={tab.href}
+          class:list={[
+            "text-lg transition-colors md:text-xl",
+            activeTab === tab.id
+              ? "text-foreground font-semibold"
+              : "text-muted-foreground hover:text-foreground",
+          ]}
+        >
+          {tab.label}
+        </a>
+      ))
+    }
+  </div>
+  <div class="hidden items-center gap-3 text-sm md:flex">
+    <a
+      href="/blog/archive"
+      class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+    >
+      <span class="iconify ri--archive-line"></span>
+      <span>Archive</span>
+    </a>
+    <a
+      href="/tags"
+      class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+    >
+      <span class="iconify ri--price-tag-3-line"></span>
+      <span>Tags</span>
+    </a>
+  </div>
 </nav>

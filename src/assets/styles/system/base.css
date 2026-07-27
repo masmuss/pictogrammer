@@ -22,7 +22,7 @@
 	}
 
 	body {
-		@apply bg-background text-foreground leading-relaxed;
+		@apply bg-background text-foreground leading-relaxed antialiased transition-colors;
 	}
 
 	:where(p, li, dd, dt, figcaption) {

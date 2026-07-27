@@ -7,7 +7,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getPostsByPath, groupPostsByYear } from "@/lib/contents";
 
 interface Props {
-	activeTab: "posts" | "notes" | "reflective";
+	activeTab: "posts" | "notes" | "reflections";
 	title: string;
 	description: string;
 	image?: { src: string; alt?: string };
@@ -32,37 +32,42 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
 <BaseLayout {title} {description} image={image} pageType="website">
-	<div class="flex w-full flex-col gap-y-12">
-		<Heading as="h1" class="sr-only">{title}</Heading>
-		<div class="flex w-full flex-col">
-			<BlogTabs {activeTab} />
+  <div class="flex w-full flex-col gap-y-12">
+    <Heading as="h1" class="sr-only">{title}</Heading>
+    <div class="flex w-full flex-col">
+      <BlogTabs {activeTab} />
 
-			<div class="flex max-w-xl flex-col">
-				{description && <p class="text-muted-foreground">{description}</p>}
-			</div>
-		</div>
+      <div class="flex max-w-xl flex-col">
+        {description && <p class="text-muted-foreground">{description}</p>}
+      </div>
+    </div>
 
-		{allPosts.length === 0 && <p class="text-muted-foreground">{empty}</p>}
+    {allPosts.length === 0 && <p class="text-muted-foreground">{empty}</p>}
 
-		{
-			allPosts.length > 0 && (
-				<div class="flex flex-col gap-y-20">
-					{[...postsByYear.entries()].map(([year, posts]) => (
-						<section class="relative">
-							<div class="text-muted-foreground/10 pointer-events-none absolute -top-6 -left-2 text-8xl font-bold select-none md:-top-8 md:-left-8 md:text-9xl">
-								{year}
-							</div>
-							<ul class="group/list relative flex flex-col">
-								{posts.map((post) => (
-									<PostPreview post={post} showDescription />
-								))}
-							</ul>
-						</section>
-					))}
-				</div>
-			)
-		}
+    {
+      allPosts.length > 0 && (
+        <div class="flex flex-col gap-y-20">
+          {[...postsByYear.entries()].map(([year, posts]) => (
+            <section class="relative">
+              <div class="text-muted-foreground/10 pointer-events-none absolute -top-6 -left-2 text-8xl font-bold select-none md:-top-8 md:-left-8 md:text-9xl">
+                {year}
+              </div>
+              <ul class="group/list relative flex flex-col">
+                {posts.map((post) => (
+                  <PostPreview
+                    post={post}
+                    showDescription
+                    hasReadTime
+                    readTimeStyle="short"
+                  />
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      )
+    }
 
-		<slot name="after-posts" />
-	</div>
+    <slot name="after-posts" />
+  </div>
 </BaseLayout>

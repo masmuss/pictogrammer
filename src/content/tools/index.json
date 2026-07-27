@@ -5,6 +5,10 @@
 			{
 				"name": "Figma",
 				"description": "UI/UX design and prototyping tool"
+			},
+			{
+				"name": "Affinity",
+				"description": "Professional creative suite — Designer, Photo, and Publisher"
 			}
 		]
 	},
@@ -13,11 +17,11 @@
 		"tools": [
 			{
 				"name": "Arc",
-				"description": "Modern web browser"
+				"description": "Browser with spatial tabs and split view"
 			},
 			{
 				"name": "Mozilla Firefox",
-				"description": "Open-source web browser"
+				"description": "Privacy-first browser for dev tools"
 			},
 			{
 				"name": "Notion",
@@ -25,11 +29,15 @@
 			},
 			{
 				"name": "Obsidian",
-				"description": "Knowledge base and note-taking"
+				"description": "Local-first Markdown knowledge base"
 			},
 			{
 				"name": "Raycast",
-				"description": "Launcher and productivity shortcuts"
+				"description": "Extensible macOS command palette"
+			},
+			{
+				"name": "Excalidraw",
+				"description": "Virtual whiteboard for drawing diagrams"
 			}
 		]
 	},
@@ -38,7 +46,7 @@
 		"tools": [
 			{
 				"name": "VS Code",
-				"description": "Popular code editor"
+				"description": "Extensible editor with rich ecosystem"
 			},
 			{
 				"name": "JetBrains IDEs",
@@ -49,20 +57,16 @@
 				"description": "Collaborative code editor"
 			},
 			{
-				"name": "Warp",
-				"description": "Modern terminal app"
+				"name": "Ghostty",
+				"description": "GPU-accelerated native terminal"
 			},
 			{
-				"name": "Docker",
-				"description": "Containerization platform"
+				"name": "OrbStack",
+				"description": "Lightweight Docker Desktop alternative"
 			},
 			{
 				"name": "HTTPie",
 				"description": "CLI HTTP client"
-			},
-			{
-				"name": "ChatGPT",
-				"description": "AI chatbot assistant"
 			},
 			{
 				"name": "GitHub",
@@ -71,15 +75,36 @@
 		]
 	},
 	{
+		"title": "AI Agents",
+		"tools": [
+			{
+				"name": "ChatGPT",
+				"description": "AI pair programming and research"
+			},
+			{
+				"name": "Google Gemini",
+				"description": "Multimodal AI with deep research and reasoning"
+			},
+			{
+				"name": "Opencode",
+				"description": "Terminal-native AI coding agent"
+			}
+		]
+	},
+	{
 		"title": "Workstation",
 		"tools": [
 			{
 				"name": "MacBook Air M1",
-				"description": "13.3\", 8GB RAM (2020)"
+				"description": "13.3\", with 8GB RAM and 500GB storage (2020)"
 			},
 			{
 				"name": "Lenovo L15 Mobile Monitor",
-				"description": "15.6\" USB C Mobile Monitor"
+				"description": "Portable 15.6\" USB-C second screen"
+			},
+			{
+				"name": "Keychron B1 Pro",
+				"description": "Ultra-thin wireless keyboard"
 			},
 			{
 				"name": "Logitech MX Anywhere 3S",

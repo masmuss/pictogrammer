@@ -6,15 +6,8 @@ import Button from "@/components/ui/Button.astro";
 ---
 
 <BlogListLayout
-	activeTab="posts"
-	title="Blog: Notes, Reflective, and Series"
-	description="Browse all blog posts by Khoirul Fattah, from software engineering notes and project write-ups to reflective essays about growth, craft, and life lessons."
-	image={{ src: "/og/blog.png", alt: "Blog - pictogrammmer" }}
->
-	<div slot="after-posts" class="mt-8 flex justify-center">
-		<Button href="/blog/archive" variant="outline" size="sm">
-			<span slot="icon-before" class="iconify ri--archive-line"></span>
-			Browse All Posts in Archive
-		</Button>
-	</div>
-</BlogListLayout>
+  activeTab="posts"
+  title="Blog: Notes, Reflections, and Series"
+  description="Browse all blog posts by Khoirul Fattah, from software engineering notes and project write-ups to reflective essays about growth, craft, and life lessons."
+  image={{ src: "/og/blog.png", alt: "Blog - pictogrammmer" }}
+/>

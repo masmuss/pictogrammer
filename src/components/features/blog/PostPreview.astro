@@ -8,56 +8,64 @@ import { cn, getPostUrl } from "@/lib/utils";
 type Props = {
 	post: CollectionEntry<"post">;
 	showDescription?: boolean;
+	clampTitle?: boolean;
+	hasReadTime?: boolean;
+	readTimeStyle?: "short" | "long";
 };
 
-const { post, showDescription } = Astro.props;
+const {
+	post,
+	showDescription,
+	clampTitle = true,
+	hasReadTime = false,
+	readTimeStyle = "short"
+} = Astro.props;
 ---
 
 <li data-testid="post-preview">
-	<Card
-		as="a"
-		variant="interactive"
-		href={getPostUrl(post)}
-		class={cn(
-			"space-y-2",
-			"border-border/40 border-b last:border-b-0",
-			"scroll-reveal"
-		)}
-	>
-		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-			<span
-				class="group-hover/interactive:text-foreground flex-1 font-medium transition-colors sm:line-clamp-1"
-				transition:name={`title-${post.id}`}
-			>
-				{post.data.title}
-			</span>
-			<span class="text-muted-foreground shrink-0 text-sm">
-				<PostMetadata post={post} />
-			</span>
-		</div>
+  <Card
+    as="a"
+    variant="interactive"
+    href={getPostUrl(post)}
+    class={cn("space-y-2 scroll-reveal")}
+  >
+    <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+      <span
+        class:list={[
+          "group-hover/interactive:text-foreground flex-1 font-medium transition-colors",
+          clampTitle ? "sm:line-clamp-1" : undefined,
+        ]}
+        transition:name={`title-${post.id}`}
+      >
+        {post.data.title}
+      </span>
+      <span class="text-muted-foreground shrink-0 text-sm">
+        <PostMetadata {post} {hasReadTime} {readTimeStyle} />
+      </span>
+    </div>
 
-		{
-			showDescription && (
-				<p
-					class={cn(
-						"line-clamp-2 text-sm leading-relaxed",
-						"text-muted-foreground",
-						"duration-fast transition-colors"
-					)}
-				>
-					{post.data.description}
-				</p>
-			)
-		}
+    {
+      showDescription && (
+        <p
+          class={cn(
+            "line-clamp-2 text-sm leading-relaxed",
+            "text-muted-foreground",
+            "duration-fast transition-colors",
+          )}
+        >
+          {post.data.description}
+        </p>
+      )
+    }
 
-		{
-			post.data.tags.length > 0 && (
-				<div class="mt-0.5 flex flex-wrap gap-1.5" aria-label="tags">
-					{post.data.tags.map((tag) => (
-						<Badge variant="outline">#{tag}</Badge>
-					))}
-				</div>
-			)
-		}
-	</Card>
+    {
+      post.data.tags.length > 0 && (
+        <div class="mt-0.5 flex flex-wrap gap-1.5" aria-label="tags">
+          {post.data.tags.map((tag) => (
+            <Badge variant="outline">{tag}</Badge>
+          ))}
+        </div>
+      )
+    }
+  </Card>
 </li>

@@ -11,31 +11,31 @@ const { posts }: Props = Astro.props;
 ---
 
 {
-	posts.length > 0 && (
-		<Fragment>
-			<ul class="flex flex-col">
-				{posts.map((p) => (
-					<PostPreview post={p} />
-				))}
-			</ul>
-			<div class="flex w-full items-end justify-end">
-				<a
-					href="/blog"
-					class={cn(
-						"group/seeall inline-flex items-center gap-1.5",
-						"duration-fast text-sm transition-colors",
-						"focus-visible:ring-2 focus-visible:outline-none",
-						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
-						"text-accent-cta-text"
-					)}
-				>
-					<span>See all posts</span>
-					<span
-						class="iconify ri--arrow-right-long-line duration-base transition-transform group-hover/seeall:translate-x-1"
-						aria-hidden="true"
-					/>
-				</a>
-			</div>
-		</Fragment>
-	)
+  posts.length > 0 && (
+    <Fragment>
+      <ul class="flex flex-col">
+        {posts.map((p) => (
+          <PostPreview post={p} hasReadTime />
+        ))}
+      </ul>
+      <div class="flex w-full items-end justify-end">
+        <a
+          href="/blog"
+          class={cn(
+            "group/seeall inline-flex items-center gap-1.5",
+            "duration-fast text-sm transition-colors",
+            "focus-visible:ring-2 focus-visible:outline-none",
+            "focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+            "text-accent-cta-text",
+          )}
+        >
+          <span>See all posts</span>
+          <span
+            class="iconify ri--arrow-right-long-line duration-base transition-transform group-hover/seeall:translate-x-1"
+            aria-hidden="true"
+          />
+        </a>
+      </div>
+    </Fragment>
+  )
 }

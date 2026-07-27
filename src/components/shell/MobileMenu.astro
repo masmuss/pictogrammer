@@ -17,249 +17,275 @@ const isActive = Astro.url.pathname;
 ---
 
 <mobile-menu class="lg:hidden">
-	<Button
-		as="button"
-		variant="ghost"
-		size="icon-sm"
-		id="menu-toggle"
-		aria-label="Open navigation menu"
-		aria-expanded="false"
-		aria-controls="mobile-nav"
-	>
-		<span class="iconify ri--menu-line" aria-hidden="true"></span>
-	</Button>
+  <Button
+    as="button"
+    variant="ghost"
+    size="icon-sm"
+    id="menu-toggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobile-nav"
+  >
+    <span class="iconify ri--menu-line" aria-hidden="true"></span>
+  </Button>
 
-	<div
-		id="mobile-nav"
-		class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-all duration-300 ease-out will-change-transform"
-		role="dialog"
-		aria-modal="true"
-		aria-label="Navigation menu"
-		inert
-	>
-		<div class="bg-background flex flex-1 flex-col rounded-xl">
-			<!-- Mobile Header -->
-			<div
-				class="bg-background/90 sticky top-0 z-50 flex items-center justify-between rounded-t-xl p-6 backdrop-blur-sm transition delay-75 duration-300"
-			>
-				<a href="/" class="text-2xl font-semibold">pictogrammer</a>
-				<Button
-					variant="ghost"
-					size="icon-lg"
-					type="button"
-					id="menu-close"
-					aria-label="Close navigation menu"
-				>
-					<span class="iconify ri--close-line" aria-hidden="true"></span>
-				</Button>
-			</div>
+  <div
+    id="mobile-nav"
+    class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-all duration-300 ease-out will-change-transform"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+    inert
+  >
+    <div class="bg-background flex flex-1 flex-col rounded-xl">
+      <!-- Mobile Header -->
+      <div
+        class="bg-background/90 sticky top-0 z-50 flex items-center justify-between rounded-t-xl p-6 backdrop-blur-sm transition delay-75 duration-300"
+      >
+        <a href="/" class="text-2xl font-semibold">pictogrammer</a>
+        <Button
+          variant="ghost"
+          size="icon-lg"
+          type="button"
+          id="menu-close"
+          aria-label="Close navigation menu"
+        >
+          <span class="iconify ri--close-line" aria-hidden="true"></span>
+        </Button>
+      </div>
 
-			<div class="flex flex-1 flex-col justify-between space-y-8 px-6 py-8">
-				<nav class="flex flex-col gap-6" aria-label="mobile navigation">
-					{
-						navLinks.map((link: NavLink, i: number) => (
-							<a
-								href={link.href}
-								class:list={[
-									"group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-300 ease-out",
-									isActive === link.href && "text-accent-cta"
-								]}
-								style={`transition-delay: ${150 + i * 75}ms`}
-							>
-								{isActive === link.href && (
-									<div class="bg-accent-cta h-5 w-5 shrink-0 rounded-sm" />
-								)}
-								{link.text}
-							</a>
-						))
-					}
-				</nav>
+      <div class="flex flex-1 flex-col justify-between space-y-8 px-6 py-8">
+        <nav class="flex flex-col gap-6" aria-label="mobile navigation">
+          {
+            navLinks.map((link: NavLink, i: number) => (
+              <a
+                href={link.href}
+                class:list={[
+                  "group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-300 ease-out",
+                  isActive === link.href && "text-accent-cta",
+                ]}
+                style={`transition-delay: ${150 + i * 75}ms`}
+              >
+                {isActive === link.href && (
+                  <div class="bg-accent-cta h-5 w-5 shrink-0 rounded-sm" />
+                )}
+                {link.text}
+              </a>
+            ))
+          }
+        </nav>
 
-				<!-- Extra Sections -->
-				<div class="grid grid-cols-1 gap-12 sm:grid-cols-2">
-					<!-- Contact -->
-					<div class="flex flex-col gap-y-4">
-						<h3
-							class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-						>
-							Contact
-						</h3>
-						<div class="flex flex-col gap-y-2 text-sm">
-							<a
-								href={`mailto:${email}`}
-								class="hover:text-accent-cta-text transition-colors"
-							>
-								{email}
-							</a>
-						</div>
-					</div>
+        <!-- Extra Sections -->
+        <div
+          class="grid grid-cols-1 gap-12 sm:grid-cols-2 translate-y-4 opacity-0 transition-all duration-300 ease-out"
+          data-mobile-entrance
+          style="transition-delay: 500ms"
+        >
+          <!-- Contact -->
+          <div class="flex flex-col gap-y-4">
+            <h3
+              class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
+            >
+              Contact
+            </h3>
+            <div class="flex flex-col gap-y-2 text-sm">
+              <a
+                href={`mailto:${email}`}
+                class="hover:text-accent-cta-text transition-colors"
+              >
+                {email}
+              </a>
+            </div>
+          </div>
 
-					<!-- Socials -->
-					<div class="flex flex-col gap-y-4">
-						<h3
-							class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-						>
-							Connect
-						</h3>
-						<div class="flex flex-col gap-y-2 text-sm">
-							{
-								instagramLink && (
-									<a
-										href={instagramLink.href}
-										target="_blank"
-										rel="noopener"
-										class="hover:text-accent-cta-text transition-colors"
-									>
-										Instagram
-									</a>
-								)
-							}
-							{
-								linkedinLink && (
-									<a
-										href={linkedinLink.href}
-										target="_blank"
-										rel="noopener"
-										class="hover:text-accent-cta-text transition-colors"
-									>
-										LinkedIn
-									</a>
-								)
-							}
-							{
-								githubLink && (
-									<a
-										href={githubLink.href}
-										target="_blank"
-										rel="noopener"
-										class="hover:text-accent-cta-text transition-colors"
-									>
-										GitHub
-									</a>
-								)
-							}
-						</div>
-					</div>
-				</div>
+          <!-- Socials -->
+          <div class="flex flex-col gap-y-4">
+            <h3
+              class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
+            >
+              Connect
+            </h3>
+            <div class="flex flex-col gap-y-2 text-sm">
+              {
+                instagramLink && (
+                  <a
+                    href={instagramLink.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-accent-cta-text transition-colors"
+                  >
+                    Instagram
+                  </a>
+                )
+              }
+              {
+                linkedinLink && (
+                  <a
+                    href={linkedinLink.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-accent-cta-text transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                )
+              }
+              {
+                githubLink && (
+                  <a
+                    href={githubLink.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:text-accent-cta-text transition-colors"
+                  >
+                    GitHub
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </div>
 
-				<!-- Status -->
-				<div class="border-border/50 flex flex-col gap-y-6 border-t pt-8">
-					<p
-						class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-					>
-						Status
-					</p>
-					<div class="flex flex-col gap-y-4">
-						<MobileMenuStatus
-							status={currentRole == null ? (
-								<span>Accepting new projects</span>
-							) : (
-								<span>
-									{currentRole.title} at {currentRole.company}
-								</span>
-							)}
-						/>
-						<MobileMenuStatus status="Surabaya, Indonesia (UTC+7)" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <!-- Status -->
+        <div
+          class="border-border/50 flex flex-col gap-y-6 border-t pt-8 translate-y-4 opacity-0 transition-all duration-300 ease-out"
+          data-mobile-entrance
+          style="transition-delay: 600ms"
+        >
+          <p
+            class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
+          >
+            Status
+          </p>
+          <div class="flex flex-col gap-y-4">
+            <MobileMenuStatus
+              status={currentRole == null ? (
+                <span>Accepting new projects</span>
+              ) : (
+                <span>
+                  {currentRole.title} at {currentRole.company}
+                </span>
+              )}
+            />
+            <MobileMenuStatus status="Surabaya, Indonesia (UTC+7)" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </mobile-menu>
 
 <script>
-	class MobileMenu extends HTMLElement {
-		constructor() {
-			super();
-			const toggle = this.querySelector<HTMLButtonElement>("#menu-toggle");
-			const closeBtn = this.querySelector<HTMLButtonElement>("#menu-close");
-			const nav = this.querySelector<HTMLDivElement>("#mobile-nav");
+  class MobileMenu extends HTMLElement {
+    constructor() {
+      super();
+      const toggle = this.querySelector<HTMLButtonElement>("#menu-toggle");
+      const closeBtn = this.querySelector<HTMLButtonElement>("#menu-close");
+      const nav = this.querySelector<HTMLDivElement>("#mobile-nav");
 
-			if (!toggle || !nav || !closeBtn) return;
+      if (!toggle || !nav || !closeBtn) return;
 
-			let isOpen = false;
+      let isOpen = false;
+      let resetTimer: ReturnType<typeof setTimeout> | null = null;
 
-			const animateLinks = nav.querySelectorAll<HTMLAnchorElement>("nav a");
+      const animateLinks = nav.querySelectorAll<HTMLAnchorElement>("nav a");
+      const animateSections = nav.querySelectorAll<HTMLElement>(
+        "[data-mobile-entrance]",
+      );
 
-			const setOpen = (open: boolean) => {
-				isOpen = open;
-				toggle.setAttribute("aria-expanded", String(open));
-				if (open) {
-					nav.classList.remove(
-						"translate-x-full",
-						"opacity-0",
-						"pointer-events-none"
-					);
-					nav.classList.add(
-						"translate-x-0",
-						"opacity-100",
-						"pointer-events-auto"
-					);
-					nav.removeAttribute("inert");
-					animateLinks.forEach((link) => {
-						link.classList.remove("translate-y-4", "opacity-0");
-						link.classList.add("translate-y-0", "opacity-100");
-					});
-				} else {
-					nav.classList.remove(
-						"translate-x-0",
-						"opacity-100",
-						"pointer-events-auto"
-					);
-					nav.classList.add(
-						"translate-x-full",
-						"opacity-0",
-						"pointer-events-none"
-					);
-					nav.setAttribute("inert", "");
-					// Reset link classes after overlay transition ends
-					setTimeout(() => {
-						animateLinks.forEach((link) => {
-							link.classList.add("translate-y-4", "opacity-0");
-							link.classList.remove("translate-y-0", "opacity-100");
-						});
-					}, 300);
-				}
-				document.body.style.overflow = open ? "hidden" : "";
-			};
+      const setOpen = (open: boolean) => {
+        // Cancel pending entrance reset from previous close
+        if (resetTimer !== null) {
+          clearTimeout(resetTimer);
+          resetTimer = null;
+        }
 
-			const close = () => setOpen(false);
+        isOpen = open;
+        toggle.setAttribute("aria-expanded", String(open));
+        if (open) {
+          nav.classList.remove(
+            "translate-x-full",
+            "opacity-0",
+            "pointer-events-none",
+          );
+          nav.classList.add(
+            "translate-x-0",
+            "opacity-100",
+            "pointer-events-auto",
+          );
+          nav.removeAttribute("inert");
+          animateLinks.forEach((link) => {
+            link.classList.remove("translate-y-4", "opacity-0");
+            link.classList.add("translate-y-0", "opacity-100");
+          });
+          animateSections.forEach((el) => {
+            el.classList.remove("translate-y-4", "opacity-0");
+            el.classList.add("translate-y-0", "opacity-100");
+          });
+        } else {
+          nav.classList.remove(
+            "translate-x-0",
+            "opacity-100",
+            "pointer-events-auto",
+          );
+          nav.classList.add(
+            "translate-x-full",
+            "opacity-0",
+            "pointer-events-none",
+          );
+          nav.setAttribute("inert", "");
+          resetTimer = setTimeout(() => {
+            animateLinks.forEach((link) => {
+              link.classList.add("translate-y-4", "opacity-0");
+              link.classList.remove("translate-y-0", "opacity-100");
+            });
+            animateSections.forEach((el) => {
+              el.classList.add("translate-y-4", "opacity-0");
+              el.classList.remove("translate-y-0", "opacity-100");
+            });
+            resetTimer = null;
+          }, 300);
+        }
+        document.body.style.overflow = open ? "hidden" : "";
+      };
 
-			toggle.addEventListener("click", () => setOpen(true));
-			closeBtn.addEventListener("click", () => setOpen(false));
+      const close = () => setOpen(false);
 
-			// Close when clicking overlay background (not content)
-			nav.addEventListener("click", (e) => {
-				if (e.target === nav) setOpen(false);
-			});
+      toggle.addEventListener("click", () => setOpen(true));
+      closeBtn.addEventListener("click", () => setOpen(false));
 
-			nav.querySelectorAll("a").forEach((link) => {
-				link.addEventListener("click", (e) => {
-					const href = link.getAttribute("href");
-					const isExternal =
-						link.getAttribute("target") === "_blank" ||
-						(href && (href.startsWith("http") || href.startsWith("mailto")));
-					if (!isExternal) {
-						e.preventDefault();
-						close();
-						setTimeout(() => {
-							if (href) window.location.href = href;
-						}, 300);
-					} else {
-						close();
-					}
-				});
-			});
+      // Close when clicking overlay background (not content)
+      nav.addEventListener("click", (e) => {
+        if (e.target === nav) setOpen(false);
+      });
 
-			document.addEventListener("keydown", (e) => {
-				if (e.key === "Escape" && isOpen) close();
-			});
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          const isExternal =
+            link.getAttribute("target") === "_blank" ||
+            (href && (href.startsWith("http") || href.startsWith("mailto")));
+          if (!isExternal) {
+            e.preventDefault();
+            close();
+            setTimeout(() => {
+              if (href) window.location.href = href;
+            }, 300);
+          } else {
+            close();
+          }
+        });
+      });
 
-			document.addEventListener("astro:after-swap", close);
-		}
-	}
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isOpen) close();
+      });
 
-	if (!customElements.get("mobile-menu")) {
-		customElements.define("mobile-menu", MobileMenu);
-	}
+      document.addEventListener("astro:after-swap", close);
+    }
+  }
+
+  if (!customElements.get("mobile-menu")) {
+    customElements.define("mobile-menu", MobileMenu);
+  }
 </script>

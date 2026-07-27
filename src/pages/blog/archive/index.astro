@@ -45,23 +45,30 @@ const archiveData = groupPostsForArchive(allPosts);
           <div class="flex flex-col gap-y-20">
             {archiveData.map(({ year, months }) => (
               <section class="flex flex-col gap-y-8" id={`year-${year}`}>
-                <h2 class="relative text-2xl font-bold tracking-tight md:text-2xl">
-                  <span class="text-muted-foreground/10 absolute -top-8 -left-4 -z-10 text-7xl select-none md:-top-10 md:-left-6 md:text-8xl">
+                <h2 class="relative text-2xl font-bold tracking-tight">
+                  <span
+                    class="text-muted-foreground/10 absolute -top-8 -left-4 -z-10 text-7xl select-none md:-top-10 md:-left-6 md:text-8xl"
+                    aria-hidden="true"
+                  >
                     {year}
                   </span>
                 </h2>
+
                 <div class="flex flex-col gap-y-12">
                   {months.map(({ month, monthName, posts }) => (
                     <div
                       class="flex flex-col gap-y-4"
                       id={`month-${year}-${month}`}
                     >
-                      <h3 class="text-muted-foreground text-xl font-semibold">
-                        {monthName}
-                      </h3>
+                      <div class="flex items-center gap-5">
+                        <h3 class="text-muted-foreground text-xl font-semibold">
+                          {monthName}
+                        </h3>
+                        <div class="flex-1 h-px bg-muted-foreground/20" />
+                      </div>
                       <ul class="group/list relative flex flex-col">
                         {posts.map((post) => (
-                          <PostPreview post={post} showDescription />
+                          <PostPreview post={post} clampTitle={false} />
                         ))}
                       </ul>
                     </div>
@@ -73,7 +80,7 @@ const archiveData = groupPostsForArchive(allPosts);
 
           <ArchiveSidebar
             archiveData={archiveData}
-            class="sticky top-0 w-full self-start"
+            class="sticky top-8 w-full self-start"
           />
         </div>
       )

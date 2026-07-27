@@ -1,0 +1,13 @@
+---
+export const prerender = true;
+
+import BlogListLayout from "@/components/features/blog/BlogListLayout.astro";
+---
+
+<BlogListLayout
+  activeTab="reflections"
+  title="Reflections"
+  description="Personal reflections on perspective, resilience, identity, and growth."
+  image={{ src: "/og/reflections.png", alt: "Reflections - pictogrammmer" }}
+  path="reflections"
+/>

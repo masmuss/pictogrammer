@@ -11,9 +11,9 @@ const mainPages = [
 	{ name: "Blog Index", path: "/blog", expectedHeading: "Blog" },
 	{ name: "Notes", path: "/blog/notes", expectedHeading: "Notes" },
 	{
-		name: "Reflective",
-		path: "/blog/reflective",
-		expectedHeading: "Reflective"
+		name: "Reflections",
+		path: "/blog/reflections",
+		expectedHeading: "Reflections"
 	},
 	{ name: "Tags Index", path: "/tags", expectedHeading: "Tags" }
 ];
