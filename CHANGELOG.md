@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/masmuss/pictogrammer/compare/v1.22.0...v1.23.0) (2026-07-27)
+
+
+### Features
+
+* **content:** add internship experience type and update skills ([9bd5208](https://github.com/masmuss/pictogrammer/commit/9bd5208ebd5ed27c3896c9acfd4cb66fcfe705df))
+
 # [1.22.0](https://github.com/masmuss/pictogrammer/compare/v1.21.0...v1.22.0) (2026-07-27)
 
 
