@@ -21,12 +21,12 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -35,7 +35,7 @@ jobs:
 
       - name: Cache dependencies
         id: deps-cache
-        uses: actions/cache@v4.2.1
+        uses: actions/cache@v6.1.0
         with:
           path: node_modules
           key: ${{ runner.os }}-deps-${{ hashFiles('bun.lock') }}
@@ -72,7 +72,7 @@ jobs:
 
       - name: Cache Playwright browsers
         id: playwright-cache
-        uses: actions/cache@v4.2.1
+        uses: actions/cache@v6.1.0
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload Playwright report
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: playwright-report
           path: playwright-report/
@@ -113,15 +113,15 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -130,7 +130,7 @@ jobs:
 
       - name: Cache dependencies
         id: deps-cache
-        uses: actions/cache@v4.2.1
+        uses: actions/cache@v6.1.0
         with:
           path: node_modules
           key: ${{ runner.os }}-deps-${{ hashFiles('bun.lock') }}
