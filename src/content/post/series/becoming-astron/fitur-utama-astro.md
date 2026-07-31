@@ -57,15 +57,18 @@ Warung itu:
 
 Tapi **tidak seluruh lapangan perlu listrik**.
 
-```mermaid
-graph TD
-    A[Halaman Statis - HTML] --> B(Island 1: Search Box - JS)
-    A --> C(Island 2: Carousel - JS)
-    A --> D[Konten Teks - HTML]
-    style B fill:#f96,stroke:#333,stroke-width:2px
-    style C fill:#f96,stroke:#333,stroke-width:2px
+```d2
+A: "Halaman Statis - HTML"
+B: "Island 1: Search Box"
+C: "Island 2: Carousel"
+D: "Konten Teks - HTML"
+
+A -> B
+A -> C
+A -> D
 ```
-*Visualisasi Island Architecture: Hanya bagian yang berwarna (Island) yang memiliki JavaScript/listrik.*
+
+_Visualisasi Island Architecture: Hanya bagian yang berwarna (Island) yang memiliki JavaScript/listrik._
 
 Di Astro:
 

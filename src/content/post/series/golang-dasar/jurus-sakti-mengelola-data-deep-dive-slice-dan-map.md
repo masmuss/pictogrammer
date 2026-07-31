@@ -45,45 +45,57 @@ Ini adalah cara paling harfiah untuk melihat `slice` sebagai "potongan" dari `ar
 
 Untuk memahaminya, mari kita lihat diagram berikut. Bayangkan kita punya sebuah `array` berisi nama-nama bulan. Dua `slice` yang berbeda bisa merujuk ke `array` yang sama sebagai backing `array`-nya.
 
-```mermaid
-classDiagram
-    %% Definisi Object Array
-    class array {
-        0 : "Januari"
-        1 : "Februari"
-        2 : "Maret"
-        3 : "April"
-        4 : "Mei"
-        5 : "Juni"
-        6 : "Juli"
-        7 : "Agustus"
-        8 : "September"
-        9 : "Oktober"
-        10 : "November"
-        11 : "Desember"
-    }
+```d2
+# Node Ekspresi / Label Atas
+expr1: "array[4:7]" {
+  shape: text
+}
 
-    %% Definisi Object Slice 1
-    class slice1 {
-        pointer : 4
-        length : 3
-        capacity : 8
-    }
+expr2: "array[6:9]" {
+  shape: text
+}
 
-    %% Definisi Object Slice 2
-    class slice2 {
-        pointer : 6
-        length : 3
-        capacity : 6
-    }
+# Group/Grid untuk menyejajarkan slice di bagian atas
+slices: "" {
+  style: {
+    stroke: transparent
+    fill: transparent
+  }
 
-    %% Hubungan/Relasi
-    slice1 --> array : Reference
-    slice2 --> array : Reference
+  slice1: slice1 {
+    pointer: "pointer : 4"
+    length: "length : 3"
+    capacity: "capacity : 8"
+  }
 
-    %% Notes
-    note for slice1 "array[4:7]"
-    note for slice2 "array[6:9]"
+  slice2: slice2 {
+    pointer: "pointer : 6"
+    length: "length : 3"
+    capacity: "capacity : 6"
+  }
+}
+
+array: array {
+  jan: "0 : \"Januari\""
+  feb: "1 : \"Februari\""
+  mar: "2 : \"Maret\""
+  apr: "3 : \"April\""
+  may: "4 : \"Mei\""
+  jun: "5 : \"Juni\""
+  more: "..."
+}
+
+# Hubungan / Panah
+expr1 -> slices.slice1: {
+  style.stroke-dash: 3
+}
+
+expr2 -> slices.slice2: {
+  style.stroke-dash: 3
+}
+
+slices.slice1 -> array: Reference
+slices.slice2 -> array: Reference
 ```
 
 Diagram di atas menunjukkan apa yang akan kita lakukan dalam kode berikut. Kita akan membuat satu `array` bulan, lalu membuat dua `slice` yang merujuk pada `array` tersebut.

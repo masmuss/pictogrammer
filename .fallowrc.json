@@ -2,7 +2,6 @@
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
 	"ignorePatterns": [
 		"public/github-card.js",
-		"src/assets/scripts/mermaid-theme-fix.js",
 		"svelte.config.js",
 		"src/components/ui/primitives/index.ts",
 		"src/components/ui/search/index.ts",

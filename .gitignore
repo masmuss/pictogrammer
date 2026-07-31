@@ -3,6 +3,9 @@ dist/
 playwright-report/
 test-results/
 
+# generated diagrams
+public/d2
+
 # generated types
 .astro/
 

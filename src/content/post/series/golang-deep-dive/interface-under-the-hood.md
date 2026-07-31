@@ -16,13 +16,14 @@ Di balik layar, sebuah interface bukan cuma sebuah nilai kosong. Go merepresenta
 1.  **Word 1: itab (Interface Table)**: Pointer ke informasi tentang tipe data asli dan daftar method yang tersedia.
 2.  **Word 2: data**: Pointer ke data atau variabel aslinya.
 
-```mermaid
-graph LR
-    A[Interface Variable] --> B[itab]
-    A --> C[data]
-    B --> D[Type Information]
-    B --> E[Method Table]
-    C --> F[Actual Value]
+```d2
+direction: right
+A: "Interface Variable"
+A -> B: itab
+A -> C: data
+B -> D: "Type Information"
+B -> E: "Method Table"
+C -> F: "Actual Value"
 ```
 
 ## interface{} vs any

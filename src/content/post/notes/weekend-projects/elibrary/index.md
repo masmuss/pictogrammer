@@ -18,26 +18,51 @@ Proyek ini dimulai sebagai studi kasus: membangun backend API untuk sistem E-Lib
 
 Tech stack-nya: **Bun** sebagai runtime, **Hono** sebagai web framework, **Drizzle** sebagai ORM. Kombinasi ini ringan, cepat, dan DX-nya enak — terutama `bun test` yang built-in tanpa perlu Jest config berlembar-lembar.
 
-```mermaid
-graph TD;
-    subgraph Core Backend
-        Bun[Bun Runtime] --> Hono[Hono Web Framework];
-    end
-    subgraph Data Layer
-        Drizzle[Drizzle ORM] --> PostgreSQL[(PostgreSQL DB)];
-        Hono --> Drizzle;
-        Hono --> Redis[(Redis Cache)];
-    end
-    subgraph Development and Tooling
-        Docker[Docker] -- Manages --> CoreBackend[Core Backend Services];
-        Docker -- Manages --> DataLayer[Data Layer Services];
-        TypeScript(TypeScript) -- Compiles --> Bun;
-        BunTest(Bun Test) -- Tests --> Hono;
-        Biome(Biome Linter/Formatter) -- Enforces Quality on --> TypeScript;
-        Husky(Husky Git Hooks) -- Triggers --> BunTest;
-        Husky -- Triggers --> Biome;
-    end
-    User([User]) --> Hono;
+```d2
+User: User {
+  shape: person
+}
+
+Core Backend: Core Backend {
+  Bun: Bun Runtime
+  Hono: Hono Web Framework
+
+  Bun -> Hono
+}
+
+Data Layer: Data Layer {
+  Drizzle: Drizzle ORM
+  PostgreSQL: PostgreSQL DB {
+    shape: cylinder
+  }
+  Redis: Redis Cache {
+    shape: cylinder
+  }
+
+  Drizzle -> PostgreSQL
+}
+
+User -> Core Backend.Hono
+Core Backend.Hono -> Data Layer.Drizzle
+Core Backend.Hono -> Data Layer.Redis
+
+Development and Tooling: Development and Tooling {
+  Docker: Docker
+  CoreBackend: Core Backend Services
+  DataLayer: Data Layer Services
+  TypeScript: TypeScript
+  BunTest: Bun Test
+  Biome: Biome Linter/Formatter
+  Husky: Husky Git Hooks
+
+  Docker -> CoreBackend: Manages
+  Docker -> DataLayer: Manages
+  TypeScript -> Core Backend.Bun: Compiles
+  BunTest -> Core Backend.Hono: Tests
+  Biome -> TypeScript: Enforces Quality on
+  Husky -> BunTest: Triggers
+  Husky -> Biome: Triggers
+}
 ```
 
 ## Fondasi: Otentikasi Dulu

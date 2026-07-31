@@ -38,13 +38,20 @@ Dengan MDX, sekarang setiap halaman wiki bisa berisi komponen interaktif:
 
 Caranya simpel: ganti ekstensi file dari `.md` ke `.mdx`, lalu impor dan pakai komponen Astro seperti biasa di dalam konten. Nggak ada konfigurasi tambahan.
 
-```mermaid
-graph LR
-    A[File .mdx] --> B[Astro MDX Integration]
-    B --> C[Remark/Rehype Plugins]
-    B --> D[Komponen Astro]
-    C --> E[HTML Output]
-    D --> E
+```d2
+direction: right
+
+FileMDX: File .mdx
+AstroMDX: Astro MDX Integration
+Plugins: Remark/Rehype Plugins
+Components: Komponen Astro
+HTMLOutput: HTML Output
+
+FileMDX -> AstroMDX
+AstroMDX -> Plugins
+AstroMDX -> Components
+Plugins -> HTMLOutput
+Components -> HTMLOutput
 ```
 
 ## Navigasi yang Tahu Kapan Harus Diam

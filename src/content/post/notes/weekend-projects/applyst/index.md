@@ -38,39 +38,49 @@ Aku memasangkannya dengan **FrankenPHP**. Kenapa? Karena dia modern, support HTT
 
 Biar kebayang bedanya, ini ilustrasi sederhana alur request sebelum dan sesudah pakai Octane:
 
-```mermaid
-flowchart RL
-    subgraph A[Laravel PHP-FPM Biasa]
-        R1[Request masuk] --> B1[Bootstrap Laravel]
-        B1 --> H1[Handle Request]
-        H1 --> T1[Response]
-        T1 --> X1[Proses selesai]
-        R2[Request berikutnya] --> B2[Bootstrap Laravel lagi]
-        B2 --> H2[Handle Request]
-        H2 --> T2[Response]
-    end
-```
+```d2
+direction: down
+"Laravel PHP-FPM Biasa": {
+  R1: "Request masuk"
+  B1: "Bootstrap Laravel"
+  H1: "Handle Request"
+  T1: "Response"
+  X1: "Proses selesai"
+  R2: "Request berikutnya"
+  B2: "Bootstrap Laravel lagi"
+  H2: "Handle Request"
+  T2: "Response"
 
-```mermaid
-flowchart TB
-    LB[FrankenPHP Listener / Octane Dispatcher]
+  R1 -> B1 -> H1 -> T1 -> X1
+  R2 -> B2 -> H2 -> T2
+}
 
-    LB --> W1[Worker 1 start]
-    LB --> W2[Worker 2 start]
-    LB --> W3[Worker 3 start]
+"FrankenPHP Listener Octane Dispatcher": {
+    LB: "FrankenPHP Listener\n/ Octane Dispatcher"
 
-    W1 --> B1[Bootstrap Laravel sekali]
-    W2 --> B2[Bootstrap Laravel sekali]
-    W3 --> B3[Bootstrap Laravel sekali]
+    LB -> W1: Worker 1 start
+    LB -> W2: Worker 2 start
+    LB -> W3: Worker 3 start
 
-    B1 --> R11[Req A] --> S11[Resp A]
-    S11 --> R12[Req D] --> S12[Resp D]
+    W1 -> B1: Bootstrap Laravel sekali
+    W2 -> B2: Bootstrap Laravel sekali
+    W3 -> B3: Bootstrap Laravel sekali
 
-    B2 --> R21[Req B] --> S21[Resp B]
-    S21 --> R22[Req E] --> S22[Resp E]
+    B1 -> R11: Req A
+    R11 -> S11: Resp A
+    S11 -> R12: Req D
+    R12 -> S12: Resp D
 
-    B3 --> R31[Req C] --> S31[Resp C]
-    S31 --> R32[Req F] --> S32[Resp F]
+    B2 -> R21: Req B
+    R21 -> S21: Resp B
+    S21 -> R22: Req E
+    R22 -> S22: Resp E
+
+    B3 -> R31: Req C
+    R31 -> S31: Resp C
+    S31 -> R32: Req F
+    R32 -> S32: Resp F
+}
 ```
 
 Intinya, di mode biasa proses bootstrap berulang tiap request, sedangkan di Octane bootstrap dilakukan sekali saat worker hidup lalu request berikutnya diproses jauh lebih cepat.

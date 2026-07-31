@@ -60,42 +60,47 @@ Struktur foldernya dibagi kayak gini:
 
 Biar lebih kebayang gimana modul-modul ini saling nyambung di dalam monorepo, ini bagan sederhananya:
 
-```mermaid
-graph TB
-  subgraph User
-    A["👤 Agent (Web)"]
-    B["📱 Pelapor (Telegram)"]
-  end
+```d2
+direction: down
+layout-engine: elk
 
-  subgraph Apps
-    C["🌐 apps/web<br/>SvelteKit Portal"]
-    D["🤖 apps/bot<br/>Telegram Bot"]
-  end
+User: User {
+  agent: "👤 Agent (Web)"
+  pelapor: "📱 Pelapor (Telegram)"
+}
 
-  subgraph Packages
-    E["📦 @trak/services<br/>Domain Logic"]
-    F["🗄️ @trak/database<br/>Schema + Client"]
-    G["🔷 @trak/shared<br/>Types"]
-  end
+Apps: Apps {
+  web: "🌐 apps/web\nSvelteKit Portal"
+  bot: "🤖 apps/bot\nTelegram Bot"
+}
 
-  subgraph Infrastructure
-    H["🐘 PostgreSQL"]
-    I["📁 .bot-sessions/<br/>File Session"]
-  end
+Packages: Packages {
+  services: "📦 @trak/services\nDomain Logic"
+  database: "🗄️ @trak/database\nSchema + Client"
+  shared: "🔷 @trak/shared\nTypes"
 
-  A -->|"HTTPS"| C
-  B -->|"Telegram API"| D
+  services -> database
+  services -> shared
+}
 
-  C --> E
-  D --> E
-  E --> F
-  F --> H
-  D --> I
+Infrastructure: Infrastructure {
+  postgres: "🐘 PostgreSQL" {
+    shape: cylinder
+  }
+  sessions: "📁 .bot-sessions/\nFile Session"
+}
 
-  C --> G
-  E --> G
+# Hubungan Antar Layanan / Layer
+User.agent -> Apps.web: HTTPS
+User.pelapor -> Apps.bot: Telegram API
 
-  linkStyle 0,1 stroke:#666
+Apps.web -> Packages.services
+Apps.web -> Packages.shared
+
+Apps.bot -> Packages.services
+Apps.bot -> Infrastructure.sessions
+
+Packages.database -> Infrastructure.postgres
 ```
 
 ## Alur Kerja: Dari Telegram Chat Langsung ke Dashboard
@@ -127,41 +132,46 @@ Berikut adalah beberapa cuplikan interaksi Telegram bot-nya saat pelapor membuat
 - **Notifikasi Update Status**: Bot otomatis ngirim pesan kalau status tiketnya diubah sama admin di web.
   ![Notifikasi Otomatis Pas Status Tiket Diubah Admin](../../../../../assets/images/projects/trak/bot-update-status-notification.png)
 
-```mermaid
-sequenceDiagram
-    actor P as Pelapor (Telegram)
-    participant B as apps/bot
-    participant S as @trak/services
-    participant D as PostgreSQL
-    participant W as apps/web
+```d2
+shape: sequence_diagram
 
-    Note over P,W: Registrasi
-    P->>B: /start
-    B->>S: createReporter(telegramId)
-    S->>D: insert reporters
-    B-->>P: ✅ Selamat datang
+P: "Pelapor (Telegram)"s
+B: "apps/bot"
+S: "@trak/services"
+D: PostgreSQL
+W: "apps/web"
 
-    Note over P,W: Laporan
-    P->>B: /report → title → body → kategori → lampiran
-    B->>S: createReport(reporterId, title, body, categoryId)
-    S->>D: insert reports
-    B->>S: addReportAttachment(fileId, storageUrl)
-    S->>D: insert report_attachments
-    B-->>P: ✅ Laporan terkirim (TKT-XXXX)
+Registrasi: {
+  P -> B: /start
+  B -> S: "createReporter(telegramId)"
+  S -> D: "insert reporters"
+  B -> P: "✅ Selamat datang"
+}
 
-    Note over P,W: Update Status + Notifikasi
-    W->>S: updateTicketStatus(id, newStatus, userId)
-    S->>D: update reports + insert status_histories
-    W->>S: createNotification(reporterTelegramId, message)
-    S->>D: insert notifications
-    loop setiap 5 detik
-      B->>S: getPendingNotifications()
-      S->>D: select where is_read = false
-      D-->>S: [notifikasi]
-      B-->>P: 🔄 Status tiket diperbarui
-      B->>S: markNotificationRead(id)
-      S->>D: update notifications
-    end
+Laporan: {
+  P -> B: "/report → title → body → kategori → lampiran"
+  B -> S: "createReport(reporterId, title, body, categoryId)"
+  S -> D: "insert reports"
+  B -> S: "addReportAttachment(fileId, storageUrl)"
+  S -> D: "insert report_attachments"
+  B -> P: "✅ Laporan terkirim (TKT-XXXX)"
+}
+
+"Update Status + Notifikasi": {
+  W -> S: "updateTicketStatus(id, newStatus, userId)"
+  S -> D: "update reports + insert status_histories"
+  W -> S: "createNotification(reporterTelegramId, message)"
+  S -> D: "insert notifications"
+}
+
+"Polling 5 detik": {
+  B -> S: "getPendingNotifications()"
+  S -> D: "select where is_read = false"
+  D -> S: "[notifikasi]"
+  B -> P: "🔄 Status tiket diperbarui"
+  B -> S: "markNotificationRead(id)"
+  S -> D: "update notifications"
+}
 ```
 
 ## Setup Lokal dengan Cepat

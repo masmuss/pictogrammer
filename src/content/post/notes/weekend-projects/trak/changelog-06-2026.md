@@ -36,20 +36,25 @@ Untuk mengatasinya, aku memigrasi sistem ini menjadi _real-time event-driven_ me
 3. Bot Telegram di sisi lain membuka satu koneksi persisten ke PostgreSQL dan menjalankan perintah `LISTEN new_notification` saat pertama kali dinyalakan.
 4. Ketika event `NOTIFY` terpicu dari dashboard web, database langsung meneruskannya ke bot secara instan tanpa perlu polling. Bot langsung mengirim pesan update ke Telegram pelapor saat itu juga.
 
-```mermaid
-sequenceDiagram
-    actor P as Pelapor (Telegram)
-    participant B as apps/bot
-    participant S as @trak/services
-    participant D as PostgreSQL
-    participant W as apps/web
+```d2
+shape: sequence_diagram
 
-    Note over P,W: Event-Driven Notifications (LISTEN/NOTIFY)
-    W->>S: updateTicketStatus(id, newStatus)
-    S->>D: UPDATE reports & INSERT status_history
-    S->>D: INSERT notification & pg_notify('new_notification')
-    D-->>B: PostgreSQL NOTIFY (Real-time Event)
-    B->>P: 🔄 Status tiket diperbarui (Instant)
+web: "apps/web"
+services: "@trak/services"
+db: "PostgreSQL"
+bot: "apps/bot"
+Pelapor: "Pelapor (Telegram)" {
+  shape: person
+}
+
+# Sub-group / Section Title
+group: "Event-Driven Notifications (LISTEN/NOTIFY)" {
+  web -> services: "updateTicketStatus(id, newStatus)"
+  services -> db: "UPDATE reports & INSERT status_history"
+  services -> db: "INSERT notification & pg_notify('new_notification')"
+  db -> bot: "PostgreSQL NOTIFY (Real-time Event)"
+  bot -> Pelapor: "🔄 Status tiket diperbarui (Instant)"
+}
 ```
 
 ### Mekanisme Catch-Up saat Downtime

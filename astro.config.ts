@@ -6,7 +6,7 @@ import svelte from "@astrojs/svelte";
 import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
-import astroMermaid from "astro-mermaid";
+import d2 from "astro-d2";
 import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDeflist from "remark-deflist";
@@ -41,15 +41,9 @@ export default defineConfig({
 		}
 	],
 	integrations: [
-		astroMermaid({
-			theme: "default",
-			autoTheme: true,
-			mermaidConfig: {
-				flowchart: {
-					htmlLabels: true,
-					curve: "basis"
-				}
-			}
+		d2({
+			pad: 48,
+			inline: true
 		}),
 		sitemap(),
 		svelte(),
