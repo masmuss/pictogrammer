@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/masmuss/pictogrammer/compare/v1.24.0...v1.25.0) (2026-07-31)
+
+
+### Features
+
+* **setelah-gips-dibuka:** rewrite reflection on recovery muscle memory ([454cace](https://github.com/masmuss/pictogrammer/commit/454cace8e7d940acdacd1f844c3c8bf633dfea18))
+
 # [1.24.0](https://github.com/masmuss/pictogrammer/compare/v1.23.0...v1.24.0) (2026-07-31)
 
 
