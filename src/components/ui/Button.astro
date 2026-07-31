@@ -66,7 +66,7 @@ const baseClass = Object.values(baseClasses).join(" ");
 const variantClass: Record<NonNullable<Props["variant"]>, string> = {
 	default: "bg-primary text-primary-foreground hover:bg-primary/80",
 	outline:
-		"ring-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:ring-input dark:bg-input/30 dark:hover:bg-input/50",
+		"ring-2 ring-inset ring-muted-foreground/25 bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:ring-input dark:bg-input/30 dark:hover:bg-input/50",
 	secondary:
 		"bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 	ghost:
@@ -105,7 +105,7 @@ const resolvedSize = size;
 const legacyClass = cn(
 	style === "pill" && "rounded-full",
 	style === "tab" &&
-		"rounded-full ring-1 ring-inset ring-border/60 text-muted-foreground hover:text-foreground data-[active=true]:ring-primary/40 data-[active=true]:bg-primary/10 data-[active=true]:text-foreground"
+		"rounded-full text-muted-foreground ring-1 ring-border/60 ring-inset hover:text-foreground data-[active=true]:bg-primary/10 data-[active=true]:text-foreground data-[active=true]:ring-primary/40"
 );
 
 const isButton = as === "button";
@@ -119,87 +119,87 @@ const prefetchProps = shouldPrefetch
 ---
 
 {
-	isButton ? (
-		<button
-			type="button"
-			data-slot="button"
-			data-variant={resolvedVariant}
-			data-size={resolvedSize}
-			disabled={disabled || loading}
-			aria-disabled={disabled || loading}
-			aria-busy={loading}
-			{...attrs}
-			class={cn(
-				baseClass,
-				variantClass[resolvedVariant],
-				sizeClass[resolvedSize],
-				legacyClass,
-				"leading-none",
-				className
-			)}
-		>
-			{hasStartIcon && (
-				<span
-					data-icon="inline-start"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-before" />
-				</span>
-			)}
-			{title ? (
-				<span class="leading-none">{title}</span>
-			) : (
-				hasDefaultSlot && <slot />
-			)}
-			{hasEndIcon && (
-				<span
-					data-icon="inline-end"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-after" />
-				</span>
-			)}
-		</button>
-	) : (
-		<a
-			data-slot="button"
-			data-variant={resolvedVariant}
-			data-size={resolvedSize}
-			aria-disabled={disabled || loading}
-			{...prefetchProps}
-			href={disabled || loading ? undefined : href}
-			{...attrs}
-			class={cn(
-				baseClass,
-				variantClass[resolvedVariant],
-				sizeClass[resolvedSize],
-				legacyClass,
-				"leading-none",
-				(disabled || loading) && "pointer-events-none opacity-50",
-				className
-			)}
-		>
-			{hasStartIcon && (
-				<span
-					data-icon="inline-start"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-before" />
-				</span>
-			)}
-			{title ? (
-				<span class="leading-none">{title}</span>
-			) : (
-				hasDefaultSlot && <slot />
-			)}
-			{hasEndIcon && (
-				<span
-					data-icon="inline-end"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-after" />
-				</span>
-			)}
-		</a>
-	)
+  isButton ? (
+    <button
+      type="button"
+      data-slot="button"
+      data-variant={resolvedVariant}
+      data-size={resolvedSize}
+      disabled={disabled || loading}
+      aria-disabled={disabled || loading}
+      aria-busy={loading}
+      {...attrs}
+      class={cn(
+        baseClass,
+        variantClass[resolvedVariant],
+        sizeClass[resolvedSize],
+        legacyClass,
+        "leading-none",
+        className,
+      )}
+    >
+      {hasStartIcon && (
+        <span
+          data-icon="inline-start"
+          class="inline-flex items-center justify-center leading-none"
+        >
+          <slot name="icon-before" />
+        </span>
+      )}
+      {title ? (
+        <span class="leading-none">{title}</span>
+      ) : (
+        hasDefaultSlot && <slot />
+      )}
+      {hasEndIcon && (
+        <span
+          data-icon="inline-end"
+          class="inline-flex items-center justify-center leading-none"
+        >
+          <slot name="icon-after" />
+        </span>
+      )}
+    </button>
+  ) : (
+    <a
+      data-slot="button"
+      data-variant={resolvedVariant}
+      data-size={resolvedSize}
+      aria-disabled={disabled || loading}
+      {...prefetchProps}
+      href={disabled || loading ? undefined : href}
+      {...attrs}
+      class={cn(
+        baseClass,
+        variantClass[resolvedVariant],
+        sizeClass[resolvedSize],
+        legacyClass,
+        "leading-none",
+        (disabled || loading) && "pointer-events-none opacity-50",
+        className,
+      )}
+    >
+      {hasStartIcon && (
+        <span
+          data-icon="inline-start"
+          class="inline-flex items-center justify-center leading-none"
+        >
+          <slot name="icon-before" />
+        </span>
+      )}
+      {title ? (
+        <span class="leading-none">{title}</span>
+      ) : (
+        hasDefaultSlot && <slot />
+      )}
+      {hasEndIcon && (
+        <span
+          data-icon="inline-end"
+          class="inline-flex items-center justify-center leading-none"
+        >
+          <slot name="icon-after" />
+        </span>
+      )}
+    </a>
+  )
 }
