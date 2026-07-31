@@ -3,7 +3,6 @@ title: Nabung
 description: Satu rekening, dua suara, tidak ada pemenang.
 date: 31 July 2026
 tags: [reflection]
-draft: true
 ---
 
 Sejak Februari, aku sudah menghabiskan hampir enam juta.
