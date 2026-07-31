@@ -1,6 +1,9 @@
 /* ========================================
-   Theme Tokens — pictogrammmer
-   Enhanced design system v2
+   Theme Tokens — pictogrammer
+   Design system v3
+   Warm neutral backbone + cyan accent.
+   All colors in oklch for perceptual
+   uniformity. Single source of truth.
    ======================================== */
 
 @theme {
@@ -9,53 +12,36 @@
 	--font-mono: var(--font-ibm-plex-mono);
 	--container-2xl: 1400px;
 
-	/* ── Spacing Scale ───────────────────────
-     Consistent rhythm built on a 4px base.
-     Use these instead of arbitrary px values.
-  */
-	--space-1: 0.25rem; /*  4px */
-	--space-2: 0.5rem; /*  8px */
-	--space-3: 0.75rem; /* 12px */
-	--space-4: 1rem; /* 16px */
-	--space-5: 1.25rem; /* 20px */
-	--space-6: 1.5rem; /* 24px */
-	--space-8: 2rem; /* 32px */
-	--space-10: 2.5rem; /* 40px */
-	--space-12: 3rem; /* 48px */
-	--space-16: 4rem; /* 64px */
-	--space-20: 5rem; /* 80px */
-	--space-24: 6rem; /* 96px */
+	/* ── Spacing Scale (4px base) ──────────── */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.25rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-10: 2.5rem;
+	--space-12: 3rem;
+	--space-16: 4rem;
+	--space-20: 5rem;
+	--space-24: 6rem;
 
-	/* ── Motion Tokens ───────────────────────
-     Centralised durations and easings.
-     Reference these instead of hardcoding
-     transition values in components.
-  */
-
-	/* Durations */
+	/* ── Motion: Durations ──────────────────── */
 	--duration-instant: 50ms;
 	--duration-fast: 150ms;
 	--duration-base: 250ms;
 	--duration-slow: 400ms;
 	--duration-slower: 600ms;
-	--duration-page: 300ms; /* Used by Astro ClientRouter fade */
+	--duration-page: 300ms;
 
-	/* Easings */
-	--ease-default: cubic-bezier(0.4, 0, 0.2, 1); /* Material standard */
+	/* ── Motion: Easings ────────────────────── */
+	--ease-default: cubic-bezier(0.4, 0, 0.2, 1);
 	--ease-in: cubic-bezier(0.4, 0, 1, 1);
 	--ease-out: cubic-bezier(0, 0, 0.2, 1);
-	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* Slight overshoot */
+	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 	--ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-	/* Composite shorthands (duration ease) */
-	--transition-fast: var(--duration-fast) var(--ease-default);
-	--transition-base: var(--duration-base) var(--ease-default);
-	--transition-slow: var(--duration-slow) var(--ease-out);
-	--transition-spring: var(--duration-slow) var(--ease-spring);
-
-	/* ── Keyframe Animations ─────────────────
-     Named animations available globally.
-  */
+	/* ── Keyframe Animations ────────────────── */
 	--animate-fade-up: fade-up var(--duration-slower) var(--ease-out) forwards;
 	--animate-fade-in: fade-in var(--duration-slow) var(--ease-out) forwards;
 	--animate-slide-in: slide-in var(--duration-slow) var(--ease-spring) forwards;
@@ -91,89 +77,83 @@
 		}
 	}
 
-	/* ── Flexoki Accent Palette ──────────────
-     All 8 hues in 400 (light-mode) and
-     600 (dark-mode) variants. Unchanged.
-  */
-	--color-flexoki-red-400: #d14d41;
-	--color-flexoki-red-600: #af3029;
-	--color-flexoki-orange-400: #da702c;
-	--color-flexoki-orange-600: #bc5215;
-	--color-flexoki-yellow-400: #d0a215;
-	--color-flexoki-yellow-600: #ad8301;
-	--color-flexoki-green-400: #879a39;
-	--color-flexoki-green-600: #66800b;
-	--color-flexoki-cyan-400: #3aa99f;
-	--color-flexoki-cyan-600: #24837b;
-	--color-flexoki-blue-400: #4385be;
-	--color-flexoki-blue-600: #205ea6;
-	--color-flexoki-purple-400: #8b7ec8;
-	--color-flexoki-purple-600: #5e409d;
-	--color-flexoki-magenta-400: #ce5d97;
-	--color-flexoki-magenta-600: #a02f6f;
+	/* ── Flexoki Admonition Palette ────────────
+	   Used by admonition.css for colored
+	   callout boxes (note, tip, warning, etc).
+	 */
+	--color-flexoki-red-400: oklch(0.55 0.17 23);
+	--color-flexoki-red-600: oklch(0.46 0.17 23);
+	--color-flexoki-orange-400: oklch(0.62 0.15 45);
+	--color-flexoki-orange-600: oklch(0.54 0.15 45);
+	--color-flexoki-yellow-400: oklch(0.7 0.13 88);
+	--color-flexoki-yellow-600: oklch(0.6 0.13 88);
+	--color-flexoki-green-400: oklch(0.63 0.1 128);
+	--color-flexoki-green-600: oklch(0.53 0.11 128);
+	--color-flexoki-cyan-400: oklch(0.62 0.09 192);
+	--color-flexoki-cyan-600: oklch(0.5 0.09 192);
+	--color-flexoki-blue-400: oklch(0.56 0.11 245);
+	--color-flexoki-blue-600: oklch(0.45 0.12 245);
+	--color-flexoki-purple-400: oklch(0.59 0.1 288);
+	--color-flexoki-purple-600: oklch(0.46 0.12 288);
+	--color-flexoki-magenta-400: oklch(0.59 0.14 352);
+	--color-flexoki-magenta-600: oklch(0.47 0.14 352);
 
-	/* ── Semantic Accent (NEW) ───────────────
-     A single CTA accent derived from the
-     Flexoki cyan hue. Used for primary
-     interactive elements (links, buttons,
-     active states, focus rings) instead of
-     the bare foreground color.
+	/* ── Semantic Colors ──────────────────────
+	   Maps runtime variables to Tailwind
+	   utility classes (bg-primary,
+	   text-foreground, border-border, etc).
+	 */
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
 
-     Usage:
-       color: var(--color-accent-cta)
-       border-color: var(--color-accent-cta)
-       background: var(--color-accent-cta-subtle)
-  */
+	/* ── Accent CTA (compat) ──────────────────
+	   Backward compatibility with components
+	   using text-accent-cta, bg-accent-cta, etc.
+	 */
 	--color-accent-cta: var(--accent-cta);
 	--color-accent-cta-subtle: var(--accent-cta-subtle);
 	--color-accent-cta-text: var(--accent-cta-text);
 
-	/*
-		Semantic colors mapping
-  	*/
-	--color-border: hsl(var(--border) / 0.8);
-	--color-input: hsl(var(--input));
-	--color-ring: hsl(var(--ring));
-	--color-background: var(--background);
-	--color-foreground: hsl(var(--foreground));
-	--color-primary: hsl(var(--primary));
-	--color-primary-foreground: hsl(var(--primary-foreground));
-	--color-secondary: hsl(var(--secondary));
-	--color-secondary-foreground: hsl(var(--secondary-foreground));
-	--color-accent: hsl(var(--accent));
-	--color-accent-foreground: hsl(var(--accent-foreground));
-	--color-muted: hsl(var(--muted));
-	--color-muted-foreground: hsl(var(--muted-foreground));
-	--color-destructive: hsl(var(--destructive));
-	--color-destructive-foreground: hsl(var(--destructive-foreground));
-	--color-popover: hsl(var(--popover));
-	--color-popover-foreground: hsl(var(--popover-foreground));
-	--color-card: hsl(var(--card));
-	--color-card-foreground: hsl(var(--card-foreground));
+	/* ── Charts ─────────────────────────────── */
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
 
-	/* ── Radius Scale ────────────────────────
-     Unchanged from v1.
-   */
-	--radius: 0.625rem;
+	/* ── Sidebar ────────────────────────────── */
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+
+	/* ── Radius ─────────────────────────────── */
+	--radius: 1rem;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
-
-	/* shadcn compat */
-	--color-chart-1: hsl(var(--primary));
-	--color-chart-2: hsl(var(--secondary));
-	--color-chart-3: hsl(var(--accent));
-	--color-chart-4: hsl(var(--muted));
-	--color-chart-5: hsl(var(--destructive));
-	--color-sidebar: hsl(var(--card));
-	--color-sidebar-foreground: hsl(var(--card-foreground));
-	--color-sidebar-primary: hsl(var(--primary));
-	--color-sidebar-primary-foreground: hsl(var(--primary-foreground));
-	--color-sidebar-accent: hsl(var(--accent));
-	--color-sidebar-accent-foreground: hsl(var(--accent-foreground));
-	--color-sidebar-border: hsl(var(--border));
-	--color-sidebar-ring: hsl(var(--ring));
 }
 
 /* ========================================
@@ -190,61 +170,117 @@
 			font-size: 16px;
 		}
 
-		/* ── Light Mode ───────────────────── */
+		/* ── Light Mode ─────────────────────
+		   Warm paper background inspired by
+		   Flexoki. Cyan accent (hue 192) as
+		   the single brand color.
+		*/
 		&:not(.dark) {
-			--background: #fffcf0;
-			--foreground: 0 3% 6%;
-			--card: 48 100% 97%;
-			--card-foreground: 0 3% 6%;
-			--popover: 48 100% 97%;
-			--popover-foreground: 0 3% 6%;
-			--primary: 0 3% 6%;
-			--primary-foreground: 48 100% 97%;
-			--secondary: 50 14% 83%;
-			--secondary-foreground: 50 6% 30%;
-			--muted: 51 33% 92%;
-			--muted-foreground: 50 3% 36%;
-			--accent: 51 21% 88%;
-			--accent-foreground: 50 6% 30%;
-			--destructive: 3 62% 42%;
-			--destructive-foreground: 48 100% 97%;
-			--border: 50 14% 83%;
-			--input: 50 14% 83%;
-			--ring: 55 10% 79%;
+			/* Warm neutral scale */
+			--background: oklch(0.985 0.005 95);
+			--foreground: oklch(0.18 0.005 85);
+			--card: oklch(0.99 0.003 90);
+			--card-foreground: oklch(0.18 0.005 85);
+			--popover: oklch(0.99 0.003 90);
+			--popover-foreground: oklch(0.18 0.005 85);
 
-			/* Accent CTA — Flexoki cyan for light mode */
-			--accent-cta: #3aa99f;
-			--accent-cta-subtle: rgba(58, 169, 159, 0.1);
-			--accent-cta-text: #1a5f5a;
+			/* Cyan accent scale */
+			--primary: oklch(0.55 0.09 192);
+			--primary-foreground: oklch(0.99 0 0);
+
+			--secondary: oklch(0.88 0.01 90);
+			--secondary-foreground: oklch(0.35 0.01 85);
+
+			--muted: oklch(0.94 0.005 90);
+			--muted-foreground: oklch(0.52 0.01 85);
+
+			--accent: oklch(0.93 0.025 192);
+			--accent-foreground: oklch(0.4 0.08 192);
+
+			--destructive: oklch(0.577 0.245 27.325);
+			--destructive-foreground: oklch(0.99 0 0);
+
+			--border: oklch(0.88 0.01 90);
+			--input: oklch(0.9 0.005 90);
+			--ring: oklch(0.6 0.12 192);
+
+			/* Accent CTA (compat) */
+			--accent-cta: oklch(0.55 0.09 192);
+			--accent-cta-subtle: oklch(0.55 0.09 192 / 0.1);
+			--accent-cta-text: oklch(0.45 0.09 192);
+
+			/* Charts */
+			--chart-1: oklch(0.81 0.1 252);
+			--chart-2: oklch(0.62 0.19 260);
+			--chart-3: oklch(0.55 0.22 263);
+			--chart-4: oklch(0.49 0.22 264);
+			--chart-5: oklch(0.42 0.18 266);
+
+			/* Sidebar */
+			--sidebar: oklch(0.985 0.005 95);
+			--sidebar-foreground: oklch(0.18 0.005 85);
+			--sidebar-primary: oklch(0.55 0.09 192);
+			--sidebar-primary-foreground: oklch(0.99 0 0);
+			--sidebar-accent: oklch(0.93 0.025 192);
+			--sidebar-accent-foreground: oklch(0.4 0.08 192);
+			--sidebar-border: oklch(0.88 0.01 90);
+			--sidebar-ring: oklch(0.6 0.12 192);
 		}
 
 		/* ── Dark Mode ────────────────────── */
 		&.dark {
 			color-scheme: dark;
-			--background: #100f0f;
-			--foreground: 55 10% 79%;
-			--card: 0 3% 6%;
-			--card-foreground: 55 10% 79%;
-			--popover: 0 3% 6%;
-			--popover-foreground: 55 10% 79%;
-			--primary: 55 10% 79%;
-			--primary-foreground: 0 3% 6%;
-			--secondary: 40 3% 20%;
-			--secondary-foreground: 50 8% 72%;
-			--muted: 30 4% 11%;
-			--muted-foreground: 50 8% 72%;
-			--accent: 30 3% 15%;
-			--accent-foreground: 50 8% 72%;
-			--destructive: 5 61% 54%;
-			--destructive-foreground: 0 3% 6%;
-			--border: 40 3% 20%;
-			--input: 40 3% 20%;
-			--ring: 30 3% 24%;
 
-			/* Accent CTA — Flexoki cyan for dark mode */
-			--accent-cta: #24837b;
-			--accent-cta-subtle: rgba(36, 131, 123, 0.15);
-			--accent-cta-text: #3aa99f;
+			/* Warm dark scale */
+			--background: oklch(0.15 0.005 85);
+			--foreground: oklch(0.9 0.005 90);
+			--card: oklch(0.17 0.005 85);
+			--card-foreground: oklch(0.9 0.005 90);
+			--popover: oklch(0.17 0.005 85);
+			--popover-foreground: oklch(0.9 0.005 90);
+
+			/* Cyan lifts for equivalent
+			   perceived brightness on dark bg */
+			--primary: oklch(0.65 0.08 192);
+			--primary-foreground: oklch(0.15 0.005 85);
+
+			--secondary: oklch(0.23 0.01 85);
+			--secondary-foreground: oklch(0.78 0.005 90);
+
+			--muted: oklch(0.2 0.005 85);
+			--muted-foreground: oklch(0.6 0.01 85);
+
+			--accent: oklch(0.25 0.03 192);
+			--accent-foreground: oklch(0.82 0.04 192);
+
+			--destructive: oklch(0.704 0.191 22.216);
+			--destructive-foreground: oklch(0.15 0.005 85);
+
+			--border: oklch(0.25 0.01 85);
+			--input: oklch(0.25 0.01 85);
+			--ring: oklch(0.68 0.1 192);
+
+			/* Accent CTA (dark compat) */
+			--accent-cta: oklch(0.65 0.08 192);
+			--accent-cta-subtle: oklch(0.65 0.08 192 / 0.15);
+			--accent-cta-text: oklch(0.7 0.07 192);
+
+			/* Charts */
+			--chart-1: oklch(0.81 0.1 252);
+			--chart-2: oklch(0.62 0.19 260);
+			--chart-3: oklch(0.55 0.22 263);
+			--chart-4: oklch(0.49 0.22 264);
+			--chart-5: oklch(0.42 0.18 266);
+
+			/* Sidebar */
+			--sidebar: oklch(0.17 0.005 85);
+			--sidebar-foreground: oklch(0.9 0.005 90);
+			--sidebar-primary: oklch(0.65 0.08 192);
+			--sidebar-primary-foreground: oklch(0.15 0.005 85);
+			--sidebar-accent: oklch(0.25 0.03 192);
+			--sidebar-accent-foreground: oklch(0.82 0.04 192);
+			--sidebar-border: oklch(0.25 0.01 85);
+			--sidebar-ring: oklch(0.68 0.1 192);
 		}
 	}
 }
