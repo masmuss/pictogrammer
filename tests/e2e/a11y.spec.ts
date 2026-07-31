@@ -38,7 +38,15 @@ test.describe("Accessibility Audit", () => {
 
 			// Inject axe-core and run the audit
 			const accessibilityScanResults = await new AxeBuilder({ page })
-				.withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"])
+				.withTags([
+					"wcag2a",
+					"wcag2aa",
+					"wcag21a",
+					"wcag21aa",
+					"wcag22a",
+					"wcag22aa",
+					"best-practice"
+				])
 				.analyze();
 
 			// Expect zero violations
@@ -70,7 +78,14 @@ test("individual blog post should be accessible", async ({ page }) => {
 	});
 
 	const accessibilityScanResults = await new AxeBuilder({ page })
-		.withTags(["wcag2a", "wcag2aa"])
+		.withTags([
+			"wcag2a",
+			"wcag2aa",
+			"wcag21a",
+			"wcag21aa",
+			"wcag22a",
+			"wcag22aa"
+		])
 		.exclude(".astro-code")
 		.exclude(".mermaid")
 		.analyze();

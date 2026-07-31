@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/masmuss/pictogrammer/compare/v1.23.0...v1.24.0) (2026-07-31)
+
+
+### Features
+
+* **design-system:** upgrade to v3 with oklch colors and divider section ([4c5b1c3](https://github.com/masmuss/pictogrammer/commit/4c5b1c34d6c5f943940190caad272806f48e3489))
+
 # [1.23.0](https://github.com/masmuss/pictogrammer/compare/v1.22.0...v1.23.0) (2026-07-27)
 
 

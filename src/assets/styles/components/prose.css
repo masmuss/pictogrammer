@@ -37,7 +37,7 @@
 		}
 
 		/* Inline code: Subtly highlighted with IBM Plex Mono */
-		@apply prose-code:font-mono prose-code:text-primary/90 prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal prose-code:before:content-none prose-code:after:content-none;
+		@apply prose-code:font-mono prose-code:text-accent-foreground prose-code:bg-accent prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal prose-code:before:content-none prose-code:after:content-none;
 
 		/* Fix for lists disappearing on mobile */
 		@apply prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1;

@@ -78,7 +78,7 @@ const variants: Record<Variant, string> = {
 	destructive:
 		"bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
 	outline:
-		"ring-1 ring-inset ring-border text-foreground [a&]:hover:bg-border/20 [a&]:hover:text-foreground",
+		"ring-inset ring-muted-foreground/25 text-foreground [a&]:hover:bg-border/20 [a&]:hover:text-foreground",
 	muted:
 		"bg-muted text-muted-foreground [a&]:hover:bg-muted/80 [a&]:hover:text-muted-foreground",
 	link: "text-primary underline-offset-4 [a&]:hover:underline"
@@ -86,12 +86,12 @@ const variants: Record<Variant, string> = {
 ---
 
 <Tag
-	data-slot="badge"
-	data-variant={variant}
-	data-size={size}
-	href={href}
-	class={cn(base, variants[variant], sizes[size], className)}
-	{...attrs}
+  data-slot="badge"
+  data-variant={variant}
+  data-size={size}
+  href={href}
+  class={cn(base, variants[variant], sizes[size], className)}
+  {...attrs}
 >
-	<slot />
+  <slot />
 </Tag>

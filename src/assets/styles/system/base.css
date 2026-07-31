@@ -16,7 +16,7 @@
 	}
 
 	* {
-		@apply border-border;
+		@apply border-border outline-ring/50;
 		scrollbar-width: thin;
 		scrollbar-color: var(--color-border) transparent;
 	}
