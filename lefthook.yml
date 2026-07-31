@@ -6,11 +6,11 @@ pre-commit:
   commands:
     check:
       glob: "*.{ts,tsx,js,jsx,astro,svelte,css,json,md,mdx}"
-      run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      run: bun x biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
 
     astro-check:
       glob: "*.{ts,tsx,astro}"
-      run: bunx astro check
+      run: bun x astro check
 
 pre-push:
   parallel: false
