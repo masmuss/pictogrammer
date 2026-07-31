@@ -4,27 +4,35 @@ import { cn } from "@/lib/utils";
 import Heading from "./Heading.astro";
 
 interface Props extends HTMLAttributes<"section"> {
-  class?: string;
-  as?: keyof HTMLElementTagNameMap;
-  title?: string;
-  titleAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  titleSize?:
-    "6xl" | "5xl" | "4xl" | "3xl" | "2xl" | "xl" | "lg" | "base" | "sm";
-  titleWeight?: "bold" | "semibold" | "medium" | "light";
-  titleUppercase?: boolean;
-  transitionDelay?: number;
+	class?: string;
+	as?: keyof HTMLElementTagNameMap;
+	title?: string;
+	titleAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	titleSize?:
+		| "6xl"
+		| "5xl"
+		| "4xl"
+		| "3xl"
+		| "2xl"
+		| "xl"
+		| "lg"
+		| "base"
+		| "sm";
+	titleWeight?: "bold" | "semibold" | "medium" | "light";
+	titleUppercase?: boolean;
+	transitionDelay?: number;
 }
 
 const {
-  class: className,
-  as: SectionTag = "section",
-  title,
-  titleAs = "h2",
-  titleSize = "base",
-  titleWeight = "medium",
-  titleUppercase = false,
-  transitionDelay = 0,
-  ...attrs
+	class: className,
+	as: SectionTag = "section",
+	title,
+	titleAs = "h2",
+	titleSize = "base",
+	titleWeight = "medium",
+	titleUppercase = false,
+	transitionDelay = 0,
+	...attrs
 }: Props = Astro.props;
 ---
 
