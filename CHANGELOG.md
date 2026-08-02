@@ -1,3 +1,11 @@
+# [1.28.0](https://github.com/masmuss/pictogrammer/compare/v1.27.0...v1.28.0) (2026-08-02)
+
+
+### Features
+
+* **a11y:** improve accessibility across components and expand test ([7ec1483](https://github.com/masmuss/pictogrammer/commit/7ec1483663fbdd0b5dc203c1b858163025881184))
+* **accessibility:** improve a11y with skip link, touch targets, and ([6139f94](https://github.com/masmuss/pictogrammer/commit/6139f94e50ec0e3866088ba1246a80f352b051eb))
+
 # [1.27.0](https://github.com/masmuss/pictogrammer/compare/v1.26.0...v1.27.0) (2026-08-02)
 
 
