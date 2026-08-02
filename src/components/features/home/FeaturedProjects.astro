@@ -17,31 +17,32 @@ const featured = allProjects
 ---
 
 {
-	featured.length > 0 && (
-		<div class="flex flex-col gap-y-1">
-			{featured.map((project) => (
-				<FeaturedProjectItem project={project} />
-			))}
+  featured.length > 0 && (
+    <Fragment>
+      <div class="flex flex-col" data-testid="featured-project-list">
+        {featured.map((project) => (
+          <FeaturedProjectItem project={project} />
+        ))}
+      </div>
 
-			{/* See all projects link */}
-			<div class="mt-2 flex w-full justify-end">
-				<a
-					href="/projects"
-					class={cn(
-						"group/seeall inline-flex items-center gap-1.5",
-						"duration-fast text-sm transition-colors",
-						"focus-visible:ring-2 focus-visible:outline-none",
-						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
-						"text-accent-cta-text"
-					)}
-				>
-					<span>See all projects</span>
-					<span
-						class="iconify ri--arrow-right-long-line duration-base transition-transform group-hover/seeall:translate-x-1"
-						aria-hidden="true"
-					/>
-				</a>
-			</div>
-		</div>
-	)
+      <div class="mt-2 flex w-full justify-end">
+        <a
+          href="/projects"
+          class={cn(
+            "group/seeall inline-flex items-center gap-1.5",
+            "duration-fast text-sm transition-colors",
+            "focus-visible:ring-2 focus-visible:outline-none",
+            "focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+            "text-accent-cta-text",
+          )}
+        >
+          <span>See all projects</span>
+          <span
+            class="iconify ri--arrow-right-long-line duration-base transition-transform group-hover/seeall:translate-x-1"
+            aria-hidden="true"
+          />
+        </a>
+      </div>
+    </Fragment>
+  )
 }

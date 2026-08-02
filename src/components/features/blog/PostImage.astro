@@ -20,58 +20,58 @@ const optimizedSrc = isRemote
 ---
 
 <figure class:list={["flex flex-col items-center", customClass]}>
-	{
-		isRemote ? (
-			<img
-				src={optimizedSrc as string}
-				loading="eager"
-				fetchpriority="high"
-				width="960"
-				height="540"
-				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
-				alt={fallbackAlt}
-				decoding="async"
-			/>
-		) : (
-			<Image
-				src={src}
-				width={960}
-				height={540}
-				quality={74}
-				format="webp"
-				loading="eager"
-				fetchpriority="high"
-				class="my-8 max-h-75 w-full rounded-lg object-cover md:max-h-100"
-				alt={fallbackAlt}
-				decoding="async"
-			/>
-		)
-	}
+  {
+    isRemote ? (
+      <img
+        src={optimizedSrc as string}
+        loading="eager"
+        fetchpriority="high"
+        width="960"
+        height="540"
+        class="my-8 max-h-80 w-full rounded-lg object-cover md:max-h-96"
+        alt={fallbackAlt}
+        decoding="async"
+      />
+    ) : (
+      <Image
+        src={src}
+        width={960}
+        height={540}
+        quality={74}
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+        class="my-8 max-h-80 w-full rounded-lg object-cover md:max-h-96"
+        alt={fallbackAlt}
+        decoding="async"
+      />
+    )
+  }
 
-	{
-		alt && (
-			<figcaption
-				class="post-image-caption mt-2 text-center text-sm opacity-80"
-				set:html={alt}
-			/>
-		)
-	}
+  {
+    alt && (
+      <figcaption
+        class="post-image-caption mt-2 text-center text-sm opacity-80"
+        set:html={alt}
+      />
+    )
+  }
 </figure>
 
 <script is:inline>
-	document.addEventListener("astro:page-load", () => {
-		document
-			.querySelectorAll<HTMLAnchorElement>(".post-image-caption a")
-			.forEach((link) => {
-				link.setAttribute("target", "_blank");
-				link.setAttribute("rel", "noopener noreferrer");
-			});
-	});
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelectorAll<HTMLAnchorElement>(".post-image-caption a")
+      .forEach((link) => {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      });
+  });
 </script>
 
 <style scoped>
-	figcaption :global(a) {
-		text-decoration-line: underline;
-		text-underline-offset: 2px;
-	}
+  figcaption :global(a) {
+    text-decoration-line: underline;
+    text-underline-offset: 2px;
+  }
 </style>

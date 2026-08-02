@@ -14,50 +14,48 @@ const allPosts = await getAllPosts(MAX_POSTS);
 ---
 
 <BaseLayout
-	title="Home of Khoirul Fattah"
-	description="Explore the personal website of Khoirul Fattah: full-stack projects, technical writing, reflective stories, and practical notes on building better software."
-	pageType="website"
+  title="Home of Khoirul Fattah"
+  description="Explore the personal website of Khoirul Fattah: full-stack projects, technical writing, reflective stories, and practical notes on building better software."
+  pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-20">
-		<Section
-			title="Ahmad Musafir Khoirul Fattah"
-			titleAs="h1"
-			titleSize="xl"
-			titleWeight="semibold"
-			transitionDelay={0}
-			data-testid="hero-section"
-		>
-			<Hero />
-		</Section>
+  <div class="flex w-full flex-col">
+    <Section
+      title="Ahmad Musafir Khoirul Fattah"
+      titleAs="h1"
+      titleSize="2xl"
+      titleWeight="semibold"
+      transitionDelay={0}
+      class="pt-0"
+      data-testid="hero-section"
+    >
+      <Hero />
+    </Section>
 
-		<Section
-			title="About"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={150}
-			data-testid="about-section"
-		>
-			<About />
-		</Section>
+    <Section
+      title="About"
+      titleAs="h2"
+      transitionDelay={150}
+      data-testid="about-section"
+    >
+      <About />
+    </Section>
 
-		<Section
-			title="Featured Projects"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={250}
-			data-testid="featured-projects-section"
-		>
-			<FeaturedProjects />
-		</Section>
+    <Section
+      title="Featured Projects"
+      titleAs="h2"
+      transitionDelay={250}
+      data-testid="featured-projects-section"
+    >
+      <FeaturedProjects />
+    </Section>
 
-		<Section
-			title="Latest Posts"
-			titleAs="h2"
-			titleUppercase
-			transitionDelay={350}
-			data-testid="latest-posts-section"
-		>
-			<Posts posts={allPosts} />
-		</Section>
-	</div>
+    <Section
+      title="Latest Posts"
+      titleAs="h2"
+      transitionDelay={350}
+      data-testid="latest-posts-section"
+    >
+      <Posts posts={allPosts} />
+    </Section>
+  </div>
 </BaseLayout>

@@ -5,42 +5,29 @@ import Heading from "./Heading.astro";
 
 interface Props extends HTMLAttributes<"section"> {
 	class?: string;
-	as?: keyof HTMLElementTagNameMap;
 	title?: string;
 	titleAs?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-	titleSize?:
-		| "6xl"
-		| "5xl"
-		| "4xl"
-		| "3xl"
-		| "2xl"
-		| "xl"
-		| "lg"
-		| "base"
-		| "sm";
+	titleSize?: "3xl" | "2xl" | "xl" | "lg" | "base" | "sm";
 	titleWeight?: "bold" | "semibold" | "medium" | "light";
-	titleUppercase?: boolean;
 	transitionDelay?: number;
 }
 
 const {
 	class: className,
-	as: SectionTag = "section",
 	title,
 	titleAs = "h2",
-	titleSize = "base",
-	titleWeight = "medium",
-	titleUppercase = false,
+	titleSize = "xl",
+	titleWeight = "semibold",
 	transitionDelay = 0,
 	...attrs
 }: Props = Astro.props;
 ---
 
-<SectionTag
+<section
   data-fade-up="true"
   class={cn(
     className,
-    "flex flex-col gap-y-4",
+    "flex flex-col gap-y-4 pt-12",
     "opacity-0 translate-y-4 transition-all ease-out",
     "data-[fade-up=true]:opacity-100 data-[fade-up=true]:translate-y-0",
   )}
@@ -57,12 +44,8 @@ const {
       <Heading
         as={titleAs}
         size={titleSize}
-        weight={titleUppercase ? "semibold" : titleWeight}
-        class={cn(
-          titleUppercase
-            ? "text-muted-foreground text-[0.8rem] tracking-widest uppercase"
-            : "text-foreground tracking-tight",
-        )}
+        weight={titleWeight}
+        class="text-foreground tracking-tight"
       >
         {title}
       </Heading>
@@ -71,7 +54,7 @@ const {
   <div class="flex flex-col gap-y-3">
     <slot />
   </div>
-</SectionTag>
+</section>
 
 <script>
   function observeFadeUp() {
@@ -99,15 +82,11 @@ const {
       },
     );
 
-    // Only observe elements with data-fade-up attribute
     document.querySelectorAll('[data-fade-up="true"]').forEach((element) => {
       observer.observe(element);
     });
   }
 
-  // Initial setup
   observeFadeUp();
-
-  // Handle Astro ViewTransitions
   document.addEventListener("astro:page-load", observeFadeUp);
 </script>
