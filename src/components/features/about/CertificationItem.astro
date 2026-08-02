@@ -11,55 +11,41 @@ const { certification: cert } = Astro.props;
 const dateText = cert.expiredDate
 	? `${cert.date} - ${cert.expiredDate}`
 	: cert.date;
+
+const hasUrl = Boolean(cert.credentialUrl);
 ---
 
-{
-	cert.credentialUrl ? (
-		<Card
-			as="a"
-			href={cert.credentialUrl}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="hover:bg-muted/20 -mx-3 bg-transparent px-3 ring-0 transition-colors"
-			data-testid="certification-item"
-		>
-			<CardContent class="px-0 py-2">
-				<div class="group flex flex-col gap-y-0.5">
-					<div class="flex items-center gap-2">
-						<span class="font-medium">{cert.title}</span>
-						<span class="iconify text-muted-foreground ri--external-link-line text-sm opacity-0 transition-opacity group-hover:opacity-100" />
-					</div>
-					<div class="text-muted-foreground flex items-center gap-x-2 text-sm">
-						<span>{cert.issuer}</span>
-						<span>·</span>
-						<span>{dateText}</span>
-					</div>
-					{cert.description && (
-						<p class="text-muted-foreground mt-1 text-sm">{cert.description}</p>
-					)}
-				</div>
-			</CardContent>
-		</Card>
-	) : (
-		<Card
-			class="-mx-3 bg-transparent px-3 ring-0"
-			data-testid="certification-item"
-		>
-			<CardContent class="px-0 py-2">
-				<div class="group flex flex-col gap-y-0.5">
-					<div class="flex items-center gap-2">
-						<span class="font-medium">{cert.title}</span>
-					</div>
-					<div class="text-muted-foreground flex items-center gap-x-2 text-sm">
-						<span>{cert.issuer}</span>
-						<span>·</span>
-						<span>{dateText}</span>
-					</div>
-					{cert.description && (
-						<p class="text-muted-foreground mt-1 text-sm">{cert.description}</p>
-					)}
-				</div>
-			</CardContent>
-		</Card>
-	)
-}
+<Card
+  as={hasUrl ? "a" : "div"}
+  href={hasUrl ? cert.credentialUrl : undefined}
+  target={hasUrl ? "_blank" : undefined}
+  rel={hasUrl ? "noopener noreferrer" : undefined}
+  class="-mx-3 bg-transparent px-3 py-1.5 ring-0"
+  data-testid="certification-item"
+>
+  <CardContent class="p-0">
+    <div class="group flex flex-col gap-y-0.5">
+      <div class="flex items-center gap-2">
+        <span class="font-medium">{cert.title}</span>
+        {
+          hasUrl && (
+            <span
+              class="iconify ri--external-link-line text-muted-foreground text-sm opacity-0 transition-opacity group-hover:opacity-100"
+              aria-hidden="true"
+            />
+          )
+        }
+      </div>
+      <div class="text-muted-foreground flex items-center gap-x-2 text-sm">
+        <span>{cert.issuer}</span>
+        <span>&middot;</span>
+        <span>{dateText}</span>
+      </div>
+      {
+        cert.description && (
+          <p class="text-muted-foreground mt-1 text-sm">{cert.description}</p>
+        )
+      }
+    </div>
+  </CardContent>
+</Card>

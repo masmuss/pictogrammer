@@ -10,56 +10,26 @@ import SkillsTabs from "@/components/features/about/SkillsTabs.astro";
 import AsideListPanel from "@/components/ui/AsideListPanel.astro";
 import Heading from "@/components/ui/Heading.astro";
 import Section from "@/components/ui/Section.astro";
-import siteConfig from "@/config/site-config";
 import AboutContent from "@/content/pages/about.md";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getAboutPageData, getAllSkillCollections } from "@/lib/contents";
+import {
+	getAboutPageData,
+	getAllSkillCollections,
+	getCurrentWorkItems,
+	getGitHubCalendarTheme,
+	getGitHubUsername,
+	getLearningFocusItems,
+	getNowReadingBooks
+} from "@/lib/contents";
 
 const { experiences, educations, certifications } = await getAboutPageData();
-const TECH_STACK = await getAllSkillCollections();
-const currentWork = experiences.slice(0, 1);
+const techStack = await getAllSkillCollections();
 
-const currentWorkItems = currentWork.map((work) => ({
-	title: work.title,
-	meta: work.company
-}));
-
-const learningFocusItems = [
-	{
-		title: "Backend engineering",
-		meta: "APIs, background jobs, scaling"
-	},
-	{
-		title: "Data architecture",
-		meta: "PostgreSQL, Redis, caching"
-	},
-	{
-		title: "Observability",
-		meta: "Logs, metrics, tracing"
-	}
-];
-
-const nowReadingBooks = [
-	{
-		title: "The Alchemist",
-		meta: "Paulo Coelho"
-	},
-	{
-		title: "Pulang",
-		meta: "Leila S. Chudori"
-	}
-];
-
-const githubProfile = siteConfig.socialLinks.find(
-	(social) => social.text === "GitHub"
-)?.href;
-const githubUsername =
-	githubProfile?.split("/").filter(Boolean).at(-1) ?? "masmuss";
-
-const githubCalendarTheme = {
-	light: ["#E6E4D9", "#DDE2B2", "#BEC97E", "#A0AF54", "#879A39"],
-	dark: ["#282726", "#3D4C07", "#536907", "#66800B", "#879A39"]
-} as const;
+const currentWorkItems = getCurrentWorkItems(experiences);
+const learningFocusItems = getLearningFocusItems();
+const nowReadingBooks = getNowReadingBooks();
+const githubUsername = getGitHubUsername();
+const githubCalendarTheme = getGitHubCalendarTheme();
 ---
 
 <BaseLayout
@@ -113,7 +83,7 @@ const githubCalendarTheme = {
           transitionDelay={150}
           data-testid="skills-section"
         >
-          <SkillsTabs collections={TECH_STACK} />
+          <SkillsTabs collections={techStack} />
         </Section>
 
         <Section
