@@ -1,13 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PostMetadata from "@/components/common/PostMetadata.astro";
-import Badge from "@/components/ui/Badge.astro";
-import { Card } from "@/components/ui/card";
 import { cn, getPostUrl } from "@/lib/utils";
 
 type Props = {
 	post: CollectionEntry<"post">;
 	showDescription?: boolean;
+	showTags?: boolean;
 	clampTitle?: boolean;
 	hasReadTime?: boolean;
 	readTimeStyle?: "short" | "long";
@@ -16,6 +15,7 @@ type Props = {
 const {
 	post,
 	showDescription,
+	showTags = false,
 	clampTitle = true,
 	hasReadTime = false,
 	readTimeStyle = "short"
@@ -23,16 +23,19 @@ const {
 ---
 
 <li data-testid="post-preview">
-  <Card
-    as="a"
-    variant="interactive"
+  <a
     href={getPostUrl(post)}
-    class={cn("space-y-2 scroll-reveal")}
+    class={cn(
+      "group/post block -mx-3 rounded-lg px-3 py-3",
+      "hover:bg-muted/40",
+      "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
+      "transition-colors duration-base",
+    )}
   >
     <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
       <span
         class:list={[
-          "group-hover/interactive:text-foreground flex-1 font-medium transition-colors",
+          "font-medium transition-colors",
           clampTitle ? "sm:line-clamp-1" : undefined,
         ]}
         transition:name={`title-${post.id}`}
@@ -46,26 +49,23 @@ const {
 
     {
       showDescription && (
-        <p
-          class={cn(
-            "line-clamp-2 text-sm leading-relaxed",
-            "text-muted-foreground",
-            "duration-fast transition-colors",
-          )}
-        >
+        <p class="line-clamp-2 text-sm leading-relaxed text-muted-foreground mt-1">
           {post.data.description}
         </p>
       )
     }
 
     {
-      post.data.tags.length > 0 && (
-        <div class="mt-0.5 flex flex-wrap gap-1.5" aria-label="tags">
+      showTags && post.data.tags.length > 0 && (
+        <div
+          class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground"
+          aria-label="tags"
+        >
           {post.data.tags.map((tag) => (
-            <Badge variant="outline">{tag}</Badge>
+            <span>{tag}</span>
           ))}
         </div>
       )
     }
-  </Card>
+  </a>
 </li>

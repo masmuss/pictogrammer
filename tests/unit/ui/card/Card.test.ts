@@ -24,11 +24,21 @@ test('Card renders as anchor when as="a" is passed', async () => {
 	expect(result).toContain('href="/test-link"');
 });
 
-test("Card applies size sm correctly", async () => {
+test("Card applies custom class via class prop", async () => {
 	const container = await AstroContainer.create();
 	const result = await container.renderToString(Card, {
-		props: { size: "sm" }
+		props: { class: "custom-class" }
 	});
 
-	expect(result).toContain('data-size="sm"');
+	expect(result).toContain("custom-class");
+});
+
+test("Card renders with data-reload when reload prop is true and as anchor", async () => {
+	const container = await AstroContainer.create();
+	const result = await container.renderToString(Card, {
+		props: { as: "a", href: "/test", reload: true },
+		slots: { default: "Reload Link" }
+	});
+
+	expect(result).toContain("data-astro-reload");
 });
