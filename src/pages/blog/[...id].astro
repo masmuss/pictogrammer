@@ -53,7 +53,7 @@ const relatedPosts = getRelatedPosts(allPosts, post);
     <ShareButtons title={post.data.title} url={Astro.url} />
   </div>
 
-  <footer slot="footer" class="mx-auto mt-16 max-w-3xl">
+  <footer slot="footer" class="mx-auto max-w-3xl">
     <RelatedPost {relatedPosts} />
     <Comment />
   </footer>
