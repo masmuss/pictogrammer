@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/masmuss/pictogrammer/compare/v1.26.0...v1.27.0) (2026-08-02)
+
+
+### Features
+
+* **config:** centralize OG page metadata in site-config ([6a11c08](https://github.com/masmuss/pictogrammer/commit/6a11c08bb8078431feb09b0b9ac287d521d9b3f8))
+
 # [1.26.0](https://github.com/masmuss/pictogrammer/compare/v1.25.0...v1.26.0) (2026-08-02)
 
 
