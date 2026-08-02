@@ -13,7 +13,7 @@ const { headings } = Astro.props;
 const toc = generateToc(headings);
 ---
 
-<nav class="toc-container hidden text-sm xl:block">
+<nav class="toc-container hidden text-sm xl:block" aria-label="Table of Contents">
   <div class="toc-group group relative w-fit" data-open="false">
     <button
       id="toc-toggle"

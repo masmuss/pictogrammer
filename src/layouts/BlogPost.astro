@@ -43,7 +43,7 @@ const ogImage = coverImageResolved || socialImage;
   image={ogImage}
   wide
 >
-  <div class="w-full space-y-6">
+  <div class="w-full">
     <div
       class="grid grid-cols-1 gap-8 xl:grid-cols-[0.4fr_1fr_0.5fr] xl:gap-10"
     >
@@ -53,20 +53,24 @@ const ogImage = coverImageResolved || socialImage;
         </div>
       </aside>
 
-      <article class="min-w-0 space-y-12 max-w-3xl mx-auto">
-        <div data-pagefind-body>
-          <div id="blog-hero">
-            <BlogHero content={post} coverImageResolved={coverImageResolved} />
+      <div class="min-w-0 space-y-12">
+        <article class="max-w-3xl mx-auto">
+          <div data-pagefind-body>
+            <div id="blog-hero">
+              <BlogHero content={post} coverImageResolved={coverImageResolved} />
+            </div>
+            {series && <PostSeries {series} {seriesId} />}
           </div>
-          {series && <PostSeries {series} {seriesId} />}
-        </div>
 
-        <div class="xl:hidden">
-          <slot name="toc-mobile" />
-        </div>
+          <div class="xl:hidden">
+            <slot name="toc-mobile" />
+          </div>
 
-        <slot />
-      </article>
+          <slot />
+        </article>
+
+        <slot name="footer" />
+      </div>
 
       <aside class="hidden xl:block" aria-label="Share this post">
         <div class="sticky top-1/3">
@@ -74,8 +78,6 @@ const ogImage = coverImageResolved || socialImage;
         </div>
       </aside>
     </div>
-
-    <slot name="footer" />
 
     <a
       aria-label="Back to Top"
