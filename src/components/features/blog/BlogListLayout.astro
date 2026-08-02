@@ -46,19 +46,13 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 
     {
       allPosts.length > 0 && (
-        <div class="flex flex-col gap-y-20">
+        <div class="group/list flex flex-col gap-y-20">
           {[...postsByYear.entries()].map(([year, posts]) => (
             <section class="relative">
               <div class="pointer-events-none absolute -top-6 -left-2 text-8xl font-bold text-muted-foreground/10 select-none md:-top-8 md:-left-8 md:text-9xl">
                 {year}
               </div>
-              <ul
-                class="group/list relative flex flex-col
-                  [&:hover>li]:opacity-45
-                  [&>li:hover]:opacity-100
-                  [&>li]:transition-opacity
-                  [&>li]:duration-base"
-              >
+              <ul class="relative flex flex-col">
                 {posts.map((post) => (
                   <PostPreview
                     post={post}

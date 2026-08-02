@@ -22,7 +22,10 @@ const {
 } = Astro.props;
 ---
 
-<li data-testid="post-preview">
+<li
+  data-testid="post-preview"
+  class="group-hover/list:opacity-50 hover:opacity-100 transition-opacity duration-base"
+>
   <a
     href={getPostUrl(post)}
     class={cn(
