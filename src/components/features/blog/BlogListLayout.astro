@@ -4,30 +4,21 @@ import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import PostPreview from "@/components/features/blog/PostPreview.astro";
 import Heading from "@/components/ui/Heading.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getPostsByPath, groupPostsByYear } from "@/lib/contents";
+import { groupPostsByYear } from "@/lib/contents";
 
 interface Props {
 	activeTab: "posts" | "notes" | "reflections";
 	title: string;
 	description: string;
 	image?: { src: string; alt?: string };
-	path?: string;
+	posts: CollectionEntry<"post">[];
 	emptyMessage?: string;
-	posts?: CollectionEntry<"post">[];
 }
 
-const {
-	activeTab,
-	title,
-	description,
-	image,
-	path,
-	emptyMessage,
-	posts: providedPosts
-} = Astro.props;
+const { activeTab, title, description, image, posts, emptyMessage } =
+	Astro.props;
 
-const allPosts = providedPosts ?? (await getPostsByPath(path));
-const postsByYear = groupPostsByYear(allPosts);
+const postsByYear = groupPostsByYear(posts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
@@ -42,18 +33,18 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
       </div>
     </div>
 
-    {allPosts.length === 0 && <p class="text-muted-foreground">{empty}</p>}
+    {posts.length === 0 && <p class="text-muted-foreground">{empty}</p>}
 
     {
-      allPosts.length > 0 && (
+      posts.length > 0 && (
         <div class="group/list flex flex-col gap-y-20">
-          {[...postsByYear.entries()].map(([year, posts]) => (
+          {[...postsByYear.entries()].map(([year, yearPosts]) => (
             <section class="relative">
               <div class="pointer-events-none absolute -top-6 -left-2 text-8xl font-bold text-muted-foreground/10 select-none md:-top-8 md:-left-8 md:text-9xl">
                 {year}
               </div>
               <ul class="relative flex flex-col">
-                {posts.map((post) => (
+                {yearPosts.map((post) => (
                   <PostPreview
                     post={post}
                     showDescription
@@ -68,7 +59,5 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
         </div>
       )
     }
-
-    <slot name="after-posts" />
   </div>
 </BaseLayout>

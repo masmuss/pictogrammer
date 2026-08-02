@@ -8,7 +8,7 @@ import ShareButtons from "@/components/features/blog/ShareButtons.astro";
 import Toc from "@/components/features/blog/Toc.astro";
 import TocMobile from "@/components/features/blog/TocMobile.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { getAllPosts } from "@/lib/contents/post";
+import { getAllPosts, getRelatedPosts } from "@/lib/contents/post";
 import { getPostRouteId } from "@/lib/utils/post-route";
 import type { CollectionPosts } from "@/types";
 
@@ -16,13 +16,14 @@ export async function getStaticPaths() {
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
 		params: { id: getPostRouteId(post) },
-		props: { post }
+		props: { post, allPosts: posts }
 	}));
 }
 
-const { post } = Astro.props;
+const { post, allPosts } = Astro.props;
 
 const { Content, headings } = await render(post);
+const relatedPosts = getRelatedPosts(allPosts, post);
 ---
 
 <PostLayout post={post}>
@@ -53,7 +54,7 @@ const { Content, headings } = await render(post);
   </div>
 
   <footer slot="footer" class="mx-auto mt-16 max-w-3xl">
-    <RelatedPost {post} />
+    <RelatedPost {relatedPosts} />
     <Comment />
   </footer>
 </PostLayout>
