@@ -7,10 +7,13 @@ import Hero from "@/components/features/home/Hero.astro";
 import Posts from "@/components/features/home/Posts.astro";
 import Section from "@/components/ui/Section.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getAllPosts } from "@/lib/contents";
+import { getAllPosts, getFeaturedProjects } from "@/lib/contents";
 
 const MAX_POSTS = 5;
+const MAX_FEATURED_PROJECTS = 5;
+
 const allPosts = await getAllPosts(MAX_POSTS);
+const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
 ---
 
 <BaseLayout
@@ -46,7 +49,7 @@ const allPosts = await getAllPosts(MAX_POSTS);
       transitionDelay={250}
       data-testid="featured-projects-section"
     >
-      <FeaturedProjects />
+      <FeaturedProjects projects={featuredProjects} />
     </Section>
 
     <Section
