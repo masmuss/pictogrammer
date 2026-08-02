@@ -103,6 +103,44 @@ export const siteConfig = {
 		inputPosition: "bottom",
 		lang: "en",
 		loading: "lazy"
+	},
+	ogPages: {
+		about: {
+			title: "About",
+			description:
+				"Learn more about Khoirul Fattah - a full-stack developer and photographer based in Surabaya."
+		},
+		blog: {
+			title: "Blog",
+			description:
+				"Read my latest blog posts on various topics including technology, programming, and personal experiences."
+		},
+		notes: {
+			title: "Notes",
+			description: "Learning notes, tutorials, and project documentation."
+		},
+		projects: {
+			title: "Projects",
+			description:
+				"Explore my projects that showcase my skills and creativity in various domains."
+		},
+		reflections: {
+			title: "Reflections",
+			description: "Personal thoughts, reflections, and life experiences."
+		},
+		series: {
+			title: "Series",
+			description: "Grouped writing series organized by specific topics."
+		},
+		tags: {
+			title: "All Tags",
+			description: "A list of all the topics I've written about in my posts."
+		},
+		tools: {
+			title: "Tools",
+			description:
+				"Explore the tools and software I use daily to enhance my productivity and creativity."
+		}
 	}
 } satisfies SiteConfig;
 
