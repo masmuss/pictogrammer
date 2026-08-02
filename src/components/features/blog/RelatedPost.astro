@@ -1,15 +1,8 @@
 ---
-import PostMetadata from "@/components/common/PostMetadata.astro";
-import {
-	Card,
-	CardDescription,
-	CardHeader,
-	CardTitle
-} from "@/components/ui/card";
-import Heading from "@/components/ui/Heading.astro";
+import Section from "@/components/ui/Section.astro";
 import { getAllPosts, getRelatedPosts } from "@/lib/contents/post";
-import { getPostUrl } from "@/lib/utils";
 import type { CollectionPosts } from "@/types";
+import PostPreview from "./PostPreview.astro";
 
 interface Props {
 	post: CollectionPosts;
@@ -21,30 +14,13 @@ const relatedPosts = getRelatedPosts(allPosts, post);
 ---
 
 {
-	relatedPosts.length > 0 && (
-		<div class="border-border/40 mt-12 flex flex-col gap-y-4 border-t pt-8">
-			<Heading
-				as="h2"
-				size="sm"
-				weight="medium"
-				class="text-muted-foreground mb-2 tracking-wider uppercase"
-			>
-				Related Posts
-			</Heading>
-			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-				{relatedPosts.map((relatedPost) => (
-					<Card as="a" href={getPostUrl(relatedPost)} reload class="h-full">
-						<CardHeader class="flex h-full flex-col items-stretch justify-between gap-3">
-							<CardTitle class="line-clamp-2">
-								{relatedPost.data.title}
-							</CardTitle>
-							<CardDescription class="line-clamp-2">
-								<PostMetadata post={relatedPost} readTimeStyle="long" />
-							</CardDescription>
-						</CardHeader>
-					</Card>
-				))}
-			</div>
-		</div>
-	)
+  relatedPosts.length > 0 && (
+    <Section title="Related Posts" titleAs="h2">
+      <ul class="group/list flex flex-col">
+        {relatedPosts.map((relatedPost) => (
+          <PostPreview post={relatedPost} />
+        ))}
+      </ul>
+    </Section>
+  )
 }
