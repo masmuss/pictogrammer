@@ -41,8 +41,6 @@
 			border-color var(--duration-base) var(--ease-default),
 			color var(--duration-base) var(--ease-default),
 			fill var(--duration-base) var(--ease-default),
-			/* biome-ignore lint/complexity/noImportantStyles: override SVG stroke during theme transitions */
-			stroke
-			var(--duration-base) var(--ease-default) !important;
+			stroke var(--duration-base) var(--ease-default);
 	}
 }
