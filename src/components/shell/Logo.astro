@@ -18,17 +18,17 @@ const {
 } = Astro.props;
 ---
 
-<a href={href} class="inline-block shrink-0" aria-label="pictogrammer logo">
+<a href={href} class="inline-block shrink-0" aria-label="pictogrammer">
   <Image
     src={logoLight}
-    alt="pictogrammer logo"
+    alt="pictogrammer"
     class={`${className} dark:hidden`}
     loading={loading}
     fetchpriority={fetchpriority}
   />
   <Image
     src={logoDark}
-    alt="pictogrammer logo"
+    alt="pictogrammer"
     class={`${className} hidden dark:block`}
     loading={loading}
     fetchpriority={fetchpriority}

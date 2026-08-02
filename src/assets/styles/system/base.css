@@ -43,4 +43,34 @@
 			fill var(--duration-base) var(--ease-default),
 			stroke var(--duration-base) var(--ease-default);
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms;
+			animation-iteration-count: 1;
+			transition-duration: 0.01ms;
+			scroll-behavior: auto;
+		}
+	}
+
+	@media (hover: none) {
+		a:hover,
+		button:hover {
+		}
+	}
+
+	@media (pointer: coarse) {
+		a,
+		button,
+		[role="button"],
+		input,
+		select,
+		textarea,
+		summary {
+			min-height: 44px;
+			min-width: 44px;
+		}
+	}
 }
