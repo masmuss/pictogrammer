@@ -1,6 +1,6 @@
 import type { SiteConfig } from "./types";
 
-export const siteConfig = {
+const siteConfig = {
 	author: "Ahmad Musafir Khoirul Fattah",
 	title: "pictogrammmer",
 	subtitle: "Khoirul's Personal Website",

@@ -3,10 +3,7 @@ const DESCRIPTION_MIN_LENGTH = 120;
 const DESCRIPTION_MAX_LENGTH = 160;
 const TITLE_SEPARATOR = " | ";
 
-export function truncateByWordBoundary(
-	text: string,
-	maxLength: number
-): string {
+function truncateByWordBoundary(text: string, maxLength: number): string {
 	if (text.length <= maxLength) return text;
 	const sliced = text.slice(0, maxLength + 1);
 	const cutIndex = Math.max(

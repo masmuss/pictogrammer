@@ -9,11 +9,11 @@ export interface PagefindResultData {
 	};
 }
 
-export interface PagefindSearchResult {
+interface PagefindSearchResult {
 	data: () => Promise<PagefindResultData>;
 }
 
-export interface Pagefind {
+interface Pagefind {
 	init: () => Promise<void>;
 	search: (query: string) => Promise<{ results: PagefindSearchResult[] }>;
 }
