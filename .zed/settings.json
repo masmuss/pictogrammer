@@ -1,0 +1,54 @@
+{
+	"formatter": {
+		"external": {
+			"command": "node_modules/.bin/biome",
+			"arguments": ["format", "--write", "--stdin-file-path", "{buffer_path}"]
+		}
+	},
+	"languages": {
+		"Astro": {
+			"formatter": {
+				"external": {
+					"command": "node_modules/.bin/biome",
+					"arguments": [
+						"format",
+						"--write",
+						"--stdin-file-path",
+						"{buffer_path}"
+					]
+				}
+			},
+			"language_servers": [
+				"astro-language-server",
+				"tailwindcss-language-server",
+				"biome"
+			]
+		},
+		"TypeScript": {
+			"language_servers": ["biome"]
+		},
+		"TSX": {
+			"language_servers": ["biome"]
+		}
+	},
+	"lsp": {
+		"vscode-css-language-server": {
+			"settings": {
+				"css": {
+					"lint": {
+						"unknownAtRules": "ignore"
+					}
+				}
+			}
+		},
+		"astro-language-server": {
+			"settings": {
+				"typescript": {
+					"preferences": {
+						"includeInlayParameterNameHints": "none"
+					}
+				}
+			}
+		}
+	}
+}

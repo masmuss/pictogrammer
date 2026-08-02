@@ -1,26 +1,22 @@
 ---
-import { getAllProjects } from "@/lib/contents/projects";
 import { cn } from "@/lib/utils";
+import type { Project } from "@/types";
 import FeaturedProjectItem from "./FeaturedProjectItem.astro";
 
 interface Props {
+	projects: Project[];
 	max?: number;
 }
 
-const { max = 5 } = Astro.props;
-
-const allProjects = await getAllProjects();
-const featured = allProjects
-	.flatMap((c) => c.projects)
-	.filter((p) => p.featured)
-	.slice(0, max);
+const { projects, max = 5 } = Astro.props;
+const displayed = projects.slice(0, max);
 ---
 
 {
-  featured.length > 0 && (
+  displayed.length > 0 && (
     <Fragment>
       <div class="flex flex-col" data-testid="featured-project-list">
-        {featured.map((project) => (
+        {displayed.map((project) => (
           <FeaturedProjectItem project={project} />
         ))}
       </div>

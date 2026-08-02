@@ -47,6 +47,11 @@ export type GiscusConfig = {
 	loading: string;
 };
 
+export type OgPageMeta = {
+	title: string;
+	description: string;
+};
+
 export type SiteConfig = {
 	author: string;
 	title: string;
@@ -60,4 +65,5 @@ export type SiteConfig = {
 	header: Header;
 	page: Page;
 	giscus: GiscusConfig;
+	ogPages: Record<string, OgPageMeta>;
 };
