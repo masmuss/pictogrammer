@@ -9,6 +9,7 @@ import {
 	CardHeader,
 	CardTitle
 } from "@/components/ui/card";
+import { CATEGORY_ICONS } from "@/lib/contents/projects";
 import { cn } from "@/lib/utils/tailwind";
 
 interface Props {
@@ -51,14 +52,7 @@ if (thumbnail) {
 	}
 }
 
-const categoryIcons: Record<string, string> = {
-	Website: "ri--global-line",
-	API: "ri--terminal-box-line",
-	"Mobile App": "ri--smartphone-line",
-	"Artificial Intelligence": "ri--brain-line",
-	"System & Tooling": "ri--tools-line"
-};
-const placeholderIcon = thumbnailImage ? null : categoryIcons[category ?? ""];
+const placeholderIcon = thumbnailImage ? null : CATEGORY_ICONS[category ?? ""];
 
 const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 const effectiveRepoHref = repoHref;
