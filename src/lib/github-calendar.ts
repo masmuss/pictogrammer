@@ -4,7 +4,7 @@ export type Activity = {
 	level: 0 | 1 | 2 | 3 | 4;
 };
 
-export type ApiResponse = {
+type ApiResponse = {
 	total: Record<string, number>;
 	contributions: Activity[];
 };

@@ -1,13 +1,27 @@
 {
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+	"entry": ["astro.config.ts"],
 	"ignorePatterns": [
 		"public/github-card.js",
 		"src/assets/scripts/mermaid-theme-fix.js",
-		"svelte.config.js",
-		"src/components/ui/primitives/index.ts",
-		"src/components/ui/search/index.ts",
-		"src/components/ui/card/index.ts",
-		"src/lib/utils/index.ts"
+		"svelte.config.js"
+	],
+	"ignoreDependencies": [
+		"@iconify/json",
+		"@iconify-json/carbon",
+		"@iconify-json/logos",
+		"@iconify-json/ri",
+		"@astrojs/markdown-remark",
+		"@astrojs/sitemap",
+		"@astrojs/svelte",
+		"@richardtowers/remark-abbr",
+		"@tailwindcss/vite",
+		"astro-mermaid",
+		"astro-pagefind",
+		"rehype-external-links",
+		"remark-deflist",
+		"remark-directive",
+		"remark-supersub"
 	],
 	"rules": {
 		"unused-types": "warn"
