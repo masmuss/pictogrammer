@@ -1,3 +1,13 @@
+# [1.26.0](https://github.com/masmuss/pictogrammer/compare/v1.25.0...v1.26.0) (2026-08-02)
+
+
+### Features
+
+* **blog:** add "Draft" indicator to post preview ([0b8f32a](https://github.com/masmuss/pictogrammer/commit/0b8f32aeb6c34d4aac9dac6e5265bf6c9ee2fba5))
+* **blog:** update blog post components styling and features ([e424c43](https://github.com/masmuss/pictogrammer/commit/e424c43b6d6d32e8f20006db83b4d1758f85d451))
+* **button:** use dedicated primary color with contrast variants ([579b893](https://github.com/masmuss/pictogrammer/commit/579b89303540540918e776340935ce08891b3358))
+* **shell:** simplify footer layout ([ffbfe54](https://github.com/masmuss/pictogrammer/commit/ffbfe54fb003f265c393070de65628b262e94f42))
+
 # [1.25.0](https://github.com/masmuss/pictogrammer/compare/v1.24.0...v1.25.0) (2026-07-31)
 
 
