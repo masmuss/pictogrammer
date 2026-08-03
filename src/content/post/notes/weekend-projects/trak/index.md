@@ -8,7 +8,7 @@ coverImage:
 tags: ["tech", "svelte", "devlog", "telegram-bot", "monorepo"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Latar belakang**: Kerjaan sehari-hari sebagai software developer di konsultan pendidikan sering nerima laporan bug lewat chat atau obrolan lisan. Hasilnya? Sering lupa nyatet dan isu yang sama ditanyain berulang kali.
 - **Trak**: "Command center" ticketing sederhana biar pelapor gampang kirim isu (lewat Telegram Bot) dan aku gampang ngelolanya (lewat Web Dashboard).

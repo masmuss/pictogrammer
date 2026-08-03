@@ -5,7 +5,7 @@ date: 19 July 2026
 tags: ["tech", "golang", "devlog", "refactoring", "open-source"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Hapus 3 dependency besar**: Uber Fx, Ent ORM, Atlas — total bersihin ~50 packages transitif dari `go.mod`
 - **Manual DI**: `main.go` dari 130 baris (Fx annotation) jadi 30 baris wiring eksplisit. Bisa ditrace linear.

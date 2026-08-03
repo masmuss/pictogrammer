@@ -5,7 +5,7 @@ date: 25 June 2025
 tags: ["tech", "devlog", "backend", "bun", "hono"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Tech stack**: Bun + Hono + Drizzle + PostgreSQL + Redis — ringan, cepat, DX minimal.
 - **Fitur**: Auth (JWT + refresh token + lupa password), RBAC (Admin/Librarian/Member), manajemen buku & kategori, siklus peminjaman lengkap.

@@ -8,7 +8,7 @@ coverImage:
 tags: ["tech", "astro", "devlog", "digital-garden"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Latar belakang**: Frustrasi pakai Starlight — terlalu berat untuk sekadar nyimpen coretan pikiran.
 - **Veka**: Digital garden berbasis Astro dengan navigasi otomatis, wiki-link ala Obsidian, dan Pagefind search.

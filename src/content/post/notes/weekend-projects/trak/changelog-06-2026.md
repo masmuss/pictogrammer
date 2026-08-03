@@ -5,7 +5,7 @@ date: 16 June 2026
 tags: ["tech", "svelte", "devlog", "telegram-bot", "postgres"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Notifikasi Real-time**: Mengganti sistem polling database 5 detik sekali pada bot Telegram dengan mekanisme _event-driven_ menggunakan PostgreSQL `LISTEN/NOTIFY`.
 - **Database Session**: Migrasi penyimpanan sesi bot Telegram dari lokal file (`.bot-sessions/`) ke database PostgreSQL menggunakan adapter kustom.
