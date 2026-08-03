@@ -5,7 +5,7 @@ date: 16 July 2026
 tags: ["tech", "astro", "devlog", "digital-garden"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **MDX Support**: Menambahkan dukungan MDX ke content pipeline Astro, memperkaya konten dengan komponen interaktif di dalam Markdown.
 - **Navigasi Kolaps & FileTree**: Sidebar kiri kini mendukung navigasi yang bisa dilipat (_collapsible_) dan komponen `FileTree` untuk menampilkan struktur folder wiki.

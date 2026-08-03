@@ -8,7 +8,7 @@ coverImage:
 tags: ["tech", "laravel", "devlog", "performance"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - Berawal dari keresahan melihat teman-teman lupa status lamaran kerja mereka.
 - Implementasi Laravel Octane + FrankenPHP untuk menangani 100 concurrent users di hardware minim (2C/4GB).

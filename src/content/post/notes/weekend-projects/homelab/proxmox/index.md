@@ -5,7 +5,7 @@ date: 24 April 2026
 tags: ["tech", "devlog", "homelab"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - Bangun homelab sendiri memberiku kendali penuh atas infrastruktur.
 - Proxmox + Ubuntu VM + SSH hardening jadi fondasi yang stabil dan aman.

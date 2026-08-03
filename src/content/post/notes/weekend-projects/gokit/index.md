@@ -5,7 +5,7 @@ date: 16 May 2026
 tags: ["tech", "golang", "devlog", "backend", "open-source"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Latar belakang**: Tim migrasi dari Laravel ke Go karena traffic makin membludak. Tiap service baru harus setup struktur folder, DI, migration dari nol. Butuh boilerplate standar.
 - **Gokit Starter**: Kit pondasi Go API dengan module-based architecture, Uber Fx DI, Ent ORM + Atlas migration, JWT auth + organization scoping, Redis caching, dan OpenAPI docs.

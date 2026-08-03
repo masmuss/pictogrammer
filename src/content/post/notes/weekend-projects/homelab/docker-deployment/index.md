@@ -5,7 +5,7 @@ date: 25 April 2026
 tags: ["tech", "homelab", "devlog", "docker"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - Deploy applyst dengan Laravel Octane terasa jauh lebih stabil lewat Docker Compose.
 - GHCR private image, volume persistence, dan workflow update bikin operasional lebih rapi.

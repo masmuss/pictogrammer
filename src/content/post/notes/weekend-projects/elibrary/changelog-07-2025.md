@@ -5,7 +5,7 @@ date: 16 July 2025
 tags: ["tech", "devlog", "backend", "bun", "testing"]
 ---
 
-##### tl;dr
+**tl;dr**
 
 - **Audit log**: Middleware Hono terpusat — lacak setiap aksi dengan correlationId, payload, dan query SQL mentah.
 - **Load testing**: Artillery.io dengan skenario realistik (browse → register). 100% gagal di percobaan pertama karena mismatch data.
