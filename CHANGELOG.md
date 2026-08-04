@@ -1,3 +1,17 @@
+# [1.29.0](https://github.com/masmuss/pictogrammer/compare/v1.28.0...v1.29.0) (2026-08-04)
+
+
+### Bug Fixes
+
+* update button sizes and use min-h-dvh for mobile browser support ([840dfd0](https://github.com/masmuss/pictogrammer/commit/840dfd006afb8efa9ac6877676384c9812bb7195))
+
+
+### Features
+
+* **home:** Add CTA links section to homepage ([d541f6a](https://github.com/masmuss/pictogrammer/commit/d541f6a8d2e09848d77eb1224c787351284ab96d))
+* **PostPreview:** add scroll-reveal and fix hover opacity ([fd05d40](https://github.com/masmuss/pictogrammer/commit/fd05d400ae9de82fd2ad2eb23f1f4b4ae991feb1))
+* **ui:** respect prefers-reduced-motion for fade-up animations ([f548578](https://github.com/masmuss/pictogrammer/commit/f548578d5a169dbe5e49eddc96a4d14a3cbb82d5))
+
 # [1.28.0](https://github.com/masmuss/pictogrammer/compare/v1.27.0...v1.28.0) (2026-08-02)
 
 
