@@ -10,8 +10,11 @@ export default defineConfig({
 		? [["github"], ["html", { open: "never" }]]
 		: [["html", { open: "never" }]],
 	use: {
-		baseURL: "http://localhost:4321",
-		trace: "on-first-retry"
+		baseURL: "http://localhost:4322",
+		trace: "on-first-retry",
+		contextOptions: {
+			reducedMotion: "reduce"
+		}
 	},
 	/* Configure visual regression tests */
 	expect: {
@@ -27,8 +30,8 @@ export default defineConfig({
 		}
 	],
 	webServer: {
-		command: "bun run build && bun run preview",
-		url: "http://localhost:4321",
+		command: "bun run build && bun run preview -- --port 4322",
+		url: "http://localhost:4322",
 		reuseExistingServer: !process.env.CI,
 		timeout: 180 * 1000
 	}
