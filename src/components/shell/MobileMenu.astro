@@ -31,7 +31,7 @@ const isActive = Astro.url.pathname;
 
   <div
     id="mobile-nav"
-    class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-all duration-300 ease-out will-change-transform"
+    class="bg-secondary/70 pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-6 opacity-0 backdrop-blur-2xl transition-all duration-slow ease-out will-change-transform"
     role="dialog"
     aria-modal="true"
     aria-label="Navigation menu"
@@ -40,7 +40,7 @@ const isActive = Astro.url.pathname;
     <div class="bg-background flex flex-1 flex-col rounded-xl">
       <!-- Mobile Header -->
       <div
-        class="bg-background/90 sticky top-0 z-50 flex items-center justify-between rounded-t-xl p-6 backdrop-blur-sm transition delay-75 duration-300"
+        class="bg-background/90 sticky top-0 z-50 flex items-center justify-between rounded-t-xl p-6 backdrop-blur-sm transition delay-75 duration-slow"
       >
         <a href="/" class="text-2xl font-semibold">pictogrammer</a>
         <Button
@@ -55,14 +55,16 @@ const isActive = Astro.url.pathname;
         </Button>
       </div>
 
-      <div class="flex flex-1 flex-col justify-between space-y-8 px-6 py-8">
+      <div class="flex flex-1 flex-col justify-between space-y-8 px-6 py-8 pt-0">
         <nav class="flex flex-col gap-6" aria-label="mobile navigation">
           {
-            navLinks.map((link: NavLink, i: number) => (
+            navLinks
+              .slice(1, navLinks.length)
+              .map((link: NavLink, i: number) => (
               <a
                 href={link.href}
                 class:list={[
-                  "group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-300 ease-out",
+                  "group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out",
                   isActive === link.href && "text-accent-cta",
                 ]}
                 style={`transition-delay: ${150 + i * 75}ms`}
@@ -78,15 +80,13 @@ const isActive = Astro.url.pathname;
 
         <!-- Extra Sections -->
         <div
-          class="grid grid-cols-1 gap-12 sm:grid-cols-2 translate-y-4 opacity-0 transition-all duration-300 ease-out"
+          class="grid grid-cols-1 gap-12 sm:grid-cols-2 translate-y-4 opacity-0 transition-all duration-slow ease-out"
           data-mobile-entrance
           style="transition-delay: 500ms"
         >
           <!-- Contact -->
           <div class="flex flex-col gap-y-4">
-            <h3
-              class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-            >
+            <h3 class="text-muted-foreground text-xs font-semibold">
               Contact
             </h3>
             <div class="flex flex-col gap-y-2 text-sm">
@@ -101,9 +101,7 @@ const isActive = Astro.url.pathname;
 
           <!-- Socials -->
           <div class="flex flex-col gap-y-4">
-            <h3
-              class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-            >
+            <h3 class="text-muted-foreground text-xs font-semibold">
               Connect
             </h3>
             <div class="flex flex-col gap-y-2 text-sm">
@@ -149,13 +147,11 @@ const isActive = Astro.url.pathname;
 
         <!-- Status -->
         <div
-          class="border-border/50 flex flex-col gap-y-6 border-t pt-8 translate-y-4 opacity-0 transition-all duration-300 ease-out"
+          class="border-border/50 flex flex-col gap-y-6 border-t pt-8 translate-y-4 opacity-0 transition-all duration-slow ease-out"
           data-mobile-entrance
           style="transition-delay: 600ms"
         >
-          <p
-            class="text-muted-foreground text-xs font-bold tracking-widest uppercase"
-          >
+          <p class="text-muted-foreground text-xs font-semibold">
             Status
           </p>
           <div class="flex flex-col gap-y-4">

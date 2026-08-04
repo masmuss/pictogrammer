@@ -4,7 +4,7 @@ export const prerender = true;
 import About from "@/components/features/home/About.astro";
 import FeaturedProjects from "@/components/features/home/FeaturedProjects.astro";
 import Hero from "@/components/features/home/Hero.astro";
-import Posts from "@/components/features/home/Posts.astro";
+import LatestPosts from "@/components/features/home/LatestPosts.astro";
 import Section from "@/components/ui/Section.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getFeaturedProjects } from "@/lib/contents";
@@ -58,7 +58,7 @@ const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
       transitionDelay={350}
       data-testid="latest-posts-section"
     >
-      <Posts posts={allPosts} />
+        <LatestPosts posts={allPosts} />
     </Section>
   </div>
 </BaseLayout>
