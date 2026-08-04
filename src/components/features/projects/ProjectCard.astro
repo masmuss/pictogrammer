@@ -72,11 +72,11 @@ const hasSingleAction = actionCount === 1;
       <Image
         src={thumbnailImage.default}
         alt={`${heading} thumbnail`}
-        class="aspect-video w-full object-cover"
+        class="aspect-video w-full rounded-sm object-cover"
         loading="lazy"
       />
     ) : (
-      <div class="bg-muted flex aspect-video w-full items-center justify-center rounded-t-xl">
+      <div class="bg-muted flex aspect-video w-full items-center justify-center rounded-sm">
         {placeholderIcon && (
           <span
             class={`iconify ${placeholderIcon} text-muted-foreground/40 text-4xl`}
@@ -86,7 +86,7 @@ const hasSingleAction = actionCount === 1;
       </div>
     )
   }
-  <CardHeader class="flex flex-1 flex-col">
+  <CardHeader class="flex flex-1 flex-col px-0">
     <CardTitle class="text-base">{heading}</CardTitle>
     {
       subheading && (
@@ -99,7 +99,7 @@ const hasSingleAction = actionCount === 1;
 
   {
     (effectiveRepoHref || effectiveLiveHref) && (
-      <CardFooter class="items-stretch">
+      <CardFooter class="items-stretch px-0 pb-0">
         {effectiveRepoHref && (
           <Button
             as="a"
