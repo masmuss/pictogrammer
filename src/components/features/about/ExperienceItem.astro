@@ -1,5 +1,4 @@
 ---
-import Heading from "@/components/ui/Heading.astro";
 import { cn } from "@/lib/utils";
 import { calculateDuration } from "@/lib/utils/date";
 import type { Experience } from "@/types";
@@ -7,76 +6,45 @@ import ExperienceSkillPills from "./ExperienceSkillPills.astro";
 
 interface Props {
 	experience: Experience;
-	isOpen?: boolean;
+	isLast?: boolean;
 }
 
-const { experience, isOpen = false } = Astro.props;
+const { experience, isLast = false } = Astro.props;
 const duration = calculateDuration(experience.period);
 ---
 
-<div class="transition-all" data-testid="experience-item">
-	<div class="flex gap-4">
-		{/* Icon Column */}
-		{
-			experience.icon && (
-				<div class="bg-muted border-border/50 mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg border shadow-sm">
-					<span
-						class={cn("iconify", experience.icon, "text-foreground/80 size-4")}
-					/>
-				</div>
-			)
-		}
+<div
+	class="flex flex-col gap-y-2 py-5"
+	data-testid="experience-item"
+>
+	<div class="flex flex-col gap-y-1.5">
+		<div class="text-muted-foreground/80 font-mono text-xs tabular-nums">
+			{experience.period}
+			{duration && <span class="text-border/60 mx-2">-</span>}
+			{duration}
+		</div>
 
-		{/* Content Column */}
-		<div class="flex flex-1 flex-col gap-y-3">
-			<details class="group/details" open={isOpen}>
-				<summary
-					class="flex cursor-pointer list-none items-center justify-between outline-none [&::-webkit-details-marker]:hidden"
-				>
-					<div class="flex flex-col gap-y-1.5">
-						<Heading as="h4" weight="semibold">
-							{experience.title}
-						</Heading>
-						<div
-							class="text-muted-foreground flex flex-wrap items-center gap-x-2 font-mono text-xs tabular-nums"
-						>
-							<span class="capitalize">{experience.kind ?? "Professional"}</span
-							>
-							<span class="text-border">|</span>
-							<span>{experience.period}</span>
-							{
-								duration && (
-									<>
-										<span class="text-border">|</span>
-										<span>{duration}</span>
-									</>
-								)
-							}
-						</div>
-					</div>
-					<span
-						class="iconify ri--arrow-up-s-line text-muted-foreground duration-slow size-5 rotate-180 transition-transform group-open/details:rotate-0"
-					></span>
-				</summary>
-
-				<div class="pt-4 pl-2 md:pl-4">
-					{
-						experience.highlights.length > 0 && (
-							<ul class="text-muted-foreground/90 list-disc space-y-2 text-sm">
-								{experience.highlights.map((highlight) => (
-									<li class="pl-1 leading-relaxed">{highlight}</li>
-								))}
-							</ul>
-						)
-					}
-				</div>
-			</details>
-
-			{
-				experience.skills && experience.skills.length > 0 && (
-					<ExperienceSkillPills skills={experience.skills} class="pt-1" />
-				)
-			}
+		<div class="flex flex-col gap-y-0.5">
+		    <p>
+				<span class="font-semibold">{experience.title}</span> at {experience.company}
+				{experience.location && <span> &middot; {experience.location}</span>}
+			</p>
 		</div>
 	</div>
+
+	{
+		experience.highlights.length > 0 && (
+			<ul class="text-muted-foreground flex flex-col gap-y-0.5 text-sm list-disc pl-4">
+				{experience.highlights.map((highlight) => (
+					<li class="leading-relaxed"> {highlight}</li>
+				))}
+			</ul>
+		)
+	}
+
+	{
+		experience.skills && experience.skills.length > 0 && (
+			<ExperienceSkillPills skills={experience.skills} class="pt-1" />
+		)
+	}
 </div>

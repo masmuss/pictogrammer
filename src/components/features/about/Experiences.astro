@@ -1,37 +1,16 @@
 ---
-import { getExperienceGroups } from "@/lib/contents/experiences";
 import type { Experience } from "@/types";
 import ExperienceItem from "./ExperienceItem.astro";
-import ExperienceOrgHeader from "./ExperienceOrgHeader.astro";
 
 interface Props {
 	experiences: Experience[];
 }
 
 const { experiences }: Props = Astro.props;
-
-const groupedByCompany = getExperienceGroups(experiences);
 ---
 
-<div class="flex flex-col gap-y-12">
-	{
-		groupedByCompany.map((organization, orgIndex) => (
-			<div class="group/org flex flex-col gap-y-5">
-				<ExperienceOrgHeader
-					company={organization.company}
-					logo={organization.logo}
-				/>
-
-				{/* Positions */}
-				<div class="flex flex-col gap-y-4">
-					{organization.positions.map((exp, posIndex) => (
-						<ExperienceItem
-							experience={exp}
-							isOpen={orgIndex === 0 && posIndex === 0}
-						/>
-					))}
-				</div>
-			</div>
-		))
-	}
+<div class="flex flex-col">
+  {experiences.map((exp, i) => (
+    <ExperienceItem experience={exp} isLast={i === experiences.length - 1} />
+  ))}
 </div>
