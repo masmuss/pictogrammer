@@ -5,6 +5,7 @@ import About from "@/components/features/home/About.astro";
 import FeaturedProjects from "@/components/features/home/FeaturedProjects.astro";
 import Hero from "@/components/features/home/Hero.astro";
 import LatestPosts from "@/components/features/home/LatestPosts.astro";
+import Button from "@/components/ui/Button.astro";
 import Section from "@/components/ui/Section.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getFeaturedProjects } from "@/lib/contents";
@@ -14,6 +15,12 @@ const MAX_FEATURED_PROJECTS = 5;
 
 const allPosts = await getAllPosts(MAX_POSTS);
 const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
+
+const ctaLinks = [
+	{ href: "/about", label: "About me" },
+	{ href: "/projects", label: "Projects" },
+	{ href: "/blog", label: "Blog" }
+];
 ---
 
 <BaseLayout
@@ -58,7 +65,21 @@ const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
       transitionDelay={350}
       data-testid="latest-posts-section"
     >
-        <LatestPosts posts={allPosts} />
+      <LatestPosts posts={allPosts} />
     </Section>
+
+    <div
+      class="flex flex-wrap items-center gap-x-4 gap-y-3 pt-12"
+      data-testid="home-cta"
+    >
+      {
+        ctaLinks.map((link) => (
+          <Button as="a" href={link.href} variant="ghost" class="group/cta px-0">
+            {link.label}
+            <span slot="icon-after" class="iconify ri--arrow-right-line transition-transform duration-base group-hover/cta:translate-x-1" aria-hidden="true" />
+          </Button>
+        ))
+      }
+    </div>
   </div>
 </BaseLayout>
