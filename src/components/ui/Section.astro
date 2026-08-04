@@ -66,6 +66,14 @@ const {
   }
 
   function setupObserver() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll('[data-fade-up="true"]').forEach((el) => {
+        el.classList.remove("opacity-0", "translate-y-4");
+        el.classList.add("opacity-100", "translate-y-0");
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
