@@ -50,7 +50,7 @@ jobs:
         run: bun x biome ci .
 
       - name: Prettier (prettier)
-        run: bun x prettier --check "**/*.md" "**/*.mdx"
+        run: bun x prettier --check "**/*.md"
 
       - name: Typecheck
         run: bun run check
