@@ -74,16 +74,11 @@
 			"!public",
 			"!**/.cache",
 			"!**/*.min.js",
+			"!**/*.svg",
 			"!bun.lock"
 		]
 	},
 	"overrides": [
-		{
-			"includes": ["**/*.svg"],
-			"linter": {
-				"enabled": false
-			}
-		},
 		{
 			"includes": ["**/*.astro"],
 			"linter": {
