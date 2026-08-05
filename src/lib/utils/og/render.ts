@@ -1,5 +1,4 @@
-import type { SatoriOptions } from "satori";
-import satori from "satori";
+import satori, { type SatoriOptions } from "satori";
 import sharp from "sharp";
 
 type RenderOgResponseOptions = {
