@@ -20,7 +20,8 @@ Kalau kamu datang dari dunia React atau Vue, file ini mungkin terlihat familiar 
 <!-- Struktur website kamu ada di sini. -->
 <!-- Astro akan menggabungkan logika di atas ke dalam HTML ini. -->
 ```
-*Struktur Komponen Astro: Pemisahan tegas antara Logika (Server) dan Tampilan (HTML).*
+
+_Struktur Komponen Astro: Pemisahan tegas antara Logika (Server) dan Tampilan (HTML)._
 
 ## Struktur Komponen Astro
 
@@ -58,11 +59,11 @@ Karena `await` bisa langsung dipakai di tingkat atas (top-level). Tidak perlu me
 
 ## Siklus Hidup: Hanya Server, Selamanya
 
-Ini adalah *mental model* paling penting: **Kode di dalam frontmatter TIDAK PERNAH dikirim ke browser.**
+Ini adalah _mental model_ paling penting: **Kode di dalam frontmatter TIDAK PERNAH dikirim ke browser.**
 
 - Kamu bisa menulis rahasia API (API Keys) di sini dengan aman.
 - Kamu bisa akses database langsung dari sini.
-- `console.log` di sini akan muncul di terminalmu, bukan di *inspect element* browser.
+- `console.log` di sini akan muncul di terminalmu, bukan di _inspect element_ browser.
 
 :::note
 Jika kamu butuh kode yang jalan di browser (seperti `window.alert`), kamu harus menuliskannya di dalam tag `<script>` di bagian template, bukan di frontmatter.

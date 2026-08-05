@@ -35,11 +35,12 @@ const users = await response.json();
 
 ## SSR vs Static
 
-Secara default, `fetch` di Astro berjalan saat kamu menjalankan perintah `build`. Hasilnya akan menjadi file HTML statis. 
+Secara default, `fetch` di Astro berjalan saat kamu menjalankan perintah `build`. Hasilnya akan menjadi file HTML statis.
 
 Namun, jika website kamu butuh data yang selalu berubah setiap detik (seperti harga saham atau skor bola), kamu bisa mengubah mode Astro menjadi **Server-side Rendering (SSR)** di file konfigurasi.
 
 ## Tips Astron
+
 Gunakan `try/catch` di dalam frontmatter untuk menangani jika API yang kamu panggil sedang error. Kamu bisa menampilkan pesan error yang ramah atau bahkan membatalkan build jika data tersebut sangat krusial.
 
 Akhirnya, kita sampai di langkah terakhir perjalanan kita. Di tulisan penutup besok, kita akan membahas **Deployment**: meluncurkan karya kita ke internet!

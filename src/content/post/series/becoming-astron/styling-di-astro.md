@@ -5,7 +5,7 @@ date: 10 May 2026
 tags: ["astro", "tech"]
 ---
 
-Setelah punya kerangka (Layout), sekarang saatnya kita mempercantik website kita. Salah satu hal paling menyenangkan di Astro adalah bagaimana ia memperlakukan CSS. 
+Setelah punya kerangka (Layout), sekarang saatnya kita mempercantik website kita. Salah satu hal paling menyenangkan di Astro adalah bagaimana ia memperlakukan CSS.
 
 Secara default, Astro mendukung **Scoped CSS**. Apa itu? Mari kita bahas.
 
@@ -62,11 +62,12 @@ Astro akan otomatis menginstall dependency dan mengonfigurasi file yang dibutuhk
 
 ## Kenapa Styling di Astro Terasa Lebih Ringan?
 
-Astro hanya akan mengirimkan CSS yang **benar-benar dipakai** di halaman yang sedang dibuka oleh user. Jika halaman A pakai class Tailwind tertentu dan halaman B tidak, maka di halaman B, CSS tersebut tidak akan dikirim. 
+Astro hanya akan mengirimkan CSS yang **benar-benar dipakai** di halaman yang sedang dibuka oleh user. Jika halaman A pakai class Tailwind tertentu dan halaman B tidak, maka di halaman B, CSS tersebut tidak akan dikirim.
 
 Hasilnya? Bundle CSS yang sangat kecil dan loading yang lebih cepat.
 
 ## Tips Astron
+
 Jangan ragu untuk mencampur Scoped CSS dan Tailwind. Gunakan Tailwind untuk layouting cepat, dan gunakan Scoped CSS (tag `<style>`) untuk logika styling yang sangat spesifik atau animasi yang kompleks.
 
 Di tulisan berikutnya, kita akan belajar hal yang lebih seru: **Dynamic Routes**. Bagaimana caranya membuat 100 halaman berbeda hanya dengan 1 file? Sampai jumpa besok!

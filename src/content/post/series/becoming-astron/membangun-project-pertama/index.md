@@ -84,7 +84,7 @@ npm run dev
 10:26:35 watching for file changes...
 ```
 
-Sekarang, buka browser dan akses `http://localhost:4321`. 
+Sekarang, buka browser dan akses `http://localhost:4321`.
 
 ![Browser: Halaman Welcome Astro](./first-page-astro.webp)
 
@@ -92,7 +92,7 @@ Jika kamu melihat halaman selamat datang Astro, selamat! Kamu sudah setengah jal
 
 ## Langkah 3: Membedah Halaman Pertama
 
-Buka folder projectmu di VS Code. 
+Buka folder projectmu di VS Code.
 
 ```plaintext title="Struktur Folder"
 .
@@ -159,6 +159,7 @@ Sekarang akses `http://localhost:4321/tentang` di browsermu. Ajaib, kan? Tanpa k
 ## Apa Selanjutnya?
 
 Kamu sudah berhasil:
+
 - Membuat project Astro.
 - Menjalankan server lokal.
 - Mengubah konten halaman utama.

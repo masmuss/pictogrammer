@@ -33,7 +33,7 @@ const { title } = Astro.props;
       <a href="/">Beranda</a> | <a href="/tentang">Tentang</a>
     </nav>
     <hr />
-    
+
     <main>
       <!-- Tempat konten halaman akan muncul -->
       <slot />
@@ -48,7 +48,7 @@ const { title } = Astro.props;
 
 ## Mengenal Tag `<slot />`
 
-Bagian paling ajaib dari sebuah Layout adalah tag `<slot />`. 
+Bagian paling ajaib dari sebuah Layout adalah tag `<slot />`.
 
 Tag ini adalah "lubang" atau tempat penampung. Ketika sebuah halaman menggunakan layout ini, semua konten yang ada di dalam halaman tersebut akan dimasukkan ke posisi di mana `<slot />` berada.
 

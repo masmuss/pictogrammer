@@ -17,9 +17,9 @@ Tarik napas dalam-dalam, kosongkan pikiran dari mitos-mitos seram tentang pointe
 
 ## Kenapa Kita Butuh Pointer?
 
-Sebelum masuk ke teknis, kita harus tahu *mengapa* Go secara eksplisit menggunakan pointer. Ada dua alasan utama:
+Sebelum masuk ke teknis, kita harus tahu _mengapa_ Go secara eksplisit menggunakan pointer. Ada dua alasan utama:
 
-1.  **Efisiensi 🏃‍♂️:** Secara default, saat kita mengirim data ke sebuah fungsi, Go akan **menyalin seluruh data** tersebut (*pass by value*). Jika datanya adalah sebuah `struct` besar, proses penyalinan ini boros memori dan waktu. Dengan mengirim *pointer* (alamat memori), kita hanya menyalin alamat yang ukurannya sangat kecil, tanpa peduli seberapa besar data aslinya.
+1.  **Efisiensi 🏃‍♂️:** Secara default, saat kita mengirim data ke sebuah fungsi, Go akan **menyalin seluruh data** tersebut (_pass by value_). Jika datanya adalah sebuah `struct` besar, proses penyalinan ini boros memori dan waktu. Dengan mengirim _pointer_ (alamat memori), kita hanya menyalin alamat yang ukurannya sangat kecil, tanpa peduli seberapa besar data aslinya.
 2.  **Kemampuan Mengubah Data Asli ✍️:** Terkadang, kita ingin sebuah fungsi bisa mengubah nilai variabel yang ada di luar fungsi tersebut. Tanpa pointer, fungsi hanya akan mengubah salinannya. Dengan pointer, fungsi bisa langsung memodifikasi data di lokasi aslinya.
 
 ## Salinan vs. Alamat Asli (`Pass by Value` vs. `Pass by Reference`)
@@ -34,7 +34,7 @@ namespace Memory {
 	    Title = Sherlock Holmes
 	    Author = Sir Arthur Conan Doyle
     }
-    
+
     class Book2 {
 	    Title = Sherlock Holmes
 	    Author = Sir Arthur Conan Doyle
@@ -45,7 +45,8 @@ Book1 --> Book2 : Copy
 note for Book1 "book1"
 note for Book2 "book2"
 ```
-*Ilustrasi: Saat `pass by value`, sebuah salinan baru dari data dibuat di memori.*
+
+_Ilustrasi: Saat `pass by value`, sebuah salinan baru dari data dibuat di memori._
 
 Sebaliknya, dengan menggunakan pointer, kita menerapkan konsep **`pass by reference`**. Kita tidak mengirim datanya, melainkan hanya alamat memorinya. Fungsi yang menerima alamat ini bisa langsung berinteraksi dengan data aslinya.
 
@@ -68,7 +69,7 @@ note for Book "Data asli"
 note for PointerToBook "Alamat dari Book"
 ```
 
-*Ilustrasi: Saat `pass by reference`, kita hanya mengirim referensi (alamat) ke data yang asli.*
+_Ilustrasi: Saat `pass by reference`, kita hanya mengirim referensi (alamat) ke data yang asli._
 
 ## Operator Sakti: `&` dan `*`
 
@@ -81,13 +82,14 @@ Operator `&` digunakan untuk **mengambil alamat memori** dari sebuah variabel. H
 ```go
 nama := "Gopher"
 // `pointerKeNama` sekarang menyimpan alamat memori dari variabel `nama`
-pointerKeNama := &nama 
+pointerKeNama := &nama
 
 fmt.Println("Nilai asli:", nama)
 fmt.Println("Alamat memori:", pointerKeNama)
 ```
 
 ### Operator `*` (Dereference) - Mengakses Nilai
+
 Jika `&` adalah cara mendapatkan alamat, `*` adalah cara untuk mengakses atau mengubah nilai yang ada di alamat tersebut.
 
 ```go
@@ -108,6 +110,7 @@ Jangan khawatir dengan `0xc0000b4008`! Itu adalah representasi alamat memori dal
 **Ambiguitas Operator `*` yang Wajib Dipahami!**
 
 Bagi pemula, `*` bisa membingungkan karena punya dua makna tergantung konteks:
+
 1. **Sebagai Penanda Tipe:** Saat di deklarasi, `*TipeData` (misal: `*int`) berarti "sebuah pointer yang menunjuk ke tipe data tersebut".
 2. **Sebagai Operator Dereference**: Saat digunakan pada variabel, `*namaPointer` berarti "akses nilai yang ada di alamat yang ditunjuk".
 
@@ -115,14 +118,16 @@ Membedakan dua konteks ini adalah kunci utama memahami pointer.
 :::
 
 ## Cara Lain Membuat Pointer: `new()`
+
 Selain menggunakan `&` pada variabel yang sudah ada, kita bisa menggunakan fungsi bawaan `new()` untuk membuat pointer baru. Fungsi `new(T)` akan:
+
 1. Mengalokasikan memori untuk tipe data `T`.
-2. Memberinya nilai nol (*zero value*).
+2. Memberinya nilai nol (_zero value_).
 3. Mengembalikan alamat memori (pointer) ke lokasi tersebut.
 
 ```go
 // Membuat pointer ke sebuah integer. Nilai integer-nya adalah 0.
-ptr := new(int) 
+ptr := new(int)
 
 fmt.Println("Alamat:", ptr)
 fmt.Println("Nilai awal:", *ptr) // 0
@@ -132,13 +137,16 @@ fmt.Println("Nilai baru:", *ptr) // 100
 ```
 
 ### Kapan pakai `new` vs. `&`?
+
 - Gunakan `&` jika kalian sudah punya variabel dengan nilai tertentu dan ingin mendapatkan pointernya. (`p := &variabel`)
 - Gunakan `new` jika kalian ingin membuat pointer baru dari nol tanpa harus mendeklarasikan variabelnya terlebih dahulu.
 
 ## Pointer dalam Aksi (Fungsi & Method)
+
 Inilah alasan utama kita belajar pointer: efisiensi dan kemampuan modifikasi.
 
 ### Pointer di Parameter Fungsi
+
 Lihat perbedaan drastis antara mengirim nilai dan mengirim pointer ke sebuah fungsi.
 Tanpa Pointer (Pass by Value):
 
@@ -153,6 +161,7 @@ func main() {
 	fmt.Println("Nama asli tetap:", namaAsli) // Nama asli tetap: Gopher
 }
 ```
+
 Dengan Pointer (Pass by Reference):
 
 ```go
@@ -168,9 +177,11 @@ func main() {
 ```
 
 ### Pointer di Method Receiver
+
 Konsep yang sama berlaku untuk `method`. Jika kita ingin sebuah `method` bisa mengubah data `struct`-nya, kita harus menggunakan pointer receiver.
 
 Tanpa Pointer Receiver:
+
 ```go
 type Player struct {
 	Health int
@@ -189,6 +200,7 @@ func main() {
 ```
 
 Dengan Pointer Receiver:
+
 ```go
 type Player struct {
 	Health int
@@ -211,9 +223,11 @@ Saat memanggil method dengan pointer receiver (`player1.TakeDamage(20)`), Go cuk
 :::
 
 ## Petualangan Hari Ini Selesai!
+
 Selamat, Gopher! Kamu baru saja melewati salah satu 'ujian' terpenting dalam perjalanan ini dan berhasil menaklukkan pointer. Topik yang tadinya tampak menyeramkan, ternyata hanyalah tentang mengelola 'alamat' dan 'nilai'.
 
 Singkatnya, kita sudah belajar:
+
 - Mengapa pointer penting untuk efisiensi dan modifikasi data.
 - Perbedaan antara mengirim salinan (`pass by value`) dan alamat (`pass by reference`).
 - Dua operator sakti: `&` untuk mendapatkan alamat, dan `*` untuk mengakses nilai.

@@ -65,7 +65,8 @@ graph TD
     style B fill:#f96,stroke:#333,stroke-width:2px
     style C fill:#f96,stroke:#333,stroke-width:2px
 ```
-*Visualisasi Island Architecture: Hanya bagian yang berwarna (Island) yang memiliki JavaScript/listrik.*
+
+_Visualisasi Island Architecture: Hanya bagian yang berwarna (Island) yang memiliki JavaScript/listrik._
 
 Di Astro:
 

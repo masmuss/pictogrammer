@@ -41,18 +41,18 @@
 
 ## Component Library
 
-| Component     | Status | Variants          | Notes |
-| ------------- | ------ | ----------------- | ----- |
-| Button        | Done   | 6                 | + `--btn-primary` token for contrast |
-| Badge         | Done   | 7                 | Pill style (`rounded-full`) |
-| Card          | Done   | Single (container)| Simplified from interactive/default to one style |
-| Section       | Done   | Fade-up animation | `IntersectionObserver` + `prefers-reduced-motion` |
-| Heading       | Done   | 9 sizes × 4 weights | Wraps `Text` primitive |
-| Text          | Done   | 9 sizes × 5 colors × 5 weights | Primitive, all text components use this |
-| Search        | Done   | Svelte interactive | Pagefind, keyboard nav, dialog |
-| ThemeToggle   | Done   | Svelte interactive | Inline script prevents FOUC |
-| BottomCTA     | Done   | Ghost links       | Homepage directional nav |
-| PageHeader    | Done   | Title + description | Used on tools, projects, tags |
+| Component   | Status | Variants                       | Notes                                             |
+| ----------- | ------ | ------------------------------ | ------------------------------------------------- |
+| Button      | Done   | 6                              | + `--btn-primary` token for contrast              |
+| Badge       | Done   | 7                              | Pill style (`rounded-full`)                       |
+| Card        | Done   | Single (container)             | Simplified from interactive/default to one style  |
+| Section     | Done   | Fade-up animation              | `IntersectionObserver` + `prefers-reduced-motion` |
+| Heading     | Done   | 9 sizes × 4 weights            | Wraps `Text` primitive                            |
+| Text        | Done   | 9 sizes × 5 colors × 5 weights | Primitive, all text components use this           |
+| Search      | Done   | Svelte interactive             | Pagefind, keyboard nav, dialog                    |
+| ThemeToggle | Done   | Svelte interactive             | Inline script prevents FOUC                       |
+| BottomCTA   | Done   | Ghost links                    | Homepage directional nav                          |
+| PageHeader  | Done   | Title + description            | Used on tools, projects, tags                     |
 
 ### Missing
 

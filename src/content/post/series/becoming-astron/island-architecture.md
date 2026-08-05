@@ -95,6 +95,6 @@ Tidak semua bagian website perlu interaksi. Tidak semua masalah perlu JavaScript
 
 Dan Astro memberi kita kebebasan untuk menentukan itu—tanpa rasa bersalah.
 
-Dengan ini, **Bagian 1: Fondasi** dari series *Becoming Astron* masih berlanjut. Kita sudah paham "Kenapa" Astro ada, sekarang kita akan mulai masuk ke "Bagaimana" ia bekerja secara fundamental.
+Dengan ini, **Bagian 1: Fondasi** dari series _Becoming Astron_ masih berlanjut. Kita sudah paham "Kenapa" Astro ada, sekarang kita akan mulai masuk ke "Bagaimana" ia bekerja secara fundamental.
 
 Di bagian selanjutnya, kita akan membedah **Komponen Astro dan Keajaiban Frontmatter**. Sampai jumpa di sana!

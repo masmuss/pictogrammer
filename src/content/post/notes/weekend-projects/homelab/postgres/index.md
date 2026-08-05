@@ -24,14 +24,14 @@ Di titik itu aku mutusin: **ini nggak sustainable.**
 
 Homelab-ku jalan di mesin dengan RAM 16 GB. Itu udah harus dibagi buat Proxmox, beberapa VM, dan semua layanan yang berjalan. PostgreSQL sendiri—sebelum ada query yang nyentuh tabel—udah ngambil porsi segini:
 
-| Apa | Per container | × 7 |
-|---|---|---|
-| RAM idle (Alpine) | ~60 MB | 420 MB |
-| WAL + shared buffers | ~90 MB | 630 MB |
-| Docker overhead (network namespace, overlay) | ~15 MB | 105 MB |
-| **Total RAM terbuang** | | **~1.1 GB** |
+| Apa                                          | Per container | × 7         |
+| -------------------------------------------- | ------------- | ----------- |
+| RAM idle (Alpine)                            | ~60 MB        | 420 MB      |
+| WAL + shared buffers                         | ~90 MB        | 630 MB      |
+| Docker overhead (network namespace, overlay) | ~15 MB        | 105 MB      |
+| **Total RAM terbuang**                       |               | **~1.1 GB** |
 
-1 GB lebih cuma buat database yang sebagian besar waktunya *nganggur*. Itu baru RAM. Angka itu juga belum termasuk instance PostgreSQL buat proyek-proyekku sendiri — server ini juga aku pakai buat development dan production, dan beberapa di antaranya butuh PostgreSQL. Kalau ditotal, jumlah instance-nya bisa lebih dari tujuh.
+1 GB lebih cuma buat database yang sebagian besar waktunya _nganggur_. Itu baru RAM. Angka itu juga belum termasuk instance PostgreSQL buat proyek-proyekku sendiri — server ini juga aku pakai buat development dan production, dan beberapa di antaranya butuh PostgreSQL. Kalau ditotal, jumlah instance-nya bisa lebih dari tujuh.
 
 Belum ngomongin:
 
@@ -45,7 +45,7 @@ Masalah sebenarnya bukan di RAM. Masalah sebenarnya adalah **maintenance fatigue
 
 Jawaban simplenya: "Ya udah, pakai satu instance aja, bikin database terpisah per layanan."
 
-Betul. Tapi aku nggak berhenti di situ. Aku pengen tiap layanan *merasa* seperti punya database sendiri, meskipun di balik layar PostgreSQL cuma berjalan sekali. Jadi ini aturan main yang ku pakai:
+Betul. Tapi aku nggak berhenti di situ. Aku pengen tiap layanan _merasa_ seperti punya database sendiri, meskipun di balik layar PostgreSQL cuma berjalan sekali. Jadi ini aturan main yang ku pakai:
 
 - **Satu container PostgreSQL 18 Alpine.** Satu proses, satu volume mount, satu file konfigurasi.
 - **Satu database per layanan.** `grafana`, `immich`, `n8n`, dan seterusnya. Nggak ada sharing schema, nggak ada tabel campur aduk.
@@ -62,7 +62,7 @@ Buat homelab, itu cukup.
 
 2. **Pgbouncer atau connection pooling.** Belum. Tujuh layanan, masing-masing connection pool 5-10, total paling ~50 koneksi peak. PostgreSQL bisa handle ratusan di spek modest. Pooling baru diperlukan kalau nanti layanan udah 20+ atau ada yang bocor koneksi. Aku pin dulu, lanjut.
 
-3. **Kubernetes, Ansible, Terraform.** Cuma shell script dan `yq`. Homelab nggak butuh infrastructure-as-code. Homelab butuh *infrastructure-that-does-not-break-at-2-AM*.
+3. **Kubernetes, Ansible, Terraform.** Cuma shell script dan `yq`. Homelab nggak butuh infrastructure-as-code. Homelab butuh _infrastructure-that-does-not-break-at-2-AM_.
 
 ## The Setup: Isi Repo, Dibedah Satu-satu
 
@@ -175,14 +175,14 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 Dua extension, nggak lebih. `uuid-ossp` karena setengah layanan yang kujalankan (Authentik, Firefly III) generate UUID. `pgcrypto` karena `gen_random_uuid()` adalah cara modernnya dan aku pengen tersedia di semua database. Keduanya di-install di database `postgres` dan diwariskan ke database baru lewat template.
 
-Perhatikan yang sengaja *dikomenin*:
+Perhatikan yang sengaja _dikomenin_:
 
 ```sql
 -- CREATE EXTENSION IF NOT EXISTS "pg_stat_statements";
 -- ALTER SYSTEM SET log_min_duration_statement = 1000;
 ```
 
-`pg_stat_statements` butuh `shared_preload_libraries` di `postgresql.conf`, yang artinya harus rebuild container dengan custom config mount. Aku belum perlu profiling query. Nanti pas perlu, tinggal dinyalakan. Setup guide yang maksa kamu install semua extension di hari pertama itu *performance-tuning cosplay*.
+`pg_stat_statements` butuh `shared_preload_libraries` di `postgresql.conf`, yang artinya harus rebuild container dengan custom config mount. Aku belum perlu profiling query. Nanti pas perlu, tinggal dinyalakan. Setup guide yang maksa kamu install semua extension di hari pertama itu _performance-tuning cosplay_.
 
 ## Nambah Service Baru Cuma 30 Detik
 
@@ -233,7 +233,7 @@ Nggak ada tulisan homelab yang jujur tanpa bagian "ini lho yang error."
 
 ### Backup adalah afterthought
 
-Sebulan pertama, strategi backup-ku adalah `pg_dumpall` ke file, dijalankan manual kalau inget. Strategi ini punya nama lain: *berharap.*
+Sebulan pertama, strategi backup-ku adalah `pg_dumpall` ke file, dijalankan manual kalau inget. Strategi ini punya nama lain: _berharap._
 
 Sekarang udah lebih baik:
 
@@ -261,10 +261,10 @@ Jawabannya tergantung satu pertanyaan: **kamu ngurusin homelab atau production c
 
 Kalau kamu hosting layanan buat keluarga, side projects, atau rasa penasaran pribadi — satu instance PostgreSQL dengan database terpisah per layanan adalah trade-off yang tepat. Simplisitasnya berbuah tiap kali kamu nambah service, ngejalanin backup, atau upgrade versi PostgreSQL.
 
-Kalau kamu hosting buat *paying customers*, stop baca tulisan ini dan bikin instance terpisah per service. Plus replica. Plus connection pooling. Plus monitoring stack yang memadai.
+Kalau kamu hosting buat _paying customers_, stop baca tulisan ini dan bikin instance terpisah per service. Plus replica. Plus connection pooling. Plus monitoring stack yang memadai.
 
 Buat kita yang di tengah-tengah: pola satu instance ini bekerja sampai dia nggak bekerja. Kamu bakal tau kapan batasnya tercapai karena bakal ada service spesifik yang protes duluan. Sampai saat itu tiba, nikmatin 1 GB RAM yang balik dan kenyataan bahwa backup script kamu cuma satu.
 
-*Full setup, script, dan konfigurasi ada di repositori dibawah. PR dan cerita "ini lho caraku yang beda" selalu ditunggu.*
+_Full setup, script, dan konfigurasi ada di repositori dibawah. PR dan cerita "ini lho caraku yang beda" selalu ditunggu._
 
 ::github{repo="masmuss/homelab-postgres"}

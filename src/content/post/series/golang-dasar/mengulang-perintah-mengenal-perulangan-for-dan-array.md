@@ -10,6 +10,7 @@ Selamat datang kembali di petualangan **Becoming Gopher**! Di [episode sebelumny
 Seorang petualang seringkali harus melakukan hal yang sama berulang kali—berjalan ribuan langkah, mendayung puluhan kali, atau memeriksa setiap barang di dalam tas. Program kita juga butuh kemampuan itu. Jika tidak, bagaimana kita bisa memproses ratusan data pengguna atau menampilkan daftar produk satu per satu?
 
 Hari ini, kita akan melatih 'stamina' program kita. Kita akan berkenalan dengan:
+
 1.  **`Array`**: 'Rak penyimpanan' pertama kita untuk menampung banyak data sejenis secara terorganisir.
 2.  **`For`**: Satu-satunya 'mesin pengulang' di Go yang akan membuat program kita bisa bekerja secara efisien tanpa perlu menulis kode yang sama berulang kali.
 
@@ -65,16 +66,19 @@ hari := [...]string{"Senin", "Selasa", "Rabu", "Kamis"}
 Meskipun berguna, keterbatasan utama `array` adalah ukurannya yang kaku dan tidak bisa diubah. Inilah alasan mengapa nanti kita akan belajar tipe data lain yang lebih fleksibel.
 
 ## `For` Loop: Mesin Pengulang Serbaguna
+
 Sekarang kita punya array yang berisi banyak data. Bagaimana cara kita melihat semua isinya satu per satu tanpa menulis fmt.Println() berkali-kali? Jawabannya adalah dengan perulangan atau loop.
 
 Di Go, hanya ada satu kata kunci untuk perulangan: `for`. Tapi jangan salah, `for` di Go sangat serbaguna dan bisa berperan seperti `while` atau `foreach` di bahasa lain.
 
 ### `For` Loop Klasik (dengan Counter)
+
 Ini adalah bentuk paling umum yang mungkin pernah kamu lihat di bahasa lain. Strukturnya terdiri dari tiga bagian yang dipisahkan titik koma:
+
 - **init**: Pernyataan awal (misal: `i := 0`), dijalankan sekali sebelum loop dimulai.
 - **condition**: Kondisi yang dicek setiap awal iterasi. Jika `true`, loop lanjut. Jika `false`, loop berhenti.
 - **post**: Pernyataan yang dijalankan setiap akhir iterasi (misal: `i++`).
-  
+
 ```go
 // Loop dari 1 sampai 5
 for i := 1; i <= 5; i++ {
@@ -89,6 +93,7 @@ for i := 1; i <= 5; i++ {
 ```
 
 ### `For` Loop Gaya While
+
 Jika kita menghilangkan bagian `init` dan `post`, `for` loop akan berfungsi seperti `while` loop. Ia akan terus berjalan selama kondisinya `true`.
 
 ```go
@@ -104,6 +109,7 @@ for angka < 5 {
 ```
 
 ### `For-Range`: Cara Terbaik untuk Koleksi Data
+
 Ini adalah cara paling "Go-like" dan paling nyaman untuk melakukan perulangan pada `array` (dan nanti pada `slice` serta `map`). `for-range` akan otomatis memberikan kita **index** dan **value** dari setiap elemen.
 
 ```go
@@ -124,7 +130,9 @@ for _, namaHari := range hari {
 ```
 
 ## `Break` dan `Continue`: Mengontrol Alur Perulangan
+
 Terkadang, kita perlu sedikit kontrol lebih di dalam loop.
+
 - `break`: Digunakan untuk keluar paksa dari perulangan, bahkan jika kondisinya masih `true`.
 - `continue`: Digunakan untuk menghentikan iterasi saat ini dan langsung loncat ke iterasi berikutnya.
 
@@ -140,7 +148,7 @@ for i := 1; i <= 10; i++ {
         // Jika angka sudah lebih dari 7, hentikan seluruh loop
         break
     }
-    
+
     fmt.Println("Angka ganjil:", i)
 }
 // Output:
@@ -151,9 +159,11 @@ for i := 1; i <= 10; i++ {
 ```
 
 ## Petualangan Hari Ini Selesai!
+
 Hebat! Hari ini kita sudah menambahkan dua kemampuan super pada program kita: kemampuan untuk menyimpan banyak data dalam sebuah `array`, dan kemampuan untuk melakukan tugas berulang secara otomatis dengan `for` loop. Program kita kini jauh lebih efisien.
 
 Singkatnya, kita sudah belajar:
+
 - Menyimpan data sejenis dalam `array` dengan ukuran yang pasti.
 - Menggunakan berbagai gaya `for` loop untuk kebutuhan yang berbeda.
 - Cara paling elegan untuk mengiterasi `array` menggunakan `for-range`.

@@ -53,11 +53,13 @@ const componentClass = cn(baseClass, variants[variant], sizes[size], className);
 ## Props Design
 
 ### Good
+
 - Semantic props (variant, size) with union types
 - Extends `HTMLAttributes` for native attribute passthrough
 - Explicit boolean props (disabled, loading)
 
 ### Avoid
+
 - `[key: string]: unknown` — use explicit props or extend HTMLAttributes
 - Generic `config`/`options`/`data` props
 - Styling props (use variant + class instead)
@@ -66,16 +68,19 @@ const componentClass = cn(baseClass, variants[variant], sizes[size], className);
 ## Styling
 
 ### Priority Order
+
 1. Tailwind utilities
 2. Design token CSS variables
 3. Scoped `<style>` tag (rarely)
 
 ### Do
+
 - Use semantic colors: `bg-primary text-primary-foreground`
 - Use token-based spacing: `gap-4 p-6`
 - Use `cn()` from `@/lib/utils` for class merging
 
 ### Don't
+
 - Hardcode values: no `gap-[17px]`, no `padding: 23px`
 - Use `style` attribute when Tailwind works
 - Generate dynamic class names: no `` `gap-${gap}` ``
@@ -144,7 +149,7 @@ import Component from "./Component.astro";
 test("renders with default props", async () => {
   const container = await AstroContainer.create();
   const result = await container.renderToString(Component, {
-    props: { /* ... */ }
+    props: {/* ... */},
   });
   expect(result).toContain("expected content");
 });

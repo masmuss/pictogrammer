@@ -4,11 +4,10 @@ description: "Bagaimana cara menangani banyak channel sekaligus? Pelajari `selec
 date: 27 August 2025
 tags: ["tech", "golang", "concurrency", "goroutine"]
 ---
- 
 
 Selamat datang kembali di seri konkurensi **Becoming Gopher**! Di [episode sebelumnya](./menguasai-channel), kita sudah menguasai `channel` sebagai 'pipa' komunikasi yang aman antar `goroutine`. Kita sudah bisa melakukan sinkronisasi dan mengirim data dengan tertib.
 
-Tapi, bagaimana jika petualangan kita menjadi lebih kompleks? Bayangkan sebuah `goroutine` yang harus mendengarkan kabar dari *dua sumber* berbeda (`channelA` dan `channelB`). Jika kita hanya menunggu dari `channelA`, kita bisa melewatkan pesan penting dari `channelB` yang mungkin datang lebih dulu.
+Tapi, bagaimana jika petualangan kita menjadi lebih kompleks? Bayangkan sebuah `goroutine` yang harus mendengarkan kabar dari _dua sumber_ berbeda (`channelA` dan `channelB`). Jika kita hanya menunggu dari `channelA`, kita bisa melewatkan pesan penting dari `channelB` yang mungkin datang lebih dulu.
 
 Di sinilah kita butuh peran seorang **konduktor orkestra**. Seorang konduktor bisa memperhatikan banyak musisi sekaligus dan memberi isyarat pada siapa pun yang siap bermain. Di Go, alat untuk menjadi konduktor ini adalah `select`.
 
@@ -16,7 +15,7 @@ Di sinilah kita butuh peran seorang **konduktor orkestra**. Seorang konduktor bi
 
 **`select`** adalah sebuah statement yang memungkinkan sebuah `goroutine` untuk menunggu pada beberapa operasi komunikasi (`channel`) sekaligus.
 
-Strukturnya mirip seperti `switch-case`, tapi setiap `case` adalah sebuah operasi *channel* (mengirim atau menerima). `select` akan **memblokir** sampai salah satu `case` siap untuk dijalankan, lalu ia akan mengeksekusi `case` tersebut. Jika beberapa `case` siap bersamaan, ia akan memilih salah satunya secara acak.
+Strukturnya mirip seperti `switch-case`, tapi setiap `case` adalah sebuah operasi _channel_ (mengirim atau menerima). `select` akan **memblokir** sampai salah satu `case` siap untuk dijalankan, lalu ia akan mengeksekusi `case` tersebut. Jika beberapa `case` siap bersamaan, ia akan memilih salah satunya secara acak.
 
 ```go
 package main
@@ -53,6 +52,7 @@ func main() {
 ```
 
 Output:
+
 ```
 Menerima: Pesan dari channel 2
 Menerima: Pesan dari channel 1
@@ -61,9 +61,10 @@ Menerima: Pesan dari channel 1
 `select` dengan cerdas menerima pesan dari ch2 terlebih dahulu karena pesan itu datang lebih cepat.
 
 ## Pola Umum: Menambahkan Batas Waktu (Timeout)
-Dalam aplikasi nyata, kita tidak bisa membiarkan sebuah operasi menunggu selamanya. Kita butuh batas waktu. `select` membuat pola *timeout* menjadi sangat mudah diimplementasikan menggunakan fungsi `time.After`.
 
-`time.After(durasi)` akan mengembalikan sebuah *channel* yang akan mengirimkan nilai setelah durasi yang ditentukan.
+Dalam aplikasi nyata, kita tidak bisa membiarkan sebuah operasi menunggu selamanya. Kita butuh batas waktu. `select` membuat pola _timeout_ menjadi sangat mudah diimplementasikan menggunakan fungsi `time.After`.
+
+`time.After(durasi)` akan mengembalikan sebuah _channel_ yang akan mengirimkan nilai setelah durasi yang ditentukan.
 
 ```go
 func main() {
@@ -85,6 +86,7 @@ func main() {
 ```
 
 Output:
+
 ```
 Timeout! Operasi terlalu lama.
 ```
@@ -92,7 +94,8 @@ Timeout! Operasi terlalu lama.
 Program tidak akan terjebak menunggu selama 3 detik. Setelah 2 detik, `case` timeout akan dijalankan.
 
 ## Pola Umum: Operasi Non-Blocking
-Terkadang kita hanya ingin "mencoba" mengirim atau menerima dari *channel* tanpa harus menunggu. Jika *channel* belum siap, kita ingin langsung melanjutkan pekerjaan lain. Ini bisa dicapai dengan menambahkan `case default` pada `select`.
+
+Terkadang kita hanya ingin "mencoba" mengirim atau menerima dari _channel_ tanpa harus menunggu. Jika _channel_ belum siap, kita ingin langsung melanjutkan pekerjaan lain. Ini bisa dicapai dengan menambahkan `case default` pada `select`.
 
 Jika tidak ada `case` lain yang siap, `default` akan langsung dieksekusi.
 
@@ -120,6 +123,7 @@ func main() {
 ```
 
 ## Pola Konkurensi: Worker Pool
+
 Mari kita gabungkan semua yang telah kita pelajari untuk membangun pola yang sangat umum: **Worker Pool**.
 
 Idenya sederhana: kita punya sekumpulan tugas dan sekumpulan pekerja (`goroutine`). Para pekerja akan mengambil tugas satu per satu, mengerjakannya, dan kita akan mengumpulkan hasilnya.
@@ -161,8 +165,9 @@ func main() {
 Pola ini sangat efisien untuk membatasi jumlah pekerjaan yang berjalan bersamaan dan mengelola beban kerja.
 
 ## Petualangan Berlanjut
-Kita tidak hanya bisa berkomunikasi, tapi kita sudah bisa menjadi 'konduktor' yang mengatur alur komunikasi dari banyak `goroutine` secara elegan. Dengan `select`, kita bisa menangani *timeout*, melakukan operasi *non-blocking*, dan membangun pola-pola konkurensi yang kompleks seperti *Worker Pool*.
+
+Kita tidak hanya bisa berkomunikasi, tapi kita sudah bisa menjadi 'konduktor' yang mengatur alur komunikasi dari banyak `goroutine` secara elegan. Dengan `select`, kita bisa menangani _timeout_, melakukan operasi _non-blocking_, dan membangun pola-pola konkurensi yang kompleks seperti _Worker Pool_.
 
 Sejauh ini, kita selalu mengikuti filosofi Go: berkomunikasi dengan mengirim pesan. Tapi, ada kalanya kita terpaksa harus berbagi memori secara langsung, terutama saat performa sangat kritikal.
 
-Di episode selanjutnya dan terakhir dari seri konkurensi ini, kita akan melihat cara yang lebih 'tradisional' untuk sinkronisasi menggunakan paket `sync` dan berkenalan dengan alat pamungkas untuk menemukan *bug* konkurensi: **Race Detector**.
+Di episode selanjutnya dan terakhir dari seri konkurensi ini, kita akan melihat cara yang lebih 'tradisional' untuk sinkronisasi menggunakan paket `sync` dan berkenalan dengan alat pamungkas untuk menemukan _bug_ konkurensi: **Race Detector**.

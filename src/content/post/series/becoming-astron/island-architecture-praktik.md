@@ -5,7 +5,7 @@ date: 12 May 2026
 tags: ["astro", "tech"]
 ---
 
-Pada Bagian 1, kita sudah membahas teori Island Architecture. Sekarang, mari kita lihat bagaimana cara memakainya secara nyata. 
+Pada Bagian 1, kita sudah membahas teori Island Architecture. Sekarang, mari kita lihat bagaimana cara memakainya secara nyata.
 
 Katakanlah kamu sangat menyukai **React** untuk membuat komponen interaktif. Di Astro, kamu bisa tetap menggunakannya tanpa harus mengorbankan performa.
 
@@ -22,15 +22,11 @@ npx astro add react
 Buatlah file komponen React biasa di `src/components/Counter.jsx`:
 
 ```jsx title="src/components/Counter.jsx"
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Counter() {
-  const [count, setCount] = useState<number>(0);
-  return (
-    <button onClick={() => setCount(count + 1)}>
-      Angka: {count}
-    </button>
-  );
+  const [count, setCount] = useState < number > 0;
+  return <button onClick={() => setCount(count + 1)}>Angka: {count}</button>;
 }
 ```
 
@@ -60,11 +56,12 @@ Untuk "menghidupkannya", kita menggunakan direktif `client:*`:
 
 ## Kenapa Ini Jenius?
 
-Website kamu tetap 90% HTML statis yang super cepat. Hanya "pulau-pulau" kecil (seperti tombol counter tadi) yang mengunduh dan menjalankan JavaScript. 
+Website kamu tetap 90% HTML statis yang super cepat. Hanya "pulau-pulau" kecil (seperti tombol counter tadi) yang mengunduh dan menjalankan JavaScript.
 
 Browser tidak perlu bekerja keras membangun ulang (hydrating) seluruh halaman. Ia hanya fokus pada apa yang kamu minta.
 
 ## Tips Astron
+
 Gunakan `client:visible` sebanyak mungkin untuk komponen yang ada di bawah (footer, komentar, dll). Ini akan membuat nilai Google Lighthouse kamu tetap hijau (100) karena JavaScript tidak di-load sampai benar-benar diperlukan.
 
 Di tulisan berikutnya, kita akan membahas bagaimana menghubungkan website kita ke dunia luar dengan **Data Fetching**. Sampai jumpa besok!

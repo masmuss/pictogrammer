@@ -10,6 +10,7 @@ Selamat datang kembali di petualangan **Becoming Gopher**! Setelah kita [menaklu
 Di banyak bahasa lain, kita mungkin terbiasa dengan blok `try-catch-finally` atau konsep `null` yang bisa muncul di mana saja. Go mengambil pendekatan yang berbeda, lebih eksplisit, dan seringkali lebih sederhana.
 
 Hari ini, kita akan menjelajahi empat mekanisme unik yang menjadi bagian dari filosofi Go:
+
 1.  **`defer`**: Sebuah 'penjadwal' elegan untuk memastikan kode tertentu pasti dijalankan di akhir.
 2.  **`panic` & `recover`**: Cara Go menangani kesalahan fatal yang benar-benar tak terduga, mirip seperti tombol darurat dan jaring pengamannya.
 3.  **`nil`**: Kita akan memahami apa sebenarnya `nil` di Go, mengapa ia berbeda dari `null`, dan tipe data apa saja yang bisa 'kosong'.
@@ -19,15 +20,15 @@ Memahami konsep-konsep ini akan membuatmu tidak hanya bisa menulis kode Go, tapi
 
 ## `defer`: Menunda Eksekusi dengan Elegan
 
-**`defer`** adalah kata kunci untuk **menunda eksekusi sebuah pemanggilan fungsi** hingga fungsi induknya selesai dijalankan. Fungsi yang di-*defer* akan tetap dieksekusi, baik fungsi induknya selesai secara normal, `return`, ataupun mengalami `panic`.
+**`defer`** adalah kata kunci untuk **menunda eksekusi sebuah pemanggilan fungsi** hingga fungsi induknya selesai dijalankan. Fungsi yang di-_defer_ akan tetap dieksekusi, baik fungsi induknya selesai secara normal, `return`, ataupun mengalami `panic`.
 
-Ini sangat berguna untuk tugas-tugas 'pembersihan' (*cleanup*), seperti menutup file atau koneksi database, agar kita tidak lupa melakukannya.
+Ini sangat berguna untuk tugas-tugas 'pembersihan' (_cleanup_), seperti menutup file atau koneksi database, agar kita tidak lupa melakukannya.
 
 ```go
 func main() {
 	fmt.Println("Membuka file...")
 	// Jadwalkan penutupan file di akhir, apa pun yang terjadi.
-	defer fmt.Println("File ditutup.") 
+	defer fmt.Println("File ditutup.")
 
 	fmt.Println("Membaca isi file...")
 	fmt.Println("Selesai membaca.")
@@ -35,6 +36,7 @@ func main() {
 ```
 
 Output:
+
 ```plaintext
 Membuka file...
 Membaca isi file...
@@ -53,17 +55,19 @@ func main() {
 ```
 
 Output:
+
 ```plaintext
 Tiga
 Dua
 Satu
-``` 
+```
 
 ## `panic` & `recover`: Tombol Darurat dan Jaring Pengaman
 
-Di Go, *error* adalah nilai yang kita tangani secara eksplisit. Tapi, bagaimana jika terjadi kesalahan yang benar-benar fatal dan tak terduga (misalnya, mengakses indeks di luar batas *slice*)? Di sinilah `panic` berperan.
-- `panic`: Menghentikan alur normal program secara tiba-tiba dan mulai 'membuka gulungan' tumpukan panggilan fungsi (*unwinding the stack*).
-- `recover`: Menangkap `panic` tersebut agar program tidak sepenuhnya crash. `recover` hanya efektif jika dipanggil di dalam fungsi yang di-*defer*.
+Di Go, _error_ adalah nilai yang kita tangani secara eksplisit. Tapi, bagaimana jika terjadi kesalahan yang benar-benar fatal dan tak terduga (misalnya, mengakses indeks di luar batas _slice_)? Di sinilah `panic` berperan.
+
+- `panic`: Menghentikan alur normal program secara tiba-tiba dan mulai 'membuka gulungan' tumpukan panggilan fungsi (_unwinding the stack_).
+- `recover`: Menangkap `panic` tersebut agar program tidak sepenuhnya crash. `recover` hanya efektif jika dipanggil di dalam fungsi yang di-_defer_.
 
 Bayangkan `panic` seperti menekan tombol eject darurat di pesawat, dan `recover` adalah parasutnya.
 
@@ -94,20 +98,22 @@ func handlePanic() {
 ```
 
 Output:
+
 ```plaintext
 Mulai program...
 PANIC TERTANGKAP! Pesan: Tidak bisa membagi dengan nol!
 ```
 
-Program tidak *crash*, melainkan ditangkap dengan anggun oleh `handlePanic`.
+Program tidak _crash_, melainkan ditangkap dengan anggun oleh `handlePanic`.
 
 ## `nil`: Memahami Kekosongan di Go
+
 Di banyak bahasa, `null` bisa menjadi sumber masalah. Di Go, konsep ini lebih terkendali. Pertama, penting untuk membedakan Zero Value dan `nil`.
 
-Konsep |	Penjelasan |	Contoh Tipe |
---- | --- | ---
-Zero Value | Nilai default saat variabel dideklarasikan tanpa nilai. Variabel ini ada isinya, hanya saja isinya 'kosong' atau nol. | `int` (0), `string` (""), `bool` (false)
-`nil` | Merepresentasikan ketiadaan nilai atau "tidak menunjuk ke mana-mana". Ini bukan nol atau string kosong. | `pointer`, `slice`, `map`, `channel`, `function`, `interface`
+| Konsep     | Penjelasan                                                                                                            | Contoh Tipe                                                   |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Zero Value | Nilai default saat variabel dideklarasikan tanpa nilai. Variabel ini ada isinya, hanya saja isinya 'kosong' atau nol. | `int` (0), `string` (""), `bool` (false)                      |
+| `nil`      | Merepresentasikan ketiadaan nilai atau "tidak menunjuk ke mana-mana". Ini bukan nol atau string kosong.               | `pointer`, `slice`, `map`, `channel`, `function`, `interface` |
 
 Hanya tipe-tipe tertentu yang bisa bernilai `nil`. Variabel `int` tidak akan pernah bisa `nil`.
 
@@ -142,6 +148,7 @@ func main() {
 ```
 
 ## Type Assertion: Membuka Bungkus `interface{}`
+
 Kita sudah tahu `interface{}` adalah tipe super fleksibel yang bisa menampung nilai apa saja. Tapi, bagaimana cara kita mendapatkan kembali tipe data aslinya dari dalam 'bungkus' `interface{}`? Jawabannya adalah **type assertion**.
 
 Sintaksnya adalah `nilai.(TipeData)`.
@@ -169,6 +176,7 @@ if ok {
 ```
 
 ### `Type Switch` - Cara Elegan untuk Banyak Tipe
+
 Jika ada banyak kemungkinan tipe, cara terbaik adalah menggunakan **type switch**.
 
 ```go
@@ -194,14 +202,16 @@ func main() {
 ```
 
 ## Petualangan Hari Ini Selesai!
+
 Selamat! Kamu baru saja menyelami beberapa konsep yang paling unik dan filosofis dari Go. Memahami mekanisme ini akan membantumu menulis kode yang lebih aman, lebih bersih, dan lebih 'Go-like'.
 
 Singkatnya, hari ini kita sudah belajar:
-- Menjadwalkan eksekusi dengan `defer` untuk *cleanup* yang rapi.
+
+- Menjadwalkan eksekusi dengan `defer` untuk _cleanup_ yang rapi.
 - Menggunakan `panic` dan `recover` untuk menangani kesalahan fatal.
-- Membedakan `nil` dari *zero value* dan cara menanganinya.
+- Membedakan `nil` dari _zero value_ dan cara menanganinya.
 - Menggunakan `type assertion` dan `type switch` untuk bekerja dengan `interface{}`.
 
-Dengan pemahaman ini, kita sekarang benar-benar siap untuk naik kelas ke tahap profesional. Di postingan selanjutnya, kita akan belajar cara menata proyek kita dengan `package` dan menangani error sehari-hari (bukan *panic*) secara idiomatis.
+Dengan pemahaman ini, kita sekarang benar-benar siap untuk naik kelas ke tahap profesional. Di postingan selanjutnya, kita akan belajar cara menata proyek kita dengan `package` dan menangani error sehari-hari (bukan _panic_) secara idiomatis.
 
 <!-- Konsep mana yang paling mencerahkan bagimu hari ini? Bagikan di kolom komentar! -->

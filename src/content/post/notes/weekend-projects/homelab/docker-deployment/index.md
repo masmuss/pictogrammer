@@ -15,18 +15,18 @@ tags: ["tech", "homelab", "devlog", "docker"]
 
 Setelah menghabiskan akhir pekan dengan urusan kabel dan hardening SSH di Proxmox, sekarang saatnya masuk ke bagian yang paling ditunggu: **deployment**. Fokus kali ini adalah menerbangkan **applyst**, aplikasi tracking yang kubangun dengan **Laravel Octane**.
 
-Kenapa Octane? Karena aku butuh performa tinggi dengan *throughput* yang kencang, apalagi aplikasi ini nantinya menangani data tracking yang nyaris *real-time*.
+Kenapa Octane? Karena aku butuh performa tinggi dengan _throughput_ yang kencang, apalagi aplikasi ini nantinya menangani data tracking yang nyaris _real-time_.
 
 ## Drama di Balik Docker & Private Registry
 
-Aku memilih **Docker** karena ingin lingkungan yang konsisten antara laptop Mac dan VM di Proxmox. Tantangan pertama muncul saat menarik image dari **GitHub Container Registry (GHCR)**. Karena image applyst bersifat privat, aku perlu melakukan "handshake" menggunakan *Personal Access Token* (PAT).
+Aku memilih **Docker** karena ingin lingkungan yang konsisten antara laptop Mac dan VM di Proxmox. Tantangan pertama muncul saat menarik image dari **GitHub Container Registry (GHCR)**. Karena image applyst bersifat privat, aku perlu melakukan "handshake" menggunakan _Personal Access Token_ (PAT).
 
 Ada satu pelajaran berharga di sini. Sempat muncul error `permission denied` saat menjalankan Docker. Ternyata, user-ku belum "diwisuda" masuk grup Docker.
 
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
-``` 
+```
 
 `newgrp docker` ini jadi penyelamat instan karena perubahan grup langsung aktif di sesi saat ini, jadi nggak perlu reboot atau keluar-masuk SSH berkali-kali.
 
@@ -54,7 +54,11 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h localhost -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} || exit 1",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -71,13 +75,14 @@ Selalu gunakan tag versi spesifik (seperti `:1.3.0`) daripada `:latest` agar kit
 Ini bagian paling "ajaib". IP publikku di rumah sudah dipakai layanan lain di port 80 dan 443. Kalau pakai port forwarding tradisional, pasti bakal bentrok dan ribet urusan sertifikat SSL.
 
 Solusinya: **Cloudflare Tunnel**.
-Alih-alih membuka port di router, aku memasang `cloudflared` di VM. Tool ini membuat jalur khusus ke Cloudflare secara *outbound*. Di dashboard Cloudflare Zero Trust, bagian Public Hostname aku set ke Service `HTTP` dengan URL `http://localhost:8000`. Hasilnya:
+Alih-alih membuka port di router, aku memasang `cloudflared` di VM. Tool ini membuat jalur khusus ke Cloudflare secara _outbound_. Di dashboard Cloudflare Zero Trust, bagian Public Hostname aku set ke Service `HTTP` dengan URL `http://localhost:8000`. Hasilnya:
 
 - Tidak perlu buka port di router (lebih aman).
 - HTTPS otomatis dari Cloudflare (nggak perlu pusing Certbot).
 - Subdomain `applyst.khoirul.me` langsung mengarah ke port `8000` di VM-ku tanpa bentrok dengan web lain.
 
 ## Maintenance: Update Tanpa Ribet
+
 Proyek yang bagus adalah proyek yang mudah dirawat. Saat ada pembaruan di aplikasi, aku cukup menaikkan versinya lalu menjalankan satu baris perintah "sakti":
 
 ```bash
@@ -85,6 +90,5 @@ docker compose pull && docker compose up -d && docker image prune -f
 ```
 
 Baris ini akan menarik image terbaru, mengganti kontainer lama, lalu membersihkan image "sampah" agar penyimpanan Proxmox nggak cepat penuh.
-
 
 Dari eksperimen weekend ini, aku belajar satu hal penting: deployment yang sehat itu bukan cuma soal aplikasi bisa jalan, tapi juga soal alur operasional yang aman, rapi, dan mudah diulang.

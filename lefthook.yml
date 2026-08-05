@@ -4,9 +4,13 @@
 pre-commit:
   parallel: true
   commands:
-    check:
-      glob: "*.{ts,tsx,js,jsx,astro,svelte,css,json,md,mdx}"
+    biome:
+      glob: "*.{ts,tsx,js,jsx,astro,svelte,css,json}"
       run: PATH="$HOME/.bun/bin:$PATH" bun x biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+
+    prettier:
+      glob: "*.{md,mdx}"
+      run: PATH="$HOME/.bun/bin:$PATH" bun x prettier --write {staged_files}
 
     astro-check:
       glob: "*.{ts,tsx,astro}"

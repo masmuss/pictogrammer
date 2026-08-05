@@ -28,7 +28,9 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "bunx --bun @biomejs/biome lint --write",
-		"format": "bunx --bun @biomejs/biome format --write",
+		"format": "bun run format:biome && bun run format:prettier",
+		"format:biome": "bunx --bun @biomejs/biome format --write",
+		"format:prettier": "bunx prettier --write \"**/*.md\" \"**/*.mdx\"",
 		"check": "astro check",
 		"test": "bun run test:unit:run && CI=true bun run test:e2e",
 		"test:unit": "vitest",
@@ -83,6 +85,7 @@
 		"lefthook": "^2.1.10",
 		"playwright": "^1.62.0",
 		"playwright-core": "^1.62.0",
+		"prettier": "3.9.6",
 		"semantic-release": "^25.0.8",
 		"sharp": "^0.35.3",
 		"vitest": "^4.1.10"

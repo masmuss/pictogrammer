@@ -11,7 +11,7 @@ Di sinilah **Dynamic Routes** berperan. Kita bisa menggunakan "tanda kurung siku
 
 ## Langkah 1: Membuat File dengan Parameter
 
-Buatlah file di `src/pages/blog/[...id].astro`. 
+Buatlah file di `src/pages/blog/[...id].astro`.
 Penggunaan `[...id]` (rest parameter) memungkinkan kita menangkap path yang lebih fleksibel, terutama saat menggunakan **Content Layer** di Astro versi terbaru.
 
 ## Langkah 2: Menggunakan `getStaticPaths()`
@@ -71,6 +71,7 @@ const { Content } = await render(post);
 3. **Optimasi Otomatis**: Setiap halaman hasil generate tetap mendapatkan semua keuntungan Astro (Zero JS, Fast Loading).
 
 ## Mental Model
+
 Bayangkan Dynamic Route sebagai sebuah **stempel**. Kamu punya satu stempel (file template), dan kamu punya banyak tinta/warna (data). Kamu tinggal menekankan stempel itu ke setiap data untuk membuat halaman baru.
 
 Di tulisan berikutnya, kita akan kembali menyentuh sisi "hidup" dari web: **Island Architecture in Action**. Kita akan coba memasukkan komponen React ke dalam Astro kita!

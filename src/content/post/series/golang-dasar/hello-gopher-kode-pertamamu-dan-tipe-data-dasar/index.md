@@ -5,7 +5,7 @@ date: 2 August 2025
 tags: ["tech", "golang"]
 ---
 
-Selamat datang kembali di seri **Becoming Gopher**! Jika kamu sudah [mengikuti bagian pertama](./from-zero-menyiapkan-arena-ngoding-go), itu artinya 'arena' kita sudah siap tempur. Go sudah terpasang, *code editor* sudah siap, dan sebuah modul kosong menanti untuk kita isi. *Well done*!
+Selamat datang kembali di seri **Becoming Gopher**! Jika kamu sudah [mengikuti bagian pertama](./from-zero-menyiapkan-arena-ngoding-go), itu artinya 'arena' kita sudah siap tempur. Go sudah terpasang, _code editor_ sudah siap, dan sebuah modul kosong menanti untuk kita isi. _Well done_!
 
 Bayangkan di postingan sebelumnya kita baru saja mengemas ransel, memeriksa peta, dan tiba di kaki gunung. Hari ini, kita akan benar-benar mengambil langkah pertama di jalur pendakian. Kita akan meninggalkan jejak pertama kita di dunia Go.
 
@@ -15,7 +15,7 @@ Di bagian kedua ini, kita akan melakukan tiga hal fundamental yang akan menjadi 
 2. Mengenal Bahan Dasar: Kita akan belajar bagaimana Go 'memahami' berbagai jenis informasi, seperti teks (`string`), angka (`int`), dan logika benar-salah (`bool`).
 3. Memberi Nama pada Data: Kita akan belajar cara menyimpan informasi-informasi tersebut menggunakan 'wadah' bernama `variabel` dan `konstanta`.
 
-Siap untuk menulis baris kodemu yang pertama dan secara resmi memulai perjalananmu menjadi seorang Gopher? Buka *code editor*-mu, dan mari kita mulai!
+Siap untuk menulis baris kodemu yang pertama dan secara resmi memulai perjalananmu menjadi seorang Gopher? Buka _code editor_-mu, dan mari kita mulai!
 
 ## Hello World !
 
@@ -80,7 +80,7 @@ Oke, program pertama kita berhasil berjalan! Tapi, saat belajar, kita sering mem
 
 ## Multiple `main` function
 
-Bayangkan setiap *package* `main` adalah sebuah kapal. Sebuah kapal hanya bisa punya satu kapten yang meneriakkan perintah 'Jalan!', yaitu fungsi `main()`. Jika ada dua kapten di kapal yang sama, para kru (`compiler`) akan bingung dan menolak untuk berlayar.
+Bayangkan setiap _package_ `main` adalah sebuah kapal. Sebuah kapal hanya bisa punya satu kapten yang meneriakkan perintah 'Jalan!', yaitu fungsi `main()`. Jika ada dua kapten di kapal yang sama, para kru (`compiler`) akan bingung dan menolak untuk berlayar.
 
 Di Go, nama fungsi yang diekspor (diawali huruf kapital) harus unik dalam **satu package**. Secara khusus, kalian tidak bisa mendeklarasikan lebih dari satu fungsi `main()` di dalam **package `main`**, karena itu akan menyebabkan konflik saat kompilasi.
 
@@ -103,30 +103,30 @@ Di dalam Golang, ada dua tipe data number:
 
 Meskipun integer adalah adalah bilangan bulat, tapi dibagi lagi menjadi beberapa tipe data lagi lebih spesifik seperti di tabel dibawah.
 
-| Tipe Data | Nilai Minimum | Nilai Maksimum |
-| --- | --- | --- |
-| `int8` | -128 | 127 |
-| `int16` | -32768 | 32767 |
-| `int32` | -2147483648 | 2147483647 |
-| `int64` | -9223372036854775808 | 9223372036854775807 |
+| Tipe Data | Nilai Minimum        | Nilai Maksimum      |
+| --------- | -------------------- | ------------------- |
+| `int8`    | -128                 | 127                 |
+| `int16`   | -32768               | 32767               |
+| `int32`   | -2147483648          | 2147483647          |
+| `int64`   | -9223372036854775808 | 9223372036854775807 |
 
 Selain itu juga ada tipe data untuk bilangan bulat yang **non-negatif** seperti pada tabel dibawah.
 
-| Tipe Data | Nilai Minimum | Nilai Maksimum |
-| --- | --- | --- |
-| `uint8` | 0 | 255 |
-| `uint16` | 0 | 65535 |
-| `uint32` | 0 | 4294967295 |
-| `uint64` | 0 | 18446744073709551615 |
+| Tipe Data | Nilai Minimum | Nilai Maksimum       |
+| --------- | ------------- | -------------------- |
+| `uint8`   | 0             | 255                  |
+| `uint16`  | 0             | 65535                |
+| `uint32`  | 0             | 4294967295           |
+| `uint64`  | 0             | 18446744073709551615 |
 
-Kemudian ada juga tipe data *floating point* atau desimal, rincian masing-masing ada di tabel dibawah.
+Kemudian ada juga tipe data _floating point_ atau desimal, rincian masing-masing ada di tabel dibawah.
 
-| Tipe Data | Nilai Minimum | Nilai Maksimum |
-| --- | --- | --- |
-| `float32` | 1.18×10^−38 | 3.4×10^38 |
-| `float64` | 2.23×10^−308 | 1.80×10^308 |
-| `complex64` | complex numbers with float32 real and imaginary parts. |  |
-| `complex128` | complex numbers with float64 real and imaginary parts. |  |
+| Tipe Data    | Nilai Minimum                                          | Nilai Maksimum |
+| ------------ | ------------------------------------------------------ | -------------- |
+| `float32`    | 1.18×10^−38                                            | 3.4×10^38      |
+| `float64`    | 2.23×10^−308                                           | 1.80×10^308    |
+| `complex64`  | complex numbers with float32 real and imaginary parts. |                |
+| `complex128` | complex numbers with float64 real and imaginary parts. |                |
 
 :::note
 Tipe data `complex*` jarang digunakan, khususnya untuk aplikasi sederhana. Kecuali aplikasi yang dibuat membutuhkan operasi matematis kompleks.
@@ -134,12 +134,12 @@ Tipe data `complex*` jarang digunakan, khususnya untuk aplikasi sederhana. Kecua
 
 Selain itu juga ada Alias. Alias adalah nama lain yang bisa digunakan untuk menggantikan pemanggilan tipe data `number` sebelumnya.
 
-| Tipe Data | Alias untuk |
-| --- | --- |
-| `byte` | uint8 |
-| `rune` | int32 |
-| `int` | Minimal int32 |
-| `uint` | Minimal uint32 |
+| Tipe Data | Alias untuk    |
+| --------- | -------------- |
+| `byte`    | uint8          |
+| `rune`    | int32          |
+| `int`     | Minimal int32  |
+| `uint`    | Minimal uint32 |
 
 :::note
 Semakin besar tipe data yang digunakan, semakin besar pula ukuran memori yang digunakan. **Jadi gunakan tipe data sesuai data yang disimpan.**
@@ -149,10 +149,10 @@ Semakin besar tipe data yang digunakan, semakin besar pula ukuran memori yang di
 
 Tipe data boolean adalah tipe data yang hanya memiliki dua nilai, yaitu **benar** dan **salah**. Di Golang, keyword tipe data boolean adalah `bool`.
 
-| Nilai | Keterangan |
-| --- | --- |
-| `true` | benar |
-| `false` | salah |
+| Nilai   | Keterangan |
+| ------- | ---------- |
+| `true`  | benar      |
+| `false` | salah      |
 
 ### String
 
@@ -160,10 +160,10 @@ String adalah tipe data kumpulan tipe data kumpulan karakter, mulai dari kosong 
 
 Ada beberapa operasi yang bisa dilakukan pada tipe data `string`:
 
-| Fungsi | Keterangan | Output |
-| --- | --- | --- |
-| `len("string")` | menghitung jumlah karakter **termasuk spasi** | 6 |
-| `"string"[0]`  | mengambil nilai **byte** dari karakter pada posisi yang ditentukan (dalam format UTF-8). | 115 |
+| Fungsi          | Keterangan                                                                               | Output |
+| --------------- | ---------------------------------------------------------------------------------------- | ------ |
+| `len("string")` | menghitung jumlah karakter **termasuk spasi**                                            | 6      |
+| `"string"[0]`   | mengambil nilai **byte** dari karakter pada posisi yang ditentukan (dalam format UTF-8). | 115    |
 
 ## Variabel
 
@@ -181,11 +181,11 @@ import "fmt"
 func main() {
 	// inisialisasi variabel dengan tipe data int8
 	var age int8
-	
+
 	// mengubah nilai variabel age
 	age = 20
 	fmt.Println(age) // 20
-	
+
 	age = 30
 	fmt.Println(age) // 30
 }
@@ -200,7 +200,7 @@ fmt.Println(name) // John Doe
 
 ### Keyword `var`
 
-Keyword `var` pada saat membuat variabel di golang tidaklah wajib, asalkan saat membuat variabel kita langsung mendefinisikan nilainya. 
+Keyword `var` pada saat membuat variabel di golang tidaklah wajib, asalkan saat membuat variabel kita langsung mendefinisikan nilainya.
 
 Untuk menggantikan keyword `var`, kita harus menggunakan simbol titik dua dan sama dengan (`:=`) yang menggantikan sama dengan (`=`).
 
@@ -209,7 +209,7 @@ address := "123 Main St"
 fmt.Println(address) // 123 Main St
 ```
 
-### Deklarasi *multiple variable*
+### Deklarasi _multiple variable_
 
 Di Golang, membuat beberapa variabel sangat memungkinkan. Ini dapat membuat kode yang ditulis jauh lebih bersih dan mudah dibaca
 
@@ -218,7 +218,7 @@ var (
 	city    = "Surabaya"
 	country = "Indonesia"
 )
-	
+
 fmt.Println(city, country) // Surabaya Indonesia
 ```
 
@@ -273,13 +273,14 @@ func main() {
 }
 ```
 
-Meskipun di belakang layar `NoKTP` dan `Email` adalah `string`, penggunaan *type declaration* membuat maksud dari variabel tersebut menjadi jauh lebih jelas.
+Meskipun di belakang layar `NoKTP` dan `Email` adalah `string`, penggunaan _type declaration_ membuat maksud dari variabel tersebut menjadi jauh lebih jelas.
 
 ## Petualangan Hari Ini Selesai!
 
 Wow, selamat! Kamu sudah melewati salah satu bagian terpenting dalam perjalanan "Becoming Gopher". Hari ini kita tidak hanya berhasil membuat program Go pertama kita, tapi juga sudah berkenalan dengan cara Go melihat dan menyimpan berbagai jenis data.
 
 Secara singkat, kita sudah belajar:
+
 - Menjalankan program Go dengan `go run`.
 - Aturan dasar fungsi `main` dalam sebuah package.
 - Tipe data fundamental: Angka (`int`, `float`), Logika (`bool`), dan Teks (`string`).
