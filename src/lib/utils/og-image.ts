@@ -69,92 +69,68 @@ function truncateText(text: string, maxLength: number) {
 function buildOgMarkup({
 	title,
 	description,
-	logoBase64
+	logoBase64,
+	category,
+	date,
+	readTime,
+	author,
+	authorInitials,
+	domain
 }: {
 	title: string;
 	description: string;
 	logoBase64: string;
+	category?: string;
+	date?: string;
+	readTime?: string;
+	author?: string;
+	authorInitials?: string;
+	domain?: string;
 }) {
+	const footerMeta = [date, readTime].filter(Boolean).join(" · ");
+	const catStyle = category
+		? "padding: 7px 18px; border: 1px solid #3f3f46; border-radius: 9999px; font-size: 16px; color: #a1a1aa;"
+		: "";
+	const avatarStyle = authorInitials
+		? "display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: #ffffff; border-radius: 9999px; color: #000000; font-weight: 600; font-size: 16px;"
+		: "display: flex;";
+
 	return html`
 		<div
 			style="
-				height: 100%;
-				width: 100%;
 				display: flex;
 				flex-direction: column;
-				align-items: flex-start;
 				justify-content: space-between;
+				width: 100%;
+				height: 100%;
 				background-color: #18181b;
 				color: #f4f4f5;
-				font-family: '${OG_FONT_NAME}';
-				padding: 80px;
-				position: relative;
+				font-family: ${OG_FONT_NAME};
+				padding: 64px;
 			"
 		>
-			<div
-				style="
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					display: flex;
-					background-image: radial-gradient(circle at 25px 25px, #27272a 2%, transparent 0%), radial-gradient(circle at 75px 75px, #27272a 2%, transparent 0%);
-					background-size: 100px 100px;
-					opacity: 0.2;
-				"
-			></div>
-
-			<div style="display: flex; flex-direction: row; align-items: center;">
-				<img
-					src="${logoBase64}"
-					style="width: 48px; height: 48px; margin-right: 16px;"
-				/>
-				<span style="font-size: 24px; font-weight: 400; opacity: 0.8;"
-					>${siteConfig.title}</span
-				>
-			</div>
-
-			<div
-				style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; width: 100%;"
-			>
-				<h1
-					style="
-						font-size: 60px;
-						font-weight: 700;
-						line-height: 1.1;
-						margin: 0 0 24px 0;
-						overflow: hidden;
-						display: -webkit-box;
-						-webkit-line-clamp: 3;
-						-webkit-box-orient: vertical;
-						text-overflow: ellipsis;
-					"
-				>
-					${title}
-				</h1>
-
-				<div
-					style="
-						font-size: 28px;
-						line-height: 1.5;
-						opacity: 0.7;
-						margin: 0;
-						overflow: hidden;
-						display: -webkit-box;
-						-webkit-line-clamp: 3;
-						-webkit-box-orient: vertical;
-						text-overflow: ellipsis;
-					"
-				>
-					${description}
+			<div style="display: flex; align-items: center; justify-content: space-between;">
+				<div style="display: flex; align-items: center; gap: 12px;">
+					<img src="${logoBase64}" style="width: 48px; height: 48px; border-radius: 8px;" />
+					<span style="font-size: 24px; font-weight: 600;">${siteConfig.title}</span>
 				</div>
+				<span style="${catStyle}">${category || ""}</span>
 			</div>
 
-			<div style="display: flex; flex-direction: row; align-items: center;">
-				<span style="font-size: 24px; opacity: 0.6;"
-					>by ${siteConfig.author}</span
-				>
+			<div style="display: flex; flex-direction: column;">
+				<h1 style="display: flex; font-size: 60px; font-weight: 800; line-height: 1.1; margin: 0 0 20px 0;">${title}</h1>
+				<div style="display: flex; font-size: 20px; color: #a1a1aa; line-height: 1.6; max-width: 720px;">${description}</div>
+			</div>
+
+			<div style="display: flex; align-items: center; justify-content: space-between;">
+				<div style="display: flex; align-items: center; gap: 12px;">
+					<div style="${avatarStyle}">${authorInitials || ""}</div>
+					<div style="display: flex; flex-direction: column;">
+						<div style="display: flex; font-weight: 600; font-size: 18px; line-height: 1.3;">${author || ""}</div>
+						<div style="display: flex; font-size: 16px; color: #71717a; line-height: 1.3;">${footerMeta}</div>
+					</div>
+				</div>
+				<span style="color: #71717a; font-size: 16px;">${domain || ""}</span>
 			</div>
 		</div>
 	`;
@@ -164,12 +140,24 @@ type CreateOgImageResponseOptions = {
 	title: string;
 	description?: string;
 	decodeEntities?: boolean;
+	category?: string;
+	date?: string;
+	readTime?: string;
+	author?: string;
+	authorInitials?: string;
+	domain?: string;
 };
 
 export async function createOgImageResponse({
 	title,
 	description = "",
-	decodeEntities = false
+	decodeEntities = false,
+	category,
+	date,
+	readTime,
+	author,
+	authorInitials,
+	domain
 }: CreateOgImageResponseOptions) {
 	const safeTitle = decodeEntities ? decodeHtmlEntities(title) : title;
 	const safeDescription = decodeEntities
@@ -205,7 +193,13 @@ export async function createOgImageResponse({
 	const markup = buildOgMarkup({
 		title: safeTitle,
 		description: clampedDescription,
-		logoBase64
+		logoBase64,
+		category,
+		date,
+		readTime,
+		author,
+		authorInitials,
+		domain
 	});
 
 	return satoriAstroOG({
