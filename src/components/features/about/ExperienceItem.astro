@@ -1,15 +1,13 @@
 ---
-import { cn } from "@/lib/utils";
 import { calculateDuration } from "@/lib/utils/date";
 import type { Experience } from "@/types";
 import ExperienceSkillPills from "./ExperienceSkillPills.astro";
 
 interface Props {
 	experience: Experience;
-	isLast?: boolean;
 }
 
-const { experience, isLast = false } = Astro.props;
+const { experience } = Astro.props;
 const duration = calculateDuration(experience.period);
 ---
 
