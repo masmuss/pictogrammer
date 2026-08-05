@@ -9,27 +9,59 @@
 	"languages": {
 		"Astro": {
 			"formatter": {
-				"external": {
-					"command": "node_modules/.bin/biome",
-					"arguments": [
-						"format",
-						"--write",
-						"--stdin-file-path",
-						"{buffer_path}"
-					]
+				"language_server": {
+					"name": "biome"
 				}
 			},
 			"language_servers": [
 				"astro-language-server",
 				"tailwindcss-language-server",
 				"biome"
-			]
+			],
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		},
+		"CSS": {
+			"formatter": {
+				"language_server": {
+					"name": "biome"
+				}
+			},
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		},
+		"Svelte": {
+			"formatter": {
+				"language_server": {
+					"name": "biome"
+				}
+			}
 		},
 		"TypeScript": {
-			"language_servers": ["biome"]
+			"formatter": {
+				"language_server": {
+					"name": "biome"
+				}
+			},
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
 		},
 		"TSX": {
-			"language_servers": ["biome"]
+			"formatter": {
+				"language_server": {
+					"name": "biome"
+				}
+			},
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
 		}
 	},
 	"lsp": {
