@@ -1,3 +1,11 @@
+# [1.30.0](https://github.com/masmuss/pictogrammer/compare/v1.29.0...v1.30.0) (2026-08-05)
+
+
+### Features
+
+* **og-image:** localize fonts and improve error handling ([193c9f9](https://github.com/masmuss/pictogrammer/commit/193c9f9bd9d3b587fbe7d8d38103e7e353c118e0))
+* **zed:** add editor task configurations for common development ([63dee59](https://github.com/masmuss/pictogrammer/commit/63dee594a66a8a9998c7d5512267cdf1e0b615a8))
+
 # [1.29.0](https://github.com/masmuss/pictogrammer/compare/v1.28.0...v1.29.0) (2026-08-04)
 
 
