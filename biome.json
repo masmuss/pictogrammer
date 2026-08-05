@@ -59,13 +59,23 @@
 	},
 	"vcs": {
 		"clientKind": "git",
-		"enabled": false,
+		"enabled": true,
 		"useIgnoreFile": true
 	},
 	"css": {
 		"parser": {
 			"tailwindDirectives": true
 		}
+	},
+	"files": {
+		"includes": [
+			"**",
+			"!coverage",
+			"!public",
+			"!**/.cache",
+			"!**/*.min.js",
+			"!bun.lock"
+		]
 	},
 	"overrides": [
 		{
