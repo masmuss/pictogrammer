@@ -33,6 +33,17 @@
 		@apply focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms;
+			animation-iteration-count: 1;
+			transition-duration: 0.01ms;
+			scroll-behavior: auto;
+		}
+	}
+
 	html.theme-transitioning *,
 	html.theme-transitioning *::before,
 	html.theme-transitioning *::after {
@@ -45,19 +56,10 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		*,
-		*::before,
-		*::after {
-			animation-duration: 0.01ms;
-			animation-iteration-count: 1;
-			transition-duration: 0.01ms;
-			scroll-behavior: auto;
-		}
-	}
-
-	@media (hover: none) {
-		a:hover,
-		button:hover {
+		html.theme-transitioning *,
+		html.theme-transitioning *::before,
+		html.theme-transitioning *::after {
+			transition: none;
 		}
 	}
 
