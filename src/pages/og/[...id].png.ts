@@ -2,7 +2,7 @@ import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site-config";
 import { getReadTimeCount } from "@/lib/contents";
-import { createOgImageResponse, getAuthorInitials } from "@/lib/utils/og-image";
+import { createOgImageResponse, getAuthorInitials } from "@/lib/utils/og";
 import { getPostRouteId } from "@/lib/utils/post-route";
 
 export const prerender = true;
