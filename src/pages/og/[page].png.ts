@@ -1,14 +1,8 @@
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site-config";
-import { createOgImageResponse } from "@/lib/utils/og-image";
+import { createOgImageResponse, getAuthorInitials } from "@/lib/utils/og-image";
 
 export const prerender = true;
-
-const authorInitials = siteConfig.author
-	.split(" ")
-	.filter((_, i, arr) => i === 0 || i === arr.length - 1)
-	.map((n) => n[0])
-	.join("");
 
 export async function getStaticPaths() {
 	return Object.entries(siteConfig.ogPages).map(([page, og]) => ({
@@ -27,7 +21,7 @@ export async function GET({ props }: APIContext) {
 		title,
 		description,
 		author: siteConfig.author,
-		authorInitials,
+		authorInitials: getAuthorInitials(siteConfig.author),
 		domain: "khoirul.me"
 	});
 }

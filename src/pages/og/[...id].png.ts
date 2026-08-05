@@ -2,7 +2,7 @@ import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site-config";
 import { getReadTimeCount } from "@/lib/contents";
-import { createOgImageResponse } from "@/lib/utils/og-image";
+import { createOgImageResponse, getAuthorInitials } from "@/lib/utils/og-image";
 import { getPostRouteId } from "@/lib/utils/post-route";
 
 export const prerender = true;
@@ -21,11 +21,6 @@ export async function GET({ props }: APIContext) {
 	const readTime = props.body
 		? `${getReadTimeCount(props.body)} min read`
 		: undefined;
-	const authorInitials = siteConfig.author
-		.split(" ")
-		.filter((_, i, arr) => i === 0 || i === arr.length - 1)
-		.map((n) => n[0])
-		.join("");
 
 	return createOgImageResponse({
 		title,
@@ -39,7 +34,7 @@ export async function GET({ props }: APIContext) {
 		}),
 		readTime,
 		author: siteConfig.author,
-		authorInitials,
+		authorInitials: getAuthorInitials(siteConfig.author),
 		domain: "khoirul.me"
 	});
 }

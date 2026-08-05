@@ -66,6 +66,14 @@ function truncateText(text: string, maxLength: number) {
 	return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 }
 
+export function getAuthorInitials(name: string) {
+	return name
+		.split(" ")
+		.filter((_, i, arr) => i === 0 || i === arr.length - 1)
+		.map((n) => n[0])
+		.join("");
+}
+
 function buildOgMarkup({
 	title,
 	description,
