@@ -59,7 +59,7 @@
 	},
 	"vcs": {
 		"clientKind": "git",
-		"enabled": true,
+		"enabled": false,
 		"useIgnoreFile": true
 	},
 	"css": {
