@@ -1,14 +1,13 @@
 name: CI/CD
 
 on:
+  pull_request:
   push:
     branches: [main]
     paths-ignore:
       - "**.md"
       - "docs/**"
       - "LICENSE"
-  pull_request:
-    branches: [main, develop]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -46,22 +45,18 @@ jobs:
         if: steps.deps-cache.outputs.cache-hit != 'true'
         run: bun install --frozen-lockfile
 
-      # ── Parallel quality checks ──────────────────────────
-      - name: Lint, format, typecheck & unit tests
-        run: |
-          set -e
-          bun run lint &                LINT=$!
-          bunx biome format . &         FMT=$!
-          bun run check &               CHECK=$!
-          bun run test:unit:run &       UNIT=$!
+      # ── Quality checks ──────────────────────────
+      - name: Biome (lint & format)
+        run: bun x biome ci .
 
-          FAIL=0
-          wait $LINT  || { echo "::error::Lint failed"; FAIL=1; }
-          wait $FMT   || { echo "::error::Format check failed"; FAIL=1; }
-          wait $CHECK || { echo "::error::Typecheck failed"; FAIL=1; }
-          wait $UNIT  || { echo "::error::Unit tests failed"; FAIL=1; }
+      - name: Prettier (prettier)
+        run: bun x prettier --check "**/*.md" "**/*.mdx"
 
-          [ $FAIL -eq 0 ] || exit 1
+      - name: Typecheck
+        run: bun run check
+
+      - name: Unit Test
+        run: bun run test:unit:run
 
       # ── Playwright setup ─────────────────────────────────
       - name: Get Playwright version
