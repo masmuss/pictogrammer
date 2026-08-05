@@ -1,0 +1,99 @@
+[
+	{
+		"label": "Start dev server (astro --host)",
+		"command": "bun",
+		"args": ["run", "dev"],
+		"cwd": "$ZED_DIRNAME",
+		"use_new_terminal": true,
+		"reveal": "no_focus",
+		"allow_concurrent_runs": true
+	},
+	{
+		"label": "Build production site",
+		"command": "bun",
+		"args": ["run", "build"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Preview production build locally",
+		"command": "bun",
+		"args": ["run", "preview"],
+		"cwd": "$ZED_DIRNAME",
+		"use_new_terminal": true,
+		"reveal": "no_focus"
+	},
+	{
+		"label": "Type-check with Astro",
+		"command": "bun",
+		"args": ["run", "check"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success"
+	},
+	{
+		"label": "Lint & auto-fix with Biome",
+		"command": "bun",
+		"args": ["run", "lint"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Format code with Biome",
+		"command": "bun",
+		"args": ["run", "format"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Run all tests (unit + e2e)",
+		"command": "bun",
+		"args": ["run", "test"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Run unit tests (watch mode)",
+		"command": "bun",
+		"args": ["run", "test:unit"],
+		"cwd": "$ZED_DIRNAME",
+		"use_new_terminal": true,
+		"reveal": "no_focus",
+		"allow_concurrent_runs": true
+	},
+	{
+		"label": "Run unit tests (single run)",
+		"command": "bun",
+		"args": ["run", "test:unit:run"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Run e2e tests with Playwright",
+		"command": "bun",
+		"args": ["run", "test:e2e"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Run e2e tests & update visual snapshots",
+		"command": "bun",
+		"args": ["run", "test:e2e:update"],
+		"cwd": "$ZED_DIRNAME",
+		"hide": "on_success",
+		"save": "all"
+	},
+	{
+		"label": "Run e2e tests with Playwright UI",
+		"command": "bun",
+		"args": ["run", "test:e2e:ui"],
+		"cwd": "$ZED_DIRNAME",
+		"use_new_terminal": true,
+		"reveal": "no_focus"
+	}
+]
