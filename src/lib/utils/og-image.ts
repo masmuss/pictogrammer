@@ -97,10 +97,10 @@ function buildOgMarkup({
 }) {
 	const footerMeta = [date, readTime].filter(Boolean).join(" · ");
 	const catStyle = category
-		? "padding: 7px 18px; border: 1px solid #3f3f46; border-radius: 9999px; font-size: 16px; color: #a1a1aa;"
+		? "padding: 7px 18px; border: 1px solid #3f3f46; border-radius: 9999px; font-size: 24px; color: #a1a1aa;"
 		: "";
 	const avatarStyle = authorInitials
-		? "display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: #ffffff; border-radius: 9999px; color: #000000; font-weight: 600; font-size: 16px;"
+		? "display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: #ffffff; border-radius: 9999px; color: #000000; font-weight: 600; font-size: 18px;"
 		: "display: flex;";
 
 	return html`
@@ -118,8 +118,8 @@ function buildOgMarkup({
 			"
 		>
 			<div style="display: flex; align-items: center; justify-content: space-between;">
-				<div style="display: flex; align-items: center; gap: 12px;">
-					<img src="${logoBase64}" style="width: 48px; height: 48px; border-radius: 8px;" />
+				<div style="display: flex; align-items: center; gap: 14px;">
+					<img src="${logoBase64}" style="width: 60px; height: 60px; border-radius: 8px;" />
 					<span style="font-size: 24px; font-weight: 600;">${siteConfig.title}</span>
 				</div>
 				<span style="${catStyle}">${category || ""}</span>
@@ -127,18 +127,18 @@ function buildOgMarkup({
 
 			<div style="display: flex; flex-direction: column;">
 				<h1 style="display: flex; font-size: 60px; font-weight: 800; line-height: 1.1; margin: 0 0 20px 0;">${title}</h1>
-				<div style="display: flex; font-size: 20px; color: #a1a1aa; line-height: 1.6; max-width: 720px;">${description}</div>
+				<div style="display: flex; font-size: 24px; color: #a1a1aa; line-height: 1.6; max-width: 720px;">${description}</div>
 			</div>
 
 			<div style="display: flex; align-items: center; justify-content: space-between;">
-				<div style="display: flex; align-items: center; gap: 12px;">
+				<div style="display: flex; align-items: center; gap: 14px;">
 					<div style="${avatarStyle}">${authorInitials || ""}</div>
 					<div style="display: flex; flex-direction: column;">
-						<div style="display: flex; font-weight: 600; font-size: 18px; line-height: 1.3;">${author || ""}</div>
-						<div style="display: flex; font-size: 16px; color: #71717a; line-height: 1.3;">${footerMeta}</div>
+						<div style="display: flex; font-weight: 600; font-size: 24px; line-height: 1.3;">${author || ""}</div>
+						<div style="display: flex; font-size: 20px; color: #71717a; line-height: 1.3;">${footerMeta}</div>
 					</div>
 				</div>
-				<span style="color: #71717a; font-size: 16px;">${domain || ""}</span>
+				<span style="color: #71717a; font-size: 24px;">${domain || ""}</span>
 			</div>
 		</div>
 	`;
