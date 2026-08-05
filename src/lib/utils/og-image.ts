@@ -1,8 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { satoriAstroOG } from "satori-astro";
 import { html } from "satori-html";
 import siteConfig from "@/config/site-config";
+import { renderOgResponse } from "./render-og-image";
 
 const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
@@ -210,11 +210,10 @@ export async function createOgImageResponse({
 		domain
 	});
 
-	return satoriAstroOG({
+	return renderOgResponse({
 		template: markup,
 		width: OG_WIDTH,
-		height: OG_HEIGHT
-	}).toResponse({
+		height: OG_HEIGHT,
 		satori: {
 			fonts: [
 				{
