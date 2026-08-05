@@ -1,3 +1,11 @@
+# [1.31.0](https://github.com/masmuss/pictogrammer/compare/v1.30.0...v1.31.0) (2026-08-05)
+
+
+### Features
+
+* **og:** add author and domain to OG image response ([21ecff3](https://github.com/masmuss/pictogrammer/commit/21ecff3354d300d088cbf11d26f0bd51da420f3e))
+* **og:** enhance OG images with category, author, and metadata ([28e3203](https://github.com/masmuss/pictogrammer/commit/28e32034fb337a1bb2cd3057cbf88bac5c271054))
+
 # [1.30.0](https://github.com/masmuss/pictogrammer/compare/v1.29.0...v1.30.0) (2026-08-05)
 
 
