@@ -9,11 +9,15 @@ const OG_HEIGHT = 630;
 const DESCRIPTION_MAX_LENGTH = 200;
 const OG_FONT_NAME = "iA Writer Quattro";
 
-const FONT_URLS = {
-	normal:
-		"https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-400-normal.ttf",
-	bold: "https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-quattro@latest/latin-700-normal.ttf"
-} as const;
+const FONTS_DIR = join(process.cwd(), "src", "assets", "fonts");
+const FONT_NORMAL_PATH = join(
+	FONTS_DIR,
+	"ia-writer-quattro-latin-400-normal.ttf"
+);
+const FONT_BOLD_PATH = join(
+	FONTS_DIR,
+	"ia-writer-quattro-latin-700-normal.ttf"
+);
 
 const LOGO_PATH = join(
 	process.cwd(),
@@ -23,10 +27,12 @@ const LOGO_PATH = join(
 	"logo-dark.svg"
 );
 
-const fontNormalPromise = fetch(FONT_URLS.normal).then((res) =>
-	res.arrayBuffer()
+const fontNormalPromise = readFile(FONT_NORMAL_PATH).then((buf) =>
+	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength)
 );
-const fontBoldPromise = fetch(FONT_URLS.bold).then((res) => res.arrayBuffer());
+const fontBoldPromise = readFile(FONT_BOLD_PATH).then((buf) =>
+	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength)
+);
 const logoBase64Promise = readFile(LOGO_PATH).then(
 	(logoBuffer) => `data:image/svg+xml;base64,${logoBuffer.toString("base64")}`
 );
@@ -42,17 +48,15 @@ function decodeHtmlEntities(text: string) {
 				lt: "<",
 				gt: ">",
 				quot: '"',
-				nbsp: "\u00A0"
+				nbsp: "\u00A0",
+				mdash: "\u2014",
+				hellip: "\u2026"
 			};
-			if (entities[entity]) {
-				return entities[entity];
-			}
-			if (entity.startsWith("#x")) {
+			if (entities[entity]) return entities[entity];
+			if (entity.startsWith("#x"))
 				return String.fromCharCode(Number.parseInt(entity.slice(2), 16));
-			}
-			if (entity.startsWith("#")) {
+			if (entity.startsWith("#"))
 				return String.fromCharCode(Number.parseInt(entity.slice(1), 10));
-			}
 			return match;
 		}
 	);
@@ -176,11 +180,27 @@ export async function createOgImageResponse({
 		DESCRIPTION_MAX_LENGTH
 	);
 
-	const [fontNormal, fontBold, logoBase64] = await Promise.all([
+	const results = await Promise.allSettled([
 		fontNormalPromise,
 		fontBoldPromise,
 		logoBase64Promise
 	]);
+
+	const [fontNormalResult, fontBoldResult, logoResult] = results;
+
+	if (fontNormalResult.status === "rejected") {
+		throw new Error(`Failed to load font normal: ${fontNormalResult.reason}`);
+	}
+	if (fontBoldResult.status === "rejected") {
+		throw new Error(`Failed to load font bold: ${fontBoldResult.reason}`);
+	}
+	if (logoResult.status === "rejected") {
+		throw new Error(`Failed to load logo: ${logoResult.reason}`);
+	}
+
+	const fontNormal = fontNormalResult.value;
+	const fontBold = fontBoldResult.value;
+	const logoBase64 = logoResult.value;
 
 	const markup = buildOgMarkup({
 		title: safeTitle,
