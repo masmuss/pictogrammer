@@ -17,7 +17,7 @@
 	function setTheme(newTheme) {
 		if (newTheme !== "light" && newTheme !== "dark") {
 			return console.warn(
-				`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`
+				`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`,
 			);
 		}
 
@@ -55,7 +55,7 @@
 	});
 
 	darkModePref.addEventListener("change", (e) =>
-		setTheme(e.matches ? "dark" : "light")
+		setTheme(e.matches ? "dark" : "light"),
 	);
 
 	// Global Keyboard shortcut 'd' to toggle theme
@@ -70,10 +70,10 @@
 		if (!isInput && (e.key === "d" || e.key === "D")) {
 			const isDark = document.documentElement.classList.contains("dark");
 			const newTheme = isDark ? "light" : "dark";
-			
+
 			// Dispatch event so ThemeToggle and other components can sync
 			const themeChangeEvent = new CustomEvent("theme-change", {
-				detail: { theme: newTheme }
+				detail: { theme: newTheme },
 			});
 			document.dispatchEvent(themeChangeEvent);
 		}

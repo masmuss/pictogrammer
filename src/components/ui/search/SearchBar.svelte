@@ -1,12 +1,12 @@
 <script lang="ts">
-import Icon from "@iconify/svelte";
-import type { createSearch } from "./search-state.svelte";
+	import Icon from "@iconify/svelte";
+	import type { createSearch } from "./search-state.svelte";
 
-let { search }: { search: ReturnType<typeof createSearch> } = $props();
+	let { search }: { search: ReturnType<typeof createSearch> } = $props();
 </script>
 
 <div class="border-border relative flex items-center border-b px-4">
-    <Icon icon="ph:magnifying-glass" class="text-muted-foreground" />
+	<Icon icon="ph:magnifying-glass" class="text-muted-foreground" />
 	<input
 		bind:this={search.searchInput}
 		bind:value={search.query}

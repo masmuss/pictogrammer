@@ -11,36 +11,36 @@ const { wide = false, ...head } = Astro.props;
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <BaseHead {...head} />
-    <ThemeProvider />
-    <ClientRouter />
-    <script src="/src/assets/scripts/mermaid-theme-fix.js" is:inline></script>
-  </head>
-  <body>
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-card focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-ring focus:ring-offset-2"
-    >
-      Skip to content
-    </a>
-    <main
-      id="main-content"
-      tabindex="-1"
-      class="relative z-10 flex min-h-dvh flex-col leading-relaxed"
-      transition:animate={fade({ duration: 300 })}
-    >
-      <Header />
-      <Container
-        class="flex flex-1 flex-col"
-        maxWidth={wide ? "w-full" : "max-w-5xl"}
-      >
-        <div id="progress"></div>
-        <div class="w-full flex-1">
-          <slot />
-        </div>
-      </Container>
-    </main>
-    <Footer />
-  </body>
+	<head>
+		<BaseHead {...head} />
+		<ThemeProvider />
+		<ClientRouter />
+		<script src="/src/assets/scripts/mermaid-theme-fix.js" is:inline></script>
+	</head>
+	<body>
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-card focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-ring focus:ring-offset-2"
+		>
+			Skip to content
+		</a>
+		<main
+			id="main-content"
+			tabindex="-1"
+			class="relative z-10 flex min-h-dvh flex-col leading-relaxed"
+			transition:animate={fade({ duration: 300 })}
+		>
+			<Header />
+			<Container
+				class="flex flex-1 flex-col"
+				maxWidth={wide ? "w-full" : "max-w-5xl"}
+			>
+				<div id="progress"></div>
+				<div class="w-full flex-1">
+					<slot />
+				</div>
+			</Container>
+		</main>
+		<Footer />
+	</body>
 </html>

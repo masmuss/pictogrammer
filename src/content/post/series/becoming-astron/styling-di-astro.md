@@ -17,12 +17,12 @@ Pernahkah kamu menulis CSS untuk tombol di satu tempat, tapi tiba-tiba semua tom
 <button class="my-button">Klik Saya</button>
 
 <style>
-  .my-button {
-    background-color: purple;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-  }
+	.my-button {
+		background-color: purple;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 8px;
+	}
 </style>
 ```
 
@@ -37,8 +37,9 @@ Tentu kita tetap butuh gaya global (seperti reset CSS, font default, atau warna 
 
 ```astro title="src/layouts/MainLayout.astro"
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 ---
+
 <!-- Struktur HTML -->
 ```
 
@@ -55,9 +56,7 @@ npx astro add tailwind
 Astro akan otomatis menginstall dependency dan mengonfigurasi file yang dibutuhkan. Setelah itu, kamu bisa langsung pakai class Tailwind di mana saja!
 
 ```astro
-<h1 class="text-3xl font-bold text-indigo-600 underline">
-  Halo, Tailwind!
-</h1>
+<h1 class="text-3xl font-bold text-indigo-600 underline">Halo, Tailwind!</h1>
 ```
 
 ## Kenapa Styling di Astro Terasa Lebih Ringan?

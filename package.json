@@ -30,7 +30,7 @@
 		"lint": "bunx --bun @biomejs/biome lint --write",
 		"format": "bun run format:biome && bun run format:prettier",
 		"format:biome": "bunx --bun @biomejs/biome format --write",
-		"format:prettier": "bunx prettier --write \"**/*.md\" \"**/*.mdx\"",
+		"format:prettier": "bunx prettier --write \"**/*.md\" \"**/*.mdx\" \"**/*.astro\" \"**/*.svelte\"",
 		"check": "astro check",
 		"test": "bun run test:unit:run && CI=true bun run test:e2e",
 		"test:unit": "vitest",
@@ -88,6 +88,8 @@
 		"playwright": "^1.62.1",
 		"playwright-core": "^1.62.1",
 		"prettier": "3.9.6",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-svelte": "^4.1.1",
 		"semantic-release": "^25.0.9",
 		"vitest": "^4.1.10"
 	}

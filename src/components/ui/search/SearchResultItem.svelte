@@ -1,39 +1,39 @@
 <script lang="ts">
-import type { createSearch, PagefindResultData } from "./search-state.svelte";
+	import type { createSearch, PagefindResultData } from "./search-state.svelte";
 
-interface Props {
-	result: PagefindResultData;
-	index: number;
-	search: ReturnType<typeof createSearch>;
-}
-
-let { result, index, search }: Props = $props();
-
-function sanitizeExcerpt(excerpt: string) {
-	if (typeof window === "undefined") {
-		return excerpt
-			.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "")
-			.replaceAll(/<mark\b[^>]*>/gi, "<mark>");
+	interface Props {
+		result: PagefindResultData;
+		index: number;
+		search: ReturnType<typeof createSearch>;
 	}
 
-	const template = window.document.createElement("template");
-	template.innerHTML = excerpt;
+	let { result, index, search }: Props = $props();
 
-	for (const element of template.content.querySelectorAll("*")) {
-		if (element.tagName !== "MARK") {
-			element.replaceWith(
-				window.document.createTextNode(element.textContent ?? "")
-			);
-			continue;
+	function sanitizeExcerpt(excerpt: string) {
+		if (typeof window === "undefined") {
+			return excerpt
+				.replaceAll(/<(?!\/?mark\b)[^>]*>/gi, "")
+				.replaceAll(/<mark\b[^>]*>/gi, "<mark>");
 		}
 
-		for (const attr of [...element.attributes]) {
-			element.removeAttribute(attr.name);
+		const template = window.document.createElement("template");
+		template.innerHTML = excerpt;
+
+		for (const element of template.content.querySelectorAll("*")) {
+			if (element.tagName !== "MARK") {
+				element.replaceWith(
+					window.document.createTextNode(element.textContent ?? ""),
+				);
+				continue;
+			}
+
+			for (const attr of [...element.attributes]) {
+				element.removeAttribute(attr.name);
+			}
 		}
+
+		return template.innerHTML;
 	}
-
-	return template.innerHTML;
-}
 </script>
 
 <a
@@ -57,7 +57,9 @@ function sanitizeExcerpt(excerpt: string) {
 		>
 			{result.meta.title}
 		</h3>
-		<Icon icon="ph:arrow-right" class="text-muted-foreground h-4 w-4 transition-transform {search.selectedIndex ===
+		<Icon
+			icon="ph:arrow-right"
+			class="text-muted-foreground h-4 w-4 transition-transform {search.selectedIndex ===
 			index
 				? 'translate-x-1'
 				: 'group-hover:translate-x-1'}"

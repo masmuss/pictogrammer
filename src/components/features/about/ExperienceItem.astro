@@ -11,10 +11,7 @@ const { experience } = Astro.props;
 const duration = calculateDuration(experience.period);
 ---
 
-<div
-	class="flex flex-col gap-y-2 py-5"
-	data-testid="experience-item"
->
+<div class="flex flex-col gap-y-2 py-5" data-testid="experience-item">
 	<div class="flex flex-col gap-y-1.5">
 		<div class="text-muted-foreground/80 font-mono text-xs tabular-nums">
 			{experience.period}
@@ -23,8 +20,10 @@ const duration = calculateDuration(experience.period);
 		</div>
 
 		<div class="flex flex-col gap-y-0.5">
-		    <p>
-				<span class="font-semibold">{experience.title}</span> at {experience.company}
+			<p>
+				<span class="font-semibold">{experience.title}</span> at {
+					experience.company
+				}
 				{experience.location && <span> &middot; {experience.location}</span>}
 			</p>
 		</div>

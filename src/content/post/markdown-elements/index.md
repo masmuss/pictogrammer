@@ -131,7 +131,7 @@ Syntax highlighting
 
 ```js title="script.js"
 var foo = function (bar) {
-  return bar++;
+	return bar++;
 };
 
 console.log(foo(5));

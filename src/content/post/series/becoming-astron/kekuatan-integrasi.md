@@ -62,7 +62,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
   bun add astro-icon
   ```
   ```astro
-  import { Icon } from 'astro-icon/components'
+  import {Icon} from 'astro-icon/components'
   <Icon name="ri:github-fill" />
   ```
 
@@ -114,16 +114,16 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  markdown: {
-    shikiConfig: {
-      theme: "dracula-soft", // Tema pewarnaan kode
-      wrap: true, // Agar kode panjang turun ke baris baru
-    },
-  },
-  integrations: [mdx(), sitemap()],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+	markdown: {
+		shikiConfig: {
+			theme: "dracula-soft", // Tema pewarnaan kode
+			wrap: true, // Agar kode panjang turun ke baris baru
+		},
+	},
+	integrations: [mdx(), sitemap()],
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });
 ```
 

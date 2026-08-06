@@ -17,37 +17,37 @@ const hasUrl = Boolean(cert.credentialUrl);
 ---
 
 <Card
-  as={hasUrl ? "a" : "div"}
-  href={hasUrl ? cert.credentialUrl : undefined}
-  target={hasUrl ? "_blank" : undefined}
-  rel={hasUrl ? "noopener noreferrer" : undefined}
-  class="-mx-3 bg-transparent px-3 py-1.5 ring-0"
-  data-testid="certification-item"
+	as={hasUrl ? "a" : "div"}
+	href={hasUrl ? cert.credentialUrl : undefined}
+	target={hasUrl ? "_blank" : undefined}
+	rel={hasUrl ? "noopener noreferrer" : undefined}
+	class="-mx-3 bg-transparent px-3 py-1.5 ring-0"
+	data-testid="certification-item"
 >
-  <CardContent class="p-0">
-    <div class="group flex flex-col gap-y-0.5">
-      <div class="flex items-center gap-2">
-        <span class="font-medium">{cert.title}</span>
-        {
-          hasUrl && (
-            <Icon
-              name="ph:arrow-square-out"
-              class="text-muted-foreground text-sm opacity-0 transition-opacity group-hover:opacity-100"
-              aria-hidden="true"
-            />
-          )
-        }
-      </div>
-      <div class="text-muted-foreground flex items-center gap-x-2 text-sm">
-        <span>{cert.issuer}</span>
-        <span>&middot;</span>
-        <span>{dateText}</span>
-      </div>
-      {
-        cert.description && (
-          <p class="text-muted-foreground mt-1 text-sm">{cert.description}</p>
-        )
-      }
-    </div>
-  </CardContent>
+	<CardContent class="p-0">
+		<div class="group flex flex-col gap-y-0.5">
+			<div class="flex items-center gap-2">
+				<span class="font-medium">{cert.title}</span>
+				{
+					hasUrl && (
+						<Icon
+							name="ph:arrow-square-out"
+							class="text-muted-foreground text-sm opacity-0 transition-opacity group-hover:opacity-100"
+							aria-hidden="true"
+						/>
+					)
+				}
+			</div>
+			<div class="text-muted-foreground flex items-center gap-x-2 text-sm">
+				<span>{cert.issuer}</span>
+				<span>&middot;</span>
+				<span>{dateText}</span>
+			</div>
+			{
+				cert.description && (
+					<p class="text-muted-foreground mt-1 text-sm">{cert.description}</p>
+				)
+			}
+		</div>
+	</CardContent>
 </Card>

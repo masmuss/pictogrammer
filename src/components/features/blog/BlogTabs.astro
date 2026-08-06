@@ -11,42 +11,45 @@ const tabs = [
 	{ id: "posts", label: "Posts", href: "/blog" },
 	{ id: "notes", label: "Notes", href: "/blog/notes" },
 	{ id: "reflections", label: "Reflections", href: "/blog/reflections" },
-	{ id: "series", label: "Series", href: "/blog/series" }
+	{ id: "series", label: "Series", href: "/blog/series" },
 ];
 ---
 
-<nav class="mb-6 flex items-center justify-between" aria-label="Blog categories">
-  <div class="flex items-center gap-4">
-    {
-      tabs.map((tab) => (
-        <a
-          href={tab.href}
-          class:list={[
-            "text-lg transition-colors md:text-xl",
-            activeTab === tab.id
-              ? "text-foreground font-semibold"
-              : "text-muted-foreground hover:text-foreground",
-          ]}
-        >
-          {tab.label}
-        </a>
-      ))
-    }
-  </div>
-  <div class="hidden items-center gap-3 text-sm md:flex">
-    <a
-      href="/blog/archive"
-      class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
-    >
-      <Icon name="ph:archive-box" />
-      <span>Archive</span>
-    </a>
-    <a
-      href="/tags"
-      class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
-    >
-      <Icon name="ph:bookmark" />
-      <span>Tags</span>
-    </a>
-  </div>
+<nav
+	class="mb-6 flex items-center justify-between"
+	aria-label="Blog categories"
+>
+	<div class="flex items-center gap-4">
+		{
+			tabs.map((tab) => (
+				<a
+					href={tab.href}
+					class:list={[
+						"text-lg transition-colors md:text-xl",
+						activeTab === tab.id
+							? "text-foreground font-semibold"
+							: "text-muted-foreground hover:text-foreground",
+					]}
+				>
+					{tab.label}
+				</a>
+			))
+		}
+	</div>
+	<div class="hidden items-center gap-3 text-sm md:flex">
+		<a
+			href="/blog/archive"
+			class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+		>
+			<Icon name="ph:archive-box" />
+			<span>Archive</span>
+		</a>
+		<a
+			href="/tags"
+			class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+		>
+			<Icon name="ph:bookmark" />
+			<span>Tags</span>
+		</a>
+	</div>
 </nav>

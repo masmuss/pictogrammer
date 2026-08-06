@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
 		params: { id: getPostRouteId(post) },
-		props: { post, allPosts: posts }
+		props: { post, allPosts: posts },
 	}));
 }
 
@@ -27,34 +27,34 @@ const relatedPosts = getRelatedPosts(allPosts, post);
 ---
 
 <PostLayout post={post}>
-  <div slot="toc-mobile">
-    {
-      headings.length > 0 && (
-        <div class="mt-8 mx-auto max-w-3xl">
-          <TocMobile {headings} />
-        </div>
-      )
-    }
-  </div>
+	<div slot="toc-mobile">
+		{
+			headings.length > 0 && (
+				<div class="mt-8 mx-auto max-w-3xl">
+					<TocMobile {headings} />
+				</div>
+			)
+		}
+	</div>
 
-  <div slot="toc">
-    {headings.length > 0 && <Toc {headings} />}
-  </div>
+	<div slot="toc">
+		{headings.length > 0 && <Toc {headings} />}
+	</div>
 
-  <div class="custom-prose">
-    <Content />
-  </div>
+	<div class="custom-prose">
+		<Content />
+	</div>
 
-  <div class="xl:hidden">
-    <ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
-  </div>
+	<div class="xl:hidden">
+		<ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
+	</div>
 
-  <div slot="share">
-    <ShareButtons title={post.data.title} url={Astro.url} />
-  </div>
+	<div slot="share">
+		<ShareButtons title={post.data.title} url={Astro.url} />
+	</div>
 
-  <footer slot="footer" class="mx-auto max-w-3xl">
-    <RelatedPost {relatedPosts} />
-    <Comment />
-  </footer>
+	<footer slot="footer" class="mx-auto max-w-3xl">
+		<RelatedPost {relatedPosts} />
+		<Comment />
+	</footer>
 </PostLayout>

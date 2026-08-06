@@ -20,18 +20,19 @@ Karena Astro adalah framework statis secara default, ia perlu tahu di awal dafta
 
 ```astro title="src/pages/blog/[...id].astro"
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
 }
 
 const { post } = Astro.props;
 ---
+
 <h1>Postingan ID: {post.id}</h1>
 ```
 
@@ -43,14 +44,14 @@ Di Astro modern, kita menggunakan fungsi `render()` untuk mengubah konten Markdo
 
 ```astro title="src/pages/blog/[...id].astro"
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
 }
 
 const { post } = Astro.props;
@@ -58,9 +59,10 @@ const { post } = Astro.props;
 // Fungsi render() mengubah konten (Markdown/MDX) menjadi komponen
 const { Content } = await render(post);
 ---
+
 <MainLayout title={post.data.title}>
-  <h1>{post.data.title}</h1>
-  <Content />
+	<h1>{post.data.title}</h1>
+	<Content />
 </MainLayout>
 ```
 

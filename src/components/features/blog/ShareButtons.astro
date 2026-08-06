@@ -19,14 +19,14 @@ const shareLinks = [
 		id: "twitter",
 		name: "Share on X",
 		icon: "ph:x-logo",
-		href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
+		href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
 	},
 	{
 		id: "linkedin",
 		name: "Share on LinkedIn",
 		icon: "ph:linkedin-logo",
-		href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`
-	}
+		href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`,
+	},
 ];
 
 const btnBase = [
@@ -34,95 +34,95 @@ const btnBase = [
 	"border-border/40 bg-card",
 	"text-muted-foreground",
 	"hover:bg-muted hover:text-foreground",
-	"transition-colors duration-base"
+	"transition-colors duration-base",
 ].join(" ");
 ---
 
 <div
-  class={cn(
-    "flex",
-    layout === "vertical" ? "flex-col gap-y-3" : "flex-row gap-x-3",
-    className,
-  )}
+	class={cn(
+		"flex",
+		layout === "vertical" ? "flex-col gap-y-3" : "flex-row gap-x-3",
+		className,
+	)}
 >
-  {
-    shareLinks.map((link) => (
-      <a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        class={btnBase}
-        title={link.name}
-        aria-label={link.name}
-      >
-        <Icon name={link.icon} class="text-lg" />
-      </a>
-    ))
-  }
+	{
+		shareLinks.map((link) => (
+			<a
+				href={link.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				class={btnBase}
+				title={link.name}
+				aria-label={link.name}
+			>
+				<Icon name={link.icon} class="text-lg" />
+			</a>
+		))
+	}
 
-  <button
-    type="button"
-    class={cn(btnBase, "copy-url-btn")}
-    title="Copy link"
-    aria-label="Copy link"
-    data-url={url.toString()}
-  >
-    <Icon name="ph:link" class="pointer-events-none text-lg" />
-  </button>
+	<button
+		type="button"
+		class={cn(btnBase, "copy-url-btn")}
+		title="Copy link"
+		aria-label="Copy link"
+		data-url={url.toString()}
+	>
+		<Icon name="ph:link" class="pointer-events-none text-lg" />
+	</button>
 
-  <button
-    type="button"
-    class={cn(btnBase, "native-share-btn hidden")}
-    title="Share via device"
-    aria-label="Share via device"
-    data-url={url.toString()}
-    data-title={title}
-  >
-    <Icon name="ph:share-network" class="pointer-events-none text-lg" />
-  </button>
+	<button
+		type="button"
+		class={cn(btnBase, "native-share-btn hidden")}
+		title="Share via device"
+		aria-label="Share via device"
+		data-url={url.toString()}
+		data-title={title}
+	>
+		<Icon name="ph:share-network" class="pointer-events-none text-lg" />
+	</button>
 </div>
 
 <script>
-  const copyButtons = document.querySelectorAll(".copy-url-btn");
-  copyButtons.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      const target = e.currentTarget as HTMLButtonElement;
-      const url = target.dataset.url;
-      if (!url) return;
+	const copyButtons = document.querySelectorAll(".copy-url-btn");
+	copyButtons.forEach((btn) => {
+		btn.addEventListener("click", async (e) => {
+			const target = e.currentTarget as HTMLButtonElement;
+			const url = target.dataset.url;
+			if (!url) return;
 
-      try {
-        await navigator.clipboard.writeText(url);
-        const icon = target.querySelector(".iconify");
-        if (icon) {
-          const oldIcon = icon.className;
-          icon.className =
-            "iconify ph--check text-lg text-primary pointer-events-none";
-          setTimeout(() => {
-            icon.className = oldIcon;
-          }, 2000);
-        }
-      } catch (err) {
-        console.error("Failed to copy", err);
-      }
-    });
-  });
+			try {
+				await navigator.clipboard.writeText(url);
+				const icon = target.querySelector(".iconify");
+				if (icon) {
+					const oldIcon = icon.className;
+					icon.className =
+						"iconify ph--check text-lg text-primary pointer-events-none";
+					setTimeout(() => {
+						icon.className = oldIcon;
+					}, 2000);
+				}
+			} catch (err) {
+				console.error("Failed to copy", err);
+			}
+		});
+	});
 
-  const shareButtons = document.querySelectorAll(".native-share-btn");
-  if (navigator.share) {
-    shareButtons.forEach((btn) => {
-      btn.classList.remove("hidden");
-      btn.classList.add("flex");
-      btn.addEventListener("click", async (e) => {
-        const target = e.currentTarget as HTMLButtonElement;
-        try {
-          await navigator.share({
-            title: target.dataset.title,
-            url: target.dataset.url,
-          });
-        } catch (err) {
-          console.log("Error sharing:", err);
-        }
-      });
-    });
-  }
+	const shareButtons = document.querySelectorAll(".native-share-btn");
+	if (navigator.share) {
+		shareButtons.forEach((btn) => {
+			btn.classList.remove("hidden");
+			btn.classList.add("flex");
+			btn.addEventListener("click", async (e) => {
+				const target = e.currentTarget as HTMLButtonElement;
+				try {
+					await navigator.share({
+						title: target.dataset.title,
+						url: target.dataset.url,
+					});
+				} catch (err) {
+					console.log("Error sharing:", err);
+				}
+			});
+		});
+	}
 </script>

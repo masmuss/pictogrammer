@@ -14,32 +14,32 @@ const displayed = projects.slice(0, max);
 ---
 
 {
-  displayed.length > 0 && (
-    <Fragment>
-      <div class="flex flex-col" data-testid="featured-project-list">
-        {displayed.map((project) => (
-          <FeaturedProjectItem project={project} />
-        ))}
-      </div>
+	displayed.length > 0 && (
+		<Fragment>
+			<div class="flex flex-col" data-testid="featured-project-list">
+				{displayed.map((project) => (
+					<FeaturedProjectItem project={project} />
+				))}
+			</div>
 
-      <div class="mt-2 flex w-full justify-end">
-        <a
-          href="/projects"
-          class={cn(
-            "group/seeall inline-flex items-center gap-1.5",
-            "duration-fast text-sm transition-colors",
-            "focus-visible:ring-2 focus-visible:outline-none",
-            "focus-visible:ring-ring rounded focus-visible:ring-offset-2",
-            "text-accent-cta-text",
-          )}
-        >
-          <span>See all projects</span>
-          <Icon
-            name="ph:arrow-right"
-            class="duration-fast transition-transform group-hover/seeall:translate-x-1"
-          />
-        </a>
-      </div>
-    </Fragment>
-  )
+			<div class="mt-2 flex w-full justify-end">
+				<a
+					href="/projects"
+					class={cn(
+						"group/seeall inline-flex items-center gap-1.5",
+						"duration-fast text-sm transition-colors",
+						"focus-visible:ring-2 focus-visible:outline-none",
+						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+						"text-accent-cta-text",
+					)}
+				>
+					<span>See all projects</span>
+					<Icon
+						name="ph:arrow-right"
+						class="duration-fast transition-transform group-hover/seeall:translate-x-1"
+					/>
+				</a>
+			</div>
+		</Fragment>
+	)
 }

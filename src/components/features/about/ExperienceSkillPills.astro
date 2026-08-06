@@ -11,11 +11,11 @@ const { skills, class: className } = Astro.props;
 ---
 
 <div class={cn("flex flex-wrap gap-2", className)}>
-  {
-    skills.map((skill) => (
-      <Badge variant="outline" size="sm">
-        {skill}
-      </Badge>
-    ))
-  }
+	{
+		skills.map((skill) => (
+			<Badge variant="outline" size="sm">
+				{skill}
+			</Badge>
+		))
+	}
 </div>

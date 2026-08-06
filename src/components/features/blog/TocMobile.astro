@@ -13,29 +13,33 @@ const toc = generateToc(headings);
 ---
 
 <details class="toc-mobile group xl:hidden" data-testid="toc-mobile">
-  <summary
-    class="flex cursor-pointer items-center gap-x-2 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors select-none hover:text-foreground"
-  >
-    <Icon name="ph:list-bullets" class="text-base" aria-hidden="true" />
-    Table of Contents
-    <Icon name="ph:arrow-down" class="ml-auto text-sm transition-transform duration-fast group-open:rotate-180" aria-hidden="true" />
-  </summary>
+	<summary
+		class="flex cursor-pointer items-center gap-x-2 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors select-none hover:text-foreground"
+	>
+		<Icon name="ph:list-bullets" class="text-base" aria-hidden="true" />
+		Table of Contents
+		<Icon
+			name="ph:arrow-down"
+			class="ml-auto text-sm transition-transform duration-fast group-open:rotate-180"
+			aria-hidden="true"
+		/>
+	</summary>
 
-  <nav
-    class="mt-2 rounded-lg border border-border bg-card p-4"
-    aria-label="Table of Contents"
-  >
-    <ul class="flex flex-col text-pretty">
-      {toc.map((heading) => <TocHeading heading={heading} />)}
-    </ul>
-  </nav>
+	<nav
+		class="mt-2 rounded-lg border border-border bg-card p-4"
+		aria-label="Table of Contents"
+	>
+		<ul class="flex flex-col text-pretty">
+			{toc.map((heading) => <TocHeading heading={heading} />)}
+		</ul>
+	</nav>
 </details>
 
 <style>
-  .toc-mobile summary::-webkit-details-marker {
-    display: none;
-  }
-  .toc-mobile summary::marker {
-    content: none;
-  }
+	.toc-mobile summary::-webkit-details-marker {
+		display: none;
+	}
+	.toc-mobile summary::marker {
+		content: none;
+	}
 </style>

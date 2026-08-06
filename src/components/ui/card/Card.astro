@@ -23,19 +23,19 @@ const baseStyles =
 ---
 
 {
-  isAnchor ? (
-    <a
-      {...attrs}
-      href={href}
-      data-astro-reload={reload ? true : undefined}
-      data-slot="card"
-      class={cn(baseStyles, className)}
-    >
-      <slot />
-    </a>
-  ) : (
-    <Tag {...attrs} data-slot="card" class={cn(baseStyles, className)}>
-      <slot />
-    </Tag>
-  )
+	isAnchor ? (
+		<a
+			{...attrs}
+			href={href}
+			data-astro-reload={reload ? true : undefined}
+			data-slot="card"
+			class={cn(baseStyles, className)}
+		>
+			<slot />
+		</a>
+	) : (
+		<Tag {...attrs} data-slot="card" class={cn(baseStyles, className)}>
+			<slot />
+		</Tag>
+	)
 }

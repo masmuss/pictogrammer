@@ -15,51 +15,51 @@ const hasRepo = Boolean(project.repoHref);
 ---
 
 <a
-  href={href}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label={project.text}
-  class={cn(
-    "group/project block -mx-3 rounded-lg px-3 py-3",
-    "hover:bg-muted/40",
-    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
-    "transition-colors duration-base",
-  )}
-  data-testid="featured-project-item"
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={project.text}
+	class={cn(
+		"group/project block -mx-3 rounded-lg px-3 py-3",
+		"hover:bg-muted/40",
+		"focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
+		"transition-colors duration-base",
+	)}
+	data-testid="featured-project-item"
 >
-  <div
-    class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
-  >
-    <div class="flex min-w-0 flex-col gap-0.5">
-      <span class="leading-snug font-medium text-foreground">
-        {project.text}
-      </span>
-      {
-        project.description && (
-          <span class="text-muted-foreground line-clamp-1 text-sm leading-snug">
-            {project.description}
-          </span>
-        )
-      }
-    </div>
+	<div
+		class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+	>
+		<div class="flex min-w-0 flex-col gap-0.5">
+			<span class="leading-snug font-medium text-foreground">
+				{project.text}
+			</span>
+			{
+				project.description && (
+					<span class="text-muted-foreground line-clamp-1 text-sm leading-snug">
+						{project.description}
+					</span>
+				)
+			}
+		</div>
 
-    <div class="flex shrink-0 items-center gap-3 text-xs text-muted-foreground">
-      {
-        isLive && (
-          <span class="inline-flex items-center gap-1">
-            <Icon name="ph:arrow-square-out" />
-            Live
-          </span>
-        )
-      }
-      {
-        hasRepo && (
-          <span class="inline-flex items-center gap-1">
-            <Icon name="ph:github-logo" />
-            Repo
-          </span>
-        )
-      }
-    </div>
-  </div>
+		<div class="flex shrink-0 items-center gap-3 text-xs text-muted-foreground">
+			{
+				isLive && (
+					<span class="inline-flex items-center gap-1">
+						<Icon name="ph:arrow-square-out" />
+						Live
+					</span>
+				)
+			}
+			{
+				hasRepo && (
+					<span class="inline-flex items-center gap-1">
+						<Icon name="ph:github-logo" />
+						Repo
+					</span>
+				)
+			}
+		</div>
+	</div>
 </a>

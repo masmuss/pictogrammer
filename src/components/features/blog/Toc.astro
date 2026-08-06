@@ -13,103 +13,106 @@ const { headings } = Astro.props;
 const toc = generateToc(headings);
 ---
 
-<nav class="toc-container hidden text-sm xl:block" aria-label="Table of Contents">
-  <div class="toc-group group relative w-fit" data-open="false">
-    <button
-      id="toc-toggle"
-      class="text-muted-foreground hover:text-foreground focus-visible:text-foreground flex cursor-pointer items-center gap-2 transition-colors"
-      aria-label="Toggle table of contents"
-      aria-controls="toc-list"
-      aria-haspopup="true"
-      aria-expanded="false"
-      type="button"
-    >
-      <Icon name="ph:list" class="duration-base transition-transform" />
-    </button>
+<nav
+	class="toc-container hidden text-sm xl:block"
+	aria-label="Table of Contents"
+>
+	<div class="toc-group group relative w-fit" data-open="false">
+		<button
+			id="toc-toggle"
+			class="text-muted-foreground hover:text-foreground focus-visible:text-foreground flex cursor-pointer items-center gap-2 transition-colors"
+			aria-label="Toggle table of contents"
+			aria-controls="toc-list"
+			aria-haspopup="true"
+			aria-expanded="false"
+			type="button"
+		>
+			<Icon name="ph:list" class="duration-base transition-transform" />
+		</button>
 
-    <div
-      class="toc-popover duration-base absolute top-full left-0 z-20 w-72 py-0 transition-all group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
-    >
-      <div class="py-4">
-        <ul
-          id="toc-list"
-          class="flex max-h-[70vh] flex-col overflow-y-auto text-pretty"
-        >
-          {toc.map((heading) => <TocHeading heading={heading} />)}
-        </ul>
-      </div>
-    </div>
-  </div>
+		<div
+			class="toc-popover duration-base absolute top-full left-0 z-20 w-72 py-0 transition-all group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100"
+		>
+			<div class="py-4">
+				<ul
+					id="toc-list"
+					class="flex max-h-[70vh] flex-col overflow-y-auto text-pretty"
+				>
+					{toc.map((heading) => <TocHeading heading={heading} />)}
+				</ul>
+			</div>
+		</div>
+	</div>
 </nav>
 
 <script is:inline>
-  document.addEventListener("astro:page-load", () => {
-    const group = document.querySelector(".toc-group");
-    if (!group) return;
+	document.addEventListener("astro:page-load", () => {
+		const group = document.querySelector(".toc-group");
+		if (!group) return;
 
-    const toggle = group.querySelector("#toc-toggle");
-    if (!toggle) return;
+		const toggle = group.querySelector("#toc-toggle");
+		if (!toggle) return;
 
-    const setOpen = (isOpen) => {
-      group.dataset.open = isOpen ? "true" : "false";
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    };
+		const setOpen = (isOpen) => {
+			group.dataset.open = isOpen ? "true" : "false";
+			toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+		};
 
-    toggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const isOpen = group.dataset.open === "true";
-      setOpen(!isOpen);
-    });
+		toggle.addEventListener("click", (event) => {
+			event.stopPropagation();
+			const isOpen = group.dataset.open === "true";
+			setOpen(!isOpen);
+		});
 
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-      if (!(target instanceof Node)) return;
-      if (!group.contains(target)) setOpen(false);
-    });
+		document.addEventListener("click", (event) => {
+			const target = event.target;
+			if (!(target instanceof Node)) return;
+			if (!group.contains(target)) setOpen(false);
+		});
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setOpen(false);
-    });
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape") setOpen(false);
+		});
 
-    group.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", () => setOpen(false));
-    });
-  });
+		group.querySelectorAll('a[href^="#"]').forEach((link) => {
+			link.addEventListener("click", () => setOpen(false));
+		});
+	});
 </script>
 
 <script is:inline>
-  document.addEventListener("astro:page-load", () => {
-    const links = document.querySelectorAll(".toc-link");
-    if (links.length === 0) return;
+	document.addEventListener("astro:page-load", () => {
+		const links = document.querySelectorAll(".toc-link");
+		if (links.length === 0) return;
 
-    const headings = Array.from(
-      document.querySelectorAll(
-        ".custom-prose h1[id], .custom-prose h2[id], .custom-prose h3[id]",
-      ),
-    );
+		const headings = Array.from(
+			document.querySelectorAll(
+				".custom-prose h1[id], .custom-prose h2[id], .custom-prose h3[id]",
+			),
+		);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          links.forEach((link) => link.classList.remove("active"));
-          const active = document.querySelector(
-            `.toc-link[href="#${entry.target.id}"]`,
-          );
-          active?.classList.add("active");
-        }
-      },
-      { rootMargin: "-80px 0px -70% 0px" },
-    );
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (!entry.isIntersecting) continue;
+					links.forEach((link) => link.classList.remove("active"));
+					const active = document.querySelector(
+						`.toc-link[href="#${entry.target.id}"]`,
+					);
+					active?.classList.add("active");
+				}
+			},
+			{ rootMargin: "-80px 0px -70% 0px" },
+		);
 
-    headings.forEach((h) => observer.observe(h));
-  });
+		headings.forEach((h) => observer.observe(h));
+	});
 </script>
 
 <style>
-  .toc-group[data-open="true"] .toc-popover {
-    pointer-events: auto;
-    opacity: 1;
-    transform: translateY(0);
-  }
+	.toc-group[data-open="true"] .toc-popover {
+		pointer-events: auto;
+		opacity: 1;
+		transform: translateY(0);
+	}
 </style>
