@@ -55,16 +55,11 @@ const ogImage = coverImageResolved || socialImage;
 			</aside>
 
 			<div class="min-w-0 space-y-12">
-				<article class="max-w-3xl mx-auto">
-					<div data-pagefind-body>
-						<div id="blog-hero">
-							<BlogHero
-								content={post}
-								coverImageResolved={coverImageResolved}
-							/>
-						</div>
-						{series && <PostSeries {series} {seriesId} />}
+				<article class="max-w-3xl mx-auto" data-pagefind-body>
+					<div id="blog-hero">
+						<BlogHero content={post} coverImageResolved={coverImageResolved} />
 					</div>
+					{series && <PostSeries {series} {seriesId} />}
 
 					<div class="xl:hidden">
 						<slot name="toc-mobile" />
