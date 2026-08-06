@@ -1,4 +1,3 @@
-import siteConfig from "@/config/site-config";
 import type { Experience } from "@/types";
 import { getAllCertifications } from "./certifications";
 import { getAllEducations } from "./educations";
@@ -53,19 +52,4 @@ export function getNowReadingBooks() {
 			meta: "Leila S. Chudori"
 		}
 	];
-}
-
-export function getGitHubUsername(): string {
-	const githubProfile = siteConfig.socialLinks.find(
-		(social) => social.text === "GitHub"
-	)?.href;
-
-	return githubProfile?.split("/").filter(Boolean).at(-1) ?? "masmuss";
-}
-
-export function getGitHubCalendarTheme() {
-	return {
-		light: ["#E6E4D9", "#DDE2B2", "#BEC97E", "#A0AF54", "#879A39"],
-		dark: ["#282726", "#3D4C07", "#536907", "#66800B", "#879A39"]
-	} as const;
 }
