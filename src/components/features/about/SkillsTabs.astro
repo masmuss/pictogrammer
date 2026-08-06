@@ -42,7 +42,7 @@ const tabs = getSkillsTabs(collections);
 		tabs.map((tab, index) => (
 			<div
 				id={`skills-panel-${tab.id}`}
-				class={cn("skills-panel", index !== 0 && "hidden")}
+				class={cn("skills-panel", index !== 0 && "skills-panel--inactive")}
 				role="tabpanel"
 				aria-labelledby={`skills-tab-${tab.id}`}
 				data-panel={tab.id}
@@ -54,7 +54,7 @@ const tabs = getSkillsTabs(collections);
 							title={skill.description}
 						>
 					          {skill.icon && (
-															<Icon name={`logos:${skill.icon}`} />)}
+													<Icon name={`logos:${skill.icon}`} />)}
 							<span class="text-foreground/90 font-medium">{skill.name}</span>
 						</div>
 					))}
@@ -64,28 +64,49 @@ const tabs = getSkillsTabs(collections);
 	}
 </section>
 
+<style>
+	.skills-panel--inactive {
+		content-visibility: hidden;
+		height: 0;
+		overflow: hidden;
+	}
+</style>
+
 <script>
-	const tabRoots = document.querySelectorAll("[data-skills-tabs]");
+	function initSkillsTabs() {
+		const tabRoots = document.querySelectorAll("[data-skills-tabs]");
 
-	for (const root of tabRoots) {
-		const tabButtons = root.querySelectorAll<HTMLButtonElement>(".skills-tab");
-		const tabPanels = root.querySelectorAll<HTMLElement>(".skills-panel");
+		for (const root of tabRoots) {
+			const tabButtons =
+				root.querySelectorAll<HTMLButtonElement>(".skills-tab");
+			const tabPanels =
+				root.querySelectorAll<HTMLElement>(".skills-panel");
 
-		for (const tab of tabButtons) {
-			tab.addEventListener("click", () => {
-				const id = tab.dataset.tab;
-				if (!id) return;
+			for (const tab of tabButtons) {
+				tab.addEventListener("click", () => {
+					const id = tab.dataset.tab;
+					if (!id) return;
 
-				for (const item of tabButtons) {
-					const isActive = item.dataset.tab === id;
-					item.setAttribute("aria-selected", isActive ? "true" : "false");
-					item.dataset.active = isActive ? "true" : "false";
-				}
+					for (const item of tabButtons) {
+						const isActive = item.dataset.tab === id;
+						item.setAttribute(
+							"aria-selected",
+							isActive ? "true" : "false"
+						);
+						item.dataset.active = isActive ? "true" : "false";
+					}
 
-				for (const panel of tabPanels) {
-					panel.classList.toggle("hidden", panel.dataset.panel !== id);
-				}
-			});
+					for (const panel of tabPanels) {
+						panel.classList.toggle(
+							"skills-panel--inactive",
+							panel.dataset.panel !== id
+						);
+					}
+				});
+			}
 		}
 	}
+
+	initSkillsTabs();
+	document.addEventListener("astro:page-load", initSkillsTabs);
 </script>

@@ -272,4 +272,8 @@ const topPadding = showMonthLabels ? blockSize + 8 : 0;
 	.month-label {
 		fill: hsl(var(--foreground));
 	}
+
+	:global(html.theme-transitioning) rect {
+		transition: none !important;
+	}
 </style>
