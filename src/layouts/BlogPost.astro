@@ -61,7 +61,7 @@ const ogImage = coverImageResolved || socialImage;
 					</div>
 					{series && <PostSeries {series} {seriesId} />}
 
-					<div class="xl:hidden">
+					<div class="xl:hidden" data-pagefind-ignore>
 						<slot name="toc-mobile" />
 					</div>
 
