@@ -1,6 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Card, CardContent } from "@/components/ui/card";
-import { Icon } from "@/components/ui/primitives";
 import type { Certification } from "@/types";
 
 interface Props {
@@ -31,7 +31,7 @@ const hasUrl = Boolean(cert.credentialUrl);
         {
           hasUrl && (
             <Icon
-              name="arrow-square-out"
+              name="ph:arrow-square-out"
               class="text-muted-foreground text-sm opacity-0 transition-opacity group-hover:opacity-100"
               aria-hidden="true"
             />

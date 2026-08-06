@@ -2,11 +2,11 @@ import { getEntry } from "astro:content";
 import type { Project } from "@/types";
 
 export const CATEGORY_ICONS: Record<string, string> = {
-	Website: "globe",
-	API: "terminal-window",
-	"Mobile App": "mobile-device",
-	"Artificial Intelligence": "brain",
-	"System & Tooling": "toolbox"
+	Website: "ph:globe",
+	API: "ph:terminal-window",
+	"Mobile App": "ph:mobile-device",
+	"Artificial Intelligence": "ph:brain",
+	"System & Tooling": "ph:toolbox"
 };
 
 export async function getAllProjects() {

@@ -25,29 +25,29 @@ const siteConfig = {
 		{
 			text: "GitHub",
 			href: "https://github.com/masmuss",
-			icon: "github-logo",
-			header: "github-logo"
+			icon: "ph:github-logo",
+			header: "ph:github-logo"
 		},
 		{
 			text: "Twitter",
 			href: "https://x.com/rexbocho",
-			icon: "x-logo",
-			header: "x-logo"
+			icon: "ph:x-logo",
+			header: "ph:x-logo"
 		},
 		{
 			text: "LinkedIn",
 			href: "https://www.linkedin.com/in/masmuss",
-			icon: "linkedin-logo"
+			icon: "ph:linkedin-logo"
 		},
 		{
 			text: "Instagram",
 			href: "https://www.instagram.com/pictogrammmer",
-			icon: "instagram-logo"
+			icon: "ph:instagram-logo"
 		},
 		{
 			text: "Threads",
 			href: "https://www.threads.net/@khoe__rul",
-			icon: "threads-logo"
+			icon: "ph:threads-logo"
 		}
 	],
 	header: {
@@ -59,27 +59,27 @@ const siteConfig = {
 			{
 				text: "Home",
 				href: "/",
-				icon: "house"
+				icon: "ph:house"
 			},
 			{
 				text: "About",
 				href: "/about",
-				icon: "user"
+				icon: "ph:user"
 			},
 			{
 				text: "Blog",
 				href: "/blog",
-				icon: "article"
+				icon: "ph:article"
 			},
 			{
 				text: "Projects",
 				href: "/projects",
-				icon: "code"
+				icon: "ph:code"
 			},
 			{
 				text: "Tools",
 				href: "/tools",
-				icon: "toolbox"
+				icon: "ph:toolbox"
 			}
 		]
 	},

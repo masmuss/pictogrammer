@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
 import BlogHero from "@/components/features/blog/Hero.astro";
 import PostSeries from "@/components/features/blog/PostSeries.astro";
-import { Icon } from "@/components/ui/primitives";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/contents";
 import { getPostOgImagePath } from "@/lib/utils/post-route";
@@ -86,7 +86,7 @@ const ogImage = coverImageResolved || socialImage;
       class="back-to-top bg-muted hover:border-border/75 duration-slow fixed inset-e-12 bottom-16 z-50 flex h-12 w-12 items-center justify-center rounded-lg text-2xl opacity-0 transition-all md:inset-e-16"
       id="to-top-btn"
     >
-      <Icon name="arrow-up"/>
+      <Icon name="ph:arrow-up"/>
     </a>
   </div>
   <script async is:inline src="/github-card.js"></script>

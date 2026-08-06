@@ -7,12 +7,6 @@
 @import "./components/progress.css";
 @import "./components/scroll-reveal.css";
 @plugin "@tailwindcss/typography";
-@plugin "@iconify/tailwind4" {
-	prefix: "iconify";
-	prefixes: logos, ph;
-	scale: 1.2;
-	colors: true;
-}
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant hover-hover (@media (hover: hover));

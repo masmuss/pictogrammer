@@ -1,4 +1,5 @@
 <script lang="ts">
+import Icon from "@iconify/svelte";
 import Kbd from "./Kbd.svelte";
 import SearchBar from "./SearchBar.svelte";
 import SearchResultItem from "./SearchResultItem.svelte";
@@ -47,9 +48,7 @@ $effect(() => {
 			</div>
 		{:else if search.query.trim().length >= 2}
 			<div class="py-12 text-center">
-				<span
-					class="iconify ph--magnifying-glass text-muted-foreground/30 mx-auto h-8 w-8"
-				></span>
+				<Icon icon="ph:magnifying-glass" class="text-muted-foreground/30 mx-auto h-8 w-8" />
 				<p class="text-muted-foreground mt-4 text-sm">
 					No results for "{search.query}"
 				</p>

@@ -1,9 +1,9 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
 import type { NavLink } from "@/config/types";
 import { getCurrentRole } from "@/lib/contents";
-import { Icon } from "../ui/primitives";
 import MobileMenuStatus from "./MobileMenuStatus.astro";
 
 const { navLinks } = Astro.props;
@@ -27,7 +27,7 @@ const isActive = Astro.url.pathname;
     aria-expanded="false"
     aria-controls="mobile-nav"
   >
-    <Icon name="list" aria-hidden="true" />
+    <Icon name="ph:list" aria-hidden="true" />
   </Button>
 
   <div
@@ -52,7 +52,7 @@ const isActive = Astro.url.pathname;
           id="menu-close"
           aria-label="Close navigation menu"
         >
-          <Icon name="x" aria-hidden="true" />
+          <Icon name="ph:x" aria-hidden="true" />
         </Button>
       </div>
 

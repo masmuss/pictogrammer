@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 
+import { Icon } from "astro-icon/components";
 import { CardDescription, CardTitle } from "@/components/ui/card";
-import { Icon } from "@/components/ui/primitives";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { cn } from "@/lib/utils";
 
@@ -18,37 +18,37 @@ const quickLinks: QuickLink[] = [
 		title: "Home",
 		href: "/",
 		description: "Back to the starting point",
-		icon: "house"
+		icon: "ph:house"
 	},
 	{
 		title: "Blog",
 		href: "/blog",
 		description: "Notes, tutorials & stories",
-		icon: "article"
+		icon: "ph:article"
 	},
 	{
 		title: "Projects",
 		href: "/projects",
 		description: "Things I've built",
-		icon: "code"
+		icon: "ph:code"
 	},
 	{
 		title: "About",
 		href: "/about",
 		description: "Who I am & what I do",
-		icon: "user"
+		icon: "ph:user"
 	},
 	{
 		title: "Tags",
 		href: "/tags",
 		description: "Browse by topic",
-		icon: "bookmark"
+		icon: "ph:bookmark"
 	},
 	{
 		title: "Archive",
 		href: "/blog/archive",
 		description: "All posts, paginated",
-		icon: "archive"
+		icon: "ph:archive"
 	}
 ];
 ---

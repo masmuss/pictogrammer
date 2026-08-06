@@ -1,6 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro";
-import { Icon } from "@/components/ui/primitives";
+import { Icon } from "astro-icon/components";
 import { generateToc } from "@/lib/utils";
 import TocHeading from "./TocHeading.astro";
 
@@ -24,7 +24,7 @@ const toc = generateToc(headings);
       aria-expanded="false"
       type="button"
     >
-      <Icon name="list" class="duration-base text-sm transition-transform" />
+      <Icon name="ph:list" class="duration-base transition-transform" />
     </button>
 
     <div

@@ -57,12 +57,11 @@ function sanitizeExcerpt(excerpt: string) {
 		>
 			{result.meta.title}
 		</h3>
-		<span
-			class="iconify ph--arrow-right text-muted-foreground h-4 w-4 transition-transform {search.selectedIndex ===
+		<Icon icon="ph:arrow-right" class="text-muted-foreground h-4 w-4 transition-transform {search.selectedIndex ===
 			index
 				? 'translate-x-1'
 				: 'group-hover:translate-x-1'}"
-		></span>
+		/>
 	</div>
 	<p class="excerpt text-muted-foreground mt-1 line-clamp-2 text-xs">
 		{@html sanitizeExcerpt(result.excerpt)}

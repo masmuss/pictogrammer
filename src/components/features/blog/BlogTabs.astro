@@ -3,7 +3,7 @@ interface Props {
 	activeTab?: "posts" | "notes" | "reflections" | "series";
 }
 
-import { Icon } from "@/components/ui/primitives";
+import { Icon } from "astro-icon/components";
 
 const { activeTab = "posts" } = Astro.props;
 
@@ -38,14 +38,14 @@ const tabs = [
       href="/blog/archive"
       class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
     >
-      <Icon name="archive-box" />
+      <Icon name="ph:archive-box" />
       <span>Archive</span>
     </a>
     <a
       href="/tags"
       class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
     >
-      <Icon name="bookmark" />
+      <Icon name="ph:bookmark" />
       <span>Tags</span>
     </a>
   </div>

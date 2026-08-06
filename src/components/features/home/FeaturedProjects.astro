@@ -1,5 +1,5 @@
 ---
-import { Icon } from "@/components/ui/primitives";
+import { Icon } from "astro-icon/components";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 import FeaturedProjectItem from "./FeaturedProjectItem.astro";
@@ -35,7 +35,7 @@ const displayed = projects.slice(0, max);
         >
           <span>See all projects</span>
           <Icon
-            name="arrow-right"
+            name="ph:arrow-right"
             class="duration-fast transition-transform group-hover/seeall:translate-x-1"
           />
         </a>

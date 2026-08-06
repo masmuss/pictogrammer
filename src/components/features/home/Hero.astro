@@ -1,7 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
 import SocialLinks from "@/components/common/SocialLinks.astro";
 import Button from "@/components/ui/Button.astro";
-import { Icon } from "@/components/ui/primitives";
 
 import siteConfig from "@/config/site-config";
 ---
@@ -16,7 +16,7 @@ import siteConfig from "@/config/site-config";
       siteConfig.cvLink && (
         <Button href={siteConfig.cvLink} variant="outline">
           Resume
-          <Icon slot="icon-after" name="file-arrow-down"/>
+          <Icon slot="icon-after" name="ph:file-arrow-down"/>
         </Button>
       )
     }

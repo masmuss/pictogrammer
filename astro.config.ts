@@ -6,6 +6,7 @@ import svelte from "@astrojs/svelte";
 import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
+import icon from "astro-icon";
 import astroMermaid from "astro-mermaid";
 import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
@@ -57,7 +58,8 @@ export default defineConfig({
 		}),
 		sitemap(),
 		svelte(),
-		pagefind()
+		pagefind(),
+		icon()
 	],
 	markdown: {
 		processor: unified({
