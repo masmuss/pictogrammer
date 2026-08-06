@@ -18,7 +18,16 @@ interface Props {
 	as?: "p" | "span" | "div" | "label" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 	/** Text size: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl */
 	size?:
-		"xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
+		| "xs"
+		| "sm"
+		| "base"
+		| "lg"
+		| "xl"
+		| "2xl"
+		| "3xl"
+		| "4xl"
+		| "5xl"
+		| "6xl";
 	/** Font weight: light, regular, medium, semibold, bold */
 	weight?: "light" | "regular" | "medium" | "semibold" | "bold";
 	/** Text color variant */
@@ -64,7 +73,7 @@ const sizeMap: Record<string, string> = {
 	"3xl": "text-3xl",
 	"4xl": "text-4xl",
 	"5xl": "text-5xl",
-	"6xl": "text-6xl",
+	"6xl": "text-6xl"
 };
 
 const weightMap: Record<string, string> = {
@@ -72,14 +81,14 @@ const weightMap: Record<string, string> = {
 	regular: "font-normal",
 	medium: "font-medium",
 	semibold: "font-semibold",
-	bold: "font-bold",
+	bold: "font-bold"
 };
 
 const colorMap: Record<string, string> = {
 	default: "text-foreground",
 	muted: "text-muted-foreground",
 	subtle: "text-subtle",
-	accent: "text-accent",
+	accent: "text-accent"
 };
 
 const lineClampMap: Record<string, string> = {
@@ -88,14 +97,14 @@ const lineClampMap: Record<string, string> = {
 	"2": "line-clamp-2",
 	"3": "line-clamp-3",
 	"4": "line-clamp-4",
-	"5": "line-clamp-5",
+	"5": "line-clamp-5"
 };
 
 const alignMap: Record<string, string> = {
 	left: "text-left",
 	center: "text-center",
 	right: "text-right",
-	justify: "text-justify",
+	justify: "text-justify"
 };
 
 const classes = cn(
@@ -105,7 +114,7 @@ const classes = cn(
 	lineClampMap[lineClamp],
 	alignMap[align],
 	Component.toString().startsWith("h") && "tracking-tight",
-	className,
+	className
 );
 ---
 

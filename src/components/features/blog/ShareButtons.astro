@@ -19,14 +19,14 @@ const shareLinks = [
 		id: "twitter",
 		name: "Share on X",
 		icon: "ph:x-logo",
-		href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+		href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
 	},
 	{
 		id: "linkedin",
 		name: "Share on LinkedIn",
 		icon: "ph:linkedin-logo",
-		href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`,
-	},
+		href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`
+	}
 ];
 
 const btnBase = [
@@ -34,7 +34,7 @@ const btnBase = [
 	"border-border/40 bg-card",
 	"text-muted-foreground",
 	"hover:bg-muted hover:text-foreground",
-	"transition-colors duration-base",
+	"transition-colors duration-base"
 ].join(" ");
 ---
 
@@ -42,7 +42,7 @@ const btnBase = [
 	class={cn(
 		"flex",
 		layout === "vertical" ? "flex-col gap-y-3" : "flex-row gap-x-3",
-		className,
+		className
 	)}
 >
 	{
@@ -117,7 +117,7 @@ const btnBase = [
 				try {
 					await navigator.share({
 						title: target.dataset.title,
-						url: target.dataset.url,
+						url: target.dataset.url
 					});
 				} catch (err) {
 					console.log("Error sharing:", err);

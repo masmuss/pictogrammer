@@ -18,7 +18,7 @@ const {
 	showTags = false,
 	clampTitle = true,
 	hasReadTime = false,
-	readTimeStyle = "short",
+	readTimeStyle = "short"
 } = Astro.props;
 ---
 
@@ -30,16 +30,16 @@ const {
 		href={getPostUrl(post)}
 		class={cn(
 			"scroll-reveal group/post block -mx-3 rounded-lg px-3 py-3",
-			"hover:bg-muted/40",
+			"hover:bg-muted/40 active:scale-[0.99]",
 			"focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
-			"transition-colors duration-base",
+			"transition-all duration-fast"
 		)}
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span
 				class:list={[
 					"font-medium transition-colors",
-					clampTitle ? "sm:line-clamp-1" : undefined,
+					clampTitle ? "sm:line-clamp-1" : undefined
 				]}
 				transition:name={`title-${post.id}`}
 			>

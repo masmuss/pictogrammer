@@ -4,7 +4,7 @@ import siteConfig from "@/config/site-config";
 import {
 	formatCanonicalURL,
 	normalizeDescription,
-	normalizeTitle,
+	normalizeTitle
 } from "@/lib/utils/seo";
 
 interface Props {
@@ -50,7 +50,7 @@ const {
 	siteName = siteConfig.title,
 	twitter = { card: "summary_large_image" },
 	article,
-	extraLinks = [],
+	extraLinks = []
 } = Astro.props;
 
 const title = normalizeTitle(rawTitle, siteConfig.title, titleTemplate);
@@ -59,7 +59,7 @@ const description = normalizeDescription(
 	ogType === "article"
 		? "Read this article on pictogrammmer for practical lessons, context, and related insights from Khoirul Fattah."
 		: siteConfig.description,
-	ogType === "article",
+	ogType === "article"
 );
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);

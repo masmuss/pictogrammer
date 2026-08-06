@@ -13,7 +13,7 @@ interface Props {
 
 const { post } = Astro.props;
 const {
-	data: { description, title, date, updatedDate, coverImage },
+	data: { description, title, date, updatedDate, coverImage }
 } = post;
 
 const seriesId = getSeriesForPost(post);
@@ -21,7 +21,7 @@ const series = seriesId ? await getSeriesById(seriesId) : null;
 
 const socialImage = {
 	src: new URL(getPostOgImagePath(post), Astro.url).href,
-	alt: title,
+	alt: title
 };
 const coverImageResolved = coverImage
 	? {
@@ -29,7 +29,7 @@ const coverImageResolved = coverImage
 				typeof coverImage.src === "string"
 					? coverImage.src
 					: coverImage.src.src,
-			alt: coverImage.alt,
+			alt: coverImage.alt
 		}
 	: undefined;
 const ogImage = coverImageResolved || socialImage;

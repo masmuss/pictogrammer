@@ -52,13 +52,13 @@ const base = [
 	"focus-visible:ring-[3px] focus-visible:ring-ring/50",
 	"aria-invalid:ring-destructive/20",
 	"dark:aria-invalid:ring-destructive/40",
-	"[&>svg]:pointer-events-none [&>svg]:shrink-0",
+	"[&>svg]:pointer-events-none [&>svg]:shrink-0"
 ].join(" ");
 
 const sizes: Record<Exclude<Props["size"], undefined>, string> = {
 	sm: "px-1.5 py-0.5 text-[10px] [&>svg]:size-2.5",
 	default: "px-2 py-0.5 text-xs [&>svg]:size-3",
-	lg: "px-2.5 py-1 text-sm [&>svg]:size-3.5",
+	lg: "px-2.5 py-1 text-sm [&>svg]:size-3.5"
 };
 
 /** Variant semantic meaning:
@@ -81,7 +81,7 @@ const variants: Record<Variant, string> = {
 		"ring-inset ring-muted-foreground/25 text-foreground [a&]:hover:bg-border/20 [a&]:hover:text-foreground",
 	muted:
 		"bg-muted text-muted-foreground [a&]:hover:bg-muted/80 [a&]:hover:text-muted-foreground",
-	link: "text-primary underline-offset-4 [a&]:hover:underline",
+	link: "text-primary underline-offset-4 [a&]:hover:underline"
 };
 ---
 

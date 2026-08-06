@@ -78,25 +78,50 @@ export function buildOgMarkup({
 				padding: 64px;
 			"
 		>
-			<div style="display: flex; align-items: center; justify-content: space-between;">
+			<div
+				style="display: flex; align-items: center; justify-content: space-between;"
+			>
 				<div style="display: flex; align-items: center; gap: 14px;">
-					<img src="${logoBase64}" style="width: 60px; height: 60px; border-radius: 8px;" />
-					<span style="font-size: 24px; font-weight: 600;">${siteConfig.title}</span>
+					<img
+						src="${logoBase64}"
+						style="width: 60px; height: 60px; border-radius: 8px;"
+					/>
+					<span style="font-size: 24px; font-weight: 600;"
+						>${siteConfig.title}</span
+					>
 				</div>
 				<span style="${catStyle}">${category || ""}</span>
 			</div>
 
 			<div style="display: flex; flex-direction: column;">
-				<h1 style="display: flex; font-size: 60px; font-weight: 800; line-height: 1.1; margin: 0 0 20px 0;">${title}</h1>
-				<div style="display: flex; font-size: 24px; color: #a1a1aa; line-height: 1.6; max-width: 720px;">${description}</div>
+				<h1
+					style="display: flex; font-size: 60px; font-weight: 800; line-height: 1.1; margin: 0 0 20px 0;"
+				>
+					${title}
+				</h1>
+				<div
+					style="display: flex; font-size: 24px; color: #a1a1aa; line-height: 1.6; max-width: 720px;"
+				>
+					${description}
+				</div>
 			</div>
 
-			<div style="display: flex; align-items: center; justify-content: space-between;">
+			<div
+				style="display: flex; align-items: center; justify-content: space-between;"
+			>
 				<div style="display: flex; align-items: center; gap: 14px;">
 					<div style="${avatarStyle}">${authorInitials || ""}</div>
 					<div style="display: flex; flex-direction: column;">
-						<div style="display: flex; font-weight: 600; font-size: 24px; line-height: 1.3;">${author || ""}</div>
-						<div style="display: flex; font-size: 20px; color: #71717a; line-height: 1.3;">${footerMeta}</div>
+						<div
+							style="display: flex; font-weight: 600; font-size: 24px; line-height: 1.3;"
+						>
+							${author || ""}
+						</div>
+						<div
+							style="display: flex; font-size: 20px; color: #71717a; line-height: 1.3;"
+						>
+							${footerMeta}
+						</div>
 					</div>
 				</div>
 				<span style="color: #71717a; font-size: 24px;">${domain || ""}</span>

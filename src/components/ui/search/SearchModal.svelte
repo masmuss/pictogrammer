@@ -1,32 +1,32 @@
 <script lang="ts">
-	import Icon from "@iconify/svelte";
-	import { onDestroy } from "svelte";
-	import Kbd from "./Kbd.svelte";
-	import SearchBar from "./SearchBar.svelte";
-	import SearchResultItem from "./SearchResultItem.svelte";
-	import type { createSearch } from "./search-state.svelte";
+import Icon from "@iconify/svelte";
+import { onDestroy } from "svelte";
+import Kbd from "./Kbd.svelte";
+import SearchBar from "./SearchBar.svelte";
+import SearchResultItem from "./SearchResultItem.svelte";
+import type { createSearch } from "./search-state.svelte";
 
-	let { search }: { search: ReturnType<typeof createSearch> } = $props();
-	let dialogElement: HTMLDialogElement;
-	let previousBodyOverflow: string | null = null;
+let { search }: { search: ReturnType<typeof createSearch> } = $props();
+let dialogElement: HTMLDialogElement;
+let previousBodyOverflow: string | null = null;
 
-	$effect(() => {
-		if (search.isOpen && dialogElement && !dialogElement.open) {
-			dialogElement.showModal();
-			previousBodyOverflow = document.body.style.overflow;
-			document.body.style.overflow = "hidden";
-		} else if (!search.isOpen && dialogElement && dialogElement.open) {
-			dialogElement.close();
-			document.body.style.overflow = previousBodyOverflow ?? "";
-			previousBodyOverflow = null;
-		}
-	});
+$effect(() => {
+	if (search.isOpen && dialogElement && !dialogElement.open) {
+		dialogElement.showModal();
+		previousBodyOverflow = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+	} else if (!search.isOpen && dialogElement && dialogElement.open) {
+		dialogElement.close();
+		document.body.style.overflow = previousBodyOverflow ?? "";
+		previousBodyOverflow = null;
+	}
+});
 
-	onDestroy(() => {
-		if (previousBodyOverflow !== null) {
-			document.body.style.overflow = previousBodyOverflow;
-		}
-	});
+onDestroy(() => {
+	if (previousBodyOverflow !== null) {
+		document.body.style.overflow = previousBodyOverflow;
+	}
+});
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->

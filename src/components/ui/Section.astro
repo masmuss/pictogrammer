@@ -28,12 +28,12 @@ const {
 	class={cn(
 		className,
 		"flex flex-col gap-y-4 pt-12",
-		"opacity-0 translate-y-4 transition-[opacity,transform] ease-out",
+		"opacity-0 translate-y-4 transition-[opacity,transform] ease-out"
 	)}
 	style={transitionDelay > 0
 		? {
 				transitionDuration: "var(--duration-slower)",
-				transitionDelay: `${transitionDelay}ms`,
+				transitionDelay: `${transitionDelay}ms`
 			}
 		: { transitionDuration: "var(--duration-slower)" }}
 	{...attrs}
@@ -85,8 +85,8 @@ const {
 			},
 			{
 				rootMargin: "0px",
-				threshold: 0.1,
-			},
+				threshold: 0.1
+			}
 		);
 
 		document.querySelectorAll('[data-fade-up="true"]').forEach((element) => {

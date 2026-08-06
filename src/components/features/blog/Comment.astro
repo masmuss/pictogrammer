@@ -15,7 +15,7 @@
 		emitMetadata: "0",
 		inputPosition: "bottom",
 		lang: "en",
-		loading: "lazy",
+		loading: "lazy"
 	};
 
 	function getGiscusTheme() {
@@ -29,7 +29,7 @@
 		if (!iframe) return;
 		iframe.contentWindow?.postMessage(
 			{ giscus: { setConfig: { theme: getGiscusTheme() } } },
-			GISCUS_ORIGIN,
+			GISCUS_ORIGIN
 		);
 	}
 
@@ -48,7 +48,7 @@
 		script.setAttribute("data-strict", GISCUS_CONFIG.strict);
 		script.setAttribute(
 			"data-reactions-enabled",
-			GISCUS_CONFIG.reactionsEnabled,
+			GISCUS_CONFIG.reactionsEnabled
 		);
 		script.setAttribute("data-emit-metadata", GISCUS_CONFIG.emitMetadata);
 		script.setAttribute("data-input-position", GISCUS_CONFIG.inputPosition);
@@ -79,7 +79,7 @@
 	const observer = new MutationObserver(setGiscusTheme);
 	observer.observe(document.documentElement, {
 		attributes: true,
-		attributeFilter: ["class"],
+		attributeFilter: ["class"]
 	});
 
 	// Fallback synchronization. Sometimes the iframe is slow to respond to the first `postMessage`

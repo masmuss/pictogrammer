@@ -1,22 +1,22 @@
 <script lang="ts">
-	import Icon from "@iconify/svelte";
-	import Kbd from "./Kbd.svelte";
-	import type { createSearch } from "./search-state.svelte";
+import Icon from "@iconify/svelte";
+import Kbd from "./Kbd.svelte";
+import type { createSearch } from "./search-state.svelte";
 
-	let { search }: { search: ReturnType<typeof createSearch> } = $props();
+let { search }: { search: ReturnType<typeof createSearch> } = $props();
 
-	const platform =
-		typeof navigator === "undefined"
-			? ""
-			: "userAgentData" in navigator
-				? ((
-						navigator as Navigator & {
-							userAgentData?: { platform?: string };
-						}
-					).userAgentData?.platform ?? "")
-				: navigator.platform;
-	const isApplePlatform = /Mac|iPhone|iPad|iPod/i.test(platform);
-	const modifierKey = isApplePlatform ? "⌘" : "Ctrl";
+const platform =
+	typeof navigator === "undefined"
+		? ""
+		: "userAgentData" in navigator
+			? ((
+					navigator as Navigator & {
+						userAgentData?: { platform?: string };
+					}
+				).userAgentData?.platform ?? "")
+			: navigator.platform;
+const isApplePlatform = /Mac|iPhone|iPad|iPod/i.test(platform);
+const modifierKey = isApplePlatform ? "⌘" : "Ctrl";
 </script>
 
 <button

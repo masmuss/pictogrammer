@@ -87,8 +87,8 @@ const toc = generateToc(headings);
 
 		const headings = Array.from(
 			document.querySelectorAll(
-				".custom-prose h1[id], .custom-prose h2[id], .custom-prose h3[id]",
-			),
+				".custom-prose h1[id], .custom-prose h2[id], .custom-prose h3[id]"
+			)
 		);
 
 		const observer = new IntersectionObserver(
@@ -97,12 +97,12 @@ const toc = generateToc(headings);
 					if (!entry.isIntersecting) continue;
 					links.forEach((link) => link.classList.remove("active"));
 					const active = document.querySelector(
-						`.toc-link[href="#${entry.target.id}"]`,
+						`.toc-link[href="#${entry.target.id}"]`
 					);
 					active?.classList.add("active");
 				}
 			},
-			{ rootMargin: "-80px 0px -70% 0px" },
+			{ rootMargin: "-80px 0px -70% 0px" }
 		);
 
 		headings.forEach((h) => observer.observe(h));

@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
 		params: { id: getPostRouteId(post) },
-		props: { post, allPosts: posts },
+		props: { post, allPosts: posts }
 	}));
 }
 
