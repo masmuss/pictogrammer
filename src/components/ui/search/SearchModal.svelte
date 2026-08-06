@@ -1,5 +1,6 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
+import { onDestroy } from "svelte";
 import Kbd from "./Kbd.svelte";
 import SearchBar from "./SearchBar.svelte";
 import SearchResultItem from "./SearchResultItem.svelte";
@@ -7,15 +8,23 @@ import type { createSearch } from "./search-state.svelte";
 
 let { search }: { search: ReturnType<typeof createSearch> } = $props();
 let dialogElement: HTMLDialogElement;
+let previousBodyOverflow: string | null = null;
 
 $effect(() => {
 	if (search.isOpen && dialogElement && !dialogElement.open) {
 		dialogElement.showModal();
-		// Prevent body scroll when open
+		previousBodyOverflow = document.body.style.overflow;
 		document.body.style.overflow = "hidden";
 	} else if (!search.isOpen && dialogElement && dialogElement.open) {
 		dialogElement.close();
-		document.body.style.overflow = "";
+		document.body.style.overflow = previousBodyOverflow ?? "";
+		previousBodyOverflow = null;
+	}
+});
+
+onDestroy(() => {
+	if (previousBodyOverflow !== null) {
+		document.body.style.overflow = previousBodyOverflow;
 	}
 });
 </script>
