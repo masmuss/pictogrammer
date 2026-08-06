@@ -12,7 +12,11 @@ import {
 } from "@/lib/contents/schemas";
 
 const post = defineCollection({
-	loader: glob({ pattern: "**/**/*.{md,mdx}", base: "./src/content/post" }),
+	loader: glob({
+		pattern: "**/**/*.{md,mdx}",
+		base: "./src/content/post",
+		deferRender: true
+	}),
 	schema: postSchema
 });
 
