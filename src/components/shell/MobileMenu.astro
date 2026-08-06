@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
 import type { NavLink } from "@/config/types";
 import { getCurrentRole } from "@/lib/contents";
+import { Icon } from "../ui/primitives";
 import MobileMenuStatus from "./MobileMenuStatus.astro";
 
 const { navLinks } = Astro.props;
@@ -26,7 +27,7 @@ const isActive = Astro.url.pathname;
     aria-expanded="false"
     aria-controls="mobile-nav"
   >
-    <span class="iconify ri--menu-line" aria-hidden="true"></span>
+    <Icon name="list" aria-hidden="true" />
   </Button>
 
   <div
@@ -51,7 +52,7 @@ const isActive = Astro.url.pathname;
           id="menu-close"
           aria-label="Close navigation menu"
         >
-          <span class="iconify ri--close-line" aria-hidden="true"></span>
+          <Icon name="x" aria-hidden="true" />
         </Button>
       </div>
 

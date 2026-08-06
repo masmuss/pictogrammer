@@ -1,4 +1,5 @@
 ---
+import { Icon } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -17,13 +18,13 @@ const shareLinks = [
 	{
 		id: "twitter",
 		name: "Share on X",
-		icon: "ri--twitter-x-line",
+		icon: "x-logo",
 		href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
 	},
 	{
 		id: "linkedin",
 		name: "Share on LinkedIn",
-		icon: "ri--linkedin-fill",
+		icon: "linkedin-logo",
 		href: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`
 	}
 ];
@@ -54,7 +55,7 @@ const btnBase = [
         title={link.name}
         aria-label={link.name}
       >
-        <span class={`iconify ${link.icon} text-lg`} />
+        <Icon name={link.icon} class="text-lg" />
       </a>
     ))
   }
@@ -66,7 +67,7 @@ const btnBase = [
     aria-label="Copy link"
     data-url={url.toString()}
   >
-    <span class="iconify ri--links-line pointer-events-none text-lg"></span>
+    <Icon name="link" class="pointer-events-none text-lg" />
   </button>
 
   <button
@@ -77,8 +78,7 @@ const btnBase = [
     data-url={url.toString()}
     data-title={title}
   >
-    <span class="iconify ri--share-forward-line pointer-events-none text-lg"
-    ></span>
+    <Icon name="share-network" class="pointer-events-none text-lg" />
   </button>
 </div>
 
@@ -96,7 +96,7 @@ const btnBase = [
         if (icon) {
           const oldIcon = icon.className;
           icon.className =
-            "iconify ri--check-line text-lg text-primary pointer-events-none";
+            "iconify ph--check text-lg text-primary pointer-events-none";
           setTimeout(() => {
             icon.className = oldIcon;
           }, 2000);

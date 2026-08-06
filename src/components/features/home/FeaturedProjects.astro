@@ -1,4 +1,5 @@
 ---
+import { Icon } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 import FeaturedProjectItem from "./FeaturedProjectItem.astro";
@@ -33,9 +34,9 @@ const displayed = projects.slice(0, max);
           )}
         >
           <span>See all projects</span>
-          <span
-            class="iconify ri--arrow-right-long-line duration-fast transition-transform group-hover/seeall:translate-x-1"
-            aria-hidden="true"
+          <Icon
+            name="arrow-right"
+            class="duration-fast transition-transform group-hover/seeall:translate-x-1"
           />
         </a>
       </div>

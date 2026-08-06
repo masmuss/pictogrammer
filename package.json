@@ -78,7 +78,7 @@
 		"@axe-core/playwright": "^4.12.1",
 		"@biomejs/biome": "2.5.7",
 		"@iconify-json/logos": "^1.2.12",
-		"@iconify-json/ri": "^1.2.10",
+		"@iconify-json/ph": "^1.2.2",
 		"@iconify/json": "^2.2.509",
 		"@playwright/test": "^1.62.1",
 		"@semantic-release/changelog": "^7.0.0",

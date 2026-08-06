@@ -1,7 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
+import { Icon } from "@/components/ui/primitives";
 import { generateToc } from "@/lib/utils";
-
 import TocHeading from "./TocHeading.astro";
 
 interface Props {
@@ -24,9 +24,7 @@ const toc = generateToc(headings);
       aria-expanded="false"
       type="button"
     >
-      <span
-        class="iconify ri--menu-line duration-base text-sm transition-transform"
-      ></span>
+      <Icon name="list" class="duration-base text-sm transition-transform" />
     </button>
 
     <div

@@ -1,4 +1,5 @@
 ---
+import { Icon } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 
@@ -46,7 +47,7 @@ const hasRepo = Boolean(project.repoHref);
       {
         isLive && (
           <span class="inline-flex items-center gap-1">
-            <span class="iconify ri--external-link-line" aria-hidden="true" />
+            <Icon name="arrow-square-out" />
             Live
           </span>
         )
@@ -54,7 +55,7 @@ const hasRepo = Boolean(project.repoHref);
       {
         hasRepo && (
           <span class="inline-flex items-center gap-1">
-            <span class="iconify ri--github-line" aria-hidden="true" />
+            <Icon name="github-logo" />
             Repo
           </span>
         )

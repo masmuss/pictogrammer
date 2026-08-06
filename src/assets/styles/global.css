@@ -9,7 +9,7 @@
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4" {
 	prefix: "iconify";
-	prefixes: ri, logos;
+	prefixes: logos, ph;
 	scale: 1.2;
 	colors: true;
 }

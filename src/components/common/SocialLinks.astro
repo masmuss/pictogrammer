@@ -2,6 +2,7 @@
 import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
 import { cn } from "@/lib/utils";
+import { Icon } from "../ui/primitives";
 
 interface Props {
 	variant?: "icon" | "button";
@@ -24,7 +25,6 @@ const buttonClass = cn(
 	"text-muted-foreground hover:text-foreground",
 	isButton && "gap-x-2"
 );
-const iconClass = cn("iconify", !isButton && "text-xl");
 
 const links = [
 	...(showEmail
@@ -32,7 +32,7 @@ const links = [
 				{
 					href: `mailto:${siteConfig.email}`,
 					text: "Email",
-					icon: "ri--mail-line"
+					icon: "envelope"
 				}
 			]
 		: []),
@@ -60,7 +60,7 @@ const links = [
         rel="noopener noreferrer"
         variant="outline"
       >
-        <span slot="icon-before" class="iconify ri--file-download-line" />
+        <Icon slot="icon-before" name="file-arrow-down"/>
         View Resume
       </Button>
     )
@@ -78,7 +78,9 @@ const links = [
         aria-label={link.text}
         title={isButton ? link.text : undefined}
       >
-        <span slot="icon-before" class={cn(iconClass, link.icon)} />
+        <Icon slot="icon-before" name={link.icon} class:list={
+          [!isButton && "text-xl"]
+        } />
         {!isButton && <span class="sr-only">{link.text}</span>}
       </Button>
     ))

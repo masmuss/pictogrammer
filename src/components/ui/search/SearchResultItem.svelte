@@ -58,7 +58,7 @@ function sanitizeExcerpt(excerpt: string) {
 			{result.meta.title}
 		</h3>
 		<span
-			class="iconify ri--arrow-right-s-line text-muted-foreground h-4 w-4 transition-transform {search.selectedIndex ===
+			class="iconify ph--arrow-right text-muted-foreground h-4 w-4 transition-transform {search.selectedIndex ===
 			index
 				? 'translate-x-1'
 				: 'group-hover:translate-x-1'}"

@@ -1,4 +1,6 @@
 ---
+import { Icon } from "../ui/primitives";
+
 interface Props {
 	href: string;
 	text: string;
@@ -14,5 +16,5 @@ const { href, text, icon } = Astro.props;
 	aria-label={text}
 >
 	<span class="hidden md:inline">{text}</span>
-	{icon && <span class={`iconify ${icon} md:hidden`} />}
+	{icon && <Icon name={icon} class="md:hidden" />}
 </a>

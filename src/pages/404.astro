@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import { CardDescription, CardTitle } from "@/components/ui/card";
+import { Icon } from "@/components/ui/primitives";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { cn } from "@/lib/utils";
 
@@ -17,37 +18,37 @@ const quickLinks: QuickLink[] = [
 		title: "Home",
 		href: "/",
 		description: "Back to the starting point",
-		icon: "ri--home-line"
+		icon: "house"
 	},
 	{
 		title: "Blog",
 		href: "/blog",
 		description: "Notes, tutorials & stories",
-		icon: "ri--article-line"
+		icon: "article"
 	},
 	{
 		title: "Projects",
 		href: "/projects",
 		description: "Things I've built",
-		icon: "ri--code-line"
+		icon: "code"
 	},
 	{
 		title: "About",
 		href: "/about",
 		description: "Who I am & what I do",
-		icon: "ri--user-line"
+		icon: "user"
 	},
 	{
 		title: "Tags",
 		href: "/tags",
 		description: "Browse by topic",
-		icon: "ri--price-tag-3-line"
+		icon: "bookmark"
 	},
 	{
 		title: "Archive",
 		href: "/blog/archive",
 		description: "All posts, paginated",
-		icon: "ri--archive-line"
+		icon: "archive"
 	}
 ];
 ---
@@ -95,10 +96,7 @@ const quickLinks: QuickLink[] = [
                 "focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
               )}
             >
-              <span
-                class={cn("iconify text-accent-cta size-4", link.icon)}
-                aria-hidden="true"
-              />
+              <Icon name={link.icon} class="text-accent-cta size-4" />
               <CardTitle class="text-foreground text-sm font-medium">
                 {link.title}
               </CardTitle>

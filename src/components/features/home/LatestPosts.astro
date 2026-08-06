@@ -1,5 +1,6 @@
 ---
 import PostPreview from "@/components/features/blog/PostPreview.astro";
+import { Icon } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 import type { CollectionPosts } from "@/types";
 
@@ -30,9 +31,9 @@ const { posts }: Props = Astro.props;
           )}
         >
           <span>See all posts</span>
-          <span
-            class="iconify ri--arrow-right-long-line duration-fast transition-transform group-hover/seeall:translate-x-1"
-            aria-hidden="true"
+          <Icon
+            name="arrow-right"
+            class="duration-fast transition-transform group-hover/seeall:translate-x-1"
           />
         </a>
       </div>

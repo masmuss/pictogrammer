@@ -48,7 +48,7 @@ $effect(() => {
 		{:else if search.query.trim().length >= 2}
 			<div class="py-12 text-center">
 				<span
-					class="iconify ri--search-line text-muted-foreground/30 mx-auto h-8 w-8"
+					class="iconify ph--magnifying-glass text-muted-foreground/30 mx-auto h-8 w-8"
 				></span>
 				<p class="text-muted-foreground mt-4 text-sm">
 					No results for "{search.query}"

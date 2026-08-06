@@ -1,5 +1,6 @@
 ---
 import { Card, CardContent } from "@/components/ui/card";
+import { Icon } from "@/components/ui/primitives";
 import type { Certification } from "@/types";
 
 interface Props {
@@ -29,8 +30,9 @@ const hasUrl = Boolean(cert.credentialUrl);
         <span class="font-medium">{cert.title}</span>
         {
           hasUrl && (
-            <span
-              class="iconify ri--external-link-line text-muted-foreground text-sm opacity-0 transition-opacity group-hover:opacity-100"
+            <Icon
+              name="arrow-square-out"
+              class="text-muted-foreground text-sm opacity-0 transition-opacity group-hover:opacity-100"
               aria-hidden="true"
             />
           )

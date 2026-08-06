@@ -1,5 +1,6 @@
 ---
 import Button from "@/components/ui/Button.astro";
+import { Icon } from "./primitives";
 ---
 
 <theme-toggle>
@@ -10,8 +11,8 @@ import Button from "@/components/ui/Button.astro";
 		class="text-muted-foreground hover:text-foreground"
 		aria-label="Toggle Dark Mode"
 	>
-		<span class="iconify ri--sun-line dark:hidden"></span>
-		<span class="iconify ri--moon-line hidden dark:inline-block"></span>
+		<Icon name="sun" class="dark:hidden"/>
+		<Icon name="moon" class="hidden dark:inline-block"/>
 	</Button>
 </theme-toggle>
 

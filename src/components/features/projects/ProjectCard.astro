@@ -9,6 +9,7 @@ import {
 	CardHeader,
 	CardTitle
 } from "@/components/ui/card";
+import { Icon } from "@/components/ui/primitives";
 import { CATEGORY_ICONS } from "@/lib/contents/projects";
 import { cn } from "@/lib/utils/tailwind";
 
@@ -78,10 +79,7 @@ const hasSingleAction = actionCount === 1;
     ) : (
       <div class="bg-muted flex aspect-video w-full items-center justify-center rounded-sm">
         {placeholderIcon && (
-          <span
-            class={`iconify ${placeholderIcon} text-muted-foreground/40 text-4xl`}
-            aria-hidden="true"
-          />
+          <Icon name={placeholderIcon} class="text-muted-foreground/40 text-4xl" />
         )}
       </div>
     )
@@ -110,11 +108,7 @@ const hasSingleAction = actionCount === 1;
             size="default"
             class="flex-1"
           >
-            <span
-              slot="icon-before"
-              class="iconify ri--github-line"
-              aria-hidden="true"
-            />
+            <Icon name="github-logo" aria-hidden="true" />
             Repo
           </Button>
         )}
@@ -129,10 +123,7 @@ const hasSingleAction = actionCount === 1;
             size="default"
             class="flex-1"
           >
-            <span
-              slot="icon-before"
-              class="iconify ri--external-link-line"
-              aria-hidden="true"
+            <Icon name="arrow-square-out" aria-hidden="true"
             />
             Live
           </Button>

@@ -6,6 +6,7 @@ import FeaturedProjects from "@/components/features/home/FeaturedProjects.astro"
 import Hero from "@/components/features/home/Hero.astro";
 import LatestPosts from "@/components/features/home/LatestPosts.astro";
 import Button from "@/components/ui/Button.astro";
+import { Icon } from "@/components/ui/primitives";
 import Section from "@/components/ui/Section.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getFeaturedProjects } from "@/lib/contents";
@@ -76,7 +77,11 @@ const ctaLinks = [
         ctaLinks.map((link) => (
           <Button as="a" href={link.href} variant="ghost" class="group/cta px-0">
             {link.label}
-            <span slot="icon-after" class="iconify ri--arrow-right-line transition-transform duration-base group-hover/cta:translate-x-1" aria-hidden="true" />
+            <Icon
+              name="arrow-right"
+              class="transition-transform duration-base group-hover/cta:translate-x-1"
+              aria-hidden="true"
+            />
           </Button>
         ))
       }

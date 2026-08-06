@@ -1,6 +1,7 @@
 ---
 import SocialLinks from "@/components/common/SocialLinks.astro";
 import Button from "@/components/ui/Button.astro";
+import { Icon } from "@/components/ui/primitives";
 
 import siteConfig from "@/config/site-config";
 ---
@@ -15,7 +16,7 @@ import siteConfig from "@/config/site-config";
       siteConfig.cvLink && (
         <Button href={siteConfig.cvLink} variant="outline">
           Resume
-          <span slot="icon-after" class="iconify ri--file-download-line" />
+          <Icon slot="icon-after" name="file-arrow-down"/>
         </Button>
       )
     }
