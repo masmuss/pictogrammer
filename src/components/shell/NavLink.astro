@@ -12,7 +12,7 @@ const { href, text, icon } = Astro.props;
 
 <a
 	{href}
-	class="text-muted-foreground hover:text-accent-cta-text flex flex-none font-medium transition-colors focus:outline-none md:items-center"
+	class="text-muted-foreground hover:text-accent-cta-text flex flex-none font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md md:items-center"
 	aria-label={text}
 >
 	<span class="hidden md:inline">{text}</span>

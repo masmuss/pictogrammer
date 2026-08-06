@@ -12,8 +12,9 @@ let { search }: { search: ReturnType<typeof createSearch> } = $props();
 		bind:value={search.query}
 		oninput={search.handleSearch}
 		type="text"
+		aria-label="Search query"
 		placeholder="Search articles, projects..."
-		class="placeholder:text-muted-foreground h-12 w-full bg-transparent px-4 text-sm outline-none"
+		class="placeholder:text-muted-foreground h-12 w-full bg-transparent px-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-md"
 	/>
 	{#if search.isSearching}
 		<div
@@ -22,7 +23,8 @@ let { search }: { search: ReturnType<typeof createSearch> } = $props();
 	{/if}
 	<button
 		onclick={search.closeSearch}
-		class="border-border text-muted-foreground hover:bg-muted rounded-md border px-1.5 py-0.5 text-[10px] font-medium"
+		aria-label="Close search"
+		class="border-border text-muted-foreground hover:bg-muted focus-visible:ring-ring focus-visible:ring-offset-background ml-1 rounded-md border p-1.5 sm:px-1.5 sm:py-0.5 text-[10px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1"
 	>
 		ESC
 	</button>

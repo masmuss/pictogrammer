@@ -62,82 +62,82 @@ const isActive = Astro.url.pathname;
             navLinks
               .slice(1, navLinks.length)
               .map((link: NavLink, i: number) => (
-              <a
-                href={link.href}
-                class:list={[
-                  "group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out",
-                  isActive === link.href && "text-accent-cta",
-                ]}
-                style={`transition-delay: ${150 + i * 75}ms`}
-              >
-                {isActive === link.href && (
-                  <div class="bg-accent-cta h-5 w-5 shrink-0 rounded-sm" />
-                )}
-                {link.text}
-              </a>
-            ))
-          }
-        </nav>
-
-        <!-- Extra Sections -->
-        <div
-          class="grid grid-cols-1 gap-12 sm:grid-cols-2 translate-y-4 opacity-0 transition-all duration-slow ease-out"
-          data-mobile-entrance
-          style="transition-delay: 500ms"
-        >
-          <!-- Contact -->
-          <div class="flex flex-col gap-y-4">
-            <h3 class="text-muted-foreground text-xs font-semibold">
-              Contact
-            </h3>
-            <div class="flex flex-col gap-y-2 text-sm">
-              <a
-                href={`mailto:${email}`}
-                class="hover:text-accent-cta-text transition-colors"
-              >
-                {email}
-              </a>
+                <a
+                  href={link.href}
+                  class:list={[
+                    "group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background rounded-md",
+                    isActive === link.href && "text-accent-cta",
+                  ]}
+                  style={`transition-delay: ${150 + i * 75}ms`}
+                >
+                  {isActive === link.href && (
+                    <div class="bg-accent-cta h-5 w-5 shrink-0 rounded-sm" />
+                  )}
+                  {link.text}
+                </a>
+              ))
+            }
+          </nav>
+  
+          <!-- Extra Sections -->
+          <div
+            class="grid grid-cols-1 gap-12 sm:grid-cols-2 translate-y-4 opacity-0 transition-all duration-slow ease-out"
+            data-mobile-entrance
+            style="transition-delay: 500ms"
+          >
+            <!-- Contact -->
+            <div class="flex flex-col gap-y-4">
+              <h3 class="text-muted-foreground text-xs font-semibold">
+                Contact
+              </h3>
+              <div class="flex flex-col gap-y-2 text-sm">
+                <a
+                  href={`mailto:${email}`}
+                  class="hover:text-accent-cta-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
+                >
+                  {email}
+                </a>
+              </div>
             </div>
-          </div>
-
-          <!-- Socials -->
-          <div class="flex flex-col gap-y-4">
-            <h3 class="text-muted-foreground text-xs font-semibold">
-              Connect
-            </h3>
-            <div class="flex flex-col gap-y-2 text-sm">
-              {
-                instagramLink && (
-                  <a
-                    href={instagramLink.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:text-accent-cta-text transition-colors"
-                  >
-                    Instagram
-                  </a>
-                )
-              }
-              {
-                linkedinLink && (
-                  <a
-                    href={linkedinLink.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:text-accent-cta-text transition-colors"
-                  >
-                    LinkedIn
-                  </a>
-                )
-              }
-              {
-                githubLink && (
-                  <a
-                    href={githubLink.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:text-accent-cta-text transition-colors"
-                  >
+  
+            <!-- Socials -->
+            <div class="flex flex-col gap-y-4">
+              <h3 class="text-muted-foreground text-xs font-semibold">
+                Connect
+              </h3>
+              <div class="flex flex-col gap-y-2 text-sm">
+                {
+                  instagramLink && (
+                    <a
+                      href={instagramLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-accent-cta-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
+                    >
+                      Instagram
+                    </a>
+                  )
+                }
+                {
+                  linkedinLink && (
+                    <a
+                      href={linkedinLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-accent-cta-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
+                    >
+                      LinkedIn
+                    </a>
+                  )
+                }
+                {
+                  githubLink && (
+                    <a
+                      href={githubLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-accent-cta-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
+                    >
                     GitHub
                   </a>
                 )
