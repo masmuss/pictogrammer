@@ -38,6 +38,14 @@ import Button from "@/components/ui/Button.astro";
 
 					button.setAttribute("aria-checked", String(rootInDarkMode()));
 				});
+
+				// Keep aria-checked in sync with external changes (e.g. keyboard shortcuts)
+				document.addEventListener("theme-change", () => {
+					// Wait for the next tick to ensure the DOM has updated
+					setTimeout(() => {
+						button.setAttribute("aria-checked", String(rootInDarkMode()));
+					}, 0);
+				});
 			} else {
 				console.warn("Theme Toggle: No button found");
 			}
