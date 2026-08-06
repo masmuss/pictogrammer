@@ -11,7 +11,10 @@
 	}
 
 	.scroll-reveal {
-		animation: reveal-up linear both;
+		animation-name: reveal-up;
+		animation-duration: 1ms;
+		animation-timing-function: linear;
+		animation-fill-mode: both;
 		animation-timeline: view();
 		animation-range: entry 5% cover 20%;
 	}
