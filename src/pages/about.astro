@@ -5,7 +5,6 @@ import SocialLinks from "@/components/common/SocialLinks.astro";
 import Certifications from "@/components/features/about/Certifications.astro";
 import Educations from "@/components/features/about/Educations.astro";
 import Experiences from "@/components/features/about/Experiences.astro";
-import GitHubCalendar from "@/components/features/about/GitHubCalendar.astro";
 import SkillsTabs from "@/components/features/about/SkillsTabs.astro";
 import AsideListPanel from "@/components/ui/AsideListPanel.astro";
 import Heading from "@/components/ui/Heading.astro";
@@ -59,22 +58,6 @@ const githubCalendarTheme = getGitHubCalendarTheme();
           >
             <AboutContent />
           </div>
-        </Section>
-
-        <Section
-          title="Contribution Activity"
-          titleAs="h2"
-          transitionDelay={150}
-          data-testid="contribution-activity-section"
-        >
-          <GitHubCalendar
-            username={githubUsername}
-            blockSize={10}
-            blockMargin={2}
-            showMonthLabels={true}
-            year="last"
-            theme={githubCalendarTheme}
-          />
         </Section>
 
         <Section
