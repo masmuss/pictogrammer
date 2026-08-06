@@ -103,90 +103,62 @@ const shouldPrefetch = Boolean(href && !isButton && href.startsWith("/"));
 const prefetchProps = shouldPrefetch
 	? { "data-astro-prefetch": true as const }
 	: {};
+const Tag = isButton ? "button" : "a";
+const commonProps = {
+	"data-slot": "button",
+	"data-variant": resolvedVariant,
+	"data-size": resolvedSize,
+	"aria-disabled": disabled || loading,
+	class: cn(
+		baseClass,
+		variantClass[resolvedVariant],
+		sizeClass[resolvedSize],
+		legacyClass,
+		"leading-none",
+		!isButton && (disabled || loading) && "pointer-events-none opacity-50",
+		className,
+	),
+	...attrs,
+};
+
+const buttonProps = isButton
+	? {
+			type: "button" as const,
+			disabled: disabled || loading,
+			"aria-busy": loading,
+		}
+	: {
+			...prefetchProps,
+			href: disabled || loading ? undefined : href,
+		};
 ---
 
-{
-	isButton ? (
-		<button
-			type="button"
-			data-slot="button"
-			data-variant={resolvedVariant}
-			data-size={resolvedSize}
-			disabled={disabled || loading}
-			aria-disabled={disabled || loading}
-			aria-busy={loading}
-			{...attrs}
-			class={cn(
-				baseClass,
-				variantClass[resolvedVariant],
-				sizeClass[resolvedSize],
-				legacyClass,
-				"leading-none",
-				className,
-			)}
-		>
-			{hasStartIcon && (
-				<span
-					data-icon="inline-start"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-before" />
-				</span>
-			)}
-			{title ? (
-				<span class="leading-none">{title}</span>
-			) : (
-				hasDefaultSlot && <slot />
-			)}
-			{hasEndIcon && (
-				<span
-					data-icon="inline-end"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-after" />
-				</span>
-			)}
-		</button>
-	) : (
-		<a
-			data-slot="button"
-			data-variant={resolvedVariant}
-			data-size={resolvedSize}
-			aria-disabled={disabled || loading}
-			{...prefetchProps}
-			href={disabled || loading ? undefined : href}
-			{...attrs}
-			class={cn(
-				baseClass,
-				variantClass[resolvedVariant],
-				sizeClass[resolvedSize],
-				legacyClass,
-				"leading-none",
-				(disabled || loading) && "pointer-events-none opacity-50",
-				className,
-			)}
-		>
-			{hasStartIcon && (
-				<span
-					data-icon="inline-start"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-before" />
-				</span>
-			)}
-			{title ? (
-				<span class="leading-none">{title}</span>
-			) : (
-				hasDefaultSlot && <slot />
-			)}
-			{hasEndIcon && (
-				<span
-					data-icon="inline-end"
-					class="inline-flex items-center justify-center leading-none"
-				>
-					<slot name="icon-after" />
-				</span>
-			)}
-		</a>
-	)
-}
+<Tag {...commonProps} {...buttonProps}>
+	{
+		hasStartIcon && (
+			<span
+				data-icon="inline-start"
+				class="inline-flex items-center justify-center leading-none"
+			>
+				<slot name="icon-before" />
+			</span>
+		)
+	}
+	{
+		title ? (
+			<span class="leading-none">{title}</span>
+		) : (
+			hasDefaultSlot && <slot />
+		)
+	}
+	{
+		hasEndIcon && (
+			<span
+				data-icon="inline-end"
+				class="inline-flex items-center justify-center leading-none"
+			>
+				<slot name="icon-after" />
+			</span>
+		)
+	}
+</Tag>

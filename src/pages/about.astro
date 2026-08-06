@@ -15,8 +15,6 @@ import {
 	getAboutPageData,
 	getAllSkillCollections,
 	getCurrentWorkItems,
-	getGitHubCalendarTheme,
-	getGitHubUsername,
 	getLearningFocusItems,
 	getNowReadingBooks,
 } from "@/lib/contents";
@@ -27,8 +25,6 @@ const techStack = await getAllSkillCollections();
 const currentWorkItems = getCurrentWorkItems(experiences);
 const learningFocusItems = getLearningFocusItems();
 const nowReadingBooks = getNowReadingBooks();
-const githubUsername = getGitHubUsername();
-const githubCalendarTheme = getGitHubCalendarTheme();
 ---
 
 <BaseLayout
