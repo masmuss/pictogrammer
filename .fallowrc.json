@@ -8,9 +8,8 @@
 	],
 	"ignoreDependencies": [
 		"@iconify/json",
-		"@iconify-json/carbon",
 		"@iconify-json/logos",
-		"@iconify-json/ri",
+		"@iconify-json/ph",
 		"@astrojs/markdown-remark",
 		"@astrojs/sitemap",
 		"@astrojs/svelte",

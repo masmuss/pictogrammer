@@ -5,7 +5,7 @@ let { search }: { search: ReturnType<typeof createSearch> } = $props();
 </script>
 
 <div class="border-border relative flex items-center border-b px-4">
-	<span class="iconify ri--search-line text-muted-foreground h-5 w-5"></span>
+	<span class="iconify ph--magnifying-glass text-muted-foreground h-5 w-5"></span>
 	<input
 		bind:this={search.searchInput}
 		bind:value={search.query}

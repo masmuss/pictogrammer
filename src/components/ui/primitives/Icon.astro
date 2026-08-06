@@ -7,4 +7,4 @@ interface Props {
 const { name, class: className } = Astro.props;
 ---
 
-<span class:list={[className, `iconify ph--${name}`]} aria-hidden="true" />
+<i class:list={[`iconify ph--${name}`, className]} />
