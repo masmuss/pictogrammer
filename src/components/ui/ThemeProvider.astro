@@ -12,10 +12,12 @@
 				: "light";
 	}
 
+	let transitionTimeout;
+
 	function setTheme(newTheme) {
 		if (newTheme !== "light" && newTheme !== "dark") {
 			return console.warn(
-				`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`
+				`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`,
 			);
 		}
 
@@ -31,11 +33,10 @@
 		root.classList.toggle("dark", isDark);
 		root.setAttribute("data-theme", newTheme);
 
-		requestAnimationFrame(() => {
-			requestAnimationFrame(() => {
-				root.classList.remove("theme-transitioning");
-			});
-		});
+		clearTimeout(transitionTimeout);
+		transitionTimeout = setTimeout(() => {
+			root.classList.remove("theme-transitioning");
+		}, 250);
 
 		if (typeof localStorage !== "undefined") {
 			localStorage.setItem("theme", newTheme);
@@ -54,6 +55,27 @@
 	});
 
 	darkModePref.addEventListener("change", (e) =>
-		setTheme(e.matches ? "dark" : "light")
+		setTheme(e.matches ? "dark" : "light"),
 	);
+
+	// Global Keyboard shortcut 'd' to toggle theme
+	document.addEventListener("keydown", (e) => {
+		// Ignore if user is typing in an input or textarea
+		const target = e.target;
+		const isInput =
+			target.tagName === "INPUT" ||
+			target.tagName === "TEXTAREA" ||
+			target.isContentEditable;
+
+		if (!isInput && (e.key === "d" || e.key === "D")) {
+			const isDark = document.documentElement.classList.contains("dark");
+			const newTheme = isDark ? "light" : "dark";
+
+			// Dispatch event so ThemeToggle and other components can sync
+			const themeChangeEvent = new CustomEvent("theme-change", {
+				detail: { theme: newTheme },
+			});
+			document.dispatchEvent(themeChangeEvent);
+		}
+	});
 </script>

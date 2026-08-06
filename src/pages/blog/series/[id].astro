@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 	const { getCollection } = await import("astro:content");
 	const allSeries = await getCollection("series");
 	return allSeries.map((series) => ({
-		params: { id: series.id }
+		params: { id: series.id },
 	}));
 }
 

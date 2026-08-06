@@ -10,37 +10,43 @@ import type { HTMLAttributes } from "astro/types";
 import { cn } from "@/lib/utils";
 
 interface Props extends HTMLAttributes<"button"> {
-  variant?: "default" | "outline" | "ghost";
-  size?: "sm" | "default" | "lg";
-  class?: string;
+	variant?: "default" | "outline" | "ghost";
+	size?: "sm" | "default" | "lg";
+	class?: string;
 }
 
 const {
-  variant = "default",
-  size = "default",
-  class: className,
-  ...attrs
+	variant = "default",
+	size = "default",
+	class: className,
+	...attrs
 } = Astro.props;
 
-const baseClass = "inline-flex items-center justify-center rounded-md transition-colors";
+const baseClass =
+	"inline-flex items-center justify-center rounded-md transition-colors";
 
 const variants = {
-  default: "bg-primary text-primary-foreground hover:bg-primary/90",
-  outline: "border border-input bg-background hover:bg-accent",
-  ghost: "hover:bg-accent hover:text-accent-foreground"
+	default: "bg-primary text-primary-foreground hover:bg-primary/90",
+	outline: "border border-input bg-background hover:bg-accent",
+	ghost: "hover:bg-accent hover:text-accent-foreground",
 };
 
 const sizes = {
-  sm: "h-8 px-3 text-sm",
-  default: "h-10 px-4 text-base",
-  lg: "h-12 px-6 text-lg"
+	sm: "h-8 px-3 text-sm",
+	default: "h-10 px-4 text-base",
+	lg: "h-12 px-6 text-lg",
 };
 
 const componentClass = cn(baseClass, variants[variant], sizes[size], className);
 ---
 
-<button class={componentClass} data-variant={variant} data-size={size} {...attrs}>
-  <slot />
+<button
+	class={componentClass}
+	data-variant={variant}
+	data-size={size}
+	{...attrs}
+>
+	<slot />
 </button>
 ```
 
@@ -93,18 +99,22 @@ const componentClass = cn(baseClass, variants[variant], sizes[size], className);
 
 ## Conditional Rendering
 
-```astro
-{condition && <div>Content</div>}
-{isLoading ? <Loading /> : <Content />}
+```tsx
+{
+	condition && <div>Content</div>;
+}
+{
+	isLoading ? <Loading /> : <Content />;
+}
 ```
 
 Extract complex logic into variables in the frontmatter.
 
 ## Type Safety
 
-```astro
+```typescript
 type Variant = "primary" | "secondary" | "danger";
-const variantMap: Record<Variant, string> = { ... };
+const variantMap: Record<Variant, string> = {/* ... */};
 ```
 
 - Use `as const` for readonly maps
@@ -124,10 +134,11 @@ const variantMap: Record<Variant, string> = { ... };
 - Use semantic colors with automatic theme switching
 - Test both modes before shipping
 
-```astro
+```html
 <div class="bg-background text-foreground">
-  <h2 class="text-primary">Heading</h2>
-  <div class="border-border">
+	<h2 class="text-primary">Heading</h2>
+	<div class="border-border"></div>
+</div>
 ```
 
 ## Performance
@@ -147,11 +158,11 @@ import { expect, test } from "vitest";
 import Component from "./Component.astro";
 
 test("renders with default props", async () => {
-  const container = await AstroContainer.create();
-  const result = await container.renderToString(Component, {
-    props: {/* ... */},
-  });
-  expect(result).toContain("expected content");
+	const container = await AstroContainer.create();
+	const result = await container.renderToString(Component, {
+		props: {/* ... */},
+	});
+	expect(result).toContain("expected content");
 });
 ```
 

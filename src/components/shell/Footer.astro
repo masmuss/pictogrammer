@@ -5,20 +5,20 @@ import siteConfig from "@/config/site-config";
 ---
 
 <footer class="border-t border-border mt-16">
-  <Container
-    class="flex flex-col items-center justify-between gap-3 py-6 text-sm sm:flex-row"
-  >
-    <div
-      class="flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground"
-    >
-      <p>
-        &copy; {`${new Date().getFullYear()} ${siteConfig.author}`}
-      </p>
-      <span>&middot;</span>
-      <a href="/legal" class="hover:text-foreground transition-colors">
-        Legal
-      </a>
-    </div>
-    <SocialLinks variant="icon" />
-  </Container>
+	<Container
+		class="flex flex-col items-center justify-between gap-3 py-6 text-sm sm:flex-row"
+	>
+		<div
+			class="flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground"
+		>
+			<p>
+				&copy; {`${new Date().getFullYear()} ${siteConfig.author}`}
+			</p>
+			<span>&middot;</span>
+			<a href="/legal" class="hover:text-foreground transition-colors">
+				Legal
+			</a>
+		</div>
+		<SocialLinks variant="icon" />
+	</Container>
 </footer>

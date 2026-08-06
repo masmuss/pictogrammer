@@ -26,7 +26,7 @@ export function createSearch() {
 	let selectedIndex = $state(-1);
 	let pagefind = $state<Pagefind | null>(null);
 	let searchInput = $state<HTMLInputElement | null>(null);
-	let previousBodyOverflow = $state<string | null>(null);
+
 	let searchRequestId = $state(0);
 	let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 	let initPromise: Promise<void> | null = null;
@@ -59,23 +59,7 @@ export function createSearch() {
 		}
 	});
 
-	// Declarative scroll lock
-	$effect(() => {
-		if (isOpen) {
-			if (previousBodyOverflow === null) {
-				previousBodyOverflow = document.body.style.overflow;
-			}
-			document.body.style.overflow = "hidden";
-		} else if (previousBodyOverflow !== null) {
-			document.body.style.overflow = previousBodyOverflow;
-			previousBodyOverflow = null;
-		}
-	});
-
 	onDestroy(() => {
-		if (previousBodyOverflow !== null) {
-			document.body.style.overflow = previousBodyOverflow;
-		}
 		if (debounceTimer) {
 			clearTimeout(debounceTimer);
 		}

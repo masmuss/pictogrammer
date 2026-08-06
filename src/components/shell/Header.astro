@@ -10,29 +10,29 @@ const { navLinks } = siteConfig.header;
 ---
 
 <header
-  class="flex w-full flex-wrap p-8 text-sm sm:flex-nowrap sm:justify-start"
+	class="flex w-full flex-wrap p-8 text-sm sm:flex-nowrap sm:justify-start"
 >
-  <nav
-    class="relative mx-auto flex w-full items-center justify-between gap-x-3 md:gap-5"
-    aria-label="global"
-  >
-    <Logo loading="eager" fetchpriority="high" />
+	<nav
+		class="relative mx-auto flex w-full items-center justify-between gap-x-3 md:gap-5"
+		aria-label="global"
+	>
+		<Logo loading="eager" fetchpriority="high" />
 
-    <div class="ml-auto flex flex-row items-center gap-x-5">
-      <!-- Desktop Navigation -->
-      <div class="hidden items-center gap-x-5 lg:flex">
-        {
-          navLinks
-            .slice(1, navLinks.length)
-            .map((link) => (
-              <NavLink href={link.href} text={link.text} icon={link.icon} />
-            ))
-        }
-      </div>
+		<div class="ml-auto flex flex-row items-center md:gap-x-5">
+			<!-- Desktop Navigation -->
+			<div class="hidden items-center gap-x-5 lg:flex">
+				{
+					navLinks
+						.slice(1, navLinks.length)
+						.map((link) => (
+							<NavLink href={link.href} text={link.text} icon={link.icon} />
+						))
+				}
+			</div>
 
-      <Search client:load />
-      <ThemeToggle />
-      <MobileMenu navLinks={navLinks} />
-    </div>
-  </nav>
+			<Search client:load />
+			<ThemeToggle />
+			<MobileMenu navLinks={navLinks} />
+		</div>
+	</nav>
 </header>

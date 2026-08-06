@@ -23,26 +23,26 @@ const { title } = Astro.props;
 ---
 
 <html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title} | My Astron Blog</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/">Beranda</a> | <a href="/tentang">Tentang</a>
-    </nav>
-    <hr />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title} | My Astron Blog</title>
+	</head>
+	<body>
+		<nav>
+			<a href="/">Beranda</a> | <a href="/tentang">Tentang</a>
+		</nav>
+		<hr />
 
-    <main>
-      <!-- Tempat konten halaman akan muncul -->
-      <slot />
-    </main>
+		<main>
+			<!-- Tempat konten halaman akan muncul -->
+			<slot />
+		</main>
 
-    <footer style="margin-top: 2rem;">
-      <p>&copy; 2026 Menjadi Astron</p>
-    </footer>
-  </body>
+		<footer style="margin-top: 2rem;">
+			<p>&copy; 2026 Menjadi Astron</p>
+		</footer>
+	</body>
 </html>
 ```
 
@@ -58,12 +58,12 @@ Sekarang, mari kita ubah file `src/pages/index.astro` agar menggunakan layout ya
 
 ```astro title="src/pages/index.astro"
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Selamat Datang">
-  <h1>Halo, Dunia Astro!</h1>
-  <p>Sekarang kodenya jauh lebih bersih, kan?</p>
+	<h1>Halo, Dunia Astro!</h1>
+	<p>Sekarang kodenya jauh lebih bersih, kan?</p>
 </MainLayout>
 ```
 
@@ -74,7 +74,7 @@ Lihat betapa ringkasnya file `index.astro` sekarang? Kita tidak perlu lagi menul
 Perhatikan bagaimana kita mengirim `title="Selamat Datang"` ke komponen `<MainLayout>`. Di dalam file layout, kita menangkapnya dengan:
 
 ```astro
-const { title } = Astro.props;
+const {title} = Astro.props;
 ```
 
 Ini memungkinkan setiap halaman memiliki judul yang berbeda-beda meskipun menggunakan kerangka yang sama.

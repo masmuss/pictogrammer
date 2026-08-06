@@ -153,13 +153,13 @@
 	--color-sidebar-ring: var(--sidebar-ring);
 
 	/* ── Radius ─────────────────────────────── */
-	--radius: 0.25rem;
-	--radius-sm: calc(var(--radius) + 2px);
-	--radius-md: calc(var(--radius) + 4px);
-	--radius-lg: calc(var(--radius) + 6px);
-	--radius-xl: calc(var(--radius) + 8px);
+	--radius: 0.25rem; /* 4px */
+	--radius-sm: 0.125rem; /* 2px */
+	--radius-md: 0.375rem; /* 6px */
+	--radius-lg: 0.5rem; /* 8px */
+	--radius-xl: 0.75rem; /* 12px */
 
-	/* ── Shadows ────────────────────────────── */
+	/* ── Shadows (Utilitarian Minimalism) ───── */
 	--shadow-2xs: var(--shadow-2xs);
 	--shadow-xs: var(--shadow-xs);
 	--shadow-sm: var(--shadow-sm);
@@ -244,20 +244,20 @@
 			--sidebar-border: oklch(0.88 0.01 90);
 			--sidebar-ring: oklch(0.6 0.12 192);
 
-			/* Shadows */
-			--shadow-2xs: 0 1px 3px 0px oklch(0 0 0 / 0.05);
-			--shadow-xs: 0 1px 3px 0px oklch(0 0 0 / 0.05);
+			/* Shadows (ultra-diffuse, low opacity < 0.04) */
+			--shadow-2xs: 0 1px 2px 0px oklch(0 0 0 / 0.02);
+			--shadow-xs: 0 1px 3px 0px oklch(0 0 0 / 0.03);
 			--shadow-sm:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+				0 1px 4px 0px oklch(0 0 0 / 0.03), 0 1px 2px -1px oklch(0 0 0 / 0.02);
 			--shadow:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+				0 2px 8px 0px oklch(0 0 0 / 0.03), 0 1px 2px -1px oklch(0 0 0 / 0.02);
 			--shadow-md:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 2px 4px -1px oklch(0 0 0 / 0.1);
+				0 4px 16px 0px oklch(0 0 0 / 0.03), 0 2px 4px -1px oklch(0 0 0 / 0.02);
 			--shadow-lg:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 4px 6px -1px oklch(0 0 0 / 0.1);
+				0 8px 24px 0px oklch(0 0 0 / 0.04), 0 4px 8px -1px oklch(0 0 0 / 0.02);
 			--shadow-xl:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 8px 10px -1px oklch(0 0 0 / 0.1);
-			--shadow-2xl: 0 1px 3px 0px oklch(0 0 0 / 0.25);
+				0 16px 32px 0px oklch(0 0 0 / 0.04), 0 8px 16px -1px oklch(0 0 0 / 0.03);
+			--shadow-2xl: 0 24px 48px 0px oklch(0 0 0 / 0.05);
 		}
 
 		/* ── Dark Mode ────────────────────── */
@@ -273,7 +273,7 @@
 			--popover-foreground: oklch(0.9 0.005 90);
 
 			/* Cyan lifts for equivalent
-				   perceived brightness on dark bg */
+			   perceived brightness on dark bg */
 			--primary: oklch(0.65 0.08 192);
 			--primary-foreground: oklch(0.15 0.005 85);
 
@@ -319,20 +319,20 @@
 			--sidebar-border: oklch(0.25 0.01 85);
 			--sidebar-ring: oklch(0.68 0.1 192);
 
-			/* Shadows (stronger for dark bg) */
-			--shadow-2xs: 0 1px 3px 0px oklch(0 0 0 / 0.05);
-			--shadow-xs: 0 1px 3px 0px oklch(0 0 0 / 0.05);
+			/* Shadows (stronger spread, but still low opacity for dark bg) */
+			--shadow-2xs: 0 1px 2px 0px oklch(0 0 0 / 0.1);
+			--shadow-xs: 0 1px 3px 0px oklch(0 0 0 / 0.1);
 			--shadow-sm:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+				0 1px 4px 0px oklch(0 0 0 / 0.15), 0 1px 2px -1px oklch(0 0 0 / 0.1);
 			--shadow:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+				0 2px 8px 0px oklch(0 0 0 / 0.15), 0 1px 2px -1px oklch(0 0 0 / 0.1);
 			--shadow-md:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 2px 4px -1px oklch(0 0 0 / 0.1);
+				0 4px 16px 0px oklch(0 0 0 / 0.2), 0 2px 4px -1px oklch(0 0 0 / 0.15);
 			--shadow-lg:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 4px 6px -1px oklch(0 0 0 / 0.1);
+				0 8px 24px 0px oklch(0 0 0 / 0.2), 0 4px 8px -1px oklch(0 0 0 / 0.15);
 			--shadow-xl:
-				0 1px 3px 0px oklch(0 0 0 / 0.1), 0 8px 10px -1px oklch(0 0 0 / 0.1);
-			--shadow-2xl: 0 1px 3px 0px oklch(0 0 0 / 0.25);
+				0 16px 32px 0px oklch(0 0 0 / 0.25), 0 8px 16px -1px oklch(0 0 0 / 0.2);
+			--shadow-2xl: 0 24px 48px 0px oklch(0 0 0 / 0.3);
 		}
 	}
 }

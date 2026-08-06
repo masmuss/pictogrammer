@@ -15,15 +15,19 @@ Ingat bagian "Frontmatter" (pagar `---`) yang kita bahas sebelumnya? Di sana, ka
 
 ```astro title="src/pages/users.astro"
 ---
-const response = await fetch('https://jsonplaceholder.typicode.com/users');
+const response = await fetch("https://jsonplaceholder.typicode.com/users");
 const users = await response.json();
 ---
 
 <h1>Daftar Pengguna</h1>
 <ul>
-  {users.map((user) => (
-    <li>{user.name} - {user.email}</li>
-  ))}
+	{
+		users.map((user) => (
+			<li>
+				{user.name} - {user.email}
+			</li>
+		))
+	}
 </ul>
 ```
 

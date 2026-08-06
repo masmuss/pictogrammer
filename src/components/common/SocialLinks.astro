@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from "@/components/ui/Button.astro";
 import siteConfig from "@/config/site-config";
 import { cn } from "@/lib/utils";
@@ -14,7 +15,7 @@ const {
 	variant = "icon",
 	showEmail = false,
 	showCV = false,
-	class: className
+	class: className,
 } = Astro.props;
 
 const isButton = variant === "button";
@@ -22,9 +23,8 @@ const buttonVariant = isButton ? "outline" : "ghost";
 const buttonSize = isButton ? "default" : "icon-sm";
 const buttonClass = cn(
 	"text-muted-foreground hover:text-foreground",
-	isButton && "gap-x-2"
+	isButton && "gap-x-2",
 );
-const iconClass = cn("iconify", !isButton && "text-xl");
 
 const links = [
 	...(showEmail
@@ -32,55 +32,55 @@ const links = [
 				{
 					href: `mailto:${siteConfig.email}`,
 					text: "Email",
-					icon: "ri--mail-line"
-				}
+					icon: "ph:envelope",
+				},
 			]
 		: []),
 	...siteConfig.socialLinks.map((link) => ({
 		href: link.href,
 		text: link.text,
-		icon: link.icon
-	}))
+		icon: link.icon,
+	})),
 ];
 ---
 
 <div
-  class={cn(
-    "flex items-center",
-    isButton ? "flex-wrap gap-3" : "gap-4",
-    className,
-  )}
+	class={cn(
+		"flex items-center",
+		isButton ? "flex-wrap gap-3" : "gap-4",
+		className,
+	)}
 >
-  {
-    showCV && siteConfig.cvLink && (
-      <Button
-        as="a"
-        href={siteConfig.cvLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        variant="outline"
-      >
-        <span slot="icon-before" class="iconify ri--file-download-line" />
-        View Resume
-      </Button>
-    )
-  }
-  {
-    links.map((link) => (
-      <Button
-        as="a"
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        variant={buttonVariant}
-        size={buttonSize}
-        class={buttonClass}
-        aria-label={link.text}
-        title={isButton ? link.text : undefined}
-      >
-        <span slot="icon-before" class={cn(iconClass, link.icon)} />
-        {!isButton && <span class="sr-only">{link.text}</span>}
-      </Button>
-    ))
-  }
+	{
+		showCV && siteConfig.cvLink && (
+			<Button
+				as="a"
+				href={siteConfig.cvLink}
+				target="_blank"
+				rel="noopener noreferrer"
+				variant="outline"
+			>
+				<Icon slot="icon-before" name="ph:file-arrow-down" />
+				View Resume
+			</Button>
+		)
+	}
+	{
+		links.map((link) => (
+			<Button
+				as="a"
+				href={link.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				variant={buttonVariant}
+				size={buttonSize}
+				class={buttonClass}
+				aria-label={link.text}
+				title={isButton ? link.text : undefined}
+			>
+				<Icon slot="icon-before" name={link.icon} />
+				{!isButton && <span class="sr-only">{link.text}</span>}
+			</Button>
+		))
+	}
 </div>

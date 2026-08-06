@@ -25,8 +25,8 @@ Buatlah file komponen React biasa di `src/components/Counter.jsx`:
 import { useState } from "react";
 
 export default function Counter() {
-  const [count, setCount] = useState < number > 0;
-  return <button onClick={() => setCount(count + 1)}>Angka: {count}</button>;
+	const [count, setCount] = useState < number > 0;
+	return <button onClick={() => setCount(count + 1)}>Angka: {count}</button>;
 }
 ```
 
@@ -36,8 +36,9 @@ Jika kamu hanya melakukan import komponen tersebut ke file `.astro`, ia akan dir
 
 ```astro
 ---
-import Counter from '../components/Counter';
+import Counter from "../components/Counter";
 ---
+
 <!-- Ini akan mati (statis) -->
 <Counter />
 ```

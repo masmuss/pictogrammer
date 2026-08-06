@@ -18,62 +18,62 @@ const {
 	showTags = false,
 	clampTitle = true,
 	hasReadTime = false,
-	readTimeStyle = "short"
+	readTimeStyle = "short",
 } = Astro.props;
 ---
 
 <li
-  data-testid="post-preview"
-  class="group-hover/list:opacity-50 hover:opacity-100 transition-opacity duration-base"
+	data-testid="post-preview"
+	class="group-hover/list:opacity-50 hover:opacity-100 transition-opacity duration-base"
 >
-  <a
-    href={getPostUrl(post)}
-    class={cn(
-      "scroll-reveal group/post block -mx-3 rounded-lg px-3 py-3",
-      "hover:bg-muted/40",
-      "focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
-      "transition-colors duration-base",
-    )}
-  >
-    <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-      <span
-        class:list={[
-          "font-medium transition-colors",
-          clampTitle ? "sm:line-clamp-1" : undefined,
-        ]}
-        transition:name={`title-${post.id}`}
-      >
-        {post.data.title}{" "}
-        {
-          post.data.draft && (
-            <span class="text-muted-foreground font-normal">Draft</span>
-          )
-        }
-      </span>
-      <span class="text-muted-foreground shrink-0 text-sm">
-        <PostMetadata {post} {hasReadTime} {readTimeStyle} />
-      </span>
-    </div>
+	<a
+		href={getPostUrl(post)}
+		class={cn(
+			"scroll-reveal group/post block -mx-3 rounded-lg px-3 py-3",
+			"hover:bg-muted/40",
+			"focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
+			"transition-colors duration-base",
+		)}
+	>
+		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+			<span
+				class:list={[
+					"font-medium transition-colors",
+					clampTitle ? "sm:line-clamp-1" : undefined,
+				]}
+				transition:name={`title-${post.id}`}
+			>
+				{post.data.title}{" "}
+				{
+					post.data.draft && (
+						<span class="text-muted-foreground font-normal">Draft</span>
+					)
+				}
+			</span>
+			<span class="text-muted-foreground shrink-0 text-sm">
+				<PostMetadata {post} {hasReadTime} {readTimeStyle} />
+			</span>
+		</div>
 
-    {
-      showDescription && (
-        <p class="line-clamp-2 text-sm leading-relaxed text-muted-foreground mt-1">
-          {post.data.description}
-        </p>
-      )
-    }
+		{
+			showDescription && (
+				<p class="line-clamp-2 text-sm leading-relaxed text-muted-foreground mt-1">
+					{post.data.description}
+				</p>
+			)
+		}
 
-    {
-      showTags && post.data.tags.length > 0 && (
-        <div
-          class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground"
-          aria-label="tags"
-        >
-          {post.data.tags.map((tag) => (
-            <span>{tag}</span>
-          ))}
-        </div>
-      )
-    }
-  </a>
+		{
+			showTags && post.data.tags.length > 0 && (
+				<div
+					class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground"
+					aria-label="tags"
+				>
+					{post.data.tags.map((tag) => (
+						<span>{tag}</span>
+					))}
+				</div>
+			)
+		}
+	</a>
 </li>

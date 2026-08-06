@@ -16,9 +16,7 @@ Kalau kamu datang dari dunia React atau Vue, file ini mungkin terlihat familiar 
 // Cocok untuk: ambil data, akses database, kelola variabel.
 ---
 
-<!-- 2. Bagian Template (HTML) -->
-<!-- Struktur website kamu ada di sini. -->
-<!-- Astro akan menggabungkan logika di atas ke dalam HTML ini. -->
+<!-- 2. Bagian Template (HTML) --><!-- Struktur website kamu ada di sini. --><!-- Astro akan menggabungkan logika di atas ke dalam HTML ini. -->
 ```
 
 _Struktur Komponen Astro: Pemisahan tegas antara Logika (Server) dan Tampilan (HTML)._
@@ -34,8 +32,7 @@ Satu file `.astro` biasanya terbagi menjadi dua bagian besar yang dipisahkan ole
 const name = "Astron";
 ---
 
-<!-- 2. Bagian Template -->
-<!-- Ini adalah HTML biasa dengan sedikit superpower -->
+<!-- 2. Bagian Template --><!-- Ini adalah HTML biasa dengan sedikit superpower -->
 <h1>Halo, {name}!</h1>
 ```
 
@@ -45,12 +42,12 @@ Di framework lain, mengambil data dari API seringkali butuh ritual: `useEffect`,
 
 ```astro title="src/pages/posts.astro"
 ---
-const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 const posts = await response.json();
 ---
 
 <ul>
-  {posts.map(post => <li>{post.title}</li>)}
+	{posts.map((post) => <li>{post.title}</li>)}
 </ul>
 ```
 

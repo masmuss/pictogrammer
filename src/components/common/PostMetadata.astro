@@ -16,7 +16,7 @@ const {
 	dateTimeOptions,
 	separator = " \u00b7 ",
 	hasReadTime = false,
-	readTimeStyle = "short"
+	readTimeStyle = "short",
 } = Astro.props;
 
 const readTime = post.body ? getReadTimeCount(post.body) : null;
@@ -29,8 +29,8 @@ const readTimeLabel =
 ---
 
 <>
-  <time datetime={new Date(post.data.date).toISOString()}>
-    {getFormattedDate(post.data.date, dateTimeOptions)}
-  </time>
-  {hasReadTime && readTimeLabel && `${separator}${readTimeLabel}`}
+	<time datetime={new Date(post.data.date).toISOString()}>
+		{getFormattedDate(post.data.date, dateTimeOptions)}
+	</time>
+	{hasReadTime && readTimeLabel && `${separator}${readTimeLabel}`}
 </>

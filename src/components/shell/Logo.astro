@@ -14,23 +14,23 @@ const {
 	class: className = "w-12 md:w-14 lg:w-16",
 	href = "/",
 	loading = "lazy",
-	fetchpriority = "auto"
+	fetchpriority = "auto",
 } = Astro.props;
 ---
 
 <a href={href} class="inline-block shrink-0" aria-label="pictogrammer">
-  <Image
-    src={logoLight}
-    alt="pictogrammer"
-    class={`${className} dark:hidden`}
-    loading={loading}
-    fetchpriority={fetchpriority}
-  />
-  <Image
-    src={logoDark}
-    alt="pictogrammer"
-    class={`${className} hidden dark:block`}
-    loading={loading}
-    fetchpriority={fetchpriority}
-  />
+	<Image
+		src={logoLight}
+		alt="pictogrammer"
+		class={`${className} dark:hidden`}
+		loading={loading}
+		fetchpriority={fetchpriority}
+	/>
+	<Image
+		src={logoDark}
+		alt="pictogrammer"
+		class={`${className} hidden dark:block`}
+		loading={loading}
+		fetchpriority={fetchpriority}
+	/>
 </a>

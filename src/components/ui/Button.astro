@@ -8,22 +8,10 @@ type Props = {
 	href?: string;
 	/** Button visual style */
 	variant?:
-		| "default"
-		| "outline"
-		| "secondary"
-		| "ghost"
-		| "destructive"
-		| "link";
+		"default" | "outline" | "secondary" | "ghost" | "destructive" | "link";
 	/** Button size */
 	size?:
-		| "default"
-		| "xs"
-		| "sm"
-		| "lg"
-		| "icon"
-		| "icon-xs"
-		| "icon-sm"
-		| "icon-lg";
+		"default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg";
 	/** Legacy prop - use variant instead */
 	style?: "button" | "pill" | "tab";
 	/** Disable button interaction */
@@ -50,44 +38,43 @@ const {
 
 const baseClasses = {
 	layout: "group/button inline-flex shrink-0 items-center justify-center",
-	shape: "rounded-lg ring-1 ring-inset ring-transparent bg-clip-padding",
+	shape: "rounded-md ring-1 ring-inset ring-transparent bg-clip-padding",
 	text: "text-sm font-medium whitespace-nowrap",
-	transition: "transition-colors outline-none select-none",
+	transition: "transition-all duration-fast ease-out outline-none select-none",
 	focus: "focus-visible:ring-3 focus-visible:ring-ring/50",
-	active: "active:not-aria-[haspopup]:translate-y-px",
+	active: "active:not-aria-[haspopup]:scale-[0.98]",
 	disabled: "disabled:pointer-events-none disabled:opacity-50",
 	validation:
 		"aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
-	icon: "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+	icon: "[&_svg]:pointer-events-none [&_svg]:shrink-0",
 };
 
 const baseClass = Object.values(baseClasses).join(" ");
 
 const variantClass: Record<NonNullable<Props["variant"]>, string> = {
-	default: "bg-btn-primary text-btn-primary-foreground hover:bg-btn-primary/85",
+	default:
+		"bg-btn-primary text-btn-primary-foreground hover:bg-btn-primary/85 shadow-2xs",
 	outline:
-		"ring-2 ring-inset ring-muted-foreground/25 bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:ring-input dark:bg-input/30 dark:hover:bg-input/50",
+		"ring-1 ring-inset ring-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground shadow-2xs",
 	secondary:
 		"bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 	ghost:
 		"hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
 	destructive:
 		"bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-	link: "text-primary underline-offset-4 hover:underline"
+	link: "text-primary underline-offset-4 hover:underline",
 };
 
 const sizeClass: Record<NonNullable<Props["size"]>, string> = {
 	default:
-		"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-	xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-	sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-	lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+		"h-8 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
+	xs: "h-6 gap-1 rounded-sm px-2 text-xs in-data-[slot=button-group]:rounded-sm has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5",
+	sm: "h-7 gap-1 rounded-md px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+	lg: "h-10 gap-2 px-4 text-base has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
 	icon: "size-8",
-	"icon-xs":
-		"size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
-	"icon-sm":
-		"size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
-	"icon-lg": "size-9"
+	"icon-xs": "size-6 rounded-sm in-data-[slot=button-group]:rounded-sm",
+	"icon-sm": "size-7 rounded-md in-data-[slot=button-group]:rounded-md",
+	"icon-lg": "size-10",
 };
 
 const legacyVariantMap: Record<
@@ -96,16 +83,16 @@ const legacyVariantMap: Record<
 > = {
 	button: "outline",
 	pill: "outline",
-	tab: "ghost"
+	tab: "ghost",
 };
 
 const resolvedVariant =
 	variant ?? (style ? legacyVariantMap[style] : "default");
 const resolvedSize = size;
 const legacyClass = cn(
-	style === "pill" && "rounded-full",
+	style === "pill" && "rounded-md",
 	style === "tab" &&
-		"rounded-full text-muted-foreground ring-1 ring-border/60 ring-inset hover:text-foreground data-[active=true]:bg-primary/10 data-[active=true]:text-foreground data-[active=true]:ring-primary/40"
+		"rounded-md text-muted-foreground ring-1 ring-border/60 ring-inset hover:text-foreground data-[active=true]:bg-primary/10 data-[active=true]:text-foreground data-[active=true]:ring-primary/40",
 );
 
 const isButton = as === "button";
@@ -116,90 +103,62 @@ const shouldPrefetch = Boolean(href && !isButton && href.startsWith("/"));
 const prefetchProps = shouldPrefetch
 	? { "data-astro-prefetch": true as const }
 	: {};
+const Tag = isButton ? "button" : "a";
+const commonProps = {
+	"data-slot": "button",
+	"data-variant": resolvedVariant,
+	"data-size": resolvedSize,
+	"aria-disabled": disabled || loading,
+	class: cn(
+		baseClass,
+		variantClass[resolvedVariant],
+		sizeClass[resolvedSize],
+		legacyClass,
+		"leading-none",
+		!isButton && (disabled || loading) && "pointer-events-none opacity-50",
+		className,
+	),
+	...attrs,
+};
+
+const buttonProps = isButton
+	? {
+			type: "button" as const,
+			disabled: disabled || loading,
+			"aria-busy": loading,
+		}
+	: {
+			...prefetchProps,
+			href: disabled || loading ? undefined : href,
+		};
 ---
 
-{
-  isButton ? (
-    <button
-      type="button"
-      data-slot="button"
-      data-variant={resolvedVariant}
-      data-size={resolvedSize}
-      disabled={disabled || loading}
-      aria-disabled={disabled || loading}
-      aria-busy={loading}
-      {...attrs}
-      class={cn(
-        baseClass,
-        variantClass[resolvedVariant],
-        sizeClass[resolvedSize],
-        legacyClass,
-        "leading-none",
-        className,
-      )}
-    >
-      {hasStartIcon && (
-        <span
-          data-icon="inline-start"
-          class="inline-flex items-center justify-center leading-none"
-        >
-          <slot name="icon-before" />
-        </span>
-      )}
-      {title ? (
-        <span class="leading-none">{title}</span>
-      ) : (
-        hasDefaultSlot && <slot />
-      )}
-      {hasEndIcon && (
-        <span
-          data-icon="inline-end"
-          class="inline-flex items-center justify-center leading-none"
-        >
-          <slot name="icon-after" />
-        </span>
-      )}
-    </button>
-  ) : (
-    <a
-      data-slot="button"
-      data-variant={resolvedVariant}
-      data-size={resolvedSize}
-      aria-disabled={disabled || loading}
-      {...prefetchProps}
-      href={disabled || loading ? undefined : href}
-      {...attrs}
-      class={cn(
-        baseClass,
-        variantClass[resolvedVariant],
-        sizeClass[resolvedSize],
-        legacyClass,
-        "leading-none",
-        (disabled || loading) && "pointer-events-none opacity-50",
-        className,
-      )}
-    >
-      {hasStartIcon && (
-        <span
-          data-icon="inline-start"
-          class="inline-flex items-center justify-center leading-none"
-        >
-          <slot name="icon-before" />
-        </span>
-      )}
-      {title ? (
-        <span class="leading-none">{title}</span>
-      ) : (
-        hasDefaultSlot && <slot />
-      )}
-      {hasEndIcon && (
-        <span
-          data-icon="inline-end"
-          class="inline-flex items-center justify-center leading-none"
-        >
-          <slot name="icon-after" />
-        </span>
-      )}
-    </a>
-  )
-}
+<Tag {...commonProps} {...buttonProps}>
+	{
+		hasStartIcon && (
+			<span
+				data-icon="inline-start"
+				class="inline-flex items-center justify-center leading-none"
+			>
+				<slot name="icon-before" />
+			</span>
+		)
+	}
+	{
+		title ? (
+			<span class="leading-none">{title}</span>
+		) : (
+			hasDefaultSlot && <slot />
+		)
+	}
+	{
+		hasEndIcon && (
+			<span
+				data-icon="inline-end"
+				class="inline-flex items-center justify-center leading-none"
+			>
+				<slot name="icon-after" />
+			</span>
+		)
+	}
+</Tag>

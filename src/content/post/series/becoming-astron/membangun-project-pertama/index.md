@@ -128,14 +128,17 @@ const title = "Project Pertamaku";
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <h1>Halo, Dunia Astro!</h1>
-    <p>Ini adalah langkah kecil untukku, tapi langkah besar untuk perjalananku menjadi Astron.</p>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<h1>Halo, Dunia Astro!</h1>
+		<p>
+			Ini adalah langkah kecil untukku, tapi langkah besar untuk perjalananku
+			menjadi Astron.
+		</p>
+	</body>
 </html>
 ```
 
@@ -148,7 +151,9 @@ Buat file baru bernama `src/pages/tentang.astro` dan isi dengan:
 
 ```astro title="src/pages/tentang.astro"
 ---
+
 ---
+
 <h1>Tentang Saya</h1>
 <p>Saya sedang belajar Astro dan ini sangat menyenangkan!</p>
 <a href="/">Kembali ke Beranda</a>

@@ -66,7 +66,7 @@ const paddingMap: Record<string, string> = {
 	md: "p-3",
 	lg: "p-4",
 	xl: "p-6",
-	none: ""
+	none: "",
 };
 
 const marginMap: Record<string, string> = {
@@ -75,7 +75,7 @@ const marginMap: Record<string, string> = {
 	md: "m-3",
 	lg: "m-4",
 	xl: "m-6",
-	none: ""
+	none: "",
 };
 
 const roundedMap: Record<string, string> = {
@@ -84,20 +84,20 @@ const roundedMap: Record<string, string> = {
 	md: "rounded",
 	lg: "rounded-lg",
 	xl: "rounded-xl",
-	full: "rounded-full"
+	full: "rounded-full",
 };
 
 const borderMap: Record<string, string> = {
 	none: "",
 	border: "border border-border",
-	ring: "ring-1 ring-ring"
+	ring: "ring-1 ring-ring",
 };
 
 const bgMap: Record<string, string> = {
 	none: "",
 	surface: "bg-surface",
 	"surface-alt": "bg-surface/50",
-	muted: "bg-muted"
+	muted: "bg-muted",
 };
 
 const maxWidthMap: Record<string, string> = {
@@ -106,37 +106,37 @@ const maxWidthMap: Record<string, string> = {
 	md: "max-w-md",
 	lg: "max-w-lg",
 	xl: "max-w-xl",
-	full: "max-w-full"
+	full: "max-w-full",
 };
 
 const displayMap: Record<string, string> = {
 	flex: "flex",
 	grid: "grid",
-	block: "block"
+	block: "block",
 };
 
 const directionMap: Record<string, string> = {
 	row: "flex-row",
-	col: "flex-col"
+	col: "flex-col",
 };
 
 const wrapMap: Record<string, string> = {
 	wrap: "flex-wrap",
-	nowrap: "flex-nowrap"
+	nowrap: "flex-nowrap",
 };
 
 const justifyMap: Record<string, string> = {
 	start: "justify-start",
 	center: "justify-center",
 	between: "justify-between",
-	end: "justify-end"
+	end: "justify-end",
 };
 
 const alignMap: Record<string, string> = {
 	start: "items-start",
 	center: "items-center",
 	end: "items-end",
-	stretch: "items-stretch"
+	stretch: "items-stretch",
 };
 
 const gapMap: Record<string, string> = {
@@ -145,7 +145,7 @@ const gapMap: Record<string, string> = {
 	md: "gap-3",
 	lg: "gap-4",
 	xl: "gap-6",
-	none: ""
+	none: "",
 };
 
 const classes = cn(
@@ -160,10 +160,10 @@ const classes = cn(
 		directionMap[flexDirection],
 		wrapMap[flexWrap],
 		justifyMap[justifyContent],
-		alignMap[alignItems]
+		alignMap[alignItems],
 	],
 	gapMap[gap],
-	className
+	className,
 );
 ---
 

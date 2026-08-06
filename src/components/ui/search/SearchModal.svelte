@@ -1,22 +1,32 @@
 <script lang="ts">
-import Kbd from "./Kbd.svelte";
-import SearchBar from "./SearchBar.svelte";
-import SearchResultItem from "./SearchResultItem.svelte";
-import type { createSearch } from "./search-state.svelte";
+	import Icon from "@iconify/svelte";
+	import { onDestroy } from "svelte";
+	import Kbd from "./Kbd.svelte";
+	import SearchBar from "./SearchBar.svelte";
+	import SearchResultItem from "./SearchResultItem.svelte";
+	import type { createSearch } from "./search-state.svelte";
 
-let { search }: { search: ReturnType<typeof createSearch> } = $props();
-let dialogElement: HTMLDialogElement;
+	let { search }: { search: ReturnType<typeof createSearch> } = $props();
+	let dialogElement: HTMLDialogElement;
+	let previousBodyOverflow: string | null = null;
 
-$effect(() => {
-	if (search.isOpen && dialogElement && !dialogElement.open) {
-		dialogElement.showModal();
-		// Prevent body scroll when open
-		document.body.style.overflow = "hidden";
-	} else if (!search.isOpen && dialogElement && dialogElement.open) {
-		dialogElement.close();
-		document.body.style.overflow = "";
-	}
-});
+	$effect(() => {
+		if (search.isOpen && dialogElement && !dialogElement.open) {
+			dialogElement.showModal();
+			previousBodyOverflow = document.body.style.overflow;
+			document.body.style.overflow = "hidden";
+		} else if (!search.isOpen && dialogElement && dialogElement.open) {
+			dialogElement.close();
+			document.body.style.overflow = previousBodyOverflow ?? "";
+			previousBodyOverflow = null;
+		}
+	});
+
+	onDestroy(() => {
+		if (previousBodyOverflow !== null) {
+			document.body.style.overflow = previousBodyOverflow;
+		}
+	});
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -47,9 +57,10 @@ $effect(() => {
 			</div>
 		{:else if search.query.trim().length >= 2}
 			<div class="py-12 text-center">
-				<span
-					class="iconify ri--search-line text-muted-foreground/30 mx-auto h-8 w-8"
-				></span>
+				<Icon
+					icon="ph:magnifying-glass"
+					class="text-muted-foreground/30 mx-auto h-8 w-8"
+				/>
 				<p class="text-muted-foreground mt-4 text-sm">
 					No results for "{search.query}"
 				</p>

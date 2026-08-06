@@ -5,37 +5,37 @@
 			{
 				"name": "JavaScript",
 				"description": "The web's native language",
-				"icon": "logos--javascript"
+				"icon": "javascript"
 			},
 			{
 				"name": "TypeScript",
 				"description": "Type safety at scale",
-				"icon": "logos--typescript-icon"
+				"icon": "typescript-icon"
 			},
 			{
 				"name": "Go",
 				"description": "Concise language for systems and APIs",
-				"icon": "logos--go"
+				"icon": "go"
 			},
 			{
 				"name": "PHP",
 				"description": "Battle-tested web backend language",
-				"icon": "logos--php"
+				"icon": "php"
 			},
 			{
 				"name": "Dart",
 				"description": "Client-optimized language for mobile",
-				"icon": "logos--dart"
+				"icon": "dart"
 			},
 			{
 				"name": "C#",
 				"description": "Modern, type-safe language for .NET",
-				"icon": "logos--c-sharp"
+				"icon": "c-sharp"
 			},
 			{
 				"name": "Bash",
 				"description": "Shell scripting and automation",
-				"icon": "logos--bash-icon"
+				"icon": "bash-icon"
 			}
 		]
 	},
@@ -45,37 +45,37 @@
 			{
 				"name": "PostgreSQL",
 				"description": "Advanced relational database",
-				"icon": "logos--postgresql"
+				"icon": "postgresql"
 			},
 			{
 				"name": "MySQL",
 				"description": "Reliable open-source relational DB",
-				"icon": "logos--mysql-icon"
+				"icon": "mysql-icon"
 			},
 			{
 				"name": "SQLite",
 				"description": "Lightweight relational DB",
-				"icon": "logos--sqlite"
+				"icon": "sqlite"
 			},
 			{
 				"name": "SQL Server",
 				"description": "Microsoft's relational DB",
-				"icon": "logos--sql-server"
+				"icon": "microsoft-icon"
 			},
 			{
 				"name": "MongoDB",
 				"description": "NoSQL document database",
-				"icon": "logos--mongodb-icon"
+				"icon": "mongodb-icon"
 			},
 			{
 				"name": "Redis",
 				"description": "In-memory data store",
-				"icon": "logos--redis"
+				"icon": "redis"
 			},
 			{
 				"name": "Supabase",
 				"description": "Open source Firebase alternative",
-				"icon": "logos--supabase-icon"
+				"icon": "supabase-icon"
 			}
 		]
 	},
@@ -85,67 +85,67 @@
 			{
 				"name": "Next.js",
 				"description": "React framework for production",
-				"icon": "logos--nextjs-icon"
+				"icon": "nextjs-icon"
 			},
 			{
 				"name": "Astro",
 				"description": "Static site generator",
-				"icon": "logos--astro-icon"
+				"icon": "astro-icon"
 			},
 			{
 				"name": "React.js",
 				"description": "Declarative component-based UI",
-				"icon": "logos--react"
+				"icon": "react"
 			},
 			{
 				"name": "Vue.js",
 				"description": "Approachable, versatile framework",
-				"icon": "logos--vue"
+				"icon": "vue"
 			},
 			{
 				"name": "Svelte",
 				"description": "Compiled reactive components",
-				"icon": "logos--svelte-icon"
+				"icon": "svelte-icon"
 			},
 			{
 				"name": "Redux",
 				"description": "Predictable app state management",
-				"icon": "logos--redux"
+				"icon": "redux"
 			},
 			{
 				"name": "NestJS",
 				"description": "Opinionated enterprise-grade framework",
-				"icon": "logos--nestjs"
+				"icon": "nestjs"
 			},
 			{
 				"name": "Hono",
 				"description": "Ultrafast edge-native framework",
-				"icon": "logos--hono"
+				"icon": "hono"
 			},
 			{
 				"name": "Express.js",
 				"description": "Minimalist HTTP server",
-				"icon": "logos--express"
+				"icon": "express"
 			},
 			{
 				"name": "Laravel",
 				"description": "PHP web application framework",
-				"icon": "logos--laravel"
+				"icon": "laravel"
 			},
 			{
 				"name": "Flutter",
 				"description": "Cross-platform UI toolkit",
-				"icon": "logos--flutter"
+				"icon": "flutter"
 			},
 			{
 				"name": "Tailwind CSS",
 				"description": "Utility-first CSS framework",
-				"icon": "logos--tailwindcss-icon"
+				"icon": "tailwindcss-icon"
 			},
 			{
 				"name": ".NET",
 				"description": "Cross-platform app development framework",
-				"icon": "logos--dotnet"
+				"icon": "dotnet"
 			}
 		]
 	},
@@ -155,67 +155,57 @@
 			{
 				"name": "Bun",
 				"description": "Fast JavaScript runtime",
-				"icon": "logos--bun"
+				"icon": "bun"
 			},
 			{
 				"name": "Node.js",
 				"description": "Server-side JS runtime",
-				"icon": "logos--nodejs-icon"
+				"icon": "nodejs-icon"
 			},
 			{
 				"name": "Drizzle ORM",
 				"description": "TypeScript ORM for SQL",
-				"icon": "logos--drizzle-icon"
+				"icon": "drizzle-icon"
 			},
 			{
 				"name": "Prisma",
 				"description": "Declarative database toolkit",
-				"icon": "logos--prisma"
+				"icon": "prisma"
 			},
 			{
 				"name": "TanStack",
 				"description": "Type-safe headless primitives",
-				"icon": "logos--react-query-icon"
+				"icon": "react-query-icon"
 			},
 			{
 				"name": "Zod",
 				"description": "Schema-first validation",
-				"icon": "logos--zod"
+				"icon": "zod"
 			},
 			{
 				"name": "Vitest",
 				"description": "Vite-native test runner",
-				"icon": "logos--vitest"
+				"icon": "vitest"
 			},
 			{
 				"name": "Playwright",
 				"description": "End-to-end testing for modern web apps",
-				"icon": "logos--playwright"
-			},
-			{
-				"name": "Better Auth",
-				"description": "Framework-agnostic auth library",
-				"icon": "logos--better-auth"
-			},
-			{
-				"name": "Shadcn UI",
-				"description": "Copy-paste component primitives",
-				"icon": "logos--shadcn-ui"
+				"icon": "playwright"
 			},
 			{
 				"name": "Swagger",
 				"description": "API design and documentation",
-				"icon": "logos--swagger"
+				"icon": "swagger"
 			},
 			{
 				"name": "Prettier",
 				"description": "Opinionated code formatter",
-				"icon": "logos--prettier"
+				"icon": "prettier"
 			},
 			{
 				"name": "Biome",
 				"description": "Fast, all-in-one web toolchain",
-				"icon": "logos--biomejs-icon"
+				"icon": "biomejs-icon"
 			}
 		]
 	},
@@ -225,32 +215,32 @@
 			{
 				"name": "OpenTelemetry",
 				"description": "Open-source observability framework",
-				"icon": "logos--opentelemetry-icon"
+				"icon": "opentelemetry-icon"
 			},
 			{
 				"name": "Prometheus",
 				"description": "Open-source monitoring and alerting toolkit",
-				"icon": "logos--prometheus"
+				"icon": "prometheus"
 			},
 			{
 				"name": "Grafana",
 				"description": "Observability dashboards",
-				"icon": "logos--grafana"
+				"icon": "grafana"
 			},
 			{
 				"name": "Loki",
 				"description": "Log aggregation system",
-				"icon": "logos--grafana"
+				"icon": "grafana"
 			},
 			{
 				"name": "Tempo",
 				"description": "Distributed tracing backend",
-				"icon": "logos--grafana"
+				"icon": "grafana"
 			},
 			{
 				"name": "Sentry",
 				"description": "Real-time error tracking",
-				"icon": "logos--sentry-icon"
+				"icon": "sentry-icon"
 			}
 		]
 	},
@@ -260,17 +250,12 @@
 			{
 				"name": "ChartJS",
 				"description": "Simple HTML5 charts",
-				"icon": "logos--chartjs"
+				"icon": "chartjs"
 			},
 			{
 				"name": "D3",
 				"description": "Data-driven documents",
-				"icon": "logos--d3"
-			},
-			{
-				"name": "Mermaid",
-				"description": "Diagrams from text",
-				"icon": "logos--mermaid"
+				"icon": "d3"
 			}
 		]
 	},
@@ -280,22 +265,22 @@
 			{
 				"name": "Vercel",
 				"description": "Edge deployment platform",
-				"icon": "logos--vercel-icon"
+				"icon": "vercel-icon"
 			},
 			{
 				"name": "Cloudflare",
 				"description": "Global CDN and edge workers",
-				"icon": "logos--cloudflare-icon"
+				"icon": "cloudflare-icon"
 			},
 			{
 				"name": "Docker",
 				"description": "Container platform for packaging and deploying apps",
-				"icon": "logos--docker-icon"
+				"icon": "docker-icon"
 			},
 			{
 				"name": "Firebase",
 				"description": "Backend-as-a-service by Google",
-				"icon": "logos--firebase-icon"
+				"icon": "firebase-icon"
 			}
 		]
 	}

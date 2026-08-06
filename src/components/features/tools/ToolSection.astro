@@ -24,30 +24,30 @@ const {
 ---
 
 <Section transitionDelay={transitionDelay} data-testid="tool-section">
-  <div
-    class={cn("grid grid-cols-1 gap-y-4 md:grid-cols-4 md:gap-x-12")}
-    {...props}
-  >
-    <Heading
-      as="h2"
-      size="base"
-      weight="semibold"
-      class="text-foreground tracking-tight md:col-span-1"
-    >
-      {title}
-    </Heading>
-    <div class="md:col-span-3">
-      <ul class={cn(`grid grid-cols-1 gap-3 sm:grid-cols-2`, className)}>
-        {
-          tools.map((tool) => (
-            <ToolItem
-              name={tool.name}
-              description={tool.description}
-              showDescription={showDescription}
-            />
-          ))
-        }
-      </ul>
-    </div>
-  </div>
+	<div
+		class={cn("grid grid-cols-1 gap-y-4 md:grid-cols-4 md:gap-x-12")}
+		{...props}
+	>
+		<Heading
+			as="h2"
+			size="base"
+			weight="semibold"
+			class="text-foreground tracking-tight md:col-span-1"
+		>
+			{title}
+		</Heading>
+		<div class="md:col-span-3">
+			<ul class={cn(`grid grid-cols-1 gap-3 sm:grid-cols-2`, className)}>
+				{
+					tools.map((tool) => (
+						<ToolItem
+							name={tool.name}
+							description={tool.description}
+							showDescription={showDescription}
+						/>
+					))
+				}
+			</ul>
+		</div>
+	</div>
 </Section>

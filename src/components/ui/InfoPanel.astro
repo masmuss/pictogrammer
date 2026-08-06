@@ -22,16 +22,16 @@ const {
 ---
 
 <section {...attrs} class={className}>
-  <Card class="gap-0 ring-0 bg-transparent">
-    <CardHeader class="border-border border-b px-0">
-      <CardTitle as={titleAs} class={titleClass}>
-        {title}
-      </CardTitle>
-    </CardHeader>
-    <CardContent class={cn("px-4", contentClass)}>
-      <Stack gap="md">
-        <slot />
-      </Stack>
-    </CardContent>
-  </Card>
+	<Card class="gap-0 ring-0 bg-transparent">
+		<CardHeader class="border-border border-b px-0">
+			<CardTitle as={titleAs} class={titleClass}>
+				{title}
+			</CardTitle>
+		</CardHeader>
+		<CardContent class={cn("px-4", contentClass)}>
+			<Stack gap="md">
+				<slot />
+			</Stack>
+		</CardContent>
+	</Card>
 </section>
