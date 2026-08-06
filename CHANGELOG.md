@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/masmuss/pictogrammer/compare/v1.31.0...v1.32.0) (2026-08-06)
+
+
+### Features
+
+* **blog:** hide tags in post list view ([68f7301](https://github.com/masmuss/pictogrammer/commit/68f730167858fe12f5e5fd62e9d3a9992e919c97))
+
 # [1.31.0](https://github.com/masmuss/pictogrammer/compare/v1.30.0...v1.31.0) (2026-08-05)
 
 
