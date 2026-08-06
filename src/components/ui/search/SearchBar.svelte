@@ -14,7 +14,7 @@
 		type="text"
 		aria-label="Search query"
 		placeholder="Search articles, projects..."
-		class="placeholder:text-muted-foreground h-12 w-full bg-transparent px-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-md"
+		class="placeholder:text-muted-foreground h-12 w-full bg-transparent px-4 text-sm outline-none rounded-md"
 	/>
 	{#if search.isSearching}
 		<div

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from "@iconify/svelte";
 	import type { createSearch, PagefindResultData } from "./search-state.svelte";
 
 	interface Props {
