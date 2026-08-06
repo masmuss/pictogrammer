@@ -19,6 +19,25 @@ import { remarkGithubCard } from "./src/plugins/remark-github-card";
 export default defineConfig({
 	site: "https://khoirul.me",
 	trailingSlash: "never",
+	prerenderConflictBehavior: "error",
+	experimental: {
+		collectionStorage: "chunked"
+	},
+	security: {
+		csp: {
+			styleDirective: {
+				resources: [{ resource: "'unsafe-inline'", kind: "attribute" }]
+			},
+			scriptDirective: {
+				resources: ["self", "unsafe-inline"]
+			},
+			directives: [
+				"font-src 'self'",
+				"img-src 'self' data:",
+				"connect-src 'self'"
+			]
+		}
+	},
 	fonts: [
 		{
 			provider: fontProviders.fontsource(),
