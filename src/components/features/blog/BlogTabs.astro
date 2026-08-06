@@ -24,6 +24,7 @@ const tabs = [
 			tabs.map((tab) => (
 				<a
 					href={tab.href}
+					aria-current={activeTab === tab.id ? "page" : undefined}
 					class:list={[
 						"text-lg transition-colors md:text-xl",
 						activeTab === tab.id
