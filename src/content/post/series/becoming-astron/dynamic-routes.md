@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 	const posts = await getCollection("blog");
 	return posts.map((post) => ({
 		params: { id: post.id },
-		props: { post },
+		props: { post }
 	}));
 }
 
@@ -50,7 +50,7 @@ export async function getStaticPaths() {
 	const posts = await getCollection("blog");
 	return posts.map((post) => ({
 		params: { id: post.id },
-		props: { post },
+		props: { post }
 	}));
 }
 

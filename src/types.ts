@@ -23,8 +23,4 @@ export type Skill = CollectionEntry<"skills">["data"][number]["skills"][number];
 export type SkillCollection = CollectionEntry<"skills">["data"][number];
 
 export type AdmonitionType =
-	| "tip"
-	| "note"
-	| "important"
-	| "caution"
-	| "warning";
+	"tip" | "note" | "important" | "caution" | "warning";

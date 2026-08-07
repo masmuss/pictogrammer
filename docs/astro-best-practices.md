@@ -28,13 +28,13 @@ const baseClass =
 const variants = {
 	default: "bg-primary text-primary-foreground hover:bg-primary/90",
 	outline: "border border-input bg-background hover:bg-accent",
-	ghost: "hover:bg-accent hover:text-accent-foreground",
+	ghost: "hover:bg-accent hover:text-accent-foreground"
 };
 
 const sizes = {
 	sm: "h-8 px-3 text-sm",
 	default: "h-10 px-4 text-base",
-	lg: "h-12 px-6 text-lg",
+	lg: "h-12 px-6 text-lg"
 };
 
 const componentClass = cn(baseClass, variants[variant], sizes[size], className);
@@ -160,7 +160,7 @@ import Component from "./Component.astro";
 test("renders with default props", async () => {
 	const container = await AstroContainer.create();
 	const result = await container.renderToString(Component, {
-		props: {/* ... */},
+		props: {/* ... */}
 	});
 	expect(result).toContain("expected content");
 });
