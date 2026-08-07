@@ -15,7 +15,9 @@ const mainPages = [
 		path: "/blog/reflections",
 		expectedHeading: "Reflections"
 	},
-	{ name: "Tags Index", path: "/tags", expectedHeading: "Tags" }
+	{ name: "Tags Index", path: "/tags", expectedHeading: "Tags" },
+	{ name: "Now", path: "/now", expectedHeading: "Now" },
+	{ name: "Colophon", path: "/colophon", expectedHeading: "Colophon" }
 ];
 
 /**

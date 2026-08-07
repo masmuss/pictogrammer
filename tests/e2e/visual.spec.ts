@@ -10,7 +10,9 @@ test.describe("Visual Regression - Pages", () => {
 		{ name: "Homepage", path: "/" },
 		{ name: "About", path: "/about" },
 		{ name: "Blog Index", path: "/blog" },
-		{ name: "Projects", path: "/projects" }
+		{ name: "Projects", path: "/projects" },
+		{ name: "Now", path: "/now" },
+		{ name: "Colophon", path: "/colophon" }
 	];
 
 	for (const pageInfo of pagesToSnapshot) {
@@ -57,7 +59,6 @@ test.describe("Visual Regression - Pages", () => {
 					mask: [
 						page.locator('section div:has-text("20")'), // Mask the year background numbers
 						page.locator("#giscus-container"), // Mask giscus
-						page.locator('section:has(h2:has-text("Contribution Activity"))'), // Mask GitHub Calendar
 						page.locator('aside:has-text("Current Work")') // Mask current work
 					],
 					maxDiffPixelRatio: 0.3, // High tolerance for full pages

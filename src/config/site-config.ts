@@ -149,6 +149,10 @@ const siteConfig = {
 		now: {
 			title: "Now",
 			description: "What I'm currently up to right now."
+		},
+		colophon: {
+			title: "Colophon",
+			description: "How this digital garden is crafted and maintained."
 		}
 	}
 } satisfies SiteConfig;
