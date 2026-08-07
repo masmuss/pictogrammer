@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/masmuss/pictogrammer/compare/v1.35.0...v1.36.0) (2026-08-07)
+
+
+### Features
+
+* **reading:** add reading list page and collection ([2a19ca0](https://github.com/masmuss/pictogrammer/commit/2a19ca0cbdf1b9ef1415192777034e002486bb84))
+
 # [1.35.0](https://github.com/masmuss/pictogrammer/compare/v1.34.0...v1.35.0) (2026-08-07)
 
 
