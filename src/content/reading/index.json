@@ -1,0 +1,73 @@
+[
+	{
+		"title": "Laut Bercerita",
+		"author": "Leila S. Chudori",
+		"cover": "https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png",
+		"status": "read",
+		"rating": 5,
+		"url": "https://www.gramedia.com/products/laut-bercerita",
+		"dateRead": "2023",
+		"notes": "Salah satu karya fiksi sejarah terbaik tentang era Reformasi. Menyayat hati."
+	},
+	{
+		"title": "Pulang",
+		"author": "Leila S. Chudori",
+		"cover": "https://cdn.gramedia.com/uploads/picture_meta/2023/12/20/xoid3bznddxudnurccgqxi.jpg",
+		"status": "reading",
+		"url": "https://www.gramedia.com/products/pulang-2023",
+		"dateRead": "2026"
+	},
+	{
+		"title": "The Alchemist",
+		"author": "Paulo Coelho",
+		"cover": "https://cdn.gramedia.com/uploads/items/9786020656069_Sang_Alkemis_cov.jpg",
+		"status": "reading",
+		"dateRead": "2026",
+		"url": "https://www.gramedia.com/products/sang-alkemis-the-alchemist"
+	},
+	{
+		"title": "Negeri 5 Menara",
+		"author": "Ahmad Fuadi",
+		"cover": "https://cdn.gramedia.com/uploads/product-metas/20r-6r2a52.jpg",
+		"status": "read",
+		"rating": 5,
+		"dateRead": "2020",
+		"url": "https://www.gramedia.com/products/negeri-5-menara-2025"
+	},
+	{
+		"title": "Ranah 3 Warna",
+		"author": "Ahmad Fuadi",
+		"cover": "https://cdn.gramedia.com/uploads/product-metas/c2-n6w3ax1.jpg",
+		"status": "read",
+		"rating": 5,
+		"dateRead": "2020",
+		"url": "https://www.gramedia.com/products/ranah-3-warna-2025"
+	},
+	{
+		"title": "Rantau 1 Muara",
+		"author": "Ahmad Fuadi",
+		"cover": "https://cdn.gramedia.com/uploads/product-metas/1-za8ru5-5.jpg",
+		"status": "read",
+		"rating": 5,
+		"dateRead": "2020",
+		"url": "https://www.gramedia.com/products/rantau-1-muara-2025"
+	},
+	{
+		"title": "Dibawah Lindungan Ka'bah",
+		"author": "Haji Abdul Malik Karim Amrullah",
+		"cover": "https://cdn.gramedia.com/uploads/picture_meta/2023/12/17/e6fxzn83btlxjnl5hybjk9.jpg",
+		"status": "read",
+		"rating": 5,
+		"dateRead": "2017",
+		"url": "https://www.gramedia.com/products/di-bawah-lindungan-kabah-1"
+	},
+	{
+		"title": "Tenggelamnya Kapal Van Der Wijck",
+		"author": "Haji Abdul Malik Karim Amrullah",
+		"cover": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img067.jpg",
+		"status": "read",
+		"rating": 5,
+		"dateRead": "2018",
+		"url": "https://www.gramedia.com/products/tenggelamnya-kapal-van-der-wijck"
+	}
+]

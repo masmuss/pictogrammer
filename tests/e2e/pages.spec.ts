@@ -17,7 +17,8 @@ const mainPages = [
 	},
 	{ name: "Tags Index", path: "/tags", expectedHeading: "Tags" },
 	{ name: "Now", path: "/now", expectedHeading: "Now" },
-	{ name: "Colophon", path: "/colophon", expectedHeading: "Colophon" }
+	{ name: "Colophon", path: "/colophon", expectedHeading: "Colophon" },
+	{ name: "Reading List", path: "/reading-list", expectedHeading: "Reading List" }
 ];
 
 /**

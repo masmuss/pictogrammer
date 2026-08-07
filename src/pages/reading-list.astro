@@ -1,0 +1,87 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import BookItem from "@/components/features/reading/BookItem.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
+import Section from "@/components/ui/Section.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const readingCollection = await getCollection("reading");
+const books = readingCollection.flatMap((entry) => entry.data);
+
+const currentlyReading = books.filter((book) => book.status === "reading");
+const readBooks = books.filter((book) => book.status === "read");
+const wantToRead = books.filter((book) => book.status === "want-to-read");
+---
+
+<BaseLayout
+	title="Reading List"
+	description="Books I've read, currently reading, or want to read."
+	pageType="website"
+>
+	<div class="flex w-full flex-col gap-y-16">
+		<PageHeader
+			title="Reading List"
+			description="A collection of books that have shaped my thinking, or ones I'm just curious about."
+			as="h1"
+		/>
+
+		{
+			currentlyReading.length > 0 && (
+				<Section
+					title="Currently Reading"
+					titleAs="h2"
+					titleSize="base"
+					titleWeight="semibold"
+					transitionDelay={0}
+					class="mb-4"
+				>
+					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+						{currentlyReading.map((book) => (
+							<BookItem book={book} />
+						))}
+					</div>
+				</Section>
+			)
+		}
+
+		{
+			readBooks.length > 0 && (
+				<Section
+					title="Read"
+					titleAs="h2"
+					titleSize="base"
+					titleWeight="semibold"
+					transitionDelay={150}
+					class="mb-4"
+				>
+					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+						{readBooks.map((book) => (
+							<BookItem book={book} />
+						))}
+					</div>
+				</Section>
+			)
+		}
+
+		{
+			wantToRead.length > 0 && (
+				<Section
+					title="Want to Read"
+					titleAs="h2"
+					titleSize="base"
+					titleWeight="semibold"
+					transitionDelay={300}
+					class="mb-4"
+				>
+					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+						{wantToRead.map((book) => (
+							<BookItem book={book} />
+						))}
+					</div>
+				</Section>
+			)
+		}
+	</div>
+</BaseLayout>

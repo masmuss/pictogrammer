@@ -153,6 +153,10 @@ const siteConfig = {
 		colophon: {
 			title: "Colophon",
 			description: "How this digital garden is crafted and maintained."
+		},
+		"reading-list": {
+			title: "Reading List",
+			description: "Books I've read, currently reading, or want to read."
 		}
 	}
 } satisfies SiteConfig;
