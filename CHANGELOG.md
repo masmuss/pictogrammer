@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/masmuss/pictogrammer/compare/v1.34.0...v1.35.0) (2026-08-07)
+
+
+### Features
+
+* **site:** add colophon page and link tool items ([b29e528](https://github.com/masmuss/pictogrammer/commit/b29e528939fd0e26f07419ca90bcd916b1213702))
+
 # [1.34.0](https://github.com/masmuss/pictogrammer/compare/v1.33.0...v1.34.0) (2026-08-07)
 
 
