@@ -12,7 +12,8 @@ test.describe("Visual Regression - Pages", () => {
 		{ name: "Blog Index", path: "/blog" },
 		{ name: "Projects", path: "/projects" },
 		{ name: "Now", path: "/now" },
-		{ name: "Colophon", path: "/colophon" }
+		{ name: "Colophon", path: "/colophon" },
+		{ name: "Reading List", path: "/reading-list" }
 	];
 
 	for (const pageInfo of pagesToSnapshot) {

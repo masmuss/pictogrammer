@@ -123,3 +123,16 @@ export const certificationsSchema = z.array(
 		description: z.string().optional()
 	})
 );
+
+export const readingSchema = z.array(
+	z.object({
+		title: z.string(),
+		author: z.string(),
+		cover: z.url().optional(),
+		status: z.enum(["reading", "read", "want-to-read"]),
+		rating: z.number().min(1).max(5).optional(),
+		url: z.url().optional(),
+		dateRead: z.string().optional(),
+		notes: z.string().optional()
+	})
+);

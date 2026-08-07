@@ -6,6 +6,7 @@ import {
 	experiencesSchema,
 	postSchema,
 	projectsSchema,
+	readingSchema,
 	seriesSchema,
 	skillsSchema,
 	toolsSchema
@@ -70,6 +71,14 @@ const tools = defineCollection({
 	schema: toolsSchema
 });
 
+const reading = defineCollection({
+	loader: glob({
+		pattern: "**/**/*.json",
+		base: "./src/content/reading"
+	}),
+	schema: readingSchema
+});
+
 export const collections = {
 	post,
 	series,
@@ -78,5 +87,6 @@ export const collections = {
 	certifications,
 	projects,
 	skills,
-	tools
+	tools,
+	reading
 };
