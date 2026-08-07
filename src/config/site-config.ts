@@ -55,36 +55,25 @@ const siteConfig = {
 			src: "/logo.svg",
 			alt: "Website Logo"
 		},
-		navLinks: [
+		textLinks: [
+			{ text: "Blog", href: "/blog" },
+			{ text: "Projects", href: "/projects" },
+			{ text: "Reading List", href: "/reading-list" },
+			{ text: "Colophon", href: "/colophon" }
+		],
+		iconLinks: [
+			{ text: "About", href: "/about", icon: "ph:user" },
+			{ text: "Tools", href: "/tools", icon: "ph:toolbox" },
 			{
-				text: "Home",
-				href: "/",
-				icon: "ph:house"
+				text: "GitHub",
+				href: "https://github.com/masmuss",
+				icon: "ph:github-logo"
 			},
+			{ text: "Twitter", href: "https://x.com/rexbocho", icon: "ph:x-logo" },
 			{
-				text: "About",
-				href: "/about",
-				icon: "ph:user"
-			},
-			{
-				text: "Blog",
-				href: "/blog",
-				icon: "ph:article"
-			},
-			{
-				text: "Projects",
-				href: "/projects",
-				icon: "ph:code"
-			},
-			{
-				text: "Tools",
-				href: "/tools",
-				icon: "ph:toolbox"
-			},
-			{
-				text: "Now",
-				href: "/now",
-				icon: "ph:clock"
+				text: "LinkedIn",
+				href: "https://www.linkedin.com/in/masmuss",
+				icon: "ph:linkedin-logo"
 			}
 		]
 	},

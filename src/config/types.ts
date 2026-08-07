@@ -18,7 +18,7 @@ export type SocialLink = {
 export type NavLink = {
 	text: string;
 	href: string;
-	icon: string;
+	icon?: string;
 };
 
 export type Header = {
@@ -26,7 +26,8 @@ export type Header = {
 		src: string;
 		alt: string;
 	};
-	navLinks: NavLink[];
+	textLinks: NavLink[];
+	iconLinks: NavLink[];
 };
 
 export type Page = {
