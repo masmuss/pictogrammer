@@ -57,9 +57,6 @@ const placeholderIcon = thumbnailImage ? null : CATEGORY_ICONS[category ?? ""];
 
 const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 const effectiveRepoHref = repoHref;
-
-const actionCount = (effectiveLiveHref ? 1 : 0) + (effectiveRepoHref ? 1 : 0);
-const hasSingleAction = actionCount === 1;
 ---
 
 <Card
@@ -100,15 +97,15 @@ const hasSingleAction = actionCount === 1;
 
 	{
 		(effectiveRepoHref || effectiveLiveHref) && (
-			<CardFooter class="items-stretch px-0 pb-0">
+			<CardFooter class="flex flex-row items-center gap-2 px-0 pb-0 mt-4">
 				{effectiveRepoHref && (
 					<Button
 						as="a"
 						href={effectiveRepoHref}
 						target="_blank"
 						rel="noopener noreferrer"
-						variant={hasSingleAction ? "default" : "secondary"}
-						size="default"
+						variant="secondary"
+						size="sm"
 						class="flex-1"
 					>
 						<Icon name="ph:github-logo" aria-hidden="true" />
@@ -123,7 +120,7 @@ const hasSingleAction = actionCount === 1;
 						target="_blank"
 						rel="noopener noreferrer"
 						variant="default"
-						size="default"
+						size="sm"
 						class="flex-1"
 					>
 						<Icon name="ph:arrow-square-out" aria-hidden="true" />

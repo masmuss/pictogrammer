@@ -37,7 +37,6 @@
 				"text": "Applyst",
 				"description": "A job application tracking web app built with Laravel and React, designed to help users manage their job applications effectively.",
 				"thumbnail": "applyst.png",
-				"liveHref": "https://applyst.khoirul.me",
 				"repoHref": "https://github.com/masmuss/applyst.git",
 				"featured": true
 			},

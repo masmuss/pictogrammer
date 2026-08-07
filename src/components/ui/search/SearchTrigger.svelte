@@ -26,6 +26,5 @@
 	aria-label="Search"
 >
 	<Icon icon="ph:magnifying-glass" class="h-4 w-4" />
-	<span class="ml-2 hidden text-xs lg:inline-block">Search</span>
 	<Kbd keys={[modifierKey, "K"]} class="ml-2 hidden lg:flex" />
 </button>
