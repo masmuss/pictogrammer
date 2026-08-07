@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/masmuss/pictogrammer/compare/v1.36.0...v1.37.0) (2026-08-07)
+
+
+### Features
+
+* **reading-list:** add Open Graph image metadata ([729908c](https://github.com/masmuss/pictogrammer/commit/729908c43117b438a848f41d77cc2bbd4263b287))
+
 # [1.36.0](https://github.com/masmuss/pictogrammer/compare/v1.35.0...v1.36.0) (2026-08-07)
 
 
