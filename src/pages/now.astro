@@ -1,0 +1,61 @@
+---
+export const prerender = true;
+
+import ToolSection from "@/components/features/tools/ToolSection.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getNowPageData } from "@/lib/contents/now";
+
+const { lastUpdated, location, workingOn, building, learning, reading } =
+	await getNowPageData();
+---
+
+<BaseLayout
+	title="Now"
+	description="What I'm currently up to right now."
+	image={{ src: "/og/now.png", alt: "Now - pictogrammmer" }}
+	pageType="website"
+>
+	<div class="flex w-full flex-col gap-y-10">
+		<PageHeader
+			title="Now"
+			description={`What I'm currently up to. Last updated ${lastUpdated}.`}
+			as="h1"
+		/>
+
+		<ToolSection
+			title="Working on"
+			tools={workingOn}
+			showDescription
+			transitionDelay={0}
+		/>
+
+		<ToolSection
+			title="Building"
+			tools={building}
+			showDescription
+			transitionDelay={150}
+		/>
+
+		<ToolSection
+			title="Learning"
+			tools={learning}
+			showDescription
+			transitionDelay={300}
+		/>
+
+		<ToolSection
+			title="Reading"
+			tools={reading}
+			showDescription
+			transitionDelay={450}
+		/>
+
+		<ToolSection
+			title="Location"
+			tools={[{ name: location, description: "" }]}
+			showDescription={false}
+			transitionDelay={600}
+		/>
+	</div>
+</BaseLayout>
