@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/masmuss/pictogrammer/compare/v1.33.0...v1.34.0) (2026-08-07)
+
+
+### Features
+
+* **pages:** add new "Now" page ([4e61730](https://github.com/masmuss/pictogrammer/commit/4e617302aff8eb8ec530e1761968f1e12c7fdb6b))
+
 # [1.33.0](https://github.com/masmuss/pictogrammer/compare/v1.32.0...v1.33.0) (2026-08-07)
 
 
