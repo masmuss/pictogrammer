@@ -1,20 +1,41 @@
 ---
+import { Icon } from "astro-icon/components";
 import Heading from "@/components/ui/Heading.astro";
 
 interface Props {
 	name: string;
 	description: string;
 	showDescription?: boolean;
+	href?: string;
 }
 
-const { name, description, showDescription } = Astro.props;
+const { name, description, showDescription, href } = Astro.props;
 ---
 
 <li class="flex flex-col" data-testid="tool-item">
 	<div class="flex flex-col">
-		<Heading as="h3" size="sm" weight="medium" class="text-foreground">
-			{name}
-		</Heading>
+		{
+			href ? (
+				<a
+					href={href}
+					class="group/tool-item w-fit flex gap-2 items-center"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<Heading as="h3" size="sm" weight="medium" class="text-foreground">
+						{name}
+					</Heading>
+					<Icon
+						name="ph:arrow-square-out"
+						class="opacity-0 group-hover/tool-item:opacity-100 text-muted-foreground transition-opacity"
+					/>
+				</a>
+			) : (
+				<Heading as="h3" size="sm" weight="medium" class="text-foreground">
+					{name}
+				</Heading>
+			)
+		}
 		{
 			showDescription && (
 				<p class="text-muted-foreground mt-px text-xs leading-relaxed">

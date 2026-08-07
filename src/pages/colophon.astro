@@ -1,0 +1,75 @@
+---
+export const prerender = true;
+
+import ToolSection from "@/components/features/tools/ToolSection.astro";
+import PageHeader from "@/components/ui/PageHeader.astro";
+import siteConfig from "@/config/site-config";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getColophonData } from "@/lib/contents/colophon";
+
+const { architecture, design, infrastructure, tools } = getColophonData();
+const repoUrl = `https://github.com/${siteConfig.giscus.repo}`;
+---
+
+<BaseLayout
+	title="Colophon"
+	description="How this digital garden is crafted and maintained."
+	image={{ src: "/og/colophon.png", alt: "Colophon - pictogrammmer" }}
+	pageType="website"
+>
+	<div class="flex w-full flex-col gap-y-10">
+		<PageHeader
+			title="Colophon"
+			description="How this digital garden is crafted and maintained."
+			as="h1"
+		/>
+
+		<ToolSection
+			title="Architecture"
+			tools={architecture}
+			showDescription
+			transitionDelay={0}
+		/>
+
+		<ToolSection
+			title="Design"
+			tools={design}
+			showDescription
+			transitionDelay={150}
+		/>
+
+		<ToolSection
+			title="Infrastructure"
+			tools={infrastructure}
+			showDescription
+			transitionDelay={300}
+		/>
+
+		<ToolSection
+			title="Tools"
+			tools={tools}
+			showDescription
+			transitionDelay={450}
+		/>
+
+		<ToolSection
+			title="Source Code"
+			tools={[
+				{
+					name: "GitHub Repository",
+					description:
+						"This website is open-source. Feel free to explore the code, but please do not copy the content.",
+					href: repoUrl
+				},
+				{
+					name: "Changelog",
+					description:
+						"View the history of updates and releases for this site.",
+					href: `${repoUrl}/blob/main/CHANGELOG.md`
+				}
+			]}
+			showDescription
+			transitionDelay={600}
+		/>
+	</div>
+</BaseLayout>

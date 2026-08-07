@@ -93,7 +93,8 @@ export const toolsSchema = z.array(
 		tools: z.array(
 			z.object({
 				name: z.string(),
-				description: z.string()
+				description: z.string(),
+				href: z.string().optional()
 			})
 		)
 	})
