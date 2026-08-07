@@ -1,3 +1,23 @@
+# [1.33.0](https://github.com/masmuss/pictogrammer/compare/v1.32.0...v1.33.0) (2026-08-07)
+
+
+### Bug Fixes
+
+* **search:** move body scroll lock logic to SearchModal ([cd11e25](https://github.com/masmuss/pictogrammer/commit/cd11e255f160f38a3b202886036cdb2da60f1cb1))
+* **ui:** update project card icon prefixes ([199dedd](https://github.com/masmuss/pictogrammer/commit/199dedd036199d3d70eac13e505f2a1e8df4bfcf))
+
+
+### Features
+
+* **a11y:** improve focus indicators and labels ([e5571c9](https://github.com/masmuss/pictogrammer/commit/e5571c96f203384606d1219373bf7c894f26f2d5))
+* **about:** improve tab performance and transition ([a008c59](https://github.com/masmuss/pictogrammer/commit/a008c593f0c2d33b1be1202af79bc43946882f0b))
+* **blog:** add aria-current to blog tabs ([93efe4d](https://github.com/masmuss/pictogrammer/commit/93efe4d2580c2ec9c6c264908fcbe22ab40f1a7c))
+* **blog:** ignore UI elements in search index ([c30bdcd](https://github.com/masmuss/pictogrammer/commit/c30bdcd5014e6c41b66c3ae49cef9ec8791e8d26))
+* **deps:** migrate to astro-icon ([6be5e71](https://github.com/masmuss/pictogrammer/commit/6be5e7183da76b926dab8f19b4c5c648d7c1d1ee))
+* **icons:** switch from Remix Icon to Phosphor Icons ([44eaa7b](https://github.com/masmuss/pictogrammer/commit/44eaa7b9e84b6f59a0a0b7ca1c7870ce607de0c8))
+* **search:** update trigger size and cleanup styles ([9ee2b59](https://github.com/masmuss/pictogrammer/commit/9ee2b593689f3d4abcffd8b52c0f3521e882171a))
+* **ui:** add keyboard shortcut to toggle theme ([7f670ed](https://github.com/masmuss/pictogrammer/commit/7f670edd1c6dfc37908265406722a7cdf42e1361))
+
 # [1.32.0](https://github.com/masmuss/pictogrammer/compare/v1.31.0...v1.32.0) (2026-08-06)
 
 
