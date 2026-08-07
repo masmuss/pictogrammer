@@ -80,6 +80,11 @@ const siteConfig = {
 				text: "Tools",
 				href: "/tools",
 				icon: "ph:toolbox"
+			},
+			{
+				text: "Now",
+				href: "/now",
+				icon: "ph:clock"
 			}
 		]
 	},
@@ -140,6 +145,10 @@ const siteConfig = {
 			title: "Tools",
 			description:
 				"Explore the tools and software I use daily to enhance my productivity and creativity."
+		},
+		now: {
+			title: "Now",
+			description: "What I'm currently up to right now."
 		}
 	}
 } satisfies SiteConfig;
