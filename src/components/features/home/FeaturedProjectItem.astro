@@ -21,9 +21,9 @@ const hasRepo = Boolean(project.repoHref);
 	aria-label={project.text}
 	class={cn(
 		"group/project block -mx-3 rounded-lg px-3 py-3",
-		"hover:bg-muted/40",
+		"hover:bg-muted/40 active:scale-[0.99]",
 		"focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
-		"transition-colors duration-base",
+		"transition-all duration-fast"
 	)}
 	data-testid="featured-project-item"
 >

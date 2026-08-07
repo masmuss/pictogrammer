@@ -68,7 +68,7 @@ const isActive = Astro.url.pathname;
 									href={link.href}
 									class:list={[
 										"group flex translate-y-4 items-center gap-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background rounded-md",
-										isActive === link.href && "text-accent-cta",
+										isActive === link.href && "text-accent-cta"
 									]}
 									style={`transition-delay: ${150 + i * 75}ms`}
 								>
@@ -184,7 +184,7 @@ const isActive = Astro.url.pathname;
 
 			const animateLinks = nav.querySelectorAll<HTMLAnchorElement>("nav a");
 			const animateSections = nav.querySelectorAll<HTMLElement>(
-				"[data-mobile-entrance]",
+				"[data-mobile-entrance]"
 			);
 
 			const setOpen = (open: boolean) => {
@@ -200,12 +200,12 @@ const isActive = Astro.url.pathname;
 					nav.classList.remove(
 						"translate-x-full",
 						"opacity-0",
-						"pointer-events-none",
+						"pointer-events-none"
 					);
 					nav.classList.add(
 						"translate-x-0",
 						"opacity-100",
-						"pointer-events-auto",
+						"pointer-events-auto"
 					);
 					nav.removeAttribute("inert");
 					animateLinks.forEach((link) => {
@@ -220,12 +220,12 @@ const isActive = Astro.url.pathname;
 					nav.classList.remove(
 						"translate-x-0",
 						"opacity-100",
-						"pointer-events-auto",
+						"pointer-events-auto"
 					);
 					nav.classList.add(
 						"translate-x-full",
 						"opacity-0",
-						"pointer-events-none",
+						"pointer-events-none"
 					);
 					nav.setAttribute("inert", "");
 					resetTimer = setTimeout(() => {

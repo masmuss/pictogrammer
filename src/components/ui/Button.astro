@@ -46,7 +46,7 @@ const baseClasses = {
 	disabled: "disabled:pointer-events-none disabled:opacity-50",
 	validation:
 		"aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
-	icon: "[&_svg]:pointer-events-none [&_svg]:shrink-0",
+	icon: "[&_svg]:pointer-events-none [&_svg]:shrink-0"
 };
 
 const baseClass = Object.values(baseClasses).join(" ");
@@ -62,7 +62,7 @@ const variantClass: Record<NonNullable<Props["variant"]>, string> = {
 		"hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
 	destructive:
 		"bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-	link: "text-primary underline-offset-4 hover:underline",
+	link: "text-primary underline-offset-4 hover:underline"
 };
 
 const sizeClass: Record<NonNullable<Props["size"]>, string> = {
@@ -74,7 +74,7 @@ const sizeClass: Record<NonNullable<Props["size"]>, string> = {
 	icon: "size-8",
 	"icon-xs": "size-6 rounded-sm in-data-[slot=button-group]:rounded-sm",
 	"icon-sm": "size-7 rounded-md in-data-[slot=button-group]:rounded-md",
-	"icon-lg": "size-10",
+	"icon-lg": "size-10"
 };
 
 const legacyVariantMap: Record<
@@ -83,7 +83,7 @@ const legacyVariantMap: Record<
 > = {
 	button: "outline",
 	pill: "outline",
-	tab: "ghost",
+	tab: "ghost"
 };
 
 const resolvedVariant =
@@ -92,7 +92,7 @@ const resolvedSize = size;
 const legacyClass = cn(
 	style === "pill" && "rounded-md",
 	style === "tab" &&
-		"rounded-md text-muted-foreground ring-1 ring-border/60 ring-inset hover:text-foreground data-[active=true]:bg-primary/10 data-[active=true]:text-foreground data-[active=true]:ring-primary/40",
+		"rounded-md text-muted-foreground ring-1 ring-border/60 ring-inset hover:text-foreground data-[active=true]:bg-primary/10 data-[active=true]:text-foreground data-[active=true]:ring-primary/40"
 );
 
 const isButton = as === "button";
@@ -116,20 +116,20 @@ const commonProps = {
 		legacyClass,
 		"leading-none",
 		!isButton && (disabled || loading) && "pointer-events-none opacity-50",
-		className,
+		className
 	),
-	...attrs,
+	...attrs
 };
 
 const buttonProps = isButton
 	? {
 			type: "button" as const,
 			disabled: disabled || loading,
-			"aria-busy": loading,
+			"aria-busy": loading
 		}
 	: {
 			...prefetchProps,
-			href: disabled || loading ? undefined : href,
+			href: disabled || loading ? undefined : href
 		};
 ---
 

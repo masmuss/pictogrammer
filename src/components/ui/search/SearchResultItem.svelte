@@ -23,7 +23,7 @@
 		for (const element of template.content.querySelectorAll("*")) {
 			if (element.tagName !== "MARK") {
 				element.replaceWith(
-					window.document.createTextNode(element.textContent ?? ""),
+					window.document.createTextNode(element.textContent ?? "")
 				);
 				continue;
 			}

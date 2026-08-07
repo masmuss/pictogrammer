@@ -16,7 +16,7 @@ const {
 	dateTimeOptions,
 	separator = " \u00b7 ",
 	hasReadTime = false,
-	readTimeStyle = "short",
+	readTimeStyle = "short"
 } = Astro.props;
 
 const readTime = post.body ? getReadTimeCount(post.body) : null;

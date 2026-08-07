@@ -8,21 +8,9 @@
 		}
 	},
 	"formatter": {
-		"enabled": true,
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineWidth": 80
+		"enabled": false
 	},
-	"javascript": {
-		"formatter": {
-			"trailingCommas": "none"
-		}
-	},
-	"json": {
-		"formatter": {
-			"trailingCommas": "none"
-		}
-	},
+
 	"linter": {
 		"enabled": true,
 		"rules": {

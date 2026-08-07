@@ -45,7 +45,7 @@ const {
 
 const directionMap: Record<string, string> = {
 	row: "flex-row",
-	col: "flex-col",
+	col: "flex-col"
 };
 
 const gapMap: Record<string, string> = {
@@ -54,26 +54,26 @@ const gapMap: Record<string, string> = {
 	md: "gap-3",
 	lg: "gap-4",
 	xl: "gap-6",
-	none: "",
+	none: ""
 };
 
 const alignMap: Record<string, string> = {
 	start: "items-start",
 	center: "items-center",
 	end: "items-end",
-	stretch: "items-stretch",
+	stretch: "items-stretch"
 };
 
 const justifyMap: Record<string, string> = {
 	start: "justify-start",
 	center: "justify-center",
 	between: "justify-between",
-	end: "justify-end",
+	end: "justify-end"
 };
 
 const wrapMap: Record<string, string> = {
 	wrap: "flex-wrap",
-	nowrap: "flex-nowrap",
+	nowrap: "flex-nowrap"
 };
 
 const classes = cn(
@@ -83,7 +83,7 @@ const classes = cn(
 	alignMap[alignItems],
 	justifyMap[justifyContent],
 	wrapMap[wrap],
-	className,
+	className
 );
 ---
 

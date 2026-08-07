@@ -16,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 		const filterPosts = allPosts.filter((post) => post.data.tags.includes(tag));
 		return paginate(filterPosts, {
 			pageSize: 10,
-			params: { tag },
+			params: { tag }
 		});
 	});
 };
@@ -32,15 +32,15 @@ const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
 			text: "← Previous Posts",
-			url: page.url.prev,
-		},
+			url: page.url.prev
+		}
 	}),
 	...(page.url.next && {
 		nextUrl: {
 			text: "Next Posts →",
-			url: page.url.next,
-		},
-	}),
+			url: page.url.next
+		}
+	})
 };
 ---
 

@@ -11,7 +11,7 @@ const tabs = [
 	{ id: "posts", label: "Posts", href: "/blog" },
 	{ id: "notes", label: "Notes", href: "/blog/notes" },
 	{ id: "reflections", label: "Reflections", href: "/blog/reflections" },
-	{ id: "series", label: "Series", href: "/blog/series" },
+	{ id: "series", label: "Series", href: "/blog/series" }
 ];
 ---
 
@@ -29,7 +29,7 @@ const tabs = [
 						"text-lg transition-colors md:text-xl",
 						activeTab === tab.id
 							? "text-foreground font-semibold"
-							: "text-muted-foreground hover:text-foreground",
+							: "text-muted-foreground hover:text-foreground"
 					]}
 				>
 					{tab.label}

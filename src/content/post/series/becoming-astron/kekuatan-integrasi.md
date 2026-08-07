@@ -117,13 +117,13 @@ export default defineConfig({
 	markdown: {
 		shikiConfig: {
 			theme: "dracula-soft", // Tema pewarnaan kode
-			wrap: true, // Agar kode panjang turun ke baris baru
-		},
+			wrap: true // Agar kode panjang turun ke baris baru
+		}
 	},
 	integrations: [mdx(), sitemap()],
 	vite: {
-		plugins: [tailwindcss()],
-	},
+		plugins: [tailwindcss()]
+	}
 });
 ```
 

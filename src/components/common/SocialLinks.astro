@@ -15,7 +15,7 @@ const {
 	variant = "icon",
 	showEmail = false,
 	showCV = false,
-	class: className,
+	class: className
 } = Astro.props;
 
 const isButton = variant === "button";
@@ -23,7 +23,7 @@ const buttonVariant = isButton ? "outline" : "ghost";
 const buttonSize = isButton ? "default" : "icon-sm";
 const buttonClass = cn(
 	"text-muted-foreground hover:text-foreground",
-	isButton && "gap-x-2",
+	isButton && "gap-x-2"
 );
 
 const links = [
@@ -32,15 +32,15 @@ const links = [
 				{
 					href: `mailto:${siteConfig.email}`,
 					text: "Email",
-					icon: "ph:envelope",
-				},
+					icon: "ph:envelope"
+				}
 			]
 		: []),
 	...siteConfig.socialLinks.map((link) => ({
 		href: link.href,
 		text: link.text,
-		icon: link.icon,
-	})),
+		icon: link.icon
+	}))
 ];
 ---
 
@@ -48,7 +48,7 @@ const links = [
 	class={cn(
 		"flex items-center",
 		isButton ? "flex-wrap gap-3" : "gap-4",
-		className,
+		className
 	)}
 >
 	{

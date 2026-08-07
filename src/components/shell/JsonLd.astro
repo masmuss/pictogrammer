@@ -16,7 +16,7 @@ const {
 	image,
 	date,
 	updatedDate,
-	type = "website",
+	type = "website"
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.toString() : "https://khoirul.me";
@@ -31,8 +31,8 @@ const schema = {
 			name: siteConfig.title,
 			description: siteConfig.description,
 			publisher: {
-				"@id": `${siteUrl}#person`,
-			},
+				"@id": `${siteUrl}#person`
+			}
 		},
 		{
 			"@type": "Person",
@@ -41,9 +41,9 @@ const schema = {
 			url: siteUrl,
 			image: siteConfig.image?.src,
 			sameAs: siteConfig.socialLinks.map((link) => link.href),
-			description: siteConfig.description,
-		},
-	],
+			description: siteConfig.description
+		}
+	]
 };
 
 if (type === "article") {
@@ -54,23 +54,23 @@ if (type === "article") {
 		author: {
 			"@type": "Person",
 			name: siteConfig.author,
-			url: siteUrl,
+			url: siteUrl
 		},
 		publisher: {
 			"@type": "Organization",
 			name: siteConfig.title,
 			logo: {
 				"@type": "ImageObject",
-				url: siteConfig.image?.src || `${siteUrl}/logo.png`,
-			},
+				url: siteConfig.image?.src || `${siteUrl}/logo.png`
+			}
 		},
 		datePublished: date?.toISOString(),
 		dateModified: updatedDate?.toISOString() || date?.toISOString(),
 		image: image,
 		mainEntityOfPage: {
 			"@type": "WebPage",
-			"@id": Astro.url.href,
-		},
+			"@id": Astro.url.href
+		}
 	};
 	// @ts-expect-error - schema structure is flexible
 	schema["@graph"].push(articleSchema);

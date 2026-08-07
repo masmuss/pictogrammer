@@ -2,6 +2,7 @@ tabWidth: 2
 useTabs: true
 printWidth: 80
 proseWrap: preserve
+trailingComma: none
 plugins:
   - prettier-plugin-astro
   - prettier-plugin-svelte
