@@ -43,7 +43,7 @@ const { textLinks, iconLinks } = siteConfig.header;
 										href={link.href}
 										class={cn(
 											navigationMenuTriggerStyle(),
-											"bg-transparent text-muted-foreground hover:text-foreground text-sm"
+											"bg-transparent p-0 px-2 text-muted-foreground hover:bg-transparent hover:text-foreground text-sm"
 										)}
 									>
 										{link.text}
@@ -55,7 +55,7 @@ const { textLinks, iconLinks } = siteConfig.header;
 				</NavigationMenu>
 			</div>
 
-			<div class="hidden lg:block w-px h-4 bg-border mx-2"></div>
+			<div class="hidden lg:block w-px h-4 bg-border"></div>
 
 			<!-- Icons Navigation -->
 			<div class="hidden items-center gap-x-4 lg:flex">
