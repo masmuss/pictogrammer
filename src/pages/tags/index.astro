@@ -1,7 +1,9 @@
 ---
 export const prerender = true;
 
-import PageHeader from "@/components/ui/PageHeader.astro";
+import PageHeader from "@/components/common/PageHeader.astro";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getUniqueTagsWithCount } from "@/lib/contents";
 
@@ -38,17 +40,16 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 			sortedTags.length > 0 && (
 				<div class="flex flex-wrap gap-3">
 					{sortedTags.map(([tag, count]) => (
-						<a
+						<Button
+							as="a"
 							href={`/tags/${tag}`}
 							title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
+							variant="secondary"
 							data-astro-prefetch
-							class="group bg-secondary hover:bg-secondary/70 text-foreground hover:text-foreground flex items-center gap-2 rounded-lg px-4 py-2 transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2"
 						>
 							<span class="font-medium">#{tag}</span>
-							<span class="bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground rounded-full px-2 py-0.5 text-sm transition-colors">
-								{count}
-							</span>
-						</a>
+							<Badge variant="outline">{count}</Badge>
+						</Button>
 					))}
 				</div>
 			)

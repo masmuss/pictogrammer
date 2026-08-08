@@ -1,107 +1,37 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from "@/components/ui/Button.astro";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getSkillsTabs } from "@/lib/contents/skills";
-import { cn } from "@/lib/utils";
 import type { SkillCollection } from "@/types";
+import { Badge } from "@/components/ui/badge";
 
 interface Props {
 	collections: SkillCollection[];
 	class?: string;
 }
 
-const { collections, class: className } = Astro.props;
+const { collections, class: className = "" } = Astro.props;
 const tabs = getSkillsTabs(collections);
+const defaultTab = tabs[0]?.id ?? "";
 ---
 
-<section class={className} data-skills-tabs>
-	<div
-		class="mb-4 flex flex-wrap gap-2"
-		role="tablist"
-		aria-label="Skill categories"
-	>
-		{
-			tabs.map((tab, index) => (
-				<Button
-					as="button"
-					id={`skills-tab-${tab.id}`}
-					class="skills-tab cursor-pointer text-xs font-medium tracking-wide"
-					style="tab"
-					role="tab"
-					data-tab={tab.id}
-					aria-selected={index === 0 ? "true" : "false"}
-					aria-controls={`skills-panel-${tab.id}`}
-					data-active={index === 0 ? "true" : "false"}
-					title={tab.label}
-				/>
-			))
-		}
-	</div>
+<Tabs defaultValue={defaultTab} class={className}>
+	<TabsList variant="line-animated">
+		{tabs.map((tab) => <TabsTrigger value={tab.id}>{tab.label}</TabsTrigger>)}
+	</TabsList>
 
 	{
-		tabs.map((tab, index) => (
-			<div
-				id={`skills-panel-${tab.id}`}
-				class={cn("skills-panel", index !== 0 && "skills-panel--inactive")}
-				role="tabpanel"
-				aria-labelledby={`skills-tab-${tab.id}`}
-				data-panel={tab.id}
-			>
+		tabs.map((tab) => (
+			<TabsContent value={tab.id}>
 				<div class="flex flex-wrap gap-3">
 					{tab.skills.map((skill) => (
-						<div
-							class="bg-card/50 border-border/50 hover:border-border hover:bg-card flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-sm transition-colors select-none"
-							title={skill.description}
-						>
+						<Badge variant="outline" shape="pill" title={skill.description}>
 							{skill.icon && <Icon name={`logos:${skill.icon}`} />}
 							<span class="text-foreground/90 font-medium">{skill.name}</span>
-						</div>
+						</Badge>
 					))}
 				</div>
-			</div>
+			</TabsContent>
 		))
 	}
-</section>
-
-<style>
-	.skills-panel--inactive {
-		content-visibility: hidden;
-		height: 0;
-		overflow: hidden;
-	}
-</style>
-
-<script>
-	function initSkillsTabs() {
-		const tabRoots = document.querySelectorAll("[data-skills-tabs]");
-
-		for (const root of tabRoots) {
-			const tabButtons =
-				root.querySelectorAll<HTMLButtonElement>(".skills-tab");
-			const tabPanels = root.querySelectorAll<HTMLElement>(".skills-panel");
-
-			for (const tab of tabButtons) {
-				tab.addEventListener("click", () => {
-					const id = tab.dataset.tab;
-					if (!id) return;
-
-					for (const item of tabButtons) {
-						const isActive = item.dataset.tab === id;
-						item.setAttribute("aria-selected", isActive ? "true" : "false");
-						item.dataset.active = isActive ? "true" : "false";
-					}
-
-					for (const panel of tabPanels) {
-						panel.classList.toggle(
-							"skills-panel--inactive",
-							panel.dataset.panel !== id
-						);
-					}
-				});
-			}
-		}
-	}
-
-	initSkillsTabs();
-	document.addEventListener("astro:page-load", initSkillsTabs);
-</script>
+</Tabs>

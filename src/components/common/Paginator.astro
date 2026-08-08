@@ -1,0 +1,42 @@
+---
+import Button from "@/components/ui/button/Button.astro";
+import type { PaginationLink } from "@/types";
+
+interface Props {
+	nextUrl?: PaginationLink;
+	prevUrl?: PaginationLink;
+}
+
+const { nextUrl, prevUrl }: Props = Astro.props;
+---
+
+{
+	(prevUrl || nextUrl) && (
+		<nav class="mt-8 flex items-center gap-x-4">
+			{prevUrl && (
+				<Button
+					as="a"
+					href={prevUrl.url}
+					variant="ghost"
+					size="sm"
+					class="me-auto"
+				>
+					{prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
+					{prevUrl.text ? prevUrl.text : "Previous"}
+				</Button>
+			)}
+			{nextUrl && (
+				<Button
+					as="a"
+					href={nextUrl.url}
+					variant="ghost"
+					size="sm"
+					class="ms-auto"
+				>
+					{nextUrl.srLabel && <span class="sr-only">{nextUrl.srLabel}</span>}
+					{nextUrl.text ? nextUrl.text : "Next"}
+				</Button>
+			)}
+		</nav>
+	)
+}

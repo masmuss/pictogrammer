@@ -4,7 +4,7 @@ import type { Project } from "@/types";
 export const CATEGORY_ICONS: Record<string, string> = {
 	Website: "ph:globe",
 	API: "ph:terminal-window",
-	"Mobile App": "ph:mobile-device",
+	"Mobile App": "ph:device-mobile",
 	"Artificial Intelligence": "ph:brain",
 	"System & Tooling": "ph:toolbox"
 };

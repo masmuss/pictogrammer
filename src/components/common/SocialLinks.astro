@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from "@/components/ui/Button.astro";
+import Button from "@/components/ui/button/Button.astro";
 import siteConfig from "@/config/site-config";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/tailwind";
 
 interface Props {
 	variant?: "icon" | "button";
@@ -60,7 +60,7 @@ const links = [
 				rel="noopener noreferrer"
 				variant="outline"
 			>
-				<Icon slot="icon-before" name="ph:file-arrow-down" />
+				<Icon name="ph:file-arrow-down" />
 				View Resume
 			</Button>
 		)
@@ -78,7 +78,7 @@ const links = [
 				aria-label={link.text}
 				title={isButton ? link.text : undefined}
 			>
-				<Icon slot="icon-before" name={link.icon} />
+				<Icon name={link.icon} />
 				{!isButton && <span class="sr-only">{link.text}</span>}
 			</Button>
 		))

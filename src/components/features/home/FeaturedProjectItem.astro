@@ -1,7 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/tailwind";
 import type { Project } from "@/types";
+import { Badge } from "@/components/ui/badge";
 
 interface Props {
 	project: Project;
@@ -46,18 +47,18 @@ const hasRepo = Boolean(project.repoHref);
 		<div class="flex shrink-0 items-center gap-3 text-xs text-muted-foreground">
 			{
 				isLive && (
-					<span class="inline-flex items-center gap-1">
+					<Badge shape="pill" variant="outline">
 						<Icon name="ph:arrow-square-out" />
 						Live
-					</span>
+					</Badge>
 				)
 			}
 			{
 				hasRepo && (
-					<span class="inline-flex items-center gap-1">
+					<Badge shape="pill" variant="outline">
 						<Icon name="ph:github-logo" />
 						Repo
-					</span>
+					</Badge>
 				)
 			}
 		</div>

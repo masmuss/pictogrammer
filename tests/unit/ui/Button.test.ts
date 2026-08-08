@@ -1,6 +1,6 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { expect, test } from "vitest";
-import Button from "@/components/ui/Button.astro";
+import Button from "@/components/ui/button/Button.astro";
 
 test("Button renders as an anchor by default", async () => {
 	const container = await AstroContainer.create();

@@ -7,8 +7,8 @@ import Educations from "@/components/features/about/Educations.astro";
 import Experiences from "@/components/features/about/Experiences.astro";
 import SkillsTabs from "@/components/features/about/SkillsTabs.astro";
 
-import Heading from "@/components/ui/Heading.astro";
-import Section from "@/components/ui/Section.astro";
+import Heading from "@/components/common/Heading.astro";
+import Section from "@/components/common/Section.astro";
 import AboutContent from "@/content/pages/about.md";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAboutPageData, getAllSkillCollections } from "@/lib/contents";
@@ -49,7 +49,7 @@ const techStack = await getAllSkillCollections();
 				transitionDelay={150}
 				data-testid="skills-section"
 			>
-				<SkillsTabs collections={techStack} />
+				<SkillsTabs collections={techStack} class="gap-y-4" />
 			</Section>
 
 			<Section

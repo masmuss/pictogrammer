@@ -1,13 +1,21 @@
 ---
-import Text from "../primitives/Text.astro";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils/tailwind";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
 	class?: string;
 }
 
-const { class: className }: Props = Astro.props;
+const { class: className = "", ...rest } = Astro.props as Props;
+
+const descriptionVariants = cva("");
 ---
 
-<Text data-slot="card-description" size="sm" color="muted" class={className}>
+<div
+	{...rest}
+	data-slot="card-description"
+	class={cn("text-muted-foreground text-sm", descriptionVariants(), className)}
+>
 	<slot />
-</Text>
+</div>

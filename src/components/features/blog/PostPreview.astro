@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PostMetadata from "@/components/common/PostMetadata.astro";
-import { cn, getPostUrl } from "@/lib/utils";
+import { cn } from "@/lib/utils/tailwind";
+import { getPostUrl } from "@/lib/utils/post-route";
 
 type Props = {
 	post: CollectionEntry<"post">;
