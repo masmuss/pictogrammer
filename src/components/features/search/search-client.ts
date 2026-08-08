@@ -112,10 +112,10 @@ class SearchController {
 
   private exposeGlobalMethods() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     window.__openSearch = () => this.openSearch();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     window.__closeSearch = () => this.closeSearch();
   }
 
