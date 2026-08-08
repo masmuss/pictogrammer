@@ -12,7 +12,7 @@ const { nextUrl, prevUrl }: Props = Astro.props;
 
 {
 	(prevUrl || nextUrl) && (
-		<nav class="mt-8 flex items-center gap-x-4">
+		<nav aria-label="Pagination" class="mt-8 flex items-center gap-x-4">
 			{prevUrl && (
 				<Button
 					as="a"

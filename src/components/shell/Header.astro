@@ -7,7 +7,7 @@ import ThemeToggle from "@/components/shell/ThemeToggle.astro";
 import {
 	NavigationMenu,
 	NavigationMenuItem,
-	NavigationMenuLink, 
+	NavigationMenuLink,
 	NavigationMenuList
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu/NavigationMenuTrigger.astro";
@@ -41,7 +41,10 @@ const { textLinks, iconLinks } = siteConfig.header;
 								<NavigationMenuItem>
 									<NavigationMenuLink
 										href={link.href}
-										class={cn(navigationMenuTriggerStyle(), "bg-transparent text-muted-foreground hover:text-foreground text-sm")}
+										class={cn(
+											navigationMenuTriggerStyle(),
+											"bg-transparent text-muted-foreground hover:text-foreground text-sm"
+										)}
 									>
 										{link.text}
 									</NavigationMenuLink>
