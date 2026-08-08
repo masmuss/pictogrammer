@@ -1,3 +1,15 @@
+# [1.39.0](https://github.com/masmuss/pictogrammer/compare/v1.38.0...v1.39.0) (2026-08-08)
+
+
+### Bug Fixes
+
+* **tooltip:** prevent redundant initialization ([ff6a640](https://github.com/masmuss/pictogrammer/commit/ff6a6403d20c78efa8a04de2ae6aaec053ff46cf))
+
+
+### Features
+
+* **projects:** update project list and metadata ([27ef231](https://github.com/masmuss/pictogrammer/commit/27ef23162e7b469d40e18714e187163d6bcc91d0))
+
 # [1.38.0](https://github.com/masmuss/pictogrammer/compare/v1.37.0...v1.38.0) (2026-08-08)
 
 
