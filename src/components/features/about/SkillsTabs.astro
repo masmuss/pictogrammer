@@ -25,7 +25,12 @@ const defaultTab = tabs[0]?.id ?? "";
 			<TabsContent value={tab.id}>
 				<div class="flex flex-wrap gap-3">
 					{tab.skills.map((skill) => (
-						<Badge variant="outline" shape="pill" title={skill.description} class="gap-2">
+						<Badge
+							variant="outline"
+							shape="pill"
+							title={skill.description}
+							class="gap-2"
+						>
 							{skill.icon && <Icon name={`logos:${skill.icon}`} />}
 							<span class="text-foreground/90 font-medium">{skill.name}</span>
 						</Badge>

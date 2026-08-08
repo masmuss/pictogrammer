@@ -98,41 +98,42 @@
 import type { HTMLAttributes } from "astro/types";
 import { cn } from "@/lib/utils/tailwind";
 import {
-  type ToggleVariantProps,
-  toggleVariants,
+	type ToggleVariantProps,
+	toggleVariants
 } from "@/lib/utils/toggle-shared";
 
-interface Props extends ToggleVariantProps, Omit<HTMLAttributes<"button">, "class"> {
-  defaultPressed?: boolean;
-  disabled?: boolean;
-  class?: string;
+interface Props
+	extends ToggleVariantProps, Omit<HTMLAttributes<"button">, "class"> {
+	defaultPressed?: boolean;
+	disabled?: boolean;
+	class?: string;
 }
 
 const {
-  variant = "default",
-  size = "default",
-  defaultPressed,
-  disabled,
-  class: className = "",
-  ...rest
+	variant = "default",
+	size = "default",
+	defaultPressed,
+	disabled,
+	class: className = "",
+	...rest
 } = Astro.props as Props;
 ---
 
 <button
-  type="button"
-  data-slot="toggle"
-  data-default-pressed={defaultPressed ? "" : undefined}
-  data-disabled={disabled ? "true" : undefined}
-  disabled={disabled}
-  class={cn(toggleVariants({ variant, size }), className)}
-  {...rest}
+	type="button"
+	data-slot="toggle"
+	data-default-pressed={defaultPressed ? "" : undefined}
+	data-disabled={disabled ? "true" : undefined}
+	disabled={disabled}
+	class={cn(toggleVariants({ variant, size }), className)}
+	{...rest}
 >
-  <slot />
+	<slot />
 </button>
 
 <script>
-  import { createToggle } from "@data-slot/toggle";
-  document
-    .querySelectorAll<HTMLElement>('[data-slot="toggle"]')
-    .forEach((el) => createToggle(el));
+	import { createToggle } from "@data-slot/toggle";
+	document
+		.querySelectorAll<HTMLElement>('[data-slot="toggle"]')
+		.forEach((el) => createToggle(el));
 </script>
