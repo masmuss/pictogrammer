@@ -41,11 +41,6 @@
 				"featured": true
 			},
 			{
-				"text": "MoneyFlow",
-				"description": "A personal finance tracking web application featuring beautiful charts, monthly budgets, and financial insights built with SvelteKit 2, Svelte 5, and Drizzle ORM.",
-				"repoHref": "https://github.com/masmuss/moneyflow"
-			},
-			{
 				"text": "Trak",
 				"description": "A modern ticketing and reporting platform with Telegram bot integration, built using Turborepo, SvelteKit (Runes), grammY, and Drizzle ORM.",
 				"icon": "ph:ticket",
@@ -68,11 +63,13 @@
 			{
 				"text": "Qasir API",
 				"description": "Learning NestJS by creating API for Point of Sales system",
+				"icon": "ph:cash-register",
 				"repoHref": "https://github.com/masmuss/qasir-api"
 			},
 			{
 				"text": "Hono API Boilerplate",
 				"description": "An API boilerplate was built using Bun, Hono, drizzle ORM and integrated with Scalar API reference",
+				"icon": "ph:crane",
 				"repoHref": "https://github.com/masmuss/hono-api-boilerplate"
 			},
 			{
@@ -83,7 +80,8 @@
 			},
 			{
 				"text": "Gokit Starter",
-				"description": "Modern Go API boilerplate with Chi, Ent, Uber Fx, and automated testing, designed with Clean Architecture principles.",
+				"description": "Modern Go API boilerplate with Chi, GORM, and automated testing, designed with Clean Architecture principles.",
+				"icon": "ph:crane",
 				"repoHref": "https://github.com/masmuss/gokit-starter",
 				"featured": true
 			}
@@ -118,11 +116,13 @@
 			{
 				"text": "Micro PaaS",
 				"description": "Lightweight PaaS built in Go for managing Docker containers with web dashboard, automatic subdomain proxying, and self-healing.",
+				"icon": "ph:layout",
 				"repoHref": "https://github.com/masmuss/micro-paas"
 			},
 			{
 				"text": "Gokit Install",
 				"description": "Interactive CLI tool to bootstrap new Go projects using Gokit Starter.",
+				"icon": "ph:download",
 				"repoHref": "https://github.com/masmuss/gokit-install"
 			}
 		]
