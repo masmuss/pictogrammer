@@ -1,13 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
 import { Icon } from "astro-icon/components";
-import Button from "@/components/ui/Button.astro";
 import {
 	Card,
+	CardContent,
 	CardDescription,
-	CardFooter,
-	CardHeader,
 	CardTitle
 } from "@/components/ui/card";
 import { CATEGORY_ICONS } from "@/lib/contents/projects";
@@ -19,7 +15,7 @@ interface Props {
 	repoHref?: string;
 	heading: string;
 	subheading?: string;
-	thumbnail?: string;
+	icon?: string;
 	category?: string;
 	class?: string;
 }
@@ -30,104 +26,76 @@ const {
 	repoHref,
 	heading,
 	subheading,
-	thumbnail,
+	icon,
 	category,
 	class: className
 } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,avif}"
-);
-
-let thumbnailImage: { default: ImageMetadata } | undefined;
-if (thumbnail) {
-	const candidates = [
-		thumbnail,
-		`/src/assets/images/projects/${thumbnail}`,
-		`/src/assets/images/${thumbnail}`
-	];
-	const path = candidates.find((candidate) => Boolean(images[candidate]));
-	if (path) {
-		const loader = images[path];
-		if (loader) thumbnailImage = await loader();
-	}
-}
-
-const placeholderIcon = thumbnailImage ? null : CATEGORY_ICONS[category ?? ""];
-
+const fallbackIcon = CATEGORY_ICONS[category ?? ""];
+const displayIcon = icon ?? fallbackIcon;
 const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
-const effectiveRepoHref = repoHref;
 ---
 
 <Card
 	class={cn(
-		"w-full gap-0 transition-all duration-fast hover:-translate-y-0.5 hover:ring-primary/40 active:scale-[0.98] scroll-reveal",
+		"bg-transparent ring-0 relative group-has-[:hover]/list:opacity-50 hover:opacity-100 transition-all hover:bg-card isolate transform-gpu duration-300",
 		className
 	)}
+	variant="ghost"
+	data-testid="project-item"
 >
-	{
-		thumbnailImage ? (
-			<Image
-				src={thumbnailImage.default}
-				alt={`${heading} thumbnail`}
-				class="aspect-video w-full rounded-sm object-cover"
-				loading="lazy"
-			/>
-		) : (
-			<div class="bg-muted flex aspect-video w-full items-center justify-center rounded-sm">
-				{placeholderIcon && (
-					<Icon
-						name={placeholderIcon}
-						class="text-muted-foreground/40 text-4xl"
-					/>
-				)}
-			</div>
-		)
-	}
-	<CardHeader class="flex flex-1 flex-col px-0">
-		<CardTitle class="text-base">{heading}</CardTitle>
+	<CardContent class="flex flex-row items-center h-full gap-5">
 		{
-			subheading && (
-				<CardDescription class="line-clamp-2 text-xs">
-					{subheading}
-				</CardDescription>
+			displayIcon && (
+				<div class="text-primary mt-1 flex shrink-0 items-center justify-center rounded-lg">
+					<Icon name={displayIcon} class="text-3xl text-primary" />
+				</div>
 			)
 		}
-	</CardHeader>
-
-	{
-		(effectiveRepoHref || effectiveLiveHref) && (
-			<CardFooter class="flex flex-row items-center gap-2 px-0 pb-0 mt-4">
-				{effectiveRepoHref && (
-					<Button
-						as="a"
-						href={effectiveRepoHref}
+		<div>
+			<CardTitle>
+				{
+					effectiveLiveHref ? (
+						<a
+							href={effectiveLiveHref}
+							target={
+								effectiveLiveHref.startsWith("http") ? "_blank" : undefined
+							}
+							rel={
+								effectiveLiveHref.startsWith("http")
+									? "noopener noreferrer"
+									: undefined
+							}
+							class="before:absolute before:inset-0 focus-visible:outline-none"
+						>
+							{heading}
+						</a>
+					) : (
+						heading
+					)
+				}
+			</CardTitle>
+			{
+				repoHref && (
+					<a
+						href={repoHref}
 						target="_blank"
 						rel="noopener noreferrer"
-						variant="secondary"
-						size="sm"
-						class="flex-1"
+						class="text-muted-foreground hover:text-foreground transition-colors absolute top-4 right-4 z-10 p-1"
+						aria-label="Repository"
+						title="Source Code"
 					>
-						<Icon name="ph:github-logo" aria-hidden="true" />
-						Repo
-					</Button>
-				)}
-
-				{effectiveLiveHref && (
-					<Button
-						as="a"
-						href={effectiveLiveHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						variant="default"
-						size="sm"
-						class="flex-1"
-					>
-						<Icon name="ph:arrow-square-out" aria-hidden="true" />
-						Live
-					</Button>
-				)}
-			</CardFooter>
-		)
-	}
+						<Icon name="ph:github-logo" class="text-lg" aria-hidden="true" />
+					</a>
+				)
+			}
+			{
+				subheading && (
+					<CardDescription class="line-clamp-2 text-sm mt-1">
+						{subheading}
+					</CardDescription>
+				)
+			}
+		</div>
+	</CardContent>
 </Card>

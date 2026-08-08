@@ -70,7 +70,8 @@ const siteConfig = {
 				href: "https://github.com/masmuss",
 				icon: "ph:github-logo"
 			},
-			{ text: "Twitter", href: "https://x.com/rexbocho", icon: "ph:x-logo" }
+			{ text: "Twitter", href: "https://x.com/rexbocho", icon: "ph:x-logo" },
+			{ text: "RSS", href: "/rss.xml", icon: "ph:rss" }
 		]
 	},
 	page: {

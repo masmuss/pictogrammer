@@ -1,9 +1,9 @@
 ---
 export const prerender = true;
 
+import PageHeader from "@/components/common/PageHeader.astro";
+import Section from "@/components/common/Section.astro";
 import ProjectCard from "@/components/features/projects/ProjectCard.astro";
-import PageHeader from "@/components/ui/PageHeader.astro";
-import Section from "@/components/ui/Section.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllProjects } from "@/lib/contents/projects";
 
@@ -27,14 +27,13 @@ const allProjects = await getAllProjects();
 		{
 			allProjects.map((category, index) => (
 				<Section
-					title={category.title}
-					titleAs="h2"
-					titleSize="base"
-					titleWeight="medium"
-					class="gap-y-4"
+					class="gap-y-4 relative mt-12 first:mt-0"
 					transitionDelay={index * 150}
 				>
-					<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+					<div class="pointer-events-none absolute -top-6 -left-2 z-0 text-4xl tracking-tight font-bold text-muted-foreground/10 select-none md:-top-10 md:-left-6 md:text-6xl">
+						{category.title}
+					</div>
+					<div class="group/list grid grid-cols-1 gap-8 sm:grid-cols-2 relative z-10">
 						{category.projects.map((project) => (
 							<ProjectCard
 								href={project.href}
@@ -42,7 +41,7 @@ const allProjects = await getAllProjects();
 								repoHref={project.repoHref}
 								heading={project.text}
 								subheading={project.description}
-								thumbnail={project.thumbnail}
+								icon={project.icon}
 								category={category.title}
 							/>
 						))}

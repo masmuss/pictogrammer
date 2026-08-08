@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils/tailwind";
+
+interface Props extends HTMLAttributes<"div"> {
+	class?: string;
+}
+
+const { class: className = "", ...rest } = Astro.props as Props;
+---
+
+<div
+	{...rest}
+	data-slot="link-group-title"
+	class={cn("", "text-lg mb-2 text-current", className)}
+>
+	<slot />
+</div>

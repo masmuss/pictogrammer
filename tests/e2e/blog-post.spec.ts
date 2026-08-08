@@ -13,7 +13,7 @@ test.describe("Blog Post Details", () => {
 		await page.goto("/blog");
 
 		// 2. Select the first blog post link from the list
-		const firstPostLink = page.locator("main ul li a").first();
+		const firstPostLink = page.locator("[data-testid='post-preview'] a").first();
 		await expect(firstPostLink).toBeVisible({ timeout: 15000 });
 
 		// Capture the target URL for validation

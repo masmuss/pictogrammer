@@ -1,8 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from "@/components/ui/Button.astro";
+import Button from "@/components/ui/button/Button.astro";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger
+} from "@/components/ui/tooltip";
 import siteConfig from "@/config/site-config";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/tailwind";
 
 interface Props {
 	variant?: "icon" | "button";
@@ -60,27 +65,31 @@ const links = [
 				rel="noopener noreferrer"
 				variant="outline"
 			>
-				<Icon slot="icon-before" name="ph:file-arrow-down" />
+				<Icon name="ph:file-arrow-down" />
 				View Resume
 			</Button>
 		)
 	}
 	{
 		links.map((link) => (
-			<Button
-				as="a"
-				href={link.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				variant={buttonVariant}
-				size={buttonSize}
-				class={buttonClass}
-				aria-label={link.text}
-				title={isButton ? link.text : undefined}
-			>
-				<Icon slot="icon-before" name={link.icon} />
-				{!isButton && <span class="sr-only">{link.text}</span>}
-			</Button>
+			<Tooltip delay={0}>
+				<TooltipTrigger asChild>
+					<Button
+						as="a"
+						href={link.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						variant={buttonVariant}
+						size={buttonSize}
+						class={buttonClass}
+						aria-label={link.text}
+					>
+						<Icon name={link.icon} />
+						{!isButton && <span class="sr-only">{link.text}</span>}
+					</Button>
+				</TooltipTrigger>
+				<TooltipContent side="top">{link.text}</TooltipContent>
+			</Tooltip>
 		))
 	}
 </div>

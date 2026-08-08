@@ -2,9 +2,9 @@
 export const prerender = true;
 
 import { getCollection } from "astro:content";
+import PageHeader from "@/components/common/PageHeader.astro";
+import Section from "@/components/common/Section.astro";
 import BookItem from "@/components/features/reading/BookItem.astro";
-import PageHeader from "@/components/ui/PageHeader.astro";
-import Section from "@/components/ui/Section.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const readingCollection = await getCollection("reading");

@@ -1,22 +1,25 @@
 ---
-import { cn } from "@/lib/utils";
-import Box from "../primitives/Box.astro";
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils/tailwind";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
 	class?: string;
 }
 
-const { class: className }: Props = Astro.props;
+const { class: className = "", ...rest } = Astro.props as Props;
+
+const footerVariants = cva("flex items-center justify-between");
 ---
 
-<Box
+<div
+	{...rest}
 	data-slot="card-footer"
-	display="flex"
-	flexDirection="row"
-	alignItems="center"
-	gap="md"
-	padding="md"
-	class={cn("rounded-b-xl group-data-[size=sm]/card:p-3", className)}
+	class={cn(
+		"rounded-b-xl px-6 group-data-[size=sm]/card:px-4 [.border-t]:pt-6 group-data-[size=sm]/card:[.border-t]:pt-4",
+		footerVariants(),
+		className
+	)}
 >
 	<slot />
-</Box>
+</div>

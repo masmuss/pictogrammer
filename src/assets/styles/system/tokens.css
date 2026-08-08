@@ -9,6 +9,7 @@
 @theme {
 	/* ── Typography ─────────────────────────── */
 	--font-sans: var(--font-ia-writer-quattro);
+	--font-heading: var(--font-ia-writer-quattro);
 	--font-mono: var(--font-ibm-plex-mono);
 	--container-2xl: 1400px;
 
@@ -154,10 +155,13 @@
 
 	/* ── Radius ─────────────────────────────── */
 	--radius: 0.25rem; /* 4px */
-	--radius-sm: 0.125rem; /* 2px */
-	--radius-md: 0.375rem; /* 6px */
-	--radius-lg: 0.5rem; /* 8px */
-	--radius-xl: 0.75rem; /* 12px */
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
 
 	/* ── Shadows (Utilitarian Minimalism) ───── */
 	--shadow-2xs: var(--shadow-2xs);

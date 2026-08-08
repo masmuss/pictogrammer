@@ -5,38 +5,38 @@
 			{
 				"text": "IdeaHive",
 				"description": "Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
-				"thumbnail": "ideahive.png",
+				"icon": "ph:tree-structure",
 				"liveHref": "https://secimap.agileteknik.com"
 			},
 			{
 				"text": "IoT Dashboard",
 				"description": "IoT Dashboard for monitoring and controlling IoT devices",
-				"thumbnail": "web-monitoring.png",
+				"icon": "ph:cpu",
 				"repoHref": "https://github.com/masmuss/next-hydroponic-monitoring"
 			},
 			{
 				"text": "PENS Aquaculture",
 				"description": "Dashboard for realtime water quality monitoring",
-				"thumbnail": "aquaculture.png",
+				"icon": "ph:waves",
 				"liveHref": "https://aquaculturepens.com"
 			},
 			{
 				"text": "ENT Satu Atap",
 				"description": "Super app used for administration at EEPIS News and Network Team",
-				"thumbnail": "ent.png",
+				"icon": "ph:newspaper",
 				"liveHref": "https://ent.pens.ac.id"
 			},
 			{
 				"text": "Devtoolbox",
 				"description": "A web-based utility toolbox for developers.",
-				"thumbnail": "devtoolbox.png",
+				"icon": "ph:toolbox",
 				"liveHref": "https://devtoolbox.khoirul.me",
 				"repoHref": "https://github.com/masmuss/devtoolbox.git"
 			},
 			{
 				"text": "Applyst",
 				"description": "A job application tracking web app built with Laravel and React, designed to help users manage their job applications effectively.",
-				"thumbnail": "applyst.png",
+				"icon": "ph:briefcase",
 				"repoHref": "https://github.com/masmuss/applyst.git",
 				"featured": true
 			},
@@ -48,14 +48,14 @@
 			{
 				"text": "Trak",
 				"description": "A modern ticketing and reporting platform with Telegram bot integration, built using Turborepo, SvelteKit (Runes), grammY, and Drizzle ORM.",
-				"thumbnail": "trak/dashboard.png",
+				"icon": "ph:ticket",
 				"repoHref": "https://github.com/masmuss/trak.git",
 				"featured": true
 			},
 			{
 				"text": "Veka",
 				"description": "A minimalist, ultra-fast Digital Garden & Wiki starter for Astro. Features automatic folder-based routing, local Pagefind search, and Obsidian-style WikiLinks.",
-				"thumbnail": "veka/thumbnail.png",
+				"icon": "ph:plant",
 				"liveHref": "https://demo-veka.khoirul.me",
 				"repoHref": "https://github.com/masmuss/veka.git",
 				"featured": true
@@ -78,7 +78,7 @@
 			{
 				"text": "eLibrary API",
 				"description": "An API for eLibrary system built with Hono, Bun, and Scalar API reference",
-				"thumbnail": "elibrary.png",
+				"icon": "ph:books",
 				"repoHref": "https://github.com/masmuss/hono-elibrary.git"
 			},
 			{
@@ -95,7 +95,7 @@
 			{
 				"text": "IoT Monitoring and Control",
 				"description": "IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
-				"thumbnail": "mobile-monitoring.png",
+				"icon": "ph:device-mobile",
 				"repoHref": "https://github.com/masmuss/mobile-hydroponic-monitoring"
 			}
 		]
@@ -106,7 +106,7 @@
 			{
 				"text": "DSS for Hydroponic System",
 				"description": "Decision Support System for analyzing environmental data in hydroponic system using Sugeno Fuzzy Inference System",
-				"thumbnail": "dss-hydroponic.png",
+				"icon": "ph:leaf",
 				"repoHref": "https://github.com/masmuss/sugeno-fuzzy-simulator",
 				"featured": true
 			}

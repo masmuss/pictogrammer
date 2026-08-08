@@ -2,7 +2,6 @@
 
 import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
-import svelte from "@astrojs/svelte";
 import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
@@ -57,7 +56,6 @@ export default defineConfig({
 			}
 		}),
 		sitemap(),
-		svelte(),
 		pagefind(),
 		icon()
 	],

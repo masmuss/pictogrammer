@@ -1,23 +1,27 @@
 ---
-import { cn } from "@/lib/utils";
-import Box from "../primitives/Box.astro";
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils/tailwind";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
 	class?: string;
 }
 
-const { class: className }: Props = Astro.props;
+const { class: className = "", ...rest } = Astro.props as Props;
+
+const headerVariants = cva(
+	"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start has-data-[slot=card-action]:grid-cols-[1fr_auto]"
+);
 ---
 
-<Box
+<div
+	{...rest}
 	data-slot="card-header"
-	display="grid"
-	gap="sm"
-	padding="md"
 	class={cn(
-		"@container/card-header group/card-header auto-rows-min items-start rounded-t-xl group-data-[size=sm]/card:px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3",
+		"gap-1 rounded-t-xl px-6 group-data-[size=sm]/card:px-4 [.border-b]:pb-6 group-data-[size=sm]/card:[.border-b]:pb-4",
+		headerVariants(),
 		className
 	)}
 >
 	<slot />
-</Box>
+</div>

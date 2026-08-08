@@ -1,10 +1,10 @@
 ---
 import { ClientRouter, fade } from "astro:transitions";
+import { Container } from "@/components/common/primitives";
 import BaseHead from "@/components/shell/BaseHead.astro";
 import Footer from "@/components/shell/Footer.astro";
 import Header from "@/components/shell/Header.astro";
-import { Container } from "@/components/ui/primitives";
-import ThemeProvider from "@/components/ui/ThemeProvider.astro";
+import ThemeProvider from "@/components/shell/ThemeProvider.astro";
 
 const { wide = false, ...head } = Astro.props;
 ---

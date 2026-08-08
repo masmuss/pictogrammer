@@ -32,8 +32,8 @@ test("404 page shows correct content", async ({ page }) => {
 	await expect(page.getByText("Frame Not Found")).toBeVisible();
 
 	// Verify navigation link cards are visible
-	await expect(page.locator("a[href='/'] h3").first()).toBeVisible();
-	await expect(page.locator("a[href='/blog'] h3").first()).toBeVisible();
+	await expect(page.locator("a[href='/']").first()).toBeVisible();
+	await expect(page.locator("a[href='/blog']").first()).toBeVisible();
 });
 
 test("theme toggle changes mode", async ({ page }) => {
@@ -64,13 +64,13 @@ test("search modal supports open, close, no-results, and keyboard navigation", a
 }) => {
 	await page.goto("/");
 
-	const searchTrigger = page.getByRole("button", { name: "Search" });
+	const searchTrigger = page.locator('button[aria-label="Search"]');
 	await searchTrigger.click();
 
-	const modal = page.getByRole("dialog", { name: "Search" });
+	const modal = page.locator('[data-slot="dialog-content"]').filter({ hasText: "Pagefind" });
 	await expect(modal).toBeVisible();
 
-	const searchInput = page.getByPlaceholder("Search articles, projects...");
+	const searchInput = page.getByPlaceholder("Search projects, articles...");
 	await expect(searchInput).toBeFocused();
 
 	await page.keyboard.press("Escape");
@@ -87,7 +87,7 @@ test("search modal supports open, close, no-results, and keyboard navigation", a
 
 	const initialURL = page.url();
 	// Click on the first search result item to navigate
-	const firstResult = modal.getByTestId("search-result").first();
+	const firstResult = modal.locator("[data-search-result]").first();
 	await firstResult.click();
 
 	// Verify navigation occurred by checking that the URL changed

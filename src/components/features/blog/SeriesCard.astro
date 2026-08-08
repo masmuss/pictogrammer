@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import {
+	Card,
+	CardDescription,
+	CardHeader,
+	CardTitle
+} from "@/components/ui/card";
+
+interface Props {
+	series: CollectionEntry<"series">;
+}
+
+const { series } = Astro.props;
+---
+
+<a
+	href={`/blog/series/${series.id}`}
+	class="block group/series"
+	data-testid="series-item"
+>
+	<Card
+		class="bg-secondary/30 hover:bg-secondary/50 border-border/10 hover:border-border/30 mx-0 flex flex-col h-full transition-all"
+	>
+		<CardHeader>
+			<CardTitle
+				class="group-hover/series:text-primary transition-colors line-clamp-1"
+			>
+				{series.data.title}
+			</CardTitle>
+			<CardDescription class="line-clamp-2 text-sm">
+				{series.data.description}
+			</CardDescription>
+		</CardHeader>
+	</Card>
+</a>

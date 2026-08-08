@@ -1,20 +1,25 @@
 ---
-import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils/tailwind";
 
-interface Props {
-	as?: keyof HTMLElementTagNameMap;
+interface Props extends HTMLAttributes<"div"> {
 	class?: string;
 }
 
-const { as: Tag = "h3", class: className }: Props = Astro.props;
+const { class: className = "", ...rest } = Astro.props as Props;
+
+const titleVariants = cva("text-balance");
 ---
 
-<Tag
+<div
+	{...rest}
 	data-slot="card-title"
 	class={cn(
-		"cn-font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",
+		"text-lg md:text-xl leading-normal font-medium group-data-[size=sm]/card:text-sm",
+		titleVariants(),
 		className
 	)}
 >
 	<slot />
-</Tag>
+</div>

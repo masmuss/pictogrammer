@@ -1,18 +1,25 @@
 ---
-import { cn } from "@/lib/utils";
-import Box from "../primitives/Box.astro";
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils/tailwind";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
 	class?: string;
 }
 
-const { class: className }: Props = Astro.props;
+const { class: className = "", ...rest } = Astro.props as Props;
+
+const contentVariants = cva("");
 ---
 
-<Box
+<div
+	{...rest}
 	data-slot="card-content"
-	padding="md"
-	class={cn("group-data-[size=sm]/card:px-3", className)}
+	class={cn(
+		"px-6 group-data-[size=sm]/card:px-4",
+		contentVariants(),
+		className
+	)}
 >
 	<slot />
-</Box>
+</div>

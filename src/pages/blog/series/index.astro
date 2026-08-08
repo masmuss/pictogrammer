@@ -2,12 +2,11 @@
 export const prerender = true;
 
 import type { CollectionEntry } from "astro:content";
+import Heading from "@/components/common/Heading.astro";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
-import { Card } from "@/components/ui/card";
-import Heading from "@/components/ui/Heading.astro";
+import SeriesCard from "@/components/features/blog/SeriesCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllSeries } from "@/lib/contents";
-import { cn } from "@/lib/utils";
 
 const allSeries = await getAllSeries();
 type SeriesEntry = CollectionEntry<"series">;
@@ -37,30 +36,7 @@ type SeriesEntry = CollectionEntry<"series">;
 		}
 
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-			{
-				allSeries.map((series: SeriesEntry) => (
-					<Card
-						as="a"
-						href={`/blog/series/${series.id}`}
-						class={cn(
-							"group/series bg-secondary/30 hover:bg-secondary/50 mx-0 flex flex-col gap-y-2"
-						)}
-						data-testid="series-item"
-					>
-						<Heading
-							as="h2"
-							weight="semibold"
-							size="lg"
-							class="group-hover/series:text-primary transition-colors"
-						>
-							{series.data.title}
-						</Heading>
-						<p class="text-muted-foreground line-clamp-2 text-sm">
-							{series.data.description}
-						</p>
-					</Card>
-				))
-			}
+			{allSeries.map((series: SeriesEntry) => <SeriesCard {series} />)}
 		</div>
 	</div>
 </BaseLayout>

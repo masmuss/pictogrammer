@@ -1,0 +1,161 @@
+---
+import { Icon } from "astro-icon/components";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import Kbd from "@/components/ui/kbd/Kbd.astro";
+import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
+---
+
+<!-- Trigger Button -->
+<Button
+	as="button"
+	variant="ghost"
+	size="icon"
+	id="search-trigger"
+	class="group/button hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 focus-visible:border-ring focus-visible:ring-ring/50 text-muted-foreground inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:ring-3 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 size-8 lg:h-8 lg:w-auto lg:px-2 lg:py-1"
+	aria-label="Search"
+>
+	<Icon name="ph:magnifying-glass" class="h-4 w-4" />
+	<KbdGroup class="ml-2 hidden lg:flex">
+		<Kbd id="search-kbd-mod">⌘</Kbd>
+		<Kbd>K</Kbd>
+	</KbdGroup>
+</Button>
+
+<!-- Dialog -->
+<Dialog id="search-dialog" closeOnEscape lockScroll>
+	<DialogContent
+		showCloseButton={false}
+		aria-label="Search"
+		class="sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-0 gap-0 overflow-hidden"
+	>
+		<div class="border-border relative flex items-center border-b px-4">
+			<Icon
+				name="ph:magnifying-glass"
+				class="text-muted-foreground h-5 w-5 shrink-0"
+			/>
+			<input
+				data-search-input
+				type="text"
+				placeholder="Search projects, articles..."
+				class="placeholder:text-muted-foreground h-12 w-full bg-transparent px-4 text-sm outline-none"
+			/>
+			<div data-search-spinner class="hidden mr-2 shrink-0">
+				<Icon name="ph:spinner" class="text-primary h-4 w-4 animate-spin" />
+			</div>
+			<Button
+				as="button"
+				data-search-esc
+				type="button"
+				variant="outline"
+				size="sm"
+				class="text-[10px] shrink-0 h-6 px-2"
+			>
+				ESC
+			</Button>
+		</div>
+
+		<div data-search-results>
+			<div data-search-hint class="text-muted-foreground py-12 text-center">
+				<p class="text-sm">Search articles, projects, and more...</p>
+			</div>
+
+			<div data-search-empty class="hidden py-12 text-center"></div>
+
+			<div data-search-status class="hidden px-3 pt-3">
+				<span
+					data-search-count
+					class="text-muted-foreground text-xs font-medium tracking-wider uppercase"
+				></span>
+			</div>
+
+			<div
+				data-search-list
+				class="hidden max-h-[60vh] space-y-1 overflow-y-auto p-2"
+				role="listbox"
+				aria-label="Search results"
+			>
+			</div>
+		</div>
+
+		<div
+			class="border-border bg-muted/50 text-muted-foreground flex items-center justify-between border-t px-4 py-2 text-xs"
+		>
+			<div class="flex items-center gap-4">
+				<span class="flex items-center gap-1">
+					<Kbd>
+						<Icon name="ph:key-return" />
+					</Kbd>
+					select
+				</span>
+				<span class="flex items-center gap-1">
+					<Kbd>
+						<Icon name="ph:arrows-down-up" />
+					</Kbd>
+					navigate
+				</span>
+			</div>
+			<div class="flex items-center gap-1">
+				Search by <span class="text-primary font-semibold">Pagefind</span>
+			</div>
+		</div>
+	</DialogContent>
+</Dialog>
+
+<style is:global>
+	#search-dialog [data-search-list] {
+		scrollbar-width: thin;
+		scrollbar-color: hsl(var(--muted)) transparent;
+	}
+	#search-dialog [data-search-list]::-webkit-scrollbar {
+		width: 8px;
+	}
+	#search-dialog [data-search-list]::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	#search-dialog [data-search-list]::-webkit-scrollbar-thumb {
+		background: hsl(var(--muted));
+		border-radius: 4px;
+	}
+	#search-dialog [data-search-list]::-webkit-scrollbar-thumb:hover {
+		background: hsl(var(--muted-foreground) / 0.5);
+	}
+	#search-dialog [data-search-result] mark {
+		background-color: color-mix(
+			in oklab,
+			var(--color-primary) 20%,
+			transparent
+		);
+		color: var(--color-primary);
+		border-radius: 0.125rem;
+		padding: 0 0.125rem;
+		font-weight: 500;
+	}
+</style>
+
+<script>
+	import { initSearch } from "./search-client";
+
+	document.addEventListener("astro:page-load", () => {
+		const dialog = document.getElementById("search-dialog");
+		if (dialog) initSearch(dialog);
+
+		// Setup trigger listener
+		const trigger = document.getElementById("search-trigger");
+		if (trigger) {
+			trigger.addEventListener("click", () => {
+				// @ts-ignore
+				window.__openSearch?.();
+			});
+		}
+
+		// Set macOS vs Windows Kbd symbol
+		const modKbd = document.getElementById("search-kbd-mod");
+		if (modKbd) {
+			const platform =
+				navigator?.userAgentData?.platform || navigator?.platform || "";
+			const isApple = /Mac|iPhone|iPad|iPod/i.test(platform);
+			modKbd.textContent = isApple ? "⌘" : "Ctrl";
+		}
+	});
+</script>
