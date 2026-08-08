@@ -1,3 +1,17 @@
+# [1.38.0](https://github.com/masmuss/pictogrammer/compare/v1.37.0...v1.38.0) (2026-08-08)
+
+
+### Bug Fixes
+
+* **a11y:** improve accessibility and test robustness ([0073156](https://github.com/masmuss/pictogrammer/commit/007315643872c396a9014a5f2f5d3cbb1a6ee033))
+
+
+### Features
+
+* **about:** update SkillsTabs component UI ([f2cbd05](https://github.com/masmuss/pictogrammer/commit/f2cbd05d97f221286ecbde26643b7e3e17d868a8))
+* **shell:** migrate header navigation to NavigationMenu component ([c7a2b02](https://github.com/masmuss/pictogrammer/commit/c7a2b02c303b730de4333958f874a302ff3a465f))
+* **ui:** add tooltips to social links and add RSS link ([0b3efed](https://github.com/masmuss/pictogrammer/commit/0b3efed401e63e54a0a612f139b140da0cfd8a0e))
+
 # [1.37.0](https://github.com/masmuss/pictogrammer/compare/v1.36.0...v1.37.0) (2026-08-07)
 
 
