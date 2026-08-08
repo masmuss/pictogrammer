@@ -9,7 +9,7 @@ test("ProjectCard renders heading and subheading", async () => {
 		props: {
 			heading: "Awesome Project",
 			subheading: "This is a description",
-			thumbnail: "applyst.png",
+			icon: "ph:cpu",
 			repoHref: "https://github.com/test/repo"
 		}
 	});
@@ -32,17 +32,4 @@ test("ProjectCard renders Live link when liveHref is provided", async () => {
 
 	expect(result).toContain("https://example.com");
 	expect(result).toContain("Live"); // Button label
-});
-
-test("ProjectCard renders icon placeholder when thumbnail is missing", async () => {
-	const container = await AstroContainer.create();
-
-	const result = await container.renderToString(ProjectCard, {
-		props: {
-			heading: "No Image Project"
-		}
-	});
-
-	expect(result).toContain("bg-muted");
-	expect(result).not.toContain("thumbnail");
 });
