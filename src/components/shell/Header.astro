@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Search } from "@/components/features/search";
+import Search from "@/components/features/search/Search.astro";
 import Logo from "@/components/shell/Logo.astro";
 import MobileMenu from "@/components/shell/MobileMenu.astro";
 import ThemeToggle from "@/components/shell/ThemeToggle.astro";
@@ -79,7 +79,7 @@ const { textLinks, iconLinks } = siteConfig.header;
 			</div>
 
 			<div class="flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
-				<Search client:load />
+				<Search />
 				<ThemeToggle />
 				<MobileMenu
 					navLinks={[
