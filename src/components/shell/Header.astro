@@ -5,6 +5,11 @@ import Logo from "@/components/shell/Logo.astro";
 import MobileMenu from "@/components/shell/MobileMenu.astro";
 import NavLink from "@/components/shell/NavLink.astro";
 import ThemeToggle from "@/components/shell/ThemeToggle.astro";
+import {
+	Tooltip,
+	TooltipTrigger,
+	TooltipContent
+} from "@/components/ui/tooltip";
 import siteConfig from "@/config/site-config";
 
 const { textLinks, iconLinks } = siteConfig.header;
@@ -31,16 +36,22 @@ const { textLinks, iconLinks } = siteConfig.header;
 			<div class="hidden items-center gap-x-4 lg:flex">
 				{
 					iconLinks.map((link) => (
-						<a
-							href={link.href}
-							title={link.text}
-							class="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-							target={link.href.startsWith("http") ? "_blank" : "_self"}
-							rel={link.href.startsWith("http") ? "noopener noreferrer" : ""}
-						>
-							<span class="sr-only">{link.text}</span>
-							<Icon name={link.icon} class="w-5 h-5" />
-						</a>
+						<Tooltip delay={0}>
+							<TooltipTrigger asChild>
+								<a
+									href={link.href}
+									class="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+									target={link.href.startsWith("http") ? "_blank" : "_self"}
+									rel={
+										link.href.startsWith("http") ? "noopener noreferrer" : ""
+									}
+									aria-label={link.text}
+								>
+									<Icon name={link.icon} class="w-5 h-5" />
+								</a>
+							</TooltipTrigger>
+							<TooltipContent side="bottom">{link.text}</TooltipContent>
+						</Tooltip>
 					))
 				}
 			</div>
