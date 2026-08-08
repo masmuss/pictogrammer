@@ -2,9 +2,9 @@
 export const prerender = true;
 
 import type { CollectionEntry } from "astro:content";
+import Heading from "@/components/common/Heading.astro";
 import BlogTabs from "@/components/features/blog/BlogTabs.astro";
 import SeriesCard from "@/components/features/blog/SeriesCard.astro";
-import Heading from "@/components/common/Heading.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllSeries } from "@/lib/contents";
 

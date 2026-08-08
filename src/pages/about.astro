@@ -1,14 +1,14 @@
 ---
 export const prerender = true;
 
+
+import Heading from "@/components/common/Heading.astro";
+import Section from "@/components/common/Section.astro";
 import SocialLinks from "@/components/common/SocialLinks.astro";
 import Certifications from "@/components/features/about/Certifications.astro";
 import Educations from "@/components/features/about/Educations.astro";
 import Experiences from "@/components/features/about/Experiences.astro";
 import SkillsTabs from "@/components/features/about/SkillsTabs.astro";
-
-import Heading from "@/components/common/Heading.astro";
-import Section from "@/components/common/Section.astro";
 import AboutContent from "@/content/pages/about.md";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAboutPageData, getAllSkillCollections } from "@/lib/contents";

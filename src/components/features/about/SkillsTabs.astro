@@ -1,9 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getSkillsTabs } from "@/lib/contents/skills";
 import type { SkillCollection } from "@/types";
-import { Badge } from "@/components/ui/badge";
 
 interface Props {
 	collections: SkillCollection[];
