@@ -1,6 +1,6 @@
 ---
-import { SearchIcon } from "@lucide/astro";
 import type { HTMLAttributes } from "astro/types";
+import { Icon } from "astro-icon/components";
 import { cn } from "@/lib/utils/tailwind";
 import { InputGroup, InputGroupAddon } from "../input-group";
 import { inputGroupControlClasses } from "../input-group/controlClasses";
@@ -31,7 +31,8 @@ const { class: className = "", ...rest } = Astro.props as Props;
 			{...rest}
 		/>
 		<InputGroupAddon align="inline-end">
-			<SearchIcon
+			<Icon
+				name="ph:magnifying-glass"
 				data-slot="command-input-icon"
 				class="size-4 shrink-0 opacity-50 pointer-events-none"
 			/>
