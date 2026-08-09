@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Button from "@/components/ui/button/Button.astro";
 import { getSkillsTabs } from "@/lib/contents/skills";
+import { cn } from "@/lib/utils/tailwind";
 import type { SkillCollection } from "@/types";
 
 interface Props {
@@ -10,33 +10,99 @@ interface Props {
 	class?: string;
 }
 
-const { collections, class: className = "" } = Astro.props;
+const { collections, class: className } = Astro.props;
 const tabs = getSkillsTabs(collections);
-const defaultTab = tabs[0]?.id ?? "";
 ---
 
-<Tabs defaultValue={defaultTab} class={className}>
-	<TabsList>
-		{tabs.map((tab) => <TabsTrigger value={tab.id}>{tab.label}</TabsTrigger>)}
-	</TabsList>
+<section class={className} data-skills-tabs>
+	<div
+		class="mb-4 flex flex-wrap gap-2"
+		role="tablist"
+		aria-label="Skill categories"
+	>
+		{
+			tabs.map((tab, index) => (
+				<Button
+					id={`skills-tab-${tab.id}`}
+					variant="outline"
+					size="sm"
+					class="skills-tab cursor-pointer ring-1 ring-border/60 ring-inset hover:text-foreground data-[active=true]:bg-primary/10 data-[active=true]:text-foreground data-[active=true]:ring-primary/40"
+					role="tab"
+					data-tab={tab.id}
+					aria-selected={index === 0 ? "true" : "false"}
+					aria-controls={`skills-panel-${tab.id}`}
+					data-active={index === 0 ? "true" : "false"}
+				>
+					{tab.label}
+				</Button>
+			))
+		}
+	</div>
 
 	{
-		tabs.map((tab) => (
-			<TabsContent value={tab.id}>
+		tabs.map((tab, index) => (
+			<div
+				id={`skills-panel-${tab.id}`}
+				class={cn("skills-panel", index !== 0 && "skills-panel--inactive")}
+				role="tabpanel"
+				aria-labelledby={`skills-tab-${tab.id}`}
+				data-panel={tab.id}
+			>
 				<div class="flex flex-wrap gap-3">
 					{tab.skills.map((skill) => (
-						<Badge
-							variant="outline"
-							shape="pill"
+						<div
+							class="bg-card/50 border-border/50 hover:border-border hover:bg-card flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-sm transition-colors select-none"
 							title={skill.description}
-							class="gap-2"
 						>
 							{skill.icon && <Icon name={`logos:${skill.icon}`} />}
 							<span class="text-foreground/90 font-medium">{skill.name}</span>
-						</Badge>
+						</div>
 					))}
 				</div>
-			</TabsContent>
+			</div>
 		))
 	}
-</Tabs>
+</section>
+
+<style>
+	.skills-panel--inactive {
+		content-visibility: hidden;
+		height: 0;
+		overflow: hidden;
+	}
+</style>
+
+<script>
+	function initSkillsTabs() {
+		const tabRoots = document.querySelectorAll("[data-skills-tabs]");
+
+		for (const root of tabRoots) {
+			const tabButtons =
+				root.querySelectorAll<HTMLButtonElement>(".skills-tab");
+			const tabPanels = root.querySelectorAll<HTMLElement>(".skills-panel");
+
+			for (const tab of tabButtons) {
+				tab.addEventListener("click", () => {
+					const id = tab.dataset.tab;
+					if (!id) return;
+
+					for (const item of tabButtons) {
+						const isActive = item.dataset.tab === id;
+						item.setAttribute("aria-selected", isActive ? "true" : "false");
+						item.dataset.active = isActive ? "true" : "false";
+					}
+
+					for (const panel of tabPanels) {
+						panel.classList.toggle(
+							"skills-panel--inactive",
+							panel.dataset.panel !== id
+						);
+					}
+				});
+			}
+		}
+	}
+
+	initSkillsTabs();
+	document.addEventListener("astro:page-load", initSkillsTabs);
+</script>
