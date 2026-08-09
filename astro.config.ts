@@ -42,6 +42,15 @@ export default defineConfig({
 			fallbacks: ["monospace"],
 			display: "swap",
 			formats: ["woff2"]
+		},
+		{
+			provider: fontProviders.fontsource(),
+			name: "Newsreader",
+			cssVariable: "--font-newsreader",
+			styles: ["normal", "italic"],
+			fallbacks: ["serif"],
+			display: "swap",
+			formats: ["woff2"]
 		}
 	],
 	integrations: [

@@ -17,7 +17,7 @@ const { book } = Astro.props;
 	href={book.url || "#"}
 	target={book.url ? "_blank" : "_self"}
 	rel={book.url ? "noopener noreferrer" : ""}
-	class="group flex flex-col gap-3 transition-all hover:-translate-y-1 hover:shadow-md"
+	class="group flex flex-col gap-3 border border-transparent transition-all hover:-translate-y-1 hover:border-foreground/20 p-4"
 	data-testid="book-item"
 >
 	<div
@@ -71,7 +71,7 @@ const { book } = Astro.props;
 			{
 				book.rating && (
 					<div
-						class="flex items-center gap-0.5 text-amber-500"
+						class="flex items-center gap-0.5 text-muted-foreground"
 						aria-label={`Rating: ${book.rating} out of 5`}
 					>
 						{Array.from({ length: 5 }).map((_, i) => (

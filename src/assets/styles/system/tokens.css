@@ -11,6 +11,7 @@
 	--font-sans: var(--font-ia-writer-quattro);
 	--font-heading: var(--font-ia-writer-quattro);
 	--font-mono: var(--font-ibm-plex-mono);
+	--font-serif: var(--font-newsreader, serif);
 	--container-2xl: 1400px;
 
 	/* ── Spacing Scale (4px base) ──────────── */

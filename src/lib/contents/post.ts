@@ -73,12 +73,20 @@ export async function getPostsByPath(
 	return limit ? filtered.slice(0, limit) : filtered;
 }
 
+function getPostYear(post: CollectionPosts): number {
+	return new Date(post.data.date).getFullYear();
+}
+
+function getPostMonth(post: CollectionPosts): number {
+	return new Date(post.data.date).getMonth();
+}
+
 export function groupPostsByYear(
 	posts: CollectionPosts[]
 ): Map<number, CollectionPosts[]> {
 	const grouped = new Map<number, CollectionPosts[]>();
 	for (const post of posts) {
-		const year = new Date(post.data.date).getFullYear();
+		const year = getPostYear(post);
 		if (!grouped.has(year)) {
 			grouped.set(year, []);
 		}
@@ -146,9 +154,8 @@ export function groupPostsForArchive(posts: CollectionPosts[]): YearGroup[] {
 	const grouped = new Map<number, Map<number, CollectionPosts[]>>();
 
 	for (const post of posts) {
-		const date = new Date(post.data.date);
-		const year = date.getFullYear();
-		const month = date.getMonth();
+		const year = getPostYear(post);
+		const month = getPostMonth(post);
 
 		let yearMap = grouped.get(year);
 		if (!yearMap) {

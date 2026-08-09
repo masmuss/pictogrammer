@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { Icon } from "astro-icon/components";
 import { cn } from "@/lib/utils/tailwind";
 
 import DialogClose from "./DialogClose.astro";
@@ -31,16 +32,7 @@ const {
 		{
 			showCloseButton && (
 				<DialogClose>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<path
-							fill="none"
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M18 6L6 18M6 6l12 12"
-						/>
-					</svg>
+					<Icon name="ph:x" class="size-4" />
 					<span class="sr-only">Close</span>
 				</DialogClose>
 			)

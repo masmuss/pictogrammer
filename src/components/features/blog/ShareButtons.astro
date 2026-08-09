@@ -67,7 +67,11 @@ const btnBase = [
 		aria-label="Copy link"
 		data-url={url.toString()}
 	>
-		<Icon name="ph:link" class="pointer-events-none text-lg" />
+		<Icon name="ph:link" class="pointer-events-none text-lg copy-icon-link" />
+		<Icon
+			name="ph:check"
+			class="pointer-events-none text-lg text-primary hidden copy-icon-check"
+		/>
 	</button>
 
 	<button
@@ -92,13 +96,14 @@ const btnBase = [
 
 			try {
 				await navigator.clipboard.writeText(url);
-				const icon = target.querySelector(".iconify");
-				if (icon) {
-					const oldIcon = icon.className;
-					icon.className =
-						"iconify ph--check text-lg text-primary pointer-events-none";
+				const linkIcon = target.querySelector(".copy-icon-link");
+				const checkIcon = target.querySelector(".copy-icon-check");
+				if (linkIcon && checkIcon) {
+					linkIcon.classList.add("hidden");
+					checkIcon.classList.remove("hidden");
 					setTimeout(() => {
-						icon.className = oldIcon;
+						linkIcon.classList.remove("hidden");
+						checkIcon.classList.add("hidden");
 					}, 2000);
 				}
 			} catch (err) {

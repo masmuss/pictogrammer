@@ -4,7 +4,7 @@ import SocialLinks from "@/components/common/SocialLinks.astro";
 import siteConfig from "@/config/site-config";
 ---
 
-<footer class="border-t border-border mt-16">
+<footer class="border-t border-border mt-24">
 	<Container
 		class="flex flex-col items-center justify-between gap-3 py-6 text-sm sm:flex-row"
 	>
@@ -14,6 +14,8 @@ import siteConfig from "@/config/site-config";
 			<p>
 				&copy; {`${new Date().getFullYear()} ${siteConfig.author}`}
 			</p>
+			<span>&middot;</span>
+			<a href="/legal" class="hover:text-foreground transition-colors">Legal</a>
 		</div>
 		<SocialLinks variant="icon" />
 	</Container>

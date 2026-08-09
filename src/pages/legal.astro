@@ -1,4 +1,7 @@
 ---
+export const prerender = true;
+
+import PageHeader from "@/components/common/PageHeader.astro";
 import { Content } from "@/content/pages/legal.md";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
@@ -8,8 +11,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 	description="Privacy policy, terms of service, and content license."
 	pageType="article"
 >
-	<article class="custom-prose">
-		<h1>Legal</h1>
-		<Content />
-	</article>
+	<div class="flex flex-col gap-y-8">
+		<PageHeader
+			title="Legal"
+			description="Privacy policy, terms of service, and content license."
+		/>
+		<article
+			class="custom-prose prose-a:underline max-w-none underline-offset-2"
+		>
+			<Content />
+		</article>
+	</div>
 </BaseLayout>

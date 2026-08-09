@@ -22,8 +22,8 @@ const postsByYear = groupPostsByYear(posts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
-<BaseLayout {title} {description} image={image} pageType="website">
-	<div class="flex w-full flex-col gap-y-12">
+<BaseLayout {title} {description} {image} pageType="website">
+	<div class="flex w-full flex-col gap-y-16">
 		<Heading as="h1" class="sr-only">{title}</Heading>
 		<div class="flex w-full flex-col">
 			<BlogTabs {activeTab} />
@@ -37,12 +37,10 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 
 		{
 			posts.length > 0 && (
-				<div class="group/list flex flex-col gap-y-20">
+				<div class="group/list flex flex-col gap-y-16">
 					{[...postsByYear.entries()].map(([year, yearPosts]) => (
-						<section class="relative">
-							<div class="pointer-events-none absolute -top-6 -left-2 text-8xl font-bold text-muted-foreground/10 select-none md:-top-8 md:-left-8 md:text-9xl">
-								{year}
-							</div>
+						<section class="relative flex flex-col gap-y-6">
+							<h2 class="text-2xl font-bold tracking-tight">{year}</h2>
 							<ul class="relative flex flex-col">
 								{yearPosts.map((post) => (
 									<PostPreview post={post} hasReadTime readTimeStyle="short" />
