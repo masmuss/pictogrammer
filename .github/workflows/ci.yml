@@ -38,13 +38,12 @@ jobs:
         id: deps-cache
         uses: actions/cache@v6.1.0
         with:
-          path: node_modules
+          path: ~/.bun
           key: ${{ runner.os }}-bun-${{ matrix.bun }}-deps-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-bun-${{ matrix.bun }}-deps-
 
       - name: Install dependencies
-        if: steps.deps-cache.outputs.cache-hit != 'true'
         run: bun install --frozen-lockfile
 
       - name: Biome (lint & format)
