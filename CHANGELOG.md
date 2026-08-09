@@ -1,3 +1,11 @@
+# [1.40.0](https://github.com/masmuss/pictogrammer/compare/v1.39.0...v1.40.0) (2026-08-09)
+
+
+### Features
+
+* **blog:** improve copy link button icon toggle ([bac4ead](https://github.com/masmuss/pictogrammer/commit/bac4eadc8cc428b0157e438d208b11945d86bf18))
+* **layout:** make GitHub card script conditional ([8723fd1](https://github.com/masmuss/pictogrammer/commit/8723fd17ea0dcc165b0e9e1577c83f6575d6bcdb))
+
 # [1.39.0](https://github.com/masmuss/pictogrammer/compare/v1.38.0...v1.39.0) (2026-08-08)
 
 
