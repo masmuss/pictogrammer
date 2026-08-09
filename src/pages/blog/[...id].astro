@@ -24,9 +24,10 @@ const { post, allPosts } = Astro.props;
 
 const { Content, headings } = await render(post);
 const relatedPosts = getRelatedPosts(allPosts, post);
+const hasGithubCard = post.body?.includes("::github-card");
 ---
 
-<PostLayout post={post}>
+<PostLayout post={post} hasGithubCard={hasGithubCard}>
 	<div slot="toc-mobile">
 		{
 			headings.length > 0 && (

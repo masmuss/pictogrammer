@@ -9,9 +9,10 @@ import { getPostOgImagePath } from "@/lib/utils/post-route";
 
 interface Props {
 	post: CollectionEntry<"post">;
+	hasGithubCard?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, hasGithubCard = false } = Astro.props;
 const {
 	data: { description, title, date, updatedDate, coverImage }
 } = post;
@@ -87,7 +88,7 @@ const ogImage = coverImageResolved || socialImage;
 			<Icon name="ph:arrow-up" />
 		</a>
 	</div>
-	<script async is:inline src="/github-card.js"></script>
+	{hasGithubCard && <script async is:inline src="/github-card.js" />}
 </BaseLayout>
 
 <style>
