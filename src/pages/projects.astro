@@ -16,24 +16,23 @@ const allProjects = await getAllProjects();
 	image={{ src: "/og/projects.png", alt: "Projects - pictogrammmer" }}
 	pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-10">
+	<div class="flex w-full flex-col gap-y-16">
 		<PageHeader
 			title="Projects"
 			description="A collection of projects I've worked on, from web applications to experiments."
 			as="h1"
-			class="mb-6"
 		/>
 
 		{
 			allProjects.map((category, index) => (
 				<Section
-					class="gap-y-4 relative mt-12 first:mt-0"
+					title={category.title}
+					titleAs="h2"
+					titleSize="xl"
+					class="gap-y-6 relative pt-0"
 					transitionDelay={index * 150}
 				>
-					<div class="pointer-events-none absolute -top-6 -left-2 z-0 text-4xl tracking-tight font-bold text-muted-foreground/10 select-none md:-top-10 md:-left-6 md:text-6xl">
-						{category.title}
-					</div>
-					<div class="group/list grid grid-cols-1 gap-8 sm:grid-cols-2 relative z-10">
+					<div class="group/list grid grid-cols-1 gap-8 sm:grid-cols-2">
 						{category.projects.map((project) => (
 							<ProjectCard
 								href={project.href}

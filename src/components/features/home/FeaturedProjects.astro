@@ -17,8 +17,14 @@ const displayed = projects.slice(0, max);
 	displayed.length > 0 && (
 		<Fragment>
 			<div class="flex flex-col" data-testid="featured-project-list">
-				{displayed.map((project) => (
-					<FeaturedProjectItem project={project} />
+				{displayed.map((project, index) => (
+					<div
+						data-fade-up="true"
+						class="opacity-0 translate-y-4 transition-[opacity,transform] ease-out"
+						style={`transition-delay: ${index * 80}ms; transition-duration: var(--duration-slower);`}
+					>
+						<FeaturedProjectItem project={project} />
+					</div>
 				))}
 			</div>
 

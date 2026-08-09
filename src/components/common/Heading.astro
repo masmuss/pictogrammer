@@ -16,6 +16,7 @@
  * ```
  */
 
+import { cn } from "@/lib/utils/tailwind";
 import Text from "./primitives/Text.astro";
 
 interface Props {
@@ -24,6 +25,7 @@ interface Props {
 		"xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
 	weight?: "light" | "regular" | "medium" | "semibold" | "bold";
 	color?: "default" | "muted" | "subtle" | "accent";
+	serif?: boolean;
 	class?: string;
 }
 
@@ -32,10 +34,17 @@ const {
 	size = "base",
 	weight = "medium",
 	color = "default",
+	serif = as === "h1",
 	class: className
 }: Props = Astro.props;
 ---
 
-<Text as={as} size={size} weight={weight} color={color} class={className}>
+<Text
+	as={as}
+	size={size}
+	weight={weight}
+	color={color}
+	class={cn(serif && "font-serif tracking-tight", className)}
+>
 	<slot />
 </Text>

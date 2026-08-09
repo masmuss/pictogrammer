@@ -5,7 +5,6 @@ proseWrap: preserve
 trailingComma: none
 plugins:
   - prettier-plugin-astro
-  - prettier-plugin-svelte
 overrides:
   - files: "*.astro"
     options:
