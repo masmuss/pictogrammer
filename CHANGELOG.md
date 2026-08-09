@@ -1,3 +1,10 @@
+# [1.41.0](https://github.com/masmuss/pictogrammer/compare/v1.40.0...v1.41.0) (2026-08-09)
+
+
+### Features
+
+* **button:** reduce default button sizes and add xs size variants ([3475d3f](https://github.com/masmuss/pictogrammer/commit/3475d3fa4f1d76fef395593f431946c285bec26a))
+
 # [1.40.0](https://github.com/masmuss/pictogrammer/compare/v1.39.0...v1.40.0) (2026-08-09)
 
 
