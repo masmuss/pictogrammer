@@ -38,7 +38,7 @@ jobs:
         id: deps-cache
         uses: actions/cache@v6.1.0
         with:
-          path: ~/.bun
+          path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ matrix.bun }}-deps-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-bun-${{ matrix.bun }}-deps-
@@ -67,12 +67,24 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: ${{ matrix.bun }}
+
+      - name: Cache dependencies
+        id: deps-cache
+        uses: actions/cache@v6.1.0
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ matrix.bun }}-deps-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-${{ matrix.bun }}-deps-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
       - name: Unit Test
         run: bun run test:unit:run
