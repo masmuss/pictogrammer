@@ -22,8 +22,8 @@ const postsByYear = groupPostsByYear(posts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
-<BaseLayout {title} {description} image={image} pageType="website">
-	<div class="flex w-full flex-col gap-y-12">
+<BaseLayout {title} {description} {image} pageType="website">
+	<div class="flex w-full flex-col gap-y-16">
 		<Heading as="h1" class="sr-only">{title}</Heading>
 		<div class="flex w-full flex-col">
 			<BlogTabs {activeTab} />
