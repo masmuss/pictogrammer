@@ -1,3 +1,10 @@
+## [1.41.1](https://github.com/masmuss/pictogrammer/compare/v1.41.0...v1.41.1) (2026-08-10)
+
+
+### Bug Fixes
+
+* **ci:** fix typo in checkout action ([005b013](https://github.com/masmuss/pictogrammer/commit/005b013e7ee4bec18b0dee08ef0ff7697fb3c006))
+
 # [1.41.0](https://github.com/masmuss/pictogrammer/compare/v1.40.0...v1.41.0) (2026-08-09)
 
 
