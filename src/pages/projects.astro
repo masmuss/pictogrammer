@@ -13,6 +13,10 @@ const allProjects = await getAllProjects();
 <BaseLayout
 	title="Projects in Web and Backend Development"
 	description="Browse selected projects built by Khoirul Fattah, including web applications, backend services, and technical experiments focused on real-world problem solving."
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "Projects", item: new URL("/projects", Astro.site).href }
+	]}
 	image={{ src: "/og/projects.png", alt: "Projects - pictogrammmer" }}
 	pageType="website"
 >

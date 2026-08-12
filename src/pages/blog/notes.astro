@@ -5,6 +5,12 @@ import BlogListLayout from "@/components/features/blog/BlogListLayout.astro";
 import { getPostsByPath } from "@/lib/contents";
 
 const notesPosts = await getPostsByPath("notes");
+
+const notesBreadcrumbs = [
+	{ name: "Home", item: new URL("/", Astro.site).href },
+	{ name: "Blog", item: new URL("/blog", Astro.site).href },
+	{ name: "Notes", item: new URL("/blog/notes", Astro.site).href }
+];
 ---
 
 <BlogListLayout
@@ -13,4 +19,5 @@ const notesPosts = await getPostsByPath("notes");
 	description="Read practical development notes, implementation guides, and project documentation covering backend systems, APIs, tooling, and engineering workflows."
 	image={{ src: "/og/notes.png", alt: "Notes - pictogrammmer" }}
 	posts={notesPosts}
+	breadcrumbs={notesBreadcrumbs}
 />

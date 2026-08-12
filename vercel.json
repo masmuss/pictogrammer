@@ -1,0 +1,47 @@
+{
+	"headers": [
+		{
+			"source": "/(.*)",
+			"headers": [
+				{
+					"key": "Strict-Transport-Security",
+					"value": "max-age=31536000; includeSubDomains; preload"
+				},
+				{
+					"key": "X-Content-Type-Options",
+					"value": "nosniff"
+				},
+				{
+					"key": "X-Frame-Options",
+					"value": "DENY"
+				},
+				{
+					"key": "Referrer-Policy",
+					"value": "strict-origin-when-cross-origin"
+				},
+				{
+					"key": "Content-Security-Policy",
+					"value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src https://giscus.app; connect-src 'self' https://giscus.app; frame-ancestors 'none'"
+				}
+			]
+		},
+		{
+			"source": "/llms.txt",
+			"headers": [
+				{
+					"key": "Content-Type",
+					"value": "text/plain; charset=utf-8"
+				}
+			]
+		},
+		{
+			"source": "/llms-full.txt",
+			"headers": [
+				{
+					"key": "Content-Type",
+					"value": "text/plain; charset=utf-8"
+				}
+			]
+		}
+	]
+}

@@ -5,6 +5,11 @@ import BlogListLayout from "@/components/features/blog/BlogListLayout.astro";
 import { getPostsByPath } from "@/lib/contents";
 
 const allPosts = await getPostsByPath();
+
+const blogBreadcrumbs = [
+	{ name: "Home", item: new URL("/", Astro.site).href },
+	{ name: "Blog", item: new URL("/blog", Astro.site).href }
+];
 ---
 
 <BlogListLayout
@@ -13,4 +18,5 @@ const allPosts = await getPostsByPath();
 	description="Browse all blog posts by Khoirul Fattah, from software engineering notes and project write-ups to reflective essays about growth, craft, and life lessons."
 	image={{ src: "/og/blog.png", alt: "Blog - pictogrammmer" }}
 	posts={allPosts}
+	breadcrumbs={blogBreadcrumbs}
 />
