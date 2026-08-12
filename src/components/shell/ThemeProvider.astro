@@ -45,6 +45,15 @@
 
 	setTheme(getUserPref());
 
+	document.addEventListener("astro:before-swap", (event) => {
+		const theme = getUserPref();
+		const incomingRoot = event.newDocument.documentElement;
+		if (!incomingRoot) return;
+
+		incomingRoot.classList.toggle("dark", theme === "dark");
+		incomingRoot.setAttribute("data-theme", theme);
+	});
+
 	document.addEventListener("astro:after-swap", () => setTheme(getUserPref()));
 
 	document.addEventListener("theme-change", (event) => {
