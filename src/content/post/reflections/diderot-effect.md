@@ -101,8 +101,8 @@ Tapi setidaknya sekarang aku tahu namanya. Dan mengenali pola adalah setengah da
 
 [^1]: McCracken, G. (1988). _Culture and Consumption: New Approaches to the Symbolic Character of Consumer Goods and Activities_. Indiana University Press. Konsep _Diderot Effect_ dan _product coherence_ pertama kali diperkenalkan dalam buku ini.
 
-[^2]: Li, M., Choudhury, A. H., & Du, J. (2026). Impact of impulse buying on product return in online shopping. _Journal of Retailing and Consumer Services_, 89, 104608. [https://doi.org/10.1016/j.jretconser.2025.104608](https://doi.org/10.1016/j.jretconser.2025.104608)
+[^2]: Li, M., Choudhury, A. H., & Du, J. (2026). Impact of impulse buying on product return in online shopping. _Journal of Retailing and Consumer Services_, 89, 104608. [DOI](https://doi.org/10.1016/j.jretconser.2025.104608)
 
-[^3]: Sohn, Y. S., & Ko, M. T. (2021). The impact of planned vs. unplanned purchases on subsequent purchase decision making in sequential buying situations. _Journal of Retailing and Consumer Services_, 59, 102419. [https://doi.org/10.1016/j.jretconser.2020.102419](https://doi.org/10.1016/j.jretconser.2020.102419)
+[^3]: Sohn, Y. S., & Ko, M. T. (2021). The impact of planned vs. unplanned purchases on subsequent purchase decision making in sequential buying situations. _Journal of Retailing and Consumer Services_, 59, 102419. [DOI](https://doi.org/10.1016/j.jretconser.2020.102419)
 
-[^4]: Clear, J. (n.d.). _The Diderot Effect: Why We Want Things That Match_. [https://jamesclear.com/diderot-effect](https://jamesclear.com/diderot-effect)
+[^4]: Clear, J. (n.d.). _The Diderot Effect: Why We Want Things That Match_. [jamesclear.com](https://jamesclear.com/diderot-effect)
