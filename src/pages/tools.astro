@@ -13,6 +13,10 @@ const toolCategories = await getAllTools();
 	title="Daily Tools for Development and Creativity"
 	description="Explore the software and hardware I use every day for coding, writing, and creative work, including practical tools that improve workflow and focus."
 	image={{ src: "/og/tools.png", alt: "Tools - pictogrammmer" }}
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "Tools", item: new URL("/tools", Astro.site).href }
+	]}
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-16">

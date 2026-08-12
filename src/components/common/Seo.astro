@@ -36,6 +36,7 @@ interface Props {
 		media?: string;
 		sizes?: string;
 	}>;
+	breadcrumbs?: Array<{ name: string; item: string }>;
 }
 
 const {
@@ -50,7 +51,8 @@ const {
 	siteName = siteConfig.title,
 	twitter = { card: "summary_large_image" },
 	article,
-	extraLinks = []
+	extraLinks = [],
+	breadcrumbs
 } = Astro.props;
 
 const title = normalizeTitle(rawTitle, siteConfig.title, titleTemplate);
@@ -148,6 +150,7 @@ const resolvedOgImageAlt = ogImageAlt || siteConfig.image.alt;
 	date={article?.publishedTime}
 	updatedDate={article?.modifiedTime}
 	type={ogType}
+	breadcrumbs={breadcrumbs}
 />
 
 <!-- Extra Links -->

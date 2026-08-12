@@ -1,6 +1,11 @@
 ---
 import siteConfig from "@/config/site-config";
 
+interface BreadcrumbItem {
+	name: string;
+	item: string;
+}
+
 interface Props {
 	title: string;
 	description: string;
@@ -8,6 +13,7 @@ interface Props {
 	date?: Date;
 	updatedDate?: Date;
 	type?: "website" | "article";
+	breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -16,7 +22,8 @@ const {
 	image,
 	date,
 	updatedDate,
-	type = "website"
+	type = "website",
+	breadcrumbs
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.toString() : "https://khoirul.me";
@@ -74,6 +81,20 @@ if (type === "article") {
 	};
 	// @ts-expect-error - schema structure is flexible
 	schema["@graph"].push(articleSchema);
+}
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+	const breadcrumbSchema = {
+		"@type": "BreadcrumbList",
+		itemListElement: breadcrumbs.map((item, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			name: item.name,
+			item: item.item
+		}))
+	};
+	// @ts-expect-error - schema structure is flexible
+	schema["@graph"].push(breadcrumbSchema);
 }
 ---
 

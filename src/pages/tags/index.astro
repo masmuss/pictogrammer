@@ -15,6 +15,10 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 	title="All Blog Tags and Topics"
 	description="Browse every topic tag used across the blog to quickly find posts about Astro, Go, software engineering, personal growth, and reflective writing themes."
 	image={{ src: "/og/tags.png", alt: "All Tags - pictogrammmer" }}
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "Tags", item: new URL("/tags", Astro.site).href }
+	]}
 >
 	<div class="flex w-full flex-col gap-y-8">
 		<PageHeader

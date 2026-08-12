@@ -13,16 +13,24 @@ interface Props {
 	image?: { src: string; alt?: string };
 	posts: CollectionEntry<"post">[];
 	emptyMessage?: string;
+	breadcrumbs?: Array<{ name: string; item: string }>;
 }
 
-const { activeTab, title, description, image, posts, emptyMessage } =
-	Astro.props;
+const {
+	activeTab,
+	title,
+	description,
+	image,
+	posts,
+	emptyMessage,
+	breadcrumbs
+} = Astro.props;
 
 const postsByYear = groupPostsByYear(posts);
 const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 ---
 
-<BaseLayout {title} {description} {image} pageType="website">
+<BaseLayout {title} {description} {image} pageType="website" {breadcrumbs}>
 	<div class="flex w-full flex-col gap-y-16">
 		<Heading as="h1" class="sr-only">{title}</Heading>
 		<div class="flex w-full flex-col">

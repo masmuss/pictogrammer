@@ -10,6 +10,7 @@ interface Props {
 	pageType?: "website" | "article";
 	date?: Date;
 	updatedDate?: Date;
+	breadcrumbs?: Array<{ name: string; item: string }>;
 }
 
 const {
@@ -18,7 +19,8 @@ const {
 	image,
 	pageType = "website",
 	date,
-	updatedDate
+	updatedDate,
+	breadcrumbs
 }: Props = Astro.props;
 ---
 
@@ -36,6 +38,7 @@ const {
 	article={pageType === "article"
 		? { publishedTime: date, modifiedTime: updatedDate }
 		: undefined}
+	breadcrumbs={breadcrumbs}
 	extraLinks={[
 		{
 			rel: "apple-touch-icon",

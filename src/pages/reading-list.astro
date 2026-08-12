@@ -20,6 +20,10 @@ const wantToRead = books.filter((book) => book.status === "want-to-read");
 	description="Books I've read, currently reading, or want to read."
 	image={{ src: "/og/reading-list.png", alt: "Reading List - pictogrammmer" }}
 	pageType="website"
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "Reading List", item: new URL("/reading-list", Astro.site).href }
+	]}
 >
 	<div class="flex w-full flex-col gap-y-16">
 		<PageHeader

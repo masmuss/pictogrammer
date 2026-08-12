@@ -5,7 +5,7 @@ import BlogHero from "@/components/features/blog/Hero.astro";
 import PostSeries from "@/components/features/blog/PostSeries.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/contents";
-import { getPostOgImagePath } from "@/lib/utils/post-route";
+import { getPostOgImagePath, getPostUrl } from "@/lib/utils/post-route";
 
 interface Props {
 	post: CollectionEntry<"post">;
@@ -19,6 +19,16 @@ const {
 
 const seriesId = getSeriesForPost(post);
 const series = seriesId ? await getSeriesById(seriesId) : null;
+
+// Build breadcrumbs for the post
+const breadcrumbs: Array<{ name: string; item: string }> = [
+	{ name: "Home", item: new URL("/", Astro.site).href },
+	{ name: "Blog", item: new URL("/blog", Astro.site).href },
+	{
+		name: title,
+		item: new URL(getPostUrl(post), Astro.site).href
+	}
+];
 
 const socialImage = {
 	src: new URL(getPostOgImagePath(post), Astro.url).href,
@@ -43,6 +53,7 @@ const ogImage = coverImageResolved || socialImage;
 	updatedDate={updatedDate}
 	pageType="article"
 	image={ogImage}
+	breadcrumbs={breadcrumbs}
 	wide
 >
 	<div class="w-full">
