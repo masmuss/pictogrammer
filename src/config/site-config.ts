@@ -4,6 +4,7 @@ const siteConfig = {
 	author: "Ahmad Musafir Khoirul Fattah",
 	title: "pictogrammmer",
 	subtitle: "Khoirul's Personal Website",
+	homepage: "https://khoirul.me",
 	description:
 		"Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.",
 	email: "hello@khoirul.me",

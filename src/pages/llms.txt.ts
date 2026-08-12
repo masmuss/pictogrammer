@@ -4,7 +4,7 @@ import { getAllPosts } from "@/lib/contents";
 import { getPostUrl } from "@/lib/utils/post-route";
 
 export async function GET(context: APIContext) {
-	const site = context.site ?? new URL("https://khoirul.me");
+	const site = context.site ?? new URL(siteConfig.homepage);
 	const posts = await getAllPosts();
 
 	const lines: string[] = [
