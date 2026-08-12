@@ -15,6 +15,10 @@ const { lastUpdated, location, workingOn, building, learning, reading } =
 	description="What I'm currently up to right now."
 	image={{ src: "/og/now.png", alt: "Now - pictogrammmer" }}
 	pageType="website"
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "Now", item: new URL("/now", Astro.site).href }
+	]}
 >
 	<div class="flex w-full flex-col gap-y-16">
 		<PageHeader

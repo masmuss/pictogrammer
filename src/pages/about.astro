@@ -20,6 +20,10 @@ const techStack = await getAllSkillCollections();
 	description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
 	image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
 	pageType="website"
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "About", item: new URL("/about", Astro.site).href }
+	]}
 >
 	<div class="flex w-full flex-col gap-y-16">
 		<div class="flex flex-col gap-y-16">

@@ -16,6 +16,10 @@ const repoUrl = `https://github.com/${siteConfig.giscus.repo}`;
 	description="How this digital garden is crafted and maintained."
 	image={{ src: "/og/colophon.png", alt: "Colophon - pictogrammmer" }}
 	pageType="website"
+	breadcrumbs={[
+		{ name: "Home", item: new URL("/", Astro.site).href },
+		{ name: "Colophon", item: new URL("/colophon", Astro.site).href }
+	]}
 >
 	<div class="flex w-full flex-col gap-y-16">
 		<PageHeader

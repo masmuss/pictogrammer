@@ -57,6 +57,7 @@ export type SiteConfig = {
 	author: string;
 	title: string;
 	subtitle: string;
+	homepage: string;
 	description: string;
 	email: string;
 	cvLink?: string;
