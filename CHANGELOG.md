@@ -1,3 +1,10 @@
+# [1.42.0](https://github.com/masmuss/pictogrammer/compare/v1.41.1...v1.42.0) (2026-08-12)
+
+
+### Features
+
+* add AI readiness — llms.txt, AI crawler directives, BreadcrumbList, security headers ([615143a](https://github.com/masmuss/pictogrammer/commit/615143ac22b6556cc312195113412ad07263a330))
+
 ## [1.41.1](https://github.com/masmuss/pictogrammer/compare/v1.41.0...v1.41.1) (2026-08-10)
 
 
