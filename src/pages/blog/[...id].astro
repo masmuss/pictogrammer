@@ -54,8 +54,10 @@ const hasGithubCard = post.body?.includes("::github-card");
 		<ShareButtons title={post.data.title} url={Astro.url} />
 	</div>
 
-	<footer slot="footer" class="mx-auto max-w-3xl">
-		<RelatedPost {relatedPosts} />
+	<footer slot="footer" class="w-full">
+		<div class="mx-auto max-w-3xl">
+			<RelatedPost {relatedPosts} />
+		</div>
 		<Comment />
 	</footer>
 </PostLayout>
