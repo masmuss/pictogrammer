@@ -38,6 +38,8 @@
 		// Don't render twice if iframe already exists
 		if (!container || container.querySelector("iframe.giscus-frame")) return;
 
+		container.querySelector("iframe.giscus-frame")?.classList.add("w-full");
+
 		const script = document.createElement("script");
 		script.src = `${GISCUS_ORIGIN}/client.js`;
 		script.setAttribute("data-repo", GISCUS_CONFIG.repo);
