@@ -1,3 +1,10 @@
+## [1.42.4](https://github.com/masmuss/pictogrammer/compare/v1.42.3...v1.42.4) (2026-08-13)
+
+
+### Bug Fixes
+
+* **blog:** add giscus.app to CSP style-src directive ([44759bb](https://github.com/masmuss/pictogrammer/commit/44759bb8a027c62c3ffea5782b404b3edfe0ff75))
+
 ## [1.42.3](https://github.com/masmuss/pictogrammer/compare/v1.42.2...v1.42.3) (2026-08-13)
 
 
