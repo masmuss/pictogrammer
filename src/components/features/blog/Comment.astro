@@ -38,8 +38,6 @@
 		// Don't render twice if iframe already exists
 		if (!container || container.querySelector("iframe.giscus-frame")) return;
 
-		container.querySelector("iframe.giscus-frame")?.classList.add("w-full");
-
 		const script = document.createElement("script");
 		script.src = `${GISCUS_ORIGIN}/client.js`;
 		script.setAttribute("data-repo", GISCUS_CONFIG.repo);
@@ -92,3 +90,22 @@
 		setGiscusTheme();
 	});
 </script>
+
+<style is:global>
+	/* Fallback when giscus.app/default.css is blocked (e.g. CSP), so the
+	   iframe still fills the container width instead of defaulting to 300px. */
+	.giscus,
+	.giscus-frame {
+		width: 100%;
+		min-height: 150px;
+	}
+
+	.giscus-frame {
+		border: none;
+		color-scheme: light dark;
+	}
+
+	.giscus-frame--loading {
+		opacity: 0;
+	}
+</style>
