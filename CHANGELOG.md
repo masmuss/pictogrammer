@@ -1,3 +1,10 @@
+## [1.42.2](https://github.com/masmuss/pictogrammer/compare/v1.42.1...v1.42.2) (2026-08-13)
+
+
+### Bug Fixes
+
+* **blog:** Adjust footer layout width constraint ([804dfaf](https://github.com/masmuss/pictogrammer/commit/804dfaf3fa35ab82d79f50bc6419c3db62cc4792))
+
 ## [1.42.1](https://github.com/masmuss/pictogrammer/compare/v1.42.0...v1.42.1) (2026-08-12)
 
 
