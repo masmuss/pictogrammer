@@ -1,3 +1,10 @@
+## [1.42.3](https://github.com/masmuss/pictogrammer/compare/v1.42.2...v1.42.3) (2026-08-13)
+
+
+### Bug Fixes
+
+* **Comment:** make giscus iframe full width ([879037a](https://github.com/masmuss/pictogrammer/commit/879037ac5b15874033ebe5cb2f52e1786aa0fe80))
+
 ## [1.42.2](https://github.com/masmuss/pictogrammer/compare/v1.42.1...v1.42.2) (2026-08-13)
 
 
