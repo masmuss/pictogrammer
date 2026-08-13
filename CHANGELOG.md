@@ -1,3 +1,10 @@
+## [1.42.1](https://github.com/masmuss/pictogrammer/compare/v1.42.0...v1.42.1) (2026-08-12)
+
+
+### Bug Fixes
+
+* **theme:** apply theme class before page swap to prevent flash ([d6a04ef](https://github.com/masmuss/pictogrammer/commit/d6a04ef7b024168c9932a5503cf0d6b6e7a25d84))
+
 # [1.42.0](https://github.com/masmuss/pictogrammer/compare/v1.41.1...v1.42.0) (2026-08-12)
 
 
