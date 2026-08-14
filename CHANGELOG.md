@@ -1,3 +1,10 @@
+## [1.42.5](https://github.com/masmuss/pictogrammer/compare/v1.42.4...v1.42.5) (2026-08-14)
+
+
+### Bug Fixes
+
+* **site-config:** update CV download link ([a64b09c](https://github.com/masmuss/pictogrammer/commit/a64b09c3fd49aa725d916e334c77f8b3bb0c8408))
+
 ## [1.42.4](https://github.com/masmuss/pictogrammer/compare/v1.42.3...v1.42.4) (2026-08-13)
 
 
