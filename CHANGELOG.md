@@ -1,3 +1,10 @@
+## [1.42.6](https://github.com/masmuss/pictogrammer/compare/v1.42.5...v1.42.6) (2026-08-15)
+
+
+### Bug Fixes
+
+* **ui:** improve footer layout for mobile ([55593a5](https://github.com/masmuss/pictogrammer/commit/55593a545276390fc393413682621db5f8a2d080))
+
 ## [1.42.5](https://github.com/masmuss/pictogrammer/compare/v1.42.4...v1.42.5) (2026-08-14)
 
 
