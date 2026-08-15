@@ -6,14 +6,32 @@ tags: [reflection]
 draft: true
 ---
 
-**Sinopsis:** September 2023: `hello-world` terbit. September 2026: blog ini masih hidup. Apa yang berubah dalam tiga tahun? Bukan selebrasi, bukan kilas balik. Lebih ke check-in dengan diri sendiri. Blog ini tidak pernah stuck di satu jenis konten — tutorial, devlog, refleksi, flash fiction. Semuanya ada. Dan mungkin itu yang membuatnya bertahan.
+September 2023. Aku menulis "Hello, world!" — post pertama di blog ini.
 
-**Premis:** Dulu nulis karena ingin. Sekarang nulis karena perlu. Tiga tahun kemudian, blog ini bukan lagi proyek — ia sudah jadi kebiasaan.
+Waktu itu aku ragu. Apakah akan konsisten? Apakah ada yang baca? Apakah aku punya cukup hal untuk ditulis? Tiga pertanyaan yang sama yang bikin banyak blog mati sebelum lahir. Tapi aku nekat. Ternyata tiga tahun kemudian, blog ini masih di sini — dan jawaban untuk ketiga pertanyaan itu ternyata tidak sepenting yang kukira.
 
-**Kerangka:**
+Konsisten? Tidak juga. Ada bulan-bulan kosong. Ada masa di mana aku menulis tiga post dalam seminggu, lalu hilang dua bulan. Tapi blog ini tidak mati. Ia menunggu — seperti notebook yang selalu di meja, tidak peduli seberapa lama tidak disentuh.
 
-1. **Pembuka** — September 2023. Rilis `hello-world`. Waktu itu ragu: apakah akan konsisten? Apakah ada yang baca?
-2. **Apa yang ditulis** — Tutorial (`becoming-astron`, `golang-dasar`). Devlog (`gokit`, `trak`, `veka`). Refleksi (`tiga-lantai`, `ambang`). Flash fiction (`lift`, `di-antara`). Blog ini tidak pernah memilih satu jalur.
-3. **Kenapa masih nulis** — Bukan karena engagement, bukan karena rutinitas. Karena kosong rasanya kalau tidak. Karena kepala jadi lebih rapi setelah menuangkan.
-4. **Yang belum ditulis** — Hal-hal yang masih ditahan. Topik yang terlalu jujur. Mungkin tahun keempat.
-5. **Penutup** — Tidak ada target. Tidak ada rencana berhenti. Selama masih ada yang ingin ditulis, blog ini tetap di sini.
+Ada yang baca? Mungkin. Angka analytics tidak pernah jadi alasan aku menulis. Kalau ada yang baca dan terhubung, bagus. Kalau tidak, blog ini tetap menjalankan tugas utamanya: jadi tempat aku merapikan kepala.
+
+Cukup hal untuk ditulis? Pertanyaan ini yang paling lucu sekarang. Karena tiga tahun kemudian, aku punya 16 draft terjadwal sampai Februari 2027. Idelah yang tidak pernah habis. Yang kadang habis adalah energi.
+
+---
+
+Yang paling berubah sebenarnya bukan jumlah tulisan. Tapi jenisnya.
+
+2023: tutorial, devlog, curhat ringan. 2024: mulai masuk ke refleksi yang lebih dalam — patah hati, identitas, pencarian diri. 2025: naratif panjang (`tiga-lantai`), flash fiction (`lift`, `bayaran`). 2026: tulisan makin personal — tentang uang, tentang pekerjaan, tentang pulang, tentang menulis itu sendiri.
+
+Aku tidak merencanakan evolusi ini. Ia terjadi karena hidup juga berevolusi. Mahasiswa jadi pekerja. Pacar jadi mantan. Tubuh sehat jadi gips lalu sehat lagi. Dan blog ini merekam semuanya — bukan sebagai diary harian, tapi sebagai snapshot kepala di momen-momen tertentu.
+
+---
+
+Kenapa masih nulis?
+
+Bukan karena engagement. Bukan karena rutinitas. Bukan karena "personal branding." Karena kosong rasanya kalau tidak. Karena setelah menuangkan sesuatu ke layar, kepala jadi lebih ringan. Karena ada kepuasan yang tidak bisa dijelaskan ketika satu kalimat akhirnya "pas" — ketika kata-kata yang tadinya berantakan tiba-tiba tersusun rapi.
+
+Dan jujur: karena aku ingin tahu sampai di mana aku akan berubah lagi. Blog ini adalah kapsul waktu yang terus terisi. Setiap post adalah versi diriku di titik tertentu — dengan kekhawatiran, pertanyaan, dan jawaban yang berbeda-beda.
+
+Tiga tahun lagi, aku akan membaca post ini lagi. Dan aku akan tertawa — atau mengangguk — atau keduanya.
+
+Selama masih ada yang ingin ditulis, blog ini tetap di sini. Tanpa target. Tanpa rencana berhenti. Hanya terus — satu tulisan, satu bulan, satu snapshot pada satu waktu.

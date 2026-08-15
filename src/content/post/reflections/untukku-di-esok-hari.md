@@ -6,14 +6,30 @@ tags: [reflection]
 draft: true
 ---
 
-**Sinopsis:** Surat untuk diri sendiri di masa depan. Gaya `ambang` — pendek, jujur, tanpa janji besar. Bisa jadi pembuka tahun, bisa jadi penutup refleksi. Draft asli dari Notion.
+Halo, aku dari Januari.
 
-**Premis:** Tidak ada resolusi. Hanya satu surat pendek untuk versi diriku yang akan membaca ini Desember nanti.
+Gimana kabarmu di Desember nanti? Aku harap kamu masih di sini. Masih bangun setiap pagi — atau setidaknya, masih bangun.
 
-**Kerangka:**
+Aku tidak akan menulis resolusi. Kamu tahu kenapa: resolusi itu selalu gagal. Tahun lalu, tahun sebelumnya, dan mungkin tahun ini juga. Jadi aku cuma mau titip beberapa hal.
 
-1. **Pembuka** — "Halo, aku dari Januari. Gimana kabarmu di Desember nanti?"
-2. **Harapan tanpa tekanan** — Aku harap kamu masih menulis. Masih ngoding. Masih bangun pagi — atau setidaknya masih bangun.
-3. **Yang tidak apa-apa jika gagal** — Kalau target tidak tercapai, tidak apa-apa. Kalau hubungan tidak membaik, tidak apa-apa. Kalau kamu masih sama seperti sekarang, tidak apa-apa.
-4. **Satu permintaan** — Cuma satu: jangan berhenti mencoba. Seberapa pun pelan, seberapa pun sedikit.
-5. **Penutup** — Sampai jumpa di Desember. Aku percaya kamu masih di sini.
+---
+
+Pertama: aku harap kamu masih menulis. Tidak harus bagus. Tidak harus panjang. Cukup jujur. Karena kamu tahu sendiri rasanya — setelah menuangkan sesuatu ke layar, kepala jadi lebih ringan. Jangan kehilangan itu.
+
+Kedua: aku harap kamu masih ngoding. Bukan untuk jadi lebih keren. Bukan untuk ganti-ganti stack. Cukup untuk menjaga rasa penasaran itu tetap hidup — rasa yang dulu bikin kamu bertahan di depan layar berjam-jam tanpa terasa.
+
+Ketiga: aku harap kamu masih punya teman yang bisa diajak ngopi. Satu cukup. Dua lebih baik. Tiga berarti kamu beruntung. Jangan biarkan semuanya jadi sekadar nama di daftar kontak.
+
+---
+
+Dan kalau ada yang tidak tercapai, tidak apa-apa.
+
+Kalau target tidak kesampean, tidak apa-apa. Kalau hubungan tidak membaik, tidak apa-apa. Kalau kamu masih sama seperti sekarang — masih bingung, masih mencari, masih belum tahu mau ke mana — tidak apa-apa. Kamu tidak terlambat. Kamu hanya sedang dalam perjalanan, dan perjalanan tidak selalu harus cepat.
+
+Satu permintaan saja: jangan berhenti mencoba. Seberapa pun pelan. Seberapa pun sedikit. Selama kamu masih mencoba, kamu belum kalah. Kamu cuma belum sampai.
+
+---
+
+Sampai jumpa di Desember.
+
+Aku percaya kamu masih di sini. Aku percaya kamu masih bertahan. Dan aku percaya, apapun yang terjadi tahun ini, kamu akan baik-baik saja — dengan caramu sendiri.

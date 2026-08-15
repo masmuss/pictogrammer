@@ -6,14 +6,34 @@ tags: [reflection]
 draft: true
 ---
 
-**Sinopsis:** Meta-reflection tentang proses menulis. Sebagian besar tulisanku bukan tentang masa lalu yang jauh — ide biasanya muncul 1 jam sampai seminggu sebelumnya. Aku jarang menyebut waktu secara spesifik. Aku menulis karena ada sesuatu yang menarik, bukan karena terjadwal.
+Orang mengira aku merencanakan tulisan berminggu-minggu.
 
-**Premis:** Ide tidak butuh peristiwa besar. Kadang ia datang dari percakapan singkat, lagu yang tiba-tiba diputar, atau sesuatu yang kau lihat di jalan.
+Kenyataannya: sebagian besar tulisanku muncul dan selesai dalam satu duduk. Ide datang pagi ini, sore ini, atau satu jam yang lalu. Jarang sekali aku "menyimpan ide untuk nanti" — karena nanti, ide itu sudah tidak relevan. Sudah basi. Sudah bukan lagi sesuatu yang mengganggu pikiranku.
 
-**Kerangka:**
+---
 
-1. **Pembuka** — Orang mengira aku merencanakan tulisan berminggu-minggu. Kenyataannya: sebagian besar ditulis dalam satu duduk, setelah ide muncul entah dari mana.
-2. **Dari mana ide datang** — Percakapan dengan teman. Satu kalimat di buku. Lagu yang tiba-tiba stuck. Pemandangan di jalan. Hal-hal kecil yang kalau tidak ditulis akan hilang.
-3. **Kenapa jarang menyebut waktu** — Karena waktu spesifik tidak selalu penting. Yang penting adalah apa yang kupikirkan saat itu. Tulisan adalah snapshot dari kepala, bukan dari kalender.
-4. **Proses** — Begitu ide muncul, langsung tulis. Tidak menunggu mood. Tidak menunggu sempurna. Kalau ditunda, ide itu hilang — dan tidak pernah kembali dalam bentuk yang sama.
-5. **Penutup** — Mungkin itu kenapa aku masih menulis. Bukan karena disiplin, bukan karena bakat. Tapi karena aku tidak ingin kehilangan ide-ide kecil yang muncul dan pergi begitu saja.
+Dari mana ide datang?
+
+Percakapan dengan teman. Satu kalimat di buku yang kubaca sambil lalu. Lagu yang tiba-tiba stuck di kepala dan tidak mau pergi. Pemandangan di jalan waktu pulang kerja. Pertanyaan yang tidak sengaja keluar dari mulut orang lain dan membuatku berpikir lebih lama dari yang seharusnya.
+
+Ide tidak butuh peristiwa besar. Ia butuh perhatian. Dan perhatian, ternyata, bisa dilatih: berhenti scroll tanpa sadar, mulai memperhatikan apa yang terjadi di sekitar, dan menangkap momen-momen kecil sebelum mereka hilang.
+
+---
+
+Aku jarang menyebut waktu spesifik di tulisanku. Bukan karena tidak ingat — tapi karena waktu jarang jadi inti cerita.
+
+Yang penting bukan "kapan." Yang penting adalah "apa yang kupikirkan saat itu." Tulisan adalah snapshot dari kepala, bukan dari kalender. Dua orang bisa mengalami hal yang sama di waktu yang sama dan menulis hal yang sangat berbeda — karena yang direkam bukan kejadiannya, tapi cara mereka memprosesnya.
+
+---
+
+Prosesnya sederhana: begitu ide muncul, langsung tulis.
+
+Tidak menunggu mood. Tidak menunggu sempurna. Tidak menyiapkan outline dulu (kecuali untuk tulisan panjang — itu cerita lain). Kalau ditunda, ide itu hilang — dan tidak pernah kembali dalam bentuk yang sama. Ia mungkin muncul lagi dengan versi yang lebih buruk, atau tidak muncul sama sekali.
+
+Kadang tulisannya jadi. Kadang cuma jadi draft yang tidak pernah terbit. Dua-duanya tidak masalah. Yang penting adalah tidak membiarkan ide pergi begitu saja.
+
+---
+
+Mungkin itu kenapa aku masih menulis. Bukan karena disiplin, bukan karena bakat. Tapi karena aku tidak ingin kehilangan ide-ide kecil yang muncul dan pergi begitu saja — seperti pengunjung yang mampir sebentar, mengetuk pintu, dan kalau tidak dibukakan, pergi ke rumah lain.
+
+Aku menulis karena ingin membukakan pintu.
