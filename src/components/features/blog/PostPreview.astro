@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
 import PostMetadata from "@/components/common/PostMetadata.astro";
+import { Badge } from "@/components/ui/badge";
 import { getPostUrl } from "@/lib/utils/post-route";
 import { cn } from "@/lib/utils/tailwind";
 
@@ -44,10 +46,18 @@ const {
 				]}
 				transition:name={`title-${post.id}`}
 			>
-				{post.data.title}{" "}
+				{post.data.title}
 				{
 					post.data.draft && (
-						<span class="text-muted-foreground font-normal">Draft</span>
+						<Badge
+							variant="outline"
+							size="sm"
+							shape="pill"
+							class="ml-1.5 align-middle text-amber-700 bg-amber-500/10 border-amber-600/30 dark:text-amber-400 dark:bg-amber-400/10 dark:border-amber-400/30"
+						>
+							<Icon name="ph:pencil-simple-line" />
+							Draft
+						</Badge>
 					)
 				}
 			</span>
