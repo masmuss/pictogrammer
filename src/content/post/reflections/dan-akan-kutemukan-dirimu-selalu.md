@@ -1,7 +1,7 @@
 ---
 title: Dan Akan Kutemukan Dirimu, Selalu
 description: Tentang mencari seseorang di tempat yang tidak mungkin — di lagu lama, di kursi kafe, di kebiasaan yang masih tersisa.
-date: 16 August 2026
+date: 1 March 2024
 tags: [reflection]
 ---
 
