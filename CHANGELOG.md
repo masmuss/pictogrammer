@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/masmuss/pictogrammer/compare/v1.42.6...v1.43.0) (2026-08-20)
+
+
+### Features
+
+* **tools:** update gear list ([6b50afd](https://github.com/masmuss/pictogrammer/commit/6b50afd4eefd31ccf8054e5cb10c9dd9ec81f124))
+
 ## [1.42.6](https://github.com/masmuss/pictogrammer/compare/v1.42.5...v1.42.6) (2026-08-15)
 
 
