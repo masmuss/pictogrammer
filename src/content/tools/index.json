@@ -107,8 +107,8 @@
 				"description": "Ultra-thin wireless keyboard"
 			},
 			{
-				"name": "Logitech MX Anywhere 3S",
-				"description": "Wireless Mouse"
+				"name": "Keychron M6",
+				"description": "Ergonomic wireless mouse with infinite scroll"
 			}
 		]
 	},
@@ -118,6 +118,10 @@
 			{
 				"name": "Tangzu Wan'er SG 2 Emerald Jade Dragon",
 				"description": "10mm PET Single Dynamic In-Ear Earphones"
+			},
+			{
+				"name": "Edifier X5 Pro",
+				"description": "True wireless earbuds with Active Noise Cancellation"
 			}
 		]
 	}
