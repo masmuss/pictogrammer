@@ -35,3 +35,9 @@ screens/
 
 # AI generated files
 .antigravitycli
+
+# Skilld references (recreated by `skilld install`)
+.skilld
+
+# unlighthouse
+.unlighthouse
