@@ -230,7 +230,7 @@
 			/* Accent CTA (compat) */
 			--accent-cta: oklch(0.55 0.09 192);
 			--accent-cta-subtle: oklch(0.55 0.09 192 / 0.1);
-			--accent-cta-text: oklch(0.40 0.09 192);
+			--accent-cta-text: oklch(0.4 0.09 192);
 
 			/* Charts */
 			--chart-1: oklch(0.81 0.1 252);
