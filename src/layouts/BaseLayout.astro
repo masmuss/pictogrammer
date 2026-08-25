@@ -15,7 +15,9 @@ const { wide = false, ...head } = Astro.props;
 		<BaseHead {...head} />
 		<ThemeProvider />
 		<ClientRouter />
-		<script src="/src/assets/scripts/mermaid-theme-fix.js" is:inline></script>
+		<script>
+			import "../assets/scripts/mermaid-theme-fix.js";
+		</script>
 	</head>
 	<body>
 		<a
