@@ -40,7 +40,7 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "0.9.10",
-		"@astrojs/markdown-remark": "7.2.2",
+		"@astrojs/markdown-remark": "7.2.4",
 		"@astrojs/rss": "4.0.19",
 		"@astrojs/sitemap": "3.7.3",
 		"@data-slot/command": "^0.2.166",
@@ -52,7 +52,7 @@
 		"@richardtowers/remark-abbr": "^1.1.5",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.3",
-		"astro": "7.1.6",
+		"astro": "7.2.6",
 		"astro-icon": "^1.1.5",
 		"astro-mermaid": "^2.1.0",
 		"astro-pagefind": "^2.0.1",
