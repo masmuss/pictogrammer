@@ -60,12 +60,10 @@ const optimizedSrc = isRemote
 
 <script is:inline>
 	document.addEventListener("astro:page-load", () => {
-		document
-			.querySelectorAll<HTMLAnchorElement>(".post-image-caption a")
-			.forEach((link) => {
-				link.setAttribute("target", "_blank");
-				link.setAttribute("rel", "noopener noreferrer");
-			});
+		document.querySelectorAll(".post-image-caption a").forEach((link) => {
+			link.setAttribute("target", "_blank");
+			link.setAttribute("rel", "noopener noreferrer");
+		});
 	});
 </script>
 
