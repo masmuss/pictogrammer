@@ -9,7 +9,7 @@ This is a personal website. I do not collect, store, or process personal data be
 
 ### Third-party services
 
-- **Giscus** — comment system powered by GitHub Discussions. See [Giscus Privacy Policy](https://github.com/giscus/giscus/blob/main/PRIVACY.md).
+- **Giscus** — comment system powered by GitHub Discussions. See [Giscus Privacy Policy](https://github.com/giscus/giscus/blob/main/PRIVACY-POLICY.md).
 - **Vercel** — hosting and analytics. See [Vercel Privacy Policy](https://vercel.com/legal/privacy-policy).
 
 ### Cookies
