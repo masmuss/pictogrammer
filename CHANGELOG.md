@@ -1,3 +1,16 @@
+# [1.44.0](https://github.com/masmuss/pictogrammer/compare/v1.43.0...v1.44.0) (2026-09-06)
+
+
+### Bug Fixes
+
+* **content:** update Giscus privacy policy URL ([be2fcc0](https://github.com/masmuss/pictogrammer/commit/be2fcc07171469a95954a1918268486437eb60e7))
+
+
+### Features
+
+* **content:** publish three-year blog reflection post ([d5844f8](https://github.com/masmuss/pictogrammer/commit/d5844f84b64bcab2e3d7881e03b7ff114554f0dc))
+* **rss:** parse and sanitize markdown content for RSS feed ([e7ac876](https://github.com/masmuss/pictogrammer/commit/e7ac876c82f07a6e06406ef9e703ace6f3f26ef6))
+
 # [1.43.0](https://github.com/masmuss/pictogrammer/compare/v1.42.6...v1.43.0) (2026-08-20)
 
 
