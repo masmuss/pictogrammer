@@ -6,9 +6,10 @@ import type { Project } from "@/types";
 
 interface Props {
 	project: Project;
+	showDescription?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, showDescription } = Astro.props;
 
 const href = project.liveHref ?? project.repoHref ?? "#";
 const isLive = Boolean(project.liveHref);
@@ -36,7 +37,7 @@ const hasRepo = Boolean(project.repoHref);
 				{project.text}
 			</span>
 			{
-				project.description && (
+				showDescription && project.description && (
 					<span class="text-muted-foreground line-clamp-1 text-sm leading-snug">
 						{project.description}
 					</span>
@@ -48,7 +49,7 @@ const hasRepo = Boolean(project.repoHref);
 			{
 				isLive && (
 					<Badge shape="pill" variant="outline">
-						<Icon name="ph:arrow-square-out" />
+						<Icon name="ph:arrow-square-out" aria-hidden="true" />
 						Live
 					</Badge>
 				)
@@ -56,7 +57,7 @@ const hasRepo = Boolean(project.repoHref);
 			{
 				hasRepo && (
 					<Badge shape="pill" variant="outline">
-						<Icon name="ph:github-logo" />
+						<Icon name="ph:github-logo" aria-hidden="true" />
 						Repo
 					</Badge>
 				)

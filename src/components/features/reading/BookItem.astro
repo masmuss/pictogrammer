@@ -17,11 +17,11 @@ const { book } = Astro.props;
 	href={book.url || "#"}
 	target={book.url ? "_blank" : "_self"}
 	rel={book.url ? "noopener noreferrer" : ""}
-	class="group flex flex-col gap-3 border border-transparent transition-all hover:-translate-y-1 hover:border-foreground/20 p-4"
+	class="group flex flex-col gap-3 border border-transparent rounded-lg p-4 transition-all duration-200 hover:shadow-md hover:border-border hover:-translate-y-0.5"
 	data-testid="book-item"
 >
 	<div
-		class="relative aspect-2/3 w-full overflow-hidden rounded-md bg-muted flex items-center justify-center"
+		class="relative aspect-2/3 w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center min-h-28"
 	>
 		{
 			book.cover ? (
@@ -42,7 +42,9 @@ const { book } = Astro.props;
 
 		{
 			book.status === "reading" && (
-				<Badge class="absolute right-2 top-2">Reading</Badge>
+				<Badge class="absolute right-2 top-2" size="sm">
+					Reading
+				</Badge>
 			)
 		}
 	</div>
@@ -78,6 +80,7 @@ const { book } = Astro.props;
 							<Icon
 								name={i < book.rating! ? "ph:star-fill" : "ph:star"}
 								class="size-3.5"
+								aria-hidden="true"
 							/>
 						))}
 					</div>
