@@ -17,7 +17,7 @@ test.describe("Discovery Features", () => {
 		expect(text).toContain("<channel>");
 
 		// 2. Check for site-specific info
-		expect(text).toContain("pictogrammmer");
+		expect(text).toContain("pictogrammer");
 
 		// 3. Ensure it contains at least one item (blog post)
 		expect(text).toContain("<item>");

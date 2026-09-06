@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { parseAndSanitizeMarkdown } from "@/config/rss";
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 import { getPostsByPath } from "@/lib/contents/post";
 import { getPostUrl } from "@/lib/utils/post-route";
 

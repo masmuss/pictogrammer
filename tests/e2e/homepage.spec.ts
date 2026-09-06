@@ -7,7 +7,7 @@ test("homepage has correct title and brand", async ({ page }) => {
 	await page.goto("/");
 
 	// Verify the page title contains the brand name
-	await expect(page).toHaveTitle(/pictogrammmer/);
+	await expect(page).toHaveTitle(/pictogrammer/);
 
 	// Ensure author name is present on the page
 	const bodyText = await page.textContent("body");

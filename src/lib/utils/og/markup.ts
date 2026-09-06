@@ -1,5 +1,5 @@
 import { html } from "satori-html";
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
