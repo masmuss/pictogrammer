@@ -26,19 +26,19 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.fontsource(),
-			name: "iA Writer Quattro",
-			cssVariable: "--font-ia-writer-quattro",
+			name: "Geist Sans",
+			cssVariable: "--font-geist-sans",
 			weights: [400, 500, 600, 700],
-			styles: ["normal", "italic"],
+			styles: ["normal"],
 			fallbacks: ["sans-serif"],
 			display: "swap",
 			formats: ["woff2"]
 		},
 		{
 			provider: fontProviders.fontsource(),
-			name: "IBM Plex Mono",
-			cssVariable: "--font-ibm-plex-mono",
-			styles: ["normal", "italic"],
+			name: "Geist Mono",
+			cssVariable: "--font-geist-mono",
+			styles: ["normal"],
 			fallbacks: ["monospace"],
 			display: "swap",
 			formats: ["woff2"]

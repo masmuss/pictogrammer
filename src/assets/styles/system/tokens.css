@@ -7,10 +7,28 @@
 
 @theme {
 	/* ── Typography ─────────────────────────── */
-	--font-sans: var(--font-ia-writer-quattro);
-	--font-heading: var(--font-ia-writer-quattro);
-	--font-mono: var(--font-ibm-plex-mono);
-	--font-serif: var(--font-newsreader, serif);
+	--font-sans: var(
+		--font-geist-sans,
+		"SF Pro Display",
+		"Geist Sans",
+		"Helvetica Neue",
+		sans-serif
+	);
+	--font-heading: var(
+		--font-geist-sans,
+		"SF Pro Display",
+		"Geist Sans",
+		"Helvetica Neue",
+		sans-serif
+	);
+	--font-mono: var(
+		--font-geist-mono,
+		"SF Mono",
+		"Geist Mono",
+		"JetBrains Mono",
+		monospace
+	);
+	--font-serif: var(--font-newsreader, "Lyon Text", "Newsreader", serif);
 	--container-2xl: 1400px;
 
 	/* ── Spacing Scale (4px base) ──────────── */

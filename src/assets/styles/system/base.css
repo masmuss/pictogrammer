@@ -22,7 +22,8 @@
 	}
 
 	body {
-		@apply bg-background text-foreground leading-relaxed antialiased transition-colors;
+		@apply bg-background text-foreground antialiased transition-colors;
+		line-height: 1.6;
 	}
 
 	:where(p, li, dd, dt, figcaption) {
