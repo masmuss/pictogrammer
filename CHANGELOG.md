@@ -1,3 +1,20 @@
+# [1.45.0](https://github.com/masmuss/pictogrammer/compare/v1.44.0...v1.45.0) (2026-09-06)
+
+
+### Bug Fixes
+
+* **styles:** improve contrast for muted text and opacity variants ([6eb349c](https://github.com/masmuss/pictogrammer/commit/6eb349c8639e32aadd1a66d56cce2801c7631e29))
+
+
+### Features
+
+* **components:** update custom components for minimalist design ([b405218](https://github.com/masmuss/pictogrammer/commit/b405218d9861a48d86b28b2de9560a6f18f41b15))
+* **style:** update button and card component styling ([9961be2](https://github.com/masmuss/pictogrammer/commit/9961be2cff786f1869d6974f20e14dc1ded11468)), closes [#111111](https://github.com/masmuss/pictogrammer/issues/111111) [#EAEAEA](https://github.com/masmuss/pictogrammer/issues/EAEAEA)
+* **style:** update color palette to minimalist modern ([9da250c](https://github.com/masmuss/pictogrammer/commit/9da250c971bc858dc455f8f3e05edf48ef46ffdf)), closes [#E1F3FE](https://github.com/masmuss/pictogrammer/issues/E1F3FE) [#F7F6F3](https://github.com/masmuss/pictogrammer/issues/F7F6F3) [#111111](https://github.com/masmuss/pictogrammer/issues/111111) [#111111](https://github.com/masmuss/pictogrammer/issues/111111) [#EAEAEA](https://github.com/masmuss/pictogrammer/issues/EAEAEA)
+* **style:** update radius and spacing for minimalist aesthetic ([1d3343a](https://github.com/masmuss/pictogrammer/commit/1d3343aadc35313d66e5c63a77a81b3ab1854c0e))
+* **style:** update shadows to ultra-diffuse rgba format ([15ca71a](https://github.com/masmuss/pictogrammer/commit/15ca71ab10fdb7360e01d9e5950f933bc1df5352))
+* **style:** update typography to minimalist modern fonts ([c157170](https://github.com/masmuss/pictogrammer/commit/c157170a73649d06b569b1af703bd74ddeef0814))
+
 # [1.44.0](https://github.com/masmuss/pictogrammer/compare/v1.43.0...v1.44.0) (2026-09-06)
 
 
