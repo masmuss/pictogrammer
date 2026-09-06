@@ -267,19 +267,19 @@
 			--sidebar-ring: #1f6c9f;
 
 			/* Shadows (ultra-diffuse, low opacity < 0.04) */
-			--shadow-2xs: 0 1px 2px 0px oklch(0 0 0 / 0.02);
-			--shadow-xs: 0 1px 3px 0px oklch(0 0 0 / 0.03);
+			--shadow-2xs: 0 1px 2px 0px rgba(0, 0, 0, 0.02);
+			--shadow-xs: 0 1px 3px 0px rgba(0, 0, 0, 0.03);
 			--shadow-sm:
-				0 1px 4px 0px oklch(0 0 0 / 0.03), 0 1px 2px -1px oklch(0 0 0 / 0.02);
+				0 1px 4px 0px rgba(0, 0, 0, 0.03), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
 			--shadow:
-				0 2px 8px 0px oklch(0 0 0 / 0.03), 0 1px 2px -1px oklch(0 0 0 / 0.02);
+				0 2px 8px 0px rgba(0, 0, 0, 0.03), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
 			--shadow-md:
-				0 4px 16px 0px oklch(0 0 0 / 0.03), 0 2px 4px -1px oklch(0 0 0 / 0.02);
+				0 4px 16px 0px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
 			--shadow-lg:
-				0 8px 24px 0px oklch(0 0 0 / 0.04), 0 4px 8px -1px oklch(0 0 0 / 0.02);
+				0 8px 24px 0px rgba(0, 0, 0, 0.04), 0 4px 8px -1px rgba(0, 0, 0, 0.02);
 			--shadow-xl:
-				0 16px 32px 0px oklch(0 0 0 / 0.04), 0 8px 16px -1px oklch(0 0 0 / 0.03);
-			--shadow-2xl: 0 24px 48px 0px oklch(0 0 0 / 0.05);
+				0 16px 32px 0px rgba(0, 0, 0, 0.04), 0 8px 16px -1px rgba(0, 0, 0, 0.03);
+			--shadow-2xl: 0 24px 48px 0px rgba(0, 0, 0, 0.05);
 		}
 
 		/* ── Dark Mode ────────────────────── */
@@ -342,19 +342,19 @@
 			--sidebar-ring: oklch(0.68 0.1 200);
 
 			/* Shadows (stronger spread, but still low opacity for dark bg) */
-			--shadow-2xs: 0 1px 2px 0px oklch(0 0 0 / 0.1);
-			--shadow-xs: 0 1px 3px 0px oklch(0 0 0 / 0.1);
+			--shadow-2xs: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+			--shadow-xs: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
 			--shadow-sm:
-				0 1px 4px 0px oklch(0 0 0 / 0.15), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+				0 1px 4px 0px rgba(0, 0, 0, 0.15), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 			--shadow:
-				0 2px 8px 0px oklch(0 0 0 / 0.15), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+				0 2px 8px 0px rgba(0, 0, 0, 0.15), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 			--shadow-md:
-				0 4px 16px 0px oklch(0 0 0 / 0.2), 0 2px 4px -1px oklch(0 0 0 / 0.15);
+				0 4px 16px 0px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
 			--shadow-lg:
-				0 8px 24px 0px oklch(0 0 0 / 0.2), 0 4px 8px -1px oklch(0 0 0 / 0.15);
+				0 8px 24px 0px rgba(0, 0, 0, 0.2), 0 4px 8px -1px rgba(0, 0, 0, 0.15);
 			--shadow-xl:
-				0 16px 32px 0px oklch(0 0 0 / 0.25), 0 8px 16px -1px oklch(0 0 0 / 0.2);
-			--shadow-2xl: 0 24px 48px 0px oklch(0 0 0 / 0.3);
+				0 16px 32px 0px rgba(0, 0, 0, 0.25), 0 8px 16px -1px rgba(0, 0, 0, 0.2);
+			--shadow-2xl: 0 24px 48px 0px rgba(0, 0, 0, 0.3);
 		}
 	}
 }
