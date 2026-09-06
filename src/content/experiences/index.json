@@ -1,7 +1,7 @@
 [
 	{
 		"id": "kuanta-indonesia-creative-technology-staff",
-		"period": "Oct 2025 - present",
+		"period": "Oct 2025 - Present",
 		"title": "Creative Technology Staff",
 		"company": "Kuanta Indonesia",
 		"logo": "https://kuanta.id/wp-content/uploads/2022/08/Logo-Kuanta-1-e1660739952828-150x150.png",
@@ -19,7 +19,7 @@
 		"id": "lebih-software-developer",
 		"period": "Jun 2024 - Aug 2025",
 		"title": "Software Developer",
-		"company": "Yayasan Lingkar Energi Bumi Indonesia Hijau (LEBIH)",
+		"company": "Lingkar Energi Bumi Indonesia Hijau (LEBIH)",
 		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
 		"icon": "ph--device-mobile",
 		"location": "Pasuruan",
@@ -47,104 +47,33 @@
 		"highlights": [
 			"Analyzed workflow and operational sequence across the air conditioner production line, from part assembly to packing",
 			"Developed software tools to improve production efficiency, track part flow, and reduce bottlenecks",
-			"Designed and implemented IoT integrations to capture real-time data for production performance",
-			"Collaborated with floor engineers and operators to gather insights and improve daily output tracking"
+			"Designed and implemented IoT integrations to capture real-time data for production performance"
 		]
 	},
 	{
-		"id": "apbl-fullstack-web-developer",
-		"period": "Feb 2023 - Nov 2023",
-		"title": "Fullstack Web Developer",
-		"company": "PENS Agile Project Based Learning (APBL)",
-		"logo": "agile-teknik.svg",
-		"icon": "ph--code",
-		"location": "Surabaya",
-		"kind": "campus",
-		"umbrellaOrg": "PENS",
-		"summary": "Built a productivity app for web and mobile with mind mapping capabilities.",
-		"skills": ["Fullstack Development", "Web", "Mobile"],
-		"highlights": [
-			"Designed and developed a cross-platform mind mapping application to enhance user productivity",
-			"Implemented real-time data synchronization between web and mobile versions",
-			"Utilized agile methodologies to manage feature iterations and ensure timely delivery"
-		]
-	},
-	{
-		"id": "apbl-product-owner-assistant",
-		"period": "Aug 2023 - Nov 2023",
-		"title": "Product Owner Assistant",
-		"company": "PENS Agile Project Based Learning (APBL)",
+		"id": "pens-projects",
+		"period": "2021 - 2025",
+		"title": "Student Organization & Research Projects",
+		"company": "Politeknik Elektronika Negeri Surabaya (PENS)",
 		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
-		"icon": "ph--user",
+		"icon": "ph--graduation-cap",
 		"location": "Surabaya",
 		"kind": "campus",
-		"umbrellaOrg": "PENS",
-		"summary": "Assisted in product strategy and backlog management for an Agile-based project, bridge the gap between stakeholders and the development team.",
+		"summary": "Developed various digital products for campus organizations and research laboratories, including election systems, news portals, and IoT monitoring dashboards.",
 		"skills": [
-			"Agile",
-			"Scrum",
-			"Backlog Management",
-			"Stakeholder Management"
+			"Fullstack Development",
+			"IoT",
+			"MQTT",
+			"REST API",
+			"Backend Development",
+			"CMS"
 		],
 		"highlights": [
-			"Defined product goals and managed the Product Backlog to maximize value for customers and the organization",
-			"Prioritized backlog items based on project scope, budget constraints, and delivery timelines",
-			"Facilitated backlog refinement sessions and actively participated in all Scrum ceremonies",
-			"Conducted acceptance testing for product increments and evaluated development progress"
-		]
-	},
-	{
-		"id": "pens-aquaculture-fullstack-developer",
-		"period": "Sep 2022 - Jan 2023",
-		"title": "Fullstack Developer",
-		"company": "PENS Aquaculture Laboratory",
-		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
-		"icon": "ph--code",
-		"location": "Surabaya",
-		"kind": "campus",
-		"umbrellaOrg": "PENS",
-		"summary": "Developed monitoring tools for IoT-based aquaculture operations.",
-		"skills": ["IoT", "MQTT", "REST API", "Dashboard"],
-		"highlights": [
-			"Engineered a web-based dashboard for real-time monitoring of water quality parameters in shrimp farming",
-			"Integrated IoT sensor data using MQTT and REST APIs for seamless data visualization",
-			"Implemented automated alerting systems to notify farmers of critical environmental changes"
-		]
-	},
-	{
-		"id": "himit-backend-developer",
-		"period": "Dec 2021 - Aug 2025",
-		"title": "Backend Developer",
-		"company": "E-CODE, Informatics Engineering Student Association (HIMIT)",
-		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
-		"icon": "ph--terminal-window",
-		"location": "Surabaya",
-		"kind": "campus",
-		"umbrellaOrg": "PENS",
-		"summary": "Built backend systems for student organization digital elections.",
-		"skills": ["Backend Development", "REST API", "Authentication"],
-		"highlights": [
-			"Architected and implemented a secure backend system for campus-wide student organization elections",
-			"Developed robust authentication and authorization mechanisms to ensure voting integrity and prevent fraud",
-			"Optimized API performance to handle high concurrent traffic during peak voting periods"
-		]
-	},
-	{
-		"id": "ent-fullstack-developer",
-		"period": "Sep 2021 - Aug 2025",
-		"title": "Fullstack Developer",
-		"company": "EEPIS News and Network Team (ENT)",
-		"logo": "https://ent.pens.ac.id/ent.svg",
-		"icon": "ph--code",
-		"location": "Surabaya",
-		"kind": "campus",
-		"umbrellaOrg": "PENS",
-		"summary": "Built and maintained official campus digital products, from public sites to internal incident tools.",
-		"skills": ["Fullstack Development", "CMS", "System Operations"],
-		"highlights": [
-			"Developed and maintained the official campus news portal and public profile website, serving thousands of visitors monthly",
-			"Built internal operational tools like CIRT (Cyber Incident Response Team) to streamline network incident reporting and resolution",
-			"Collaborated with cross-functional teams to migrate legacy systems to modern tech stacks, improving overall performance and security"
+			"Built and maintained the official campus news portal and public profile website, serving thousands of visitors monthly",
+			"Developed secure backend systems for student organization digital elections with robust authentication",
+			"Created web-based dashboards for IoT-based aquaculture and hydroponics monitoring with real-time data visualization",
+			"Built a cross-platform mind mapping application with real-time synchronization between web and mobile versions",
+			"Collaborated with cross-functional teams to migrate legacy systems to modern tech stacks"
 		]
 	}
 ]

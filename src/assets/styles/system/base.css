@@ -22,7 +22,8 @@
 	}
 
 	body {
-		@apply bg-background text-foreground leading-relaxed antialiased transition-colors;
+		@apply bg-background text-foreground antialiased transition-colors;
+		line-height: 1.6;
 	}
 
 	:where(p, li, dd, dt, figcaption) {
@@ -80,4 +81,15 @@
 			min-width: 44px;
 		}
 	}
+}
+
+/* Fix opacity variants for accessibility.
+   Unlayered so it beats the Tailwind utilities layer; at 0.8 alpha the
+   color must be darker than --muted-foreground so the blended result
+   still clears 4.5:1 on the light background. */
+.text-muted-foreground\/80 {
+	color: rgba(70, 69, 66, 0.8);
+}
+.dark .text-muted-foreground\/80 {
+	color: rgba(222, 221, 219, 0.8);
 }
