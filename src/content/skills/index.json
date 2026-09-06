@@ -1,46 +1,66 @@
 [
 	{
-		"title": "Languages",
+		"title": "Core",
 		"skills": [
-			{
-				"name": "JavaScript",
-				"description": "The web's native language",
-				"icon": "javascript"
-			},
 			{
 				"name": "TypeScript",
 				"description": "Type safety at scale",
 				"icon": "typescript-icon"
 			},
 			{
-				"name": "Go",
-				"description": "Concise language for systems and APIs",
+				"name": "Golang",
+				"description": "Systems & API development",
 				"icon": "go"
 			},
 			{
-				"name": "PHP",
-				"description": "Battle-tested web backend language",
-				"icon": "php"
+				"name": "JavaScript",
+				"description": "Web native language",
+				"icon": "javascript"
 			},
 			{
-				"name": "Dart",
-				"description": "Client-optimized language for mobile",
-				"icon": "dart"
-			},
-			{
-				"name": "C#",
-				"description": "Modern, type-safe language for .NET",
-				"icon": "c-sharp"
+				"name": "Node.js",
+				"description": "Server-side runtime",
+				"icon": "nodejs-icon"
 			},
 			{
 				"name": "Bash",
-				"description": "Shell scripting and automation",
+				"description": "Scripting & automation",
 				"icon": "bash-icon"
 			}
 		]
 	},
 	{
-		"title": "Databases",
+		"title": "Web Development",
+		"skills": [
+			{
+				"name": "Next.js",
+				"description": "React framework for production",
+				"icon": "nextjs-icon"
+			},
+			{
+				"name": "Astro",
+				"description": "Content-focused static sites",
+				"icon": "astro-icon"
+			},
+			{
+				"name": "React",
+				"description": "Component-based UI library",
+				"icon": "react"
+			},
+			{
+				"name": "Tailwind CSS",
+				"description": "Utility-first CSS",
+				"icon": "tailwindcss-icon"
+			},
+			{
+				"name": "Svelte",
+				"description": "Reactive compiled components",
+				"icon": "svelte-icon"
+			}
+		]
+	},
+	{
+		"title": "Data & Backend",
 		"skills": [
 			{
 				"name": "PostgreSQL",
@@ -48,29 +68,19 @@
 				"icon": "postgresql"
 			},
 			{
-				"name": "MySQL",
-				"description": "Reliable open-source relational DB",
-				"icon": "mysql-icon"
-			},
-			{
-				"name": "SQLite",
-				"description": "Lightweight relational DB",
-				"icon": "sqlite"
-			},
-			{
-				"name": "SQL Server",
-				"description": "Microsoft's relational DB",
-				"icon": "microsoft-icon"
-			},
-			{
-				"name": "MongoDB",
-				"description": "NoSQL document database",
-				"icon": "mongodb-icon"
-			},
-			{
 				"name": "Redis",
 				"description": "In-memory data store",
 				"icon": "redis"
+			},
+			{
+				"name": "Prisma",
+				"description": "Type-safe database toolkit",
+				"icon": "prisma"
+			},
+			{
+				"name": "Drizzle ORM",
+				"description": "Lightweight SQL ORM",
+				"icon": "drizzle-icon"
 			},
 			{
 				"name": "Supabase",
@@ -80,188 +90,13 @@
 		]
 	},
 	{
-		"title": "Frameworks",
+		"title": "DevOps & Testing",
 		"skills": [
 			{
-				"name": "Next.js",
-				"description": "React framework for production",
-				"icon": "nextjs-icon"
+				"name": "Docker",
+				"description": "Container platform",
+				"icon": "docker-icon"
 			},
-			{
-				"name": "Astro",
-				"description": "Static site generator",
-				"icon": "astro-icon"
-			},
-			{
-				"name": "React.js",
-				"description": "Declarative component-based UI",
-				"icon": "react"
-			},
-			{
-				"name": "Vue.js",
-				"description": "Approachable, versatile framework",
-				"icon": "vue"
-			},
-			{
-				"name": "Svelte",
-				"description": "Compiled reactive components",
-				"icon": "svelte-icon"
-			},
-			{
-				"name": "Redux",
-				"description": "Predictable app state management",
-				"icon": "redux"
-			},
-			{
-				"name": "NestJS",
-				"description": "Opinionated enterprise-grade framework",
-				"icon": "nestjs"
-			},
-			{
-				"name": "Hono",
-				"description": "Ultrafast edge-native framework",
-				"icon": "hono"
-			},
-			{
-				"name": "Express.js",
-				"description": "Minimalist HTTP server",
-				"icon": "express"
-			},
-			{
-				"name": "Laravel",
-				"description": "PHP web application framework",
-				"icon": "laravel"
-			},
-			{
-				"name": "Flutter",
-				"description": "Cross-platform UI toolkit",
-				"icon": "flutter"
-			},
-			{
-				"name": "Tailwind CSS",
-				"description": "Utility-first CSS framework",
-				"icon": "tailwindcss-icon"
-			},
-			{
-				"name": ".NET",
-				"description": "Cross-platform app development framework",
-				"icon": "dotnet"
-			}
-		]
-	},
-	{
-		"title": "Libraries & Tools",
-		"skills": [
-			{
-				"name": "Bun",
-				"description": "Fast JavaScript runtime",
-				"icon": "bun"
-			},
-			{
-				"name": "Node.js",
-				"description": "Server-side JS runtime",
-				"icon": "nodejs-icon"
-			},
-			{
-				"name": "Drizzle ORM",
-				"description": "TypeScript ORM for SQL",
-				"icon": "drizzle-icon"
-			},
-			{
-				"name": "Prisma",
-				"description": "Declarative database toolkit",
-				"icon": "prisma"
-			},
-			{
-				"name": "TanStack",
-				"description": "Type-safe headless primitives",
-				"icon": "react-query-icon"
-			},
-			{
-				"name": "Zod",
-				"description": "Schema-first validation",
-				"icon": "zod"
-			},
-			{
-				"name": "Vitest",
-				"description": "Vite-native test runner",
-				"icon": "vitest"
-			},
-			{
-				"name": "Playwright",
-				"description": "End-to-end testing for modern web apps",
-				"icon": "playwright"
-			},
-			{
-				"name": "Swagger",
-				"description": "API design and documentation",
-				"icon": "swagger"
-			},
-			{
-				"name": "Prettier",
-				"description": "Opinionated code formatter",
-				"icon": "prettier"
-			},
-			{
-				"name": "Biome",
-				"description": "Fast, all-in-one web toolchain",
-				"icon": "biomejs-icon"
-			}
-		]
-	},
-	{
-		"title": "Monitoring",
-		"skills": [
-			{
-				"name": "OpenTelemetry",
-				"description": "Open-source observability framework",
-				"icon": "opentelemetry-icon"
-			},
-			{
-				"name": "Prometheus",
-				"description": "Open-source monitoring and alerting toolkit",
-				"icon": "prometheus"
-			},
-			{
-				"name": "Grafana",
-				"description": "Observability dashboards",
-				"icon": "grafana"
-			},
-			{
-				"name": "Loki",
-				"description": "Log aggregation system",
-				"icon": "grafana"
-			},
-			{
-				"name": "Tempo",
-				"description": "Distributed tracing backend",
-				"icon": "grafana"
-			},
-			{
-				"name": "Sentry",
-				"description": "Real-time error tracking",
-				"icon": "sentry-icon"
-			}
-		]
-	},
-	{
-		"title": "Data Visualization",
-		"skills": [
-			{
-				"name": "ChartJS",
-				"description": "Simple HTML5 charts",
-				"icon": "chartjs"
-			},
-			{
-				"name": "D3",
-				"description": "Data-driven documents",
-				"icon": "d3"
-			}
-		]
-	},
-	{
-		"title": "Infrastructure",
-		"skills": [
 			{
 				"name": "Vercel",
 				"description": "Edge deployment platform",
@@ -269,18 +104,18 @@
 			},
 			{
 				"name": "Cloudflare",
-				"description": "Global CDN and edge workers",
+				"description": "Global CDN & edge workers",
 				"icon": "cloudflare-icon"
 			},
 			{
-				"name": "Docker",
-				"description": "Container platform for packaging and deploying apps",
-				"icon": "docker-icon"
+				"name": "Playwright",
+				"description": "E2E testing",
+				"icon": "playwright"
 			},
 			{
-				"name": "Firebase",
-				"description": "Backend-as-a-service by Google",
-				"icon": "firebase-icon"
+				"name": "Vitest",
+				"description": "Vite-native test runner",
+				"icon": "vitest"
 			}
 		]
 	}
