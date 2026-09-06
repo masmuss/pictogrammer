@@ -1,5 +1,5 @@
 import type { APIContext } from "astro";
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 import { createOgImageResponse, getAuthorInitials } from "@/lib/utils/og";
 
 export const prerender = true;

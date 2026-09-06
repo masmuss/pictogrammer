@@ -1,7 +1,7 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { expect, test } from "vitest";
 import SocialLinks from "@/components/common/SocialLinks.astro";
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 
 test("SocialLinks renders all links from siteConfig", async () => {
 	const container = await AstroContainer.create();

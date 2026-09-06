@@ -1,4 +1,4 @@
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 
 const dateFormat = new Intl.DateTimeFormat(
 	siteConfig.date.locale,
