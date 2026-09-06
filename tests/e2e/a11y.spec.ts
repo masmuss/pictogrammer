@@ -35,6 +35,13 @@ async function preparePageForAxe(
 			}
 		`
 	});
+	// Running CSS transitions override even !important declarations, so
+	// force any in-flight animation (e.g. fade-up reveals) to its end state.
+	await page.evaluate(() => {
+		for (const animation of document.getAnimations()) {
+			animation.finish();
+		}
+	});
 }
 
 /** Run axe-core and assert zero violations, optionally excluding selectors. */
@@ -125,7 +132,9 @@ test.describe("404 page", () => {
 test.describe("Individual content pages", () => {
 	test("blog post should be accessible", async ({ page }) => {
 		await page.goto("/blog");
-		const firstPostLink = page.locator("[data-testid='post-preview'] a").first();
+		const firstPostLink = page
+			.locator("[data-testid='post-preview'] a")
+			.first();
 		await firstPostLink.click();
 		await preparePageForAxe(page);
 
@@ -276,7 +285,9 @@ test.describe("Dark mode", () => {
 		page
 	}) => {
 		await page.goto("/blog");
-		const firstPostLink = page.locator("[data-testid='post-preview'] a").first();
+		const firstPostLink = page
+			.locator("[data-testid='post-preview'] a")
+			.first();
 		await firstPostLink.click();
 		await page.evaluate(() => document.documentElement.classList.add("dark"));
 		await preparePageForAxe(page, { keepDark: true });
@@ -346,7 +357,9 @@ test.describe("Search modal", () => {
 		const trigger = page.locator('button[aria-label="Search"]');
 		await trigger.click();
 
-		const dialog = page.locator('[data-slot="dialog-content"]').filter({ hasText: "Pagefind" });
+		const dialog = page
+			.locator('[data-slot="dialog-content"]')
+			.filter({ hasText: "Pagefind" });
 		await expect(dialog).toBeVisible();
 
 		await assertNoA11yViolations(page);
@@ -357,7 +370,9 @@ test.describe("Search modal", () => {
 		const trigger = page.locator('button[aria-label="Search"]');
 		await trigger.click();
 
-		const dialog = page.locator('[data-slot="dialog-content"]').filter({ hasText: "Pagefind" });
+		const dialog = page
+			.locator('[data-slot="dialog-content"]')
+			.filter({ hasText: "Pagefind" });
 		await expect(dialog).toBeVisible();
 
 		await page.keyboard.press("Escape");
@@ -370,13 +385,15 @@ test.describe("Search modal", () => {
 		const trigger = page.locator('button[aria-label="Search"]');
 		await trigger.click();
 
-		const dialog = page.locator('[data-slot="dialog-content"]').filter({ hasText: "Pagefind" });
+		const dialog = page
+			.locator('[data-slot="dialog-content"]')
+			.filter({ hasText: "Pagefind" });
 		await expect(dialog).toBeVisible();
 
 		// Click backdrop via dialog overlay
 		const overlay = page.locator('[data-slot="dialog-overlay"]').first();
 		await overlay.click({ position: { x: 2, y: 2 } });
-		
+
 		await page.waitForTimeout(400);
 		await expect(dialog).not.toBeVisible();
 	});
@@ -454,7 +471,9 @@ test.describe("Heading hierarchy", () => {
 
 	test("headings should not skip levels on blog post", async ({ page }) => {
 		await page.goto("/blog");
-		const firstPostLink = page.locator("[data-testid='post-preview'] a").first();
+		const firstPostLink = page
+			.locator("[data-testid='post-preview'] a")
+			.first();
 		await firstPostLink.click();
 		await preparePageForAxe(page);
 
