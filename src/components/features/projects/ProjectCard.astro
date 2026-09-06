@@ -38,17 +38,17 @@ const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 
 <Card
 	class={cn(
-		"bg-transparent border-none relative group-has-[:hover]/list:opacity-50 hover:opacity-100 transition-all hover:bg-card isolate duration-300",
+		"border border-transparent rounded-lg bg-transparent px-0 relative group-has-[:hover]/list:opacity-50 hover:opacity-100 transition-all hover:shadow-md hover:border-border hover:bg-card isolate duration-200",
 		className
 	)}
 	variant="ghost"
 	data-testid="project-item"
 >
-	<CardContent class="flex flex-row items-center h-full gap-5">
+	<CardContent class="flex flex-row items-center h-full gap-6">
 		{
 			displayIcon && (
-				<div class="text-primary mt-1 flex shrink-0 items-center justify-center rounded-lg">
-					<Icon name={displayIcon} class="text-3xl text-primary" />
+				<div class="text-muted-foreground mt-1 flex shrink-0 items-center justify-center rounded-md">
+					<Icon name={displayIcon} class="text-3xl" aria-hidden="true" />
 				</div>
 			)
 		}
@@ -66,7 +66,7 @@ const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 									? "noopener noreferrer"
 									: undefined
 							}
-							class="before:absolute before:inset-0 focus-visible:outline-none"
+							class="before:absolute before:inset-0 focus-visible:outline-2 focus-visible:outline-ring rounded"
 						>
 							{heading}
 						</a>
@@ -81,7 +81,7 @@ const effectiveLiveHref = liveHref ?? (!repoHref ? href : undefined);
 						href={repoHref}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-muted-foreground hover:text-foreground transition-colors absolute top-4 right-4 z-10 p-1"
+						class="text-muted-foreground hover:text-foreground transition-colors absolute top-4 right-4 z-10 p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
 						aria-label="Repository"
 						title="Source Code"
 					>
