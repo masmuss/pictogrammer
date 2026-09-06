@@ -3,7 +3,6 @@ title: Tiga Tahun Blog Ini
 description: September 2023 sampai September 2026 — apa yang berubah dari cara menulis, isi kepala, dan alasan kenapa blog ini masih hidup.
 date: 06 September 2026
 tags: [reflection]
-draft: true
 ---
 
 September 2023. Aku menulis "Hello, world!" — post pertama di blog ini.

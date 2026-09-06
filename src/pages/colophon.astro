@@ -3,12 +3,12 @@ export const prerender = true;
 
 import PageHeader from "@/components/common/PageHeader.astro";
 import ToolSection from "@/components/features/tools/ToolSection.astro";
-import siteConfig from "@/config/site-config";
+import { giscus } from "@/config/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getColophonData } from "@/lib/contents/colophon";
 
 const { architecture, design, infrastructure, tools } = getColophonData();
-const repoUrl = `https://github.com/${siteConfig.giscus.repo}`;
+const repoUrl = `https://github.com/${giscus.repo}`;
 ---
 
 <BaseLayout

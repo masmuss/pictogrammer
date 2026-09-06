@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 import { getReadTimeCount } from "@/lib/contents";
 import { createOgImageResponse, getAuthorInitials } from "@/lib/utils/og";
 import { getPostRouteId } from "@/lib/utils/post-route";

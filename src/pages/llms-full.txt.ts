@@ -1,5 +1,5 @@
 import type { APIContext } from "astro";
-import siteConfig from "@/config/site-config";
+import siteConfig from "@/config/site";
 import { getAllPosts } from "@/lib/contents";
 import { getPostUrl } from "@/lib/utils/post-route";
 
