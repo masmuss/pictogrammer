@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site-config";
+import { parseAndSanitizeMarkdown } from "@/lib/config/rss";
 import { getPostsByPath } from "@/lib/contents/post";
 import { getPostUrl } from "@/lib/utils/post-route";
 
@@ -17,7 +18,7 @@ export async function GET(context: APIContext) {
 			description: item.data.description,
 			link: new URL(getPostUrl(item), site).toString(),
 			pubDate: new Date(item.data.date),
-			content: item.body,
+			content: parseAndSanitizeMarkdown(item.body ?? ""),
 			author: `${siteConfig.author} <${siteConfig.email}>`,
 			categories: item.data.tags
 		}))
