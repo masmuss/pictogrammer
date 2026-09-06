@@ -69,6 +69,7 @@
 	}
 
 	&.gh-error {
+		/* biome-ignore lint/style/noDescendingSpecificity: intentional state modifier override */
 		.gh-avatar,
 		.gh-description,
 		.gh-chips {
