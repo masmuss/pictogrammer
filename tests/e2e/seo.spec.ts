@@ -8,7 +8,7 @@ test.describe("SEO and Meta Tags", () => {
 		await page.goto("/");
 
 		// Primary Meta Tags (Title & Description)
-		await expect(page).toHaveTitle(/pictogrammmer/);
+		await expect(page).toHaveTitle(/pictogrammer/);
 		const description = page.locator('meta[name="description"]');
 		await expect(description).toHaveAttribute("content", /Khoirul/);
 
@@ -23,7 +23,7 @@ test.describe("SEO and Meta Tags", () => {
 		);
 		await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
 			"content",
-			/pictogrammmer/
+			/pictogrammer/
 		);
 		await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
 			"content",
