@@ -1,0 +1,22 @@
+---
+import type { SeoExtraLink } from "./types";
+
+interface Props {
+	links: SeoExtraLink[];
+}
+
+const { links } = Astro.props;
+---
+
+{
+	links.map((link) => (
+		<link
+			title={link.title}
+			rel={link.rel}
+			href={link.href}
+			type={link.type}
+			media={link.media}
+			sizes={link.sizes}
+		/>
+	))
+}

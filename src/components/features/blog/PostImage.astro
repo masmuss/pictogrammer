@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { sanitizeCaption } from "@/lib/utils/sanitize-caption";
 
 interface Props {
 	src: ImageMetadata | string;
@@ -17,6 +18,7 @@ const optimizedSrc = isRemote
 		? `${src}&w=1200&q=80`
 		: src
 	: src;
+const caption = alt ? sanitizeCaption(alt) : "";
 ---
 
 <figure class:list={["flex flex-col items-center", customClass]}>
@@ -49,10 +51,10 @@ const optimizedSrc = isRemote
 	}
 
 	{
-		alt && (
+		caption && (
 			<figcaption
 				class="post-image-caption mt-2 text-center text-sm opacity-80"
-				set:html={alt}
+				set:html={caption}
 			/>
 		)
 	}
