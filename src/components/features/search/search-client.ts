@@ -1,20 +1,10 @@
-interface PagefindResultData {
-	url: string;
-	excerpt: string;
-	meta: {
-		title: string;
-		[key: string]: string;
-	};
-}
-
-interface PagefindSearchResult {
-	data: () => Promise<PagefindResultData>;
-}
-
-interface PagefindModule {
-	init: () => Promise<void>;
-	search: (query: string) => Promise<{ results: PagefindSearchResult[] }>;
-}
+import { escapeHtml, sanitizeExcerpt } from "./html";
+import {
+	loadPagefind,
+	type PagefindModule,
+	type PagefindResultData,
+	searchPagefind
+} from "./pagefind";
 
 function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
 	return {
@@ -155,12 +145,9 @@ class SearchController {
 
 	private loadPagefind(): Promise<void> {
 		if (this.initPromise) return this.initPromise;
-		this.initPromise = (async () => {
-			const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
-			const pf = await import(/* @vite-ignore */ pagefindPath);
-			this.pagefind = pf as PagefindModule;
-			await this.pagefind.init();
-		})();
+		this.initPromise = loadPagefind().then((pagefind) => {
+			this.pagefind = pagefind;
+		});
 		return this.initPromise;
 	}
 
@@ -251,9 +238,7 @@ class SearchController {
 			return [];
 		}
 
-		const search = await this.pagefind.search(trimmed);
-		const limited = search.results.slice(0, 10);
-		return Promise.all(limited.map((r) => r.data()));
+		return searchPagefind(this.pagefind, trimmed);
 	}
 
 	private render() {
@@ -297,14 +282,14 @@ class SearchController {
 						this.selectedIndex === i
 							? "text-primary"
 							: "group-hover:text-primary"
-					}">${this.esc(r.meta.title)}</h3>
+					}">${escapeHtml(r.meta.title)}</h3>
           <svg class="text-muted-foreground h-4 w-4 transition-transform ${
 						this.selectedIndex === i
 							? "translate-x-1"
 							: "group-hover:translate-x-1"
 					}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
-        <p class="text-muted-foreground mt-1 line-clamp-2 text-xs">${this.sanitize(r.excerpt)}</p>
+        <p class="text-muted-foreground mt-1 line-clamp-2 text-xs">${sanitizeExcerpt(r.excerpt)}</p>
       </a>
     `
 				)
@@ -316,7 +301,7 @@ class SearchController {
 		this.el.hint?.classList.add("hidden");
 		this.el.empty?.classList.remove("hidden");
 		if (this.el.empty) {
-			this.el.empty.innerHTML = `<p class="text-muted-foreground">No results for "${this.esc(this.query)}"</p>`;
+			this.el.empty.innerHTML = `<p class="text-muted-foreground">No results for "${escapeHtml(this.query)}"</p>`;
 		}
 		this.el.list?.classList.add("hidden");
 		this.el.status?.classList.add("hidden");
@@ -327,34 +312,6 @@ class SearchController {
 		this.el.empty?.classList.add("hidden");
 		this.el.list?.classList.add("hidden");
 		this.el.status?.classList.add("hidden");
-	}
-
-	private sanitize(excerpt: string): string {
-		const tpl = document.createElement("template");
-		tpl.innerHTML = excerpt;
-		const elements = tpl.content.querySelectorAll("*");
-		elements.forEach((el) => {
-			this.sanitizeElement(el);
-		});
-		return tpl.innerHTML;
-	}
-
-	private sanitizeElement(el: Element) {
-		if (el.tagName !== "MARK") {
-			el.replaceWith(document.createTextNode(el.textContent ?? ""));
-			return;
-		}
-
-		while (el.attributes.length > 0) {
-			const attrName = el.attributes[0]?.name;
-			if (attrName) el.removeAttribute(attrName);
-		}
-	}
-
-	private esc(str: string): string {
-		const div = document.createElement("div");
-		div.textContent = str;
-		return div.innerHTML;
 	}
 
 	private onKeydown(e: KeyboardEvent) {
