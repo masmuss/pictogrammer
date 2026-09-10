@@ -138,16 +138,8 @@ import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
 
 	document.addEventListener("astro:page-load", () => {
 		const dialog = document.getElementById("search-dialog");
-		if (dialog) initSearch(dialog);
-
-		// Setup trigger listener
 		const trigger = document.getElementById("search-trigger");
-		if (trigger) {
-			trigger.addEventListener("click", () => {
-				// @ts-ignore
-				window.__openSearch?.();
-			});
-		}
+		if (dialog) initSearch(dialog, trigger);
 
 		// Set macOS vs Windows Kbd symbol
 		const modKbd = document.getElementById("search-kbd-mod");
