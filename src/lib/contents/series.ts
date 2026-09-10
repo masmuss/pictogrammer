@@ -1,6 +1,7 @@
 import { getCollection, getEntry } from "astro:content";
 import type { CollectionPosts } from "@/types";
 import { getAllPosts } from "./post";
+import { getPostTimestamp } from "./posts/date";
 
 const SERIES_PREFIX = "series";
 
@@ -28,8 +29,8 @@ export async function getPostsBySeries(seriesId: string) {
 	return posts
 		.filter((post) => getSeriesIdFromPostId(post.id) === seriesId)
 		.sort((a, b) => {
-			const dateA = new Date(a.data.date).getTime();
-			const dateB = new Date(b.data.date).getTime();
+			const dateA = getPostTimestamp(a);
+			const dateB = getPostTimestamp(b);
 
 			if (dateA !== dateB) {
 				return dateA - dateB;
