@@ -120,13 +120,9 @@ import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
 	#search-dialog [data-search-list]::-webkit-scrollbar-thumb:hover {
 		background: hsl(var(--muted-foreground) / 0.5);
 	}
-	#search-dialog [data-search-result] mark {
-		background-color: color-mix(
-			in oklab,
-			var(--color-primary) 20%,
-			transparent
-		);
-		color: var(--color-primary);
+	[data-search-result] mark {
+		background-color: var(--color-accent);
+		color: var(--color-accent-foreground);
 		border-radius: 0.125rem;
 		padding: 0 0.125rem;
 		font-weight: 500;
