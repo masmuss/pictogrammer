@@ -25,6 +25,7 @@ function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
 
 class SearchController {
 	private dialogRoot: HTMLElement;
+	private trigger: HTMLElement | null;
 	private isOpen = false;
 	private query = "";
 	private results: PagefindResultData[] = [];
@@ -35,6 +36,10 @@ class SearchController {
 	private debounceTimer: ReturnType<typeof setTimeout> | null = null;
 	private initPromise: Promise<void> | null = null;
 	private onKeydownBound: (e: KeyboardEvent) => void;
+	private onDialogChangeBound: (e: Event) => void;
+	private onTriggerClickBound: () => void;
+	private onInputBound: (e: Event) => void;
+	private onListMouseoverBound: (e: Event) => void;
 
 	private el: {
 		input: HTMLInputElement | null;
@@ -47,13 +52,18 @@ class SearchController {
 		escBtn: HTMLButtonElement | null;
 	};
 
-	constructor(dialogRoot: HTMLElement) {
+	constructor(dialogRoot: HTMLElement, trigger: HTMLElement | null) {
 		this.dialogRoot = dialogRoot;
+		this.trigger = trigger;
 		const content = dialogRoot.querySelector<HTMLElement>(
 			'[data-slot="dialog-content"]'
 		);
 		this.el = this.queryElements(content);
 		this.onKeydownBound = this.onKeydown.bind(this);
+		this.onDialogChangeBound = this.onDialogChange.bind(this);
+		this.onTriggerClickBound = this.openSearch.bind(this);
+		this.onInputBound = this.onInput.bind(this);
+		this.onListMouseoverBound = this.onListMouseover.bind(this);
 	}
 
 	public init() {
@@ -88,40 +98,51 @@ class SearchController {
 	}
 
 	private setupEventListeners() {
-		this.dialogRoot.addEventListener("dialog:change", (e: Event) => {
-			const detail = (e as CustomEvent).detail;
-			this.isOpen = detail?.open ?? false;
-			if (this.isOpen) {
-				requestAnimationFrame(() => this.el.input?.focus());
-			} else {
-				this.reset();
-			}
-		});
-
+		this.dialogRoot.addEventListener("dialog:change", this.onDialogChangeBound);
+		this.trigger?.addEventListener("click", this.onTriggerClickBound);
 		document.addEventListener("keydown", this.onKeydownBound);
-		this.el.escBtn?.addEventListener("click", () => this.emit("close"));
-		this.el.input?.addEventListener("input", (e) => {
-			this.query = (e.target as HTMLInputElement).value;
-			this.handleSearch();
-		});
-		this.el.list?.addEventListener(
-			"mouseover",
-			this.onListMouseover.bind(this)
-		);
+		this.el.escBtn?.addEventListener("click", this.onCloseButtonClick);
+		this.el.input?.addEventListener("input", this.onInputBound);
+		this.el.list?.addEventListener("mouseover", this.onListMouseoverBound);
 	}
 
 	private exposeGlobalMethods() {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-expect-error
 		window.__openSearch = () => this.openSearch();
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-expect-error
 		window.__closeSearch = () => this.closeSearch();
 	}
 
 	public cleanup() {
+		this.dialogRoot.removeEventListener(
+			"dialog:change",
+			this.onDialogChangeBound
+		);
+		this.trigger?.removeEventListener("click", this.onTriggerClickBound);
 		document.removeEventListener("keydown", this.onKeydownBound);
+		this.el.escBtn?.removeEventListener("click", this.onCloseButtonClick);
+		this.el.input?.removeEventListener("input", this.onInputBound);
+		this.el.list?.removeEventListener("mouseover", this.onListMouseoverBound);
 		if (this.debounceTimer) clearTimeout(this.debounceTimer);
+		delete window.__openSearch;
+		delete window.__closeSearch;
+	}
+
+	private onDialogChange(e: Event) {
+		const detail = (e as CustomEvent<{ open?: boolean }>).detail;
+		this.isOpen = detail?.open ?? false;
+		if (this.isOpen) {
+			requestAnimationFrame(() => this.el.input?.focus());
+		} else {
+			this.reset();
+		}
+	}
+
+	private onCloseButtonClick = () => {
+		this.emit("close");
+	};
+
+	private onInput(e: Event) {
+		this.query = (e.target as HTMLInputElement).value;
+		this.handleSearch();
 	}
 
 	private emit(action: "open" | "close") {
@@ -409,10 +430,13 @@ class SearchController {
 
 let instance: SearchController | null = null;
 
-export function initSearch(dialogRoot: HTMLElement) {
+export function initSearch(
+	dialogRoot: HTMLElement,
+	trigger: HTMLElement | null = null
+) {
 	if (instance) {
 		instance.cleanup();
 	}
-	instance = new SearchController(dialogRoot);
+	instance = new SearchController(dialogRoot, trigger);
 	instance.init();
 }
