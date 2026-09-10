@@ -12,7 +12,7 @@ export type SocialLink = {
 	text: string;
 	href: string;
 	icon: string;
-	header?: string;
+	showInHeader?: boolean;
 };
 
 export type NavLink = {
