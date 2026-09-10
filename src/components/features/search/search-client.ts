@@ -1,20 +1,10 @@
-interface PagefindResultData {
-	url: string;
-	excerpt: string;
-	meta: {
-		title: string;
-		[key: string]: string;
-	};
-}
-
-interface PagefindSearchResult {
-	data: () => Promise<PagefindResultData>;
-}
-
-interface PagefindModule {
-	init: () => Promise<void>;
-	search: (query: string) => Promise<{ results: PagefindSearchResult[] }>;
-}
+import { escapeHtml, sanitizeExcerpt } from "./html";
+import {
+	loadPagefind,
+	type PagefindModule,
+	type PagefindResultData,
+	searchPagefind
+} from "./pagefind";
 
 function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
 	return {
@@ -25,6 +15,7 @@ function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
 
 class SearchController {
 	private dialogRoot: HTMLElement;
+	private trigger: HTMLElement | null;
 	private isOpen = false;
 	private query = "";
 	private results: PagefindResultData[] = [];
@@ -35,6 +26,10 @@ class SearchController {
 	private debounceTimer: ReturnType<typeof setTimeout> | null = null;
 	private initPromise: Promise<void> | null = null;
 	private onKeydownBound: (e: KeyboardEvent) => void;
+	private onDialogChangeBound: (e: Event) => void;
+	private onTriggerClickBound: () => void;
+	private onInputBound: (e: Event) => void;
+	private onListMouseoverBound: (e: Event) => void;
 
 	private el: {
 		input: HTMLInputElement | null;
@@ -47,13 +42,18 @@ class SearchController {
 		escBtn: HTMLButtonElement | null;
 	};
 
-	constructor(dialogRoot: HTMLElement) {
+	constructor(dialogRoot: HTMLElement, trigger: HTMLElement | null) {
 		this.dialogRoot = dialogRoot;
+		this.trigger = trigger;
 		const content = dialogRoot.querySelector<HTMLElement>(
 			'[data-slot="dialog-content"]'
 		);
 		this.el = this.queryElements(content);
 		this.onKeydownBound = this.onKeydown.bind(this);
+		this.onDialogChangeBound = this.onDialogChange.bind(this);
+		this.onTriggerClickBound = this.openSearch.bind(this);
+		this.onInputBound = this.onInput.bind(this);
+		this.onListMouseoverBound = this.onListMouseover.bind(this);
 	}
 
 	public init() {
@@ -88,40 +88,51 @@ class SearchController {
 	}
 
 	private setupEventListeners() {
-		this.dialogRoot.addEventListener("dialog:change", (e: Event) => {
-			const detail = (e as CustomEvent).detail;
-			this.isOpen = detail?.open ?? false;
-			if (this.isOpen) {
-				requestAnimationFrame(() => this.el.input?.focus());
-			} else {
-				this.reset();
-			}
-		});
-
+		this.dialogRoot.addEventListener("dialog:change", this.onDialogChangeBound);
+		this.trigger?.addEventListener("click", this.onTriggerClickBound);
 		document.addEventListener("keydown", this.onKeydownBound);
-		this.el.escBtn?.addEventListener("click", () => this.emit("close"));
-		this.el.input?.addEventListener("input", (e) => {
-			this.query = (e.target as HTMLInputElement).value;
-			this.handleSearch();
-		});
-		this.el.list?.addEventListener(
-			"mouseover",
-			this.onListMouseover.bind(this)
-		);
+		this.el.escBtn?.addEventListener("click", this.onCloseButtonClick);
+		this.el.input?.addEventListener("input", this.onInputBound);
+		this.el.list?.addEventListener("mouseover", this.onListMouseoverBound);
 	}
 
 	private exposeGlobalMethods() {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-expect-error
 		window.__openSearch = () => this.openSearch();
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-expect-error
 		window.__closeSearch = () => this.closeSearch();
 	}
 
 	public cleanup() {
+		this.dialogRoot.removeEventListener(
+			"dialog:change",
+			this.onDialogChangeBound
+		);
+		this.trigger?.removeEventListener("click", this.onTriggerClickBound);
 		document.removeEventListener("keydown", this.onKeydownBound);
+		this.el.escBtn?.removeEventListener("click", this.onCloseButtonClick);
+		this.el.input?.removeEventListener("input", this.onInputBound);
+		this.el.list?.removeEventListener("mouseover", this.onListMouseoverBound);
 		if (this.debounceTimer) clearTimeout(this.debounceTimer);
+		delete window.__openSearch;
+		delete window.__closeSearch;
+	}
+
+	private onDialogChange(e: Event) {
+		const detail = (e as CustomEvent<{ open?: boolean }>).detail;
+		this.isOpen = detail?.open ?? false;
+		if (this.isOpen) {
+			requestAnimationFrame(() => this.el.input?.focus());
+		} else {
+			this.reset();
+		}
+	}
+
+	private onCloseButtonClick = () => {
+		this.emit("close");
+	};
+
+	private onInput(e: Event) {
+		this.query = (e.target as HTMLInputElement).value;
+		this.handleSearch();
 	}
 
 	private emit(action: "open" | "close") {
@@ -134,12 +145,9 @@ class SearchController {
 
 	private loadPagefind(): Promise<void> {
 		if (this.initPromise) return this.initPromise;
-		this.initPromise = (async () => {
-			const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
-			const pf = await import(/* @vite-ignore */ pagefindPath);
-			this.pagefind = pf as PagefindModule;
-			await this.pagefind.init();
-		})();
+		this.initPromise = loadPagefind().then((pagefind) => {
+			this.pagefind = pagefind;
+		});
 		return this.initPromise;
 	}
 
@@ -230,9 +238,7 @@ class SearchController {
 			return [];
 		}
 
-		const search = await this.pagefind.search(trimmed);
-		const limited = search.results.slice(0, 10);
-		return Promise.all(limited.map((r) => r.data()));
+		return searchPagefind(this.pagefind, trimmed);
 	}
 
 	private render() {
@@ -276,14 +282,14 @@ class SearchController {
 						this.selectedIndex === i
 							? "text-primary"
 							: "group-hover:text-primary"
-					}">${this.esc(r.meta.title)}</h3>
+					}">${escapeHtml(r.meta.title)}</h3>
           <svg class="text-muted-foreground h-4 w-4 transition-transform ${
 						this.selectedIndex === i
 							? "translate-x-1"
 							: "group-hover:translate-x-1"
 					}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
-        <p class="text-muted-foreground mt-1 line-clamp-2 text-xs">${this.sanitize(r.excerpt)}</p>
+        <p class="text-muted-foreground mt-1 line-clamp-2 text-xs">${sanitizeExcerpt(r.excerpt)}</p>
       </a>
     `
 				)
@@ -295,7 +301,7 @@ class SearchController {
 		this.el.hint?.classList.add("hidden");
 		this.el.empty?.classList.remove("hidden");
 		if (this.el.empty) {
-			this.el.empty.innerHTML = `<p class="text-muted-foreground">No results for "${this.esc(this.query)}"</p>`;
+			this.el.empty.innerHTML = `<p class="text-muted-foreground">No results for "${escapeHtml(this.query)}"</p>`;
 		}
 		this.el.list?.classList.add("hidden");
 		this.el.status?.classList.add("hidden");
@@ -306,34 +312,6 @@ class SearchController {
 		this.el.empty?.classList.add("hidden");
 		this.el.list?.classList.add("hidden");
 		this.el.status?.classList.add("hidden");
-	}
-
-	private sanitize(excerpt: string): string {
-		const tpl = document.createElement("template");
-		tpl.innerHTML = excerpt;
-		const elements = tpl.content.querySelectorAll("*");
-		elements.forEach((el) => {
-			this.sanitizeElement(el);
-		});
-		return tpl.innerHTML;
-	}
-
-	private sanitizeElement(el: Element) {
-		if (el.tagName !== "MARK") {
-			el.replaceWith(document.createTextNode(el.textContent ?? ""));
-			return;
-		}
-
-		while (el.attributes.length > 0) {
-			const attrName = el.attributes[0]?.name;
-			if (attrName) el.removeAttribute(attrName);
-		}
-	}
-
-	private esc(str: string): string {
-		const div = document.createElement("div");
-		div.textContent = str;
-		return div.innerHTML;
 	}
 
 	private onKeydown(e: KeyboardEvent) {
@@ -409,10 +387,13 @@ class SearchController {
 
 let instance: SearchController | null = null;
 
-export function initSearch(dialogRoot: HTMLElement) {
+export function initSearch(
+	dialogRoot: HTMLElement,
+	trigger: HTMLElement | null = null
+) {
 	if (instance) {
 		instance.cleanup();
 	}
-	instance = new SearchController(dialogRoot);
+	instance = new SearchController(dialogRoot, trigger);
 	instance.init();
 }

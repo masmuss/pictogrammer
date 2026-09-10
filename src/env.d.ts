@@ -8,3 +8,8 @@ interface Navigator {
 		brands: Array<{ brand: string; version: string }>;
 	};
 }
+
+interface Window {
+	__openSearch?: () => void;
+	__closeSearch?: () => void;
+}

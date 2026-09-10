@@ -1,12 +1,5 @@
 import type { CollectionPosts } from "@/types";
-
-function getPostYear(post: CollectionPosts): number {
-	return new Date(post.data.date).getFullYear();
-}
-
-function getPostMonth(post: CollectionPosts): number {
-	return new Date(post.data.date).getMonth();
-}
+import { getPostMonth, getPostYear } from "./date";
 
 export function groupPostsByYear(
 	posts: CollectionPosts[]

@@ -1,13 +1,12 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { CollectionPosts } from "@/types";
+import { getPostSection, getPostTimestamp } from "./date";
 
 function sortPostsByDate(
 	itemA: CollectionPosts,
 	itemB: CollectionPosts
 ): number {
-	return (
-		new Date(itemB.data.date).getTime() - new Date(itemA.data.date).getTime()
-	);
+	return getPostTimestamp(itemB) - getPostTimestamp(itemA);
 }
 
 export async function getAllPosts(limit?: number): Promise<CollectionPosts[]> {
@@ -17,7 +16,7 @@ export async function getAllPosts(limit?: number): Promise<CollectionPosts[]> {
 		return import.meta.env.PROD ? isNotDraft : true;
 	});
 
-	const sortedPosts = posts.sort(sortPostsByDate);
+	const sortedPosts = [...posts].sort(sortPostsByDate);
 
 	return limit ? sortedPosts.slice(0, limit) : sortedPosts;
 }
@@ -61,9 +60,10 @@ export async function getPostsByPath(
 	const posts = await getAllPosts();
 
 	const filtered = posts.filter((post) => {
-		if (!path) return !post.id.startsWith("series/");
+		const section = getPostSection(post);
+		if (!path) return section !== "series";
 
-		return post.filePath?.includes(`/post/${path}/`);
+		return section === path;
 	});
 
 	return limit ? filtered.slice(0, limit) : filtered;

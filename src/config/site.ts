@@ -12,13 +12,13 @@ export const socialLinks: SocialLink[] = [
 		text: "GitHub",
 		href: "https://github.com/masmuss",
 		icon: "ph:github-logo",
-		header: "ph:github-logo"
+		showInHeader: true
 	},
 	{
 		text: "Twitter",
 		href: "https://x.com/rexbocho",
 		icon: "ph:x-logo",
-		header: "ph:x-logo"
+		showInHeader: true
 	},
 	{
 		text: "LinkedIn",
@@ -37,6 +37,10 @@ export const socialLinks: SocialLink[] = [
 	}
 ];
 
+const headerSocialLinks = socialLinks
+	.filter((link) => link.showInHeader)
+	.map(({ text, href, icon }) => ({ text, href, icon }));
+
 export const header: Header = {
 	logo: {
 		src: "/logo.svg",
@@ -52,12 +56,7 @@ export const header: Header = {
 		{ text: "Reading List", href: "/reading-list", icon: "ph:book" },
 		{ text: "Colophon", href: "/colophon", icon: "ph:info" },
 		{ text: "Tools", href: "/tools", icon: "ph:toolbox" },
-		{
-			text: "GitHub",
-			href: "https://github.com/masmuss",
-			icon: "ph:github-logo"
-		},
-		{ text: "Twitter", href: "https://x.com/rexbocho", icon: "ph:x-logo" },
+		...headerSocialLinks,
 		{ text: "RSS", href: "/rss.xml", icon: "ph:rss" }
 	]
 };
