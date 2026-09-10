@@ -1,3 +1,11 @@
+# [1.48.0](https://github.com/masmuss/pictogrammer/compare/v1.47.0...v1.48.0) (2026-09-10)
+
+
+### Features
+
+* **posts:** add getPostSection and update post filtering by path ([abff974](https://github.com/masmuss/pictogrammer/commit/abff9749b4e66bcc2b36dc3bd0da92cfc55c7809))
+* **search:** refactor event listener management and cleanup ([72d1728](https://github.com/masmuss/pictogrammer/commit/72d17284ae07129f32e4ef10417b48cf2721e91a))
+
 # [1.47.0](https://github.com/masmuss/pictogrammer/compare/v1.46.1...v1.47.0) (2026-09-09)
 
 
