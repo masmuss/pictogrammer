@@ -1,6 +1,6 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { CollectionPosts } from "@/types";
-import { getPostTimestamp } from "./date";
+import { getPostSection, getPostTimestamp } from "./date";
 
 function sortPostsByDate(
 	itemA: CollectionPosts,
@@ -60,9 +60,10 @@ export async function getPostsByPath(
 	const posts = await getAllPosts();
 
 	const filtered = posts.filter((post) => {
-		if (!path) return !post.id.startsWith("series/");
+		const section = getPostSection(post);
+		if (!path) return section !== "series";
 
-		return post.filePath?.includes(`/post/${path}/`);
+		return section === path;
 	});
 
 	return limit ? filtered.slice(0, limit) : filtered;
