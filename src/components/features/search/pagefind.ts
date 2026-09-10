@@ -18,7 +18,9 @@ export interface PagefindModule {
 
 export async function loadPagefind(): Promise<PagefindModule> {
 	const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
-	const pagefind = (await import(/* @vite-ignore */ pagefindPath)) as PagefindModule;
+	const pagefind = (await import(
+		/* @vite-ignore */ pagefindPath
+	)) as PagefindModule;
 	await pagefind.init();
 	return pagefind;
 }
@@ -29,5 +31,7 @@ export async function searchPagefind(
 	limit = 10
 ): Promise<PagefindResultData[]> {
 	const search = await pagefind.search(query);
-	return Promise.all(search.results.slice(0, limit).map((result) => result.data()));
+	return Promise.all(
+		search.results.slice(0, limit).map((result) => result.data())
+	);
 }
