@@ -37,6 +37,39 @@ test.describe("SEO and Meta Tags", () => {
 		);
 	});
 
+	test("blog post has article SEO metadata and JSON-LD", async ({ page }) => {
+		await page.goto("/blog/reflections/tiga-tahun-blog-ini");
+
+		await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
+			"content",
+			"article"
+		);
+		await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+			"content",
+			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini"
+		);
+		await expect(
+			page.locator('meta[property="article:published_time"]')
+		).toHaveAttribute("content", /^\d{4}-\d{2}-\d{2}T/);
+		await expect(
+			page.locator('meta[property="twitter:url"]')
+		).toHaveAttribute(
+			"content",
+			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini"
+		);
+
+		const jsonLd = page.locator('script[type="application/ld+json"]').first();
+		await expect(jsonLd).toBeAttached();
+		const schema = JSON.parse((await jsonLd.textContent()) ?? "{}");
+		const articleSchema = schema["@graph"].find(
+			(item: { ["@type"]?: string }) => item["@type"] === "BlogPosting"
+		);
+		expect(articleSchema).toBeDefined();
+		expect(articleSchema.mainEntityOfPage["@id"]).toBe(
+			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini"
+		);
+	});
+
 	test("favicon and manifest links are present", async ({ page }) => {
 		await page.goto("/");
 
