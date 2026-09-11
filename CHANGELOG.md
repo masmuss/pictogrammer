@@ -1,3 +1,10 @@
+# [1.49.0](https://github.com/masmuss/pictogrammer/compare/v1.48.0...v1.49.0) (2026-09-11)
+
+
+### Features
+
+* **config:** redirect sitemap.xml to sitemap-index.xml ([f54de5b](https://github.com/masmuss/pictogrammer/commit/f54de5b3011fca60baaefcd50d8ec5af29e76487))
+
 # [1.48.0](https://github.com/masmuss/pictogrammer/compare/v1.47.0...v1.48.0) (2026-09-10)
 
 
