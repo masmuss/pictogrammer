@@ -21,7 +21,7 @@
 				},
 				{
 					"key": "Content-Security-Policy",
-					"value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://giscus.app https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https:; font-src 'self'; frame-src https://giscus.app; connect-src 'self' https://giscus.app https://cloudflareinsights.com; frame-ancestors 'none'"
+					"value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://giscus.app https://static.cloudflareinsights.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://giscus.app; img-src 'self' data: https:; font-src 'self'; frame-src https://giscus.app; connect-src 'self' https://giscus.app https://cloudflareinsights.com; frame-ancestors 'none'"
 				}
 			]
 		},

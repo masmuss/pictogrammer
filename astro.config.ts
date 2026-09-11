@@ -20,6 +20,9 @@ export default defineConfig({
 	site: "https://khoirul.me",
 	trailingSlash: "never",
 	prerenderConflictBehavior: "error",
+	redirects: {
+    "/sitemap.xml": "/sitemap-index.xml",
+  },
 	experimental: {
 		collectionStorage: "chunked"
 	},
