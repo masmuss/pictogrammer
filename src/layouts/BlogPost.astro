@@ -93,40 +93,40 @@ const ogImage = coverImageResolved || socialImage;
 		<a
 			aria-label="Back to Top"
 			href="#"
-			class="back-to-top bg-muted hover:border-border/75 duration-slow fixed inset-e-12 bottom-16 z-50 flex h-12 w-12 items-center justify-center rounded-md text-2xl opacity-0 transition-all md:inset-e-16"
+			class="back-to-top bg-muted text-foreground border-border hover:border-border/75 duration-slow pointer-events-none fixed inset-e-12 bottom-16 z-50 flex h-12 w-12 items-center justify-center rounded-md border text-2xl opacity-0 transition-all md:inset-e-16"
 			id="to-top-btn"
 		>
 			<Icon name="ph:arrow-up" />
 		</a>
 	</div>
+	<script is:inline>
+		const setupBackToTop = () => {
+			const button = document.querySelector("#to-top-btn");
+			if (!(button instanceof HTMLElement) || button.dataset.initialized) return;
+
+			button.dataset.initialized = "true";
+			const updateVisibility = () => {
+				button.classList.toggle("is-visible", window.scrollY > 150);
+			};
+
+			window.addEventListener("scroll", updateVisibility, { passive: true });
+			updateVisibility();
+		};
+
+		document.addEventListener("astro:page-load", setupBackToTop);
+		setupBackToTop();
+	</script>
 	{hasGithubCard && <script async is:inline src="/github-card.js" />}
 </BaseLayout>
 
 <style>
-	@supports (animation-timeline: scroll()) {
-		.back-to-top {
-			animation: reveal-back-to-top linear forwards;
-			animation-timeline: scroll(root);
-			animation-range: 150px 500px;
-		}
+	.back-to-top {
+		transform: translateY(28px);
 	}
 
-	@keyframes reveal-back-to-top {
-		from {
-			opacity: 0;
-			transform: translateY(28px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	/* Fallback: always visible when scroll-driven animations unsupported */
-	@supports not (animation-timeline: scroll()) {
-		.back-to-top {
-			opacity: 1;
-			transform: translateY(0);
-		}
+	.back-to-top.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+		pointer-events: auto;
 	}
 </style>
