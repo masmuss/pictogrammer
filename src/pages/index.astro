@@ -71,14 +71,10 @@ const ctaLinks = [
 						as="a"
 						href={link.href}
 						variant="ghost"
-						class="group/cta px-0"
+						class="group/cta px-0 hover:underline underline-offset-4"
 					>
 						{link.label}
-						<Icon
-							name="ph:arrow-right"
-							class="transition-transform duration-base group-hover/cta:translate-x-1"
-							aria-hidden="true"
-						/>
+						<Icon name="ph:arrow-up-right" aria-hidden="true" />
 					</Button>
 				))
 			}
