@@ -102,7 +102,8 @@ const ogImage = coverImageResolved || socialImage;
 	<script is:inline>
 		const setupBackToTop = () => {
 			const button = document.querySelector("#to-top-btn");
-			if (!(button instanceof HTMLElement) || button.dataset.initialized) return;
+			if (!(button instanceof HTMLElement) || button.dataset.initialized)
+				return;
 
 			button.dataset.initialized = "true";
 			const updateVisibility = () => {
