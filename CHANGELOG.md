@@ -1,3 +1,15 @@
+# [1.50.0](https://github.com/masmuss/pictogrammer/compare/v1.49.0...v1.50.0) (2026-09-12)
+
+
+### Bug Fixes
+
+* **layout:** replace scroll-driven animation with JS for back-to-top ([0e6c9c7](https://github.com/masmuss/pictogrammer/commit/0e6c9c75d24abf6a96cd6d13ae1ca5e7974ffa71))
+
+
+### Features
+
+* **home:** update external link icons and hover styles ([4115b98](https://github.com/masmuss/pictogrammer/commit/4115b98e3cb6fe3486da2e992098e535bbb15fc8))
+
 # [1.49.0](https://github.com/masmuss/pictogrammer/compare/v1.48.0...v1.49.0) (2026-09-11)
 
 
