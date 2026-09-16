@@ -1,3 +1,10 @@
+# [1.51.0](https://github.com/masmuss/pictogrammer/compare/v1.50.0...v1.51.0) (2026-09-16)
+
+
+### Features
+
+* **deps:** add Cloudflare Wrangler dev and deploy scripts ([015ad70](https://github.com/masmuss/pictogrammer/commit/015ad7090302223cd884a7dfce6d970bc348b0ca))
+
 # [1.50.0](https://github.com/masmuss/pictogrammer/compare/v1.49.0...v1.50.0) (2026-09-12)
 
 
