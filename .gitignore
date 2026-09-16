@@ -28,6 +28,7 @@ pnpm-debug.log*
 # log files
 *.log
 .vercel
+.wrangler
 
 # deploy scripts
 deploy.sh
