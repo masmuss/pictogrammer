@@ -1,0 +1,3 @@
+# The `redirects` in astro.config.ts handle this during static dev/build,
+# but this file ensures that the Cloudflare edge server returns a 301 (rather than an HTML meta-refresh).
+/sitemap.xml /sitemap-index.xml 301
