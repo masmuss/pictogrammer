@@ -26,11 +26,11 @@ bun run dev
 
 ## Branching & Workflow
 
-Semua perubahan kode atau konten harus dilakukan di branch terpisah sebelum digabungkan ke `develop`. Gunakan penamaan branch berikut sesuai kebutuhan:
+All code or content changes must be made in a separate branch before merging into `develop`. Use the following branch naming as needed:
 
-- `post/`: Khusus untuk menambah atau mengedit file Markdown/MDX (contoh: `post/review-frankenphp`).
-- `feat/`: Untuk penambahan fitur baru di Astro atau perubahan UI (contoh: `feat/dark-mode`).
-- `fix/`: Untuk memperbaiki bug (contoh: `fix/broken-links`).
+- `post/`: For adding or editing Markdown/MDX files (e.g. `post/review-frankenphp`).
+- `feat/`: For new Astro features or UI changes (e.g. `feat/dark-mode`).
+- `fix/`: For bug fixes (e.g. `fix/broken-links`).
 
 ## Commands
 
