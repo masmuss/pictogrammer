@@ -1,7 +1,14 @@
 import { getEntry } from "astro:content";
 import type { z } from "astro/zod";
 
-type SupportedCollection = "certifications" | "educations" | "experiences";
+type SupportedCollection =
+	| "certifications"
+	| "educations"
+	| "experiences"
+	| "projects"
+	| "skills"
+	| "tools"
+	| "reading";
 
 export async function getContentEntryData<T extends z.ZodType>(
 	collection: SupportedCollection,
@@ -12,7 +19,7 @@ export async function getContentEntryData<T extends z.ZodType>(
 
 	if (!entry) {
 		throw new Error(
-			`Missing ${collection} content at src/content/${collection}/${id}.json`
+			`Missing ${collection} content at content/${collection}/${id}.json`
 		);
 	}
 

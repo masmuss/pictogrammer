@@ -1,6 +1,10 @@
 import type { SchemaContext } from "astro:content";
 import { z } from "astro/zod";
 
+// Convention: schema export name mirrors the collection key exactly
+// (<key>Schema). Per-file entry collections (post, series) use z.object;
+// single-index.json collections use z.array(...) of that collection's items.
+
 function removeDupsAndLowerCase(array: string[]): string[] {
 	if (!array.length) return array;
 	const lowercaseItems = array.map((str) => str.toLowerCase());

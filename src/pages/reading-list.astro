@@ -1,14 +1,13 @@
 ---
 export const prerender = true;
 
-import { getCollection } from "astro:content";
 import PageHeader from "@/components/common/PageHeader.astro";
 import Section from "@/components/common/Section.astro";
 import BookItem from "@/components/features/reading/BookItem.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getAllBooks } from "@/lib/contents/reading";
 
-const readingCollection = await getCollection("reading");
-const books = readingCollection.flatMap((entry) => entry.data);
+const books = await getAllBooks();
 
 const currentlyReading = books.filter((book) => book.status === "reading");
 const readBooks = books.filter((book) => book.status === "read");
