@@ -9,8 +9,8 @@ Personal portfolio and blog built with Astro. Features technical writing, projec
 
 | Layer     | Technology                            |
 | --------- | ------------------------------------- |
-| Framework | Astro 7                               |
-| UI Engine | Svelte 5 (interactive islands)        |
+| Framework | Astro 7 (static, no UI framework)     |
+| UI Engine | Astro components + vanilla TypeScript |
 | Styling   | Tailwind CSS 4                        |
 | Language  | TypeScript 6                          |
 | Content   | Astro Content Collections (MD + JSON) |
@@ -26,11 +26,11 @@ bun run dev
 
 ## Branching & Workflow
 
-Semua perubahan kode atau konten harus dilakukan di branch terpisah sebelum digabungkan ke `main`. Gunakan penamaan branch berikut sesuai kebutuhan:
+All code or content changes must be made in a separate branch before merging into `develop`. Use the following branch naming as needed:
 
-- `post/`: Khusus untuk menambah atau mengedit file Markdown/MDX (contoh: `post/review-frankenphp`).
-- `feat/`: Untuk penambahan fitur baru di Astro atau perubahan UI (contoh: `feat/dark-mode`).
-- `fix/`: Untuk memperbaiki bug (contoh: `fix/broken-links`).
+- `post/`: For adding or editing Markdown/MDX files (e.g. `post/review-frankenphp`).
+- `feat/`: For new Astro features or UI changes (e.g. `feat/dark-mode`).
+- `fix/`: For bug fixes (e.g. `fix/broken-links`).
 
 ## Commands
 
@@ -48,17 +48,17 @@ Semua perubahan kode atau konten harus dilakukan di branch terpisah sebelum diga
 ## Project Structure
 
 ```
+content/           # MD + JSON collections (post, projects, skills, ...)
 src/
-├── components/       # UI components (4-tier hierarchy)
-│   ├── ui/primitives/  # Box, Container, Stack, Text
-│   ├── ui/             # Button, Badge, Card, etc.
+├── components/       # UI components (3-tier hierarchy)
+│   ├── ui/             # Badge, Button, Card, etc.
 │   ├── shell/          # Header, Footer, BaseHead
 │   ├── common/         # PostMetadata, Seo, SocialLinks
 │   └── features/       # Page-specific components
 ├── layouts/          # BaseLayout, BlogPost
 ├── pages/            # File-based routing
-├── content/          # Blog posts, series, experiences
 ├── lib/              # Utilities, constants, content access
+│   └── contents/       # Collection schemas + loaders
 ├── config/           # Site-wide configuration
 └── assets/           # Styles, images, scripts
 ```

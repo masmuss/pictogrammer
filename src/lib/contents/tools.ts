@@ -1,11 +1,6 @@
-import { getEntry } from "astro:content";
+import { getContentEntryData } from "./loader";
+import { toolsSchema } from "./schemas";
 
 export async function getAllTools() {
-	const entry = await getEntry("tools", "index");
-
-	if (!entry) {
-		throw new Error("Missing tools content at src/content/tools/index.json");
-	}
-
-	return entry.data;
+	return getContentEntryData("tools", toolsSchema);
 }
