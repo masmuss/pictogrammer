@@ -5,5 +5,5 @@ import { readingSchema } from "./schemas";
 export type Book = CollectionEntry<"reading">["data"][number];
 
 export async function getAllBooks(): Promise<Book[]> {
-  return getContentEntryData("reading", readingSchema);
+	return getContentEntryData("reading", readingSchema);
 }
