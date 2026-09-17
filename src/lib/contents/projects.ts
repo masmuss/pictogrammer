@@ -1,5 +1,6 @@
-import { getEntry } from "astro:content";
 import type { Project } from "@/types";
+import { getContentEntryData } from "./loader";
+import { projectsSchema } from "./schemas";
 
 export const CATEGORY_ICONS: Record<string, string> = {
 	Website: "ph:globe",
@@ -10,15 +11,7 @@ export const CATEGORY_ICONS: Record<string, string> = {
 };
 
 export async function getAllProjects() {
-	const entry = await getEntry("projects", "index");
-
-	if (!entry) {
-		throw new Error(
-			"Missing projects content at src/content/projects/index.json"
-		);
-	}
-
-	return entry.data;
+	return getContentEntryData("projects", projectsSchema);
 }
 
 export async function getFeaturedProjects(max?: number): Promise<Project[]> {
