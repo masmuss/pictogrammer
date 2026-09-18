@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Khoirul Minimal
-description: A quiet, light-mode personal portfolio system with editorial headlines and restrained monochrome UI.
+description: A quiet personal portfolio system with light and dark themes, editorial headlines, and restrained monochrome UI with one flexoki blue accent.
 dial: ENERGY 1 / RHYTHM 1 / MOTION 2
 colors:
   primary: "#111111"
@@ -12,7 +12,7 @@ colors:
   on-surface: "#111111"
   outline: "#E5E7EB"
   outline-subtle: "#EAEAEA"
-  link: "#0A66C2"
+  link: "flexoki-blue-600 (light) / flexoki-blue-400 lifted 88% (dark), see tokens.css"
   background: "#F7F6F3"
   error: "#B42318"
 typography:
@@ -147,11 +147,12 @@ This interface feels calm, personal, and intellectually grounded. It combines a 
 > Dark mode is supported via `src/assets/styles/system/tokens.css` (`html.dark`).
 > Dark scale: background oklch(0.15 0.005 85), foreground oklch(0.9 0.005 90),
 > card/popover oklch(0.17 0.005 85), primary #ffffff, muted oklch(0.2 0.005 85),
-> muted-foreground oklch(0.6 0.01 85), accent oklch(0.25 0.03 200),
-> accent-foreground oklch(0.82 0.04 200), border/input oklch(0.25 0.01 85),
-> ring oklch(0.68 0.1 200). Light/dark AA pairings are verified with the
-> antislop-human contrast checker (see audit). R-34: both themes must keep
-> working; verify every component in each mode before shipping.
+> muted-foreground oklch(0.6 0.01 85), accent 16% flexoki-blue-400 mix,
+> accent-foreground flexoki-blue-400 lifted 88% toward white,
+> border/input oklch(0.25 0.01 85), ring mirrors accent-foreground.
+> Light/dark AA pairings are verified with the antislop-human contrast checker
+> (see audit). R-34: both themes must keep working; verify every component in
+> each mode before shipping.
 
 - **Primary (#111111):** The main ink color for headings, navigation, icons, and body copy. It provides strong contrast against the soft background and keeps the whole system crisp.
 - **Background (#F7F6F3):** A warm off-white canvas that softens the page and makes the layout feel lived-in rather than stark.
@@ -160,8 +161,9 @@ This interface feels calm, personal, and intellectually grounded. It combines a 
 - **Secondary (#5F5F5F):** A muted gray for supporting text and less prominent metadata, such as descriptions and timestamps.
 - **Outline (#E5E7EB):** Used for thin separators and control boundaries where a little definition is needed.
 - **Outline-subtle (#EAEAEA):** An even softer divider tone for pills, small controls, and quiet edge treatments.
-- **Link (#0A66C2):** A restrained blue accent for actionable text links like “See all projects,” signaling interactivity without breaking the monochrome system.
-- **Error (#B42318):** A standard warning tone kept in reserve for validation or destructive states that are not prominent in the current page.
+- **Link (flexoki blue):** the single accent of the system. Light uses flexoki-blue-600 (6.87:1, AA PASS); dark lifts flexoki-blue-400 88% toward white (raw 400 is 4.26:1 and fails, lifted clears AA with margin). Covers actionable text links like “See all projects,” inline code, active nav states, the 404 numerals, and the focus ring, signaling interactivity without breaking the monochrome system.
+- **Error (flexoki red):** flexoki-red-600 in light (white on fill 7.77:1), flexoki-red-400 in dark. Reserved for validation and destructive states.
+- **Flexoki proportion rules:** chrome stays monochrome and carries exactly one accent (blue). Other flexoki hues appear only as content semantics, never as chrome: admonition callouts keep their per-type hues, the Draft badge is flexoki orange (light 600 at 4.98:1, dark raw 400 at 5.08:1), charts use categorical 600 tones in light and 400 tones in dark. No new hue enters the system without a semantic role and a contrast check.
 
 ## Typography
 
@@ -231,6 +233,7 @@ The shape language is soft and minimal. Buttons use a 6px radius, cards sit at 8
 - Do rely on whitespace and typography for hierarchy before adding decorative effects.
 - Do keep controls compact, thin-bordered, and low-chroma.
 - Don't introduce heavy shadows, gradients, or glassmorphism.
+- Exception: floating controls layered over scrolling content (back-to-top button, tooltip, popover) use `bg-card` plus one restrained shadow for separation. `bg-muted` is forbidden there because it equals the page background in light mode and the control disappears into it.
 - Don't use bright accent colors outside of a small link treatment or functional states.
 - Don't make buttons bulky or highly saturated.
 - Don't crowd sections; preserve the generous vertical rhythm seen in the source.

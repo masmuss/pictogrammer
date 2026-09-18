@@ -1,7 +1,9 @@
 /* ========================================
    Theme Tokens — pictogrammer
    Design system v4
-   Warm monochrome + pale blue accent.
+   Warm monochrome + flexoki blue accent.
+   Flexoki hues carry content semantics
+   (admonitions, badges, charts).
    Minimalist modern aesthetic.
    ======================================== */
 
@@ -207,8 +209,12 @@
 		}
 
 		/* ── Light Mode ─────────────────────
-		   Warm monochrome backbone + pale blue accent.
+		   Warm monochrome backbone + flexoki blue accent.
 		   Minimalist modern aesthetic.
+		   Proportion: chrome stays monochrome; flexoki blue is the
+		   single accent (links, code, active states, focus ring).
+		   Other flexoki hues appear only as content semantics
+		   (admonitions, draft badge, charts), never as chrome.
 		*/
 		&:not(.dark) {
 			/* Warm monochrome scale */
@@ -233,38 +239,55 @@
 			--muted: #f7f6f3;
 			--muted-foreground: #5a5956;
 
-			/* Pale blue accent for subtle highlights */
-			--accent: #e1f3fe;
-			--accent-foreground: #1f6c9f;
+			/* Flexoki blue accent (6.87:1 on background, AA PASS).
+			   Subtle fill is a 10% mix so text on it keeps AA. */
+			--accent: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-600) 10%,
+				var(--background)
+			);
+			--accent-foreground: var(--color-flexoki-blue-600);
 
-			--destructive: oklch(0.577 0.245 27.325);
+			--destructive: var(--color-flexoki-red-600);
 			--destructive-foreground: #ffffff;
 
 			--border: #eaeaea;
 			--input: #f9f9f8;
-			--ring: #1f6c9f;
+			--ring: var(--color-flexoki-blue-600);
 
-			/* Accent CTA (compat) - use pale blue */
-			--accent-cta: #e1f3fe;
-			--accent-cta-subtle: #e1f3fe;
-			--accent-cta-text: #1f6c9f;
+			/* Accent CTA (compat) - flexoki blue */
+			--accent-cta: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-600) 10%,
+				var(--background)
+			);
+			--accent-cta-subtle: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-600) 10%,
+				var(--background)
+			);
+			--accent-cta-text: var(--color-flexoki-blue-600);
 
-			/* Charts - neutral blues */
-			--chart-1: oklch(0.75 0.05 200);
-			--chart-2: oklch(0.65 0.08 200);
-			--chart-3: oklch(0.55 0.12 200);
-			--chart-4: oklch(0.45 0.15 200);
-			--chart-5: oklch(0.35 0.18 200);
+			/* Charts - flexoki categorical hues (600 tones for light) */
+			--chart-1: var(--color-flexoki-blue-600);
+			--chart-2: var(--color-flexoki-cyan-600);
+			--chart-3: var(--color-flexoki-green-600);
+			--chart-4: var(--color-flexoki-orange-600);
+			--chart-5: var(--color-flexoki-purple-600);
 
 			/* Sidebar */
 			--sidebar: #f7f6f3;
 			--sidebar-foreground: #111111;
 			--sidebar-primary: #111111;
 			--sidebar-primary-foreground: #ffffff;
-			--sidebar-accent: #e1f3fe;
-			--sidebar-accent-foreground: #1f6c9f;
+			--sidebar-accent: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-600) 10%,
+				var(--background)
+			);
+			--sidebar-accent-foreground: var(--color-flexoki-blue-600);
 			--sidebar-border: #eaeaea;
-			--sidebar-ring: #1f6c9f;
+			--sidebar-ring: var(--color-flexoki-blue-600);
 
 			/* Shadows (ultra-diffuse, low opacity < 0.04) */
 			--shadow-2xs: 0 1px 2px 0px rgba(0, 0, 0, 0.02);
@@ -282,7 +305,13 @@
 			--shadow-2xl: 0 24px 48px 0px rgba(0, 0, 0, 0.05);
 		}
 
-		/* ── Dark Mode ────────────────────── */
+		/* ── Dark Mode ──────────────────────
+		   Warm dark monochrome + flexoki blue accent.
+		   Proportion mirrors light mode. Dark 400 tones are dimmer,
+		   so text roles use an 88% lift toward white to hold AA
+		   (blue 6.12:1, red 5.64:1); fills and large segments use
+		   raw 400 tones (3:1 bar).
+		*/
 		&.dark {
 			color-scheme: dark;
 
@@ -308,38 +337,76 @@
 			--muted: oklch(0.2 0.005 85);
 			--muted-foreground: oklch(0.6 0.01 85);
 
-			/* Pale blue accent for dark mode */
-			--accent: oklch(0.25 0.03 200);
-			--accent-foreground: oklch(0.82 0.04 200);
+			/* Flexoki blue accent for dark mode.
+			   Text is lifted 88% toward white (raw 400 is 4.26:1,
+			   lifted clears AA with margin). */
+			--accent: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 16%,
+				var(--background)
+			);
+			--accent-foreground: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 88%,
+				white
+			);
 
-			--destructive: oklch(0.704 0.191 22.216);
-			--destructive-foreground: oklch(0.15 0.005 85);
+			--destructive: var(--color-flexoki-red-400);
+			--destructive-foreground: #ffffff;
 
 			--border: oklch(0.25 0.01 85);
 			--input: oklch(0.25 0.01 85);
-			--ring: oklch(0.68 0.1 200);
+			--ring: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 88%,
+				white
+			);
 
-			/* Accent CTA (dark compat) */
-			--accent-cta: oklch(0.25 0.03 200);
-			--accent-cta-subtle: oklch(0.25 0.03 200);
-			--accent-cta-text: oklch(0.82 0.04 200);
+			/* Accent CTA (dark compat) - flexoki blue */
+			--accent-cta: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 16%,
+				var(--background)
+			);
+			--accent-cta-subtle: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 16%,
+				var(--background)
+			);
+			--accent-cta-text: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 88%,
+				white
+			);
 
-			/* Charts - neutral blues for dark */
-			--chart-1: oklch(0.75 0.05 200);
-			--chart-2: oklch(0.65 0.08 200);
-			--chart-3: oklch(0.55 0.12 200);
-			--chart-4: oklch(0.45 0.15 200);
-			--chart-5: oklch(0.35 0.18 200);
+			/* Charts - flexoki categorical hues (400 tones for dark) */
+			--chart-1: var(--color-flexoki-blue-400);
+			--chart-2: var(--color-flexoki-cyan-400);
+			--chart-3: var(--color-flexoki-green-400);
+			--chart-4: var(--color-flexoki-orange-400);
+			--chart-5: var(--color-flexoki-purple-400);
 
 			/* Sidebar */
 			--sidebar: oklch(0.17 0.005 85);
 			--sidebar-foreground: oklch(0.9 0.005 90);
 			--sidebar-primary: #ffffff;
 			--sidebar-primary-foreground: oklch(0.15 0.005 85);
-			--sidebar-accent: oklch(0.25 0.03 200);
-			--sidebar-accent-foreground: oklch(0.82 0.04 200);
+			--sidebar-accent: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 16%,
+				var(--background)
+			);
+			--sidebar-accent-foreground: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 88%,
+				white
+			);
 			--sidebar-border: oklch(0.25 0.01 85);
-			--sidebar-ring: oklch(0.68 0.1 200);
+			--sidebar-ring: color-mix(
+				in oklch,
+				var(--color-flexoki-blue-400) 88%,
+				white
+			);
 
 			/* Shadows (stronger spread, but still low opacity for dark bg) */
 			--shadow-2xs: 0 1px 2px 0px rgba(0, 0, 0, 0.1);

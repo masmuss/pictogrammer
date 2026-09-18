@@ -104,9 +104,13 @@ const toc = generateToc(headings);
 </script>
 
 <style>
+	.toc-group .toc-popover {
+		visibility: hidden;
+	}
 	.toc-group[data-open="true"] .toc-popover {
 		pointer-events: auto;
 		opacity: 1;
 		transform: translateY(0);
+		visibility: visible;
 	}
 </style>

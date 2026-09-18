@@ -31,10 +31,11 @@ const shareLinks = [
 
 const btnBase = [
 	"flex h-10 w-10 items-center justify-center rounded-lg border",
-	"border-border/40 bg-card",
+	"border-border/40 bg-transparent",
 	"text-muted-foreground",
-	"hover:bg-muted hover:text-foreground",
-	"transition-colors duration-base"
+	"hover:bg-muted hover:border-border hover:text-foreground",
+	"transition-colors duration-base",
+	"pointer-coarse:min-h-[44px] pointer-coarse:min-w-[44px]"
 ].join(" ");
 ---
 
