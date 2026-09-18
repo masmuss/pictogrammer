@@ -10,3 +10,11 @@
 
 /llms-full.txt
   Content-Type: text/plain; charset=utf-8
+
+# Giscus loads these cross-origin from the giscus.app iframe via fetch,
+# which requires CORS. Without this the custom theme silently fails and
+# the widget falls back to unstyled native controls.
+/giscus-light.css
+  Access-Control-Allow-Origin: *
+/giscus-dark.css
+  Access-Control-Allow-Origin: *
