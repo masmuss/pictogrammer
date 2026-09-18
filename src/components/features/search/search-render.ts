@@ -1,8 +1,5 @@
 import { escapeHtml } from "./html";
-import {
-	MIN_QUERY_LENGTH,
-	renderResultItem
-} from "./search-results";
+import { MIN_QUERY_LENGTH, renderResultItem } from "./search-results";
 import type { SearchState } from "./search-state";
 
 interface SearchElements {
@@ -69,9 +66,8 @@ export class SearchRenderer {
 
 	getResultHref(index: number): string | null {
 		return (
-			this.el.list?.querySelector<HTMLAnchorElement>(
-				`[data-index="${index}"]`
-			)?.href ?? null
+			this.el.list?.querySelector<HTMLAnchorElement>(`[data-index="${index}"]`)
+				?.href ?? null
 		);
 	}
 

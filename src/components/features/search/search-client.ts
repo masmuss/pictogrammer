@@ -1,8 +1,4 @@
-import {
-	loadPagefind,
-	type PagefindModule,
-	searchPagefind
-} from "./pagefind";
+import { loadPagefind, type PagefindModule, searchPagefind } from "./pagefind";
 import { SearchRenderer } from "./search-render";
 import {
 	MIN_QUERY_LENGTH,
@@ -51,7 +47,10 @@ class SearchController {
 			this.onCloseButtonClick
 		);
 		this.renderer.inputEl?.removeEventListener("input", this.onInput);
-		this.renderer.listEl?.removeEventListener("mouseover", this.onListMouseover);
+		this.renderer.listEl?.removeEventListener(
+			"mouseover",
+			this.onListMouseover
+		);
 		if (this.debounceTimer) clearTimeout(this.debounceTimer);
 		delete window.__openSearch;
 		delete window.__closeSearch;

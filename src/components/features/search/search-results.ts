@@ -4,9 +4,7 @@ import type { PagefindResultData } from "./pagefind";
 export const MIN_QUERY_LENGTH = 2;
 export const SEARCH_DEBOUNCE_MS = 300;
 
-export function normalizeResultUrl(
-	r: PagefindResultData
-): PagefindResultData {
+export function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
 	return {
 		...r,
 		url: r.url.replace("/dist/", "/").replace(/\/$/, "")
