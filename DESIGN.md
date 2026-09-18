@@ -1,5 +1,5 @@
 ---
-version: alpha
+version: 4
 name: Khoirul Minimal
 description: A quiet personal portfolio system with light and dark themes, editorial headlines, and restrained monochrome UI with one flexoki blue accent.
 dial: ENERGY 1 / RHYTHM 1 / MOTION 2
@@ -16,14 +16,17 @@ colors:
   background: "#F7F6F3"
   error: "#B42318"
 typography:
+  # Serif (Merriweather) is opt-in only, via `font-serif`: prose headings,
+  # the `serif` prop on Heading.astro, and BlogTabs titles. The default
+  # heading stack is Geist Sans (`--font-heading` in tokens.css).
   headline-display:
-    fontFamily: Merriweather
+    fontFamily: Geist Sans
     fontSize: 24px
     fontWeight: 600
     lineHeight: 32px
     letterSpacing: -0.6px
   headline-lg:
-    fontFamily: Merriweather
+    fontFamily: Geist Sans
     fontSize: 24px
     fontWeight: 600
     lineHeight: 32px
@@ -88,6 +91,9 @@ rounded:
   xl: 12px
   full: 9999px
 spacing:
+  # Editorial rhythm mapped onto the 4px token scale in tokens.css:
+  # sm 12px = space-3, md 24px = space-6 (also gutter), lg 32px = space-8,
+  # xl/section 96px = space-24. xs 2px is fine adjustment outside the scale.
   xs: 2px
   sm: 12px
   md: 24px
@@ -97,8 +103,8 @@ spacing:
   section: 96px
 components:
   button-primary:
-    backgroundColor: "transparent"
-    textColor: "{colors.on-surface}"
+    backgroundColor: "#111111 (light) / #ffffff (dark), see tokens.css --btn-primary"
+    textColor: "#ffffff (light) / oklch(0.15 0.005 85) (dark), see tokens.css --btn-primary-foreground"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "8px 10px"
@@ -122,7 +128,7 @@ components:
   card:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.on-surface}"
-    rounded: "{rounded.lg}"
+    rounded: "{rounded.xl}"
     padding: "16px"
   input:
     backgroundColor: "{colors.surface}"
@@ -140,7 +146,7 @@ components:
 
 ## Overview
 
-This interface feels calm, personal, and intellectually grounded. It combines a refined editorial headline style with simple sans-serif body text, creating a portfolio that reads as professional without feeling corporate. The light background, sparse chrome, and wide breathing room suggest a thoughtful maker who values clarity, craft, and low-friction browsing.
+This interface feels calm, personal, and intellectually grounded. It uses a restrained sans-serif system throughout, reserving the Merriweather serif for opt-in emphasis moments (prose headings, select titles), keeping the portfolio professional without feeling corporate. The light background, sparse chrome, and wide breathing room suggest a thoughtful maker who values clarity, craft, and low-friction browsing.
 
 ## Colors
 
@@ -164,14 +170,15 @@ This interface feels calm, personal, and intellectually grounded. It combines a 
 - **Link (flexoki blue):** the single accent of the system. Light uses flexoki-blue-600 (6.87:1, AA PASS); dark lifts flexoki-blue-400 88% toward white (raw 400 is 4.26:1 and fails, lifted clears AA with margin). Covers actionable text links like “See all projects,” inline code, active nav states, the 404 numerals, and the focus ring, signaling interactivity without breaking the monochrome system.
 - **Error (flexoki red):** flexoki-red-600 in light (white on fill 7.77:1), flexoki-red-400 in dark. Reserved for validation and destructive states.
 - **Flexoki proportion rules:** chrome stays monochrome and carries exactly one accent (blue). Other flexoki hues appear only as content semantics, never as chrome: admonition callouts keep their per-type hues, the Draft badge is flexoki orange (light 600 at 4.98:1, dark raw 400 at 5.08:1), charts use categorical 600 tones in light and 400 tones in dark. No new hue enters the system without a semantic role and a contrast check.
-- **Third-party surfaces:** giscus comments use custom themes (`public/giscus-light.css`, `public/giscus-dark.css`) mapped to the same tokens with transparent canvas, so the iframe never renders a foreign white or dark box. The iframe fetches the CSS cross-origin, so themes load from jsdelivr (`GISCUS_THEME_REF` in `Comment.astro`, re-pin to `main` after merge); self-hosted files never load in dev because browsers block public-to-localhost fetches. `public/_headers` keeps `Access-Control-Allow-Origin: *` on both files as fallback. OG social images reuse the warm paper, ink, and flexoki blue accent.
+- **Accent CTA (compat):** `accent-cta`, `accent-cta-subtle`, `accent-cta-text` are legacy aliases for the flexoki blue accent (see tokens.css). Do not use them in new components; use `accent` / `accent-foreground` instead. Existing usages (404 numerals, nav links, section links) are grandfathered.
+- **Third-party surfaces:** giscus comments use custom themes (`public/giscus-light.css`, `public/giscus-dark.css`) mapped to the same tokens with transparent canvas, so the iframe never renders a foreign white or dark box. The iframe fetches the CSS cross-origin, so themes load from jsdelivr (`GISCUS_THEME_REF` in `Comment.astro`, re-pin to `main` after develop is merged to main); self-hosted files never load in dev because browsers block public-to-localhost fetches. `public/_headers` keeps `Access-Control-Allow-Origin: *` on both files as fallback. OG social images reuse the warm paper, ink, and flexoki blue accent.
 - **R-02 scope:** the em dash ban covers UI and site copy. It does not cover `content/` prose, post titles, or series titling conventions, which are the author's deliberate voice (per the copywriting skill's voice calibration).
 
 ## Typography
 
-The system pairs **Merriweather** for the main hero headline with **Geist Sans** for the rest of the interface. The serif headline gives the page a literary, portfolio-like character, while the sans-serif text keeps everything readable and modern. Weights are restrained: 600 for headlines and 400–500 for body and labels, with tight negative letter spacing on the larger headings to preserve a compact editorial feel.
+The system is sans-first: **Geist Sans** carries the whole interface, including the main hero headline. **Merriweather** serif is strictly opt-in for emphasis, via the `font-serif` utility: prose headings (`prose-headings:font-serif`), the `serif` prop on `Heading.astro`, and `BlogTabs` titles. The serif moments give select passages a literary character while the sans keeps everything readable and modern. Weights are restrained: 600 for headlines and 400–500 for body and labels, with tight negative letter spacing on the larger headings to preserve a compact editorial feel.
 
-- **Headline display / lg:** Merriweather at 24px, 600, for the main name and other prominent title moments.
+- **Headline display / lg:** Geist Sans at 24px, 600, for the main name and other prominent title moments. Reach for `font-serif` only for a deliberate editorial accent.
 - **Headline md / sm / xs:** Geist Sans at 22px, 20px, and 18px for section headings and subheadings, all semibold and compact.
 - **Body lg / md:** Geist Sans at 16px with a 26px line height for comfortable reading in dense paragraph sections.
 - **Body sm:** Geist Sans at 14px for supporting text, buttons, and compact metadata.
@@ -192,20 +199,20 @@ The system is intentionally flat. There are no meaningful shadows or layered ele
 
 ## Shapes
 
-The shape language is soft and minimal. Buttons use a 6px radius, cards sit at 8px, and chips should be fully rounded for a pill-like utility feel. Nothing is overly rounded or ornate; the geometry stays pragmatic and quiet.
+The shape language is soft and minimal. Buttons use a 6px radius, cards sit at 12px (`rounded-xl` in Card.astro), and chips should be fully rounded for a pill-like utility feel. Nothing is overly rounded or ornate; the geometry stays pragmatic and quiet.
 
 ## Components
 
 **Buttons**
 
-- Primary buttons are compact, text-first controls with transparent or near-transparent fills, 8px 10px padding, and a 32px target height.
+- Primary buttons are compact, solid controls using the primary fill (`--btn-primary`: near-black in light, white in dark), 8px 10px padding, and a 32px target height. They are the most visually weighted control on the page, so reserve them for the single most important action in a view.
 - Secondary buttons may use the neutral background with a subtle outline for a slightly more visible affordance.
 - Link buttons should be borderless, underlined, and visually lightweight for navigation such as external links or “See all projects.”
 - Keep button text at 14px and medium weight. Avoid oversized CTAs; the page favors restraint.
 
 **Cards**
 
-- Cards use the neutral background, 1px outline, 8px radius, and 16px padding.
+- Cards use the neutral background, 1px outline, 12px radius, and 16px padding.
 - Keep cards flat and low-contrast. Their job is containment, not emphasis.
 
 **Inputs**
