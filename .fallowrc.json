@@ -17,6 +17,7 @@
 		"@tailwindcss/vite",
 		"astro-mermaid",
 		"astro-pagefind",
+		"lodash-es",
 		"rehype-external-links",
 		"remark-deflist",
 		"remark-directive",

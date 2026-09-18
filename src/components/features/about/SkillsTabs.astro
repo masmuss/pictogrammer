@@ -51,7 +51,7 @@ const tabs = getSkillsTabs(collections);
 				<div class="flex flex-wrap gap-3">
 					{tab.skills.map((skill) => (
 						<div
-							class="bg-card/50 border-border/50 hover:border-border hover:bg-card flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-sm transition-colors select-none"
+							class="bg-transparent border-border/50 hover:border-border hover:text-foreground flex items-center gap-2.5 rounded-full border px-3 py-1.5 text-sm transition-colors select-none"
 							title={skill.description}
 						>
 							{skill.icon && <Icon name={`logos:${skill.icon}`} />}

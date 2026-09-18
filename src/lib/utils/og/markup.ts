@@ -58,10 +58,10 @@ export function buildOgMarkup({
 }) {
 	const footerMeta = [date, readTime].filter(Boolean).join(" · ");
 	const catStyle = category
-		? "padding: 7px 18px; border: 1px solid #3f3f46; border-radius: 9999px; font-size: 24px; color: #a1a1aa;"
+		? "padding: 7px 18px; border: 1px solid #E5E7EB; border-radius: 9999px; font-size: 24px; color: #5F5F5F;"
 		: "";
 	const avatarStyle = authorInitials
-		? "display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: #ffffff; border-radius: 9999px; color: #000000; font-weight: 600; font-size: 18px;"
+		? "display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: #111111; border-radius: 9999px; color: #ffffff; font-weight: 600; font-size: 18px;"
 		: "display: flex;";
 
 	return html`
@@ -72,8 +72,8 @@ export function buildOgMarkup({
 				justify-content: space-between;
 				width: 100%;
 				height: 100%;
-				background-color: #18181b;
-				color: #f4f4f5;
+				background-color: #F7F6F3;
+				color: #111111;
 				font-family: ${OG_FONT_NAME};
 				padding: 64px;
 			"
@@ -100,7 +100,7 @@ export function buildOgMarkup({
 					${title}
 				</h1>
 				<div
-					style="display: flex; font-size: 24px; color: #a1a1aa; line-height: 1.6; max-width: 720px;"
+					style="display: flex; font-size: 24px; color: #5F5F5F; line-height: 1.6; max-width: 720px;"
 				>
 					${description}
 				</div>
@@ -118,13 +118,13 @@ export function buildOgMarkup({
 							${author || ""}
 						</div>
 						<div
-							style="display: flex; font-size: 20px; color: #71717a; line-height: 1.3;"
+							style="display: flex; font-size: 20px; color: #5F5F5F; line-height: 1.3;"
 						>
 							${footerMeta}
 						</div>
 					</div>
 				</div>
-				<span style="color: #71717a; font-size: 24px;">${domain || ""}</span>
+				<span style="color: #03598F; font-size: 24px;">${domain || ""}</span>
 			</div>
 		</div>
 	`;

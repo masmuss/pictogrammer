@@ -141,7 +141,7 @@ const siteConfig: SiteConfig = {
 	subtitle: "Khoirul's Personal Website",
 	homepage: "https://khoirul.me",
 	description:
-		"Fullstack wizard with a camera, weaving elegant websites while capturing the world through a lens. Transforming visions into digital and visual masterpieces.",
+		"Personal website of Khoirul Fattah: full-stack projects with a backend focus, technical writing, and photography from Surabaya.",
 	email: "hello@khoirul.me",
 	cvLink:
 		"https://github.com/masmuss/curriculum-vitae/releases/download/latest/Ahmad_Musafir_Khoirul_Fattah_FullStack_Backend_Focused.pdf",

@@ -14,7 +14,7 @@ const displayed = projects.slice(0, max);
 ---
 
 {
-	displayed.length > 0 && (
+	displayed.length > 0 ? (
 		<Fragment>
 			<div class="flex flex-col" data-testid="featured-project-list">
 				{displayed.map((project, index) => (
@@ -45,5 +45,12 @@ const displayed = projects.slice(0, max);
 				</a>
 			</div>
 		</Fragment>
+	) : (
+		<p
+			class="text-muted-foreground text-sm"
+			data-testid="featured-project-empty"
+		>
+			No featured projects yet. New work will appear here once published.
+		</p>
 	)
 }
