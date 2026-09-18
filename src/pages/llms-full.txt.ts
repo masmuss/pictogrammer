@@ -9,7 +9,7 @@ export async function GET(context: APIContext) {
 	const posts = await getAllPosts();
 
 	const lines: string[] = [
-		`# ${siteConfig.title} — Full Content`,
+		`# ${siteConfig.title}: Full Content`,
 		"",
 		`> ${siteConfig.description}`,
 		"",

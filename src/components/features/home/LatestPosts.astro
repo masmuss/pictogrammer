@@ -12,7 +12,7 @@ const { posts }: Props = Astro.props;
 ---
 
 {
-	posts.length > 0 && (
+	posts.length > 0 ? (
 		<Fragment>
 			<ul class="flex flex-col">
 				{posts.map((p) => (
@@ -36,5 +36,9 @@ const { posts }: Props = Astro.props;
 				</a>
 			</div>
 		</Fragment>
+	) : (
+		<p class="text-muted-foreground text-sm" data-testid="latest-posts-empty">
+			No posts yet. New writing will appear here once published.
+		</p>
 	)
 }
