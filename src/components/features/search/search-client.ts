@@ -1,13 +1,12 @@
-import { escapeHtml } from "./html";
 import {
 	loadPagefind,
 	type PagefindModule,
 	searchPagefind
 } from "./pagefind";
+import { SearchRenderer } from "./search-render";
 import {
 	MIN_QUERY_LENGTH,
 	normalizeResultUrl,
-	renderResultItem,
 	SEARCH_DEBOUNCE_MS
 } from "./search-results";
 import {
@@ -16,42 +15,6 @@ import {
 	type SearchState
 } from "./search-state";
 
-interface SearchElements {
-	input: HTMLInputElement | null;
-	list: HTMLDivElement | null;
-	status: HTMLDivElement | null;
-	count: HTMLSpanElement | null;
-	empty: HTMLDivElement | null;
-	hint: HTMLDivElement | null;
-	spinner: HTMLDivElement | null;
-	escBtn: HTMLButtonElement | null;
-}
-
-function queryElements(content: HTMLElement | null): SearchElements {
-	const empty: SearchElements = {
-		input: null,
-		list: null,
-		status: null,
-		count: null,
-		empty: null,
-		hint: null,
-		spinner: null,
-		escBtn: null
-	};
-	if (!content) return empty;
-
-	return {
-		input: content.querySelector<HTMLInputElement>("[data-search-input]"),
-		list: content.querySelector<HTMLDivElement>("[data-search-list]"),
-		status: content.querySelector<HTMLDivElement>("[data-search-status]"),
-		count: content.querySelector<HTMLSpanElement>("[data-search-count]"),
-		empty: content.querySelector<HTMLDivElement>("[data-search-empty]"),
-		hint: content.querySelector<HTMLDivElement>("[data-search-hint]"),
-		spinner: content.querySelector<HTMLDivElement>("[data-search-spinner]"),
-		escBtn: content.querySelector<HTMLButtonElement>("[data-search-esc]")
-	};
-}
-
 class SearchController {
 	private state: SearchState = createInitialState();
 	private isOpen = false;
@@ -59,25 +22,22 @@ class SearchController {
 	private searchRequestId = 0;
 	private debounceTimer: ReturnType<typeof setTimeout> | null = null;
 	private initPromise: Promise<void> | null = null;
-	private readonly el: SearchElements;
+	private readonly renderer: SearchRenderer;
 
 	constructor(
 		private readonly dialogRoot: HTMLElement,
 		private readonly trigger: HTMLElement | null
 	) {
-		const content = dialogRoot.querySelector<HTMLElement>(
-			'[data-slot="dialog-content"]'
-		);
-		this.el = queryElements(content);
+		this.renderer = new SearchRenderer(dialogRoot);
 	}
 
 	public init() {
 		this.dialogRoot.addEventListener("dialog:change", this.onDialogChange);
 		this.trigger?.addEventListener("click", this.onTriggerClick);
 		document.addEventListener("keydown", this.onKeydown);
-		this.el.escBtn?.addEventListener("click", this.onCloseButtonClick);
-		this.el.input?.addEventListener("input", this.onInput);
-		this.el.list?.addEventListener("mouseover", this.onListMouseover);
+		this.renderer.escBtnEl?.addEventListener("click", this.onCloseButtonClick);
+		this.renderer.inputEl?.addEventListener("input", this.onInput);
+		this.renderer.listEl?.addEventListener("mouseover", this.onListMouseover);
 		window.__openSearch = () => this.openSearch();
 		window.__closeSearch = () => this.closeSearch();
 	}
@@ -86,9 +46,12 @@ class SearchController {
 		this.dialogRoot.removeEventListener("dialog:change", this.onDialogChange);
 		this.trigger?.removeEventListener("click", this.onTriggerClick);
 		document.removeEventListener("keydown", this.onKeydown);
-		this.el.escBtn?.removeEventListener("click", this.onCloseButtonClick);
-		this.el.input?.removeEventListener("input", this.onInput);
-		this.el.list?.removeEventListener("mouseover", this.onListMouseover);
+		this.renderer.escBtnEl?.removeEventListener(
+			"click",
+			this.onCloseButtonClick
+		);
+		this.renderer.inputEl?.removeEventListener("input", this.onInput);
+		this.renderer.listEl?.removeEventListener("mouseover", this.onListMouseover);
 		if (this.debounceTimer) clearTimeout(this.debounceTimer);
 		delete window.__openSearch;
 		delete window.__closeSearch;
@@ -98,7 +61,7 @@ class SearchController {
 		const detail = (e as CustomEvent<{ open?: boolean }>).detail;
 		this.isOpen = detail?.open ?? false;
 		if (this.isOpen) {
-			requestAnimationFrame(() => this.el.input?.focus());
+			this.renderer.focusInput();
 		} else {
 			resetState(this.state);
 			this.render();
@@ -188,6 +151,10 @@ class SearchController {
 		if (this.debounceTimer) clearTimeout(this.debounceTimer);
 	}
 
+	private render() {
+		this.renderer.render(this.state);
+	}
+
 	private handleSearch() {
 		const trimmed = this.state.query.trim();
 		const requestId = ++this.searchRequestId;
@@ -236,51 +203,6 @@ class SearchController {
 		}
 	}
 
-	private render() {
-		this.el.spinner?.classList.toggle("hidden", !this.state.isSearching);
-
-		if (this.state.results.length > 0) {
-			this.renderResults();
-		} else if (this.state.query.trim().length >= MIN_QUERY_LENGTH) {
-			this.renderEmpty();
-		} else {
-			this.renderHint();
-		}
-	}
-
-	private renderResults() {
-		this.el.hint?.classList.add("hidden");
-		this.el.empty?.classList.add("hidden");
-		this.el.list?.classList.remove("hidden");
-		this.el.status?.classList.remove("hidden");
-		if (this.el.count) {
-			this.el.count.textContent = `${this.state.results.length} results found`;
-		}
-
-		if (this.el.list) {
-			this.el.list.innerHTML = this.state.results
-				.map((r, i) => renderResultItem(r, i, this.state.selectedIndex))
-				.join("");
-		}
-	}
-
-	private renderEmpty() {
-		this.el.hint?.classList.add("hidden");
-		this.el.empty?.classList.remove("hidden");
-		if (this.el.empty) {
-			this.el.empty.innerHTML = `<p class="text-muted-foreground">No results for "${escapeHtml(this.state.query)}"</p>`;
-		}
-		this.el.list?.classList.add("hidden");
-		this.el.status?.classList.add("hidden");
-	}
-
-	private renderHint() {
-		this.el.hint?.classList.remove("hidden");
-		this.el.empty?.classList.add("hidden");
-		this.el.list?.classList.add("hidden");
-		this.el.status?.classList.add("hidden");
-	}
-
 	private handleNavigation(e: KeyboardEvent) {
 		const keyActions: Record<string, () => void> = {
 			ArrowDown: () => this.navigateSelection(1),
@@ -305,11 +227,9 @@ class SearchController {
 	}
 
 	private navigateToSelectedResult() {
-		const link = this.el.list?.querySelector<HTMLAnchorElement>(
-			`[data-index="${this.state.selectedIndex}"]`
-		);
-		if (link) {
-			window.location.href = link.href;
+		const href = this.renderer.getResultHref(this.state.selectedIndex);
+		if (href) {
+			window.location.href = href;
 			this.closeSearch();
 		}
 	}
