@@ -54,7 +54,7 @@ const quickLinks: QuickLink[] = [
 ---
 
 <BaseLayout
-	title="404 — Frame Not Found"
+	title="404: Frame Not Found"
 	description="The page you are looking for does not exist. Find your way back through the homepage, blog, or projects."
 	pageType="website"
 >
@@ -62,7 +62,7 @@ const quickLinks: QuickLink[] = [
 		class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center sm:px-6"
 	>
 		<h1
-			class="text-accent-cta text-9xl leading-none font-bold tracking-tighter"
+			class="text-accent-cta-text text-9xl leading-none font-bold tracking-tighter"
 		>
 			404
 		</h1>
@@ -73,7 +73,7 @@ const quickLinks: QuickLink[] = [
 		<!-- Message -->
 		<div class="text-muted-foreground mt-4 space-y-1 text-sm leading-relaxed">
 			<p>
-				This page got lost in the darkroom — it doesn't exist anymore or never
+				This page got lost in the darkroom, it does not exist anymore or never
 				did.
 			</p>
 			<p>Let's get you back on track.</p>
@@ -91,12 +91,12 @@ const quickLinks: QuickLink[] = [
 							href={link.href}
 							class={cn(
 								"group relative flex flex-col items-start gap-1.5 rounded-lg p-4 text-left text-sm",
-								"border-border/50 hover:border-border bg-card/50 hover:bg-card",
+								"border-border/50 hover:border-border bg-transparent",
 								"duration-base border transition-all",
 								"focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 							)}
 						>
-							<Icon name={link.icon} class="text-accent-cta size-4" />
+							<Icon name={link.icon} class="text-accent-cta-text size-4" />
 							<CardTitle class="text-foreground text-sm font-medium">
 								{link.title}
 							</CardTitle>

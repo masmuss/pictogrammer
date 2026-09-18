@@ -1,0 +1,97 @@
+/*! pictogrammer giscus theme (light)
+ * Modified from giscus light theme (MIT, GitHub Inc).
+ * Warm paper chrome + flexoki accents. Canvas is transparent so the
+ * page background shows through instead of a white iframe box.
+ */
+
+main {
+	--color-prettylights-syntax-comment: #6e7781;
+	--color-prettylights-syntax-constant: #0550ae;
+	--color-prettylights-syntax-entity: #8250df;
+	--color-prettylights-syntax-storage-modifier-import: #24292f;
+	--color-prettylights-syntax-entity-tag: #116329;
+	--color-prettylights-syntax-keyword: #cf222e;
+	--color-prettylights-syntax-string: #0a3069;
+	--color-prettylights-syntax-variable: #953800;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+	--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+	--color-prettylights-syntax-invalid-illegal-bg: #82071e;
+	--color-prettylights-syntax-carriage-return-text: #f6f8fa;
+	--color-prettylights-syntax-carriage-return-bg: #cf222e;
+	--color-prettylights-syntax-string-regexp: #116329;
+	--color-prettylights-syntax-markup-list: #3b2300;
+	--color-prettylights-syntax-markup-heading: #0550ae;
+	--color-prettylights-syntax-markup-italic: #24292f;
+	--color-prettylights-syntax-markup-bold: #24292f;
+	--color-prettylights-syntax-markup-deleted-text: #82071e;
+	--color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+	--color-prettylights-syntax-markup-inserted-text: #116329;
+	--color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+	--color-prettylights-syntax-markup-changed-text: #953800;
+	--color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+	--color-prettylights-syntax-markup-ignored-text: #eaeef2;
+	--color-prettylights-syntax-markup-ignored-bg: #0550ae;
+	--color-prettylights-syntax-meta-diff-range: #8250df;
+	--color-prettylights-syntax-brackethighlighter-angle: #57606a;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
+	--color-btn-text: #111111;
+	--color-btn-bg: #f9f9f8;
+	--color-btn-border: #eaeaea;
+	--color-btn-shadow: 0 0 transparent;
+	--color-btn-inset-shadow: 0 0 transparent;
+	--color-btn-hover-bg: #f7f6f3;
+	--color-btn-hover-border: #eaeaea;
+	--color-btn-active-bg: #f7f6f3;
+	--color-btn-active-border: #eaeaea;
+	--color-btn-selected-bg: #f7f6f3;
+	--color-btn-primary-text: #ffffff;
+	--color-btn-primary-bg: #111111;
+	--color-btn-primary-border: #111111;
+	--color-btn-primary-shadow: 0 0 transparent;
+	--color-btn-primary-inset-shadow: 0 0 transparent;
+	--color-btn-primary-hover-bg: #1f1f1f;
+	--color-btn-primary-hover-border: #1f1f1f;
+	--color-btn-primary-selected-bg: #1f1f1f;
+	--color-btn-primary-selected-shadow: 0 0 transparent;
+	--color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
+	--color-btn-primary-disabled-bg: #5f5f5f;
+	--color-btn-primary-disabled-border: #5f5f5f;
+	--color-action-list-item-default-hover-bg: rgb(17 17 17 / 6%);
+	--color-segmented-control-bg: #eaeaea;
+	--color-segmented-control-button-bg: #f7f6f3;
+	--color-segmented-control-button-selected-border: #5f5f5f;
+	--color-fg-default: #111111;
+	--color-fg-muted: #5a5956;
+	--color-fg-subtle: #5f5f5f;
+	--color-canvas-default: transparent;
+	--color-canvas-overlay: #ffffff;
+	--color-canvas-inset: transparent;
+	--color-canvas-subtle: transparent;
+	--color-border-default: #eaeaea;
+	--color-border-muted: #eaeaea;
+	--color-neutral-muted: rgb(17 17 17 / 6%);
+	--color-accent-fg: oklch(0.45 0.12 245);
+	--color-accent-emphasis: oklch(0.45 0.12 245);
+	--color-accent-muted: color-mix(in oklch, oklch(0.45 0.12 245) 40%, transparent);
+	--color-accent-subtle: color-mix(in oklch, oklch(0.45 0.12 245) 10%, transparent);
+	--color-success-fg: oklch(0.53 0.11 128);
+	--color-attention-fg: oklch(0.54 0.15 45);
+	--color-attention-muted: color-mix(in oklch, oklch(0.54 0.15 45) 40%, transparent);
+	--color-attention-subtle: color-mix(in oklch, oklch(0.54 0.15 45) 12%, transparent);
+	--color-danger-fg: oklch(0.46 0.17 23);
+	--color-danger-muted: color-mix(in oklch, oklch(0.46 0.17 23) 40%, transparent);
+	--color-danger-subtle: color-mix(in oklch, oklch(0.46 0.17 23) 10%, transparent);
+	--color-primer-shadow-inset: 0 0 transparent;
+	--color-scale-gray-1: #eaeaea;
+	--color-scale-blue-1: oklch(0.45 0.12 245);
+	color-scheme: light;
+
+	/*! Extensions from @primer/css/alerts/flash.scss */
+	--color-social-reaction-bg-hover: #eaeaea;
+	--color-social-reaction-bg-reacted-hover: color-mix(
+		in oklch,
+		oklch(0.45 0.12 245) 20%,
+		transparent
+	);
+}

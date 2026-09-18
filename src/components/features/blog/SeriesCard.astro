@@ -19,7 +19,9 @@ const { series } = Astro.props;
 	class="block group/series"
 	data-testid="series-item"
 >
-	<Card class="px-0 flex flex-col h-full transition-all">
+	<Card
+		class="px-0 flex flex-col h-full transition-shadow duration-200 hover:shadow-md"
+	>
 		<CardHeader>
 			<CardTitle
 				class="group-hover/series:text-primary transition-colors line-clamp-1"

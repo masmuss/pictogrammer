@@ -11,13 +11,15 @@ interface Props {
 }
 
 const { book } = Astro.props;
+
+const Wrapper = book.url ? "a" : "div";
 ---
 
-<a
-	href={book.url || "#"}
-	target={book.url ? "_blank" : "_self"}
-	rel={book.url ? "noopener noreferrer" : ""}
-	class="group flex flex-col gap-3 border border-transparent rounded-lg p-4 transition-all duration-200 hover:shadow-md hover:border-border hover:-translate-y-0.5"
+<Wrapper
+	href={book.url || undefined}
+	target={book.url ? "_blank" : undefined}
+	rel={book.url ? "noopener noreferrer" : undefined}
+	class="group flex flex-col gap-3 border border-transparent rounded-lg p-4 transition-colors duration-200 hover:border-border"
 	data-testid="book-item"
 >
 	<div
@@ -33,7 +35,7 @@ const { book } = Astro.props;
 				/>
 			) : (
 				<div class="flex h-full w-full flex-col items-center justify-center p-4 text-center">
-					<Heading as="h4" size="xs" class="text-muted-foreground/80">
+					<Heading as="h4" size="xs" class="text-muted-foreground">
 						{book.title}
 					</Heading>
 				</div>
@@ -88,4 +90,4 @@ const { book } = Astro.props;
 			}
 		</div>
 	</div>
-</a>
+</Wrapper>
