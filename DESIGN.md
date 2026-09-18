@@ -165,6 +165,7 @@ This interface feels calm, personal, and intellectually grounded. It combines a 
 - **Error (flexoki red):** flexoki-red-600 in light (white on fill 7.77:1), flexoki-red-400 in dark. Reserved for validation and destructive states.
 - **Flexoki proportion rules:** chrome stays monochrome and carries exactly one accent (blue). Other flexoki hues appear only as content semantics, never as chrome: admonition callouts keep their per-type hues, the Draft badge is flexoki orange (light 600 at 4.98:1, dark raw 400 at 5.08:1), charts use categorical 600 tones in light and 400 tones in dark. No new hue enters the system without a semantic role and a contrast check.
 - **Third-party surfaces:** giscus comments use custom themes (`public/giscus-light.css`, `public/giscus-dark.css`) mapped to the same tokens with transparent canvas, so the iframe never renders a foreign white or dark box. The iframe fetches the CSS cross-origin, so themes load from jsdelivr (`GISCUS_THEME_REF` in `Comment.astro`, re-pin to `main` after merge); self-hosted files never load in dev because browsers block public-to-localhost fetches. `public/_headers` keeps `Access-Control-Allow-Origin: *` on both files as fallback. OG social images reuse the warm paper, ink, and flexoki blue accent.
+- **R-02 scope:** the em dash ban covers UI and site copy. It does not cover `content/` prose, post titles, or series titling conventions, which are the author's deliberate voice (per the copywriting skill's voice calibration).
 
 ## Typography
 
