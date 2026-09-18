@@ -1,3 +1,19 @@
+# [1.53.0](https://github.com/masmuss/pictogrammer/compare/v1.52.0...v1.53.0) (2026-09-18)
+
+
+### Bug Fixes
+
+* **styles:** update prose component typography and styling tokens ([f7eaa71](https://github.com/masmuss/pictogrammer/commit/f7eaa717f6ecd4ccbff79f48bc375a6f94f440e4))
+
+
+### Features
+
+* **comments:** host giscus themes for cross-origin loading ([b1e78e5](https://github.com/masmuss/pictogrammer/commit/b1e78e57fb3ac6aa0ab6ed7e971a28dee5e2dc4a))
+* **comments:** load giscus themes from CDN ([2360a60](https://github.com/masmuss/pictogrammer/commit/2360a60c2f85c7976130a447764c7565ba403c78))
+* **design:** transition system tokens to flexoki color palette ([97c3f95](https://github.com/masmuss/pictogrammer/commit/97c3f956d1d6ca91c1474f0609e143e491c92a14))
+* **ui:** update portfolio design system and components ([fad7cc3](https://github.com/masmuss/pictogrammer/commit/fad7cc373511e966b283fba1fe28b2e71ee5678f))
+* **ui:** update visual styling and custom giscus themes ([4a64d24](https://github.com/masmuss/pictogrammer/commit/4a64d24ae6edfeaa46f3d876adcaf95ab17900ab))
+
 # [1.52.0](https://github.com/masmuss/pictogrammer/compare/v1.51.0...v1.52.0) (2026-09-17)
 
 
