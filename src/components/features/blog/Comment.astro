@@ -19,9 +19,10 @@
 	};
 
 	function getGiscusTheme() {
-		return document.documentElement.classList.contains("dark")
-			? "transparent_dark"
-			: "light";
+		const file = document.documentElement.classList.contains("dark")
+			? "giscus-dark.css"
+			: "giscus-light.css";
+		return new URL(`/${file}`, window.location.origin).href;
 	}
 
 	function setGiscusTheme() {

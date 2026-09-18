@@ -20,7 +20,7 @@ const LOGO_PATH = join(
 	"src",
 	"assets",
 	"images",
-	"logo-dark.svg"
+	"logo-light.svg"
 );
 
 const fontNormalPromise = readFile(FONT_NORMAL_PATH).then((buf) =>

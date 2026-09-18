@@ -62,7 +62,7 @@ const quickLinks: QuickLink[] = [
 		class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center sm:px-6"
 	>
 		<h1
-			class="text-accent-cta text-9xl leading-none font-bold tracking-tighter"
+			class="text-accent-cta-text text-9xl leading-none font-bold tracking-tighter"
 		>
 			404
 		</h1>
@@ -91,12 +91,12 @@ const quickLinks: QuickLink[] = [
 							href={link.href}
 							class={cn(
 								"group relative flex flex-col items-start gap-1.5 rounded-lg p-4 text-left text-sm",
-								"border-border/50 hover:border-border bg-card/50 hover:bg-card",
+								"border-border/50 hover:border-border bg-transparent",
 								"duration-base border transition-all",
 								"focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 							)}
 						>
-							<Icon name={link.icon} class="text-accent-cta size-4" />
+							<Icon name={link.icon} class="text-accent-cta-text size-4" />
 							<CardTitle class="text-foreground text-sm font-medium">
 								{link.title}
 							</CardTitle>

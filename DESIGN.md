@@ -164,6 +164,7 @@ This interface feels calm, personal, and intellectually grounded. It combines a 
 - **Link (flexoki blue):** the single accent of the system. Light uses flexoki-blue-600 (6.87:1, AA PASS); dark lifts flexoki-blue-400 88% toward white (raw 400 is 4.26:1 and fails, lifted clears AA with margin). Covers actionable text links like “See all projects,” inline code, active nav states, the 404 numerals, and the focus ring, signaling interactivity without breaking the monochrome system.
 - **Error (flexoki red):** flexoki-red-600 in light (white on fill 7.77:1), flexoki-red-400 in dark. Reserved for validation and destructive states.
 - **Flexoki proportion rules:** chrome stays monochrome and carries exactly one accent (blue). Other flexoki hues appear only as content semantics, never as chrome: admonition callouts keep their per-type hues, the Draft badge is flexoki orange (light 600 at 4.98:1, dark raw 400 at 5.08:1), charts use categorical 600 tones in light and 400 tones in dark. No new hue enters the system without a semantic role and a contrast check.
+- **Third-party surfaces:** giscus comments use custom themes (`public/giscus-light.css`, `public/giscus-dark.css`) mapped to the same tokens with transparent canvas, so the iframe never renders a foreign white or dark box. OG social images reuse the warm paper, ink, and flexoki blue accent.
 
 ## Typography
 
