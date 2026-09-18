@@ -62,7 +62,7 @@ test.describe("SEO and Meta Tags", () => {
 		await expect(jsonLd).toBeAttached();
 		const schema = JSON.parse((await jsonLd.textContent()) ?? "{}");
 		const articleSchema = schema["@graph"].find(
-			(item: { ["@type"]?: string }) => item["@type"] === "BlogPosting"
+			(item: { "@type"?: string }) => item["@type"] === "BlogPosting"
 		);
 		expect(articleSchema).toBeDefined();
 		expect(articleSchema.mainEntityOfPage["@id"]).toBe(
