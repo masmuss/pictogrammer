@@ -356,11 +356,7 @@
 
 			--border: oklch(0.25 0.01 85);
 			--input: oklch(0.25 0.01 85);
-			--ring: color-mix(
-				in oklch,
-				var(--color-flexoki-blue-400) 88%,
-				white
-			);
+			--ring: color-mix(in oklch, var(--color-flexoki-blue-400) 88%, white);
 
 			/* Accent CTA (dark compat) - flexoki blue */
 			--accent-cta: color-mix(
