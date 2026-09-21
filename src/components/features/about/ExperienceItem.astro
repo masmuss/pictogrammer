@@ -13,8 +13,10 @@ const { experience } = Astro.props;
 		<span class="text-muted-foreground/80 font-mono text-sm tabular-nums">
 			{experience.period}
 		</span>
-        <span>
-			<span class="text-muted-foreground">{experience.title}</span> at {experience.company}
+		<span>
+			<span class="text-muted-foreground">{experience.title}</span> at {
+				experience.company
+			}
 		</span>
 	</p>
 </div>

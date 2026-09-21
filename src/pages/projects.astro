@@ -36,17 +36,13 @@ const rest: Project[] = allProjects
 
 		<Section title="Featured" titleAs="h2" class="pt-0">
 			<ul class="flex flex-col">
-				{featured.map((project) => (
-					<ProjectRow project={project} featured />
-				))}
+				{featured.map((project) => <ProjectRow project={project} featured />)}
 			</ul>
 		</Section>
 
 		<Section title="More Projects" titleAs="h2" class="pt-0">
 			<ul class="flex flex-col">
-				{rest.map((project) => (
-					<ProjectRow project={project} />
-				))}
+				{rest.map((project) => <ProjectRow project={project} />)}
 			</ul>
 		</Section>
 	</div>

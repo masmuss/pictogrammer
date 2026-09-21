@@ -1,26 +1,26 @@
 [
-  {
-    "id": "kuanta-indonesia-creative-technology-staff",
-    "period": "Oct 2025 - Present",
-    "title": "Creative Technology Staff",
-    "company": "Kuanta Indonesia"
-  },
-  {
-    "id": "lebih-software-developer",
-    "period": "Jun 2024 - Aug 2025",
-    "title": "Software Developer",
-    "company": "Lingkar Energi Bumi Indonesia Hijau (LEBIH)"
-  },
-  {
-    "id": "panasonic-production-engineer",
-    "period": "Jan 2024 - Jun 2024",
-    "title": "Production Engineer",
-    "company": "Panasonic Manufacturing Indonesia (PT.PMI)"
-  },
-  {
-    "id": "pens-projects",
-    "period": "2021 - 2025",
-    "title": "Student Organization & Research Projects",
-    "company": "Politeknik Elektronika Negeri Surabaya (PENS)"
-  }
+	{
+		"id": "kuanta-indonesia-creative-technology-staff",
+		"period": "Oct 2025 - Present",
+		"title": "Creative Technology Staff",
+		"company": "Kuanta Indonesia"
+	},
+	{
+		"id": "lebih-software-developer",
+		"period": "Jun 2024 - Aug 2025",
+		"title": "Software Developer",
+		"company": "Lingkar Energi Bumi Indonesia Hijau (LEBIH)"
+	},
+	{
+		"id": "panasonic-production-engineer",
+		"period": "Jan 2024 - Jun 2024",
+		"title": "Production Engineer",
+		"company": "Panasonic Manufacturing Indonesia (PT.PMI)"
+	},
+	{
+		"id": "pens-projects",
+		"period": "2021 - 2025",
+		"title": "Student Organization & Research Projects",
+		"company": "Politeknik Elektronika Negeri Surabaya (PENS)"
+	}
 ]
