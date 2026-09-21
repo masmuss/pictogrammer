@@ -3,7 +3,6 @@ title: Hal yang Kupelajari dari Proyek Gagal
 description: Tidak semua proyek harus selesai. Beberapa cukup memberi pelajaran, lalu ditinggal.
 date: 20 September 2026
 tags: [reflection, growth]
-draft: true
 ---
 
 Berapa banyak repo GitHub yang isinya cuma `init` doang?
