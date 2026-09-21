@@ -81,7 +81,6 @@
 	"devDependencies": {
 		"@axe-core/playwright": "^4.13.0",
 		"@biomejs/biome": "2.5.12",
-		"@iconify-json/logos": "^1.2.13",
 		"@iconify-json/ph": "^1.2.2",
 		"@iconify/json": "^2.2.525",
 		"@playwright/test": "^1.62.1",

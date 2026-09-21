@@ -1,79 +1,26 @@
 [
-	{
-		"id": "kuanta-indonesia-creative-technology-staff",
-		"period": "Oct 2025 - Present",
-		"title": "Creative Technology Staff",
-		"company": "Kuanta Indonesia",
-		"logo": "https://kuanta.id/wp-content/uploads/2022/08/Logo-Kuanta-1-e1660739952828-150x150.png",
-		"icon": "ph--code",
-		"location": "Surabaya",
-		"summary": "Building and maintaining products for school operations while improving reliability through better engineering workflows.",
-		"skills": ["TypeScript", "React", "Node.js", "PostgreSQL"],
-		"highlights": [
-			"Responsible for the development and maintenance of EduOS, a web-based school administration platform used for managing academic data, students, and teachers",
-			"Developed and maintained an internal mobile application for employee attendance and task tracking",
-			"Improved system reliability and efficiency through regular code optimization and deployment automation"
-		]
-	},
-	{
-		"id": "lebih-software-developer",
-		"period": "Jun 2024 - Aug 2025",
-		"title": "Software Developer",
-		"company": "Lingkar Energi Bumi Indonesia Hijau (LEBIH)",
-		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
-		"icon": "ph--device-mobile",
-		"location": "Pasuruan",
-		"kind": "internship",
-		"summary": "Built IoT-driven web and mobile systems for real-time environmental monitoring and remote control.",
-		"skills": ["Flutter", "IoT", "MQTT", "Data Visualization"],
-		"highlights": [
-			"Developed a web-based monitoring platform to track real-time environmental conditions in melon hydroponic systems",
-			"Built a mobile application to monitor temperature, humidity, water quality, and receive condition-based alerts",
-			"Implemented control interfaces for IoT devices and sensors to manage water flow, nutrient delivery, and ventilation remotely",
-			"Integrated real-time data visualization and push notifications for proactive environmental management"
-		]
-	},
-	{
-		"id": "panasonic-production-engineer",
-		"period": "Jan 2024 - Jun 2024",
-		"title": "Production Engineer",
-		"company": "Panasonic Manufacturing Indonesia (PT.PMI)",
-		"logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Panasonic_logo_%28Blue%29.svg/1280px-Panasonic_logo_%28Blue%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
-		"icon": "ph--gear",
-		"location": "Jakarta",
-		"kind": "internship",
-		"summary": "Improved production performance by analyzing assembly workflows and building software plus IoT-based tracking support.",
-		"skills": ["Process Optimization", "IoT", "Data Analysis"],
-		"highlights": [
-			"Analyzed workflow and operational sequence across the air conditioner production line, from part assembly to packing",
-			"Developed software tools to improve production efficiency, track part flow, and reduce bottlenecks",
-			"Designed and implemented IoT integrations to capture real-time data for production performance"
-		]
-	},
-	{
-		"id": "pens-projects",
-		"period": "2021 - 2025",
-		"title": "Student Organization & Research Projects",
-		"company": "Politeknik Elektronika Negeri Surabaya (PENS)",
-		"logo": "https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png",
-		"icon": "ph--graduation-cap",
-		"location": "Surabaya",
-		"kind": "campus",
-		"summary": "Developed various digital products for campus organizations and research laboratories, including election systems, news portals, and IoT monitoring dashboards.",
-		"skills": [
-			"Fullstack Development",
-			"IoT",
-			"MQTT",
-			"REST API",
-			"Backend Development",
-			"CMS"
-		],
-		"highlights": [
-			"Built and maintained the official campus news portal and public profile website, serving thousands of visitors monthly",
-			"Developed secure backend systems for student organization digital elections with robust authentication",
-			"Created web-based dashboards for IoT-based aquaculture and hydroponics monitoring with real-time data visualization",
-			"Built a cross-platform mind mapping application with real-time synchronization between web and mobile versions",
-			"Collaborated with cross-functional teams to migrate legacy systems to modern tech stacks"
-		]
-	}
+  {
+    "id": "kuanta-indonesia-creative-technology-staff",
+    "period": "Oct 2025 - Present",
+    "title": "Creative Technology Staff",
+    "company": "Kuanta Indonesia"
+  },
+  {
+    "id": "lebih-software-developer",
+    "period": "Jun 2024 - Aug 2025",
+    "title": "Software Developer",
+    "company": "Lingkar Energi Bumi Indonesia Hijau (LEBIH)"
+  },
+  {
+    "id": "panasonic-production-engineer",
+    "period": "Jan 2024 - Jun 2024",
+    "title": "Production Engineer",
+    "company": "Panasonic Manufacturing Indonesia (PT.PMI)"
+  },
+  {
+    "id": "pens-projects",
+    "period": "2021 - 2025",
+    "title": "Student Organization & Research Projects",
+    "company": "Politeknik Elektronika Negeri Surabaya (PENS)"
+  }
 ]

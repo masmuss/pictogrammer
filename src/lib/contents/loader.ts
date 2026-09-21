@@ -2,11 +2,8 @@ import { getEntry } from "astro:content";
 import type { z } from "astro/zod";
 
 type SupportedCollection =
-	| "certifications"
-	| "educations"
 	| "experiences"
 	| "projects"
-	| "skills"
 	| "tools"
 	| "reading";
 
