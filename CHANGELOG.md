@@ -1,3 +1,30 @@
+# [2.0.0](https://github.com/masmuss/pictogrammer/compare/v1.53.0...v2.0.0) (2026-09-21)
+
+
+* refactor(about)!: trim page to prose, naked experience rows, and CV pointer ([cc67334](https://github.com/masmuss/pictogrammer/commit/cc673343705e5c62c5985e0660879d33a24a4cda))
+
+
+### Features
+
+* **content:** publish reflection on failed projects ([9440cf5](https://github.com/masmuss/pictogrammer/commit/9440cf57f2a9f4e84640e7d204dd014556112221))
+* **projects:** redesign projects page with list layout and featured ([d818c57](https://github.com/masmuss/pictogrammer/commit/d818c576312bc87d20028b6697f99b8fd4df05e3))
+
+
+### BREAKING CHANGES
+
+* remove Tech Stacks, Educations, and Certifications
+sections from /about along with their components, content collections,
+schemas, types, and data; Experiences now render as plain period-title
+rows. Detail lives in the CV.
+
+BREAKING CHANGES detail:
+- deleted content collections: skills, educations, certifications
+- deleted lib modules: contents/{about,skills,educations,certifications}.ts
+- removed exports: getAboutPageData, getAllSkillCollections, getAllEducations,
+  getAllCertifications, Education, Certification, Skill, SkillCollection,
+  calculateDuration
+- removed dependency: @iconify-json/logos
+
 # [1.53.0](https://github.com/masmuss/pictogrammer/compare/v1.52.0...v1.53.0) (2026-09-18)
 
 
