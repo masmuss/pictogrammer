@@ -1,9 +1,5 @@
-Hey, I'm **Ahmad Musafir Khoirul Fattah**, but you can call me **Khoirul**. I'm a full-stack developer with a strong focus on backend engineering, and a photography enthusiast.
+Hey, I'm **Ahmad Musafir Khoirul Fattah**, but you can call me **Khoirul**. I'm a full-stack developer with a strong focus on backend engineering, and a photography enthusiast based in Surabaya. I graduated with a Bachelor of Applied Informatics Engineering from PENS in 2025.
 
-Building applications that are functional and user-friendly is what I do best. I enjoy designing database architectures, building APIs, and occasionally sharing thoughts on Web Development, Photography, and Tech Insights.
+Day to day, I work mostly with TypeScript, Node.js, and PostgreSQL. I enjoy designing database architectures, building APIs, and turning ideas into applications that are functional and user-friendly. I share my work on the [projects page](/projects) and write [blog posts](/blog) about coding, creativity, and my experiences.
 
-Dreaming up ideas and making them come to life is what keeps me going. You can find my [full projects list here](/projects). I also explore the art of photography, capturing moments and visual stories on [Instagram](https://www.instagram.com/pictogrammmer).
-
-I write [blog posts](/blog) about coding, creativity, and my experiences. I also love books and enjoy getting lost in good stories and ideas. If you enjoy reading about tech or want to follow along, feel free to check them out.
-
-Outside of coding and photography, I'm always eager to learn new things, collaborate on projects, or just chat over coffee.
+Outside of coding, I explore photography on [Instagram](https://www.instagram.com/pictogrammmer), and I'm always up for learning new things or chatting over coffee.

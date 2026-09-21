@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Project } from "@/types";
+
+interface Props {
+	project: Project;
+	featured?: boolean;
+}
+
+const { project, featured = false } = Astro.props;
+
+const href = project.liveHref ?? project.repoHref ?? project.href;
+const isLive = Boolean(project.liveHref);
+const hasRepo = Boolean(project.repoHref);
+---
+
+<li data-testid="project-row">
+	<div class="flex items-center gap-4 py-4">
+		<div class="min-w-0 flex-1">
+			<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+				{
+					href ? (
+						<a
+							href={href}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="font-medium text-foreground hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-ring rounded"
+						>
+							{project.text}
+						</a>
+					) : (
+						<span class="font-medium text-foreground">{project.text}</span>
+					)
+				}
+				{featured && <span class="text-border/60">-</span>}
+				{
+					featured && (
+						<span class="text-muted-foreground text-xs font-mono tabular-nums">
+							Featured
+						</span>
+					)
+				}
+			</div>
+
+			{
+				project.description && (
+					<p class="text-muted-foreground text-sm leading-snug mt-0.5">
+						{project.description}
+					</p>
+				)
+			}
+		</div>
+
+		<div class="flex shrink-0 items-center gap-2">
+			{
+				isLive && (
+					<a
+						href={project.liveHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground hover:text-foreground transition-colors p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
+						aria-label={`Live site of ${project.text}`}
+						title="Live"
+					>
+						<Icon
+							name="ph:arrow-square-out"
+							class="text-lg"
+							aria-hidden="true"
+						/>
+					</a>
+				)
+			}
+			{
+				hasRepo && (
+					<a
+						href={project.repoHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground hover:text-foreground transition-colors p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
+						aria-label={`Source code of ${project.text}`}
+						title="Source code"
+					>
+						<Icon name="ph:github-logo" class="text-lg" aria-hidden="true" />
+					</a>
+				)
+			}
+		</div>
+	</div>
+</li>

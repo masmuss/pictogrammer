@@ -2,14 +2,6 @@ import type { Project } from "@/types";
 import { getContentEntryData } from "./loader";
 import { projectsSchema } from "./schemas";
 
-export const CATEGORY_ICONS: Record<string, string> = {
-	Website: "ph:globe",
-	API: "ph:terminal-window",
-	"Mobile App": "ph:device-mobile",
-	"Artificial Intelligence": "ph:brain",
-	"System & Tooling": "ph:toolbox"
-};
-
 export async function getAllProjects() {
 	return getContentEntryData("projects", projectsSchema);
 }
