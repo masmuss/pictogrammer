@@ -3,21 +3,17 @@ export const prerender = true;
 
 import Section from "@/components/common/Section.astro";
 import SocialLinks from "@/components/common/SocialLinks.astro";
-import Certifications from "@/components/features/about/Certifications.astro";
-import Educations from "@/components/features/about/Educations.astro";
 import Experiences from "@/components/features/about/Experiences.astro";
-import SkillsTabs from "@/components/features/about/SkillsTabs.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getAboutPageData, getAllSkillCollections } from "@/lib/contents";
+import { getAllExperiences } from "@/lib/contents";
 import AboutContent from "../../content/pages/about.md";
 
-const { experiences, educations, certifications } = await getAboutPageData();
-const techStack = await getAllSkillCollections();
+const experiences = await getAllExperiences();
 ---
 
 <BaseLayout
 	title="About Khoirul Fattah"
-	description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including experience, skills, education, certifications, and current focus."
+	description="Learn about Khoirul Fattah, a full-stack developer and photographer based in Surabaya, including his experience and current focus."
 	image={{ src: "/og/about.png", alt: "About - pictogrammmer" }}
 	pageType="website"
 	breadcrumbs={[
@@ -44,39 +40,12 @@ const techStack = await getAllSkillCollections();
 			</Section>
 
 			<Section
-				title="Tech Stacks"
-				titleAs="h2"
-				transitionDelay={150}
-				data-testid="skills-section"
-			>
-				<SkillsTabs collections={techStack} class="gap-y-4" />
-			</Section>
-
-			<Section
 				title="Experiences"
 				titleAs="h2"
 				transitionDelay={150}
 				data-testid="experiences-section"
 			>
 				<Experiences experiences={experiences} />
-			</Section>
-
-			<Section
-				title="Educations"
-				titleAs="h2"
-				transitionDelay={150}
-				data-testid="educations-section"
-			>
-				<Educations educations={educations} />
-			</Section>
-
-			<Section
-				title="Certifications"
-				titleAs="h2"
-				transitionDelay={150}
-				data-testid="certifications-section"
-			>
-				<Certifications certifications={certifications} />
 			</Section>
 
 			<Section
@@ -91,7 +60,7 @@ const techStack = await getAllSkillCollections();
 						mind, or just want to say hi!
 					</p>
 					<div class="flex flex-wrap items-center gap-3">
-						<SocialLinks variant="button" showEmail showCV />
+						<SocialLinks showEmail showCV />
 					</div>
 				</div>
 			</Section>

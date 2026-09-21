@@ -1,14 +1,11 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import {
-	certificationsSchema,
-	educationsSchema,
 	experiencesSchema,
 	postSchema,
 	projectsSchema,
 	readingSchema,
 	seriesSchema,
-	skillsSchema,
 	toolsSchema
 } from "@/lib/contents/schemas";
 
@@ -36,33 +33,12 @@ const experiences = defineCollection({
 	schema: experiencesSchema
 });
 
-const educations = defineCollection({
-	loader: glob({ pattern: "**/**/*.json", base: `${CONTENT_DIR}/educations` }),
-	schema: educationsSchema
-});
-
-const certifications = defineCollection({
-	loader: glob({
-		pattern: "**/**/*.json",
-		base: `${CONTENT_DIR}/certifications`
-	}),
-	schema: certificationsSchema
-});
-
 const projects = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
 		base: `${CONTENT_DIR}/projects`
 	}),
 	schema: projectsSchema
-});
-
-const skills = defineCollection({
-	loader: glob({
-		pattern: "**/**/*.json",
-		base: `${CONTENT_DIR}/skills`
-	}),
-	schema: skillsSchema
 });
 
 const tools = defineCollection({
@@ -85,10 +61,7 @@ export const collections = {
 	post,
 	series,
 	experiences,
-	educations,
-	certifications,
 	projects,
-	skills,
 	tools,
 	reading
 };

@@ -3,11 +3,18 @@ export const prerender = true;
 
 import PageHeader from "@/components/common/PageHeader.astro";
 import Section from "@/components/common/Section.astro";
-import ProjectCard from "@/components/features/projects/ProjectCard.astro";
+import ProjectRow from "@/components/features/projects/ProjectRow.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getAllProjects } from "@/lib/contents/projects";
+import { getAllProjects, getFeaturedProjects } from "@/lib/contents";
+import type { Project } from "@/types";
 
 const allProjects = await getAllProjects();
+const featured = await getFeaturedProjects(5);
+
+const featuredTexts = new Set(featured.map((p) => p.text));
+const rest: Project[] = allProjects
+	.flatMap((category) => category.projects)
+	.filter((p) => !featuredTexts.has(p.text));
 ---
 
 <BaseLayout
@@ -27,29 +34,16 @@ const allProjects = await getAllProjects();
 			as="h1"
 		/>
 
-		{
-			allProjects.map((category, index) => (
-				<Section
-					title={category.title}
-					titleAs="h2"
-					class="gap-y-6 relative pt-0"
-					transitionDelay={index * 150}
-				>
-					<div class="group/list grid grid-cols-1 gap-8 sm:grid-cols-2">
-						{category.projects.map((project) => (
-							<ProjectCard
-								href={project.href}
-								liveHref={project.liveHref}
-								repoHref={project.repoHref}
-								heading={project.text}
-								subheading={project.description}
-								icon={project.icon}
-								category={category.title}
-							/>
-						))}
-					</div>
-				</Section>
-			))
-		}
+		<Section title="Featured" titleAs="h2" class="pt-0">
+			<ul class="flex flex-col">
+				{featured.map((project) => <ProjectRow project={project} featured />)}
+			</ul>
+		</Section>
+
+		<Section title="More Projects" titleAs="h2" class="pt-0">
+			<ul class="flex flex-col">
+				{rest.map((project) => <ProjectRow project={project} />)}
+			</ul>
+		</Section>
 	</div>
 </BaseLayout>

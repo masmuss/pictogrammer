@@ -51,32 +51,13 @@ export const experiencesSchema = z.array(
 		id: z.string(),
 		period: z.string(),
 		title: z.string(),
-		company: z.string(),
-		logo: z.string().optional(),
-		icon: z.string().optional(),
-		location: z.string().optional(),
-		kind: z.enum(["professional", "campus", "internship"]).optional(),
-		umbrellaOrg: z.string().optional(),
-		summary: z.string().optional(),
-		skills: z.array(z.string()).optional(),
-		highlights: z.array(z.string())
+		company: z.string()
 	})
 );
 
-export const educationsSchema = z.array(
-	z.object({
-		period: z.string(),
-		institution: z.string(),
-		degree: z.string(),
-		gpa: z.string().optional(),
-		coursework: z.array(z.string())
-	})
-);
-
-const projectSchema = z.object({
+export const projectSchema = z.object({
 	text: z.string(),
 	description: z.string().optional(),
-	icon: z.string().optional(),
 	href: z.string().optional(),
 	liveHref: z.url().optional(),
 	repoHref: z.url().optional(),
@@ -101,30 +82,6 @@ export const toolsSchema = z.array(
 				href: z.string().optional()
 			})
 		)
-	})
-);
-
-export const skillsSchema = z.array(
-	z.object({
-		title: z.string(),
-		skills: z.array(
-			z.object({
-				name: z.string(),
-				description: z.string(),
-				icon: z.string().optional()
-			})
-		)
-	})
-);
-
-export const certificationsSchema = z.array(
-	z.object({
-		title: z.string(),
-		issuer: z.string(),
-		date: z.string(),
-		expiredDate: z.string().optional(),
-		credentialUrl: z.url().optional(),
-		description: z.string().optional()
 	})
 );
 
