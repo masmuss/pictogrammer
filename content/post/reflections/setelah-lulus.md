@@ -3,7 +3,6 @@ title: Setelah Lulus
 description: Surat dari Oktober 2026 untuk diriku yang baru wisuda. Tentang apa yang akan terjadi — dan apa yang tidak perlu dikhawatirkan.
 date: 04 October 2026
 tags: [reflection]
-draft: true
 ---
 
 Halo, kamu yang baru saja wisuda.
