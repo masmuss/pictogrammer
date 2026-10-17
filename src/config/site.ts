@@ -1,11 +1,4 @@
-import type {
-	GiscusConfig,
-	Header,
-	OgPageMeta,
-	Page,
-	SiteConfig,
-	SocialLink
-} from "./types";
+import type { Header, OgPageMeta, Page, SiteConfig, SocialLink } from "./types";
 
 export const socialLinks: SocialLink[] = [
 	{
@@ -68,20 +61,6 @@ export const page: Page = {
 			href: "/blog"
 		}
 	]
-};
-
-export const giscus: GiscusConfig = {
-	repo: "masmuss/pictogrammer",
-	repoId: "R_kgDOPKC8fg",
-	category: "General",
-	categoryId: "DIC_kwDOPKC8fs4Ct6-3",
-	mapping: "title",
-	strict: "0",
-	reactionsEnabled: "1",
-	emitMetadata: "0",
-	inputPosition: "bottom",
-	lang: "en",
-	loading: "lazy"
 };
 
 export const ogPages: Record<string, OgPageMeta> = {
@@ -160,7 +139,6 @@ const siteConfig: SiteConfig = {
 	socialLinks,
 	header,
 	page,
-	giscus,
 	ogPages
 };
 

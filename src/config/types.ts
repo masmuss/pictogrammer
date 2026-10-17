@@ -34,20 +34,6 @@ export type Page = {
 	blogLinks: Omit<NavLink, "icon">[];
 };
 
-export type GiscusConfig = {
-	repo: string;
-	repoId: string;
-	category: string;
-	categoryId: string;
-	mapping: string;
-	strict: string;
-	reactionsEnabled: string;
-	emitMetadata: string;
-	inputPosition: string;
-	lang: string;
-	loading: string;
-};
-
 export type OgPageMeta = {
 	title: string;
 	description: string;
@@ -66,6 +52,5 @@ export type SiteConfig = {
 	socialLinks: SocialLink[];
 	header: Header;
 	page: Page;
-	giscus: GiscusConfig;
 	ogPages: Record<string, OgPageMeta>;
 };

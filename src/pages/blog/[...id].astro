@@ -2,7 +2,6 @@
 export const prerender = true;
 
 import { render } from "astro:content";
-import Comment from "@/components/features/blog/Comment.astro";
 import RelatedPost from "@/components/features/blog/RelatedPost.astro";
 import ShareButtons from "@/components/features/blog/ShareButtons.astro";
 import Toc from "@/components/features/blog/Toc.astro";
@@ -58,6 +57,5 @@ const hasGithubCard = post.body?.includes("::github");
 		<div class="mx-auto max-w-3xl">
 			<RelatedPost {relatedPosts} />
 		</div>
-		<Comment />
 	</footer>
 </PostLayout>
