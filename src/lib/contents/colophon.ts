@@ -48,11 +48,6 @@ export function getColophonData() {
 		{
 			name: "Hostinger",
 			description: "My reliable domain registrar."
-		},
-		{
-			name: "Giscus",
-			description:
-				"A lightweight comments system powered by GitHub Discussions."
 		}
 	];
 

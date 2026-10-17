@@ -9,12 +9,11 @@ This is a personal website. I do not collect, store, or process personal data be
 
 ### Third-party services
 
-- **Giscus**: comment system powered by GitHub Discussions. See [Giscus Privacy Policy](https://github.com/giscus/giscus/blob/main/PRIVACY-POLICY.md).
 - **Cloudflare**: hosting and web analytics. See [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/).
 
 ### Cookies
 
-No first-party cookies. Third-party services (Giscus, Cloudflare) may set their own cookies.
+No first-party cookies. Cloudflare may set cookies for hosting and analytics.
 
 ## Content License
 

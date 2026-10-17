@@ -52,7 +52,7 @@ src/components/
 └── features/                   # Page-specific domain components
     ├── home/                   # Hero, About, FeaturedProjects, Posts
     ├── about/                  # Experiences, Educations, Certifications, SkillsTabs
-    ├── blog/                   # Hero, PostPreview, TOC, RelatedPost, Comment
+    ├── blog/                   # Hero, PostPreview, TOC, RelatedPost
     ├── projects/               # ProjectCard
     └── tools/                  # ToolItem, ToolSection
 ```
