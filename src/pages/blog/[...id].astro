@@ -45,7 +45,8 @@ const hasGithubCard = post.body?.includes("::github");
 		<Content />
 	</div>
 
-	<div class="xl:hidden">
+	<div class="mt-10 border-y border-border/60 py-4 xl:hidden">
+		<h2 class="sr-only">Share this post</h2>
 		<ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
 	</div>
 
@@ -53,7 +54,7 @@ const hasGithubCard = post.body?.includes("::github");
 		<ShareButtons title={post.data.title} url={Astro.url} />
 	</div>
 
-	<footer slot="footer" class="w-full">
+	<footer slot="footer" class="w-full border-t border-border/60">
 		<div class="mx-auto max-w-3xl">
 			<RelatedPost {relatedPosts} />
 		</div>
