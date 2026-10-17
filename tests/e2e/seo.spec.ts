@@ -89,4 +89,21 @@ test.describe("SEO and Meta Tags", () => {
 			page.locator('link[type="application/rss+xml"]')
 		).toHaveAttribute("href", "/rss.xml");
 	});
+
+	test("individual tag page should load and have SEO", async ({ page }) => {
+		await page.goto("/tags");
+
+		const firstTag = page.locator('main a[href^="/tags/"]').first();
+		if (await firstTag.isVisible()) {
+			const rawTagName = await firstTag.textContent();
+			const cleanTagName = rawTagName?.replace(/[#\d]/g, "").trim();
+
+			await firstTag.click();
+
+			const heading = page.locator("h1, h2").first();
+			await expect(heading).toContainText(new RegExp(cleanTagName || "", "i"));
+			await expect(page).toHaveTitle(new RegExp(cleanTagName || "", "i"));
+			await expect(page.locator('meta[name="description"]')).toBeAttached();
+		}
+	});
 });
