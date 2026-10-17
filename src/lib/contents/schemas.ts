@@ -62,6 +62,7 @@ export const projectSchema = z.object({
 	liveHref: z.url().optional(),
 	repoHref: z.url().optional(),
 	featured: z.boolean().optional(),
+	year: z.number().int().min(2020).max(2100).optional(),
 	stacks: z.array(z.string()).optional()
 });
 

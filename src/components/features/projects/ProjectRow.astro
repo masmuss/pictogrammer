@@ -32,11 +32,17 @@ const hasRepo = Boolean(project.repoHref);
 						<span class="font-medium text-foreground">{project.text}</span>
 					)
 				}
-				{featured && <span class="text-border/60">-</span>}
 				{
 					featured && (
 						<span class="text-muted-foreground text-xs font-mono tabular-nums">
 							Featured
+						</span>
+					)
+				}
+				{
+					project.year && (
+						<span class="text-muted-foreground text-xs tabular-nums">
+							{project.year}
 						</span>
 					)
 				}

@@ -5,89 +5,86 @@
 			{
 				"text": "IdeaHive",
 				"description": "Mind-mapping app by PENS Agile PBL and Agileteknik, Laravel, MySQL, Flutter",
-				"liveHref": "https://secimap.agileteknik.com"
+				"liveHref": "https://secimap.agileteknik.com",
+				"year": 2022
 			},
 			{
 				"text": "IoT Dashboard",
 				"description": "IoT Dashboard for monitoring and controlling IoT devices",
-				"repoHref": "https://github.com/masmuss/next-hydroponic-monitoring"
+				"repoHref": "https://github.com/masmuss/next-hydroponic-monitoring",
+				"year": 2024
 			},
 			{
 				"text": "PENS Aquaculture",
 				"description": "Dashboard for realtime water quality monitoring",
-				"liveHref": "https://aquaculturepens.com"
-			},
-			{
-				"text": "ENT Satu Atap",
-				"description": "Super app used for administration at EEPIS News and Network Team",
-				"liveHref": "https://ent.pens.ac.id"
-			},
-			{
-				"text": "Devtoolbox",
-				"description": "A web-based utility toolbox for developers.",
-				"liveHref": "https://devtoolbox.khoirul.me",
-				"repoHref": "https://github.com/masmuss/devtoolbox.git"
+				"liveHref": "https://aquaculturepens.com",
+				"year": 2022
 			},
 			{
 				"text": "Applyst",
 				"description": "A job application tracking web app built with Laravel and React, designed to help users manage their job applications effectively.",
 				"repoHref": "https://github.com/masmuss/applyst.git",
-				"featured": true
+				"featured": true,
+				"year": 2026
 			},
 			{
 				"text": "Trak",
 				"description": "A modern ticketing and reporting platform with Telegram bot integration, built using Turborepo, SvelteKit (Runes), grammY, and Drizzle ORM.",
 				"repoHref": "https://github.com/masmuss/trak.git",
-				"featured": true
+				"featured": true,
+				"year": 2026
 			},
 			{
 				"text": "Veka",
 				"description": "A minimalist, ultra-fast Digital Garden & Wiki starter for Astro. Features automatic folder-based routing, local Pagefind search, and Obsidian-style WikiLinks.",
 				"liveHref": "https://demo-veka.khoirul.me",
 				"repoHref": "https://github.com/masmuss/veka.git",
-				"featured": true
+				"featured": true,
+				"year": 2026
 			},
 			{
 				"text": "Qasir API",
 				"description": "Learning NestJS by creating API for Point of Sales system",
-				"repoHref": "https://github.com/masmuss/qasir-api"
+				"repoHref": "https://github.com/masmuss/qasir-api",
+				"year": 2024
 			},
 			{
 				"text": "Hono API Boilerplate",
 				"description": "An API boilerplate was built using Bun, Hono, drizzle ORM and integrated with Scalar API reference",
-				"repoHref": "https://github.com/masmuss/hono-api-boilerplate"
+				"repoHref": "https://github.com/masmuss/hono-api-boilerplate",
+				"year": 2025
 			},
 			{
 				"text": "eLibrary API",
 				"description": "An API for eLibrary system built with Hono, Bun, and Scalar API reference",
-				"repoHref": "https://github.com/masmuss/hono-elibrary.git"
+				"repoHref": "https://github.com/masmuss/hono-elibrary.git",
+				"year": 2025
 			},
 			{
 				"text": "Gokit Starter",
 				"description": "Modern Go API boilerplate with Chi, GORM, and automated testing, designed with Clean Architecture principles.",
 				"repoHref": "https://github.com/masmuss/gokit-starter",
-				"featured": true
+				"featured": true,
+				"year": 2026
 			},
 			{
 				"text": "IoT Monitoring and Control",
 				"description": "IoT Monitoring and Control App for Hydroponic System, Flutter, Firebase",
-				"repoHref": "https://github.com/masmuss/mobile-hydroponic-monitoring"
+				"repoHref": "https://github.com/masmuss/mobile-hydroponic-monitoring",
+				"year": 2024
 			},
 			{
 				"text": "DSS for Hydroponic System",
 				"description": "Decision Support System for analyzing environmental data in hydroponic system using Sugeno Fuzzy Inference System",
 				"repoHref": "https://github.com/masmuss/sugeno-fuzzy-simulator",
-				"featured": true
+				"featured": true,
+				"year": 2024
 			},
 			{
 				"text": "Micro PaaS",
 				"description": "Lightweight PaaS built in Go for managing Docker containers with web dashboard, automatic subdomain proxying, and self-healing.",
-				"repoHref": "https://github.com/masmuss/micro-paas"
-			},
-			{
-				"text": "Gokit Install",
-				"description": "Interactive CLI tool to bootstrap new Go projects using Gokit Starter.",
-				"repoHref": "https://github.com/masmuss/gokit-install"
+				"repoHref": "https://github.com/masmuss/micro-paas",
+				"year": 2026
 			}
 		]
 	}
