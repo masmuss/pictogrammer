@@ -28,4 +28,12 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+
+	a.external-link::after {
+		content: "↗";
+		display: inline-block;
+		margin-inline-start: 0.125rem;
+		font-size: 0.85em;
+		line-height: 1;
+	}
 }
