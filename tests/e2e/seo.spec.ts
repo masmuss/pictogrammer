@@ -95,14 +95,14 @@ test.describe("SEO and Meta Tags", () => {
 
 		const firstTag = page.locator('main a[href^="/tags/"]').first();
 		if (await firstTag.isVisible()) {
-			const rawTagName = await firstTag.textContent();
-			const cleanTagName = rawTagName?.replace(/[#\d]/g, "").trim();
+			const tagHref = await firstTag.getAttribute("href");
+			const tagName = tagHref?.split("/").filter(Boolean).pop();
 
 			await firstTag.click();
 
 			const heading = page.locator("h1, h2").first();
-			await expect(heading).toContainText(new RegExp(cleanTagName || "", "i"));
-			await expect(page).toHaveTitle(new RegExp(cleanTagName || "", "i"));
+			await expect(heading).toContainText(new RegExp(tagName || "", "i"));
+			await expect(page).toHaveTitle(new RegExp(tagName || "", "i"));
 			await expect(page.locator('meta[name="description"]')).toBeAttached();
 		}
 	});
