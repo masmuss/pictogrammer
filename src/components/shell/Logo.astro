@@ -11,25 +11,29 @@ interface Props {
 }
 
 const {
-	class: className = "w-12 md:w-14 lg:w-16",
+	class: className = "h-10 w-auto",
 	href = "/",
 	loading = "lazy",
 	fetchpriority = "auto"
 } = Astro.props;
 ---
 
-<a href={href} class="inline-block shrink-0" aria-label="pictogrammer">
+<a
+	href={href}
+	class={`inline-flex shrink-0 ${className}`}
+	aria-label="pictogrammer"
+>
 	<Image
 		src={logoLight}
 		alt="pictogrammer"
-		class={`${className} dark:hidden`}
+		class="h-full w-auto dark:hidden"
 		loading={loading}
 		fetchpriority={fetchpriority}
 	/>
 	<Image
 		src={logoDark}
 		alt="pictogrammer"
-		class={`${className} hidden dark:block`}
+		class="hidden h-full w-auto dark:block"
 		loading={loading}
 		fetchpriority={fetchpriority}
 	/>
