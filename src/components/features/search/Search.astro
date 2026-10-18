@@ -107,7 +107,7 @@ import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
 <style is:global>
 	#search-dialog [data-search-list] {
 		scrollbar-width: thin;
-		scrollbar-color: hsl(var(--muted)) transparent;
+		scrollbar-color: var(--color-muted) transparent;
 	}
 	#search-dialog [data-search-list]::-webkit-scrollbar {
 		width: 8px;
@@ -116,11 +116,15 @@ import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
 		background: transparent;
 	}
 	#search-dialog [data-search-list]::-webkit-scrollbar-thumb {
-		background: hsl(var(--muted));
+		background: var(--color-muted);
 		border-radius: 4px;
 	}
 	#search-dialog [data-search-list]::-webkit-scrollbar-thumb:hover {
-		background: hsl(var(--muted-foreground) / 0.5);
+		background: color-mix(
+			in srgb,
+			var(--color-muted-foreground) 50%,
+			transparent
+		);
 	}
 	[data-search-result] mark {
 		background-color: var(--color-accent);

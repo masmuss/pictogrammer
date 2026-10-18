@@ -1,7 +1,7 @@
 /* ========================================
    Theme Tokens — pictogrammer
    Design system v4
-   Warm monochrome + flexoki blue accent.
+   Flexoki warm monochrome + green accent.
    Flexoki hues carry content semantics
    (admonitions, badges, charts).
    Minimalist modern aesthetic.
@@ -102,22 +102,23 @@
 	   Used by admonition.css for colored
 	   callout boxes (note, tip, warning, etc).
 	 */
-	--color-flexoki-red-400: oklch(0.55 0.17 23);
-	--color-flexoki-red-600: oklch(0.46 0.17 23);
-	--color-flexoki-orange-400: oklch(0.62 0.15 45);
-	--color-flexoki-orange-600: oklch(0.54 0.15 45);
-	--color-flexoki-yellow-400: oklch(0.7 0.13 88);
-	--color-flexoki-yellow-600: oklch(0.6 0.13 88);
-	--color-flexoki-green-400: oklch(0.63 0.1 128);
-	--color-flexoki-green-600: oklch(0.53 0.11 128);
-	--color-flexoki-cyan-400: oklch(0.62 0.09 192);
-	--color-flexoki-cyan-600: oklch(0.5 0.09 192);
-	--color-flexoki-blue-400: oklch(0.56 0.11 245);
-	--color-flexoki-blue-600: oklch(0.45 0.12 245);
-	--color-flexoki-purple-400: oklch(0.59 0.1 288);
-	--color-flexoki-purple-600: oklch(0.46 0.12 288);
-	--color-flexoki-magenta-400: oklch(0.59 0.14 352);
-	--color-flexoki-magenta-600: oklch(0.47 0.14 352);
+	--color-flexoki-red-400: #d14d41;
+	--color-flexoki-red-600: #af3029;
+	--color-flexoki-orange-400: #da702c;
+	--color-flexoki-orange-600: #bc5215;
+	--color-flexoki-yellow-400: #d0a215;
+	--color-flexoki-yellow-600: #ad8301;
+	--color-flexoki-green-400: #879a39;
+	--color-flexoki-green-600: #66800b;
+	--color-flexoki-green-700: #536907;
+	--color-flexoki-cyan-400: #3aa99f;
+	--color-flexoki-cyan-600: #24837b;
+	--color-flexoki-blue-400: #4385be;
+	--color-flexoki-blue-600: #205ea6;
+	--color-flexoki-purple-400: #8b7ec8;
+	--color-flexoki-purple-600: #5e409d;
+	--color-flexoki-magenta-400: #ce5d97;
+	--color-flexoki-magenta-600: #a02f6f;
 
 	/* ── Semantic Colors ──────────────────────
 	   Maps runtime variables to Tailwind
@@ -209,64 +210,63 @@
 		}
 
 		/* ── Light Mode ─────────────────────
-		   Warm monochrome backbone + flexoki blue accent.
+		   Flexoki base palette with green as the main accent.
 		   Minimalist modern aesthetic.
-		   Proportion: chrome stays monochrome; flexoki blue is the
+		   Proportion: chrome stays monochrome; flexoki green is the
 		   single accent (links, code, active states, focus ring).
 		   Other flexoki hues appear only as content semantics
 		   (admonitions, draft badge, charts), never as chrome.
 		*/
 		&:not(.dark) {
 			/* Warm monochrome scale */
-			--background: #f7f6f3;
-			--foreground: #111111;
-			--card: #ffffff;
-			--card-foreground: #111111;
-			--popover: #ffffff;
-			--popover-foreground: #111111;
+			--background: #fffcf0;
+			--foreground: #100f0f;
+			--card: #f2f0e5;
+			--card-foreground: #100f0f;
+			--popover: #f2f0e5;
+			--popover-foreground: #100f0f;
 
 			/* Minimalist primary: black for buttons */
-			--primary: #111111;
-			--primary-foreground: #ffffff;
+			--primary: #100f0f;
+			--primary-foreground: #fffcf0;
 
 			/* Button primary: black background */
-			--btn-primary: #111111;
-			--btn-primary-foreground: #ffffff;
+			--btn-primary: #100f0f;
+			--btn-primary-foreground: #fffcf0;
 
-			--secondary: #f9f9f8;
-			--secondary-foreground: #2f3437;
+			--secondary: #f2f0e5;
+			--secondary-foreground: #403e3c;
 
-			--muted: #f7f6f3;
-			--muted-foreground: #5a5956;
+			--muted: #f2f0e5;
+			--muted-foreground: #6f6e69;
 
-			/* Flexoki blue accent (6.87:1 on background, AA PASS).
-			   Subtle fill is a 10% mix so text on it keeps AA. */
+			/* Flexoki green accent. Subtle fill is a 10% mix. */
 			--accent: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-600) 10%,
+				var(--color-flexoki-green-600) 10%,
 				var(--background)
 			);
-			--accent-foreground: var(--color-flexoki-blue-600);
+			--accent-foreground: var(--color-flexoki-green-700);
 
 			--destructive: var(--color-flexoki-red-600);
 			--destructive-foreground: #ffffff;
 
-			--border: #eaeaea;
-			--input: #f9f9f8;
-			--ring: var(--color-flexoki-blue-600);
+			--border: #e6e4d9;
+			--input: #e6e4d9;
+			--ring: var(--color-flexoki-green-600);
 
-			/* Accent CTA (compat) - flexoki blue */
+			/* Accent CTA (compat) - flexoki green */
 			--accent-cta: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-600) 10%,
+				var(--color-flexoki-green-600) 10%,
 				var(--background)
 			);
 			--accent-cta-subtle: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-600) 10%,
+				var(--color-flexoki-green-600) 10%,
 				var(--background)
 			);
-			--accent-cta-text: var(--color-flexoki-blue-600);
+			--accent-cta-text: var(--color-flexoki-green-700);
 
 			/* Charts - flexoki categorical hues (600 tones for light) */
 			--chart-1: var(--color-flexoki-blue-600);
@@ -276,18 +276,18 @@
 			--chart-5: var(--color-flexoki-purple-600);
 
 			/* Sidebar */
-			--sidebar: #f7f6f3;
-			--sidebar-foreground: #111111;
-			--sidebar-primary: #111111;
-			--sidebar-primary-foreground: #ffffff;
+			--sidebar: #fffcf0;
+			--sidebar-foreground: #100f0f;
+			--sidebar-primary: #100f0f;
+			--sidebar-primary-foreground: #fffcf0;
 			--sidebar-accent: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-600) 10%,
+				var(--color-flexoki-green-600) 10%,
 				var(--background)
 			);
-			--sidebar-accent-foreground: var(--color-flexoki-blue-600);
-			--sidebar-border: #eaeaea;
-			--sidebar-ring: var(--color-flexoki-blue-600);
+			--sidebar-accent-foreground: var(--color-flexoki-green-700);
+			--sidebar-border: #e6e4d9;
+			--sidebar-ring: var(--color-flexoki-green-600);
 
 			/* Shadows (ultra-diffuse, low opacity < 0.04) */
 			--shadow-2xs: 0 1px 2px 0px rgba(0, 0, 0, 0.02);
@@ -306,74 +306,62 @@
 		}
 
 		/* ── Dark Mode ──────────────────────
-		   Warm dark monochrome + flexoki blue accent.
+		   Flexoki dark base palette with green as the main accent.
 		   Proportion mirrors light mode. Dark 400 tones are dimmer,
-		   so text roles use an 88% lift toward white to hold AA
-		   (blue 6.12:1, red 5.64:1); fills and large segments use
-		   raw 400 tones (3:1 bar).
+		   using the official 400 accent values.
 		*/
 		&.dark {
 			color-scheme: dark;
 
 			/* Dark monochrome scale */
-			--background: oklch(0.15 0.005 85);
-			--foreground: oklch(0.9 0.005 90);
-			--card: oklch(0.17 0.005 85);
-			--card-foreground: oklch(0.9 0.005 90);
-			--popover: oklch(0.17 0.005 85);
-			--popover-foreground: oklch(0.9 0.005 90);
+			--background: #100f0f;
+			--foreground: #cecdc3;
+			--card: #1c1b1a;
+			--card-foreground: #cecdc3;
+			--popover: #1c1b1a;
+			--popover-foreground: #cecdc3;
 
 			/* Primary: white for contrast on dark */
-			--primary: #ffffff;
-			--primary-foreground: oklch(0.15 0.005 85);
+			--primary: #fffcf0;
+			--primary-foreground: #100f0f;
 
 			/* Button primary: white background */
-			--btn-primary: #ffffff;
-			--btn-primary-foreground: oklch(0.15 0.005 85);
+			--btn-primary: #fffcf0;
+			--btn-primary-foreground: #100f0f;
 
-			--secondary: oklch(0.23 0.01 85);
-			--secondary-foreground: oklch(0.78 0.005 90);
+			--secondary: #282726;
+			--secondary-foreground: #b7b5ac;
 
-			--muted: oklch(0.2 0.005 85);
-			--muted-foreground: oklch(0.6 0.01 85);
+			--muted: #1c1b1a;
+			--muted-foreground: #878580;
 
-			/* Flexoki blue accent for dark mode.
-			   Text is lifted 88% toward white (raw 400 is 4.26:1,
-			   lifted clears AA with margin). */
+			/* Flexoki green accent for dark mode. */
 			--accent: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-400) 16%,
+				var(--color-flexoki-green-400) 16%,
 				var(--background)
 			);
-			--accent-foreground: color-mix(
-				in oklch,
-				var(--color-flexoki-blue-400) 88%,
-				white
-			);
+			--accent-foreground: var(--color-flexoki-green-400);
 
 			--destructive: var(--color-flexoki-red-400);
 			--destructive-foreground: #ffffff;
 
-			--border: oklch(0.25 0.01 85);
-			--input: oklch(0.25 0.01 85);
-			--ring: color-mix(in oklch, var(--color-flexoki-blue-400) 88%, white);
+			--border: #282726;
+			--input: #282726;
+			--ring: var(--color-flexoki-green-400);
 
-			/* Accent CTA (dark compat) - flexoki blue */
+			/* Accent CTA (dark compat) - flexoki green */
 			--accent-cta: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-400) 16%,
+				var(--color-flexoki-green-400) 16%,
 				var(--background)
 			);
 			--accent-cta-subtle: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-400) 16%,
+				var(--color-flexoki-green-400) 16%,
 				var(--background)
 			);
-			--accent-cta-text: color-mix(
-				in oklch,
-				var(--color-flexoki-blue-400) 88%,
-				white
-			);
+			--accent-cta-text: var(--color-flexoki-green-400);
 
 			/* Charts - flexoki categorical hues (400 tones for dark) */
 			--chart-1: var(--color-flexoki-blue-400);
@@ -383,26 +371,18 @@
 			--chart-5: var(--color-flexoki-purple-400);
 
 			/* Sidebar */
-			--sidebar: oklch(0.17 0.005 85);
-			--sidebar-foreground: oklch(0.9 0.005 90);
-			--sidebar-primary: #ffffff;
-			--sidebar-primary-foreground: oklch(0.15 0.005 85);
+			--sidebar: #1c1b1a;
+			--sidebar-foreground: #cecdc3;
+			--sidebar-primary: #fffcf0;
+			--sidebar-primary-foreground: #100f0f;
 			--sidebar-accent: color-mix(
 				in oklch,
-				var(--color-flexoki-blue-400) 16%,
+				var(--color-flexoki-green-400) 16%,
 				var(--background)
 			);
-			--sidebar-accent-foreground: color-mix(
-				in oklch,
-				var(--color-flexoki-blue-400) 88%,
-				white
-			);
-			--sidebar-border: oklch(0.25 0.01 85);
-			--sidebar-ring: color-mix(
-				in oklch,
-				var(--color-flexoki-blue-400) 88%,
-				white
-			);
+			--sidebar-accent-foreground: var(--color-flexoki-green-400);
+			--sidebar-border: #282726;
+			--sidebar-ring: var(--color-flexoki-green-400);
 
 			/* Shadows (stronger spread, but still low opacity for dark bg) */
 			--shadow-2xs: 0 1px 2px 0px rgba(0, 0, 0, 0.1);

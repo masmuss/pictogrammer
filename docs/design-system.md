@@ -14,11 +14,11 @@
 
 ### Colors
 
-- **Palette**: Flexoki — 8 hues (red, orange, yellow, green, cyan, blue, purple, magenta) in oklch
+- **Palette**: Flexoki — official warm base palette plus 8 accent hues in hex
 - **Semantic**: primary, secondary, accent, destructive, muted, border — light/dark pairs
 - **Button primary**: `--btn-primary` — darker/lighter than `--primary` for contrast
 - **CTA**: `--accent-cta` / `--accent-cta-text` for interactive elements
-- **Dark mode**: Per-theme oklch mapping (`.dark` class)
+- **Dark mode**: Flexoki base-950 through base-200 mapping with green-400 accent (`.dark` class)
 
 ### Radius
 
