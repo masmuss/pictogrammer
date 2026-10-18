@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
+import { Container } from "@/components/common/primitives";
 import BlogHero from "@/components/features/blog/Hero.astro";
 import PostSeries from "@/components/features/blog/PostSeries.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -54,41 +55,18 @@ const ogImage = coverImageResolved || socialImage;
 	pageType="article"
 	image={ogImage}
 	breadcrumbs={breadcrumbs}
-	wide
 >
 	<div class="w-full">
-		<div
-			class="grid grid-cols-1 gap-8 xl:grid-cols-[0.4fr_1fr_0.5fr] xl:gap-10"
-		>
-			<aside class="hidden xl:block" aria-label="Table of Contents">
-				<div class="sticky top-28 max-h-[calc(100vh-8rem)]">
-					<slot name="toc" />
+		<Container class="ms-0 ps-0 sm:ps-0 md:ps-0">
+			<article data-pagefind-body>
+				<div id="blog-hero">
+					<BlogHero content={post} coverImageResolved={coverImageResolved} />
 				</div>
-			</aside>
+				{series && <PostSeries {series} {seriesId} />}
 
-			<div class="min-w-0 space-y-12">
-				<article class="max-w-3xl mx-auto" data-pagefind-body>
-					<div id="blog-hero">
-						<BlogHero content={post} coverImageResolved={coverImageResolved} />
-					</div>
-					{series && <PostSeries {series} {seriesId} />}
-
-					<div class="xl:hidden" data-pagefind-ignore>
-						<slot name="toc-mobile" />
-					</div>
-
-					<slot />
-				</article>
-
-				<slot name="footer" />
-			</div>
-
-			<aside class="hidden xl:block" aria-label="Share this post">
-				<div class="sticky top-1/3">
-					<slot name="share" />
-				</div>
-			</aside>
-		</div>
+				<slot />
+			</article>
+		</Container>
 
 		<a
 			aria-label="Back to Top"

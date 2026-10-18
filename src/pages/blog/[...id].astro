@@ -2,12 +2,8 @@
 export const prerender = true;
 
 import { render } from "astro:content";
-import RelatedPost from "@/components/features/blog/RelatedPost.astro";
-import ShareButtons from "@/components/features/blog/ShareButtons.astro";
-import Toc from "@/components/features/blog/Toc.astro";
-import TocMobile from "@/components/features/blog/TocMobile.astro";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { getAllPosts, getRelatedPosts } from "@/lib/contents/post";
+import { getAllPosts } from "@/lib/contents/post";
 import { getPostRouteId } from "@/lib/utils/post-route";
 import type { CollectionPosts } from "@/types";
 
@@ -15,48 +11,18 @@ export async function getStaticPaths() {
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
 		params: { id: getPostRouteId(post) },
-		props: { post, allPosts: posts }
+		props: { post }
 	}));
 }
 
-const { post, allPosts } = Astro.props;
+const { post } = Astro.props;
 
-const { Content, headings } = await render(post);
-const relatedPosts = getRelatedPosts(allPosts, post);
+const { Content } = await render(post);
 const hasGithubCard = post.body?.includes("::github");
 ---
 
 <PostLayout post={post} hasGithubCard={hasGithubCard}>
-	<div slot="toc-mobile">
-		{
-			headings.length > 0 && (
-				<div class="mt-8 mx-auto max-w-3xl">
-					<TocMobile {headings} />
-				</div>
-			)
-		}
-	</div>
-
-	<div slot="toc">
-		{headings.length > 0 && <Toc {headings} />}
-	</div>
-
 	<div class="custom-prose">
 		<Content />
 	</div>
-
-	<div class="mt-10 border-y border-border/60 py-4 xl:hidden">
-		<h2 class="sr-only">Share this post</h2>
-		<ShareButtons title={post.data.title} url={Astro.url} layout="horizontal" />
-	</div>
-
-	<div slot="share">
-		<ShareButtons title={post.data.title} url={Astro.url} />
-	</div>
-
-	<footer slot="footer" class="w-full border-t border-border/60">
-		<div class="mx-auto max-w-3xl">
-			<RelatedPost {relatedPosts} />
-		</div>
-	</footer>
 </PostLayout>
