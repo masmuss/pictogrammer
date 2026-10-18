@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Container } from "@/components/common/primitives";
 import BlogHero from "@/components/features/blog/Hero.astro";
 import PostSeries from "@/components/features/blog/PostSeries.astro";
 import ScrollToTop from "@/components/features/blog/ScrollToTop.astro";
@@ -10,16 +9,16 @@ import { getPostOgImagePath, getPostUrl } from "@/lib/utils/post-route";
 
 interface Props {
 	post: CollectionEntry<"post">;
-	hasGithubCard?: boolean;
 }
 
-const { post, hasGithubCard = false } = Astro.props;
+const { post } = Astro.props;
 const {
 	data: { description, title, date, updatedDate, coverImage }
 } = post;
 
 const seriesId = getSeriesForPost(post);
 const series = seriesId ? await getSeriesById(seriesId) : null;
+const hasGithubCard = post.body?.includes("::github") ?? false;
 
 const breadcrumbs: Array<{ name: string; item: string }> = [
 	{ name: "Home", item: new URL("/", Astro.site).href },
@@ -55,21 +54,16 @@ const ogImage = coverImageResolved || socialImage;
 	image={ogImage}
 	breadcrumbs={breadcrumbs}
 >
-	<div class="w-full">
-		<Container class="ms-0 ps-0 sm:ps-0 md:ps-0">
-			<div class="max-w-3xl">
-				<article data-pagefind-body>
-					<div id="blog-hero">
-						<BlogHero content={post} coverImageResolved={coverImageResolved} />
-					</div>
-					{series && <PostSeries {series} {seriesId} />}
-
-					<slot />
-				</article>
+	<div class="max-w-3xl">
+		<article data-pagefind-body>
+			<div id="blog-hero">
+				<BlogHero content={post} coverImageResolved={coverImageResolved} />
 			</div>
-		</Container>
+			{series && <PostSeries {series} {seriesId} />}
 
-		<ScrollToTop />
+			<slot />
+		</article>
 	</div>
+	<ScrollToTop />
 	{hasGithubCard && <script async is:inline src="/github-card.js" />}
 </BaseLayout>
