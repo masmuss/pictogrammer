@@ -14,8 +14,8 @@ const isLive = Boolean(project.liveHref);
 const hasRepo = Boolean(project.repoHref);
 ---
 
-<li data-testid="project-row">
-	<div class="flex items-center gap-4 py-4">
+<li class="py-4 first:pt-0 last:pb-0" data-testid="project-row">
+	<div class="flex items-start gap-4 sm:items-center">
 		<div class="min-w-0 flex-1">
 			<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
 				{
@@ -34,14 +34,14 @@ const hasRepo = Boolean(project.repoHref);
 				}
 				{
 					featured && (
-						<span class="text-muted-foreground text-xs font-mono tabular-nums">
+						<span class="text-muted-foreground font-mono text-xs uppercase tracking-wide tabular-nums">
 							Featured
 						</span>
 					)
 				}
 				{
 					project.year && (
-						<span class="text-muted-foreground text-xs tabular-nums">
+						<span class="text-muted-foreground font-mono text-xs tabular-nums">
 							{project.year}
 						</span>
 					)
@@ -50,7 +50,7 @@ const hasRepo = Boolean(project.repoHref);
 
 			{
 				project.description && (
-					<p class="text-muted-foreground text-sm leading-snug mt-0.5">
+					<p class="text-muted-foreground mt-1 max-w-2xl text-sm leading-snug">
 						{project.description}
 					</p>
 				)
