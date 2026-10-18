@@ -34,13 +34,13 @@ const wantToRead = books.filter((book) => book.status === "want-to-read");
 		{
 			currentlyReading.length > 0 && (
 				<Section
-					title="Currently Reading"
+					title={`Currently Reading (${currentlyReading.length})`}
 					titleAs="h2"
-					titleSize="base"
+					titleSize="xl"
 					transitionDelay={0}
-					class="mb-4"
+					class="max-w-4xl"
 				>
-					<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
 						{currentlyReading.map((book) => (
 							<BookItem book={book} />
 						))}
@@ -52,11 +52,11 @@ const wantToRead = books.filter((book) => book.status === "want-to-read");
 		{
 			readBooks.length > 0 && (
 				<Section
-					title="Read"
+					title={`Read (${readBooks.length})`}
 					titleAs="h2"
 					titleSize="base"
 					transitionDelay={150}
-					class="mb-4"
+					class="max-w-3xl"
 				>
 					<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 						{readBooks.map((book) => (
@@ -70,11 +70,11 @@ const wantToRead = books.filter((book) => book.status === "want-to-read");
 		{
 			wantToRead.length > 0 && (
 				<Section
-					title="Want to Read"
+					title={`Want to Read (${wantToRead.length})`}
 					titleAs="h2"
 					titleSize="base"
 					transitionDelay={300}
-					class="mb-4"
+					class="max-w-3xl"
 				>
 					<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 						{wantToRead.map((book) => (
