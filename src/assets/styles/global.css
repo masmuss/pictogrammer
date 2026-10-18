@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./components/admonition.css";
 @import "./components/github-card.css";
+@import "./components/pele.css";
 @import "./system/tokens.css";
 @import "./system/base.css";
 @import "./components/prose.css";

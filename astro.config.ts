@@ -6,7 +6,6 @@ import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
-import astroMermaid from "astro-mermaid";
 import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDeflist from "remark-deflist";
@@ -14,6 +13,7 @@ import remarkDirective from "remark-directive";
 import remarkSupersub from "remark-supersub";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
+import { remarkPele } from "./src/plugins/remark-pele";
 
 // https://astro.build/config
 export default defineConfig({
@@ -57,16 +57,6 @@ export default defineConfig({
 		}
 	],
 	integrations: [
-		astroMermaid({
-			theme: "default",
-			autoTheme: true,
-			mermaidConfig: {
-				flowchart: {
-					htmlLabels: true,
-					curve: "basis"
-				}
-			}
-		}),
 		sitemap(),
 		pagefind(),
 		icon()
@@ -88,7 +78,8 @@ export default defineConfig({
 				remarkDeflist,
 				remarkDirective,
 				remarkGithubCard,
-				remarkAdmonitions
+				remarkAdmonitions,
+				remarkPele
 			],
 			remarkRehype: {
 				footnoteLabelProperties: {

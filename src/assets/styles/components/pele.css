@@ -1,0 +1,28 @@
+.pele-mermaid {
+	margin-block: 1.5rem;
+	overflow-x: auto;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	padding: 1rem;
+	background: var(--color-card);
+
+	--pele-bg: var(--card);
+	--pele-fg: var(--foreground);
+	--pele-muted: color-mix(in oklch, var(--foreground) 72%, var(--background));
+	--pele-line: var(--foreground);
+	--pele-surface: var(--card);
+	--pele-surface-alt: color-mix(
+		in oklch,
+		var(--foreground) 7%,
+		var(--background)
+	);
+	--pele-border: color-mix(in oklch, var(--foreground) 35%, var(--background));
+	--pele-accent: var(--primary);
+	--pele-font: var(--font-geist-sans, sans-serif);
+	--pele-font-mono: var(--font-geist-mono, monospace);
+}
+
+.pele-mermaid > .pele {
+	display: block;
+	margin-inline: auto;
+}
