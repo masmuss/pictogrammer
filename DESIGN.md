@@ -1,20 +1,20 @@
 ---
 version: 4
 name: Khoirul Minimal
-description: A quiet personal portfolio system with light and dark themes, editorial headlines, and restrained monochrome UI with one flexoki blue accent.
+description: A quiet personal portfolio system with light and dark themes, editorial headlines, and restrained monochrome UI with one Flexoki green accent.
 dial: ENERGY 1 / RHYTHM 1 / MOTION 2
 colors:
-  primary: "#111111"
-  secondary: "#5F5F5F"
-  tertiary: "#1F1F1F"
-  neutral: "#F7F6F3"
-  surface: "#FFFFFF"
-  on-surface: "#111111"
-  outline: "#E5E7EB"
-  outline-subtle: "#EAEAEA"
-  link: "flexoki-blue-600 (light) / flexoki-blue-400 lifted 88% (dark), see tokens.css"
-  background: "#F7F6F3"
-  error: "#B42318"
+  primary: "#100F0F"
+  secondary: "#6F6E69"
+  tertiary: "#403E3C"
+  neutral: "#F2F0E5"
+  surface: "#FFFCF0"
+  on-surface: "#100F0F"
+  outline: "#E6E4D9"
+  outline-subtle: "#DAD8CE"
+  link: "flexoki-green-700 text with green-600 fills (light) / green-400 (dark), see tokens.css"
+  background: "#FFFCF0"
+  error: "#AF3029"
 typography:
   # Serif (Merriweather) is opt-in only, via `font-serif`: prose headings,
   # the `serif` prop on Heading.astro, and BlogTabs titles. The default
@@ -103,8 +103,8 @@ spacing:
   section: 96px
 components:
   button-primary:
-    backgroundColor: "#111111 (light) / #ffffff (dark), see tokens.css --btn-primary"
-    textColor: "#ffffff (light) / oklch(0.15 0.005 85) (dark), see tokens.css --btn-primary-foreground"
+    backgroundColor: "#100F0F (light) / #FFFCF0 (dark), see tokens.css --btn-primary"
+    textColor: "#FFFCF0 (light) / #100F0F (dark), see tokens.css --btn-primary-foreground"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "8px 10px"
@@ -151,26 +151,26 @@ This interface feels calm, personal, and intellectually grounded. It uses a rest
 ## Colors
 
 > Dark mode is supported via `src/assets/styles/system/tokens.css` (`html.dark`).
-> Dark scale: background oklch(0.15 0.005 85), foreground oklch(0.9 0.005 90),
-> card/popover oklch(0.17 0.005 85), primary #ffffff, muted oklch(0.2 0.005 85),
-> muted-foreground oklch(0.6 0.01 85), accent 16% flexoki-blue-400 mix,
-> accent-foreground flexoki-blue-400 lifted 88% toward white,
-> border/input oklch(0.25 0.01 85), ring mirrors accent-foreground.
+> Dark scale: background Flexoki black, foreground base-200,
+> card/popover base-950, primary paper, muted base-950,
+> muted-foreground base-500, accent 16% green-400 mix,
+> accent-foreground green-400, border/input base-900,
+> ring mirrors accent-foreground.
 > Light/dark AA pairings are verified with the antislop-human contrast checker
 > (see audit). R-34: both themes must keep working; verify every component in
 > each mode before shipping.
 
-- **Primary (#111111):** The main ink color for headings, navigation, icons, and body copy. It provides strong contrast against the soft background and keeps the whole system crisp.
-- **Background (#F7F6F3):** A warm off-white canvas that softens the page and makes the layout feel lived-in rather than stark.
-- **Neutral (#F7F6F3):** The default surface tone for subtle cards, pills, and button fills. It keeps UI elements present without introducing visual noise.
-- **Surface (#FFFFFF):** Reserved for any true lifted surface when needed, though the source is mostly flat and muted.
-- **Secondary (#5F5F5F):** A muted gray for supporting text and less prominent metadata, such as descriptions and timestamps.
-- **Outline (#E5E7EB):** Used for thin separators and control boundaries where a little definition is needed.
-- **Outline-subtle (#EAEAEA):** An even softer divider tone for pills, small controls, and quiet edge treatments.
-- **Link (flexoki blue):** the single accent of the system. Light uses flexoki-blue-600 (6.87:1, AA PASS); dark lifts flexoki-blue-400 88% toward white (raw 400 is 4.26:1 and fails, lifted clears AA with margin). Covers actionable text links like “See all projects,” inline code, active nav states, the 404 numerals, and the focus ring, signaling interactivity without breaking the monochrome system.
+- **Primary (#100F0F):** The main ink color for headings, navigation, icons, and body copy.
+- **Background (#FFFCF0):** Flexoki paper, used as the light theme canvas.
+- **Neutral (#F2F0E5):** Flexoki base-50, used for secondary surfaces and subtle fills.
+- **Surface (#FFFCF0):** Flexoki paper, used for the primary reading surface.
+- **Secondary (#575653):** Flexoki base-700, used for supporting text and metadata where it sits on the base-50 surface.
+- **Outline (#E6E4D9):** Flexoki base-100, used for separators and control boundaries.
+- **Outline-subtle (#DAD8CE):** Flexoki base-150, used for quieter edge treatments.
+- **Link (Flexoki green):** The main accent. Green-600 supplies light-theme fills, green-700 supplies accessible light-theme text, and green-400 supplies dark-theme text and accents.
 - **Error (flexoki red):** flexoki-red-600 in light (white on fill 7.77:1), flexoki-red-400 in dark. Reserved for validation and destructive states.
 - **Flexoki proportion rules:** chrome stays monochrome and carries exactly one accent (blue). Other flexoki hues appear only as content semantics, never as chrome: admonition callouts keep their per-type hues, the Draft badge is flexoki orange (light 600 at 4.98:1, dark raw 400 at 5.08:1), charts use categorical 600 tones in light and 400 tones in dark. No new hue enters the system without a semantic role and a contrast check.
-- **Accent CTA (compat):** `accent-cta`, `accent-cta-subtle`, `accent-cta-text` are legacy aliases for the flexoki blue accent (see tokens.css). Do not use them in new components; use `accent` / `accent-foreground` instead. Existing usages (404 numerals, nav links, section links) are grandfathered.
+- **Accent CTA (compat):** `accent-cta`, `accent-cta-subtle`, `accent-cta-text` are legacy aliases for the Flexoki green accent (see tokens.css). Do not use them in new components; use `accent` / `accent-foreground` instead.
 - **R-02 scope:** the em dash ban covers UI and site copy. It does not cover `content/` prose, post titles, or series titling conventions, which are the author's deliberate voice (per the copywriting skill's voice calibration).
 
 ## Typography

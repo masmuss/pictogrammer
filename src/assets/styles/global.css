@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./components/admonition.css";
 @import "./components/github-card.css";
+@import "./components/pele.css";
 @import "./system/tokens.css";
 @import "./system/base.css";
 @import "./components/prose.css";
@@ -26,5 +27,13 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+
+	a.external-link::after {
+		content: "↗";
+		display: inline-block;
+		margin-inline-start: 0.125rem;
+		font-size: 0.85em;
+		line-height: 1;
 	}
 }

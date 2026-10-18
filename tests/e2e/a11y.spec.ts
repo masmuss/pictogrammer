@@ -139,7 +139,7 @@ test.describe("Individual content pages", () => {
 		await preparePageForAxe(page);
 
 		await assertNoA11yViolations(page, {
-			exclude: [".astro-code", ".mermaid"],
+			exclude: [".astro-code", ".pele-mermaid"],
 			disableRules: ["color-contrast", "heading-order"]
 		});
 	});
@@ -293,7 +293,7 @@ test.describe("Dark mode", () => {
 		await preparePageForAxe(page, { keepDark: true });
 
 		await assertNoA11yViolations(page, {
-			exclude: [".astro-code", ".mermaid"],
+			exclude: [".astro-code", ".pele-mermaid"],
 			disableRules: ["color-contrast", "heading-order"]
 		});
 	});
