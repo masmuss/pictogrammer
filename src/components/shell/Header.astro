@@ -1,14 +1,11 @@
 ---
-import { Icon } from "astro-icon/components";
 import Search from "@/components/features/search/Search.astro";
 import Logo from "@/components/shell/Logo.astro";
 import MobileMenu from "@/components/shell/MobileMenu.astro";
 import ThemeToggle from "@/components/shell/ThemeToggle.astro";
-import { header } from "@/config/site";
+import { footerLinks, header } from "@/config/site";
 
-const { textLinks, iconLinks } = header;
-const internalIconLinks = iconLinks.filter((link) => link.href.startsWith("/"));
-const isExternalLink = (href: string) => /^https?:\/\//.test(href);
+const { textLinks } = header;
 ---
 
 <header
@@ -40,32 +37,10 @@ const isExternalLink = (href: string) => /^https?:\/\//.test(href);
 				</nav>
 			</div>
 
-			<div class="hidden lg:block w-px h-4 bg-border"></div>
-
-			<!-- Icons Navigation -->
-			<div class="hidden items-center gap-x-4 lg:flex">
-				{
-					iconLinks.map((link) => (
-						<a
-							href={link.href}
-							class="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-							target={isExternalLink(link.href) ? "_blank" : undefined}
-							rel={
-								isExternalLink(link.href) ? "noopener noreferrer" : undefined
-							}
-							aria-label={link.text}
-							title={link.text}
-						>
-							<Icon name={link.icon} class="h-5 w-5" />
-						</a>
-					))
-				}
-			</div>
-
 			<div class="flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
 				<Search />
 				<ThemeToggle />
-				<MobileMenu navLinks={[...textLinks, ...internalIconLinks]} />
+				<MobileMenu navLinks={[...textLinks, ...footerLinks]} />
 			</div>
 		</div>
 	</div>

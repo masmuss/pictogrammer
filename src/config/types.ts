@@ -27,7 +27,6 @@ export type Header = {
 		alt: string;
 	};
 	textLinks: NavLink[];
-	iconLinks: NavLink[];
 };
 
 export type Page = {
@@ -51,6 +50,7 @@ export type SiteConfig = {
 	date: DateConfig;
 	socialLinks: SocialLink[];
 	header: Header;
+	footerLinks: NavLink[];
 	page: Page;
 	ogPages: Record<string, OgPageMeta>;
 };

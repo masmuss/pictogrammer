@@ -532,7 +532,7 @@ test.describe("Touch targets", () => {
 
 				if (height < 44 || width < 44) {
 					violations.push(
-						`${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ""}:${el.className?.slice(0, 30)} — ${Math.round(width)}×${Math.round(height)}px`
+						`${el.closest("footer") ? "footer:" : ""}${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ""}:${el.className?.slice(0, 30)} — ${Math.round(width)}×${Math.round(height)}px`
 					);
 				}
 			}

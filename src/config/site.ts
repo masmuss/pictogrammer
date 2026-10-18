@@ -1,4 +1,11 @@
-import type { Header, OgPageMeta, Page, SiteConfig, SocialLink } from "./types";
+import type {
+	Header,
+	NavLink,
+	OgPageMeta,
+	Page,
+	SiteConfig,
+	SocialLink
+} from "./types";
 
 export const socialLinks: SocialLink[] = [
 	{
@@ -30,10 +37,6 @@ export const socialLinks: SocialLink[] = [
 	}
 ];
 
-const headerSocialLinks = socialLinks
-	.filter((link) => link.showInHeader)
-	.map(({ text, href, icon }) => ({ text, href, icon }));
-
 export const header: Header = {
 	logo: {
 		src: "/logo.svg",
@@ -44,15 +47,15 @@ export const header: Header = {
 		{ text: "Blog", href: "/blog" },
 		{ text: "Projects", href: "/projects" },
 		{ text: "Now", href: "/now" }
-	],
-	iconLinks: [
-		{ text: "Reading List", href: "/reading-list", icon: "ph:book" },
-		{ text: "Colophon", href: "/colophon", icon: "ph:info" },
-		{ text: "Tools", href: "/tools", icon: "ph:toolbox" },
-		...headerSocialLinks,
-		{ text: "RSS", href: "/rss.xml", icon: "ph:rss" }
 	]
 };
+
+export const footerLinks: NavLink[] = [
+	{ text: "Reading List", href: "/reading-list" },
+	{ text: "Tools", href: "/tools" },
+	{ text: "Colophon", href: "/colophon" },
+	{ text: "RSS", href: "/rss.xml" }
+];
 
 export const page: Page = {
 	blogLinks: [
@@ -138,6 +141,7 @@ const siteConfig: SiteConfig = {
 	},
 	socialLinks,
 	header,
+	footerLinks,
 	page,
 	ogPages
 };
