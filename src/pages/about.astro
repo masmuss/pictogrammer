@@ -21,49 +21,45 @@ const experiences = await getAllExperiences();
 		{ name: "About", item: new URL("/about", Astro.site).href }
 	]}
 >
-	<div class="flex w-full flex-col gap-y-16">
-		<div class="flex flex-col gap-y-16">
-			<Section
-				title="About Me"
-				titleAs="h1"
-				titleSize="2xl"
-				titleWeight="bold"
-				transitionDelay={0}
-				class="pt-0"
-				data-testid="about-me-section"
-			>
-				<div
-					class="custom-prose prose-a:underline max-w-none underline-offset-2"
-				>
-					<AboutContent />
-				</div>
-			</Section>
+	<div class="flex w-full flex-col gap-y-12">
+		<Section
+			title="About Me"
+			titleAs="h1"
+			titleSize="2xl"
+			titleWeight="bold"
+			transitionDelay={0}
+			class="pt-0"
+			data-testid="about-me-section"
+		>
+			<div class="custom-prose prose-a:underline max-w-3xl underline-offset-2">
+				<AboutContent />
+			</div>
+		</Section>
 
-			<Section
-				title="Experiences"
-				titleAs="h2"
-				transitionDelay={150}
-				data-testid="experiences-section"
-			>
-				<Experiences experiences={experiences} />
-			</Section>
+		<Section
+			title="Experiences"
+			titleAs="h2"
+			transitionDelay={150}
+			data-testid="experiences-section"
+		>
+			<Experiences experiences={experiences} />
+		</Section>
 
-			<Section
-				title="Get in Touch"
-				titleAs="h2"
-				transitionDelay={150}
-				data-testid="get-in-touch-section"
-			>
-				<div class="text-muted-foreground flex flex-col gap-y-4">
-					<p>
-						Feel free to reach out if you want to collaborate, have a project in
-						mind, or just want to say hi!
-					</p>
-					<div class="flex flex-wrap items-center gap-3">
-						<SocialLinks showEmail showCV />
-					</div>
+		<Section
+			title="Get in Touch"
+			titleAs="h2"
+			transitionDelay={150}
+			data-testid="get-in-touch-section"
+		>
+			<div class="text-muted-foreground flex flex-col gap-y-4">
+				<p>
+					Feel free to reach out if you want to collaborate, have a project in
+					mind, or just want to say hi!
+				</p>
+				<div class="flex flex-wrap items-center gap-3">
+					<SocialLinks showEmail showCV />
 				</div>
-			</Section>
-		</div>
+			</div>
+		</Section>
 	</div>
 </BaseLayout>
