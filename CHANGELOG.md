@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/masmuss/pictogrammer/compare/v2.2.0...v2.3.0) (2026-10-18)
+
+
+### Features
+
+* **security:** allow GitHub API connections in CSP connect-src ([6bf47b4](https://github.com/masmuss/pictogrammer/commit/6bf47b4c2ee016ff781fde2d0f215e2400fb4735))
+
 # [2.2.0](https://github.com/masmuss/pictogrammer/compare/v2.1.0...v2.2.0) (2026-10-18)
 
 
