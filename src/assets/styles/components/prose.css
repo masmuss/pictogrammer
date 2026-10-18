@@ -23,8 +23,7 @@
 		@apply prose-h6:text-sm;
 
 		/* Table */
-		@apply prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:border-border prose-th:pb-2;
-		@apply prose-td:text-sm;
+		@apply prose-tr:border-b prose-tr:border-border prose-th:before:content-none prose-th:after:content-none prose-th:font-semibold prose-th:pb-2 prose-td:text-sm;
 
 		/* Blockquote: Elegant minimal line, no ugly quotes, using muted text */
 		blockquote {
