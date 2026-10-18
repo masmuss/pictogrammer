@@ -24,10 +24,6 @@
 				"description": "Privacy-first browser for dev tools"
 			},
 			{
-				"name": "Notion",
-				"description": "All-in-one workspace app"
-			},
-			{
 				"name": "Obsidian",
 				"description": "Local-first Markdown knowledge base"
 			},
@@ -45,20 +41,16 @@
 		"title": "Development",
 		"tools": [
 			{
-				"name": "VS Code",
-				"description": "Extensible editor with rich ecosystem"
-			},
-			{
-				"name": "JetBrains IDEs",
-				"description": "Professional IDEs for developers"
-			},
-			{
 				"name": "Zed",
 				"description": "Collaborative code editor"
 			},
 			{
 				"name": "Ghostty",
 				"description": "GPU-accelerated native terminal"
+			},
+			{
+				"name": "Orca",
+				"description": "Agent development environment for parallel coding agents"
 			},
 			{
 				"name": "OrbStack",
