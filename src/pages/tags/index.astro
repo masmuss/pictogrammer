@@ -28,7 +28,7 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 			class="mb-6"
 		/>
 
-		<div class="flex max-w-xl flex-col">
+		<div class="flex max-w-3xl flex-col">
 			<p class="text-muted-foreground">
 				{sortedTags.length} tags across {allPosts.length} posts
 			</p>
@@ -42,7 +42,7 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 
 		{
 			sortedTags.length > 0 && (
-				<div class="flex flex-wrap gap-3">
+				<div class="flex max-w-3xl flex-wrap gap-3">
 					{sortedTags.map(([tag, count]) => (
 						<Button
 							as="a"
