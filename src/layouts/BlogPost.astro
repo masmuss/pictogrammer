@@ -2,16 +2,19 @@
 import type { CollectionEntry } from "astro:content";
 import BlogHero from "@/components/features/blog/Hero.astro";
 import PostSeries from "@/components/features/blog/PostSeries.astro";
+import RelatedPost from "@/components/features/blog/RelatedPost.astro";
 import ScrollToTop from "@/components/features/blog/ScrollToTop.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getSeriesById, getSeriesForPost } from "@/lib/contents";
 import { getPostOgImagePath, getPostUrl } from "@/lib/utils/post-route";
+import type { CollectionPosts } from "@/types";
 
 interface Props {
 	post: CollectionEntry<"post">;
+	relatedPosts?: CollectionPosts[];
 }
 
-const { post } = Astro.props;
+const { post, relatedPosts = [] } = Astro.props;
 const {
 	data: { description, title, date, updatedDate, coverImage }
 } = post;
@@ -62,6 +65,7 @@ const ogImage = coverImageResolved || socialImage;
 			{series && <PostSeries {series} {seriesId} />}
 
 			<slot />
+			<RelatedPost {relatedPosts} />
 		</article>
 	</div>
 	<ScrollToTop />
