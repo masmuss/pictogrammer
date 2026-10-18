@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/masmuss/pictogrammer/compare/v2.1.0...v2.2.0) (2026-10-18)
+
+
+### Features
+
+* **styles:** add pele component mermaid styles ([9f2e134](https://github.com/masmuss/pictogrammer/commit/9f2e13456ef15e3c5a3a213d3bf4ea897963abdd))
+* **styles:** update external link icons and styling ([b687844](https://github.com/masmuss/pictogrammer/commit/b6878449ec73251815f4ae01f03965ba9f577254))
+* **theme:** switch design system theme to Flexoki green accent and ([ff50197](https://github.com/masmuss/pictogrammer/commit/ff50197b75569a56efe477ca5ec4b0c9ab404067))
+
 # [2.1.0](https://github.com/masmuss/pictogrammer/compare/v2.0.0...v2.1.0) (2026-10-18)
 
 
