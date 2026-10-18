@@ -1,54 +1,25 @@
 ---
 export const prerender = true;
 
-import { Icon } from "astro-icon/components";
-import { CardDescription, CardTitle } from "@/components/ui/card";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { cn } from "@/lib/utils";
 
 interface QuickLink {
 	title: string;
 	href: string;
-	description: string;
-	icon: string;
 }
 
 const quickLinks: QuickLink[] = [
 	{
 		title: "Home",
-		href: "/",
-		description: "Back to the starting point",
-		icon: "ph:house"
+		href: "/"
 	},
 	{
 		title: "Blog",
-		href: "/blog",
-		description: "Notes, tutorials & stories",
-		icon: "ph:article"
+		href: "/blog"
 	},
 	{
 		title: "Projects",
-		href: "/projects",
-		description: "Things I've built",
-		icon: "ph:code"
-	},
-	{
-		title: "About",
-		href: "/about",
-		description: "Who I am & what I do",
-		icon: "ph:user"
-	},
-	{
-		title: "Tags",
-		href: "/tags",
-		description: "Browse by topic",
-		icon: "ph:bookmark"
-	},
-	{
-		title: "Archive",
-		href: "/blog/archive",
-		description: "All posts, paginated",
-		icon: "ph:archive"
+		href: "/projects"
 	}
 ];
 ---
@@ -70,44 +41,32 @@ const quickLinks: QuickLink[] = [
 			Frame Not Found
 		</p>
 
-		<!-- Message -->
-		<div class="text-muted-foreground mt-4 space-y-1 text-sm leading-relaxed">
-			<p>
-				This page got lost in the darkroom, it does not exist anymore or never
-				did.
-			</p>
-			<p>Let's get you back on track.</p>
+		<div
+			class="text-muted-foreground mt-4 max-w-md space-y-1 text-sm leading-relaxed"
+		>
+			<p>This page does not exist or may have moved.</p>
 		</div>
 
-		<!-- Quick Links -->
-		<div class="mt-10 w-full">
-			<h2 class="text-muted-foreground mb-4 text-sm font-medium">
-				Try one of these instead
+		<nav class="mt-10 w-full max-w-md" aria-label="Suggested pages">
+			<h2 class="text-muted-foreground mb-3 text-sm font-medium">
+				Continue to
 			</h2>
-			<div class="grid grid-cols-2 gap-3">
+			<ul class="divide-y divide-border/60 border-y border-border/60 text-left">
 				{
 					quickLinks.map((link) => (
-						<a
-							href={link.href}
-							class={cn(
-								"group relative flex flex-col items-start gap-1.5 rounded-lg p-4 text-left text-sm",
-								"border-border/50 hover:border-border bg-transparent",
-								"duration-base border transition-all",
-								"focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-							)}
-						>
-							<Icon name={link.icon} class="text-accent-cta-text size-4" />
-							<CardTitle class="text-foreground text-sm font-medium">
-								{link.title}
-							</CardTitle>
-							<CardDescription class="text-muted-foreground text-xs">
-								{link.description}
-							</CardDescription>
-						</a>
+						<li>
+							<a
+								href={link.href}
+								class="text-foreground flex min-h-12 items-center justify-between text-sm font-medium transition-colors hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-ring"
+							>
+								<span>{link.title}</span>
+								<span aria-hidden="true">→</span>
+							</a>
+						</li>
 					))
 				}
-			</div>
-		</div>
+			</ul>
+		</nav>
 
 		<!-- Keyboard shortcut hint -->
 		<p class="text-muted-foreground mt-8 text-xs">

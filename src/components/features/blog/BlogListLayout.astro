@@ -41,7 +41,13 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 			</div>
 		</div>
 
-		{posts.length === 0 && <p class="text-muted-foreground">{empty}</p>}
+		{
+			posts.length === 0 && (
+				<p class="max-w-3xl text-muted-foreground" role="status">
+					{empty}
+				</p>
+			)
+		}
 
 		{
 			posts.length > 0 && (
