@@ -164,7 +164,7 @@ This interface feels calm, personal, and intellectually grounded. It uses a rest
 - **Background (#FFFCF0):** Flexoki paper, used as the light theme canvas.
 - **Neutral (#F2F0E5):** Flexoki base-50, used for secondary surfaces and subtle fills.
 - **Surface (#FFFCF0):** Flexoki paper, used for the primary reading surface.
-- **Secondary (#6F6E69):** Flexoki base-600, used for supporting text and metadata.
+- **Secondary (#575653):** Flexoki base-700, used for supporting text and metadata where it sits on the base-50 surface.
 - **Outline (#E6E4D9):** Flexoki base-100, used for separators and control boundaries.
 - **Outline-subtle (#DAD8CE):** Flexoki base-150, used for quieter edge treatments.
 - **Link (Flexoki green):** The main accent. Green-600 supplies light-theme fills, green-700 supplies accessible light-theme text, and green-400 supplies dark-theme text and accents.
