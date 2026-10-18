@@ -1,3 +1,23 @@
+# [2.1.0](https://github.com/masmuss/pictogrammer/compare/v2.0.0...v2.1.0) (2026-10-18)
+
+
+### Bug Fixes
+
+* **blog:** update mobile table of contents text color ([df69eaf](https://github.com/masmuss/pictogrammer/commit/df69eaff4ffafb4178128077bc412602f2f86e0b))
+* **layout:** adjust container spacing and section class order ([e4d0581](https://github.com/masmuss/pictogrammer/commit/e4d0581a436771593f1a8530c8916a509defc04b))
+* **search:** improve keyboard shortcut accessibility and rendering ([450c20e](https://github.com/masmuss/pictogrammer/commit/450c20e261d67b7f841a6ca74d82513955edea84))
+* **shell:** update logo styling and header container layout ([029106c](https://github.com/masmuss/pictogrammer/commit/029106ccec9a1e41840d23d2ac99e92e13776ef0))
+
+
+### Features
+
+* **blog:** add related posts component to blog post layout ([7b296a6](https://github.com/masmuss/pictogrammer/commit/7b296a6d156a8304a8b57abc7a73baefb3f88d56))
+* **blog:** extract ScrollToTop component from BlogPost layout ([35bf85d](https://github.com/masmuss/pictogrammer/commit/35bf85dc440325f01758e530ea5594a01435024a))
+* **content:** publish post about everyday gear and updates ([59dbfdf](https://github.com/masmuss/pictogrammer/commit/59dbfdfefe26b06ca86a5233c888d7c516261f7b))
+* **projects:** add year property and sort projects by year ([1969323](https://github.com/masmuss/pictogrammer/commit/1969323737b6688c2a7e61685bbe62e6d5bd7ef8))
+* **reading-list:** display book counts and update section styling ([e843b57](https://github.com/masmuss/pictogrammer/commit/e843b57339c1147938daa567e01dc7512ac21cd3))
+* **search:** format keyboard shortcut markup in search component ([0ffb38c](https://github.com/masmuss/pictogrammer/commit/0ffb38c77e01f607c3224b2b8ff9a0b2115dda0e))
+
 # [2.0.0](https://github.com/masmuss/pictogrammer/compare/v1.53.0...v2.0.0) (2026-09-21)
 
 
