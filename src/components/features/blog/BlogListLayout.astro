@@ -48,7 +48,7 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 				<div class="group/list flex max-w-3xl flex-col gap-y-12">
 					{[...postsByYear.entries()].map(([year, yearPosts]) => (
 						<section class="relative flex flex-col gap-y-6">
-							<h2 class="text-2xl font-bold tracking-tight">{year}</h2>
+							<h2 class="text-xl font-semibold tracking-tight">{year}</h2>
 							<ul class="relative flex flex-col">
 								{yearPosts.map((post) => (
 									<PostPreview post={post} hasReadTime readTimeStyle="short" />
