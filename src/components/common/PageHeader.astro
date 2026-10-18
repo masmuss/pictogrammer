@@ -1,4 +1,5 @@
 ---
+import { cn } from "@/lib/utils/tailwind";
 import Heading from "./Heading.astro";
 import Stack from "./primitives/Stack.astro";
 import Text from "./primitives/Text.astro";
@@ -18,8 +19,8 @@ const {
 }: Props = Astro.props;
 ---
 
-<Stack gap="xs" class={className}>
-	<Heading as={as} size="xl" weight="semibold">{title}</Heading>
+<Stack gap="xs" class={cn("max-w-3xl", className)}>
+	<Heading as={as} size="2xl" weight="semibold">{title}</Heading>
 	{
 		description && (
 			<Text size="base" color="muted">

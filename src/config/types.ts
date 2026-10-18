@@ -27,25 +27,10 @@ export type Header = {
 		alt: string;
 	};
 	textLinks: NavLink[];
-	iconLinks: NavLink[];
 };
 
 export type Page = {
 	blogLinks: Omit<NavLink, "icon">[];
-};
-
-export type GiscusConfig = {
-	repo: string;
-	repoId: string;
-	category: string;
-	categoryId: string;
-	mapping: string;
-	strict: string;
-	reactionsEnabled: string;
-	emitMetadata: string;
-	inputPosition: string;
-	lang: string;
-	loading: string;
 };
 
 export type OgPageMeta = {
@@ -65,7 +50,7 @@ export type SiteConfig = {
 	date: DateConfig;
 	socialLinks: SocialLink[];
 	header: Header;
+	footerLinks: NavLink[];
 	page: Page;
-	giscus: GiscusConfig;
 	ogPages: Record<string, OgPageMeta>;
 };

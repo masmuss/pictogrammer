@@ -6,11 +6,6 @@ export function getColophonData() {
 				"The core framework. I use its Static Site Generation (SSG) for blistering fast load times."
 		},
 		{
-			name: "Svelte",
-			description:
-				"Used sparingly for complex interactive client-side components."
-		},
-		{
 			name: "Markdown / MDX",
 			description:
 				"All blog posts and notes are written in markdown, giving me full ownership of my content."
@@ -48,11 +43,6 @@ export function getColophonData() {
 		{
 			name: "Hostinger",
 			description: "My reliable domain registrar."
-		},
-		{
-			name: "Giscus",
-			description:
-				"A lightweight comments system powered by GitHub Discussions."
 		}
 	];
 

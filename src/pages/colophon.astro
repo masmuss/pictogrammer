@@ -3,12 +3,11 @@ export const prerender = true;
 
 import PageHeader from "@/components/common/PageHeader.astro";
 import ToolSection from "@/components/features/tools/ToolSection.astro";
-import { giscus } from "@/config/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getColophonData } from "@/lib/contents/colophon";
 
 const { architecture, design, infrastructure, tools } = getColophonData();
-const repoUrl = `https://github.com/${giscus.repo}`;
+const repoUrl = "https://github.com/masmuss/pictogrammer";
 ---
 
 <BaseLayout
@@ -21,7 +20,7 @@ const repoUrl = `https://github.com/${giscus.repo}`;
 		{ name: "Colophon", item: new URL("/colophon", Astro.site).href }
 	]}
 >
-	<div class="flex w-full flex-col gap-y-16">
+	<div class="flex w-full flex-col">
 		<PageHeader
 			title="Colophon"
 			description="How this digital garden is crafted and maintained."

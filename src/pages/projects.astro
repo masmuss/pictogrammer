@@ -2,19 +2,11 @@
 export const prerender = true;
 
 import PageHeader from "@/components/common/PageHeader.astro";
-import Section from "@/components/common/Section.astro";
 import ProjectRow from "@/components/features/projects/ProjectRow.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getAllProjects, getFeaturedProjects } from "@/lib/contents";
-import type { Project } from "@/types";
+import { getAllProjects } from "@/lib/contents";
 
-const allProjects = await getAllProjects();
-const featured = await getFeaturedProjects(5);
-
-const featuredTexts = new Set(featured.map((p) => p.text));
-const rest: Project[] = allProjects
-	.flatMap((category) => category.projects)
-	.filter((p) => !featuredTexts.has(p.text));
+const projects = await getAllProjects();
 ---
 
 <BaseLayout
@@ -27,23 +19,19 @@ const rest: Project[] = allProjects
 	image={{ src: "/og/projects.png", alt: "Projects - pictogrammmer" }}
 	pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-16">
+	<div class="flex w-full flex-col gap-y-12">
 		<PageHeader
 			title="Projects"
 			description="A collection of projects I've worked on, from web applications to experiments."
 			as="h1"
 		/>
 
-		<Section title="Featured" titleAs="h2" class="pt-0">
-			<ul class="flex flex-col">
-				{featured.map((project) => <ProjectRow project={project} featured />)}
-			</ul>
-		</Section>
-
-		<Section title="More Projects" titleAs="h2" class="pt-0">
-			<ul class="flex flex-col">
-				{rest.map((project) => <ProjectRow project={project} />)}
-			</ul>
-		</Section>
+		<ul class="flex max-w-4xl flex-col divide-y divide-border/60">
+			{
+				projects.map((project) => (
+					<ProjectRow project={project} featured={project.featured} />
+				))
+			}
+		</ul>
 	</div>
 </BaseLayout>

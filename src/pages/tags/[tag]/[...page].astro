@@ -49,9 +49,9 @@ const paginationProps = {
 	description={`Explore posts tagged \"${tag}\"${page.currentPage > 1 ? ` on page ${page.currentPage}` : ""}, including notes, tutorials, and reflections related to this topic.`}
 	pageType="website"
 >
-	<div class="flex w-full flex-col gap-y-8">
+	<div class="flex w-full flex-col gap-y-12">
 		<div class="flex w-full flex-col">
-			<h1 class="mb-4 text-2xl font-semibold">Tag: {tag}</h1>
+			<h1 class="mb-4 text-2xl font-semibold tracking-tight">Tag: {tag}</h1>
 
 			<div class="flex items-center gap-3">
 				<a
@@ -66,7 +66,7 @@ const paginationProps = {
 			</div>
 		</div>
 
-		<section aria-label="Blog post list">
+		<section class="max-w-3xl" aria-label="Blog post list">
 			<ul class="group/list flex flex-col">
 				{page.data.map((p) => <PostPreview post={p} />)}
 			</ul>

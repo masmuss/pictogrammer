@@ -2,8 +2,6 @@
 export const prerender = true;
 
 import PageHeader from "@/components/common/PageHeader.astro";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getUniqueTagsWithCount } from "@/lib/contents";
 
@@ -20,15 +18,15 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 		{ name: "Tags", item: new URL("/tags", Astro.site).href }
 	]}
 >
-	<div class="flex w-full flex-col gap-y-8">
+	<div class="flex w-full flex-col gap-y-12">
 		<PageHeader
 			title="Tags"
 			description="A list of all the topics I've written about in my posts."
 			as="h1"
-			class="mb-6"
+			class="mb-0"
 		/>
 
-		<div class="flex max-w-xl flex-col">
+		<div class="flex max-w-3xl flex-col">
 			<p class="text-muted-foreground">
 				{sortedTags.length} tags across {allPosts.length} posts
 			</p>
@@ -36,26 +34,31 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 
 		{
 			sortedTags.length === 0 && (
-				<p class="text-muted-foreground">No posts yet.</p>
+				<p class="max-w-3xl text-muted-foreground" role="status">
+					No posts yet.
+				</p>
 			)
 		}
 
 		{
 			sortedTags.length > 0 && (
-				<div class="flex flex-wrap gap-3">
+				<ul class="flex max-w-3xl flex-col divide-y divide-border/60">
 					{sortedTags.map(([tag, count]) => (
-						<Button
-							as="a"
-							href={`/tags/${tag}`}
-							title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
-							variant="secondary"
-							data-astro-prefetch
-						>
-							<span class="font-medium">#{tag}</span>
-							<Badge variant="outline">{count}</Badge>
-						</Button>
+						<li>
+							<a
+								href={`/tags/${tag}`}
+								title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
+								class="flex min-h-12 items-center justify-between gap-4 py-3 text-sm transition-colors hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+								data-astro-prefetch
+							>
+								<span class="font-medium">#{tag}</span>
+								<span class="text-muted-foreground font-mono text-xs tabular-nums">
+									{count} {count === 1 ? "post" : "posts"}
+								</span>
+							</a>
+						</li>
 					))}
-				</div>
+				</ul>
 			)
 		}
 	</div>

@@ -14,12 +14,12 @@ const { posts }: Props = Astro.props;
 {
 	posts.length > 0 ? (
 		<Fragment>
-			<ul class="flex flex-col">
+			<ul class="flex max-w-4xl flex-col divide-y divide-border/60">
 				{posts.map((p) => (
 					<PostPreview post={p} hasReadTime />
 				))}
 			</ul>
-			<div class="flex w-full items-end justify-end">
+			<div class="flex w-full items-end justify-start">
 				<a
 					href="/blog"
 					class={cn(
@@ -32,7 +32,7 @@ const { posts }: Props = Astro.props;
 					)}
 				>
 					<span>See all posts</span>
-					<Icon name="ph:arrow-up-right" />
+					<Icon name="ph:arrow-right" />
 				</a>
 			</div>
 		</Fragment>

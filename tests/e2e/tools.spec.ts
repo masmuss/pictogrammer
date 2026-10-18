@@ -24,8 +24,8 @@ test.describe("Tools Page", () => {
 			).toBeVisible();
 		}
 
-		// Verify tool entries (using known examples like VS Code, Figma, Notion)
-		const expectedTools = ["VS Code", "Figma", "Notion", "Raycast"];
+		// Verify tool entries from the current tools inventory
+		const expectedTools = ["Figma", "Raycast", "Obsidian", "Orca"];
 
 		for (const tool of expectedTools) {
 			const toolLink = page.getByRole("heading", { name: tool, level: 3 });

@@ -5,8 +5,8 @@ export function getLlmPageLinks(site: URL): string[] {
 		...siteConfig.header.textLinks.map(
 			(link) => `- [${link.text}](${new URL(link.href, site)})`
 		),
-		...siteConfig.header.iconLinks
-			.slice(0, 3)
-			.map((link) => `- [${link.text}](${new URL(link.href, site)})`)
+		...siteConfig.footerLinks.map(
+			(link) => `- [${link.text}](${new URL(link.href, site)})`
+		)
 	];
 }

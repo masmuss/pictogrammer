@@ -16,17 +16,17 @@ const tabs = [
 ---
 
 <nav
-	class="mb-6 flex items-center justify-between"
+	class="mb-6 flex flex-wrap items-center justify-between gap-y-3"
 	aria-label="Blog categories"
 >
-	<div class="flex items-center gap-4">
+	<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
 		{
 			tabs.map((tab) => (
 				<a
 					href={tab.href}
 					aria-current={activeTab === tab.id ? "page" : undefined}
 					class:list={[
-						"font-serif tracking-tight text-lg transition-colors md:text-xl md:text-2xl",
+						"font-serif tracking-tight text-lg transition-colors md:text-xl",
 						activeTab === tab.id
 							? "text-foreground font-semibold"
 							: "text-muted-foreground hover:text-foreground"

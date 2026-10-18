@@ -30,7 +30,7 @@ export default defineConfig({
 		}
 	],
 	webServer: {
-		command: "bun run build && bun run preview -- --port 4322",
+		command: "bun run build && bun run preview -- --port 4322 --ignore-lock",
 		url: "http://localhost:4322",
 		reuseExistingServer: !process.env.CI,
 		timeout: 180 * 1000
