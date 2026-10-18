@@ -57,14 +57,16 @@ const ogImage = coverImageResolved || socialImage;
 >
 	<div class="w-full">
 		<Container class="ms-0 ps-0 sm:ps-0 md:ps-0">
-			<article data-pagefind-body>
-				<div id="blog-hero">
-					<BlogHero content={post} coverImageResolved={coverImageResolved} />
-				</div>
-				{series && <PostSeries {series} {seriesId} />}
+			<div class="max-w-3xl">
+				<article data-pagefind-body>
+					<div id="blog-hero">
+						<BlogHero content={post} coverImageResolved={coverImageResolved} />
+					</div>
+					{series && <PostSeries {series} {seriesId} />}
 
-				<slot />
-			</article>
+					<slot />
+				</article>
+			</div>
 		</Container>
 
 		<ScrollToTop />

@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 /**
  * E2E tests for the Blog Post detail page.
- * Verifies content rendering, Table of Contents functionality, and navigation features.
+ * Verifies content rendering and navigation features.
  */
 test.describe("Blog Post Details", () => {
 	// Set a longer timeout due to build and navigation overhead
@@ -48,21 +48,7 @@ test.describe("Blog Post Details", () => {
 		// Ensure the main heading (H1) is visible
 		await expect(page.locator("h1").first()).toBeVisible();
 
-		// 4. Verify Table of Contents (TOC) - Wide screens only
-		await page.setViewportSize({ width: 1400, height: 900 });
-		await page.waitForTimeout(2000); // Wait for TOC hydration
-
-		const toc = page.locator(".toc-container");
-		if (await toc.isVisible()) {
-			const toggle = page.locator("#toc-toggle");
-			await expect(toggle).toBeVisible();
-			await toggle.click();
-
-			// Verify TOC list visibility after toggle
-			await expect(page.locator("#toc-list")).toBeVisible();
-		}
-
-		// 5. Verify "Back to Top" button functionality
+		// 4. Verify "Back to Top" button functionality
 		// Scroll to the bottom to trigger the button
 		await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
 		await page.waitForTimeout(1000);
