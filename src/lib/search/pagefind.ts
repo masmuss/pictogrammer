@@ -16,13 +16,26 @@ export interface PagefindModule {
 	search: (query: string) => Promise<{ results: PagefindSearchResult[] }>;
 }
 
-export async function loadPagefind(): Promise<PagefindModule> {
+let pagefindPromise: Promise<PagefindModule> | null = null;
+
+async function importPagefind(): Promise<PagefindModule> {
 	const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
 	const pagefind = (await import(
 		/* @vite-ignore */ pagefindPath
 	)) as PagefindModule;
 	await pagefind.init();
 	return pagefind;
+}
+
+export function loadPagefind(): Promise<PagefindModule> {
+	if (!pagefindPromise) {
+		pagefindPromise = importPagefind().catch((error) => {
+			pagefindPromise = null;
+			throw error;
+		});
+	}
+
+	return pagefindPromise;
 }
 
 export async function searchPagefind(
@@ -34,4 +47,11 @@ export async function searchPagefind(
 	return Promise.all(
 		search.results.slice(0, limit).map((result) => result.data())
 	);
+}
+
+export function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
+	return {
+		...r,
+		url: r.url.replace("/dist/", "/").replace(/\/$/, "")
+	};
 }

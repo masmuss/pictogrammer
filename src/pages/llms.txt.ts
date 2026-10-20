@@ -15,6 +15,10 @@ export async function GET(context: APIContext) {
 		"## Pages",
 		...getLlmPageLinks(site),
 		"",
+		"## Markdown",
+		"Request any page with `Accept: text/markdown` to receive Markdown.",
+		"Direct Markdown URLs use the page path plus `/index.md`, for example `/about/index.md`.",
+		"",
 		`## Posts (${posts.length})`,
 		...posts.map((post) => {
 			const url = new URL(getPostUrl(post), site).href;

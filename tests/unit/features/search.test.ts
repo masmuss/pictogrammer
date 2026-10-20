@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
-	MIN_QUERY_LENGTH,
-	normalizeResultUrl,
-	SEARCH_DEBOUNCE_MS
-} from "@/components/features/search/search-results";
-import {
 	createInitialState,
 	resetState
 } from "@/components/features/search/search-state";
+import {
+	MIN_QUERY_LENGTH,
+	SEARCH_DEBOUNCE_MS
+} from "@/lib/search/constants";
+import { normalizeResultUrl } from "@/lib/search/pagefind";
 
 describe("createInitialState", () => {
 	it("returns a closed, empty state", () => {

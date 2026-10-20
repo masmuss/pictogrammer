@@ -1,4 +1,5 @@
 import type { APIContext } from "astro";
+import { CONTENT_SIGNAL } from "@/config/content-signal";
 
 export function GET(context: APIContext) {
 	const site = context.site ?? new URL("https://khoirul.me");
@@ -9,9 +10,7 @@ export function GET(context: APIContext) {
 		`Sitemap: ${new URL("sitemap-index.xml", site).href}`,
 		"",
 		"# Content Signals (https://contentsignals.org/)",
-		"# This site's content is available for search indexing but not for AI training",
-		"# or use as direct AI input/generation context.",
-		"Content-Signal: ai-train=no, search=yes, ai-input=no"
+		`Content-Signal: ${CONTENT_SIGNAL}`
 	].join("\n");
 
 	return new Response(robots, {

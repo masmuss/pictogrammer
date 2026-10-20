@@ -1,10 +1,11 @@
-import { loadPagefind, type PagefindModule, searchPagefind } from "./pagefind";
-import { SearchRenderer } from "./search-render";
+import { MIN_QUERY_LENGTH, SEARCH_DEBOUNCE_MS } from "@/lib/search/constants";
 import {
-	MIN_QUERY_LENGTH,
+	loadPagefind,
 	normalizeResultUrl,
-	SEARCH_DEBOUNCE_MS
-} from "./search-results";
+	type PagefindModule,
+	searchPagefind
+} from "@/lib/search/pagefind";
+import { SearchRenderer } from "./search-render";
 import {
 	createInitialState,
 	resetState,

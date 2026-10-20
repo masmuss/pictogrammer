@@ -6,18 +6,22 @@ import remarkAbbr from "@richardtowers/remark-abbr";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
+import markdownExport from "astro-md-content-negotiation";
 import pagefind from "astro-pagefind";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDeflist from "remark-deflist";
 import remarkDirective from "remark-directive";
 import remarkSupersub from "remark-supersub";
+import { addMarkdownFrontmatter } from "./src/lib/markdown-frontmatter";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
 import { remarkPele } from "./src/plugins/remark-pele";
 
+const siteUrl = "https://khoirul.me";
+
 // https://astro.build/config
 export default defineConfig({
-	site: "https://khoirul.me",
+	site: siteUrl,
 	trailingSlash: "never",
 	prerenderConflictBehavior: "error",
 	redirects: {
@@ -59,7 +63,12 @@ export default defineConfig({
 	integrations: [
 		sitemap(),
 		pagefind(),
-		icon()
+		icon(),
+		markdownExport({
+			exclude: ["404.html", "sitemap.xml/**"],
+			transform: (markdown, file) =>
+				addMarkdownFrontmatter(markdown, file, siteUrl)
+		})
 	],
 	markdown: {
 		processor: unified({

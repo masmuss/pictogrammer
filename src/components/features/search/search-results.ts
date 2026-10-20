@@ -1,15 +1,5 @@
+import type { PagefindResultData } from "@/lib/search/pagefind";
 import { escapeHtml, sanitizeExcerpt } from "./html";
-import type { PagefindResultData } from "./pagefind";
-
-export const MIN_QUERY_LENGTH = 2;
-export const SEARCH_DEBOUNCE_MS = 300;
-
-export function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
-	return {
-		...r,
-		url: r.url.replace("/dist/", "/").replace(/\/$/, "")
-	};
-}
 
 export function renderResultItem(
 	r: PagefindResultData,

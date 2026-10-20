@@ -1,4 +1,4 @@
-import type { PagefindResultData } from "./pagefind";
+import type { PagefindResultData } from "@/lib/search/pagefind";
 
 export interface SearchState {
 	query: string;
