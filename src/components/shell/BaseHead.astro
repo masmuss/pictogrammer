@@ -2,6 +2,7 @@
 import "@/assets/styles/global.css";
 import { Font } from "astro:assets";
 import Seo from "@/components/common/Seo.astro";
+import { markdownPath } from "@/lib/negotiation";
 
 interface Props {
 	title?: string;
@@ -22,6 +23,10 @@ const {
 	updatedDate,
 	breadcrumbs
 }: Props = Astro.props;
+
+const normalizedPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isNotFound = normalizedPath === "/404" || normalizedPath === "/404.html";
+const markdownHref = isNotFound ? undefined : markdownPath(Astro.url.pathname);
 ---
 
 <!-- High Priority Global Metadata -->
@@ -72,6 +77,16 @@ const {
 			media: "(prefers-color-scheme: light)"
 		},
 		{ rel: "sitemap", href: "/sitemap-index.xml" },
+		...(markdownHref
+			? [
+					{
+						rel: "alternate",
+						type: "text/markdown",
+						href: markdownHref,
+						title: "Markdown"
+					}
+				]
+			: []),
 		{
 			rel: "alternate",
 			type: "application/rss+xml",

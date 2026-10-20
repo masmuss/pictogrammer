@@ -1,9 +1,13 @@
 {
   "name": "pictogrammer",
+  "main": "src/worker.ts",
   "compatibility_date": "2026-09-16",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   },
   "workers_dev": true,
   "preview_urls": true

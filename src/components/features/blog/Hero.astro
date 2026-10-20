@@ -21,7 +21,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 };
 ---
 
-<header>
+<div>
 	<div class="flex flex-col gap-4 md:gap-6">
 		{content.data.tags.length > 0 && <PostTags tags={content.data.tags} />}
 		<Heading
@@ -44,7 +44,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 			/>
 		</div>
 	</div>
-</header>
+</div>
 
 {
 	content.data.coverImage && coverImageResolved && (
