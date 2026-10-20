@@ -101,9 +101,10 @@ const { wide = false, ...head } = Astro.props;
 							const { query } = args as { query: string };
 							// pagefind is only available after build — loaded at runtime
 							// biome-ignore lint/suspicious/noExplicitAny: runtime-only module
+							const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
 							const pf: any = await import(
 								// @ts-ignore: pagefind module only exists in dist/ at runtime
-								/* @vite-ignore */ "/pagefind/pagefind.js"
+								/* @vite-ignore */ pagefindPath
 							);
 							await pf.init();
 							const results = await pf.search(query);
