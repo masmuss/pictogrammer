@@ -63,7 +63,8 @@ export const GET: APIRoute = () => {
 			{
 				id: "urn:air:khoirul.me:discovery:api-catalog",
 				displayName: "API Catalog",
-				description: "RFC 9727 API catalog listing all machine-readable resources.",
+				description:
+					"RFC 9727 API catalog listing all machine-readable resources.",
 				type: "application/linkset+json",
 				url: "https://khoirul.me/.well-known/api-catalog",
 				representativeQueries: [

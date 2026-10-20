@@ -13,7 +13,7 @@ export const GET: APIRoute = () => {
 			{
 				anchor: "https://khoirul.me",
 				// llms.txt: human+AI-readable site overview
-				"describedby": [
+				describedby: [
 					{
 						href: "https://khoirul.me/llms.txt",
 						type: "text/plain"
@@ -24,7 +24,7 @@ export const GET: APIRoute = () => {
 					}
 				],
 				// RSS feed
-				"alternate": [
+				alternate: [
 					{
 						href: "https://khoirul.me/rss.xml",
 						type: "application/rss+xml"

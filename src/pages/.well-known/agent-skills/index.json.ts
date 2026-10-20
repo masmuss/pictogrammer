@@ -39,8 +39,7 @@ export const GET: APIRoute = () => {
 			{
 				name: "sitemap",
 				type: "sitemap",
-				description:
-					"XML sitemap listing all public pages on khoirul.me.",
+				description: "XML sitemap listing all public pages on khoirul.me.",
 				url: "https://khoirul.me/sitemap-index.xml",
 				sha256: null
 			}
