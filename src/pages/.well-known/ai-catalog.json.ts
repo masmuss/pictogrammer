@@ -21,7 +21,8 @@ export const GET: APIRoute = () => {
 		},
 		entries: [
 			{
-				id: "urn:air:khoirul.me:content:llms-txt",
+				// Required: urn:air:<domain>:<namespace>:<name>
+				identifier: "urn:air:khoirul.me:content:llms-txt",
 				displayName: "LLMs.txt Site Overview",
 				description:
 					"Machine-readable overview of this site for LLMs and AI agents, including all pages and posts.",
@@ -36,7 +37,7 @@ export const GET: APIRoute = () => {
 				]
 			},
 			{
-				id: "urn:air:khoirul.me:content:llms-full-txt",
+				identifier: "urn:air:khoirul.me:content:llms-full-txt",
 				displayName: "LLMs-Full.txt Detailed Content",
 				description:
 					"Full-content version of the site overview for LLMs, including complete post bodies.",
@@ -49,7 +50,7 @@ export const GET: APIRoute = () => {
 				]
 			},
 			{
-				id: "urn:air:khoirul.me:feed:rss",
+				identifier: "urn:air:khoirul.me:feed:rss",
 				displayName: "RSS Feed",
 				description: "RSS feed for all blog posts on khoirul.me.",
 				type: "application/rss+xml",
@@ -61,7 +62,7 @@ export const GET: APIRoute = () => {
 				]
 			},
 			{
-				id: "urn:air:khoirul.me:discovery:api-catalog",
+				identifier: "urn:air:khoirul.me:discovery:api-catalog",
 				displayName: "API Catalog",
 				description:
 					"RFC 9727 API catalog listing all machine-readable resources.",
@@ -73,7 +74,7 @@ export const GET: APIRoute = () => {
 				]
 			},
 			{
-				id: "urn:air:khoirul.me:discovery:sitemap",
+				identifier: "urn:air:khoirul.me:discovery:sitemap",
 				displayName: "Sitemap",
 				description: "XML sitemap listing all pages on khoirul.me.",
 				type: "application/xml",
