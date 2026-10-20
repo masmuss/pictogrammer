@@ -1,3 +1,16 @@
+# [2.4.0](https://github.com/masmuss/pictogrammer/compare/v2.3.0...v2.4.0) (2026-10-20)
+
+
+### Bug Fixes
+
+* **well-known:** format descriptions and object keys in well-known ([d6ac077](https://github.com/masmuss/pictogrammer/commit/d6ac0776070f009509f7f4a770859233b5f68ed7))
+
+
+### Features
+
+* add agent discovery infrastructure (RFC 8288, RFC 9727, ARD, MCP) ([20c50ae](https://github.com/masmuss/pictogrammer/commit/20c50aeb0b48a4490c0e0d6e060c74771d1f8cea))
+* **agent:** integrate WebMCP tools and convert auth.md to dynamic route ([8520121](https://github.com/masmuss/pictogrammer/commit/8520121835756f95d1a1024d00c3cd3d48cf314b))
+
 # [2.3.0](https://github.com/masmuss/pictogrammer/compare/v2.2.0...v2.3.0) (2026-10-18)
 
 
