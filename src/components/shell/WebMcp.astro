@@ -1,0 +1,10 @@
+---
+// WebMCP exposes site tools to AI agents in browsers that support it.
+// https://webmachinelearning.github.io/webmcp/
+---
+
+<script>
+	import { registerWebMcpTools } from "@/lib/webmcp/register";
+
+	document.addEventListener("astro:page-load", registerWebMcpTools);
+</script>

@@ -1,5 +1,6 @@
+import { MIN_QUERY_LENGTH } from "@/lib/search/constants";
 import { escapeHtml } from "./html";
-import { MIN_QUERY_LENGTH, renderResultItem } from "./search-results";
+import { renderResultItem } from "./search-results";
 import type { SearchState } from "./search-state";
 
 interface SearchElements {
