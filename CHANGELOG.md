@@ -1,3 +1,18 @@
+# [2.5.0](https://github.com/masmuss/pictogrammer/compare/v2.4.0...v2.5.0) (2026-10-20)
+
+
+### Bug Fixes
+
+* **layouts:** respect base URL when loading pagefind script ([18bbc09](https://github.com/masmuss/pictogrammer/commit/18bbc0958e25a99899828f7d767d53d311de30fc))
+
+
+### Features
+
+* **content:** add 2026 coding workflow notes post ([178ab9d](https://github.com/masmuss/pictogrammer/commit/178ab9d3aee7be7b9d477b6901458ee84065be06))
+* **content:** add markdown content negotiation and worker support ([1066aa5](https://github.com/masmuss/pictogrammer/commit/1066aa5f94f41b3a9f33f68dc462bdc6f74747bc))
+* **webmcp:** extract WebMCP integration and modularize search logic ([b44c0fa](https://github.com/masmuss/pictogrammer/commit/b44c0fa4e6a6e6edbea15ada4ea0e6a51af532da))
+* **worker:** centralize content signal and ensure header injection ([ea6ae92](https://github.com/masmuss/pictogrammer/commit/ea6ae9239907fb6a08b79656777888c176764271))
+
 # [2.4.0](https://github.com/masmuss/pictogrammer/compare/v2.3.0...v2.4.0) (2026-10-20)
 
 
