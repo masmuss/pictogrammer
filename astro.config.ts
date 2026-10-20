@@ -12,6 +12,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import remarkDeflist from "remark-deflist";
 import remarkDirective from "remark-directive";
 import remarkSupersub from "remark-supersub";
+import { addMarkdownFrontmatter } from "./src/lib/markdown-frontmatter";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
 import { remarkPele } from "./src/plugins/remark-pele";
@@ -65,18 +66,8 @@ export default defineConfig({
 		icon(),
 		markdownExport({
 			exclude: ["404.html", "sitemap.xml/**"],
-			transform: (markdown, file) => {
-				const normalizedFile = file.replace(/\\/g, "/");
-				const path = normalizedFile.replace(/\/?index\.html$/, "");
-				const url = new URL(path ? `/${path}` : "/", siteUrl).href;
-				const title = markdown.match(/^#\s+(.+)$/m)?.[1]?.trim();
-
-				const frontmatter = ["---", `url: ${JSON.stringify(url)}`];
-				if (title) frontmatter.push(`title: ${JSON.stringify(title)}`);
-				frontmatter.push("---", "");
-
-				return `${frontmatter.join("\n")}\n${markdown}`;
-			}
+			transform: (markdown, file) =>
+				addMarkdownFrontmatter(markdown, file, siteUrl)
 		})
 	],
 	markdown: {

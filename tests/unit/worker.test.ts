@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { CONTENT_SIGNAL } from "@/config/content-signal";
 import worker from "@/worker";
 
 const BASE_URL = "https://example.com";
@@ -79,6 +80,7 @@ describe("worker content negotiation", () => {
 			"text/markdown; charset=utf-8"
 		);
 		expect(response.headers.get("vary")).toBe("Accept");
+		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 		expect(response.headers.get("cache-control")).toBe("private, no-store");
 		expect(response.headers.get("link")).toContain(
 			'</about>; rel="alternate"; type="text/html"'
@@ -99,6 +101,7 @@ describe("worker content negotiation", () => {
 		expect(response.status).toBe(200);
 		expect(response.headers.get("content-type")).toContain("text/html");
 		expect(response.headers.get("vary")).toBe("Accept");
+		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 		expect(response.headers.get("link")).toContain(
 			'</about/index.md>; rel="alternate"; type="text/markdown"'
 		);
@@ -115,6 +118,7 @@ describe("worker content negotiation", () => {
 
 		expect(response.status).toBe(308);
 		expect(response.headers.get("location")).toBe(`${BASE_URL}/about`);
+		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 		expect(assets.fetch).not.toHaveBeenCalled();
 	});
 
@@ -127,6 +131,7 @@ describe("worker content negotiation", () => {
 
 		expect(response.status).toBe(406);
 		expect(response.headers.get("vary")).toBe("Accept");
+		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 		expect(await response.text()).toContain("Available: text/html");
 	});
 
@@ -172,5 +177,6 @@ describe("worker content negotiation", () => {
 		expect(response.status).toBe(200);
 		expect(response.headers.get("content-type")).toBe("text/javascript");
 		expect(response.headers.get("vary")).toBeNull();
+		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 	});
 });

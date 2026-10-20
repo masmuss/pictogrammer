@@ -1,3 +1,4 @@
+import { CONTENT_SIGNAL } from "./config/content-signal";
 import {
 	appendVaryAccept,
 	HTML_TYPE,
@@ -16,11 +17,20 @@ interface Env {
 	ASSETS: AssetsBinding;
 }
 
-const CONTENT_SIGNAL = "ai-train=yes, search=yes, ai-input=yes";
-
 function appendLink(headers: Headers, value: string): void {
 	const existing = headers.get("link");
 	headers.set("Link", existing ? `${existing}, ${value}` : value);
+}
+
+function withContentSignal(response: Response): Response {
+	const headers = new Headers(response.headers);
+	headers.set("Content-Signal", CONTENT_SIGNAL);
+
+	return new Response(response.body, {
+		status: response.status,
+		statusText: response.statusText,
+		headers
+	});
 }
 
 function createMarkdownResponse(response: Response, url: URL): Response {
@@ -50,8 +60,7 @@ function createMarkdownResponse(response: Response, url: URL): Response {
 
 function notAcceptable(): Response {
 	const headers = new Headers({
-		"Content-Type": "text/plain; charset=utf-8",
-		"Content-Signal": CONTENT_SIGNAL
+		"Content-Type": "text/plain; charset=utf-8"
 	});
 	appendVaryAccept(headers);
 
@@ -69,23 +78,25 @@ export default {
 			(request.method !== "GET" && request.method !== "HEAD") ||
 			!isNegotiablePath(url.pathname)
 		) {
-			return env.ASSETS.fetch(request);
+			return withContentSignal(await env.ASSETS.fetch(request));
 		}
 
 		if (url.pathname !== "/" && url.pathname.endsWith("/")) {
 			const redirectUrl = new URL(url);
 			redirectUrl.pathname = pagePath(url.pathname);
 
-			return new Response(null, {
-				status: 308,
-				headers: { Location: redirectUrl.toString() }
-			});
+			return withContentSignal(
+				new Response(null, {
+					status: 308,
+					headers: { Location: redirectUrl.toString() }
+				})
+			);
 		}
 
 		const accept = request.headers.get("accept");
 		const chosen = preferredType(accept, [HTML_TYPE, MARKDOWN_TYPE]);
 
-		if (chosen === null) return notAcceptable();
+		if (chosen === null) return withContentSignal(notAcceptable());
 
 		if (chosen === MARKDOWN_TYPE) {
 			const markdownUrl = new URL(url);
@@ -96,24 +107,26 @@ export default {
 			);
 
 			if (markdownResponse.status === 200) {
-				return createMarkdownResponse(markdownResponse, url);
+				return withContentSignal(createMarkdownResponse(markdownResponse, url));
 			}
 		}
 
 		const htmlUrl = new URL(url);
 		htmlUrl.pathname = pagePath(url.pathname);
 		const htmlResponse = await env.ASSETS.fetch(new Request(htmlUrl, request));
-		const response = new Response(htmlResponse.body, {
-			status: htmlResponse.status,
-			statusText: htmlResponse.statusText,
-			headers: new Headers(htmlResponse.headers)
-		});
+		const response = withContentSignal(
+			new Response(htmlResponse.body, {
+				status: htmlResponse.status,
+				statusText: htmlResponse.statusText,
+				headers: new Headers(htmlResponse.headers)
+			})
+		);
 		appendVaryAccept(response.headers);
 
 		if (htmlResponse.status !== 200) return response;
 
 		if (chosen === MARKDOWN_TYPE && !preferredType(accept, [HTML_TYPE])) {
-			return notAcceptable();
+			return withContentSignal(notAcceptable());
 		}
 
 		if (response.headers.get("content-type")?.includes("text/html")) {
