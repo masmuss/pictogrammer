@@ -41,5 +41,91 @@ const { wide = false, ...head } = Astro.props;
 			</Container>
 		</main>
 		<Footer />
+
+		<!--
+			WebMCP: Expose site tools to AI agents via the browser.
+			https://webmachinelearning.github.io/webmcp/
+			Feature-detected — no-op in browsers that don't support it.
+			AbortController ensures tools are cleaned up on View Transition navigations.
+		-->
+		<script>
+			// WebMCP is a draft browser API; suppress TS errors with a typed cast
+			type ModelContext = {
+				registerTool: (
+					tool: unknown,
+					opts?: { signal?: AbortSignal }
+				) => Promise<void>;
+			};
+			const ctx = (document as unknown as { modelContext?: ModelContext })
+				.modelContext;
+
+			if (ctx && typeof ctx.registerTool === "function") {
+				const controller = new AbortController();
+				const opts = { signal: controller.signal };
+
+				// Tool: return site overview (llms.txt)
+				ctx.registerTool(
+					{
+						name: "getSiteOverview",
+						description:
+							"Returns a machine-readable overview of khoirul.me, including author info, available pages, and links to all posts and projects.",
+						readOnlyHint: true,
+						inputSchema: { type: "object", properties: {} },
+						async execute() {
+							const res = await fetch("/llms.txt");
+							const text = await res.text();
+							return { content: [{ type: "text", text }] };
+						}
+					},
+					opts
+				);
+
+				// Tool: full-text search via pagefind index
+				ctx.registerTool(
+					{
+						name: "searchPosts",
+						description:
+							"Full-text search across all blog posts on khoirul.me. Returns up to 5 matching results with titles, URLs, and excerpts.",
+						readOnlyHint: true,
+						inputSchema: {
+							type: "object",
+							properties: {
+								query: {
+									type: "string",
+									description: "Keyword or phrase to search for"
+								}
+							},
+							required: ["query"]
+						},
+						async execute(args: unknown) {
+							const { query } = args as { query: string };
+							// pagefind is only available after build — loaded at runtime
+							// biome-ignore lint/suspicious/noExplicitAny: runtime-only module
+							const pf: any = await import(
+								// @ts-ignore: pagefind module only exists in dist/ at runtime
+								/* @vite-ignore */ "/pagefind/pagefind.js"
+							);
+							await pf.init();
+							const results = await pf.search(query);
+							// biome-ignore lint/suspicious/noExplicitAny: pagefind result shape
+							const data = await Promise.all(
+								results.results.slice(0, 5).map((r: any) => r.data())
+							);
+							return {
+								content: [{ type: "text", text: JSON.stringify(data, null, 2) }]
+							};
+						}
+					},
+					opts
+				);
+
+				// Clean up on Astro View Transition navigation
+				document.addEventListener(
+					"astro:before-swap",
+					() => controller.abort(),
+					{ once: true }
+				);
+			}
+		</script>
 	</body>
 </html>
