@@ -1,5 +1,5 @@
 ---
-title: "Workflow Ngodingku di 2026: Zed, Orca, dan Pagar Betis"
+title: "Workflow Ngodingku di 2026"
 description: "Catatan soal Obsidian, Zed, Orca, tiga agen, lima model, dan cara aku menjaga pekerjaan tetap jelas."
 date: 20 October 2026
 tags: ["tech", "devlog", "workflow", "tools"]
@@ -51,6 +51,8 @@ Tapi untuk refactor atau perubahan kompleks, aku perlu membaca kodenya langsung.
 
 Orca tidak menghilangkan kebutuhan disiplin. Kalau worktree berantakan, tools-nya baik-baik saja. Cara aku membagi kerja yang berantakan.
 
+Di proyek monorepo, aku juga pakai pola ini pas mulai aplikasi baru. Aku tidak lagi mengetik `git worktree add` sendiri. Aku kirim perintah ke agen untuk pakai Orca MCP dan `orca-cli`: bikin worktree proyek, lalu jalankan agen OpenCode di dalamnya untuk task yang sudah kutulis sebelumnya. Nanti aku tinggal review hasilnya dan merge. Karena perintahnya gampang diulang, aku lebih sering bikin aplikasi baru daripada dulu. Pola ini yang jadi lingkaran putus-putus di dalam Orca pada diagram di bawah.
+
 ## Obsidian: konteks yang tidak hilang
 
 Aku tidak menyimpan semuanya di kepala. Terlalu banyak keputusan kecil: kenapa satu pendekatan dipilih, apa yang sudah dicoba, apa yang masih menunggu.
@@ -80,10 +82,6 @@ Aku juga tidak selalu setia. DeepSeek sering cukup. Untuk perubahan yang menyent
 Aku sempat menggambar agen dan model sebagai tahap setelah Orca. Itu kurang tepat. Keduanya berjalan di dalam Orca. Kadang satu agen memakai satu model berurutan, kadang beberapa worktree jalan paralel dengan agen dan model berbeda. Orca yang menjaga pekerjaan tetap terpisah.
 
 ```mermaid
----
-config:
-  layout: elk
----
 flowchart TD
   A["Ide / masalah"] --> B["Obsidian<br/>catatan + konteks"]
   B --> C{"Butuh diskusi atau riset?"}
@@ -97,6 +95,7 @@ flowchart TD
     H["DeepSeek / GLM / Claude Sonnet<br/>implementasi"]
     G -->|"pakai model"| H
     H -.->|"iterasi / ganti model"| G
+    G -.->|"orca-cli: bikin worktree + spawn agen baru"| G
   end
   H --> I["Review diff<br/>aku, di Orca / Zed"]
   I -.->|"perlu revisi"| G
