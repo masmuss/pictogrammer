@@ -14,6 +14,12 @@ interface Props {
 	article?: SeoArticle;
 }
 
+interface MetaTag {
+	property?: string;
+	name?: string;
+	content: string;
+}
+
 const {
 	ogType,
 	title,
@@ -26,54 +32,79 @@ const {
 	twitter,
 	article
 } = Astro.props;
+
+const ogMetas: MetaTag[] = [
+	{ property: "og:type", content: ogType },
+	{ property: "og:title", content: title },
+	{ property: "og:description", content: description },
+	{ property: "og:image", content: image }
+];
+
+if (imageAlt) {
+	ogMetas.push({ property: "og:image:alt", content: imageAlt });
+}
+if (siteName) {
+	ogMetas.push({ property: "og:site_name", content: siteName });
+}
+if (imageWidth) {
+	ogMetas.push({
+		property: "og:image:width",
+		content: imageWidth.toString()
+	});
+}
+if (imageHeight) {
+	ogMetas.push({
+		property: "og:image:height",
+		content: imageHeight.toString()
+	});
+}
+
+if (ogType === "article" && article) {
+	if (article.publishedTime) {
+		ogMetas.push({
+			property: "article:published_time",
+			content: article.publishedTime.toISOString()
+		});
+	}
+	if (article.modifiedTime) {
+		ogMetas.push({
+			property: "article:modified_time",
+			content: article.modifiedTime.toISOString()
+		});
+	}
+	if (article.author) {
+		ogMetas.push({ property: "article:author", content: article.author });
+	}
+	for (const tag of article.tags ?? []) {
+		ogMetas.push({ property: "article:tag", content: tag });
+	}
+}
+
+const twitterMetas: MetaTag[] = [
+	{ name: "twitter:card", content: twitter.card || "summary_large_image" },
+	{ name: "twitter:title", content: title },
+	{ name: "twitter:description", content: description },
+	{ name: "twitter:image", content: image }
+];
+
+if (imageAlt) {
+	twitterMetas.push({ name: "twitter:image:alt", content: imageAlt });
+}
+if (twitter.site) {
+	twitterMetas.push({ name: "twitter:site", content: twitter.site });
+}
+if (twitter.creator) {
+	twitterMetas.push({ name: "twitter:creator", content: twitter.creator });
+}
 ---
 
-<meta property="og:type" content={ogType} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
-{imageAlt && <meta property="og:image:alt" content={imageAlt} />}
-{siteName && <meta property="og:site_name" content={siteName} />}
 {
-	imageWidth && (
-		<meta property="og:image:width" content={imageWidth.toString()} />
-	)
+	ogMetas.map(({ property, content }) => (
+		<meta property={property} content={content} />
+	))
 }
 {
-	imageHeight && (
-		<meta property="og:image:height" content={imageHeight.toString()} />
-	)
+	twitterMetas.map(({ name, content }) => (
+		<meta name={name} content={content} />
+	))
 }
-
-{
-	ogType === "article" && article && (
-		<>
-			{article.publishedTime && (
-				<meta
-					property="article:published_time"
-					content={article.publishedTime.toISOString()}
-				/>
-			)}
-			{article.modifiedTime && (
-				<meta
-					property="article:modified_time"
-					content={article.modifiedTime.toISOString()}
-				/>
-			)}
-			{article.author && (
-				<meta property="article:author" content={article.author} />
-			)}
-			{article.tags?.map((tag) => (
-				<meta property="article:tag" content={tag} />
-			))}
-		</>
-	)
-}
-
-<meta property="twitter:card" content={twitter.card || "summary_large_image"} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
-{imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
-{twitter.site && <meta name="twitter:site" content={twitter.site} />}
-{twitter.creator && <meta name="twitter:creator" content={twitter.creator} />}

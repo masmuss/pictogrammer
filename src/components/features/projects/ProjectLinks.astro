@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Project } from "@/types";
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div class="flex shrink-0 items-center gap-2">
+	{
+		project.liveHref && (
+			<a
+				href={project.liveHref}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-muted-foreground hover:text-foreground transition-colors p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
+				aria-label={`Live site of ${project.text}`}
+				title="Live"
+			>
+				<Icon name="ph:arrow-up-right" class="text-lg" aria-hidden="true" />
+			</a>
+		)
+	}
+	{
+		project.repoHref && (
+			<a
+				href={project.repoHref}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-muted-foreground hover:text-foreground transition-colors p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
+				aria-label={`Source code of ${project.text}`}
+				title="Source code"
+			>
+				<Icon name="ph:github-logo" class="text-lg" aria-hidden="true" />
+			</a>
+		)
+	}
+</div>
