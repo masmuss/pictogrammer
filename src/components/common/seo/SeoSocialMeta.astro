@@ -20,7 +20,8 @@ interface OgMeta {
 }
 
 interface TwitterMeta {
-	name: string;
+	property?: string;
+	name?: string;
 	content: string;
 }
 
@@ -84,21 +85,25 @@ if (ogType === "article" && article) {
 	}
 }
 
-const twitterMetas: TwitterMeta[] = [
-	{ name: "twitter:card", content: twitter.card || "summary_large_image" },
-	{ name: "twitter:title", content: title },
-	{ name: "twitter:description", content: description },
-	{ name: "twitter:image", content: image }
+const twitterPropertyMetas: TwitterMeta[] = [
+	{
+		property: "twitter:card",
+		content: twitter.card || "summary_large_image"
+	},
+	{ property: "twitter:title", content: title },
+	{ property: "twitter:description", content: description },
+	{ property: "twitter:image", content: image }
 ];
 
+const twitterNameMetas: TwitterMeta[] = [];
 if (imageAlt) {
-	twitterMetas.push({ name: "twitter:image:alt", content: imageAlt });
+	twitterNameMetas.push({ name: "twitter:image:alt", content: imageAlt });
 }
 if (twitter.site) {
-	twitterMetas.push({ name: "twitter:site", content: twitter.site });
+	twitterNameMetas.push({ name: "twitter:site", content: twitter.site });
 }
 if (twitter.creator) {
-	twitterMetas.push({ name: "twitter:creator", content: twitter.creator });
+	twitterNameMetas.push({ name: "twitter:creator", content: twitter.creator });
 }
 ---
 
@@ -108,7 +113,12 @@ if (twitter.creator) {
 	))
 }
 {
-	twitterMetas.map(({ name, content }) => (
+	twitterPropertyMetas.map(({ property, content }) => (
+		<meta property={property} content={content} />
+	))
+}
+{
+	twitterNameMetas.map(({ name, content }) => (
 		<meta name={name} content={content} />
 	))
 }
