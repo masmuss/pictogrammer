@@ -2,7 +2,7 @@ import type { Project } from "@/types";
 import { getContentEntryData } from "./loader";
 import { projectsSchema } from "./schemas";
 
-const sortByYear = (a: Project, b: Project) => (b.year ?? 0) - (a.year ?? 0)
+const sortByYear = (a: Project, b: Project) => (b.year ?? 0) - (a.year ?? 0);
 
 export async function getAllProjects(): Promise<Project[]> {
 	const projects = getContentEntryData("projects", projectsSchema);
