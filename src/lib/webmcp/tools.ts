@@ -8,6 +8,26 @@ import type { ModelContextTool } from "./types";
 
 const SEARCH_RESULT_LIMIT = 5;
 
+function readQuery(input: { query?: unknown }): string {
+	return typeof input.query === "string" ? input.query.trim() : "";
+}
+
+function queryError(query: string): string | null {
+	if (query.length < MIN_QUERY_LENGTH) {
+		return `Query must be at least ${MIN_QUERY_LENGTH} characters.`;
+	}
+
+	if (query.length > MAX_QUERY_LENGTH) {
+		return `Query must be at most ${MAX_QUERY_LENGTH} characters.`;
+	}
+
+	return null;
+}
+
+function assertActive(signal: AbortSignal): void {
+	if (signal.aborted) throw new Error("Search cancelled.");
+}
+
 export const siteOverviewTool: ModelContextTool = {
 	name: "getSiteOverview",
 	title: "Get site overview",
@@ -59,26 +79,13 @@ export const searchPostsTool: ModelContextTool = {
 	},
 	annotations: { readOnlyHint: true },
 	async execute(input, { signal }) {
-		const query = typeof input.query === "string" ? input.query.trim() : "";
-
-		if (query.length < MIN_QUERY_LENGTH) {
-			return {
-				error: `Query must be at least ${MIN_QUERY_LENGTH} characters.`
-			};
-		}
-
-		if (query.length > MAX_QUERY_LENGTH) {
-			return {
-				error: `Query must be at most ${MAX_QUERY_LENGTH} characters.`
-			};
-		}
-
-		if (signal.aborted) return { error: "Search cancelled." };
+		const query = readQuery(input);
+		const validationError = queryError(query);
+		if (validationError) return { error: validationError };
 
 		try {
 			const pagefind = await loadPagefind();
-
-			if (signal.aborted) return { error: "Search cancelled." };
+			assertActive(signal);
 
 			const results = await searchPagefind(
 				pagefind,
@@ -95,6 +102,8 @@ export const searchPostsTool: ModelContextTool = {
 				};
 			});
 		} catch (error) {
+			if (signal.aborted) return { error: "Search cancelled." };
+
 			console.error("WebMCP search failed", error);
 			return {
 				error: "Search is unavailable right now. Please try again later."

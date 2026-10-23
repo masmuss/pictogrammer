@@ -8,35 +8,42 @@ interface Props {
 }
 
 const { nextUrl, prevUrl }: Props = Astro.props;
+
+interface PaginatorLink {
+	url: string;
+	text: string;
+	srLabel?: string;
+	className: string;
+}
+
+const links: PaginatorLink[] = [];
+if (prevUrl) {
+	links.push({
+		url: prevUrl.url,
+		text: prevUrl.text || "Previous",
+		srLabel: prevUrl.srLabel,
+		className: "me-auto"
+	});
+}
+if (nextUrl) {
+	links.push({
+		url: nextUrl.url,
+		text: nextUrl.text || "Next",
+		srLabel: nextUrl.srLabel,
+		className: "ms-auto"
+	});
+}
 ---
 
 {
-	(prevUrl || nextUrl) && (
+	links.length > 0 && (
 		<nav aria-label="Pagination" class="mt-8 flex items-center gap-x-4">
-			{prevUrl && (
-				<Button
-					as="a"
-					href={prevUrl.url}
-					variant="ghost"
-					size="sm"
-					class="me-auto"
-				>
-					{prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
-					{prevUrl.text ? prevUrl.text : "Previous"}
+			{links.map(({ url, text, srLabel, className }) => (
+				<Button as="a" href={url} variant="ghost" size="sm" class={className}>
+					{srLabel && <span class="sr-only">{srLabel}</span>}
+					{text}
 				</Button>
-			)}
-			{nextUrl && (
-				<Button
-					as="a"
-					href={nextUrl.url}
-					variant="ghost"
-					size="sm"
-					class="ms-auto"
-				>
-					{nextUrl.srLabel && <span class="sr-only">{nextUrl.srLabel}</span>}
-					{nextUrl.text ? nextUrl.text : "Next"}
-				</Button>
-			)}
+			))}
 		</nav>
 	)
 }

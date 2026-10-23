@@ -9,9 +9,40 @@ import { getAllBooks } from "@/lib/contents/reading";
 
 const books = await getAllBooks();
 
-const currentlyReading = books.filter((book) => book.status === "reading");
-const readBooks = books.filter((book) => book.status === "read");
-const wantToRead = books.filter((book) => book.status === "want-to-read");
+type Book = Awaited<ReturnType<typeof getAllBooks>>[number];
+type BookStatus = Book["status"];
+
+const byStatus = (status: BookStatus) =>
+	books.filter((book) => book.status === status);
+
+const sections = [
+	{
+		books: byStatus("reading"),
+		title: "Currently Reading",
+		titleSize: "xl" as const,
+		transitionDelay: 0,
+		class: "max-w-4xl",
+		gridClass: "grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4"
+	},
+	{
+		books: byStatus("read"),
+		title: "Read",
+		titleSize: "base" as const,
+		transitionDelay: 150,
+		class: "max-w-3xl",
+		gridClass:
+			"grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+	},
+	{
+		books: byStatus("want-to-read"),
+		title: "Want to Read",
+		titleSize: "base" as const,
+		transitionDelay: 300,
+		class: "max-w-3xl",
+		gridClass:
+			"grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+	}
+].filter((section) => section.books.length > 0);
 ---
 
 <BaseLayout
@@ -32,57 +63,21 @@ const wantToRead = books.filter((book) => book.status === "want-to-read");
 		/>
 
 		{
-			currentlyReading.length > 0 && (
+			sections.map((section) => (
 				<Section
-					title={`Currently Reading (${currentlyReading.length})`}
+					title={`${section.title} (${section.books.length})`}
 					titleAs="h2"
-					titleSize="xl"
-					transitionDelay={0}
-					class="max-w-4xl"
+					titleSize={section.titleSize}
+					transitionDelay={section.transitionDelay}
+					class={section.class}
 				>
-					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-						{currentlyReading.map((book) => (
+					<div class={section.gridClass}>
+						{section.books.map((book) => (
 							<BookItem book={book} />
 						))}
 					</div>
 				</Section>
-			)
-		}
-
-		{
-			readBooks.length > 0 && (
-				<Section
-					title={`Read (${readBooks.length})`}
-					titleAs="h2"
-					titleSize="base"
-					transitionDelay={150}
-					class="max-w-3xl"
-				>
-					<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-						{readBooks.map((book) => (
-							<BookItem book={book} />
-						))}
-					</div>
-				</Section>
-			)
-		}
-
-		{
-			wantToRead.length > 0 && (
-				<Section
-					title={`Want to Read (${wantToRead.length})`}
-					titleAs="h2"
-					titleSize="base"
-					transitionDelay={300}
-					class="max-w-3xl"
-				>
-					<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-						{wantToRead.map((book) => (
-							<BookItem book={book} />
-						))}
-					</div>
-				</Section>
-			)
+			))
 		}
 	</div>
 </BaseLayout>

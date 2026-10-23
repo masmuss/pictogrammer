@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	rating?: number;
+}
+
+const { rating } = Astro.props;
+
+const ariaLabel = rating ? `Rated ${rating} out of 5` : undefined;
+const stars = Array.from({ length: 5 }, (_, i) =>
+	i < (rating ?? 0) ? "ph:star-fill" : "ph:star"
+);
+---
+
+{
+	ariaLabel && (
+		<div
+			class="flex items-center gap-0.5 text-muted-foreground"
+			aria-label={ariaLabel}
+		>
+			{stars.map((name) => (
+				<Icon name={name} class="size-3.5" aria-hidden="true" />
+			))}
+		</div>
+	)
+}

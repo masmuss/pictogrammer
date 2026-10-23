@@ -15,10 +15,9 @@ import {
 class SearchController {
 	private state: SearchState = createInitialState();
 	private isOpen = false;
-	private pagefind: PagefindModule | null = null;
 	private searchRequestId = 0;
 	private debounceTimer: ReturnType<typeof setTimeout> | null = null;
-	private initPromise: Promise<void> | null = null;
+	private initPromise: Promise<PagefindModule> | null = null;
 	private readonly renderer: SearchRenderer;
 
 	constructor(
@@ -126,11 +125,9 @@ class SearchController {
 		);
 	}
 
-	private loadPagefind(): Promise<void> {
+	private loadPagefind(): Promise<PagefindModule> {
 		if (!this.initPromise) {
-			this.initPromise = loadPagefind().then((pagefind) => {
-				this.pagefind = pagefind;
-			});
+			this.initPromise = loadPagefind();
 		}
 		return this.initPromise;
 	}
@@ -180,27 +177,33 @@ class SearchController {
 	}
 
 	private async executeSearch(trimmed: string, requestId: number) {
-		if (!this.isCurrentRequest(requestId)) return;
-
 		try {
-			if (!this.pagefind) await this.loadPagefind();
-			if (!this.pagefind || !this.isCurrentRequest(requestId)) return;
-
-			const raw = await searchPagefind(this.pagefind, trimmed);
+			const pagefind = await this.loadPagefind();
 			if (!this.isCurrentRequest(requestId)) return;
 
-			this.state.results = raw.map(normalizeResultUrl);
-			this.state.selectedIndex = this.state.results.length > 0 ? 0 : -1;
+			const raw = await searchPagefind(pagefind, trimmed);
+			if (!this.isCurrentRequest(requestId)) return;
+
+			this.applyResults(raw);
 		} catch (e) {
 			if (this.isCurrentRequest(requestId)) {
 				console.error("Search failed", e);
 			}
 		} finally {
-			if (this.isCurrentRequest(requestId)) {
-				this.state.isSearching = false;
-				this.render();
-			}
+			this.finishSearch(requestId);
 		}
+	}
+
+	private applyResults(raw: Awaited<ReturnType<typeof searchPagefind>>) {
+		this.state.results = raw.map(normalizeResultUrl);
+		this.state.selectedIndex = this.state.results.length > 0 ? 0 : -1;
+	}
+
+	private finishSearch(requestId: number) {
+		if (!this.isCurrentRequest(requestId)) return;
+
+		this.state.isSearching = false;
+		this.render();
 	}
 
 	private handleNavigation(e: KeyboardEvent) {

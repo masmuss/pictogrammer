@@ -1,10 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
 import PostMetadata from "@/components/common/PostMetadata.astro";
-import { Badge } from "@/components/ui/badge";
+import DraftBadge from "@/components/features/blog/DraftBadge.astro";
 import { getPostUrl } from "@/lib/utils/post-route";
-import { cn } from "@/lib/utils/tailwind";
 
 type Props = {
 	post: CollectionEntry<"post">;
@@ -23,6 +21,11 @@ const {
 	hasReadTime = false,
 	readTimeStyle = "short"
 } = Astro.props;
+
+const titleClasses = clampTitle
+	? ["font-medium transition-colors", "sm:line-clamp-1"]
+	: ["font-medium transition-colors"];
+const visibleTags = showTags ? post.data.tags : [];
 ---
 
 <li
@@ -31,35 +34,12 @@ const {
 >
 	<a
 		href={getPostUrl(post)}
-		class={cn(
-			"scroll-reveal group/post block -mx-3 rounded-lg px-3 py-3",
-			"hover:bg-muted/40",
-			"focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2",
-			"transition-all duration-fast"
-		)}
+		class="scroll-reveal group/post block -mx-3 rounded-lg px-3 py-3 hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2 transition-all duration-fast"
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-			<span
-				class:list={[
-					"font-medium transition-colors",
-					clampTitle ? "sm:line-clamp-1" : undefined
-				]}
-				transition:name={`title-${post.id}`}
-			>
+			<span class:list={titleClasses} transition:name={`title-${post.id}`}>
 				{post.data.title}
-				{
-					post.data.draft && (
-						<Badge
-							variant="outline"
-							size="sm"
-							shape="pill"
-							class="ml-1.5 align-middle text-flexoki-orange-600 bg-[color-mix(in_oklch,var(--color-flexoki-orange-600)_10%,transparent)] border-[color-mix(in_oklch,var(--color-flexoki-orange-600)_30%,transparent)] dark:text-flexoki-orange-400 dark:bg-[color-mix(in_oklch,var(--color-flexoki-orange-400)_14%,transparent)] dark:border-[color-mix(in_oklch,var(--color-flexoki-orange-400)_35%,transparent)]"
-						>
-							<Icon name="ph:pencil-simple-line" />
-							Draft
-						</Badge>
-					)
-				}
+				{post.data.draft && <DraftBadge />}
 			</span>
 			<span class="text-muted-foreground shrink-0 text-sm">
 				<PostMetadata {post} {hasReadTime} {readTimeStyle} />
@@ -75,12 +55,12 @@ const {
 		}
 
 		{
-			showTags && post.data.tags.length > 0 && (
+			visibleTags.length > 0 && (
 				<div
 					class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground"
 					aria-label="tags"
 				>
-					{post.data.tags.map((tag) => (
+					{visibleTags.map((tag) => (
 						<span>{tag}</span>
 					))}
 				</div>

@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
 import Heading from "@/components/common/Heading.astro";
 import Badge from "@/components/ui/badge/Badge.astro";
+import BookRating from "./BookRating.astro";
 
 type Book = CollectionEntry<"reading">["data"][number];
 
@@ -13,12 +13,17 @@ interface Props {
 const { book } = Astro.props;
 
 const Wrapper = book.url ? "a" : "div";
+const wrapperProps = book.url
+	? {
+			href: book.url,
+			target: "_blank",
+			rel: "noopener noreferrer"
+		}
+	: {};
 ---
 
 <Wrapper
-	href={book.url || undefined}
-	target={book.url ? "_blank" : undefined}
-	rel={book.url ? "noopener noreferrer" : undefined}
+	{...wrapperProps}
 	class="group flex flex-col gap-3 border border-transparent rounded-lg p-4 transition-colors duration-200 hover:border-border"
 	data-testid="book-item"
 >
@@ -72,22 +77,7 @@ const Wrapper = book.url ? "a" : "div";
 		</div>
 
 		<div class="flex flex-col gap-1 mt-2">
-			{
-				book.rating && (
-					<div
-						class="flex items-center gap-0.5 text-muted-foreground"
-						aria-label={`Rating: ${book.rating} out of 5`}
-					>
-						{Array.from({ length: 5 }).map((_, i) => (
-							<Icon
-								name={i < book.rating! ? "ph:star-fill" : "ph:star"}
-								class="size-3.5"
-								aria-hidden="true"
-							/>
-						))}
-					</div>
-				)
-			}
+			<BookRating rating={book.rating} />
 		</div>
 	</div>
 </Wrapper>
