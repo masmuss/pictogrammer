@@ -9,7 +9,11 @@ import { getAllBooks } from "@/lib/contents/reading";
 
 const books = await getAllBooks();
 
-const byStatus = (status: string) => books.filter((book) => book.status === status);
+type Book = Awaited<ReturnType<typeof getAllBooks>>[number];
+type BookStatus = Book["status"];
+
+const byStatus = (status: BookStatus) =>
+	books.filter((book) => book.status === status);
 
 const sections = [
 	{

@@ -7,6 +7,8 @@ export interface AcceptEntry {
 export const HTML_TYPE = "text/html";
 export const MARKDOWN_TYPE = "text/markdown";
 
+export type NegotiableType = typeof HTML_TYPE | typeof MARKDOWN_TYPE;
+
 const STATIC_EXTENSION =
 	/\.(?:css|js|mjs|map|json|txt|xml|md|webmanifest|ya?ml|png|jpe?g|webp|gif|svg|avif|ico|woff2?|ttf|otf|eot|pdf|mp4|webm|mp3|wav|ogg|zip)$/i;
 
@@ -71,17 +73,17 @@ function bestMatchFor(
 	return matched;
 }
 
-export function preferredType(
+export function preferredType<T extends string>(
 	header: string | null,
-	produces: string[]
-): string | null {
+	produces: readonly T[]
+): T | null {
 	const fallback = produces[0] ?? null;
 	if (!header) return fallback;
 
 	const entries = parseAccept(header);
 	if (entries.length === 0) return fallback;
 
-	let bestType: string | null = null;
+	let bestType: T | null = null;
 	let bestQ = -1;
 	let bestPosition = Number.POSITIVE_INFINITY;
 

@@ -5,6 +5,7 @@ import {
 	isNegotiablePath,
 	MARKDOWN_TYPE,
 	markdownPath,
+	type NegotiableType,
 	pagePath,
 	preferredType
 } from "./lib/negotiation";
@@ -70,7 +71,7 @@ function notAcceptable(): Response {
 	);
 }
 
-function isNegotiable(request: Request, pathname: string): boolean {
+function shouldNegotiate(request: Request, pathname: string): boolean {
 	return (
 		(request.method === "GET" || request.method === "HEAD") &&
 		isNegotiablePath(pathname)
@@ -129,9 +130,10 @@ async function serveNegotiated(
 	request: Request,
 	url: URL,
 	env: Env,
-	accept: string | null,
-	chosen: string
+	choice: { accept: string | null; chosen: NegotiableType }
 ): Promise<Response> {
+	const { accept, chosen } = choice;
+
 	if (chosen === MARKDOWN_TYPE) {
 		const markdownResponse = await serveMarkdown(request, url, env);
 		if (markdownResponse) return markdownResponse;
@@ -163,7 +165,7 @@ export default {
 	async fetch(request: Request, env: Env): Promise<Response> {
 		const url = new URL(request.url);
 
-		if (!isNegotiable(request, url.pathname)) {
+		if (!shouldNegotiate(request, url.pathname)) {
 			return withContentSignal(await env.ASSETS.fetch(request));
 		}
 
@@ -176,7 +178,7 @@ export default {
 		if (chosen === null) return withContentSignal(notAcceptable());
 
 		return withContentSignal(
-			await serveNegotiated(request, url, env, accept, chosen)
+			await serveNegotiated(request, url, env, { accept, chosen })
 		);
 	}
 };
