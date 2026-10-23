@@ -43,6 +43,34 @@ function matches(entry: AcceptEntry, candidate: string): boolean {
 	return entry.type === candidate;
 }
 
+interface BestMatch {
+	entry: AcceptEntry;
+	position: number;
+}
+
+function bestMatchFor(
+	entries: AcceptEntry[],
+	candidate: string
+): BestMatch | null {
+	let matched: BestMatch | null = null;
+
+	for (let index = 0; index < entries.length; index++) {
+		const entry = entries[index];
+		if (!entry || !matches(entry, candidate)) continue;
+
+		if (
+			matched === null ||
+			entry.specificity > matched.entry.specificity ||
+			(entry.specificity === matched.entry.specificity &&
+				index < matched.position)
+		) {
+			matched = { entry, position: index };
+		}
+	}
+
+	return matched;
+}
+
 export function preferredType(
 	header: string | null,
 	produces: string[]
@@ -58,31 +86,15 @@ export function preferredType(
 	let bestPosition = Number.POSITIVE_INFINITY;
 
 	for (const candidate of produces) {
-		let matched: AcceptEntry | null = null;
-		let matchedPosition = Number.POSITIVE_INFINITY;
-
-		for (let index = 0; index < entries.length; index++) {
-			const entry = entries[index];
-			if (!entry || !matches(entry, candidate)) continue;
-
-			if (
-				matched === null ||
-				entry.specificity > matched.specificity ||
-				(entry.specificity === matched.specificity && index < matchedPosition)
-			) {
-				matched = entry;
-				matchedPosition = index;
-			}
-		}
-
-		if (matched === null || matched.q <= 0) continue;
+		const matched = bestMatchFor(entries, candidate);
+		if (matched === null || matched.entry.q <= 0) continue;
 
 		if (
-			matched.q > bestQ ||
-			(matched.q === bestQ && matchedPosition < bestPosition)
+			matched.entry.q > bestQ ||
+			(matched.entry.q === bestQ && matched.position < bestPosition)
 		) {
-			bestQ = matched.q;
-			bestPosition = matchedPosition;
+			bestQ = matched.entry.q;
+			bestPosition = matched.position;
 			bestType = candidate;
 		}
 	}
