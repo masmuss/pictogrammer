@@ -97,6 +97,23 @@ export class SearchRenderer {
 			this.el.list.innerHTML = state.results
 				.map((r, i) => renderResultItem(r, i, state.selectedIndex))
 				.join("");
+			this.scrollSelectedIntoView();
+		}
+	}
+
+	private scrollSelectedIntoView(): void {
+		const list = this.el.list;
+		const item = list?.querySelector<HTMLElement>(
+			'[data-search-result][aria-selected="true"]'
+		);
+		if (!list || !item) return;
+
+		const listRect = list.getBoundingClientRect();
+		const itemRect = item.getBoundingClientRect();
+		if (itemRect.top < listRect.top) {
+			list.scrollTop += itemRect.top - listRect.top;
+		} else if (itemRect.bottom > listRect.bottom) {
+			list.scrollTop += itemRect.bottom - listRect.bottom;
 		}
 	}
 
