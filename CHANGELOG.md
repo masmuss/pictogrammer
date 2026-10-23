@@ -1,3 +1,12 @@
+## [2.5.1](https://github.com/masmuss/pictogrammer/compare/v2.5.0...v2.5.1) (2026-10-23)
+
+
+### Bug Fixes
+
+* **ci:** add missing semicolons and formatting fixes ([1e17e50](https://github.com/masmuss/pictogrammer/commit/1e17e506a7ad479180c19f2b8edf3cf7fea97952))
+* **search:** scroll selected result into view on keyboard navigation ([d8b327a](https://github.com/masmuss/pictogrammer/commit/d8b327a1b304f6ceffa0afe7f546a0363f94c17e))
+* **seo:** restore property attribute on twitter card metas ([ce67b75](https://github.com/masmuss/pictogrammer/commit/ce67b75dd453ee27098abdc492b8276c7d960c91))
+
 # [2.5.0](https://github.com/masmuss/pictogrammer/compare/v2.4.0...v2.5.0) (2026-10-20)
 
 
