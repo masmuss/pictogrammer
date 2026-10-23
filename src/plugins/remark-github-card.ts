@@ -1,46 +1,76 @@
-import type { Root } from "mdast";
+import type { Node, Root } from "mdast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 import { h, isNodeDirective } from "../lib/utils/remark";
 
 const DIRECTIVE_NAME = "github";
 
+interface GithubTarget {
+	repoName: string;
+	owner?: string;
+	repo?: string;
+	displayName: string;
+}
+
+function resolveGithubTarget(rawName: string): GithubTarget {
+	let name = rawName.endsWith("/") ? rawName.slice(0, -1) : rawName;
+	name = name.startsWith("https://github.com/")
+		? name.slice("https://github.com/".length)
+		: name;
+
+	const repoParts = name.split("/");
+	const [owner, repo] = repoParts;
+	const isRepo = repoParts.length > 1;
+	const displayName =
+		isRepo && owner && repo ? `${owner}/${repo}` : (owner ?? name);
+
+	return { repoName: name, owner, repo, displayName };
+}
+
+function githubTargetFromNode(node: Node): GithubTarget | null {
+	if (!isNodeDirective(node)) return null;
+	if (node.type !== "leafDirective" || node.name !== DIRECTIVE_NAME) {
+		return null;
+	}
+
+	const rawName = node.attributes?.repo ?? node.attributes?.user;
+	if (!rawName) return null;
+
+	return resolveGithubTarget(rawName);
+}
+
+function buildAttrs(target: GithubTarget): Record<string, string> {
+	return target.repo
+		? { repo: target.repoName, class: "github-card" }
+		: { user: target.repoName, class: "github-card" };
+}
+
+function buildFallbackLink(target: GithubTarget): ReturnType<typeof h> {
+	return h(
+		"a",
+		{
+			href: `https://github.com/${target.repoName}`,
+			target: "_blank",
+			rel: "noopener noreferrer",
+			class: "not-prose"
+		},
+		[{ type: "text", value: target.displayName }]
+	);
+}
+
 export const remarkGithubCard: Plugin<[], Root> = () => (tree) => {
 	visit(tree, (node, index, parent) => {
-		if (!parent || index === undefined || !isNodeDirective(node)) return;
+		if (!parent || index === undefined) return;
 
-		if (node.type !== "leafDirective" || node.name !== DIRECTIVE_NAME) return;
+		const target = githubTargetFromNode(node);
+		if (!target) return;
 
-		let repoName = node.attributes?.repo ?? node.attributes?.user ?? null;
-		if (!repoName) return;
+		const fallbackLink = buildFallbackLink(target);
 
-		repoName = repoName.endsWith("/") ? repoName.slice(0, -1) : repoName;
-		repoName = repoName.startsWith("https://github.com/")
-			? repoName.replace("https://github.com/", "")
-			: repoName;
-
-		const repoParts = repoName.split("/");
-		const realUrl = `https://github.com/${repoName}`;
-		const isRepo = repoParts.length > 1;
-		const [owner, repo] = repoParts;
-		const displayName =
-			isRepo && owner && repo ? `${owner}/${repo}` : (owner ?? repoName);
-
-		const attrs: Record<string, string> = isRepo
-			? { repo: repoName, class: "github-card" }
-			: { user: repoName, class: "github-card" };
-
-		const fallbackLink = h(
-			"a",
-			{
-				href: realUrl,
-				target: "_blank",
-				rel: "noopener noreferrer",
-				class: "not-prose"
-			},
-			[{ type: "text", value: displayName }]
+		parent.children.splice(
+			index,
+			1,
+			h("github-card", buildAttrs(target), [fallbackLink])
 		);
-
-		parent.children.splice(index, 1, h("github-card", attrs, [fallbackLink]));
 	});
 };
