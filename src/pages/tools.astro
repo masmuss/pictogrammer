@@ -26,15 +26,13 @@ const toolCategories = await getAllTools();
 			as="h1"
 		/>
 
-		{
-			toolCategories.map((tool, index) => (
-				<ToolSection
-					showDescription
-					title={tool.title}
-					tools={tool.tools}
-					transitionDelay={index * 150}
-				/>
-			))
-		}
+		{toolCategories.map((tool, index) => (
+			<ToolSection
+				showDescription
+				title={tool.title}
+				tools={tool.tools}
+				transitionDelay={index * 150}
+			/>
+		))}
 	</div>
 </BaseLayout>

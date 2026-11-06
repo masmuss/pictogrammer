@@ -16,19 +16,17 @@ const {
 } = Astro.props as Props;
 ---
 
-{
-	asChild ? (
-		<div data-slot="tooltip-trigger" data-as-child class={cn("", className)}>
-			<slot />
-		</div>
-	) : (
-		<button
-			{...rest}
-			type={type}
-			data-slot="tooltip-trigger"
-			class={cn("", className)}
-		>
-			<slot />
-		</button>
-	)
-}
+{asChild ? (
+	<div data-slot="tooltip-trigger" data-as-child class={cn("", className)}>
+		<slot />
+	</div>
+) : (
+	<button
+		{...rest}
+		type={type}
+		data-slot="tooltip-trigger"
+		class={cn("", className)}
+	>
+		<slot />
+	</button>
+)}

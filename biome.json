@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"assist": {
 		"actions": {
 			"source": {
@@ -33,14 +33,7 @@
 				"noUselessElse": "error"
 			},
 			"nursery": {
-				"useSortedClasses": {
-					"level": "warn",
-					"fix": "safe",
-					"options": {
-						"attributes": ["class", "class:list"],
-						"functions": ["cn"]
-					}
-				}
+				"useTailwindSortedClasses": "warn"
 			}
 		}
 	},

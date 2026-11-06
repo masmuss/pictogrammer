@@ -16,14 +16,12 @@ import siteConfig from "@/config/site";
 		experiences and capturing moments through a lens.
 	</p>
 	<div class="flex flex-wrap items-center gap-4">
-		{
-			siteConfig.cvLink && (
-				<Button as="a" href={siteConfig.cvLink} variant="outline">
-					Resume
-					<Icon name="ph:file-arrow-down" />
-				</Button>
-			)
-		}
+		{siteConfig.cvLink && (
+			<Button as="a" href={siteConfig.cvLink} variant="outline">
+				Resume
+				<Icon name="ph:file-arrow-down" />
+			</Button>
+		)}
 		<SocialLinks variant="icon" showEmail />
 	</div>
 </div>

@@ -27,11 +27,9 @@ const projects = await getAllProjects();
 		/>
 
 		<ul class="flex max-w-4xl flex-col divide-y divide-border/60">
-			{
-				projects.map((project) => (
-					<ProjectRow project={project} featured={project.featured} />
-				))
-			}
+			{projects.map((project) => (
+				<ProjectRow project={project} featured={project.featured} />
+			))}
 		</ul>
 	</div>
 </BaseLayout>

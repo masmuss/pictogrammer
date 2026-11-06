@@ -19,23 +19,21 @@ const defaultClasses =
 	"cursor-pointer select-none outline-none group-focus-within:pointer-events-none inline-flex items-center gap-1";
 ---
 
-{
-	asChild ? (
-		<div
-			data-slot="dialog-trigger"
-			data-as-child
-			class={cn("", defaultClasses, className)}
-		>
-			<slot />
-		</div>
-	) : (
-		<button
-			{...rest}
-			type={type}
-			data-slot="dialog-trigger"
-			class={cn("", defaultClasses, className)}
-		>
-			<slot />
-		</button>
-	)
-}
+{asChild ? (
+	<div
+		data-slot="dialog-trigger"
+		data-as-child
+		class={cn("", defaultClasses, className)}
+	>
+		<slot />
+	</div>
+) : (
+	<button
+		{...rest}
+		type={type}
+		data-slot="dialog-trigger"
+		class={cn("", defaultClasses, className)}
+	>
+		<slot />
+	</button>
+)}

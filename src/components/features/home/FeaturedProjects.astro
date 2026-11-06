@@ -13,47 +13,42 @@ const { projects, max = 5 } = Astro.props;
 const displayed = projects.slice(0, max);
 ---
 
-{
-	displayed.length > 0 ? (
-		<Fragment>
-			<div
-				class="flex max-w-4xl flex-col divide-y divide-border/60"
-				data-testid="featured-project-list"
-			>
-				{displayed.map((project, index) => (
-					<div
-						data-fade-up="true"
-						class="opacity-0 translate-y-4 transition-[opacity,transform] ease-out"
-						style={`transition-delay: ${index * 80}ms; transition-duration: var(--duration-slower);`}
-					>
-						<FeaturedProjectItem project={project} />
-					</div>
-				))}
-			</div>
-
-			<div class="mt-2 flex w-full justify-start">
-				<a
-					href="/projects"
-					class={cn(
-						"group/see-all inline-flex items-center gap-1.5",
-						"duration-fast text-sm transition-colors",
-						"hover:underline underline-offset-4",
-						"focus-visible:ring-2 focus-visible:outline-none",
-						"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
-						"text-accent-cta-text"
-					)}
-				>
-					<span>See all projects</span>
-					<Icon name="ph:arrow-right" />
-				</a>
-			</div>
-		</Fragment>
-	) : (
-		<p
-			class="text-muted-foreground text-sm"
-			data-testid="featured-project-empty"
+{displayed.length > 0 ? (
+	<Fragment>
+		<div
+			class="flex max-w-4xl flex-col divide-y divide-border/60"
+			data-testid="featured-project-list"
 		>
-			No featured projects yet. New work will appear here once published.
-		</p>
-	)
-}
+			{displayed.map((project, index) => (
+				<div
+					data-fade-up="true"
+					class="opacity-0 translate-y-4 transition-[opacity,transform] ease-out"
+					style={`transition-delay: ${index * 80}ms; transition-duration: var(--duration-slower);`}
+				>
+					<FeaturedProjectItem project={project} />
+				</div>
+			))}
+		</div>
+
+		<div class="mt-2 flex w-full justify-start">
+			<a
+				href="/projects"
+				class={cn(
+					"group/see-all inline-flex items-center gap-1.5",
+					"duration-fast text-sm transition-colors",
+					"hover:underline underline-offset-4",
+					"focus-visible:ring-2 focus-visible:outline-none",
+					"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
+					"text-accent-cta-text"
+				)}
+			>
+				<span>See all projects</span>
+				<Icon name="ph:arrow-right" />
+			</a>
+		</div>
+	</Fragment>
+) : (
+	<p class="text-muted-foreground text-sm" data-testid="featured-project-empty">
+		No featured projects yet. New work will appear here once published.
+	</p>
+)}

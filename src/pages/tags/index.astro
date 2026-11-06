@@ -32,34 +32,30 @@ const sortedTags = getUniqueTagsWithCount(allPosts);
 			</p>
 		</div>
 
-		{
-			sortedTags.length === 0 && (
-				<p class="max-w-3xl text-muted-foreground" role="status">
-					No posts yet.
-				</p>
-			)
-		}
+		{sortedTags.length === 0 && (
+			<p class="max-w-3xl text-muted-foreground" role="status">
+				No posts yet.
+			</p>
+		)}
 
-		{
-			sortedTags.length > 0 && (
-				<ul class="flex max-w-3xl flex-col divide-y divide-border/60">
-					{sortedTags.map(([tag, count]) => (
-						<li>
-							<a
-								href={`/tags/${tag}`}
-								title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
-								class="flex min-h-12 items-center justify-between gap-4 py-3 text-sm transition-colors hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-								data-astro-prefetch
-							>
-								<span class="font-medium">#{tag}</span>
-								<span class="text-muted-foreground font-mono text-xs tabular-nums">
-									{count} {count === 1 ? "post" : "posts"}
-								</span>
-							</a>
-						</li>
-					))}
-				</ul>
-			)
-		}
+		{sortedTags.length > 0 && (
+			<ul class="flex max-w-3xl flex-col divide-y divide-border/60">
+				{sortedTags.map(([tag, count]) => (
+					<li>
+						<a
+							href={`/tags/${tag}`}
+							title={`View ${count} post${count > 1 ? "s" : ""} tagged with "${tag}"`}
+							class="flex min-h-12 items-center justify-between gap-4 py-3 text-sm transition-colors hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+							data-astro-prefetch
+						>
+							<span class="font-medium">#{tag}</span>
+							<span class="text-muted-foreground font-mono text-xs tabular-nums">
+								{count} {count === 1 ? "post" : "posts"}
+							</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		)}
 	</div>
 </BaseLayout>

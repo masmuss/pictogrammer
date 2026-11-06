@@ -27,33 +27,27 @@ const wrapperProps = book.url
 	class="group flex flex-col gap-3 border border-transparent rounded-lg p-4 transition-colors duration-200 hover:border-border"
 	data-testid="book-item"
 >
-	<div
-		class="relative aspect-2/3 w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center min-h-28"
-	>
-		{
-			book.cover ? (
-				<img
-					src={book.cover}
-					alt={`Cover of ${book.title}`}
-					class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-					loading="lazy"
-				/>
-			) : (
-				<div class="flex h-full w-full flex-col items-center justify-center p-4 text-center">
-					<Heading as="h4" size="xs" class="text-muted-foreground">
-						{book.title}
-					</Heading>
-				</div>
-			)
-		}
+	<div class="relative aspect-2/3 w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center min-h-28">
+		{book.cover ? (
+			<img
+				src={book.cover}
+				alt={`Cover of ${book.title}`}
+				class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+				loading="lazy"
+			/>
+		) : (
+			<div class="flex h-full w-full flex-col items-center justify-center p-4 text-center">
+				<Heading as="h4" size="xs" class="text-muted-foreground">
+					{book.title}
+				</Heading>
+			</div>
+		)}
 
-		{
-			book.status === "reading" && (
-				<Badge class="absolute right-2 top-2" size="sm">
-					Reading
-				</Badge>
-			)
-		}
+		{book.status === "reading" && (
+			<Badge class="absolute right-2 top-2" size="sm">
+				Reading
+			</Badge>
+		)}
 	</div>
 
 	<div class="flex flex-1 flex-col justify-between gap-2">
@@ -67,13 +61,11 @@ const wrapperProps = book.url
 				{book.title}
 			</Heading>
 			<p class="text-xs text-muted-foreground mt-1">{book.author}</p>
-			{
-				book.dateRead && (
-					<p class="mt-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
-						Read in {book.dateRead}
-					</p>
-				)
-			}
+			{book.dateRead && (
+				<p class="mt-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+					Read in {book.dateRead}
+				</p>
+			)}
 		</div>
 
 		<div class="flex flex-col gap-1 mt-2">

@@ -29,13 +29,11 @@ const {
 		{...rest}
 	>
 		<slot />
-		{
-			showCloseButton && (
-				<DialogClose>
-					<Icon name="ph:x" class="size-4" />
-					<span class="sr-only">Close</span>
-				</DialogClose>
-			)
-		}
+		{showCloseButton && (
+			<DialogClose>
+				<Icon name="ph:x" class="size-4" />
+				<span class="sr-only">Close</span>
+			</DialogClose>
+		)}
 	</div>
 </div>

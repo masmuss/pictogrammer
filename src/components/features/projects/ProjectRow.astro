@@ -26,29 +26,23 @@ const titleClass = href
 				<TitleTag {...titleProps} class={titleClass}>
 					{project.text}
 				</TitleTag>
-				{
-					featured && (
-						<span class="text-muted-foreground font-mono text-xs uppercase tracking-wide tabular-nums">
-							Featured
-						</span>
-					)
-				}
-				{
-					project.year && (
-						<span class="text-muted-foreground font-mono text-xs tabular-nums">
-							{project.year}
-						</span>
-					)
-				}
+				{featured && (
+					<span class="text-muted-foreground font-mono text-xs uppercase tracking-wide tabular-nums">
+						Featured
+					</span>
+				)}
+				{project.year && (
+					<span class="text-muted-foreground font-mono text-xs tabular-nums">
+						{project.year}
+					</span>
+				)}
 			</div>
 
-			{
-				project.description && (
-					<p class="text-muted-foreground mt-1 max-w-2xl text-sm leading-snug">
-						{project.description}
-					</p>
-				)
-			}
+			{project.description && (
+				<p class="text-muted-foreground mt-1 max-w-2xl text-sm leading-snug">
+					{project.description}
+				</p>
+			)}
 		</div>
 
 		<ProjectLinks {project} />

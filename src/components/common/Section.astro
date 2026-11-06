@@ -30,26 +30,26 @@ const {
 		className,
 		"opacity-0 translate-y-4 transition-[opacity,transform] ease-out"
 	)}
-	style={transitionDelay > 0
-		? {
-				transitionDuration: "var(--duration-slower)",
-				transitionDelay: `${transitionDelay}ms`
-			}
-		: { transitionDuration: "var(--duration-slower)" }}
+	style={
+		transitionDelay > 0
+			? {
+					transitionDuration: "var(--duration-slower)",
+					transitionDelay: `${transitionDelay}ms`
+				}
+			: { transitionDuration: "var(--duration-slower)" }
+	}
 	{...attrs}
 >
-	{
-		title && (
-			<Heading
-				as={titleAs}
-				size={titleSize}
-				weight={titleWeight}
-				class="text-foreground tracking-tight"
-			>
-				{title}
-			</Heading>
-		)
-	}
+	{title && (
+		<Heading
+			as={titleAs}
+			size={titleSize}
+			weight={titleWeight}
+			class="text-foreground tracking-tight"
+		>
+			{title}
+		</Heading>
+	)}
 	<div class="flex flex-col gap-y-3">
 		<slot />
 	</div>

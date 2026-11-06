@@ -20,7 +20,9 @@ import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
 		<Kbd>
 			<span id="search-kbd-mod" class="search-kbd-key" data-key="⌘"></span>
 		</Kbd>
-		<Kbd><span class="search-kbd-key" data-key="K"></span></Kbd>
+		<Kbd>
+			<span class="search-kbd-key" data-key="K"></span>
+		</Kbd>
 	</KbdGroup>
 </Button>
 
@@ -76,13 +78,10 @@ import KbdGroup from "@/components/ui/kbd/KbdGroup.astro";
 				class="hidden max-h-[60vh] space-y-1 overflow-y-auto p-2"
 				role="listbox"
 				aria-label="Search results"
-			>
-			</div>
+			></div>
 		</div>
 
-		<div
-			class="border-border bg-muted/50 text-muted-foreground flex items-center justify-between border-t px-4 py-2 text-xs"
-		>
+		<div class="border-border bg-muted/50 text-muted-foreground flex items-center justify-between border-t px-4 py-2 text-xs">
 			<div class="flex items-center gap-4">
 				<span class="flex items-center gap-1">
 					<Kbd>

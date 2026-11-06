@@ -46,20 +46,18 @@ const btnBase = [
 		className
 	)}
 >
-	{
-		shareLinks.map((link) => (
-			<a
-				href={link.href}
-				target="_blank"
-				rel="noopener noreferrer"
-				class={btnBase}
-				title={link.name}
-				aria-label={link.name}
-			>
-				<Icon name={link.icon} class="text-lg" />
-			</a>
-		))
-	}
+	{shareLinks.map((link) => (
+		<a
+			href={link.href}
+			target="_blank"
+			rel="noopener noreferrer"
+			class={btnBase}
+			title={link.name}
+			aria-label={link.name}
+		>
+			<Icon name={link.icon} class="text-lg" />
+		</a>
+	))}
 
 	<button
 		type="button"
