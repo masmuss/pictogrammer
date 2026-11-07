@@ -22,12 +22,12 @@ export function isNodeDirective(node: Node): node is Directives {
 export function h(
 	el: string,
 	attrs: Properties = {},
-	children: RootContent[] = []
+	children: RootContent[] = [],
 ): P {
 	const { properties, tagName } = _h(el, attrs);
 	return {
 		children: children as P["children"],
 		data: { hName: tagName, hProperties: properties },
-		type: "paragraph"
+		type: "paragraph",
 	};
 }

@@ -1,21 +1,16 @@
 import type { Root } from "mdast";
-import type {
-	ContainerDirective,
-	LeafDirective
-} from "mdast-util-directive";
+import type { ContainerDirective, LeafDirective } from "mdast-util-directive";
 import { describe, expect, it } from "vitest";
 import { remarkAdmonitions } from "@/plugins/remark-admonitions";
 import { remarkGithubCard } from "@/plugins/remark-github-card";
 
 function runGithubCard(tree: Root) {
-	const attacher =
-		remarkGithubCard as unknown as () => (tree: Root) => void;
+	const attacher = remarkGithubCard as unknown as () => (tree: Root) => void;
 	attacher()(tree);
 }
 
 function runAdmonitions(tree: Root) {
-	const attacher =
-		remarkAdmonitions as unknown as () => (tree: Root) => void;
+	const attacher = remarkAdmonitions as unknown as () => (tree: Root) => void;
 	attacher()(tree);
 }
 
@@ -24,7 +19,7 @@ function leafGithub(attributes: Record<string, string>): LeafDirective {
 		type: "leafDirective",
 		name: "github",
 		attributes,
-		children: []
+		children: [],
 	};
 }
 
@@ -32,7 +27,7 @@ describe("remarkGithubCard", () => {
 	it("expands a repo shorthand into a github-card node", () => {
 		const tree: Root = {
 			type: "root",
-			children: [leafGithub({ repo: "https://github.com/masmuss/x/" })]
+			children: [leafGithub({ repo: "https://github.com/masmuss/x/" })],
 		};
 		runGithubCard(tree);
 		const node = tree.children[0] as unknown as {
@@ -45,7 +40,7 @@ describe("remarkGithubCard", () => {
 	it("supports user-only cards", () => {
 		const tree: Root = {
 			type: "root",
-			children: [leafGithub({ user: "masmuss" })]
+			children: [leafGithub({ user: "masmuss" })],
 		};
 		runGithubCard(tree);
 		const node = tree.children[0] as unknown as {
@@ -71,9 +66,9 @@ describe("remarkAdmonitions", () => {
 			children: [
 				{
 					type: "paragraph",
-					children: [{ type: "text", value: "Be careful" }]
-				}
-			]
+					children: [{ type: "text", value: "Be careful" }],
+				},
+			],
 		};
 		const tree: Root = { type: "root", children: [dir] };
 		runAdmonitions(tree);
@@ -89,7 +84,7 @@ describe("remarkAdmonitions", () => {
 			type: "containerDirective",
 			name: "foobar",
 			attributes: {},
-			children: []
+			children: [],
 		};
 		const tree: Root = { type: "root", children: [dir] };
 		runAdmonitions(tree);
@@ -99,7 +94,7 @@ describe("remarkAdmonitions", () => {
 	it("converts leaf directives back to plain paragraphs", () => {
 		const tree: Root = {
 			type: "root",
-			children: [leafGithub({ repo: "a/b" })]
+			children: [leafGithub({ repo: "a/b" })],
 		};
 		runAdmonitions(tree);
 		const [first] = tree.children;

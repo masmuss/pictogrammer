@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"assist": {
 		"actions": {
 			"source": {
@@ -8,7 +8,13 @@
 		}
 	},
 	"formatter": {
-		"enabled": false
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 80
+	},
+	"html": {
+		"experimentalFullSupportEnabled": true
 	},
 	"linter": {
 		"enabled": true,
@@ -33,15 +39,19 @@
 				"noUselessElse": "error"
 			},
 			"nursery": {
-				"useSortedClasses": {
+				"useTailwindSortedClasses": {
 					"level": "warn",
-					"fix": "safe",
-					"options": {
-						"attributes": ["class", "class:list"],
-						"functions": ["cn"]
-					}
+					"fix": "safe"
 				}
 			}
+		}
+	},
+	"markdown": {
+		"formatter": {
+			"enabled": true
+		},
+		"parser": {
+			"frontmatter": true
 		}
 	},
 	"vcs": {
@@ -70,20 +80,6 @@
 			"includes": ["**/*.astro"],
 			"linter": {
 				"rules": {
-					"correctness": {
-						"noUnusedVariables": "off",
-						"noUnusedImports": "off"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["**/*.svelte"],
-			"linter": {
-				"rules": {
-					"style": {
-						"useConst": "off"
-					},
 					"correctness": {
 						"noUnusedVariables": "off",
 						"noUnusedImports": "off"

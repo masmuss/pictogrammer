@@ -15,35 +15,33 @@ const { archiveData, class: className } = Astro.props;
 		class="sticky top-16 max-h-[calc(100vh-7rem)] overflow-y-auto text-sm"
 		aria-label="Archive by year and month"
 	>
-		{
-			archiveData.map(({ year, months, count }) => (
-				<div class="flex flex-col gap-y-1 pb-4 last:pb-0">
-					<a
-						href={`#year-${year}`}
-						class="text-foreground hover:text-primary flex items-baseline justify-between font-medium transition-colors"
-					>
-						<span>{year}</span>
-						<span class="text-muted-foreground tabular-nums text-xs">
-							{count}
-						</span>
-					</a>
-					<ul class="flex flex-col">
-						{months.map(({ month, monthName, posts }) => (
-							<li>
-								<a
-									href={`#month-${year}-${month}`}
-									class="text-muted-foreground hover:text-foreground flex items-baseline justify-between pl-4 transition-colors leading-relaxed"
-								>
-									<span>{monthName}</span>
-									<span class="text-muted-foreground tabular-nums text-xs">
-										{posts.length}
-									</span>
-								</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			))
-		}
+		{archiveData.map(({ year, months, count }) => (
+			<div class="flex flex-col gap-y-1 pb-4 last:pb-0">
+				<a
+					href={`#year-${year}`}
+					class="text-foreground hover:text-primary flex items-baseline justify-between font-medium transition-colors"
+				>
+					<span>{year}</span>
+					<span class="text-muted-foreground text-xs tabular-nums">
+						{count}
+					</span>
+				</a>
+				<ul class="flex flex-col">
+					{months.map(({ month, monthName, posts }) => (
+						<li>
+							<a
+								href={`#month-${year}-${month}`}
+								class="text-muted-foreground hover:text-foreground flex items-baseline justify-between pl-4 leading-relaxed transition-colors"
+							>
+								<span>{monthName}</span>
+								<span class="text-muted-foreground text-xs tabular-nums">
+									{posts.length}
+								</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		))}
 	</nav>
 </aside>

@@ -15,8 +15,7 @@ draft: true
 - **[babelfish](https://github.com/nodeca/babelfish/)** - developer friendly
   i18n with plurals support and easy syntax.
 
-You will like those projects!
----
+## You will like those projects!
 
 # h1 Heading 8
 

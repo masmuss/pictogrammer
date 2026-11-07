@@ -2,14 +2,14 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<a
+<button
+    type="button"
 	aria-label="Back to Top"
-	href="#"
 	class="back-to-top bg-card text-foreground border-border hover:border-border/75 duration-slow pointer-events-none fixed inset-e-12 bottom-16 z-50 flex h-12 w-12 items-center justify-center rounded-md border text-2xl opacity-0 shadow-md transition-all md:inset-e-16"
 	id="to-top-btn"
 >
 	<Icon name="ph:arrow-up" />
-</a>
+</button>
 
 <script>
 	const setupBackToTop = () => {
@@ -17,6 +17,15 @@ import { Icon } from "astro-icon/components";
 		if (!(button instanceof HTMLElement) || button.dataset.initialized) return;
 
 		button.dataset.initialized = "true";
+		button.addEventListener("click", () => {
+			const prefersReducedMotion = window.matchMedia(
+				"(prefers-reduced-motion: reduce)"
+			).matches;
+			window.scrollTo({
+				top: 0,
+				behavior: prefersReducedMotion ? "auto" : "smooth",
+			});
+		});
 		const updateVisibility = () => {
 			button.classList.toggle("is-visible", window.scrollY > 150);
 		};

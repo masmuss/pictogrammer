@@ -19,21 +19,21 @@ test.describe("SEO and Meta Tags", () => {
 		// Open Graph Tags Validation
 		await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
 			"content",
-			"website"
+			"website",
 		);
 		await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
 			"content",
-			/pictogrammer/
+			/pictogrammer/,
 		);
 		await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
 			"content",
-			/og\.png/
+			/og\.png/,
 		);
 
 		// Twitter Card Tags Validation
 		await expect(page.locator('meta[property="twitter:card"]')).toHaveAttribute(
 			"content",
-			"summary_large_image"
+			"summary_large_image",
 		);
 	});
 
@@ -42,31 +42,29 @@ test.describe("SEO and Meta Tags", () => {
 
 		await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
 			"content",
-			"article"
+			"article",
 		);
 		await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
 			"content",
-			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini"
+			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini",
 		);
 		await expect(
-			page.locator('meta[property="article:published_time"]')
+			page.locator('meta[property="article:published_time"]'),
 		).toHaveAttribute("content", /^\d{4}-\d{2}-\d{2}T/);
-		await expect(
-			page.locator('meta[property="twitter:url"]')
-		).toHaveAttribute(
+		await expect(page.locator('meta[property="twitter:url"]')).toHaveAttribute(
 			"content",
-			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini"
+			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini",
 		);
 
 		const jsonLd = page.locator('script[type="application/ld+json"]').first();
 		await expect(jsonLd).toBeAttached();
 		const schema = JSON.parse((await jsonLd.textContent()) ?? "{}");
 		const articleSchema = schema["@graph"].find(
-			(item: { "@type"?: string }) => item["@type"] === "BlogPosting"
+			(item: { "@type"?: string }) => item["@type"] === "BlogPosting",
 		);
 		expect(articleSchema).toBeDefined();
 		expect(articleSchema.mainEntityOfPage["@id"]).toBe(
-			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini"
+			"https://khoirul.me/blog/reflections/tiga-tahun-blog-ini",
 		);
 	});
 
@@ -77,7 +75,7 @@ test.describe("SEO and Meta Tags", () => {
 		await expect(page.locator('link[rel="icon"]').first()).toBeAttached();
 		await expect(page.locator('link[rel="manifest"]')).toHaveAttribute(
 			"href",
-			"/favicon/site.webmanifest"
+			"/favicon/site.webmanifest",
 		);
 	});
 
@@ -86,7 +84,7 @@ test.describe("SEO and Meta Tags", () => {
 
 		// Verify that the RSS feed is linked correctly in the head
 		await expect(
-			page.locator('link[type="application/rss+xml"]')
+			page.locator('link[type="application/rss+xml"]'),
 		).toHaveAttribute("href", "/rss.xml");
 	});
 

@@ -151,7 +151,6 @@ Buat file baru bernama `src/pages/tentang.astro` dan isi dengan:
 
 ```astro title="src/pages/tentang.astro"
 ---
-
 ---
 
 <h1>Tentang Saya</h1>

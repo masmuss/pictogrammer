@@ -9,8 +9,8 @@ function getRegisteredToolNames(page: Page): Promise<string[]> {
 				window as unknown as {
 					__webmcpTools?: Map<string, unknown>;
 				}
-			).__webmcpTools?.keys() ?? []
-		)
+			).__webmcpTools?.keys() ?? [],
+		),
 	);
 }
 
@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
 			name: string;
 			execute: (
 				input: unknown,
-				options: { signal: AbortSignal }
+				options: { signal: AbortSignal },
 			) => Promise<unknown>;
 		};
 
@@ -34,43 +34,37 @@ test.beforeEach(async ({ page }) => {
 			value: {
 				registerTool: async (
 					tool: FakeTool,
-					options?: { signal?: AbortSignal }
+					options?: { signal?: AbortSignal },
 				) => {
 					registered.set(tool.name, tool);
 					options?.signal?.addEventListener(
 						"abort",
 						() => registered.delete(tool.name),
-						{ once: true }
+						{ once: true },
 					);
-				}
-			}
+				},
+			},
 		});
 	});
 });
 
 test("registers tools and re-registers them after client-side navigation", async ({
-	page
+	page,
 }) => {
 	await page.goto("/");
 
-	await expect
-		.poll(() => getRegisteredToolNames(page))
-		.toEqual(EXPECTED_TOOLS);
+	await expect.poll(() => getRegisteredToolNames(page)).toEqual(EXPECTED_TOOLS);
 
 	await page.click("nav >> text=Blog");
 	await expect(page).toHaveURL(/\/blog/);
 
-	await expect
-		.poll(() => getRegisteredToolNames(page))
-		.toEqual(EXPECTED_TOOLS);
+	await expect.poll(() => getRegisteredToolNames(page)).toEqual(EXPECTED_TOOLS);
 });
 
 test("searchPosts returns Pagefind results", async ({ page }) => {
 	await page.goto("/");
 
-	await expect
-		.poll(() => getRegisteredToolNames(page))
-		.toEqual(EXPECTED_TOOLS);
+	await expect.poll(() => getRegisteredToolNames(page)).toEqual(EXPECTED_TOOLS);
 
 	const results = await page.evaluate(async () => {
 		const tools = (
@@ -80,7 +74,7 @@ test("searchPosts returns Pagefind results", async ({ page }) => {
 					{
 						execute: (
 							input: unknown,
-							options: { signal: AbortSignal }
+							options: { signal: AbortSignal },
 						) => Promise<unknown>;
 					}
 				>;
@@ -91,7 +85,7 @@ test("searchPosts returns Pagefind results", async ({ page }) => {
 
 		return tool.execute(
 			{ query: "astro" },
-			{ signal: new AbortController().signal }
+			{ signal: new AbortController().signal },
 		);
 	});
 

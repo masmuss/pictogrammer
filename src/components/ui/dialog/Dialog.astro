@@ -192,5 +192,7 @@ const {
 
 	document
 		.querySelectorAll<HTMLElement>('[data-slot="dialog"]')
-		.forEach((el) => createDialog(el));
+		.forEach((el) => {
+			createDialog(el);
+		});
 </script>

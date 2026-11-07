@@ -14,13 +14,13 @@ import { expect, test } from "@playwright/test";
 /** Disable animations and force visibility of fade-up elements for consistent audits. */
 async function preparePageForAxe(
 	page: Page,
-	{ keepDark = false }: { keepDark?: boolean } = {}
+	{ keepDark = false }: { keepDark?: boolean } = {},
 ) {
 	await page.waitForLoadState("networkidle");
 	// Reset dark mode to ensure clean light-mode state, unless testing dark mode
 	if (!keepDark) {
 		await page.evaluate(() =>
-			document.documentElement.classList.remove("dark")
+			document.documentElement.classList.remove("dark"),
 		);
 	}
 	await page.addStyleTag({
@@ -33,7 +33,7 @@ async function preparePageForAxe(
 				opacity: 1 !important;
 				transform: none !important;
 			}
-		`
+		`,
 	});
 	// Running CSS transitions override even !important declarations, so
 	// force any in-flight animation (e.g. fade-up reveals) to its end state.
@@ -47,7 +47,7 @@ async function preparePageForAxe(
 /** Run axe-core and assert zero violations, optionally excluding selectors. */
 async function assertNoA11yViolations(
 	page: Page,
-	options?: { exclude?: string[]; disableRules?: string[] }
+	options?: { exclude?: string[]; disableRules?: string[] },
 ) {
 	const builder = new AxeBuilder({ page }).withTags([
 		"wcag2a",
@@ -56,7 +56,7 @@ async function assertNoA11yViolations(
 		"wcag21aa",
 		"wcag22a",
 		"wcag22aa",
-		"best-practice"
+		"best-practice",
 	]);
 
 	if (options?.exclude) {
@@ -92,22 +92,22 @@ test.describe("Desktop page audits", () => {
 		{
 			name: "Blog Archive",
 			path: "/blog/archive",
-			disableRules: ["target-size"]
+			disableRules: ["target-size"],
 		},
 		{ name: "Projects", path: "/projects", disableRules: ["color-contrast"] },
 		{ name: "Tools", path: "/tools", disableRules: ["color-contrast"] },
 		{ name: "Tags", path: "/tags" },
-		{ name: "Legal", path: "/legal" }
+		{ name: "Legal", path: "/legal" },
 	];
 
 	for (const pageInfo of pagesToAudit) {
 		test(`"${pageInfo.name}" should have zero a11y violations`, async ({
-			page
+			page,
 		}) => {
 			await page.goto(pageInfo.path);
 			await preparePageForAxe(page);
 			await assertNoA11yViolations(page, {
-				disableRules: pageInfo.disableRules
+				disableRules: pageInfo.disableRules,
 			});
 		});
 	}
@@ -140,7 +140,7 @@ test.describe("Individual content pages", () => {
 
 		await assertNoA11yViolations(page, {
 			exclude: [".astro-code", ".pele-mermaid"],
-			disableRules: ["color-contrast", "heading-order"]
+			disableRules: ["color-contrast", "heading-order"],
 		});
 	});
 
@@ -175,17 +175,17 @@ test.describe("Mobile viewport audits", () => {
 		{ name: "About", path: "/about", disableRules: ["color-contrast"] },
 		{ name: "Blog Index", path: "/blog" },
 		{ name: "Projects", path: "/projects", disableRules: ["color-contrast"] },
-		{ name: "Tools", path: "/tools", disableRules: ["color-contrast"] }
+		{ name: "Tools", path: "/tools", disableRules: ["color-contrast"] },
 	];
 
 	for (const pageInfo of mobilePages) {
 		test(`"${pageInfo.name}" mobile should have zero a11y violations`, async ({
-			page
+			page,
 		}) => {
 			await page.goto(pageInfo.path);
 			await preparePageForAxe(page);
 			await assertNoA11yViolations(page, {
-				disableRules: pageInfo.disableRules
+				disableRules: pageInfo.disableRules,
 			});
 		});
 	}
@@ -224,7 +224,7 @@ test.describe("Skip-to-content link", () => {
 
 test.describe("prefers-reduced-motion", () => {
 	test("should disable animations when user prefers reduced motion", async ({
-		page
+		page,
 	}) => {
 		await page.emulateMedia({ reducedMotion: "reduce" });
 		await page.goto("/");
@@ -235,13 +235,13 @@ test.describe("prefers-reduced-motion", () => {
 		await expect(section).toBeVisible();
 
 		const duration = await section.evaluate((el) =>
-			Number.parseFloat(getComputedStyle(el).animationDuration)
+			Number.parseFloat(getComputedStyle(el).animationDuration),
 		);
 		expect(duration).toBeLessThanOrEqual(0.01);
 	});
 
 	test("should not animate when user prefers reduced motion", async ({
-		page
+		page,
 	}) => {
 		await page.emulateMedia({ reducedMotion: "reduce" });
 		await page.goto("/");
@@ -273,7 +273,7 @@ test.describe("prefers-reduced-motion", () => {
 test.describe("Dark mode", () => {
 	test.describe.configure({ mode: "serial" });
 	test("homepage dark mode should have zero a11y violations", async ({
-		page
+		page,
 	}) => {
 		await page.goto("/");
 		await page.evaluate(() => document.documentElement.classList.add("dark"));
@@ -282,7 +282,7 @@ test.describe("Dark mode", () => {
 	});
 
 	test("blog post dark mode should have zero a11y violations", async ({
-		page
+		page,
 	}) => {
 		await page.goto("/blog");
 		const firstPostLink = page
@@ -294,7 +294,7 @@ test.describe("Dark mode", () => {
 
 		await assertNoA11yViolations(page, {
 			exclude: [".astro-code", ".pele-mermaid"],
-			disableRules: ["color-contrast", "heading-order"]
+			disableRules: ["color-contrast", "heading-order"],
 		});
 	});
 });
@@ -405,7 +405,7 @@ test.describe("Search modal", () => {
 
 test.describe("Keyboard navigation", () => {
 	test("Tab should cycle through focusable elements with visible focus indicator", async ({
-		page
+		page,
 	}) => {
 		await page.goto("/");
 		await preparePageForAxe(page);
@@ -432,7 +432,7 @@ test.describe("Keyboard navigation", () => {
 	});
 
 	test("first tab should reach skip-to-content, second tab should reach header", async ({
-		page
+		page,
 	}) => {
 		await page.goto("/");
 		// First Tab focuses skip link
@@ -456,7 +456,7 @@ test.describe("Heading hierarchy", () => {
 		{ name: "Homepage", path: "/" },
 		{ name: "About", path: "/about" },
 		{ name: "Projects", path: "/projects" },
-		{ name: "Tools", path: "/tools" }
+		{ name: "Tools", path: "/tools" },
 	];
 
 	for (const pageInfo of pagesToCheck) {
@@ -504,14 +504,14 @@ test.describe("Touch targets", () => {
 	test.use({ viewport: { width: 375, height: 812 } });
 
 	test("interactive elements should have adequate touch target size", async ({
-		page
+		page,
 	}) => {
 		await page.goto("/");
 		await preparePageForAxe(page);
 
 		const smallTargets = await page.evaluate(() => {
 			const interactive = document.querySelectorAll(
-				'a, button, [role="button"], input, select, textarea, summary'
+				'a, button, [role="button"], input, select, textarea, summary',
 			);
 			const violations: string[] = [];
 
@@ -520,11 +520,11 @@ test.describe("Touch targets", () => {
 				const style = getComputedStyle(el);
 				const height = Math.max(
 					rect.height,
-					Number.parseFloat(style.minHeight) || 0
+					Number.parseFloat(style.minHeight) || 0,
 				);
 				const width = Math.max(
 					rect.width,
-					Number.parseFloat(style.minWidth) || 0
+					Number.parseFloat(style.minWidth) || 0,
 				);
 
 				// Skip hidden elements
@@ -532,7 +532,7 @@ test.describe("Touch targets", () => {
 
 				if (height < 44 || width < 44) {
 					violations.push(
-						`${el.closest("footer") ? "footer:" : ""}${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ""}:${el.className?.slice(0, 30)} — ${Math.round(width)}×${Math.round(height)}px`
+						`${el.closest("footer") ? "footer:" : ""}${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ""}:${el.className?.slice(0, 30)} — ${Math.round(width)}×${Math.round(height)}px`,
 					);
 				}
 			}
@@ -546,7 +546,7 @@ test.describe("Touch targets", () => {
 				!t.includes("post-image-caption") &&
 				!t.includes("toc") &&
 				!t.includes("excerpt") &&
-				!t.includes("footer")
+				!t.includes("footer"),
 		);
 		expect(criticalViolations.length).toBeLessThanOrEqual(40);
 	});

@@ -6,7 +6,7 @@ test.describe("Tools Page", () => {
 
 		// Verify main heading
 		await expect(
-			page.getByRole("heading", { name: "Tools", level: 1 })
+			page.getByRole("heading", { name: "Tools", level: 1 }),
 		).toBeVisible();
 
 		// Verify tool categories exist
@@ -15,12 +15,12 @@ test.describe("Tools Page", () => {
 			"Productivity",
 			"Development",
 			"AI Agents",
-			"Workstation"
+			"Workstation",
 		];
 
 		for (const category of expectedCategories) {
 			await expect(
-				page.getByRole("heading", { name: category, level: 2 })
+				page.getByRole("heading", { name: category, level: 2 }),
 			).toBeVisible();
 		}
 

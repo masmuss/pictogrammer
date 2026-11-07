@@ -9,14 +9,13 @@ const { experience } = Astro.props;
 ---
 
 <div class="py-4 first:pt-0 last:pb-0" data-testid="experience-item">
-	<p class="flex flex-wrap justify-between items-baseline gap-x-2 gap-y-1">
+	<p class="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
 		<span class="text-muted-foreground/80 font-mono text-sm tabular-nums">
 			{experience.period}
 		</span>
 		<span>
-			<span class="text-muted-foreground">{experience.title}</span> at {
-				experience.company
-			}
+			<span class="text-muted-foreground">{experience.title}</span> at{" "}
+			{experience.company}
 		</span>
 	</p>
 </div>

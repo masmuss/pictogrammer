@@ -13,26 +13,26 @@ export default defineConfig({
 		baseURL: "http://localhost:4322",
 		trace: "on-first-retry",
 		contextOptions: {
-			reducedMotion: "reduce"
-		}
+			reducedMotion: "reduce",
+		},
 	},
 	/* Configure visual regression tests */
 	expect: {
 		toHaveScreenshot: {
 			maxDiffPixelRatio: 0.05, // pixel difference tolerance
-			threshold: 0.2 // color tolerance
-		}
+			threshold: 0.2, // color tolerance
+		},
 	},
 	projects: [
 		{
 			name: "chromium",
-			use: { ...devices["Desktop Chrome"] }
-		}
+			use: { ...devices["Desktop Chrome"] },
+		},
 	],
 	webServer: {
 		command: "bun run build && bun run preview -- --port 4322 --ignore-lock",
 		url: "http://localhost:4322",
 		reuseExistingServer: !process.env.CI,
-		timeout: 180 * 1000
-	}
+		timeout: 180 * 1000,
+	},
 });

@@ -22,11 +22,9 @@ const {
 ---
 
 <section {...attrs} class={className}>
-	<Card class="gap-0 ring-0 bg-transparent">
+	<Card class="gap-0 bg-transparent ring-0">
 		<CardHeader class="border-border border-b px-0">
-			<CardTitle class={titleClass}>
-				{title}
-			</CardTitle>
+			<CardTitle class={titleClass}>{title}</CardTitle>
 		</CardHeader>
 		<CardContent class={cn("px-4", contentClass)}>
 			<Stack gap="md">

@@ -17,7 +17,7 @@ test("SocialLinks renders all links from siteConfig", async () => {
 test("SocialLinks shows email when showEmail prop is true", async () => {
 	const container = await AstroContainer.create();
 	const result = await container.renderToString(SocialLinks, {
-		props: { showEmail: true }
+		props: { showEmail: true },
 	});
 
 	expect(result).toContain(`mailto:${siteConfig.email}`);
@@ -34,7 +34,7 @@ test("SocialLinks does not show email by default", async () => {
 test("SocialLinks applies variant button correctly", async () => {
 	const container = await AstroContainer.create();
 	const result = await container.renderToString(SocialLinks, {
-		props: { variant: "button" }
+		props: { variant: "button" },
 	});
 
 	// Component Button with variant button will have data-variant="outline" (based on logic in SocialLinks.astro)

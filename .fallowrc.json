@@ -1,18 +1,13 @@
 {
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
 	"entry": ["astro.config.ts"],
-	"ignorePatterns": [
-		"public/github-card.js",
-		"src/assets/scripts/mermaid-theme-fix.js",
-		"svelte.config.js"
-	],
+	"ignorePatterns": ["public/github-card.js"],
 	"ignoreDependencies": [
 		"@iconify/json",
 		"@iconify-json/logos",
 		"@iconify-json/ph",
 		"@astrojs/markdown-remark",
 		"@astrojs/sitemap",
-		"@astrojs/svelte",
 		"@richardtowers/remark-abbr",
 		"@tailwindcss/vite",
 		"astro-mermaid",

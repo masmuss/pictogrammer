@@ -23,10 +23,10 @@ export async function GET(context: APIContext) {
 		...posts.map((post) => {
 			const url = new URL(getPostUrl(post), site).href;
 			return `- [${post.data.title}](${url}): ${post.data.description}`;
-		})
+		}),
 	];
 
 	return new Response(lines.join("\n"), {
-		headers: { "Content-Type": "text/plain; charset=utf-8" }
+		headers: { "Content-Type": "text/plain; charset=utf-8" },
 	});
 }

@@ -12,7 +12,7 @@ export function createInitialState(): SearchState {
 		query: "",
 		results: [],
 		isSearching: false,
-		selectedIndex: -1
+		selectedIndex: -1,
 	};
 }
 

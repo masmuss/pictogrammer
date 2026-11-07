@@ -7,7 +7,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Link Integrity", () => {
 	test("all internal links on the homepage should be valid", async ({
 		page,
-		request
+		request,
 	}) => {
 		await page.goto("/");
 
@@ -43,13 +43,13 @@ test.describe("Link Integrity", () => {
 			// Expect 2xx (OK) or 3xx (Redirect) status codes
 			if (!response.ok() && response.status() !== 304) {
 				console.error(
-					`Broken link found: ${path} returned status ${response.status()}`
+					`Broken link found: ${path} returned status ${response.status()}`,
 				);
 			}
 
 			expect(
 				response.status(),
-				`Link "${path}" should not be broken`
+				`Link "${path}" should not be broken`,
 			).toBeLessThan(400);
 		});
 

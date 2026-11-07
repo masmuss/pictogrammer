@@ -7,7 +7,7 @@ import {
 	OG_FONT_NAME,
 	OG_HEIGHT,
 	OG_WIDTH,
-	truncateText
+	truncateText,
 } from "./markup";
 import { renderOgResponse } from "./render";
 
@@ -20,17 +20,17 @@ const LOGO_PATH = join(
 	"src",
 	"assets",
 	"images",
-	"logo-light.svg"
+	"logo-light.svg",
 );
 
 const fontNormalPromise = readFile(FONT_NORMAL_PATH).then((buf) =>
-	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength)
+	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength),
 );
 const fontBoldPromise = readFile(FONT_BOLD_PATH).then((buf) =>
-	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength)
+	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength),
 );
 const logoBase64Promise = readFile(LOGO_PATH).then(
-	(logoBuffer) => `data:image/svg+xml;base64,${logoBuffer.toString("base64")}`
+	(logoBuffer) => `data:image/svg+xml;base64,${logoBuffer.toString("base64")}`,
 );
 
 export function getAuthorInitials(name: string) {
@@ -62,7 +62,7 @@ export async function createOgImageResponse({
 	readTime,
 	author,
 	authorInitials,
-	domain
+	domain,
 }: CreateOgImageResponseOptions) {
 	const safeTitle = decodeEntities ? decodeHtmlEntities(title) : title;
 	const safeDescription = decodeEntities
@@ -70,13 +70,13 @@ export async function createOgImageResponse({
 		: description;
 	const clampedDescription = truncateText(
 		safeDescription,
-		DESCRIPTION_MAX_LENGTH
+		DESCRIPTION_MAX_LENGTH,
 	);
 
 	const results = await Promise.allSettled([
 		fontNormalPromise,
 		fontBoldPromise,
-		logoBase64Promise
+		logoBase64Promise,
 	]);
 
 	const [fontNormalResult, fontBoldResult, logoResult] = results;
@@ -104,7 +104,7 @@ export async function createOgImageResponse({
 		readTime,
 		author,
 		authorInitials,
-		domain
+		domain,
 	});
 
 	return renderOgResponse({
@@ -117,15 +117,15 @@ export async function createOgImageResponse({
 					name: OG_FONT_NAME,
 					data: fontNormal,
 					weight: 400,
-					style: "normal"
+					style: "normal",
 				},
 				{
 					name: OG_FONT_NAME,
 					data: fontBold,
 					weight: 700,
-					style: "normal"
-				}
-			]
-		}
+					style: "normal",
+				},
+			],
+		},
 	});
 }

@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 	const posts = await getCollection("post");
 	return posts.map((post) => ({
 		params: { id: getPostRouteId(post) },
-		props: post
+		props: post,
 	}));
 }
 
@@ -30,11 +30,11 @@ export async function GET({ props }: APIContext) {
 		date: new Date(date).toLocaleDateString("en-US", {
 			year: "numeric",
 			month: "long",
-			day: "numeric"
+			day: "numeric",
 		}),
 		readTime,
 		author: siteConfig.author,
 		authorInitials: getAuthorInitials(siteConfig.author),
-		domain: "khoirul.me"
+		domain: "khoirul.me",
 	});
 }

@@ -30,11 +30,11 @@ const visibleTags = showTags ? post.data.tags : [];
 
 <li
 	data-testid="post-preview"
-	class="group-hover/list:opacity-50 hover:opacity-100 transition-opacity duration-base"
+	class="duration-base transition-opacity group-hover/list:opacity-50 hover:opacity-100"
 >
 	<a
 		href={getPostUrl(post)}
-		class="scroll-reveal group/post block -mx-3 rounded-lg px-3 py-3 hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-offset-2 transition-all duration-fast"
+		class="scroll-reveal group/post hover:bg-muted/40 focus-visible:ring-ring duration-fast -mx-3 block rounded-lg px-3 py-3 transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
 			<span class:list={titleClasses} transition:name={`title-${post.id}`}>
@@ -46,25 +46,18 @@ const visibleTags = showTags ? post.data.tags : [];
 			</span>
 		</div>
 
-		{
-			showDescription && (
-				<p class="line-clamp-2 text-sm leading-relaxed text-muted-foreground mt-1">
-					{post.data.description}
-				</p>
-			)
-		}
+		{showDescription && (
+			<p class="text-muted-foreground mt-1 line-clamp-2 text-sm leading-relaxed">
+				{post.data.description}
+			</p>
+		)}
 
-		{
-			visibleTags.length > 0 && (
-				<div
-					class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground"
-					aria-label="tags"
-				>
-					{visibleTags.map((tag) => (
-						<span>{tag}</span>
-					))}
-				</div>
-			)
-		}
+		{visibleTags.length > 0 && (
+			<div class="text-muted-foreground mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+				{visibleTags.map((tag) => (
+					<span>{tag}</span>
+				))}
+			</div>
+		)}
 	</a>
 </li>

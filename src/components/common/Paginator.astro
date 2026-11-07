@@ -35,15 +35,13 @@ if (nextUrl) {
 }
 ---
 
-{
-	links.length > 0 && (
-		<nav aria-label="Pagination" class="mt-8 flex items-center gap-x-4">
-			{links.map(({ url, text, srLabel, className }) => (
-				<Button as="a" href={url} variant="ghost" size="sm" class={className}>
-					{srLabel && <span class="sr-only">{srLabel}</span>}
-					{text}
-				</Button>
-			))}
-		</nav>
-	)
-}
+{links.length > 0 && (
+	<nav aria-label="Pagination" class="mt-8 flex items-center gap-x-4">
+		{links.map(({ url, text, srLabel, className }) => (
+			<Button as="a" href={url} variant="ghost" size="sm" class={className}>
+				{srLabel && <span class="sr-only">{srLabel}</span>}
+				{text}
+			</Button>
+		))}
+	</nav>
+)}

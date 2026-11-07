@@ -20,7 +20,7 @@ export async function GET(context: APIContext) {
 			pubDate: new Date(item.data.date),
 			content: parseAndSanitizeMarkdown(item.body ?? ""),
 			author: `${siteConfig.author} <${siteConfig.email}>`,
-			categories: item.data.tags
-		}))
+			categories: item.data.tags,
+		})),
 	});
 }

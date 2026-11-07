@@ -9,8 +9,8 @@ describe("addMarkdownFrontmatter", () => {
 			addMarkdownFrontmatter(
 				"# About Me\n\nSome content.",
 				"about/index.html",
-				SITE_URL
-			)
+				SITE_URL,
+			),
 		).toBe(`---
 url: "https://khoirul.me/about"
 title: "About Me"
@@ -23,11 +23,7 @@ Some content.`);
 
 	it("maps the root index to the site root", () => {
 		expect(
-			addMarkdownFrontmatter(
-				"# Home\n",
-				"index.html",
-				SITE_URL
-			)
+			addMarkdownFrontmatter("# Home\n", "index.html", SITE_URL),
 		).toContain('url: "https://khoirul.me/"');
 	});
 
@@ -35,7 +31,7 @@ Some content.`);
 		const result = addMarkdownFrontmatter(
 			"Some content without a heading.",
 			"about/index.html",
-			SITE_URL
+			SITE_URL,
 		);
 
 		expect(result).not.toContain("title:");
@@ -46,11 +42,9 @@ Some content.`);
 		const result = addMarkdownFrontmatter(
 			"# A post\n",
 			"blog\\notes\\post\\index.html",
-			SITE_URL
+			SITE_URL,
 		);
 
-		expect(result).toContain(
-			'url: "https://khoirul.me/blog/notes/post"'
-		);
+		expect(result).toContain('url: "https://khoirul.me/blog/notes/post"');
 	});
 });

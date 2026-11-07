@@ -4,7 +4,7 @@ import { escapeHtml, sanitizeExcerpt } from "./html";
 export function renderResultItem(
 	r: PagefindResultData,
 	index: number,
-	selectedIndex: number
+	selectedIndex: number,
 ): string {
 	const selected = index === selectedIndex;
 	return `

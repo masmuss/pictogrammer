@@ -1,7 +1,7 @@
 export function addMarkdownFrontmatter(
 	markdown: string,
 	file: string,
-	siteUrl: string
+	siteUrl: string,
 ): string {
 	const normalizedFile = file.replace(/\\/g, "/");
 	const path = normalizedFile.replace(/\/?index\.html$/, "");

@@ -23,7 +23,7 @@ function queryElements(content: HTMLElement | null): SearchElements {
 		empty: null,
 		hint: null,
 		spinner: null,
-		escBtn: null
+		escBtn: null,
 	};
 	if (!content) return empty;
 
@@ -35,7 +35,7 @@ function queryElements(content: HTMLElement | null): SearchElements {
 		empty: content.querySelector<HTMLDivElement>("[data-search-empty]"),
 		hint: content.querySelector<HTMLDivElement>("[data-search-hint]"),
 		spinner: content.querySelector<HTMLDivElement>("[data-search-spinner]"),
-		escBtn: content.querySelector<HTMLButtonElement>("[data-search-esc]")
+		escBtn: content.querySelector<HTMLButtonElement>("[data-search-esc]"),
 	};
 }
 
@@ -44,7 +44,7 @@ export class SearchRenderer {
 
 	constructor(dialogRoot: HTMLElement) {
 		const content = dialogRoot.querySelector<HTMLElement>(
-			'[data-slot="dialog-content"]'
+			'[data-slot="dialog-content"]',
 		);
 		this.el = queryElements(content);
 	}
@@ -104,7 +104,7 @@ export class SearchRenderer {
 	private scrollSelectedIntoView(): void {
 		const list = this.el.list;
 		const item = list?.querySelector<HTMLElement>(
-			'[data-search-result][aria-selected="true"]'
+			'[data-search-result][aria-selected="true"]',
 		);
 		if (!list || !item) return;
 

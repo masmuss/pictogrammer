@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 import {
 	buildOgMarkup,
 	decodeHtmlEntities,
-	truncateText
+	truncateText,
 } from "@/lib/utils/og/markup";
 
 describe("decodeHtmlEntities", () => {
 	it("decodes named entities", () => {
 		expect(decodeHtmlEntities("a &amp; b &lt;c&gt; &quot;q&quot;")).toBe(
-			'a & b <c> "q"'
+			'a & b <c> "q"',
 		);
 	});
 
@@ -41,7 +41,7 @@ describe("buildOgMarkup", () => {
 			title: "Hello World",
 			description: "A post",
 			logoBase64: "data:image/png;base64,xxx",
-			domain: "khoirul.me"
+			domain: "khoirul.me",
 		});
 		const serialized = JSON.stringify(markup);
 		expect(serialized).toContain("Hello World");
@@ -57,7 +57,7 @@ describe("buildOgMarkup", () => {
 			date: "2026-01-01",
 			readTime: "5 min",
 			author: "Khoirul",
-			authorInitials: "KF"
+			authorInitials: "KF",
 		});
 		const serialized = JSON.stringify(markup);
 		expect(serialized).toContain("notes");
