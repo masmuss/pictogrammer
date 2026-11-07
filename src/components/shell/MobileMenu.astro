@@ -28,14 +28,14 @@ const isActive = Astro.url.pathname;
 
 	<div
 		id="mobile-nav"
-		class="bg-background flex flex-1 flex-col pointer-events-none fixed inset-0 z-50 translate-x-full overflow-y-auto p-8 transition-all duration-slow ease-out will-change-transform"
+		class="bg-background duration-slow pointer-events-none fixed inset-0 z-50 flex flex-1 translate-x-full flex-col overflow-y-auto p-8 transition-all ease-out will-change-transform"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Navigation menu"
 		inert
 	>
 		<!-- Mobile Header -->
-		<div class="bg-background/90 flex items-center justify-between backdrop-blur-sm transition delay-75 duration-slow">
+		<div class="bg-background/90 duration-slow flex items-center justify-between backdrop-blur-sm transition delay-75">
 			<a href="/" class="text-xl font-semibold">
 				pictogrammer
 			</a>

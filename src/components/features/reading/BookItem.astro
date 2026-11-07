@@ -24,10 +24,10 @@ const wrapperProps = book.url
 
 <Wrapper
 	{...wrapperProps}
-	class="group flex flex-col gap-3 border border-transparent rounded-lg p-4 transition-colors duration-200 hover:border-border"
+	class="group hover:border-border flex flex-col gap-3 rounded-lg border border-transparent p-4 transition-colors duration-200"
 	data-testid="book-item"
 >
-	<div class="relative aspect-2/3 w-full overflow-hidden rounded-lg bg-muted flex items-center justify-center min-h-28">
+	<div class="bg-muted relative flex aspect-2/3 min-h-28 w-full items-center justify-center overflow-hidden rounded-lg">
 		{book.cover ? (
 			<img
 				src={book.cover}
@@ -44,7 +44,7 @@ const wrapperProps = book.url
 		)}
 
 		{book.status === "reading" && (
-			<Badge class="absolute right-2 top-2" size="sm">
+			<Badge class="absolute top-2 right-2" size="sm">
 				Reading
 			</Badge>
 		)}
@@ -60,15 +60,15 @@ const wrapperProps = book.url
 			>
 				{book.title}
 			</Heading>
-			<p class="text-xs text-muted-foreground mt-1">{book.author}</p>
+			<p class="text-muted-foreground mt-1 text-xs">{book.author}</p>
 			{book.dateRead && (
-				<p class="mt-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+				<p class="text-muted-foreground mt-0.5 text-[10px] tracking-wider uppercase">
 					Read in {book.dateRead}
 				</p>
 			)}
 		</div>
 
-		<div class="flex flex-col gap-1 mt-2">
+		<div class="mt-2 flex flex-col gap-1">
 			<BookRating rating={book.rating} />
 		</div>
 	</div>

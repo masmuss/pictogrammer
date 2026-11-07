@@ -13,7 +13,7 @@ const { email, currentRole } = Astro.props;
 
 <div class="flex flex-1 flex-col justify-between space-y-8 py-8">
 	<div
-		class="grid translate-y-4 grid-cols-1 opacity-0 transition-all duration-slow sm:grid-cols-2"
+		class="duration-slow grid translate-y-4 grid-cols-1 opacity-0 transition-all sm:grid-cols-2"
 		data-mobile-entrance
 		style="transition-delay: 500ms"
 	>
@@ -22,7 +22,7 @@ const { email, currentRole } = Astro.props;
 			<div class="flex flex-col gap-y-2 text-sm">
 				<a
 					href={`mailto:${email}`}
-					class="w-fit rounded-sm transition-colors hover:text-accent-cta-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+					class="hover:text-accent-cta-text focus-visible:ring-ring w-fit rounded-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
 				>
 					{email}
 				</a>
@@ -36,7 +36,7 @@ const { email, currentRole } = Astro.props;
 	</div>
 
 	<div
-		class="border-border/50 flex translate-y-4 flex-col gap-y-6 border-t pt-8 opacity-0 transition-all duration-slow"
+		class="border-border/50 duration-slow flex translate-y-4 flex-col gap-y-6 border-t pt-8 opacity-0 transition-all"
 		data-mobile-entrance
 		style="transition-delay: 600ms"
 	>

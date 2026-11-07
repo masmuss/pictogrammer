@@ -15,7 +15,7 @@ const { project } = Astro.props;
 			href={project.liveHref}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="text-muted-foreground hover:text-foreground transition-colors p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
+			class="text-muted-foreground hover:text-foreground focus-visible:outline-ring rounded p-1 transition-colors focus-visible:outline-2"
 			aria-label={`Live site of ${project.text}`}
 			title="Live"
 		>
@@ -27,7 +27,7 @@ const { project } = Astro.props;
 			href={project.repoHref}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="text-muted-foreground hover:text-foreground transition-colors p-1 focus-visible:outline-2 focus-visible:outline-ring rounded"
+			class="text-muted-foreground hover:text-foreground focus-visible:outline-ring rounded p-1 transition-colors focus-visible:outline-2"
 			aria-label={`Source code of ${project.text}`}
 			title="Source code"
 		>

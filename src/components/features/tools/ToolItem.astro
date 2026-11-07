@@ -17,7 +17,7 @@ const { name, description, showDescription, href } = Astro.props;
 		{href ? (
 			<a
 				href={href}
-				class="group/tool-item w-fit flex gap-2 items-center focus-visible:outline-2 focus-visible:outline-ring rounded"
+				class="group/tool-item focus-visible:outline-ring flex w-fit items-center gap-2 rounded focus-visible:outline-2"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -26,7 +26,7 @@ const { name, description, showDescription, href } = Astro.props;
 				</Heading>
 				<Icon
 					name="ph:arrow-up-right"
-					class="opacity-0 group-hover/tool-item:opacity-100 text-muted-foreground transition-opacity duration-200"
+					class="text-muted-foreground opacity-0 transition-opacity duration-200 group-hover/tool-item:opacity-100"
 					aria-hidden="true"
 				/>
 			</a>

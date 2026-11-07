@@ -35,7 +35,7 @@ const archiveData = groupPostsForArchive(allPosts);
 		</div>
 
 		{allPosts.length === 0 && (
-			<p class="max-w-3xl text-muted-foreground" role="status">
+			<p class="text-muted-foreground max-w-3xl" role="status">
 				No posts yet.
 			</p>
 		)}
@@ -57,7 +57,7 @@ const archiveData = groupPostsForArchive(allPosts);
 											<h3 class="text-muted-foreground text-lg font-semibold">
 												{monthName}
 											</h3>
-											<div class="flex-1 h-px bg-muted-foreground/20" />
+											<div class="bg-muted-foreground/20 h-px flex-1" />
 										</div>
 										<ul class="relative flex flex-col">
 											{posts.map((post) => (

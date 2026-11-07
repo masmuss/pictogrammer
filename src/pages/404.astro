@@ -45,12 +45,12 @@ const quickLinks: QuickLink[] = [
 			<h2 class="text-muted-foreground mb-3 text-sm font-medium">
 				Continue to
 			</h2>
-			<ul class="divide-y divide-border/60 border-y border-border/60 text-left">
+			<ul class="divide-border/60 border-border/60 divide-y border-y text-left">
 				{quickLinks.map((link) => (
 					<li>
 						<a
 							href={link.href}
-							class="text-foreground flex min-h-12 items-center justify-between text-sm font-medium transition-colors hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-ring"
+							class="text-foreground hover:text-accent-foreground focus-visible:outline-ring flex min-h-12 items-center justify-between text-sm font-medium transition-colors focus-visible:outline-2"
 						>
 							<span>{link.title}</span>
 							<span aria-hidden="true">→</span>

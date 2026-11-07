@@ -22,7 +22,7 @@ const { archiveData, class: className } = Astro.props;
 					class="text-foreground hover:text-primary flex items-baseline justify-between font-medium transition-colors"
 				>
 					<span>{year}</span>
-					<span class="text-muted-foreground tabular-nums text-xs">
+					<span class="text-muted-foreground text-xs tabular-nums">
 						{count}
 					</span>
 				</a>
@@ -31,10 +31,10 @@ const { archiveData, class: className } = Astro.props;
 						<li>
 							<a
 								href={`#month-${year}-${month}`}
-								class="text-muted-foreground hover:text-foreground flex items-baseline justify-between pl-4 transition-colors leading-relaxed"
+								class="text-muted-foreground hover:text-foreground flex items-baseline justify-between pl-4 leading-relaxed transition-colors"
 							>
 								<span>{monthName}</span>
-								<span class="text-muted-foreground tabular-nums text-xs">
+								<span class="text-muted-foreground text-xs tabular-nums">
 									{posts.length}
 								</span>
 							</a>

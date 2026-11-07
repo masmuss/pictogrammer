@@ -16,13 +16,13 @@ const displayed = projects.slice(0, max);
 {displayed.length > 0 ? (
 	<Fragment>
 		<div
-			class="flex max-w-4xl flex-col divide-y divide-border/60"
+			class="divide-border/60 flex max-w-4xl flex-col divide-y"
 			data-testid="featured-project-list"
 		>
 			{displayed.map((project, index) => (
 				<div
 					data-fade-up="true"
-					class="opacity-0 translate-y-4 transition-[opacity,transform] ease-out"
+					class="translate-y-4 opacity-0 transition-[opacity,transform] ease-out"
 					style={`transition-delay: ${index * 80}ms; transition-duration: var(--duration-slower);`}
 				>
 					<FeaturedProjectItem project={project} />
@@ -36,7 +36,7 @@ const displayed = projects.slice(0, max);
 				class={cn(
 					"group/see-all inline-flex items-center gap-1.5",
 					"duration-fast text-sm transition-colors",
-					"hover:underline underline-offset-4",
+					"underline-offset-4 hover:underline",
 					"focus-visible:ring-2 focus-visible:outline-none",
 					"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
 					"text-accent-cta-text"

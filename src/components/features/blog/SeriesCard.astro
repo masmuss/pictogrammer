@@ -16,12 +16,12 @@ const { series } = Astro.props;
 
 <a
 	href={`/blog/series/${series.id}`}
-	class="block group/series"
+	class="group/series block"
 	data-testid="series-item"
 >
-	<Card class="px-0 flex flex-col h-full transition-shadow duration-200 hover:shadow-md">
+	<Card class="flex h-full flex-col px-0 transition-shadow duration-200 hover:shadow-md">
 		<CardHeader>
-			<CardTitle class="group-hover/series:text-primary transition-colors line-clamp-1">
+			<CardTitle class="group-hover/series:text-primary line-clamp-1 transition-colors">
 				{series.data.title}
 			</CardTitle>
 			<CardDescription class="line-clamp-2 text-sm">

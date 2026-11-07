@@ -39,7 +39,10 @@
 				"noUselessElse": "error"
 			},
 			"nursery": {
-				"useTailwindSortedClasses": "warn"
+				"useTailwindSortedClasses": {
+					"level": "warn",
+					"fix": "safe"
+				}
 			}
 		}
 	},
