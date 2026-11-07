@@ -6,13 +6,13 @@ type SupportedCollection = "experiences" | "projects" | "tools" | "reading";
 export async function getContentEntryData<T extends z.ZodType>(
 	collection: SupportedCollection,
 	schema: T,
-	id = "index"
+	id = "index",
 ): Promise<z.output<T>> {
 	const entry = await getEntry(collection, id);
 
 	if (!entry) {
 		throw new Error(
-			`Missing ${collection} content at content/${collection}/${id}.json`
+			`Missing ${collection} content at content/${collection}/${id}.json`,
 		);
 	}
 

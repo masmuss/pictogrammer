@@ -70,7 +70,7 @@ See: https://khoirul.me/legal for the full content license.
 		headers: {
 			"Content-Type": "text/markdown; charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
-			"Cache-Control": "public, max-age=3600"
-		}
+			"Cache-Control": "public, max-age=3600",
+		},
 	});
 };

@@ -3,12 +3,12 @@ import { expect, test } from "@playwright/test";
 test.describe("Markdown content", () => {
 	test("page advertises a Markdown alternate and serves it", async ({
 		page,
-		request
+		request,
 	}) => {
 		await page.goto("/about");
 
 		const alternate = page.locator(
-			'link[rel="alternate"][type="text/markdown"]'
+			'link[rel="alternate"][type="text/markdown"]',
 		);
 		await expect(alternate).toHaveAttribute("href", "/about/index.md");
 
@@ -21,10 +21,10 @@ test.describe("Markdown content", () => {
 	});
 
 	test("blog posts include their title in the Markdown alternate", async ({
-		request
+		request,
 	}) => {
 		const response = await request.get(
-			"/blog/series/becoming-astron/island-architecture-praktik/index.md"
+			"/blog/series/becoming-astron/island-architecture-praktik/index.md",
 		);
 		expect(response.ok()).toBeTruthy();
 

@@ -16,44 +16,44 @@ export const GET: APIRoute = () => {
 				describedby: [
 					{
 						href: "https://khoirul.me/llms.txt",
-						type: "text/plain"
+						type: "text/plain",
 					},
 					{
 						href: "https://khoirul.me/llms-full.txt",
-						type: "text/plain"
-					}
+						type: "text/plain",
+					},
 				],
 				// RSS feed
 				alternate: [
 					{
 						href: "https://khoirul.me/rss.xml",
-						type: "application/rss+xml"
-					}
+						type: "application/rss+xml",
+					},
 				],
 				// Sitemap
 				"https://www.iana.org/assignments/relation/sitemap": [
 					{
-						href: "https://khoirul.me/sitemap-index.xml"
-					}
-				]
+						href: "https://khoirul.me/sitemap-index.xml",
+					},
+				],
 			},
 			{
 				anchor: "https://khoirul.me/blog",
 				"service-doc": [
 					{
 						href: "https://khoirul.me/llms.txt",
-						type: "text/plain"
-					}
-				]
-			}
-		]
+						type: "text/plain",
+					},
+				],
+			},
+		],
 	};
 
 	return new Response(JSON.stringify(catalog, null, 2), {
 		headers: {
 			"Content-Type": "application/linkset+json",
 			"Access-Control-Allow-Origin": "*",
-			"Cache-Control": "public, max-age=3600"
-		}
+			"Cache-Control": "public, max-age=3600",
+		},
 	});
 };

@@ -9,7 +9,7 @@ function truncateByWordBoundary(text: string, maxLength: number): string {
 	const cutIndex = Math.max(
 		sliced.lastIndexOf(" "),
 		sliced.lastIndexOf("-"),
-		sliced.lastIndexOf("|")
+		sliced.lastIndexOf("|"),
 	);
 	const safeText = (
 		cutIndex > Math.floor(maxLength * 0.7)
@@ -22,7 +22,7 @@ function truncateByWordBoundary(text: string, maxLength: number): string {
 export function normalizeTitle(
 	raw: string | undefined,
 	fallback: string,
-	siteTitle: string
+	siteTitle: string,
 ): string {
 	if (!raw) return fallback;
 
@@ -50,7 +50,7 @@ export function normalizeTitle(
 export function normalizeDescription(
 	raw: string | undefined,
 	fallbackDescription: string,
-	isArticle: boolean
+	isArticle: boolean,
 ): string {
 	const articleSuffix =
 		" Read the full article on pictogrammmer for complete context and practical takeaways.";

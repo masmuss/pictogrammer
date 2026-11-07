@@ -8,7 +8,13 @@
 		}
 	},
 	"formatter": {
-		"enabled": false
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 80
+	},
+	"html": {
+		"experimentalFullSupportEnabled": true
 	},
 	"linter": {
 		"enabled": true,
@@ -37,6 +43,14 @@
 			}
 		}
 	},
+	"markdown": {
+		"formatter": {
+			"enabled": true
+		},
+		"parser": {
+			"frontmatter": true
+		}
+	},
 	"vcs": {
 		"clientKind": "git",
 		"enabled": true,
@@ -63,20 +77,6 @@
 			"includes": ["**/*.astro"],
 			"linter": {
 				"rules": {
-					"correctness": {
-						"noUnusedVariables": "off",
-						"noUnusedImports": "off"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["**/*.svelte"],
-			"linter": {
-				"rules": {
-					"style": {
-						"useConst": "off"
-					},
 					"correctness": {
 						"noUnusedVariables": "off",
 						"noUnusedImports": "off"

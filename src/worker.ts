@@ -7,7 +7,7 @@ import {
 	markdownPath,
 	type NegotiableType,
 	pagePath,
-	preferredType
+	preferredType,
 } from "./lib/negotiation";
 
 interface AssetsBinding {
@@ -30,7 +30,7 @@ function withContentSignal(response: Response): Response {
 	return new Response(response.body, {
 		status: response.status,
 		statusText: response.statusText,
-		headers
+		headers,
 	});
 }
 
@@ -41,7 +41,7 @@ function createMarkdownResponse(response: Response, url: URL): Response {
 	appendVaryAccept(headers);
 	appendLink(
 		headers,
-		`<${url.pathname}>; rel="alternate"; type="${HTML_TYPE}"`
+		`<${url.pathname}>; rel="alternate"; type="${HTML_TYPE}"`,
 	);
 
 	const contentLength = headers.get("content-length");
@@ -55,19 +55,19 @@ function createMarkdownResponse(response: Response, url: URL): Response {
 	return new Response(response.body, {
 		status: response.status,
 		statusText: response.statusText,
-		headers
+		headers,
 	});
 }
 
 function notAcceptable(): Response {
 	const headers = new Headers({
-		"Content-Type": "text/plain; charset=utf-8"
+		"Content-Type": "text/plain; charset=utf-8",
 	});
 	appendVaryAccept(headers);
 
 	return new Response(
 		`Not Acceptable\n\nAvailable: ${HTML_TYPE}, ${MARKDOWN_TYPE}\n`,
-		{ status: 406, headers }
+		{ status: 406, headers },
 	);
 }
 
@@ -84,20 +84,20 @@ function trailingSlashRedirect(url: URL): Response {
 
 	return new Response(null, {
 		status: 308,
-		headers: { Location: redirectUrl.toString() }
+		headers: { Location: redirectUrl.toString() },
 	});
 }
 
 async function serveMarkdown(
 	request: Request,
 	url: URL,
-	env: Env
+	env: Env,
 ): Promise<Response | null> {
 	const markdownUrl = new URL(url);
 	markdownUrl.pathname = markdownPath(url.pathname);
 
 	const markdownResponse = await env.ASSETS.fetch(
-		new Request(markdownUrl, request)
+		new Request(markdownUrl, request),
 	);
 
 	if (markdownResponse.status !== 200) return null;
@@ -107,7 +107,7 @@ async function serveMarkdown(
 async function appendMarkdownAlternate(
 	response: Response,
 	url: URL,
-	env: Env
+	env: Env,
 ): Promise<void> {
 	if (!response.headers.get("content-type")?.includes("text/html")) return;
 
@@ -115,13 +115,13 @@ async function appendMarkdownAlternate(
 	markdownUrl.pathname = markdownPath(url.pathname);
 
 	const probe = await env.ASSETS.fetch(
-		new Request(markdownUrl, { method: "HEAD" })
+		new Request(markdownUrl, { method: "HEAD" }),
 	);
 
 	if (probe.status === 200) {
 		appendLink(
 			response.headers,
-			`<${markdownUrl.pathname}>; rel="alternate"; type="${MARKDOWN_TYPE}"`
+			`<${markdownUrl.pathname}>; rel="alternate"; type="${MARKDOWN_TYPE}"`,
 		);
 	}
 }
@@ -130,7 +130,7 @@ async function serveNegotiated(
 	request: Request,
 	url: URL,
 	env: Env,
-	choice: { accept: string | null; chosen: NegotiableType }
+	choice: { accept: string | null; chosen: NegotiableType },
 ): Promise<Response> {
 	const { accept, chosen } = choice;
 
@@ -146,8 +146,8 @@ async function serveNegotiated(
 		new Response(htmlResponse.body, {
 			status: htmlResponse.status,
 			statusText: htmlResponse.statusText,
-			headers: new Headers(htmlResponse.headers)
-		})
+			headers: new Headers(htmlResponse.headers),
+		}),
 	);
 	appendVaryAccept(response.headers);
 
@@ -178,7 +178,7 @@ export default {
 		if (chosen === null) return withContentSignal(notAcceptable());
 
 		return withContentSignal(
-			await serveNegotiated(request, url, env, { accept, chosen })
+			await serveNegotiated(request, url, env, { accept, chosen }),
 		);
-	}
+	},
 };

@@ -18,51 +18,51 @@ export const GET: APIRoute = () => {
 				"Personal website of Khoirul Fattah: full-stack projects with a backend focus, technical writing, and photography from Surabaya.",
 			contact: {
 				email: "hello@khoirul.me",
-				url: "https://khoirul.me/about"
+				url: "https://khoirul.me/about",
 			},
 			license: {
 				name: "MIT",
-				url: "https://github.com/masmuss/pictogrammer/blob/main/LICENSE"
-			}
+				url: "https://github.com/masmuss/pictogrammer/blob/main/LICENSE",
+			},
 		},
 		resources: [
 			{
 				name: "llms-txt",
 				description: "LLMs.txt machine-readable site overview",
 				url: "https://khoirul.me/llms.txt",
-				mimeType: "text/plain"
+				mimeType: "text/plain",
 			},
 			{
 				name: "rss-feed",
 				description: "RSS feed for all blog posts",
 				url: "https://khoirul.me/rss.xml",
-				mimeType: "application/rss+xml"
+				mimeType: "application/rss+xml",
 			},
 			{
 				name: "api-catalog",
 				description: "RFC 9727 API catalog (application/linkset+json)",
 				url: "https://khoirul.me/.well-known/api-catalog",
-				mimeType: "application/linkset+json"
+				mimeType: "application/linkset+json",
 			},
 			{
 				name: "ard-catalog",
 				description: "Agentic Resource Discovery manifest",
 				url: "https://khoirul.me/.well-known/ai-catalog.json",
-				mimeType: "application/json"
-			}
+				mimeType: "application/json",
+			},
 		],
 		capabilities: {
 			resources: true,
 			tools: false,
-			prompts: false
-		}
+			prompts: false,
+		},
 	};
 
 	return new Response(JSON.stringify(serverCard, null, 2), {
 		headers: {
 			"Content-Type": "application/json",
 			"Access-Control-Allow-Origin": "*",
-			"Cache-Control": "public, max-age=3600"
-		}
+			"Cache-Control": "public, max-age=3600",
+		},
 	});
 };

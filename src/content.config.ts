@@ -6,7 +6,7 @@ import {
 	projectsSchema,
 	readingSchema,
 	seriesSchema,
-	toolsSchema
+	toolsSchema,
 } from "@/lib/contents/schemas";
 
 const CONTENT_DIR = "./content";
@@ -15,46 +15,46 @@ const post = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.{md,mdx}",
 		base: `${CONTENT_DIR}/post`,
-		deferRender: true
+		deferRender: true,
 	}),
-	schema: postSchema
+	schema: postSchema,
 });
 
 const series = defineCollection({
 	loader: glob({ pattern: "**/**/*.json", base: `${CONTENT_DIR}/series` }),
-	schema: seriesSchema
+	schema: seriesSchema,
 });
 
 const experiences = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: `${CONTENT_DIR}/experiences`
+		base: `${CONTENT_DIR}/experiences`,
 	}),
-	schema: experiencesSchema
+	schema: experiencesSchema,
 });
 
 const projects = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: `${CONTENT_DIR}/projects`
+		base: `${CONTENT_DIR}/projects`,
 	}),
-	schema: projectsSchema
+	schema: projectsSchema,
 });
 
 const tools = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: `${CONTENT_DIR}/tools`
+		base: `${CONTENT_DIR}/tools`,
 	}),
-	schema: toolsSchema
+	schema: toolsSchema,
 });
 
 const reading = defineCollection({
 	loader: glob({
 		pattern: "**/**/*.json",
-		base: `${CONTENT_DIR}/reading`
+		base: `${CONTENT_DIR}/reading`,
 	}),
-	schema: readingSchema
+	schema: readingSchema,
 });
 
 export const collections = {
@@ -63,5 +63,5 @@ export const collections = {
 	experiences,
 	projects,
 	tools,
-	reading
+	reading,
 };

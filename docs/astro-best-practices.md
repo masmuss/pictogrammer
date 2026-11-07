@@ -114,7 +114,9 @@ Extract complex logic into variables in the frontmatter.
 
 ```typescript
 type Variant = "primary" | "secondary" | "danger";
-const variantMap: Record<Variant, string> = {/* ... */};
+const variantMap: Record<Variant, string> = {
+	/* ... */
+};
 ```
 
 - Use `as const` for readonly maps
@@ -160,7 +162,9 @@ import Component from "./Component.astro";
 test("renders with default props", async () => {
 	const container = await AstroContainer.create();
 	const result = await container.renderToString(Component, {
-		props: {/* ... */}
+		props: {
+			/* ... */
+		},
 	});
 	expect(result).toContain("expected content");
 });

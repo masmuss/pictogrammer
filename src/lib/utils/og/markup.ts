@@ -19,7 +19,7 @@ export function decodeHtmlEntities(text: string) {
 				quot: '"',
 				nbsp: "\u00A0",
 				mdash: "\u2014",
-				hellip: "\u2026"
+				hellip: "\u2026",
 			};
 			if (entities[entity]) return entities[entity];
 			if (entity.startsWith("#x"))
@@ -27,7 +27,7 @@ export function decodeHtmlEntities(text: string) {
 			if (entity.startsWith("#"))
 				return String.fromCharCode(Number.parseInt(entity.slice(1), 10));
 			return match;
-		}
+		},
 	);
 }
 
@@ -44,7 +44,7 @@ export function buildOgMarkup({
 	readTime,
 	author,
 	authorInitials,
-	domain
+	domain,
 }: {
 	title: string;
 	description: string;

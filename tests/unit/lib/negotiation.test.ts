@@ -7,7 +7,7 @@ import {
 	markdownPath,
 	pagePath,
 	parseAccept,
-	preferredType
+	preferredType,
 } from "@/lib/negotiation";
 
 const PRODUCES = [HTML_TYPE, MARKDOWN_TYPE];
@@ -17,13 +17,13 @@ describe("parseAccept", () => {
 		expect(parseAccept("text/markdown;q=0.8, text/html, */*;q=0.1")).toEqual([
 			{ type: "text/markdown", q: 0.8, specificity: 2 },
 			{ type: "text/html", q: 1, specificity: 2 },
-			{ type: "*/*", q: 0.1, specificity: 0 }
+			{ type: "*/*", q: 0.1, specificity: 0 },
 		]);
 	});
 
 	it("ignores empty entries", () => {
 		expect(parseAccept(", , text/html")).toEqual([
-			{ type: "text/html", q: 1, specificity: 2 }
+			{ type: "text/html", q: 1, specificity: 2 },
 		]);
 	});
 });
@@ -35,23 +35,18 @@ describe("preferredType", () => {
 
 	it("selects markdown when it has the highest q-value", () => {
 		expect(
-			preferredType(
-				"text/html;q=0.5, text/markdown;q=0.9",
-				PRODUCES
-			)
+			preferredType("text/html;q=0.5, text/markdown;q=0.9", PRODUCES),
 		).toBe(MARKDOWN_TYPE);
 	});
 
 	it("uses client order to break ties", () => {
-		expect(preferredType("text/markdown, */*", PRODUCES)).toBe(
-			MARKDOWN_TYPE
-		);
+		expect(preferredType("text/markdown, */*", PRODUCES)).toBe(MARKDOWN_TYPE);
 	});
 
 	it("honors explicit rejection over a wildcard", () => {
-		expect(
-			preferredType("text/markdown;q=0, */*;q=1", PRODUCES)
-		).toBe(HTML_TYPE);
+		expect(preferredType("text/markdown;q=0, */*;q=1", PRODUCES)).toBe(
+			HTML_TYPE,
+		);
 	});
 
 	it("returns null when nothing is acceptable", () => {

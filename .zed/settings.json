@@ -4,7 +4,7 @@
 		"Astro": {
 			"formatter": {
 				"language_server": {
-					"name": "prettier"
+					"name": "biome"
 				}
 			},
 			"language_servers": [
@@ -31,14 +31,21 @@
 		"Markdown": {
 			"formatter": {
 				"language_server": {
-					"name": "prettier"
+					"name": "biome"
 				}
 			}
 		},
-		"Svelte": {
+		"JSON": {
 			"formatter": {
 				"language_server": {
-					"name": "prettier"
+					"name": "biome"
+				}
+			}
+		},
+		"YAML": {
+			"formatter": {
+				"language_server": {
+					"name": "biome"
 				}
 			}
 		},

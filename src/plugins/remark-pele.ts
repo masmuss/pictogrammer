@@ -17,12 +17,12 @@ export const remarkPele: Plugin<[], Root> = () => (tree) => {
 
 		const result = render(node.value, {
 			links: false,
-			images: false
+			images: false,
 		});
 
 		parent.children[index] = {
 			type: "html",
-			value: `<div class="pele-mermaid">${result.svg}</div>`
+			value: `<div class="pele-mermaid">${result.svg}</div>`,
 		};
 	});
 };

@@ -1,12 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
 	createInitialState,
-	resetState
+	resetState,
 } from "@/components/features/search/search-state";
-import {
-	MIN_QUERY_LENGTH,
-	SEARCH_DEBOUNCE_MS
-} from "@/lib/search/constants";
+import { MIN_QUERY_LENGTH, SEARCH_DEBOUNCE_MS } from "@/lib/search/constants";
 import { normalizeResultUrl } from "@/lib/search/pagefind";
 
 describe("createInitialState", () => {
@@ -15,7 +12,7 @@ describe("createInitialState", () => {
 			query: "",
 			results: [],
 			isSearching: false,
-			selectedIndex: -1
+			selectedIndex: -1,
 		});
 	});
 });
@@ -24,9 +21,7 @@ describe("resetState", () => {
 	it("clears query, results, and selection", () => {
 		const state = createInitialState();
 		state.query = "astro";
-		state.results = [
-			{ url: "/blog/a/", excerpt: "e", meta: { title: "A" } }
-		];
+		state.results = [{ url: "/blog/a/", excerpt: "e", meta: { title: "A" } }];
 		state.isSearching = true;
 		state.selectedIndex = 2;
 
@@ -41,7 +36,7 @@ describe("normalizeResultUrl", () => {
 		const result = normalizeResultUrl({
 			url: "/dist/blog/a/",
 			excerpt: "e",
-			meta: { title: "A" }
+			meta: { title: "A" },
 		});
 		expect(result.url).toBe("/blog/a");
 	});
@@ -50,7 +45,7 @@ describe("normalizeResultUrl", () => {
 		const result = normalizeResultUrl({
 			url: "/projects",
 			excerpt: "e",
-			meta: { title: "P" }
+			meta: { title: "P" },
 		});
 		expect(result.url).toBe("/projects");
 	});

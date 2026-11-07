@@ -2,7 +2,7 @@ import { MAX_QUERY_LENGTH, MIN_QUERY_LENGTH } from "@/lib/search/constants";
 import {
 	loadPagefind,
 	normalizeResultUrl,
-	searchPagefind
+	searchPagefind,
 } from "@/lib/search/pagefind";
 import type { ModelContextTool } from "./types";
 
@@ -36,13 +36,13 @@ export const siteOverviewTool: ModelContextTool = {
 	inputSchema: {
 		type: "object",
 		properties: {},
-		additionalProperties: false
+		additionalProperties: false,
 	},
 	annotations: { readOnlyHint: true },
 	async execute(_input, { signal }) {
 		try {
 			const response = await fetch(`${import.meta.env.BASE_URL}llms.txt`, {
-				signal
+				signal,
 			});
 
 			if (!response.ok) {
@@ -56,7 +56,7 @@ export const siteOverviewTool: ModelContextTool = {
 			console.error("WebMCP site overview failed", error);
 			return "Unable to load the site overview. Please try again later.";
 		}
-	}
+	},
 };
 
 export const searchPostsTool: ModelContextTool = {
@@ -71,11 +71,11 @@ export const searchPostsTool: ModelContextTool = {
 				type: "string",
 				description: "Keyword or phrase to search for",
 				minLength: MIN_QUERY_LENGTH,
-				maxLength: MAX_QUERY_LENGTH
-			}
+				maxLength: MAX_QUERY_LENGTH,
+			},
 		},
 		required: ["query"],
-		additionalProperties: false
+		additionalProperties: false,
 	},
 	annotations: { readOnlyHint: true },
 	async execute(input, { signal }) {
@@ -90,7 +90,7 @@ export const searchPostsTool: ModelContextTool = {
 			const results = await searchPagefind(
 				pagefind,
 				query,
-				SEARCH_RESULT_LIMIT
+				SEARCH_RESULT_LIMIT,
 			);
 
 			return results.map((result) => {
@@ -98,7 +98,7 @@ export const searchPostsTool: ModelContextTool = {
 				return {
 					title: normalized.meta.title,
 					url: normalized.url,
-					excerpt: normalized.excerpt
+					excerpt: normalized.excerpt,
 				};
 			});
 		} catch (error) {
@@ -106,13 +106,13 @@ export const searchPostsTool: ModelContextTool = {
 
 			console.error("WebMCP search failed", error);
 			return {
-				error: "Search is unavailable right now. Please try again later."
+				error: "Search is unavailable right now. Please try again later.",
 			};
 		}
-	}
+	},
 };
 
 export const webMcpTools: ModelContextTool[] = [
 	siteOverviewTool,
-	searchPostsTool
+	searchPostsTool,
 ];

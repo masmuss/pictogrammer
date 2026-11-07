@@ -18,7 +18,7 @@ function createAssets(options: MockAssetOptions = {}) {
 		if (url.pathname.startsWith("/_astro/")) {
 			return new Response(method === "HEAD" ? null : "console.log(1)", {
 				status: 200,
-				headers: { "Content-Type": "text/javascript" }
+				headers: { "Content-Type": "text/javascript" },
 			});
 		}
 
@@ -31,15 +31,15 @@ function createAssets(options: MockAssetOptions = {}) {
 				status: 200,
 				headers: {
 					"Content-Type": "text/markdown",
-					"Content-Length": String(MARKDOWN_BODY.length)
-				}
+					"Content-Length": String(MARKDOWN_BODY.length),
+				},
 			});
 		}
 
 		if (url.pathname === "/missing") {
 			return new Response(null, {
 				status: 404,
-				headers: { "Content-Type": "text/html; charset=utf-8" }
+				headers: { "Content-Type": "text/html; charset=utf-8" },
 			});
 		}
 
@@ -47,8 +47,8 @@ function createAssets(options: MockAssetOptions = {}) {
 			method === "HEAD" ? null : "<html><body>page</body></html>",
 			{
 				status: 200,
-				headers: { "Content-Type": "text/html; charset=utf-8" }
-			}
+				headers: { "Content-Type": "text/html; charset=utf-8" },
+			},
 		);
 	});
 
@@ -63,7 +63,7 @@ function createEnv(options: MockAssetOptions = {}) {
 function request(path: string, accept?: string, method = "GET") {
 	return new Request(`${BASE_URL}${path}`, {
 		method,
-		headers: accept ? { Accept: accept } : undefined
+		headers: accept ? { Accept: accept } : undefined,
 	});
 }
 
@@ -72,25 +72,25 @@ describe("worker content negotiation", () => {
 		const { env, assets } = createEnv();
 		const response = await worker.fetch(
 			request("/about", "text/markdown"),
-			env
+			env,
 		);
 
 		expect(response.status).toBe(200);
 		expect(response.headers.get("content-type")).toBe(
-			"text/markdown; charset=utf-8"
+			"text/markdown; charset=utf-8",
 		);
 		expect(response.headers.get("vary")).toBe("Accept");
 		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 		expect(response.headers.get("cache-control")).toBe("private, no-store");
 		expect(response.headers.get("link")).toContain(
-			'</about>; rel="alternate"; type="text/html"'
+			'</about>; rel="alternate"; type="text/html"',
 		);
 		expect(response.headers.get("x-markdown-tokens")).toBe("2");
 		expect(await response.text()).toBe(MARKDOWN_BODY);
 		expect(assets.fetch).toHaveBeenCalledWith(
 			expect.objectContaining({
-				url: `${BASE_URL}/about/index.md`
-			})
+				url: `${BASE_URL}/about/index.md`,
+			}),
 		);
 	});
 
@@ -103,12 +103,12 @@ describe("worker content negotiation", () => {
 		expect(response.headers.get("vary")).toBe("Accept");
 		expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
 		expect(response.headers.get("link")).toContain(
-			'</about/index.md>; rel="alternate"; type="text/markdown"'
+			'</about/index.md>; rel="alternate"; type="text/markdown"',
 		);
 		expect(await response.text()).toContain("page");
 
 		expect(assets.fetch).toHaveBeenCalledWith(
-			expect.objectContaining({ url: `${BASE_URL}/about` })
+			expect.objectContaining({ url: `${BASE_URL}/about` }),
 		);
 	});
 
@@ -126,7 +126,7 @@ describe("worker content negotiation", () => {
 		const { env } = createEnv();
 		const response = await worker.fetch(
 			request("/about", "application/pdf"),
-			env
+			env,
 		);
 
 		expect(response.status).toBe(406);
@@ -139,7 +139,7 @@ describe("worker content negotiation", () => {
 		const { env } = createEnv({ missingMarkdown: true });
 		const response = await worker.fetch(
 			request("/about", "text/markdown, text/html;q=0.1"),
-			env
+			env,
 		);
 
 		expect(response.status).toBe(200);
@@ -150,7 +150,7 @@ describe("worker content negotiation", () => {
 		const { env } = createEnv({ missingMarkdown: true });
 		const response = await worker.fetch(
 			request("/about", "text/markdown"),
-			env
+			env,
 		);
 
 		expect(response.status).toBe(406);
@@ -160,7 +160,7 @@ describe("worker content negotiation", () => {
 		const { env } = createEnv();
 		const response = await worker.fetch(
 			request("/missing", "text/markdown"),
-			env
+			env,
 		);
 
 		expect(response.status).toBe(404);
@@ -171,7 +171,7 @@ describe("worker content negotiation", () => {
 		const { env } = createEnv();
 		const response = await worker.fetch(
 			request("/_astro/app.js", "text/markdown"),
-			env
+			env,
 		);
 
 		expect(response.status).toBe(200);

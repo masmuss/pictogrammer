@@ -46,7 +46,7 @@ test("theme toggle changes mode", async ({ page }) => {
 
 	// Capture the initial theme state
 	const isInitiallyDark = await html.evaluate((el) =>
-		el.classList.contains("dark")
+		el.classList.contains("dark"),
 	);
 
 	await toggle.click();
@@ -60,14 +60,16 @@ test("theme toggle changes mode", async ({ page }) => {
 });
 
 test("search modal supports open, close, no-results, and keyboard navigation", async ({
-	page
+	page,
 }) => {
 	await page.goto("/");
 
 	const searchTrigger = page.locator('button[aria-label="Search"]');
 	await searchTrigger.click();
 
-	const modal = page.locator('[data-slot="dialog-content"]').filter({ hasText: "Pagefind" });
+	const modal = page
+		.locator('[data-slot="dialog-content"]')
+		.filter({ hasText: "Pagefind" });
 	await expect(modal).toBeVisible();
 
 	const searchInput = page.getByPlaceholder("Search projects, articles...");

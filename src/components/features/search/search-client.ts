@@ -3,13 +3,13 @@ import {
 	loadPagefind,
 	normalizeResultUrl,
 	type PagefindModule,
-	searchPagefind
+	searchPagefind,
 } from "@/lib/search/pagefind";
 import { SearchRenderer } from "./search-render";
 import {
 	createInitialState,
 	resetState,
-	type SearchState
+	type SearchState,
 } from "./search-state";
 
 class SearchController {
@@ -22,7 +22,7 @@ class SearchController {
 
 	constructor(
 		private readonly dialogRoot: HTMLElement,
-		private readonly trigger: HTMLElement | null
+		private readonly trigger: HTMLElement | null,
 	) {
 		this.renderer = new SearchRenderer(dialogRoot);
 	}
@@ -44,12 +44,12 @@ class SearchController {
 		document.removeEventListener("keydown", this.onKeydown);
 		this.renderer.escBtnEl?.removeEventListener(
 			"click",
-			this.onCloseButtonClick
+			this.onCloseButtonClick,
 		);
 		this.renderer.inputEl?.removeEventListener("input", this.onInput);
 		this.renderer.listEl?.removeEventListener(
 			"mouseover",
-			this.onListMouseover
+			this.onListMouseover,
 		);
 		if (this.debounceTimer) clearTimeout(this.debounceTimer);
 		delete window.__openSearch;
@@ -120,8 +120,8 @@ class SearchController {
 	private emit(action: "open" | "close") {
 		this.dialogRoot.dispatchEvent(
 			new CustomEvent("dialog:set", {
-				detail: { open: action === "open" }
-			})
+				detail: { open: action === "open" },
+			}),
 		);
 	}
 
@@ -212,7 +212,7 @@ class SearchController {
 			ArrowUp: () => this.navigateSelection(-1),
 			Enter: () => {
 				if (this.state.selectedIndex >= 0) this.navigateToSelectedResult();
-			}
+			},
 		};
 
 		const action = keyActions[e.key];
@@ -242,7 +242,7 @@ let instance: SearchController | null = null;
 
 export function initSearch(
 	dialogRoot: HTMLElement,
-	trigger: HTMLElement | null = null
+	trigger: HTMLElement | null = null,
 ) {
 	if (instance) {
 		instance.cleanup();

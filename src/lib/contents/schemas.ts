@@ -19,7 +19,7 @@ export const postSchema = ({ image }: SchemaContext) =>
 		coverImage: z
 			.object({
 				src: z.union([image(), z.url()]),
-				alt: z.string()
+				alt: z.string(),
 			})
 			.optional(),
 		date: z
@@ -32,7 +32,7 @@ export const postSchema = ({ image }: SchemaContext) =>
 			.transform((val: string | number | Date) => new Date(val))
 			.optional(),
 		draft: z.boolean().default(false).optional(),
-		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase)
+		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
 	});
 
 export const seriesSchema = z.object({
@@ -41,9 +41,9 @@ export const seriesSchema = z.object({
 	coverImage: z
 		.object({
 			src: z.string(),
-			alt: z.string()
+			alt: z.string(),
 		})
-		.optional()
+		.optional(),
 });
 
 export const experiencesSchema = z.array(
@@ -51,8 +51,8 @@ export const experiencesSchema = z.array(
 		id: z.string(),
 		period: z.string(),
 		title: z.string(),
-		company: z.string()
-	})
+		company: z.string(),
+	}),
 );
 
 export const projectSchema = z.object({
@@ -63,14 +63,14 @@ export const projectSchema = z.object({
 	repoHref: z.url().optional(),
 	featured: z.boolean().optional(),
 	year: z.number().int().min(2020).max(2100).optional(),
-	stacks: z.array(z.string()).optional()
+	stacks: z.array(z.string()).optional(),
 });
 
 export const projectsSchema = z.array(
 	z.object({
 		title: z.string(),
-		projects: z.array(projectSchema)
-	})
+		projects: z.array(projectSchema),
+	}),
 );
 
 export const toolsSchema = z.array(
@@ -80,10 +80,10 @@ export const toolsSchema = z.array(
 			z.object({
 				name: z.string(),
 				description: z.string(),
-				href: z.string().optional()
-			})
-		)
-	})
+				href: z.string().optional(),
+			}),
+		),
+	}),
 );
 
 export const readingSchema = z.array(
@@ -95,6 +95,6 @@ export const readingSchema = z.array(
 		rating: z.number().min(1).max(5).optional(),
 		url: z.url().optional(),
 		dateRead: z.string().optional(),
-		notes: z.string().optional()
-	})
+		notes: z.string().optional(),
+	}),
 );

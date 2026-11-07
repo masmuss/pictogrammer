@@ -20,7 +20,7 @@ test.describe("Blog Filters and Navigation", () => {
 		// Click the "Reflections" tab
 		const reflectionsTab = page.getByRole("link", {
 			name: "Reflections",
-			exact: true
+			exact: true,
 		});
 		await expect(reflectionsTab).toBeVisible();
 		await reflectionsTab.click();

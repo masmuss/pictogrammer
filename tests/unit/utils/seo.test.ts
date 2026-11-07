@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
 	formatCanonicalURL,
 	normalizeDescription,
-	normalizeTitle
+	normalizeTitle,
 } from "@/lib/utils/seo";
 
 describe("normalizeTitle", () => {
@@ -57,13 +57,13 @@ describe("normalizeDescription", () => {
 describe("formatCanonicalURL", () => {
 	it("strips hash and trailing slash but keeps query", () => {
 		expect(
-			formatCanonicalURL(new URL("https://khoirul.me/blog/a/?q=1#frag"))
+			formatCanonicalURL(new URL("https://khoirul.me/blog/a/?q=1#frag")),
 		).toBe("https://khoirul.me/blog/a?q=1");
 	});
 
 	it("keeps the root slash", () => {
 		expect(formatCanonicalURL(new URL("https://khoirul.me/#a"))).toBe(
-			"https://khoirul.me/"
+			"https://khoirul.me/",
 		);
 	});
 });

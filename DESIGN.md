@@ -4,142 +4,147 @@ name: Khoirul Minimal
 description: A quiet personal portfolio system with light and dark themes, editorial headlines, and restrained monochrome UI with one Flexoki green accent.
 dial: ENERGY 1 / RHYTHM 1 / MOTION 2
 colors:
-  primary: "#100F0F"
-  secondary: "#6F6E69"
-  tertiary: "#403E3C"
-  neutral: "#F2F0E5"
-  surface: "#FFFCF0"
-  on-surface: "#100F0F"
-  outline: "#E6E4D9"
-  outline-subtle: "#DAD8CE"
-  link: "flexoki-green-700 text with green-600 fills (light) / green-400 (dark), see tokens.css"
-  background: "#FFFCF0"
-  error: "#AF3029"
+  - primary: "#100F0F"
+  - secondary: "#6F6E69"
+  - tertiary: "#403E3C"
+  - neutral: "#F2F0E5"
+  - surface: "#FFFCF0"
+  - on-surface: "#100F0F"
+  - outline: "#E6E4D9"
+  - outline-subtle: "#DAD8CE"
+  - link: "flexoki-green-700 text with green-600 fills (light) / green-400 (dark), see tokens.css"
+  - background: "#FFFCF0"
+  - error: "#AF3029"
 typography:
   # Serif (Merriweather) is opt-in only, via `font-serif`: prose headings,
+
   # the `serif` prop on Heading.astro, and BlogTabs titles. The default
+
   # heading stack is Geist Sans (`--font-heading` in tokens.css).
-  headline-display:
-    fontFamily: Geist Sans
-    fontSize: 24px
-    fontWeight: 600
-    lineHeight: 32px
-    letterSpacing: -0.6px
-  headline-lg:
-    fontFamily: Geist Sans
-    fontSize: 24px
-    fontWeight: 600
-    lineHeight: 32px
-    letterSpacing: -0.6px
-  headline-md:
-    fontFamily: Geist Sans
-    fontSize: 22px
-    fontWeight: 600
-    lineHeight: 28px
-    letterSpacing: -0.5px
-  headline-sm:
-    fontFamily: Geist Sans
-    fontSize: 20px
-    fontWeight: 600
-    lineHeight: 24px
-  headline-xs:
-    fontFamily: Geist Sans
-    fontSize: 18px
-    fontWeight: 600
-    lineHeight: 22px
-  body-lg:
-    fontFamily: Geist Sans
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 26px
-  body-md:
-    fontFamily: Geist Sans
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 26px
-  body-sm:
-    fontFamily: Geist Sans
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 22px
-  label-lg:
-    fontFamily: Geist Sans
-    fontSize: 14px
-    fontWeight: 500
-    lineHeight: 20px
-  label-md:
-    fontFamily: Geist Sans
-    fontSize: 14px
-    fontWeight: 500
-    lineHeight: 20px
-  label-sm:
-    fontFamily: Geist Sans
-    fontSize: 12px
-    fontWeight: 500
-    lineHeight: 16px
-    letterSpacing: 0.01em
-  caption:
-    fontFamily: Geist Sans
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 16px
+  - headline-display:
+      - fontFamily: Geist Sans
+      - fontSize: 24px
+      - fontWeight: 600
+      - lineHeight: 32px
+      - letterSpacing: -0.6px
+  - headline-lg:
+      - fontFamily: Geist Sans
+      - fontSize: 24px
+      - fontWeight: 600
+      - lineHeight: 32px
+      - letterSpacing: -0.6px
+  - headline-md:
+      - fontFamily: Geist Sans
+      - fontSize: 22px
+      - fontWeight: 600
+      - lineHeight: 28px
+      - letterSpacing: -0.5px
+  - headline-sm:
+      - fontFamily: Geist Sans
+      - fontSize: 20px
+      - fontWeight: 600
+      - lineHeight: 24px
+  - headline-xs:
+      - fontFamily: Geist Sans
+      - fontSize: 18px
+      - fontWeight: 600
+      - lineHeight: 22px
+  - body-lg:
+      - fontFamily: Geist Sans
+      - fontSize: 16px
+      - fontWeight: 400
+      - lineHeight: 26px
+  - body-md:
+      - fontFamily: Geist Sans
+      - fontSize: 16px
+      - fontWeight: 400
+      - lineHeight: 26px
+  - body-sm:
+      - fontFamily: Geist Sans
+      - fontSize: 14px
+      - fontWeight: 400
+      - lineHeight: 22px
+  - label-lg:
+      - fontFamily: Geist Sans
+      - fontSize: 14px
+      - fontWeight: 500
+      - lineHeight: 20px
+  - label-md:
+      - fontFamily: Geist Sans
+      - fontSize: 14px
+      - fontWeight: 500
+      - lineHeight: 20px
+  - label-sm:
+      - fontFamily: Geist Sans
+      - fontSize: 12px
+      - fontWeight: 500
+      - lineHeight: 16px
+      - letterSpacing: 0.01em
+  - caption:
+      - fontFamily: Geist Sans
+      - fontSize: 12px
+      - fontWeight: 400
+      - lineHeight: 16px
 rounded:
-  none: 0px
-  sm: 4px
-  md: 6px
-  lg: 8px
-  xl: 12px
-  full: 9999px
+  - none: 0px
+  - sm: 4px
+  - md: 6px
+  - lg: 8px
+  - xl: 12px
+  - full: 9999px
 spacing:
   # Editorial rhythm mapped onto the 4px token scale in tokens.css:
+
   # sm 12px = space-3, md 24px = space-6 (also gutter), lg 32px = space-8,
+
   # xl/section 96px = space-24. xs 2px is fine adjustment outside the scale.
-  xs: 2px
-  sm: 12px
-  md: 24px
-  lg: 32px
-  xl: 96px
-  gutter: 24px
-  section: 96px
+
+  - xs: 2px
+  - sm: 12px
+  - md: 24px
+  - lg: 32px
+  - xl: 96px
+  - gutter: 24px
+  - section: 96px
 components:
-  button-primary:
-    backgroundColor: "#100F0F (light) / #FFFCF0 (dark), see tokens.css --btn-primary"
-    textColor: "#FFFCF0 (light) / #100F0F (dark), see tokens.css --btn-primary-foreground"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.md}"
-    padding: "8px 10px"
-    size: "inline-flex"
-    height: "32px"
-  button-secondary:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.md}"
-    padding: "8px 10px"
-    size: "inline-flex"
-    height: "32px"
-  button-link:
-    backgroundColor: "transparent"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-sm}"
-    rounded: "{rounded.none}"
-    padding: "0px"
-    size: "inline-flex"
-  card:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.on-surface}"
-    rounded: "{rounded.xl}"
-    padding: "16px"
-  input:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.on-surface}"
-    rounded: "{rounded.md}"
-    padding: "8px 10px"
-  chip:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.on-surface}"
-    rounded: "{rounded.full}"
-    padding: "4px 8px"
+  - button-primary:
+      - backgroundColor: "#100F0F (light) / #FFFCF0 (dark), see tokens.css --btn-primary"
+      - textColor: "#FFFCF0 (light) / #100F0F (dark), see tokens.css --btn-primary-foreground"
+      - typography: "{typography.body-sm}"
+      - rounded: "{rounded.md}"
+      - padding: "8px 10px"
+      - size: "inline-flex"
+      - height: "32px"
+  - button-secondary:
+      - backgroundColor: "{colors.neutral}"
+      - textColor: "{colors.on-surface}"
+      - typography: "{typography.body-sm}"
+      - rounded: "{rounded.md}"
+      - padding: "8px 10px"
+      - size: "inline-flex"
+      - height: "32px"
+  - button-link:
+      - backgroundColor: "transparent"
+      - textColor: "{colors.on-surface}"
+      - typography: "{typography.body-sm}"
+      - rounded: "{rounded.none}"
+      - padding: "0px"
+      - size: "inline-flex"
+  - card:
+      - backgroundColor: "{colors.neutral}"
+      - textColor: "{colors.on-surface}"
+      - rounded: "{rounded.xl}"
+      - padding: "16px"
+  - input:
+      - backgroundColor: "{colors.surface}"
+      - textColor: "{colors.on-surface}"
+      - rounded: "{rounded.md}"
+      - padding: "8px 10px"
+  - chip:
+      - backgroundColor: "{colors.neutral}"
+      - textColor: "{colors.on-surface}"
+      - rounded: "{rounded.full}"
+      - padding: "4px 8px"
 ---
 
 # Khoirul Minimal
