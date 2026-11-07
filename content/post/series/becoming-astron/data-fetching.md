@@ -21,13 +21,11 @@ const users = await response.json();
 
 <h1>Daftar Pengguna</h1>
 <ul>
-	{
-		users.map((user) => (
-			<li>
-				{user.name} - {user.email}
-			</li>
-		))
-	}
+	{users.map((user) => (
+		<li>
+			{user.name} - {user.email}
+		</li>
+	))}
 </ul>
 ```
 

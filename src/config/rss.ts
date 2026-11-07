@@ -19,7 +19,7 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
 		"tbody",
 		"tr",
 		"th",
-		"td"
+		"td",
 	]),
 	allowedAttributes: {
 		...sanitizeHtml.defaults.allowedAttributes,
@@ -28,8 +28,8 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
 		code: ["class"],
 		pre: ["class"],
 		span: ["class", "style"],
-		iframe: ["src", "width", "height", "allow", "allowfullscreen"]
-	}
+		iframe: ["src", "width", "height", "allow", "allowfullscreen"],
+	},
 };
 
 export const markdownParser = new MarkdownIt();

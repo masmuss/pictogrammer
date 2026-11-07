@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<"div"> {
 const { class: className = "", ...rest } = Astro.props as Props;
 
 const mediaVariants = cva(
-	"z-0 rounded-lg overflow-hidden [&_img]:size-full [&_img]:object-cover"
+	"z-0 overflow-hidden rounded-lg [&_img]:size-full [&_img]:object-cover"
 );
 ---
 

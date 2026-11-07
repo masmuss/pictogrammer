@@ -10,30 +10,26 @@ const { links, currentPath } = Astro.props;
 ---
 
 <nav class="flex flex-col" aria-label="Mobile navigation">
-	{
-		links.map((link, index) => (
-			<a
-				href={link.href}
+	{links.map((link, index) => (
+		<a
+			href={link.href}
+			class:list={[
+				"group flex translate-y-4 items-center gap-2 rounded-md text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background",
+				currentPath === link.href
+					? "text-foreground"
+					: "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+			]}
+			aria-current={currentPath === link.href ? "page" : undefined}
+			style={`transition-delay: ${150 + index * 75}ms`}
+		>
+			<span
 				class:list={[
-					"group flex translate-y-4 items-center gap-2 rounded-md text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background",
-					currentPath === link.href
-						? "text-foreground"
-						: "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+					"h-5 w-5 shrink-0 rounded-sm",
+					currentPath === link.href ? "bg-accent-foreground" : "bg-transparent"
 				]}
-				aria-current={currentPath === link.href ? "page" : undefined}
-				style={`transition-delay: ${150 + index * 75}ms`}
-			>
-				<span
-					class:list={[
-						"h-5 w-5 shrink-0 rounded-sm",
-						currentPath === link.href
-							? "bg-accent-foreground"
-							: "bg-transparent"
-					]}
-					aria-hidden="true"
-				/>
-				{link.text}
-			</a>
-		))
-	}
+				aria-hidden="true"
+			/>
+			{link.text}
+		</a>
+	))}
 </nav>

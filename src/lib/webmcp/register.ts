@@ -14,8 +14,8 @@ export function registerWebMcpTools(): void {
 
 	void Promise.all(
 		webMcpTools.map((tool) =>
-			context.registerTool(tool, { signal: controller.signal })
-		)
+			context.registerTool(tool, { signal: controller.signal }),
+		),
 	).catch((error: unknown) => {
 		if (!controller.signal.aborted) {
 			console.error("WebMCP tool registration failed", error);

@@ -29,21 +29,15 @@ const quickLinks: QuickLink[] = [
 	description="The page you are looking for does not exist. Find your way back through the homepage, blog, or projects."
 	pageType="website"
 >
-	<div
-		class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center py-16 text-center"
-	>
-		<h1
-			class="text-accent-cta-text text-9xl leading-none font-bold tracking-tighter"
-		>
+	<div class="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center py-16 text-center">
+		<h1 class="text-accent-cta-text text-9xl leading-none font-bold tracking-tighter">
 			404
 		</h1>
 		<p class="text-foreground mt-2 text-lg font-medium sm:text-xl">
 			Frame Not Found
 		</p>
 
-		<div
-			class="text-muted-foreground mt-4 max-w-md space-y-1 text-sm leading-relaxed"
-		>
+		<div class="text-muted-foreground mt-4 max-w-md space-y-1 text-sm leading-relaxed">
 			<p>This page does not exist or may have moved.</p>
 		</div>
 
@@ -51,29 +45,28 @@ const quickLinks: QuickLink[] = [
 			<h2 class="text-muted-foreground mb-3 text-sm font-medium">
 				Continue to
 			</h2>
-			<ul class="divide-y divide-border/60 border-y border-border/60 text-left">
-				{
-					quickLinks.map((link) => (
-						<li>
-							<a
-								href={link.href}
-								class="text-foreground flex min-h-12 items-center justify-between text-sm font-medium transition-colors hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-ring"
-							>
-								<span>{link.title}</span>
-								<span aria-hidden="true">→</span>
-							</a>
-						</li>
-					))
-				}
+			<ul class="divide-border/60 border-border/60 divide-y border-y text-left">
+				{quickLinks.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class="text-foreground hover:text-accent-foreground focus-visible:outline-ring flex min-h-12 items-center justify-between text-sm font-medium transition-colors focus-visible:outline-2"
+						>
+							<span>{link.title}</span>
+							<span aria-hidden="true">→</span>
+						</a>
+					</li>
+				))}
 			</ul>
 		</nav>
 
 		<!-- Keyboard shortcut hint -->
 		<p class="text-muted-foreground mt-8 text-xs">
-			Or press <kbd
-				class="bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[10px] font-medium"
-				>⌘K</kbd
-			> to search
+			Or press{" "}
+			<kbd class="bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[10px] font-medium">
+				⌘K
+			</kbd>{" "}
+			to search
 		</p>
 	</div>
 </BaseLayout>

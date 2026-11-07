@@ -52,7 +52,7 @@ interface BestMatch {
 
 function bestMatchFor(
 	entries: AcceptEntry[],
-	candidate: string
+	candidate: string,
 ): BestMatch | null {
 	let matched: BestMatch | null = null;
 
@@ -75,7 +75,7 @@ function bestMatchFor(
 
 export function preferredType<T extends string>(
 	header: string | null,
-	produces: readonly T[]
+	produces: readonly T[],
 ): T | null {
 	const fallback = produces[0] ?? null;
 	if (!header) return fallback;

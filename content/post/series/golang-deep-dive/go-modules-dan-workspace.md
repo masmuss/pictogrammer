@@ -28,6 +28,7 @@ Kamu sedang mengembangkan **Library A** dan **Aplikasi B** secara bersamaan. Apl
 Solusinya adalah **Go Workspace**.
 
 1. Buat file `go.work` di folder induk:
+
    ```bash
    go work init ./library-a ./aplikasi-b
    ```

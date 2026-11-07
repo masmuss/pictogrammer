@@ -18,4 +18,8 @@ export type PaginationLink = {
 export type Tool = CollectionEntry<"tools">["data"][number]["tools"][number];
 
 export type AdmonitionType =
-	"tip" | "note" | "important" | "caution" | "warning";
+	| "tip"
+	| "note"
+	| "important"
+	| "caution"
+	| "warning";

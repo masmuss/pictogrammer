@@ -4,7 +4,7 @@ import { getPostSection, getPostTimestamp } from "./date";
 
 function sortPostsByDate(
 	itemA: CollectionPosts,
-	itemB: CollectionPosts
+	itemB: CollectionPosts,
 ): number {
 	return getPostTimestamp(itemB) - getPostTimestamp(itemA);
 }
@@ -24,7 +24,7 @@ export async function getAllPosts(limit?: number): Promise<CollectionPosts[]> {
 export function getRelatedPosts(
 	posts: CollectionPosts[],
 	currentPost: CollectionPosts,
-	limit = 4
+	limit = 4,
 ): CollectionPosts[] {
 	const currentTags = currentPost.data.tags;
 	const currentId = currentPost.id;
@@ -36,7 +36,7 @@ export function getRelatedPosts(
 			let score = 0;
 
 			const matchingTags = post.data.tags.filter((tag) =>
-				currentTags.includes(tag)
+				currentTags.includes(tag),
 			);
 			score += matchingTags.length * 10;
 
@@ -55,7 +55,7 @@ export function getRelatedPosts(
 
 export async function getPostsByPath(
 	path?: string,
-	limit?: number
+	limit?: number,
 ): Promise<CollectionPosts[]> {
 	const posts = await getAllPosts();
 
@@ -74,15 +74,15 @@ export function getUniqueTags(posts: Array<CollectionEntry<"post">>) {
 }
 
 export function getUniqueTagsWithCount(
-	posts: Array<CollectionEntry<"post">>
+	posts: Array<CollectionEntry<"post">>,
 ): Array<[string, number]> {
 	return [
 		...posts
 			.flatMap((post) => post.data.tags)
 			.reduce(
 				(acc, tag) => acc.set(tag, (acc.get(tag) || 0) + 1),
-				new Map<string, number>()
-			)
+				new Map<string, number>(),
+			),
 	].sort((a, b) => {
 		if (b[1] !== a[1]) return b[1] - a[1];
 		return a[0].localeCompare(b[0]);

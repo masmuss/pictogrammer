@@ -10,10 +10,10 @@ export function GET(context: APIContext) {
 		`Sitemap: ${new URL("sitemap-index.xml", site).href}`,
 		"",
 		"# Content Signals (https://contentsignals.org/)",
-		`Content-Signal: ${CONTENT_SIGNAL}`
+		`Content-Signal: ${CONTENT_SIGNAL}`,
 	].join("\n");
 
 	return new Response(robots, {
-		headers: { "Content-Type": "text/plain; charset=utf-8" }
+		headers: { "Content-Type": "text/plain; charset=utf-8" },
 	});
 }

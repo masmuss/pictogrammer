@@ -23,7 +23,9 @@ const archiveData = groupPostsForArchive(allPosts);
 	pageType="website"
 >
 	<div class="flex w-full flex-col gap-y-12">
-		<Heading as="h1" class="sr-only">{title}</Heading>
+		<Heading as="h1" class="sr-only">
+			{title}
+		</Heading>
 		<div class="flex w-full flex-col">
 			<BlogTabs activeTab="posts" />
 
@@ -32,49 +34,45 @@ const archiveData = groupPostsForArchive(allPosts);
 			</div>
 		</div>
 
-		{
-			allPosts.length === 0 && (
-				<p class="max-w-3xl text-muted-foreground" role="status">
-					No posts yet.
-				</p>
-			)
-		}
+		{allPosts.length === 0 && (
+			<p class="text-muted-foreground max-w-3xl" role="status">
+				No posts yet.
+			</p>
+		)}
 
-		{
-			allPosts.length > 0 && (
-				<div class="relative grid grid-cols-1 gap-x-10 lg:grid-cols-[1fr_0.2fr]">
-					<div class="group/list flex flex-col gap-y-20">
-						{archiveData.map(({ year, months }) => (
-							<section class="flex flex-col gap-y-8" id={`year-${year}`}>
-								<h2 class="text-xl font-semibold tracking-tight">{year}</h2>
+		{allPosts.length > 0 && (
+			<div class="relative grid grid-cols-1 gap-x-10 lg:grid-cols-[1fr_0.2fr]">
+				<div class="group/list flex flex-col gap-y-20">
+					{archiveData.map(({ year, months }) => (
+						<section class="flex flex-col gap-y-8" id={`year-${year}`}>
+							<h2 class="text-xl font-semibold tracking-tight">{year}</h2>
 
-								<div class="flex flex-col gap-y-12">
-									{months.map(({ month, monthName, posts }) => (
-										<div
-											class="flex flex-col gap-y-4"
-											id={`month-${year}-${month}`}
-										>
-											<div class="flex items-center gap-5">
-												<h3 class="text-muted-foreground text-lg font-semibold">
-													{monthName}
-												</h3>
-												<div class="flex-1 h-px bg-muted-foreground/20" />
-											</div>
-											<ul class="relative flex flex-col">
-												{posts.map((post) => (
-													<PostPreview post={post} clampTitle={false} />
-												))}
-											</ul>
+							<div class="flex flex-col gap-y-12">
+								{months.map(({ month, monthName, posts }) => (
+									<div
+										class="flex flex-col gap-y-4"
+										id={`month-${year}-${month}`}
+									>
+										<div class="flex items-center gap-5">
+											<h3 class="text-muted-foreground text-lg font-semibold">
+												{monthName}
+											</h3>
+											<div class="bg-muted-foreground/20 h-px flex-1" />
 										</div>
-									))}
-								</div>
-							</section>
-						))}
-					</div>
-
-					<ArchiveSidebar archiveData={archiveData} />
+										<ul class="relative flex flex-col">
+											{posts.map((post) => (
+												<PostPreview post={post} clampTitle={false} />
+											))}
+										</ul>
+									</div>
+								))}
+							</div>
+						</section>
+					))}
 				</div>
-			)
-		}
+
+				<ArchiveSidebar archiveData={archiveData} />
+			</div>
+		)}
 	</div>
 </BaseLayout>

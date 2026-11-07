@@ -7,7 +7,7 @@ export const prerender = true;
 export async function getStaticPaths() {
 	return Object.entries(siteConfig.ogPages).map(([page, og]) => ({
 		params: { page },
-		props: og
+		props: og,
 	}));
 }
 
@@ -22,6 +22,6 @@ export async function GET({ props }: APIContext) {
 		description,
 		author: siteConfig.author,
 		authorInitials: getAuthorInitials(siteConfig.author),
-		domain: "khoirul.me"
+		domain: "khoirul.me",
 	});
 }

@@ -13,7 +13,7 @@ export interface ModelContextTool {
 	annotations?: ModelContextToolAnnotations;
 	execute: (
 		input: Record<string, unknown>,
-		options: { signal: AbortSignal }
+		options: { signal: AbortSignal },
 	) => Promise<unknown>;
 }
 
@@ -24,7 +24,7 @@ export interface ModelContextRegisterToolOptions {
 export interface ModelContext {
 	registerTool(
 		tool: ModelContextTool,
-		options?: ModelContextRegisterToolOptions
+		options?: ModelContextRegisterToolOptions,
 	): Promise<void>;
 }
 

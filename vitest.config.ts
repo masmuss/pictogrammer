@@ -7,11 +7,11 @@ export default getViteConfig({
 	test: {
 		globals: true,
 		environment: "node",
-		include: ["tests/unit/**/*.{test,spec}.{js,ts}"]
+		include: ["tests/unit/**/*.{test,spec}.{js,ts}"],
 	},
 	resolve: {
 		alias: {
-			"@": path.resolve(__dirname, "./src")
-		}
-	}
+			"@": path.resolve(import.meta.dirname, "./src"),
+		},
+	},
 });

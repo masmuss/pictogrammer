@@ -13,7 +13,9 @@ test.describe("Blog Post Details", () => {
 		await page.goto("/blog");
 
 		// 2. Select the first blog post link from the list
-		const firstPostLink = page.locator("[data-testid='post-preview'] a").first();
+		const firstPostLink = page
+			.locator("[data-testid='post-preview'] a")
+			.first();
 		await expect(firstPostLink).toBeVisible({ timeout: 15000 });
 
 		// Capture the target URL for validation
@@ -25,9 +27,9 @@ test.describe("Blog Post Details", () => {
 			await Promise.all([
 				page.waitForURL(`**${targetUrl}`, {
 					timeout: 15000,
-					waitUntil: "domcontentloaded"
+					waitUntil: "domcontentloaded",
 				}),
-				firstPostLink.click()
+				firstPostLink.click(),
 			]);
 		} else {
 			await firstPostLink.click();

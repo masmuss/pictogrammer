@@ -32,9 +32,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 			{content.data.title}
 		</Heading>
 
-		<div
-			class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
-		>
+		<div class="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
 			<span class="sr-only">{siteConfig.author}</span>
 			<PostMetadata
 				post={content}
@@ -46,11 +44,9 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	</div>
 </div>
 
-{
-	content.data.coverImage && coverImageResolved && (
-		<PostImage
-			src={coverImageResolved.src}
-			alt={coverImageResolved.alt || content.data.title}
-		/>
-	)
-}
+{content.data.coverImage && coverImageResolved && (
+	<PostImage
+		src={coverImageResolved.src}
+		alt={coverImageResolved.alt || content.data.title}
+	/>
+)}

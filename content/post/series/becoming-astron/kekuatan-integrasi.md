@@ -28,6 +28,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Before**: Kamu harus install manual, buat file `tailwind.config.mjs`, import file CSS global, dan memastikan PostCSS berjalan benar.
 - **After**: Cukup jalankan `npx astro add tailwind`. Semuanya beres!
 - **Implementasi**:
+
   ```bash
   npx astro add tailwind
   ```
@@ -38,6 +39,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Before**: Kamu hanya bisa menulis teks statis dan gambar biasa di file `.md`.
 - **After**: Kamu bisa membuat grafik interaktif, tombol, atau form di tengah-tengah artikel blog.
 - **Implementasi**:
+
   ```bash
   npx astro add mdx
   ```
@@ -48,6 +50,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Before**: Kamu harus mencari generator sitemap pihak ketiga atau menulisnya manual setiap kali ada postingan baru agar Google bisa mengindeks webmu.
 - **After**: Astro akan memindai semua rute kamu dan membuat sitemap yang valid secara otomatis.
 - **Implementasi**:
+
   ```bash
   npx astro add sitemap
   ```
@@ -58,9 +61,11 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Before**: Kamu harus download file SVG, simpan di folder public, atau install library icon yang berat.
 - **After**: Kamu cukup panggil nama icon-nya, dan Astro hanya akan mengirimkan kode SVG yang dipakai saja.
 - **Implementasi**:
+
   ```bash
   bun add astro-icon
   ```
+
   ```astro
   import {Icon} from 'astro-icon/components'
   <Icon name="ri:github-fill" />
@@ -77,6 +82,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Fungsi**: Memungkinkan website Astro kamu memiliki fitur dinamis (SSR) dan berjalan di infrastruktur spesifik penyedia hosting tersebut.
 - **Kegunaan**: Tanpa adapter, Astro hanya menghasilkan file statis. Dengan adapter, kamu bisa memiliki sistem login, akses database real-time, atau menjalankan kode di "Edge" (dekat dengan lokasi user).
 - **Implementasi**:
+
   ```bash
   npx astro add cloudflare # Untuk Cloudflare
   npx astro add vercel     # Untuk Vercel
@@ -87,6 +93,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Fungsi**: Integrasi khusus (sebenarnya sebuah template/framework di atas Astro) untuk membuat website dokumentasi yang profesional dalam hitungan menit.
 - **Fitur**: Sudah termasuk pencarian (_site search_), navigasi sidebar, mode gelap, hingga internasionalisasi (multi-bahasa).
 - **Implementasi**: Biasanya dimulai saat membuat project baru, tapi bisa juga ditambahkan ke project yang sudah ada.
+
   ```bash
   npm create astro@latest -- --template starlight
   ```
@@ -97,6 +104,7 @@ Mari kita bahas beberapa yang paling sering digunakan, fungsinya, dan bagaimana 
 - **Before**: Kamu harus memasang script tracking manual dan mengatur _source maps_ agar pesan error-nya bisa dibaca (tidak ter-minify).
 - **After**: Sentry otomatis menangkap setiap error yang dialami user dan memberitahumu bagian mana dari kodemu yang bermasalah.
 - **Implementasi**:
+
   ```bash
   npx astro add @sentry/astro
   ```
@@ -117,13 +125,13 @@ export default defineConfig({
 	markdown: {
 		shikiConfig: {
 			theme: "dracula-soft", // Tema pewarnaan kode
-			wrap: true // Agar kode panjang turun ke baris baru
-		}
+			wrap: true, // Agar kode panjang turun ke baris baru
+		},
 	},
 	integrations: [mdx(), sitemap()],
 	vite: {
-		plugins: [tailwindcss()]
-	}
+		plugins: [tailwindcss()],
+	},
 });
 ```
 

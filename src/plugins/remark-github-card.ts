@@ -52,9 +52,9 @@ function buildFallbackLink(target: GithubTarget): ReturnType<typeof h> {
 			href: `https://github.com/${target.repoName}`,
 			target: "_blank",
 			rel: "noopener noreferrer",
-			class: "not-prose"
+			class: "not-prose",
 		},
-		[{ type: "text", value: target.displayName }]
+		[{ type: "text", value: target.displayName }],
 	);
 }
 
@@ -70,7 +70,7 @@ export const remarkGithubCard: Plugin<[], Root> = () => (tree) => {
 		parent.children.splice(
 			index,
 			1,
-			h("github-card", buildAttrs(target), [fallbackLink])
+			h("github-card", buildAttrs(target), [fallbackLink]),
 		);
 	});
 };

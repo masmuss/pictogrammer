@@ -2,7 +2,7 @@ import type { CollectionPosts } from "@/types";
 import { getPostMonth, getPostYear } from "./date";
 
 export function groupPostsByYear(
-	posts: CollectionPosts[]
+	posts: CollectionPosts[],
 ): Map<number, CollectionPosts[]> {
 	const grouped = new Map<number, CollectionPosts[]>();
 	for (const post of posts) {
@@ -39,7 +39,7 @@ const MONTH_NAMES = [
 	"September",
 	"October",
 	"November",
-	"December"
+	"December",
 ] as const;
 
 export function groupPostsForArchive(posts: CollectionPosts[]): YearGroup[] {
@@ -72,11 +72,11 @@ export function groupPostsForArchive(posts: CollectionPosts[]): YearGroup[] {
 				.map(([month, monthPosts]) => ({
 					month,
 					monthName: MONTH_NAMES[month] ?? "Unknown",
-					posts: monthPosts
+					posts: monthPosts,
 				}));
 			const count = months.reduce(
 				(total, month) => total + month.posts.length,
-				0
+				0,
 			);
 			return { year, months, count };
 		});

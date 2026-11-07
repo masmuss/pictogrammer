@@ -41,17 +41,17 @@ export function loadPagefind(): Promise<PagefindModule> {
 export async function searchPagefind(
 	pagefind: PagefindModule,
 	query: string,
-	limit = 10
+	limit = 10,
 ): Promise<PagefindResultData[]> {
 	const search = await pagefind.search(query);
 	return Promise.all(
-		search.results.slice(0, limit).map((result) => result.data())
+		search.results.slice(0, limit).map((result) => result.data()),
 	);
 }
 
 export function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
 	return {
 		...r,
-		url: r.url.replace("/dist/", "/").replace(/\/$/, "")
+		url: r.url.replace("/dist/", "/").replace(/\/$/, ""),
 	};
 }

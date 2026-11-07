@@ -12,7 +12,7 @@ async function renderOgPng({
 	template,
 	width,
 	height,
-	satori: satoriOptions
+	satori: satoriOptions,
 }: RenderOgResponseOptions): Promise<Buffer> {
 	const svg = await satori(template, { width, height, ...satoriOptions });
 
@@ -20,7 +20,7 @@ async function renderOgPng({
 }
 
 export async function renderOgResponse(
-	options: RenderOgResponseOptions
+	options: RenderOgResponseOptions,
 ): Promise<Response> {
 	const png = await renderOgPng(options);
 
@@ -28,7 +28,7 @@ export async function renderOgResponse(
 		headers: {
 			"Content-Type": "image/png",
 			"Content-Length": png.length.toString(),
-			"Cache-Control": "public, max-age=31536000, immutable"
-		}
+			"Cache-Control": "public, max-age=31536000, immutable",
+		},
 	});
 }

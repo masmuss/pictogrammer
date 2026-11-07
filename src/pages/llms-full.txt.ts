@@ -26,7 +26,7 @@ export async function GET(context: APIContext) {
 		"---",
 		"",
 		`## All Posts (${posts.length})`,
-		""
+		"",
 	];
 
 	for (const post of posts) {
@@ -46,11 +46,11 @@ export async function GET(context: APIContext) {
 			post.data.description ?? "",
 			"",
 			"---",
-			""
+			"",
 		);
 	}
 
 	return new Response(lines.join("\n"), {
-		headers: { "Content-Type": "text/plain; charset=utf-8" }
+		headers: { "Content-Type": "text/plain; charset=utf-8" },
 	});
 }

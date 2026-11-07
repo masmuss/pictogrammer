@@ -114,31 +114,31 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/tailwind";
 
 const buttonVariants = cva(
-	"group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 pointer-coarse:min-h-[44px]",
+	"group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 pointer-coarse:min-h-[44px] [&_svg]:pointer-events-none [&_svg]:shrink-0",
 	{
 		variants: {
 			variant: {
 				default:
-					"bg-primary text-primary-foreground hover:bg-neutral-800 transition-colors shadow-none",
+					"bg-primary text-primary-foreground shadow-none transition-colors hover:bg-neutral-800",
 				destructive:
-					"bg-destructive/10 hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/20 text-destructive focus-visible:border-destructive/40 dark:hover:bg-destructive/30 text-white hover:bg-destructive/90 dark:bg-destructive/60",
+					"bg-destructive/10 hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/20 text-destructive focus-visible:border-destructive/40 dark:hover:bg-destructive/30 hover:bg-destructive/90 dark:bg-destructive/60 text-white",
 				outline:
 					"border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground border shadow-none",
 				secondary:
 					"bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 				ghost:
 					"hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground hover:bg-secondary shadow-none",
-				link: "text-primary underline-offset-4 hover:underline text-accent-foreground p-0"
+				link: "text-primary text-accent-foreground p-0 underline-offset-4 hover:underline"
 			},
 			size: {
 				default:
-					"h-8 gap-1.5 px-2.5 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 gap-2 px-3 py-2 text-sm has-[.badge:last-child]:pr-1.5 has-[>svg]:px-2.5",
+					"h-8 gap-1.5 gap-2 px-2.5 px-3 py-2 text-sm in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 has-[.badge:last-child]:pr-1.5 has-[>svg]:px-2.5",
 				xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-				sm: "h-7 gap-1 rounded-[min(var(--radius-md),10px)] px-2.5 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 gap-1.5 rounded-lg px-3 text-xs has-[>svg]:px-2",
-				lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3 rounded-lg px-5 text-base has-[>svg]:px-4 has-[.badge:last-child]:pr-3 [&_.badge:last-child]:ml-1.5",
+				sm: "h-7 gap-1 gap-1.5 rounded-[min(var(--radius-md),10px)] rounded-lg px-2.5 px-3 text-xs in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 has-[>svg]:px-2",
+				lg: "h-9 gap-1.5 rounded-lg px-2.5 px-5 text-base has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3 has-[.badge:last-child]:pr-3 has-[>svg]:px-4 [&_.badge:last-child]:ml-1.5",
 				icon: "size-8 pointer-coarse:min-h-[44px] pointer-coarse:min-w-[44px]",
 				"icon-xs":
-					"size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3 pointer-coarse:min-h-[44px] pointer-coarse:min-w-[44px]",
+					"size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg pointer-coarse:min-h-[44px] pointer-coarse:min-w-[44px] [&_svg:not([class*='size-'])]:size-3",
 				"icon-sm":
 					"size-7 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-md pointer-coarse:min-h-[44px] pointer-coarse:min-w-[44px]",
 				"icon-lg":
@@ -177,21 +177,19 @@ const {
 } = Astro.props as Props;
 ---
 
-{
-	/*
+{/*
   TS can't reconcile our discriminated union props with a dynamic intrinsic Tag.
   The public Props type *is* strict (href only allowed when as="a"),
   but JSX wants an intersection of button+anchor attributes here.
   We deliberately suppress this internal error and rely on Props for caller safety.
-*/
-}
+*/}
 <!-- @ts-expect-error – union Props + dynamic Tag confuse JSX typing (see comment above) -->
 <Tag
 	data-slot="button"
 	data-variant={variant}
 	data-size={size}
 	class={cn(
-		"focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-md border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 [&_svg:not([class*='size-'])]:size-4 ease-out duration-150 active:scale-98",
+		"focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-md border border-transparent bg-clip-padding text-sm font-medium duration-150 ease-out focus-visible:ring-3 active:scale-98 aria-invalid:ring-3 [&_svg:not([class*='size-'])]:size-4",
 		buttonVariants({ variant, size }),
 		className
 	)}

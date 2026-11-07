@@ -46,10 +46,12 @@ import Counter from "../components/Counter";
 Untuk "menghidupkannya", kita menggunakan direktif `client:*`:
 
 1. **`client:load`**: Langsung hidup saat halaman dibuka.
+
    ```astro
    <Counter client:load />
    ```
 2. **`client:visible`**: Hanya hidup saat user scroll sampai komponen ini terlihat (sangat bagus untuk performa).
+
    ```astro
    <Counter client:visible />
    ```

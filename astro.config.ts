@@ -25,10 +25,10 @@ export default defineConfig({
 	trailingSlash: "never",
 	prerenderConflictBehavior: "error",
 	redirects: {
-    "/sitemap.xml": "/sitemap-index.xml",
-  },
+		"/sitemap.xml": "/sitemap-index.xml",
+	},
 	experimental: {
-		collectionStorage: "chunked"
+		collectionStorage: "chunked",
 	},
 	fonts: [
 		{
@@ -39,7 +39,7 @@ export default defineConfig({
 			styles: ["normal"],
 			fallbacks: ["sans-serif"],
 			display: "swap",
-			formats: ["woff2"]
+			formats: ["woff2"],
 		},
 		{
 			provider: fontProviders.fontsource(),
@@ -48,7 +48,7 @@ export default defineConfig({
 			styles: ["normal"],
 			fallbacks: ["monospace"],
 			display: "swap",
-			formats: ["woff2"]
+			formats: ["woff2"],
 		},
 		{
 			provider: fontProviders.fontsource(),
@@ -57,8 +57,8 @@ export default defineConfig({
 			styles: ["normal", "italic"],
 			fallbacks: ["serif"],
 			display: "swap",
-			formats: ["woff2"]
-		}
+			formats: ["woff2"],
+		},
 	],
 	integrations: [
 		sitemap(),
@@ -67,8 +67,8 @@ export default defineConfig({
 		markdownExport({
 			exclude: ["404.html", "sitemap.xml/**"],
 			transform: (markdown, file) =>
-				addMarkdownFrontmatter(markdown, file, siteUrl)
-		})
+				addMarkdownFrontmatter(markdown, file, siteUrl),
+		}),
 	],
 	markdown: {
 		processor: unified({
@@ -77,9 +77,9 @@ export default defineConfig({
 					rehypeExternalLinks,
 					{
 						rel: ["noreferrer", "noopener"],
-						target: "_blank"
-					}
-				]
+						target: "_blank",
+					},
+				],
 			],
 			remarkPlugins: [
 				remarkSupersub,
@@ -88,23 +88,23 @@ export default defineConfig({
 				remarkDirective,
 				remarkGithubCard,
 				remarkAdmonitions,
-				remarkPele
+				remarkPele,
 			],
 			remarkRehype: {
 				footnoteLabelProperties: {
-					className: [""]
-				}
-			}
+					className: [""],
+				},
+			},
 		}),
 		shikiConfig: {
 			theme: "dark-plus",
-			wrap: true
-		}
+			wrap: true,
+		},
 	},
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
-			chunkSizeWarningLimit: 1024
-		}
-	}
+			chunkSizeWarningLimit: 1024,
+		},
+	},
 });

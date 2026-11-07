@@ -62,22 +62,20 @@ const sections = [
 			as="h1"
 		/>
 
-		{
-			sections.map((section) => (
-				<Section
-					title={`${section.title} (${section.books.length})`}
-					titleAs="h2"
-					titleSize={section.titleSize}
-					transitionDelay={section.transitionDelay}
-					class={section.class}
-				>
-					<div class={section.gridClass}>
-						{section.books.map((book) => (
-							<BookItem book={book} />
-						))}
-					</div>
-				</Section>
-			))
-		}
+		{sections.map((section) => (
+			<Section
+				title={`${section.title} (${section.books.length})`}
+				titleAs="h2"
+				titleSize={section.titleSize}
+				transitionDelay={section.transitionDelay}
+				class={section.class}
+			>
+				<div class={section.gridClass}>
+					{section.books.map((book) => (
+						<BookItem book={book} />
+					))}
+				</div>
+			</Section>
+		))}
 	</div>
 </BaseLayout>

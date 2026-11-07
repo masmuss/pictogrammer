@@ -107,18 +107,12 @@ if (twitter.creator) {
 }
 ---
 
-{
-	ogMetas.map(({ property, content }) => (
-		<meta property={property} content={content} />
-	))
-}
-{
-	twitterPropertyMetas.map(({ property, content }) => (
-		<meta property={property} content={content} />
-	))
-}
-{
-	twitterNameMetas.map(({ name, content }) => (
-		<meta name={name} content={content} />
-	))
-}
+{ogMetas.map(({ property, content }) => (
+	<meta property={property} content={content} />
+))}
+{twitterPropertyMetas.map(({ property, content }) => (
+	<meta property={property} content={content} />
+))}
+{twitterNameMetas.map(({ name, content }) => (
+	<meta name={name} content={content} />
+))}

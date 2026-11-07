@@ -9,6 +9,6 @@ export async function GET() {
 		description: siteConfig.description,
 		author: siteConfig.author,
 		authorInitials: getAuthorInitials(siteConfig.author),
-		domain: "khoirul.me"
+		domain: "khoirul.me",
 	});
 }

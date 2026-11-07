@@ -17,7 +17,7 @@ export const GET: APIRoute = () => {
 			description:
 				"Personal website of Khoirul Fattah: full-stack projects with a backend focus, technical writing, and photography from Surabaya.",
 			url: "https://khoirul.me",
-			contact: "hello@khoirul.me"
+			contact: "hello@khoirul.me",
 		},
 		entries: [
 			{
@@ -33,8 +33,8 @@ export const GET: APIRoute = () => {
 					"What does Khoirul write about?",
 					"List all blog posts on khoirul.me",
 					"What projects has Khoirul built?",
-					"What is pictogrammer?"
-				]
+					"What is pictogrammer?",
+				],
 			},
 			{
 				identifier: "urn:air:khoirul.me:content:llms-full-txt",
@@ -46,8 +46,8 @@ export const GET: APIRoute = () => {
 				representativeQueries: [
 					"Full content of all blog posts by Khoirul Fattah",
 					"Complete technical writing by Khoirul",
-					"Detailed project descriptions from khoirul.me"
-				]
+					"Detailed project descriptions from khoirul.me",
+				],
 			},
 			{
 				identifier: "urn:air:khoirul.me:feed:rss",
@@ -58,8 +58,8 @@ export const GET: APIRoute = () => {
 				representativeQueries: [
 					"Latest posts from khoirul.me",
 					"Subscribe to Khoirul's blog",
-					"RSS feed for pictogrammer"
-				]
+					"RSS feed for pictogrammer",
+				],
 			},
 			{
 				identifier: "urn:air:khoirul.me:discovery:api-catalog",
@@ -70,8 +70,8 @@ export const GET: APIRoute = () => {
 				url: "https://khoirul.me/.well-known/api-catalog",
 				representativeQueries: [
 					"What APIs does khoirul.me expose?",
-					"Machine-readable resources on khoirul.me"
-				]
+					"Machine-readable resources on khoirul.me",
+				],
 			},
 			{
 				identifier: "urn:air:khoirul.me:discovery:sitemap",
@@ -81,17 +81,17 @@ export const GET: APIRoute = () => {
 				url: "https://khoirul.me/sitemap-index.xml",
 				representativeQueries: [
 					"All pages on khoirul.me",
-					"Site structure of khoirul.me"
-				]
-			}
-		]
+					"Site structure of khoirul.me",
+				],
+			},
+		],
 	};
 
 	return new Response(JSON.stringify(catalog, null, 2), {
 		headers: {
 			"Content-Type": "application/json",
 			"Access-Control-Allow-Origin": "*",
-			"Cache-Control": "public, max-age=3600"
-		}
+			"Cache-Control": "public, max-age=3600",
+		},
 	});
 };

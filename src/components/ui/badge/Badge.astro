@@ -80,7 +80,7 @@ const {
 
 const badgeVariants = cva(
 	[
-		"inline-flex w-fit shrink-0 items-center justify-center whitespace-nowrap overflow-hidden transition-[color,box-shadow]",
+		"inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-[color,box-shadow]",
 		"gap-1 [&>svg]:pointer-events-none"
 	],
 	{
@@ -99,8 +99,8 @@ const badgeVariants = cva(
 				pill: "rounded-full"
 			},
 			size: {
-				default: "text-sm h-6",
-				sm: "text-xs h-5"
+				default: "h-6 text-sm",
+				sm: "h-5 text-xs"
 			}
 		},
 		defaultVariants: {
@@ -119,7 +119,7 @@ const classes = cn(badgeVariants({ variant, shape, size, className }));
 	data-variant={variant}
 	data-size={size}
 	class={cn(
-		"h-5 gap-1 rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3! rounded-full",
+		"h-5 gap-1 rounded-4xl rounded-full border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3!",
 		classes
 	)}
 	{...props}
