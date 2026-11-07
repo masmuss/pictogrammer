@@ -53,9 +53,8 @@ export function getColophonData() {
 				"A fast all-in-one JavaScript runtime, bundler, and package manager.",
 		},
 		{
-			name: "Biome & Prettier",
-			description:
-				"Biome for lightning-fast linting, Prettier for consistent code formatting.",
+			name: "Biome",
+			description: "Lightning-fast toolchain for formatting and linting.",
 		},
 		{
 			name: "Zed",

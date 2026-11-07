@@ -49,9 +49,6 @@ jobs:
       - name: Biome (lint & format)
         run: bun x biome ci .
 
-      - name: Prettier (prettier)
-        run: bun x prettier --check "src/**/*.{astro,ts,js,css}" "**/*.{md,mdx,json,yml}"
-
       - name: Typecheck
         run: bun run check
 
