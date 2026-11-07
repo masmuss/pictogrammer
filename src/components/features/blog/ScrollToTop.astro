@@ -17,6 +17,15 @@ import { Icon } from "astro-icon/components";
 		if (!(button instanceof HTMLElement) || button.dataset.initialized) return;
 
 		button.dataset.initialized = "true";
+		button.addEventListener("click", () => {
+			const prefersReducedMotion = window.matchMedia(
+				"(prefers-reduced-motion: reduce)"
+			).matches;
+			window.scrollTo({
+				top: 0,
+				behavior: prefersReducedMotion ? "auto" : "smooth",
+			});
+		});
 		const updateVisibility = () => {
 			button.classList.toggle("is-visible", window.scrollY > 150);
 		};
