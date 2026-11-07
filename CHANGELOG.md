@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/masmuss/pictogrammer/compare/v2.5.1...v2.6.0) (2026-11-07)
+
+
+### Features
+
+* **blog:** add smooth scroll behavior to ScrollToTop component ([3191205](https://github.com/masmuss/pictogrammer/commit/3191205b0877d64a59b37db08c3658c60c96cd4a))
+
 ## [2.5.1](https://github.com/masmuss/pictogrammer/compare/v2.5.0...v2.5.1) (2026-10-23)
 
 ### Bug Fixes
