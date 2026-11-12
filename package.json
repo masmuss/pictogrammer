@@ -9,6 +9,11 @@
 		"url": "https://github.com/masmuss/pictogrammer"
 	},
 	"license": "MIT",
+	"engines": {
+		"bun": ">=1.4.0",
+		"node": ">=22.0.0"
+	},
+	"packageManager": "bun@1.4.4",
 	"author": {
 		"name": "Ahmad Musafir Khoirul Fattah",
 		"email": "hello@khoirul.me",

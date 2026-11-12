@@ -38,6 +38,14 @@ export type OgPageMeta = {
 	description: string;
 };
 
+export type FaviconLink = {
+	rel: string;
+	href: string;
+	type?: string;
+	sizes?: string;
+	media?: string;
+};
+
 export type SiteConfig = {
 	author: string;
 	title: string;
@@ -53,4 +61,5 @@ export type SiteConfig = {
 	footerLinks: NavLink[];
 	page: Page;
 	ogPages: Record<string, OgPageMeta>;
+	faviconLinks: FaviconLink[];
 };

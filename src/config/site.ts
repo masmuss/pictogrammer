@@ -1,4 +1,5 @@
 import type {
+	FaviconLink,
 	Header,
 	NavLink,
 	OgPageMeta,
@@ -55,6 +56,41 @@ export const footerLinks: NavLink[] = [
 	{ text: "Tools", href: "/tools" },
 	{ text: "Colophon", href: "/colophon" },
 	{ text: "RSS", href: "/rss.xml" },
+];
+
+export const faviconLinks: FaviconLink[] = [
+	{
+		rel: "apple-touch-icon",
+		sizes: "180x180",
+		href: "/favicon/apple-touch-icon.png",
+	},
+	{
+		rel: "icon",
+		type: "image/png",
+		sizes: "192x192",
+		href: "/favicon/android-chrome-192x192.png",
+	},
+	{
+		rel: "icon",
+		type: "image/png",
+		sizes: "32x32",
+		href: "/favicon/favicon-32x32.png",
+	},
+	{
+		rel: "icon",
+		type: "image/png",
+		sizes: "16x16",
+		href: "/favicon/favicon-16x16.png",
+	},
+	{ rel: "manifest", href: "/favicon/site.webmanifest" },
+	{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+	{
+		rel: "icon",
+		href: "/favicon.svg",
+		type: "image/svg+xml",
+		media: "(prefers-color-scheme: light)",
+	},
+	{ rel: "sitemap", href: "/sitemap-index.xml" },
 ];
 
 export const page: Page = {
@@ -144,6 +180,7 @@ const siteConfig: SiteConfig = {
 	footerLinks,
 	page,
 	ogPages,
+	faviconLinks,
 };
 
 export default siteConfig;

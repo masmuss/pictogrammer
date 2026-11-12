@@ -1,0 +1,29 @@
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Freeze lockfile in CI — fail if bun.lock would change
+# frozenLockfile = true  # uncomment or set via BUN_CONFIG_FROZEN_LOCKFILE=1 in CI
+
+# Cache directory (default is ~/.bun/install/cache)
+# cache = "~/.bun/install/cache"
+
+# Save exact versions instead of semver ranges
+exact = false
+
+[install.scopes]
+# Private registry example (uncomment if needed)
+# "@myorg" = { token = "$NPM_TOKEN", url = "https://npm.pkg.github.com/" }
+
+[run]
+# Automatically use bun as the runtime for scripts
+bun = true
+
+[test]
+# Root directory for test discovery
+root = "."
+# Timeout per test (ms)
+timeout = 10000
+# Coverage reporting
+coverage = false
+coverageReporter = ["text", "lcov"]
+coverageDir = "coverage"
