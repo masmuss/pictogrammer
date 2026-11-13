@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/masmuss/pictogrammer/compare/v2.6.0...v2.7.0) (2026-11-13)
+
+
+### Features
+
+* **home:** update hero, add current focus section, and display project ([23df87e](https://github.com/masmuss/pictogrammer/commit/23df87ee329da6b6cdd5deda79e691d71f9a222f))
+* **og:** add Merriweather title font for Open Graph images ([8796cd4](https://github.com/masmuss/pictogrammer/commit/8796cd4e85d9efb85384578ac896e6741911ab15))
+* **seo:** refactor SEO layer + add bun engine config ([df26e74](https://github.com/masmuss/pictogrammer/commit/df26e7437403efaed764940c6c4ff3a03ebcbe10))
+
 # [2.6.0](https://github.com/masmuss/pictogrammer/compare/v2.5.1...v2.6.0) (2026-11-07)
 
 
