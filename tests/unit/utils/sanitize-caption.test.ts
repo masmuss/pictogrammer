@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { sanitizeCaption } from "@/lib/utils/sanitize-caption";
+import { sanitizeCaption } from "@/lib/utils";
 
 describe("sanitizeCaption", () => {
 	it("preserves safe links", () => {

@@ -3,7 +3,7 @@ import {
 	formatCanonicalURL,
 	normalizeDescription,
 	normalizeTitle,
-} from "@/lib/utils/seo";
+} from "@/lib/utils";
 
 describe("normalizeTitle", () => {
 	it("returns the fallback when raw is missing", () => {

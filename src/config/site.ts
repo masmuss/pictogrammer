@@ -1,4 +1,5 @@
 import type {
+	FaviconLink,
 	Header,
 	NavLink,
 	OgPageMeta,
@@ -7,7 +8,7 @@ import type {
 	SocialLink,
 } from "./types";
 
-export const socialLinks: SocialLink[] = [
+const socialLinks: SocialLink[] = [
 	{
 		text: "GitHub",
 		href: "https://github.com/masmuss",
@@ -57,7 +58,42 @@ export const footerLinks: NavLink[] = [
 	{ text: "RSS", href: "/rss.xml" },
 ];
 
-export const page: Page = {
+const faviconLinks: FaviconLink[] = [
+	{
+		rel: "apple-touch-icon",
+		sizes: "180x180",
+		href: "/favicon/apple-touch-icon.png",
+	},
+	{
+		rel: "icon",
+		type: "image/png",
+		sizes: "192x192",
+		href: "/favicon/android-chrome-192x192.png",
+	},
+	{
+		rel: "icon",
+		type: "image/png",
+		sizes: "32x32",
+		href: "/favicon/favicon-32x32.png",
+	},
+	{
+		rel: "icon",
+		type: "image/png",
+		sizes: "16x16",
+		href: "/favicon/favicon-16x16.png",
+	},
+	{ rel: "manifest", href: "/favicon/site.webmanifest" },
+	{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+	{
+		rel: "icon",
+		href: "/favicon.svg",
+		type: "image/svg+xml",
+		media: "(prefers-color-scheme: light)",
+	},
+	{ rel: "sitemap", href: "/sitemap-index.xml" },
+];
+
+const page: Page = {
 	blogLinks: [
 		{
 			text: "Blog",
@@ -66,7 +102,7 @@ export const page: Page = {
 	],
 };
 
-export const ogPages: Record<string, OgPageMeta> = {
+const ogPages: Record<string, OgPageMeta> = {
 	about: {
 		title: "About",
 		description:
@@ -144,6 +180,7 @@ const siteConfig: SiteConfig = {
 	footerLinks,
 	page,
 	ogPages,
+	faviconLinks,
 };
 
 export default siteConfig;

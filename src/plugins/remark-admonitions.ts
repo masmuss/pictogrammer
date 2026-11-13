@@ -5,8 +5,8 @@ import { toMarkdown } from "mdast-util-to-markdown";
 import { toString as mdastToString } from "mdast-util-to-string";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
+import { h, isNodeDirective } from "@/lib/utils";
 import type { AdmonitionType } from "@/types";
-import { h, isNodeDirective } from "../lib/utils/remark";
 
 // Supported admonition types
 const Admonitions = new Set<AdmonitionType>([

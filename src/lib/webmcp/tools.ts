@@ -28,7 +28,7 @@ function assertActive(signal: AbortSignal): void {
 	if (signal.aborted) throw new Error("Search cancelled.");
 }
 
-export const siteOverviewTool: ModelContextTool = {
+const siteOverviewTool: ModelContextTool = {
 	name: "getSiteOverview",
 	title: "Get site overview",
 	description:
@@ -59,7 +59,7 @@ export const siteOverviewTool: ModelContextTool = {
 	},
 };
 
-export const searchPostsTool: ModelContextTool = {
+const searchPostsTool: ModelContextTool = {
 	name: "searchPosts",
 	title: "Search posts",
 	description:

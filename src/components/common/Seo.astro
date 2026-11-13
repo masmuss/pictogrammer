@@ -1,12 +1,12 @@
 ---
+import SeoExtraLinks from "@/components/common/seo/SeoExtraLinks.astro";
 import JsonLd from "@/components/shell/JsonLd.astro";
 import siteConfig from "@/config/site";
 import {
 	formatCanonicalURL,
 	normalizeDescription,
 	normalizeTitle
-} from "@/lib/utils/seo";
-import SeoExtraLinks from "./seo/SeoExtraLinks.astro";
+} from "@/lib/utils";
 import SeoMeta from "./seo/SeoMeta.astro";
 import SeoSocialMeta from "./seo/SeoSocialMeta.astro";
 import type {
@@ -30,6 +30,8 @@ interface Props {
 	article?: SeoArticle;
 	extraLinks?: SeoExtraLink[];
 	breadcrumbs?: SeoBreadcrumb[];
+	locale?: string;
+	robots?: string;
 }
 
 const {
@@ -45,16 +47,21 @@ const {
 	twitter = { card: "summary_large_image" },
 	article,
 	extraLinks = [],
-	breadcrumbs
+	breadcrumbs,
+	locale,
+	robots,
 } = Astro.props;
+
+const isArticle = ogType === "article" || article !== undefined;
 
 const title = normalizeTitle(rawTitle, siteConfig.title, titleTemplate);
 const description = normalizeDescription(
 	rawDescription,
-	ogType === "article"
-		? "Read this article on pictogrammmer for practical lessons, context, and related insights from Khoirul Fattah."
+	isArticle
+		? "Read this article on pictogrammer for practical lessons, context, and related insights from Khoirul Fattah."
 		: siteConfig.description,
-	ogType === "article"
+	isArticle,
+	siteConfig.title,
 );
 
 const formattedCanonical = formatCanonicalURL(
@@ -70,9 +77,11 @@ const resolvedOgImageAlt = ogImageAlt || siteConfig.image.alt;
 	title={title}
 	description={description}
 	canonical={formattedCanonical}
+	locale={locale}
+	robots={robots}
 />
 <SeoSocialMeta
-	ogType={ogType}
+	ogType={isArticle ? "article" : "website"}
 	title={title}
 	description={description}
 	image={resolvedOgImage}
@@ -91,7 +100,7 @@ const resolvedOgImageAlt = ogImageAlt || siteConfig.image.alt;
 	image={resolvedOgImage}
 	date={article?.publishedTime}
 	updatedDate={article?.modifiedTime}
-	type={ogType}
+	type={isArticle ? "article" : "website"}
 	breadcrumbs={breadcrumbs}
 />
 <SeoExtraLinks links={extraLinks} />

@@ -6,6 +6,7 @@ import {
 	decodeHtmlEntities,
 	OG_FONT_NAME,
 	OG_HEIGHT,
+	OG_TITLE_FONT_NAME,
 	OG_WIDTH,
 	truncateText,
 } from "./markup";
@@ -14,6 +15,7 @@ import { renderOgResponse } from "./render";
 const FONTS_DIR = join(process.cwd(), "src", "assets", "fonts");
 const FONT_NORMAL_PATH = join(FONTS_DIR, "geist-sans-latin-400-normal.ttf");
 const FONT_BOLD_PATH = join(FONTS_DIR, "geist-sans-latin-700-normal.ttf");
+const TITLE_FONT_PATH = join(FONTS_DIR, "merriweather-latin-variable.ttf");
 
 const LOGO_PATH = join(
 	process.cwd(),
@@ -27,6 +29,9 @@ const fontNormalPromise = readFile(FONT_NORMAL_PATH).then((buf) =>
 	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength),
 );
 const fontBoldPromise = readFile(FONT_BOLD_PATH).then((buf) =>
+	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength),
+);
+const titleFontPromise = readFile(TITLE_FONT_PATH).then((buf) =>
 	buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength),
 );
 const logoBase64Promise = readFile(LOGO_PATH).then(
@@ -76,10 +81,12 @@ export async function createOgImageResponse({
 	const results = await Promise.allSettled([
 		fontNormalPromise,
 		fontBoldPromise,
+		titleFontPromise,
 		logoBase64Promise,
 	]);
 
-	const [fontNormalResult, fontBoldResult, logoResult] = results;
+	const [fontNormalResult, fontBoldResult, titleFontResult, logoResult] =
+		results;
 
 	if (fontNormalResult.status === "rejected") {
 		throw new Error(`Failed to load font normal: ${fontNormalResult.reason}`);
@@ -87,12 +94,16 @@ export async function createOgImageResponse({
 	if (fontBoldResult.status === "rejected") {
 		throw new Error(`Failed to load font bold: ${fontBoldResult.reason}`);
 	}
+	if (titleFontResult.status === "rejected") {
+		throw new Error(`Failed to load title font: ${titleFontResult.reason}`);
+	}
 	if (logoResult.status === "rejected") {
 		throw new Error(`Failed to load logo: ${logoResult.reason}`);
 	}
 
 	const fontNormal = fontNormalResult.value;
 	const fontBold = fontBoldResult.value;
+	const titleFont = titleFontResult.value;
 	const logoBase64 = logoResult.value;
 
 	const markup = buildOgMarkup({
@@ -122,6 +133,12 @@ export async function createOgImageResponse({
 				{
 					name: OG_FONT_NAME,
 					data: fontBold,
+					weight: 700,
+					style: "normal",
+				},
+				{
+					name: OG_TITLE_FONT_NAME,
+					data: titleFont,
 					weight: 700,
 					style: "normal",
 				},

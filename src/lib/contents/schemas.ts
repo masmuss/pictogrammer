@@ -55,7 +55,7 @@ export const experiencesSchema = z.array(
 	}),
 );
 
-export const projectSchema = z.object({
+const projectSchema = z.object({
 	text: z.string(),
 	description: z.string().optional(),
 	href: z.string().optional(),

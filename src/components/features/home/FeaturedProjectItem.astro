@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils/tailwind";
+import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 
 interface Props {
@@ -45,13 +45,14 @@ const linkAttrs = href
 				{project.text}
 			</span>
 			{showDescription && project.description && (
-				<span class="text-muted-foreground line-clamp-1 text-sm leading-snug">
+				<span class="text-muted-foreground line-clamp-2 text-sm leading-snug">
 					{project.description}
 				</span>
 			)}
 		</div>
 
 		<div class="text-muted-foreground flex shrink-0 items-center gap-3 text-xs">
+			{project.year && <span class="font-mono tabular-nums">{project.year}</span>}
 			{isLive && (
 				<Badge shape="pill" variant="outline">
 					<Icon name="ph:arrow-up-right" aria-hidden="true" />

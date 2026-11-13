@@ -1,10 +1,56 @@
-import { html } from "satori-html";
+import { type CSSProperties, createElement, type JSXNode } from "satori/jsx";
 import siteConfig from "@/config/site";
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
 export const DESCRIPTION_MAX_LENGTH = 200;
 export const OG_FONT_NAME = "Geist Sans";
+export const OG_TITLE_FONT_NAME = "Merriweather";
+
+const OG_PADDING = 64;
+
+const rootStyle: CSSProperties = {
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "space-between",
+	width: OG_WIDTH - OG_PADDING * 2,
+	height: OG_HEIGHT - OG_PADDING * 2,
+	backgroundColor: "#FFFCF0",
+	color: "#100F0F",
+	fontFamily: OG_FONT_NAME,
+	padding: OG_PADDING,
+};
+
+const headerStyle: CSSProperties = {
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "space-between",
+};
+
+const logoGroupStyle: CSSProperties = {
+	display: "flex",
+	alignItems: "center",
+	gap: 14,
+};
+
+const contentStyle: CSSProperties = {
+	display: "flex",
+	flexDirection: "column",
+};
+
+const footerStyle: CSSProperties = {
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "space-between",
+};
+
+function element(
+	type: string,
+	props: Record<string, unknown> | null,
+	...children: JSXNode[]
+): JSXNode {
+	return createElement(type, props, ...children) as JSXNode;
+}
 
 export function decodeHtmlEntities(text: string) {
 	if (!text) return text;
@@ -57,75 +103,120 @@ export function buildOgMarkup({
 	domain?: string;
 }) {
 	const footerMeta = [date, readTime].filter(Boolean).join(" · ");
-	const catStyle = category
-		? "padding: 7px 18px; border: 1px solid #E6E4D9; border-radius: 9999px; font-size: 24px; color: #6F6E69;"
-		: "";
 	const avatarStyle = authorInitials
-		? "display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background-color: #100F0F; border-radius: 9999px; color: #FFFCF0; font-weight: 600; font-size: 18px;"
-		: "display: flex;";
+		? {
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				width: 48,
+				height: 48,
+				backgroundColor: "#100F0F",
+				borderRadius: 9999,
+				color: "#FFFCF0",
+				fontWeight: 600,
+				fontSize: 18,
+			}
+		: { display: "flex" };
+	const categoryStyle: CSSProperties = category
+		? {
+				padding: "7px 18px",
+				border: "1px solid #E6E4D9",
+				borderRadius: 9999,
+				fontSize: 24,
+				color: "#6F6E69",
+			}
+		: {};
 
-	return html`
-		<div
-			style="
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				width: 100%;
-				height: 100%;
-				background-color: #FFFCF0;
-				color: #100F0F;
-				font-family: ${OG_FONT_NAME};
-				padding: 64px;
-			"
-		>
-			<div
-				style="display: flex; align-items: center; justify-content: space-between;"
-			>
-				<div style="display: flex; align-items: center; gap: 14px;">
-					<img
-						src="${logoBase64}"
-						style="width: 60px; height: 60px; border-radius: 8px;"
-					/>
-					<span style="font-size: 24px; font-weight: 600;"
-						>${siteConfig.title}</span
-					>
-				</div>
-				<span style="${catStyle}">${category || ""}</span>
-			</div>
+	const image = element("img", {
+		src: logoBase64,
+		style: { width: 60, borderRadius: 8 },
+	});
+	const siteTitle = element(
+		"span",
+		{ style: { fontSize: 28, fontWeight: 600, marginLeft: "12px" } },
+		siteConfig.title,
+	);
+	const logoGroup = element("div", { style: logoGroupStyle }, image, siteTitle);
+	const header = element(
+		"div",
+		{ style: headerStyle },
+		logoGroup,
+		element("span", { style: categoryStyle }, category || ""),
+	);
+	const content = element(
+		"div",
+		{ style: contentStyle },
+		element(
+			"h1",
+			{
+				style: {
+					display: "flex",
+					fontFamily: OG_TITLE_FONT_NAME,
+					fontSize: 64,
+					fontWeight: 700,
+					lineHeight: 1.1,
+					margin: "0 0 20px 0",
+				},
+			},
+			title,
+		),
+		element(
+			"div",
+			{
+				style: {
+					display: "flex",
+					fontSize: 24,
+					color: "#6F6E69",
+					lineHeight: 1.6,
+					maxWidth: 800,
+				},
+			},
+			description,
+		),
+	);
+	const authorDetails = element(
+		"div",
+		{ style: contentStyle },
+		element(
+			"div",
+			{
+				style: {
+					display: "flex",
+					fontWeight: 600,
+					fontSize: 24,
+					lineHeight: 1.3,
+				},
+			},
+			author || "",
+		),
+		element(
+			"div",
+			{
+				style: {
+					display: "flex",
+					fontSize: 20,
+					color: "#6F6E69",
+					lineHeight: 1.3,
+				},
+			},
+			footerMeta,
+		),
+	);
+	const footer = element(
+		"div",
+		{ style: footerStyle },
+		element(
+			"div",
+			{ style: logoGroupStyle },
+			element("div", { style: avatarStyle }, authorInitials || ""),
+			authorDetails,
+		),
+		element(
+			"span",
+			{ style: { color: "#536907", fontSize: 24 } },
+			domain || "",
+		),
+	);
 
-			<div style="display: flex; flex-direction: column;">
-				<h1
-					style="display: flex; font-size: 60px; font-weight: 800; line-height: 1.1; margin: 0 0 20px 0;"
-				>
-					${title}
-				</h1>
-				<div
-					style="display: flex; font-size: 24px; color: #6F6E69; line-height: 1.6; max-width: 720px;"
-				>
-					${description}
-				</div>
-			</div>
-
-			<div
-				style="display: flex; align-items: center; justify-content: space-between;"
-			>
-				<div style="display: flex; align-items: center; gap: 14px;">
-					<div style="${avatarStyle}">${authorInitials || ""}</div>
-					<div style="display: flex; flex-direction: column;">
-						<div
-							style="display: flex; font-weight: 600; font-size: 24px; line-height: 1.3;"
-						>
-							${author || ""}
-						</div>
-						<div
-							style="display: flex; font-size: 20px; color: #6F6E69; line-height: 1.3;"
-						>
-							${footerMeta}
-						</div>
-					</div>
-				</div>
-				<span style="color: #536907; font-size: 24px;">${domain || ""}</span>
-			</div>
-		</div>
-	`;
+	return element("div", { style: rootStyle }, header, content, footer);
 }

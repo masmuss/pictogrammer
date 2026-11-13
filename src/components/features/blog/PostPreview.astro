@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import PostMetadata from "@/components/common/PostMetadata.astro";
 import DraftBadge from "@/components/features/blog/DraftBadge.astro";
-import { getPostUrl } from "@/lib/utils/post-route";
+import { getPostUrl } from "@/lib/utils";
 
 type Props = {
 	post: CollectionEntry<"post">;
