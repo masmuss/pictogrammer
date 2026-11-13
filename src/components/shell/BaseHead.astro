@@ -2,6 +2,8 @@
 import "@/assets/styles/global.css";
 import { Font } from "astro:assets";
 import Seo from "@/components/common/Seo.astro";
+import type { SeoExtraLink } from "@/components/common/seo/types";
+import siteConfig from "@/config/site";
 import { markdownPath } from "@/lib/negotiation";
 
 interface Props {
@@ -12,6 +14,7 @@ interface Props {
 	date?: Date;
 	updatedDate?: Date;
 	breadcrumbs?: Array<{ name: string; item: string }>;
+	robots?: string;
 }
 
 const {
@@ -21,12 +24,33 @@ const {
 	pageType = "website",
 	date,
 	updatedDate,
-	breadcrumbs
+	breadcrumbs,
+	robots,
 }: Props = Astro.props;
 
 const normalizedPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 const isNotFound = normalizedPath === "/404" || normalizedPath === "/404.html";
 const markdownHref = isNotFound ? undefined : markdownPath(Astro.url.pathname);
+
+const extraLinks: SeoExtraLink[] = [
+	...siteConfig.faviconLinks,
+	...(markdownHref
+		? [
+				{
+					rel: "alternate",
+					type: "text/markdown",
+					href: markdownHref,
+					title: "Markdown",
+				},
+			]
+		: []),
+	{
+		rel: "alternate",
+		type: "application/rss+xml",
+		href: "/rss.xml",
+		title: "RSS",
+	},
+];
 ---
 
 <!-- High Priority Global Metadata -->
@@ -46,56 +70,8 @@ const markdownHref = isNotFound ? undefined : markdownPath(Astro.url.pathname);
 			: undefined
 	}
 	breadcrumbs={breadcrumbs}
-	extraLinks={[
-		{
-			rel: "apple-touch-icon",
-			sizes: "180x180",
-			href: "/favicon/apple-touch-icon.png"
-		},
-		{
-			rel: "icon",
-			type: "image/png",
-			sizes: "192x192",
-			href: "/favicon/android-chrome-192x192.png"
-		},
-		{
-			rel: "icon",
-			type: "image/png",
-			sizes: "32x32",
-			href: "/favicon/favicon-32x32.png"
-		},
-		{
-			rel: "icon",
-			type: "image/png",
-			sizes: "16x16",
-			href: "/favicon/favicon-16x16.png"
-		},
-		{ rel: "manifest", href: "/favicon/site.webmanifest" },
-		{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-		{
-			rel: "icon",
-			href: "/favicon.svg",
-			type: "image/svg+xml",
-			media: "(prefers-color-scheme: light)"
-		},
-		{ rel: "sitemap", href: "/sitemap-index.xml" },
-		...(markdownHref
-			? [
-					{
-						rel: "alternate",
-						type: "text/markdown",
-						href: markdownHref,
-						title: "Markdown"
-					}
-				]
-			: []),
-		{
-			rel: "alternate",
-			type: "application/rss+xml",
-			href: "/rss.xml",
-			title: "RSS"
-		}
-	]}
+	robots={robots}
+	extraLinks={extraLinks}
 />
 
 <!-- Fonts -->

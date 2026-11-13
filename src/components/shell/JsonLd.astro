@@ -1,6 +1,8 @@
 ---
 import siteConfig from "@/config/site";
 
+type SchemaNode = Record<string, unknown>;
+
 interface BreadcrumbItem {
 	name: string;
 	item: string;
@@ -23,79 +25,72 @@ const {
 	date,
 	updatedDate,
 	type = "website",
-	breadcrumbs
+	breadcrumbs,
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.toString() : "https://khoirul.me";
 
-const schema = {
-	"@context": "https://schema.org",
-	"@graph": [
-		{
-			"@type": "WebSite",
-			"@id": `${siteUrl}#website`,
-			url: siteUrl,
-			name: siteConfig.title,
-			description: siteConfig.description,
-			publisher: {
-				"@id": `${siteUrl}#person`
-			}
-		},
-		{
-			"@type": "Person",
-			"@id": `${siteUrl}#person`,
-			name: siteConfig.author,
-			url: siteUrl,
-			image: siteConfig.image?.src,
-			sameAs: siteConfig.socialLinks.map((link) => link.href),
-			description: siteConfig.description
-		}
-	]
-};
+const graph: SchemaNode[] = [
+	{
+		"@type": "WebSite",
+		"@id": `${siteUrl}#website`,
+		url: siteUrl,
+		name: siteConfig.title,
+		description: siteConfig.description,
+		publisher: { "@id": `${siteUrl}#person` },
+	},
+	{
+		"@type": "Person",
+		"@id": `${siteUrl}#person`,
+		name: siteConfig.author,
+		url: siteUrl,
+		image: siteConfig.image?.src,
+		sameAs: siteConfig.socialLinks.map((link) => link.href),
+		description: siteConfig.description,
+	},
+];
 
 if (type === "article") {
-	const articleSchema = {
+	graph.push({
 		"@type": "BlogPosting",
 		headline: title,
 		description: description,
 		author: {
 			"@type": "Person",
 			name: siteConfig.author,
-			url: siteUrl
+			url: siteUrl,
 		},
 		publisher: {
 			"@type": "Organization",
 			name: siteConfig.title,
 			logo: {
 				"@type": "ImageObject",
-				url: siteConfig.image?.src || `${siteUrl}/logo.png`
-			}
+				url: siteConfig.image?.src || `${siteUrl}/logo.png`,
+			},
 		},
 		datePublished: date?.toISOString(),
-		dateModified: updatedDate?.toISOString() || date?.toISOString(),
+		dateModified: updatedDate?.toISOString() ?? date?.toISOString(),
 		image: image,
 		mainEntityOfPage: {
 			"@type": "WebPage",
-			"@id": Astro.url.href
-		}
-	};
-	// @ts-expect-error - schema structure is flexible
-	schema["@graph"].push(articleSchema);
+			"@id": Astro.url.href,
+		},
+	});
 }
 
 if (breadcrumbs && breadcrumbs.length > 0) {
-	const breadcrumbSchema = {
+	graph.push({
 		"@type": "BreadcrumbList",
-		itemListElement: breadcrumbs.map((item, index) => ({
+		itemListElement: breadcrumbs.map((crumb, index) => ({
 			"@type": "ListItem",
 			position: index + 1,
-			name: item.name,
-			item: item.item
-		}))
-	};
-	// @ts-expect-error - schema structure is flexible
-	schema["@graph"].push(breadcrumbSchema);
+			name: crumb.name,
+			item: crumb.item,
+		})),
+	});
 }
+
+const schema = { "@context": "https://schema.org", "@graph": graph };
 ---
 
 <script

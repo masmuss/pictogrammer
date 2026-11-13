@@ -51,11 +51,10 @@ export function normalizeDescription(
 	raw: string | undefined,
 	fallbackDescription: string,
 	isArticle: boolean,
+	siteName = "pictogrammer",
 ): string {
-	const articleSuffix =
-		" Read the full article on pictogrammmer for complete context and practical takeaways.";
-	const generalSuffix =
-		" Explore more writing and projects on pictogrammmer for deeper context and practical resources.";
+	const articleSuffix = ` Read the full article on ${siteName} for complete context and practical takeaways.`;
+	const generalSuffix = ` Explore more writing and projects on ${siteName} for deeper context and practical resources.`;
 
 	let normalized = (raw || "").trim() || fallbackDescription;
 
