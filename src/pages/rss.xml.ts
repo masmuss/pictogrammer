@@ -3,7 +3,7 @@ import type { APIContext } from "astro";
 import { parseAndSanitizeMarkdown } from "@/config/rss";
 import siteConfig from "@/config/site";
 import { getPostsByPath } from "@/lib/contents/post";
-import { getPostUrl } from "@/lib/utils/post-route";
+import { getPostUrl } from "@/lib/utils";
 
 export async function GET(context: APIContext) {
 	const posts = await getPostsByPath();

@@ -32,7 +32,7 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
 	},
 };
 
-export const markdownParser = new MarkdownIt();
+const markdownParser = new MarkdownIt();
 
 export function parseAndSanitizeMarkdown(markdown: string): string {
 	const rawHtml = markdownParser.render(markdown || "");

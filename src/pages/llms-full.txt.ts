@@ -1,8 +1,7 @@
 import type { APIContext } from "astro";
 import siteConfig from "@/config/site";
 import { getAllPosts } from "@/lib/contents";
-import { getLlmPageLinks } from "@/lib/utils/llms";
-import { getPostUrl } from "@/lib/utils/post-route";
+import { getLlmPageLinks, getPostUrl } from "@/lib/utils";
 
 export async function GET(context: APIContext) {
 	const site = context.site ?? new URL(siteConfig.homepage);

@@ -1,7 +1,7 @@
 import type { Node, Root } from "mdast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
-import { h, isNodeDirective } from "../lib/utils/remark";
+import { h, isNodeDirective } from "@/lib/utils";
 
 const DIRECTIVE_NAME = "github";
 

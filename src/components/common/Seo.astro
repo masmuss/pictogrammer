@@ -1,12 +1,12 @@
 ---
+import SeoExtraLinks from "@/components/common/seo/SeoExtraLinks.astro";
 import JsonLd from "@/components/shell/JsonLd.astro";
 import siteConfig from "@/config/site";
 import {
 	formatCanonicalURL,
 	normalizeDescription,
 	normalizeTitle
-} from "@/lib/utils/seo";
-import SeoExtraLinks from "./seo/SeoExtraLinks.astro";
+} from "@/lib/utils";
 import SeoMeta from "./seo/SeoMeta.astro";
 import SeoSocialMeta from "./seo/SeoSocialMeta.astro";
 import type {

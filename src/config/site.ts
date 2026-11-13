@@ -8,7 +8,7 @@ import type {
 	SocialLink,
 } from "./types";
 
-export const socialLinks: SocialLink[] = [
+const socialLinks: SocialLink[] = [
 	{
 		text: "GitHub",
 		href: "https://github.com/masmuss",
@@ -58,7 +58,7 @@ export const footerLinks: NavLink[] = [
 	{ text: "RSS", href: "/rss.xml" },
 ];
 
-export const faviconLinks: FaviconLink[] = [
+const faviconLinks: FaviconLink[] = [
 	{
 		rel: "apple-touch-icon",
 		sizes: "180x180",
@@ -93,7 +93,7 @@ export const faviconLinks: FaviconLink[] = [
 	{ rel: "sitemap", href: "/sitemap-index.xml" },
 ];
 
-export const page: Page = {
+const page: Page = {
 	blogLinks: [
 		{
 			text: "Blog",
@@ -102,7 +102,7 @@ export const page: Page = {
 	],
 };
 
-export const ogPages: Record<string, OgPageMeta> = {
+const ogPages: Record<string, OgPageMeta> = {
 	about: {
 		title: "About",
 		description:
