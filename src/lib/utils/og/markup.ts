@@ -5,17 +5,20 @@ export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
 export const DESCRIPTION_MAX_LENGTH = 200;
 export const OG_FONT_NAME = "Geist Sans";
+export const OG_TITLE_FONT_NAME = "Merriweather";
+
+const OG_PADDING = 64;
 
 const rootStyle: CSSProperties = {
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "space-between",
-	width: "100%",
-	height: "100%",
+	width: OG_WIDTH - OG_PADDING * 2,
+	height: OG_HEIGHT - OG_PADDING * 2,
 	backgroundColor: "#FFFCF0",
 	color: "#100F0F",
 	fontFamily: OG_FONT_NAME,
-	padding: 64,
+	padding: OG_PADDING,
 };
 
 const headerStyle: CSSProperties = {
@@ -130,7 +133,7 @@ export function buildOgMarkup({
 	});
 	const siteTitle = element(
 		"span",
-		{ style: { fontSize: 26, fontWeight: 500 } },
+		{ style: { fontSize: 28, fontWeight: 600, marginLeft: "12px" } },
 		siteConfig.title,
 	);
 	const logoGroup = element("div", { style: logoGroupStyle }, image, siteTitle);
@@ -148,8 +151,9 @@ export function buildOgMarkup({
 			{
 				style: {
 					display: "flex",
-					fontSize: 60,
-					fontWeight: 800,
+					fontFamily: OG_TITLE_FONT_NAME,
+					fontSize: 64,
+					fontWeight: 700,
 					lineHeight: 1.1,
 					margin: "0 0 20px 0",
 				},
@@ -164,7 +168,7 @@ export function buildOgMarkup({
 					fontSize: 24,
 					color: "#6F6E69",
 					lineHeight: 1.6,
-					maxWidth: 720,
+					maxWidth: 800,
 				},
 			},
 			description,
