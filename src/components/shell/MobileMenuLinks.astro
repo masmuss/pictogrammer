@@ -14,7 +14,7 @@ const { links, currentPath } = Astro.props;
 		<a
 			href={link.href}
 			class:list={[
-				"group flex translate-y-4 items-center gap-2 rounded-md text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background",
+				"group flex min-h-11 translate-y-4 items-center gap-2 rounded-md py-2 text-2xl font-semibold tracking-tight opacity-0 transition-all duration-slow ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background",
 				currentPath === link.href
 					? "text-foreground"
 					: "text-muted-foreground hover:bg-muted/60 hover:text-foreground"

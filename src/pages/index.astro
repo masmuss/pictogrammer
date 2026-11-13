@@ -10,12 +10,14 @@ import LatestPosts from "@/components/features/home/LatestPosts.astro";
 import Button from "@/components/ui/button/Button.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getFeaturedProjects } from "@/lib/contents";
+import { getNowPageData } from "@/lib/contents/now";
 
 const MAX_POSTS = 5;
 const MAX_FEATURED_PROJECTS = 5;
 
 const allPosts = await getAllPosts(MAX_POSTS);
 const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
+const { workingOn, building } = await getNowPageData();
 ---
 
 <BaseLayout
@@ -29,9 +31,39 @@ const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
 		</Section>
 
 		<Section
+			title="Currently"
+			titleAs="h2"
+			transitionDelay={100}
+			data-testid="current-focus-section"
+		>
+			<div class="grid max-w-4xl gap-6 sm:grid-cols-2 sm:gap-8">
+				<div>
+					<p class="text-muted-foreground mb-2 text-sm">Working on</p>
+					{workingOn.map((item) => (
+						<p class="text-foreground font-medium">{item.name}</p>
+					))}
+				</div>
+				<div>
+					<p class="text-muted-foreground mb-2 text-sm">Building</p>
+					<ul class="text-foreground flex flex-col gap-1">
+						{building.map((item) => (
+							<li>{item.name}</li>
+						))}
+					</ul>
+				</div>
+			</div>
+			<a
+				href="/now"
+				class="text-accent-cta-text focus-visible:ring-ring inline-flex min-h-11 items-center text-sm underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+			>
+				See what else I'm up to
+			</a>
+		</Section>
+
+		<Section
 			title="About"
 			titleAs="h2"
-			transitionDelay={150}
+			transitionDelay={200}
 			data-testid="about-section"
 		>
 			<About />
@@ -40,7 +72,7 @@ const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
 		<Section
 			title="Featured Projects"
 			titleAs="h2"
-			transitionDelay={250}
+			transitionDelay={300}
 			data-testid="featured-projects-section"
 		>
 			<FeaturedProjects projects={featuredProjects} />
@@ -49,7 +81,7 @@ const featuredProjects = await getFeaturedProjects(MAX_FEATURED_PROJECTS);
 		<Section
 			title="Latest Posts"
 			titleAs="h2"
-			transitionDelay={350}
+			transitionDelay={400}
 			data-testid="latest-posts-section"
 		>
 			<LatestPosts posts={allPosts} />
