@@ -3,7 +3,6 @@ title: Orang-Orang di Jalan
 description: Pulang malam, memperlambat motor, dan melihat mereka yang masih berkeliaran demi sesuap nasi.
 date: 15 November 2026
 tags: [reflection, story]
-draft: true
 ---
 
 Jam sebelas malam. Seorang lelaki keluar dari cafe, menyalakan motornya, dan tidak langsung pulang.
