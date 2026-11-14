@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/masmuss/pictogrammer/compare/v2.7.0...v2.8.0) (2026-11-14)
+
+
+### Features
+
+* **content:** publish reflection posts by removing draft status ([ac3e421](https://github.com/masmuss/pictogrammer/commit/ac3e421a741656630b7dcbaf21162ba0fcd33db2))
+
 # [2.7.0](https://github.com/masmuss/pictogrammer/compare/v2.6.0...v2.7.0) (2026-11-13)
 
 
