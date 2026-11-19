@@ -1,13 +1,11 @@
 ---
 export const prerender = true;
 
-import { Icon } from "astro-icon/components";
 import Section from "@/components/common/Section.astro";
 import About from "@/components/features/home/About.astro";
 import FeaturedProjects from "@/components/features/home/FeaturedProjects.astro";
 import Hero from "@/components/features/home/Hero.astro";
 import LatestPosts from "@/components/features/home/LatestPosts.astro";
-import Button from "@/components/ui/button/Button.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllPosts, getFeaturedProjects } from "@/lib/contents";
 import { getNowPageData } from "@/lib/contents/now";
@@ -27,76 +25,35 @@ const { workingOn, building } = await getNowPageData();
 >
 	<div class="flex w-full flex-col">
 		<Section transitionDelay={0} class="pt-0" data-testid="hero-section">
-			<Hero />
-		</Section>
-
-		<Section
-			title="Currently"
-			titleAs="h2"
-			transitionDelay={100}
-			data-testid="current-focus-section"
-		>
-			<div class="grid max-w-4xl gap-6 sm:grid-cols-2 sm:gap-8">
-				<div>
-					<p class="text-muted-foreground mb-2 text-sm">Working on</p>
-					{workingOn.map((item) => (
-						<p class="text-foreground font-medium">{item.name}</p>
-					))}
-				</div>
-				<div>
-					<p class="text-muted-foreground mb-2 text-sm">Building</p>
-					<ul class="text-foreground flex flex-col gap-1">
-						{building.map((item) => (
-							<li>{item.name}</li>
-						))}
-					</ul>
-				</div>
-			</div>
-			<a
-				href="/now"
-				class="text-accent-cta-text focus-visible:ring-ring inline-flex min-h-11 items-center text-sm underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-			>
-				See what else I'm up to
-			</a>
-		</Section>
-
-		<Section
-			title="About"
-			titleAs="h2"
-			transitionDelay={200}
-			data-testid="about-section"
-		>
-			<About />
+			<Hero workingOn={workingOn} building={building} />
 		</Section>
 
 		<Section
 			title="Featured Projects"
 			titleAs="h2"
-			transitionDelay={300}
+			transitionDelay={200}
 			data-testid="featured-projects-section"
 		>
 			<FeaturedProjects projects={featuredProjects} />
 		</Section>
 
 		<Section
+			title="About"
+			titleAs="h2"
+			transitionDelay={100}
+			data-testid="about-section"
+		>
+			<About />
+		</Section>
+
+
+		<Section
 			title="Latest Posts"
 			titleAs="h2"
-			transitionDelay={400}
+			transitionDelay={300}
 			data-testid="latest-posts-section"
 		>
 			<LatestPosts posts={allPosts} />
 		</Section>
-
-		<div class="pt-12" data-testid="home-cta">
-			<Button
-				as="a"
-				href="/about"
-				variant="ghost"
-				class="group/cta mx-0 px-0! underline-offset-4 hover:underline"
-			>
-				More about me
-				<Icon name="ph:arrow-right" aria-hidden="true" />
-			</Button>
-		</div>
 	</div>
 </BaseLayout>

@@ -50,11 +50,11 @@ const empty = emptyMessage ?? `No ${title.toLowerCase()} yet.`;
 		)}
 
 		{posts.length > 0 && (
-			<div class="group/list flex max-w-3xl flex-col gap-y-12">
+			<div class="group/list flex max-w-full flex-col gap-y-12">
 				{[...postsByYear.entries()].map(([year, yearPosts]) => (
 					<section class="relative flex flex-col gap-y-6">
 						<h2 class="text-xl font-semibold tracking-tight">{year}</h2>
-						<ul class="relative flex flex-col">
+						<ul class="divide-border/60 relative flex flex-col divide-y">
 							{yearPosts.map((post) => (
 								<PostPreview post={post} hasReadTime readTimeStyle="short" />
 							))}

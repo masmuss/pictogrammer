@@ -40,3 +40,20 @@ test("SocialLinks applies variant button correctly", async () => {
 	// Component Button with variant button will have data-variant="outline" (based on logic in SocialLinks.astro)
 	expect(result).toContain('data-variant="outline"');
 });
+
+test("SocialLinks filters platforms using include prop", async () => {
+	const container = await AstroContainer.create();
+	const result = await container.renderToString(SocialLinks, {
+		props: {
+			showEmail: true,
+			include: ["GitHub", "LinkedIn"],
+		},
+	});
+
+	expect(result).toContain(`mailto:${siteConfig.email}`);
+	expect(result).toContain("GitHub");
+	expect(result).toContain("LinkedIn");
+	expect(result).not.toContain("Twitter");
+	expect(result).not.toContain("Instagram");
+	expect(result).not.toContain("Threads");
+});
