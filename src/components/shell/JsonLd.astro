@@ -43,6 +43,8 @@ const graph: SchemaNode[] = [
 		"@type": "Person",
 		"@id": `${siteUrl}#person`,
 		name: siteConfig.author,
+		alternateName: ["Khoirul Fattah", "masmuss", "pictogrammer"],
+		jobTitle: "Backend Developer",
 		url: siteUrl,
 		image: siteConfig.image?.src,
 		sameAs: siteConfig.socialLinks.map((link) => link.href),
