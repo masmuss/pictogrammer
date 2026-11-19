@@ -3,29 +3,91 @@ import { Icon } from "astro-icon/components";
 import Heading from "@/components/common/Heading.astro";
 import SocialLinks from "@/components/common/SocialLinks.astro";
 import Button from "@/components/ui/button/Button.astro";
-
 import siteConfig from "@/config/site";
+import type { NowItem } from "@/lib/contents/now";
+
+interface Props {
+	workingOn?: NowItem[];
+	building?: NowItem[];
+}
+
+const { workingOn = [], building = [] } = Astro.props;
+
+const currentRole = workingOn[0]?.name;
+const displayBuilding = building.filter(
+	(item) => item.name.toLowerCase() !== "pictogrammer"
+);
 ---
 
 <div class="flex max-w-4xl flex-col gap-y-6">
-	<Heading as="h1" size="2xl" weight="semibold">
-		Ahmad Musafir Khoirul Fattah
+	<Heading as="h1" size="3xl" weight="semibold">
+		Khoirul Fattah
 	</Heading>
-	<p class="text-muted-foreground max-w-xl leading-relaxed">
-		Backend-focused full-stack developer based in Surabaya. I build web
-		applications, APIs, and IoT-enabled tools, then write about the work.
+
+	<p class="text-foreground max-w-xl text-lg leading-relaxed">
+		Backend developer in Surabaya. I build systems like Trak, a ticketing platform with a Telegram bot, then write about how they work.
 	</p>
+
+	{(currentRole || displayBuilding.length > 0) && (
+		<p class="text-muted-foreground text-sm">
+			<span
+				class="bg-accent-cta-text mr-2 inline-block size-1.5 rounded-full align-middle"
+				aria-hidden="true"
+			/>
+			{currentRole && <span>Now: {currentRole}</span>}
+			{currentRole && displayBuilding.length > 0 && <span> · </span>}
+			{displayBuilding.length > 0 && (
+				<span>
+					building{" "}
+					{displayBuilding.map((item, index) => {
+						const isLast = index === displayBuilding.length - 1;
+						const isSecondToLast = index === displayBuilding.length - 2;
+						return (
+							<Fragment>
+								{item.href ? (
+									<a
+										href={item.href}
+										class="text-foreground decoration-border hover:decoration-foreground underline underline-offset-4 transition-colors"
+										{...(item.href.startsWith("http")
+											? { target: "_blank", rel: "noopener noreferrer" }
+											: {})}
+									>
+										{item.name}
+									</a>
+								) : (
+									<span class="text-foreground font-medium">{item.name}</span>
+								)}
+								{displayBuilding.length > 2 && !isLast && !isSecondToLast && ", "}
+								{isSecondToLast && " and "}
+							</Fragment>
+						);
+					})}
+				</span>
+			)}
+		</p>
+	)}
+
 	<div class="flex flex-wrap items-center gap-4">
-  		<Button as="a" href="/projects">
- 			View selected projects
- 			<Icon name="ph:arrow-right" aria-hidden="true" />
-  		</Button>
-  		{siteConfig.cvLink && (
- 			<Button as="a" href={siteConfig.cvLink} variant="outline">
+		<Button as="a" href="/projects">
+			View selected projects
+			<Icon name="ph:arrow-right" aria-hidden="true" />
+		</Button>
+		{siteConfig.cvLink && (
+			<Button
+				as="a"
+				href={siteConfig.cvLink}
+				variant="outline"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
 				Resume
 				<Icon name="ph:file-arrow-down" />
- 			</Button>
-  		)}
-		<SocialLinks variant="icon" showEmail />
+			</Button>
+		)}
+		<SocialLinks
+			variant="icon"
+			showEmail
+			include={["GitHub", "LinkedIn"]}
+		/>
 	</div>
 </div>

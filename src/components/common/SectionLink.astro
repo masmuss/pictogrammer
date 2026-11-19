@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+import { cn } from "@/lib/utils";
+
+interface Props {
+	href: string;
+	text?: string;
+	class?: string;
+	iconName?: string;
+}
+
+const {
+	href,
+	text,
+	class: className,
+	iconName = "ph:arrow-right"
+} = Astro.props;
+---
+
+<div class={cn("mt-2 flex w-full justify-start", className)}>
+	<a
+		href={href}
+		class="group/link text-accent-cta-text duration-fast focus-visible:ring-ring inline-flex items-center gap-1.5 rounded text-sm underline-offset-4 transition-colors hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+	>
+		{text ? <span>{text}</span> : <slot />}
+		<Icon
+			name={iconName}
+			class="transition-transform duration-150 ease-out group-hover/link:translate-x-1"
+			aria-hidden="true"
+		/>
+	</a>
+</div>

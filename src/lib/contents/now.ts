@@ -1,30 +1,39 @@
 import { getAllExperiences } from "./experiences";
 
+export interface NowItem {
+	name: string;
+	description: string;
+	href?: string;
+}
+
 export async function getNowPageData() {
 	const experiences = await getAllExperiences();
 
-	const workingOn = experiences.slice(0, 1).map((work) => ({
+	const workingOn: NowItem[] = experiences.slice(0, 1).map((work) => ({
 		name: work.title,
 		description: work.company,
 	}));
 
-	const building = [
+	const building: NowItem[] = [
 		{
 			name: "pictogrammer",
 			description: "Personal website, blog, and digital garden",
+			href: "https://github.com/masmuss/pictogrammer",
 		},
 		{
 			name: "Trak",
 			description:
 				"A modern ticketing and reporting platform with Telegram bot integration",
+			href: "https://github.com/masmuss/trak",
 		},
 		{
 			name: "Veka",
 			description: "A minimalist Digital Garden & Wiki starter for Astro",
+			href: "https://demo-veka.khoirul.me",
 		},
 	];
 
-	const learning = [
+	const learning: NowItem[] = [
 		{
 			name: "Modern Frontend",
 			description:
@@ -44,7 +53,7 @@ export async function getNowPageData() {
 		},
 	];
 
-	const reading = [
+	const reading: NowItem[] = [
 		{
 			name: "The Alchemist",
 			description: "Paulo Coelho",
