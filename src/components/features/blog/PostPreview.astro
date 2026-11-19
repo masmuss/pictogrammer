@@ -36,7 +36,7 @@ const visibleTags = showTags ? post.data.tags : [];
 		href={getPostUrl(post)}
 		class="scroll-reveal group/post hover:bg-muted/40 focus-visible:ring-ring duration-fast -mx-3 block rounded-lg px-3 py-3 transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 	>
-		<div class="flex flex-row justify-between gap-1 sm:flex-row sm:items-baseline sm:gap-4">
+		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4 md:justify-between">
 			<span class:list={titleClasses} transition:name={`title-${post.id}`}>
 				{post.data.title}
 				{post.data.draft && <DraftBadge />}
