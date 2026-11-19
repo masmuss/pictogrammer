@@ -1,3 +1,17 @@
+# [2.9.0](https://github.com/masmuss/pictogrammer/compare/v2.8.0...v2.9.0) (2026-11-19)
+
+
+### Bug Fixes
+
+* **blog:** adjust post preview layout for smaller screens ([dfe8905](https://github.com/masmuss/pictogrammer/commit/dfe8905192469e002c9792c9083d5d2f7c9bfe87))
+
+
+### Features
+
+* **components:** add include prop to SocialLinks and update blog layout ([6fd14e5](https://github.com/masmuss/pictogrammer/commit/6fd14e5301e47c4e9257d0f3ca437a1c97107d94))
+* **home:** redesign homepage layout and update profile information ([60dd094](https://github.com/masmuss/pictogrammer/commit/60dd0940d3f772a605e4e38127a8f5be1cec5f25))
+* **shell:** add alternate names and job title to JsonLd person schema ([999528f](https://github.com/masmuss/pictogrammer/commit/999528fe5bf206dbc3e3c959d9d32e5ac1a71775))
+
 # [2.8.0](https://github.com/masmuss/pictogrammer/compare/v2.7.0...v2.8.0) (2026-11-14)
 
 
