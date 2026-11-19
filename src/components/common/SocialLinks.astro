@@ -14,13 +14,15 @@ interface Props {
 	showEmail?: boolean;
 	showCV?: boolean;
 	class?: string;
+	include?: string[];
 }
 
 const {
 	variant = "icon",
 	showEmail = false,
 	showCV = false,
-	class: className
+	class: className,
+	include
 } = Astro.props;
 
 const isButton = variant === "button";
@@ -30,6 +32,12 @@ const buttonClass = cn(
 	"text-muted-foreground hover:text-foreground",
 	isButton && "gap-x-2"
 );
+
+const socialLinks = include
+	? siteConfig.socialLinks.filter((link) =>
+			include.some((item) => item.toLowerCase() === link.text.toLowerCase())
+		)
+	: siteConfig.socialLinks;
 
 const links = [
 	...(showEmail
@@ -41,7 +49,7 @@ const links = [
 				}
 			]
 		: []),
-	...siteConfig.socialLinks.map((link) => ({
+	...socialLinks.map((link) => ({
 		href: link.href,
 		text: link.text,
 		icon: link.icon
