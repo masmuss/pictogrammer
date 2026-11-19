@@ -1,10 +1,10 @@
-<p class="text-muted-foreground max-w-4xl" data-testid="about-text">
-	I'm a full-stack developer focused on backend engineering, with experience
-	building web applications and IoT-enabled solutions. My background blends
-	academic research, production engineering, and startup execution. I enjoy
-	designing architectures, creating APIs, and turning ideas into digital tools,
-	especially those that support productivity, smart industries, and education.
-	My tech stack includes Laravel, Node.js, React, and various modern web
-	technologies. Outside of coding, I also express my creativity through
-	photography.
-</p>
+---
+import SectionLink from "@/components/common/SectionLink.astro";
+---
+
+<div class="text-muted-foreground flex max-w-xl flex-col gap-y-3" data-testid="about-text">
+    <p>My background blends academic research, production engineering, and startup execution. I like designing architectures and turning ideas into tools for productivity, smart industries, and education.</p>
+    <p>Outside of code, I take photographs.</p>
+</div>
+
+<SectionLink href="/about" text="More about me" />

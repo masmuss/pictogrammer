@@ -1,6 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
-import { cn } from "@/lib/utils";
+import SectionLink from "@/components/common/SectionLink.astro";
 import type { Project } from "@/types";
 import FeaturedProjectItem from "./FeaturedProjectItem.astro";
 
@@ -30,22 +29,7 @@ const displayed = projects.slice(0, max);
 			))}
 		</div>
 
-		<div class="mt-2 flex w-full justify-start">
-			<a
-				href="/projects"
-				class={cn(
-					"group/see-all inline-flex items-center gap-1.5",
-					"duration-fast text-sm transition-colors",
-					"underline-offset-4 hover:underline",
-					"focus-visible:ring-2 focus-visible:outline-none",
-					"focus-visible:ring-ring rounded focus-visible:ring-offset-2",
-					"text-accent-cta-text"
-				)}
-			>
-				<span>See all projects</span>
-				<Icon name="ph:arrow-right" />
-			</a>
-		</div>
+		<SectionLink href="/projects" text="See all projects" />
 	</Fragment>
 ) : (
 	<p class="text-muted-foreground text-sm" data-testid="featured-project-empty">
