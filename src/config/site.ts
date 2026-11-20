@@ -162,7 +162,7 @@ const siteConfig: SiteConfig = {
 		"Personal website of Khoirul Fattah: full-stack projects with a backend focus, technical writing, and photography from Surabaya.",
 	email: "hello@khoirul.me",
 	cvLink:
-		"https://github.com/masmuss/curriculum-vitae/releases/download/latest/Ahmad_Musafir_Khoirul_Fattah_FullStack_Backend_Focused.pdf",
+		"https://github.com/masmuss/curriculum-vitae/releases/download/latest/Ahmad_Musafir_Khoirul_Fattah_Software_Engineer_CV.pdf",
 	image: {
 		src: "/og.png",
 		alt: "Open Graph",
