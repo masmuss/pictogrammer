@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/masmuss/pictogrammer/compare/v2.9.1...v2.10.0) (2026-11-21)
+
+
+### Features
+
+* **projects:** show languages in project rows ([e18ca31](https://github.com/masmuss/pictogrammer/commit/e18ca31b099e45d702277f26c2f05ab39e135b18))
+
 ## [2.9.1](https://github.com/masmuss/pictogrammer/compare/v2.9.0...v2.9.1) (2026-11-20)
 
 
