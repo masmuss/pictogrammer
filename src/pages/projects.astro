@@ -2,7 +2,7 @@
 export const prerender = true;
 
 import PageHeader from "@/components/common/PageHeader.astro";
-import ProjectRow from "@/components/features/projects/ProjectRow.astro";
+import ProjectItem from "@/components/features/projects/ProjectItem.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAllProjects } from "@/lib/contents";
 
@@ -28,7 +28,7 @@ const projects = await getAllProjects();
 
 		<ul class="divide-border/60 flex max-w-4xl flex-col divide-y">
 			{projects.map((project) => (
-				<ProjectRow project={project} featured={project.featured} />
+				<ProjectItem project={project} variant="row" />
 			))}
 		</ul>
 	</div>

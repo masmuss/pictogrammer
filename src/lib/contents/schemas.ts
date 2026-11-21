@@ -58,6 +58,7 @@ export const experiencesSchema = z.array(
 const projectSchema = z.object({
 	text: z.string(),
 	description: z.string().optional(),
+	language: z.string(),
 	href: z.string().optional(),
 	liveHref: z.url().optional(),
 	repoHref: z.url().optional(),
@@ -66,12 +67,7 @@ const projectSchema = z.object({
 	stacks: z.array(z.string()).optional(),
 });
 
-export const projectsSchema = z.array(
-	z.object({
-		title: z.string(),
-		projects: z.array(projectSchema),
-	}),
-);
+export const projectsSchema = z.array(projectSchema);
 
 export const toolsSchema = z.array(
 	z.object({
