@@ -6,8 +6,8 @@ export type CollectionPosts = CollectionEntry<PostKey>;
 
 export type Experience = CollectionEntry<"experiences">["data"][number];
 
-export type ProjectCollection = CollectionEntry<"projects">["data"][number];
-export type Project = ProjectCollection["projects"][number];
+export type Project = CollectionEntry<"projects">["data"][number];
+export type ProjectCollection = Project[];
 
 export type PaginationLink = {
 	url: string;
