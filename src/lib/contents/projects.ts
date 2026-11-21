@@ -7,9 +7,7 @@ const sortByYear = (a: Project, b: Project) => (b.year ?? 0) - (a.year ?? 0);
 export async function getAllProjects(): Promise<Project[]> {
 	const projects = getContentEntryData("projects", projectsSchema);
 
-	return (await projects)
-		.flatMap((category) => category.projects)
-		.sort(sortByYear);
+	return (await projects).sort(sortByYear);
 }
 
 export async function getFeaturedProjects(max?: number): Promise<Project[]> {

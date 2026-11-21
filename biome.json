@@ -74,7 +74,8 @@
 			"!**/*.svg",
 			"!bun.lock",
 			"!CHANGELOG.md",
-			"!CC-BY-NC-SA-4.0"
+			"!CC-BY-NC-SA-4.0",
+			"!src/components/features/projects/example.html"
 		]
 	},
 	"overrides": [
