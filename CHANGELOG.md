@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/masmuss/pictogrammer/compare/v2.10.0...v2.10.1) (2026-11-24)
+
+
+### Bug Fixes
+
+* **projects:** remove featured badge ([b423b2e](https://github.com/masmuss/pictogrammer/commit/b423b2ea54625b39dc3d31881f08b6b6c10c730b))
+
 # [2.10.0](https://github.com/masmuss/pictogrammer/compare/v2.9.1...v2.10.0) (2026-11-21)
 
 
