@@ -4,14 +4,18 @@ import worker from "@/worker";
 
 const BASE_URL = "https://example.com";
 const MARKDOWN_BODY = "# About\n";
+const EXTERNAL_POST_PATH = "/blog/reflections/external-post";
+const EXTERNAL_POST_URL = "https://medium.com/@author/external-post";
 
 interface MockAssetOptions {
 	missingMarkdown?: boolean;
+	redirectManifest?: Record<string, string>;
 }
 
 function createAssets(options: MockAssetOptions = {}) {
 	const fetch = vi.fn(async (input: RequestInfo | URL) => {
-		const request = input instanceof Request ? input : new Request(input);
+		const request =
+			input instanceof Request ? input : new Request(new URL(input, BASE_URL));
 		const url = new URL(request.url);
 		const method = request.method;
 
@@ -20,6 +24,14 @@ function createAssets(options: MockAssetOptions = {}) {
 				status: 200,
 				headers: { "Content-Type": "text/javascript" },
 			});
+		}
+
+		if (url.pathname === "/external-post-redirects.json") {
+			if (!options.redirectManifest) {
+				return new Response(null, { status: 404 });
+			}
+
+			return Response.json(options.redirectManifest);
 		}
 
 		if (url.pathname.endsWith(".md")) {
@@ -90,6 +102,58 @@ describe("worker content negotiation", () => {
 		expect(assets.fetch).toHaveBeenCalledWith(
 			expect.objectContaining({
 				url: `${BASE_URL}/about/index.md`,
+			}),
+		);
+	});
+
+	it.each(["text/html", "text/markdown"])(
+		"redirects external posts before negotiating %s",
+		async (accept) => {
+			const { env, assets } = createEnv({
+				redirectManifest: { [EXTERNAL_POST_PATH]: EXTERNAL_POST_URL },
+			});
+			const response = await worker.fetch(
+				request(EXTERNAL_POST_PATH, accept),
+				env,
+			);
+
+			expect(assets.fetch).toHaveBeenCalledWith(
+				"/external-post-redirects.json",
+			);
+			expect(response.status).toBe(301);
+			expect(response.headers.get("location")).toBe(EXTERNAL_POST_URL);
+			expect(response.headers.get("content-signal")).toBe(CONTENT_SIGNAL);
+			expect(assets.fetch).not.toHaveBeenCalledWith(
+				expect.objectContaining({ url: `${BASE_URL}${EXTERNAL_POST_PATH}` }),
+			);
+		},
+	);
+
+	it("redirects external posts for HEAD requests", async () => {
+		const { env } = createEnv({
+			redirectManifest: { [EXTERNAL_POST_PATH]: EXTERNAL_POST_URL },
+		});
+		const response = await worker.fetch(
+			request(EXTERNAL_POST_PATH, "text/html", "HEAD"),
+			env,
+		);
+
+		expect(response.status).toBe(301);
+		expect(response.headers.get("location")).toBe(EXTERNAL_POST_URL);
+	});
+
+	it("serves internal blog posts when the redirect manifest is missing", async () => {
+		const { env, assets } = createEnv();
+		const response = await worker.fetch(
+			request("/blog/notes/internal-post", "text/html"),
+			env,
+		);
+
+		expect(response.status).toBe(200);
+		expect(response.headers.get("content-type")).toContain("text/html");
+		expect(assets.fetch).toHaveBeenCalledWith(
+			expect.objectContaining({
+				url: `${BASE_URL}/blog/notes/internal-post`,
 			}),
 		);
 	});
