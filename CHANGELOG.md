@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/masmuss/pictogrammer/compare/v2.10.1...v2.11.0) (2026-11-26)
+
+
+### Features
+
+* **blog:** add external post support ([ad282fd](https://github.com/masmuss/pictogrammer/commit/ad282fd3582a32109706ecc27a331c80923d285d))
+
 ## [2.10.1](https://github.com/masmuss/pictogrammer/compare/v2.10.0...v2.10.1) (2026-11-24)
 
 
