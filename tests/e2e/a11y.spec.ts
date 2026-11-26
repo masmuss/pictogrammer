@@ -133,7 +133,7 @@ test.describe("Individual content pages", () => {
 	test("blog post should be accessible", async ({ page }) => {
 		await page.goto("/blog");
 		const firstPostLink = page
-			.locator("[data-testid='post-preview'] a")
+			.locator("[data-testid='post-preview'] a[href^='/blog/']")
 			.first();
 		await firstPostLink.click();
 		await preparePageForAxe(page);
@@ -286,7 +286,7 @@ test.describe("Dark mode", () => {
 	}) => {
 		await page.goto("/blog");
 		const firstPostLink = page
-			.locator("[data-testid='post-preview'] a")
+			.locator("[data-testid='post-preview'] a[href^='/blog/']")
 			.first();
 		await firstPostLink.click();
 		await page.evaluate(() => document.documentElement.classList.add("dark"));
@@ -472,7 +472,7 @@ test.describe("Heading hierarchy", () => {
 	test("headings should not skip levels on blog post", async ({ page }) => {
 		await page.goto("/blog");
 		const firstPostLink = page
-			.locator("[data-testid='post-preview'] a")
+			.locator("[data-testid='post-preview'] a[href^='/blog/']")
 			.first();
 		await firstPostLink.click();
 		await preparePageForAxe(page);

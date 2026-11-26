@@ -1,5 +1,8 @@
 type PostLike = {
 	id: string;
+	data?: {
+		externalUrl?: string;
+	};
 };
 
 export function getPostRouteId(post: PostLike): string {
@@ -7,7 +10,7 @@ export function getPostRouteId(post: PostLike): string {
 }
 
 export function getPostUrl(post: PostLike): string {
-	return `/blog/${getPostRouteId(post)}`;
+	return post.data?.externalUrl ?? `/blog/${getPostRouteId(post)}`;
 }
 
 export function getPostOgImagePath(post: PostLike): string {

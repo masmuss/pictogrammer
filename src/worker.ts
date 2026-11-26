@@ -1,4 +1,5 @@
 import { CONTENT_SIGNAL } from "./config/content-signal";
+import { EXTERNAL_POST_REDIRECTS_PATH } from "./config/external-posts";
 import {
 	appendVaryAccept,
 	HTML_TYPE,
@@ -17,6 +18,13 @@ interface AssetsBinding {
 interface Env {
 	ASSETS: AssetsBinding;
 }
+
+type ExternalPostRedirectManifest = Record<string, string>;
+
+const externalPostRedirectCache = new WeakMap<
+	Env,
+	Promise<Map<string, string>>
+>();
 
 function appendLink(headers: Headers, value: string): void {
 	const existing = headers.get("link");
@@ -85,6 +93,41 @@ function trailingSlashRedirect(url: URL): Response {
 	return new Response(null, {
 		status: 308,
 		headers: { Location: redirectUrl.toString() },
+	});
+}
+
+async function loadExternalPostRedirects(
+	env: Env,
+): Promise<Map<string, string>> {
+	const cached = externalPostRedirectCache.get(env);
+	if (cached) return cached;
+
+	const pending = env.ASSETS.fetch(EXTERNAL_POST_REDIRECTS_PATH)
+		.then(async (response) => {
+			if (!response.ok) return new Map<string, string>();
+
+			const manifest = (await response.json()) as ExternalPostRedirectManifest;
+			return new Map(Object.entries(manifest));
+		})
+		.catch(() => new Map<string, string>());
+
+	externalPostRedirectCache.set(env, pending);
+	return pending;
+}
+
+async function externalPostRedirect(
+	url: URL,
+	env: Env,
+): Promise<Response | null> {
+	if (!url.pathname.startsWith("/blog/")) return null;
+
+	const redirects = await loadExternalPostRedirects(env);
+	const destination = redirects.get(url.pathname);
+	if (!destination) return null;
+
+	return new Response(null, {
+		status: 301,
+		headers: { Location: destination },
 	});
 }
 
@@ -172,6 +215,9 @@ export default {
 		if (url.pathname !== "/" && url.pathname.endsWith("/")) {
 			return withContentSignal(trailingSlashRedirect(url));
 		}
+
+		const redirect = await externalPostRedirect(url, env);
+		if (redirect) return withContentSignal(redirect);
 
 		const accept = request.headers.get("accept");
 		const chosen = preferredType(accept, [HTML_TYPE, MARKDOWN_TYPE]);

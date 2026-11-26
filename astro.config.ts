@@ -12,6 +12,9 @@ import rehypeExternalLinks from "rehype-external-links";
 import remarkDeflist from "remark-deflist";
 import remarkDirective from "remark-directive";
 import remarkSupersub from "remark-supersub";
+import externalPostRedirectsIntegration, {
+	externalPostPaths,
+} from "./src/integrations/external-post-redirects";
 import { addMarkdownFrontmatter } from "./src/lib/markdown-frontmatter";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
@@ -61,7 +64,10 @@ export default defineConfig({
 		},
 	],
 	integrations: [
-		sitemap(),
+		externalPostRedirectsIntegration(),
+		sitemap({
+			filter: (page) => !externalPostPaths.has(new URL(page).pathname),
+		}),
 		pagefind(),
 		icon(),
 		markdownExport({

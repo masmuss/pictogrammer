@@ -14,7 +14,7 @@ test.describe("Blog Post Details", () => {
 
 		// 2. Select the first blog post link from the list
 		const firstPostLink = page
-			.locator("[data-testid='post-preview'] a")
+			.locator("[data-testid='post-preview'] a[href^='/blog/']")
 			.first();
 		await expect(firstPostLink).toBeVisible({ timeout: 15000 });
 
@@ -64,5 +64,41 @@ test.describe("Blog Post Details", () => {
 		await page.waitForFunction(() => window.scrollY < 100);
 		const scrollY = await page.evaluate(() => window.scrollY);
 		expect(scrollY).toBeLessThan(100);
+	});
+
+	test("links externally hosted posts directly to their source", async ({
+		page,
+	}) => {
+		await page.goto("/blog");
+
+		const externalPostLink = page.getByRole("link", {
+			name: /I Miss Being an Beginner/,
+		});
+		await expect(externalPostLink).toHaveAttribute(
+			"href",
+			"https://mkhoirul.substack.com/p/i-miss-being-an-beginner?r=6a8zq1",
+		);
+		await expect(externalPostLink).toHaveAccessibleName(
+			/I Miss Being an Beginner.*External post/,
+		);
+		await expect(externalPostLink.locator("svg")).toHaveAttribute(
+			"aria-hidden",
+			"true",
+		);
+	});
+
+	test("keeps a local redirect for externally hosted posts", async ({
+		request,
+	}) => {
+		const response = await request.get(
+			"/blog/reflections/i-miss-being-an-beginner",
+		);
+		const html = await response.text();
+
+		expect(response.status()).toBe(200);
+		expect(html).toContain('http-equiv="refresh"');
+		expect(html).toContain(
+			"https://mkhoirul.substack.com/p/i-miss-being-an-beginner",
+		);
 	});
 });
