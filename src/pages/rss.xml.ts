@@ -18,7 +18,9 @@ export async function GET(context: APIContext) {
 			description: item.data.description,
 			link: new URL(getPostUrl(item), site).toString(),
 			pubDate: new Date(item.data.date),
-			content: parseAndSanitizeMarkdown(item.body ?? ""),
+			content: item.data.externalUrl
+				? item.data.description
+				: parseAndSanitizeMarkdown(item.body ?? ""),
 			author: `${siteConfig.author} <${siteConfig.email}>`,
 			categories: item.data.tags,
 		})),

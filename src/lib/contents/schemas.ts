@@ -16,6 +16,7 @@ export const postSchema = ({ image }: SchemaContext) =>
 	z.object({
 		title: z.string(),
 		description: z.string().optional(),
+		externalUrl: z.url({ protocol: /^https?$/ }).optional(),
 		coverImage: z
 			.object({
 				src: z.union([image(), z.url()]),

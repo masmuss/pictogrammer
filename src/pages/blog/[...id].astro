@@ -11,11 +11,15 @@ export async function getStaticPaths() {
 	const posts = await getAllPosts();
 	return posts.map((post: CollectionPosts) => ({
 		params: { id: getPostRouteId(post) },
-		props: { post }
+		props: { post },
 	}));
 }
 
 const { post } = Astro.props;
+
+if (post.data.externalUrl) {
+	return Astro.redirect(post.data.externalUrl);
+}
 
 const { Content } = await render(post);
 const relatedPosts = getRelatedPosts(await getAllPosts(), post);

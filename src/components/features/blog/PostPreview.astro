@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
 import PostMetadata from "@/components/common/PostMetadata.astro";
 import DraftBadge from "@/components/features/blog/DraftBadge.astro";
 import { getPostUrl } from "@/lib/utils";
@@ -37,9 +38,23 @@ const visibleTags = showTags ? post.data.tags : [];
 		class="scroll-reveal group/post hover:bg-muted/40 focus-visible:ring-ring duration-fast -mx-3 block rounded-lg px-3 py-3 transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
 	>
 		<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4 md:justify-between">
-			<span class:list={titleClasses} transition:name={`title-${post.id}`}>
-				{post.data.title}
+			<span
+				class="flex min-w-0 items-center"
+				transition:name={`title-${post.id}`}
+			>
+				<span class:list={titleClasses}>{post.data.title}</span>
 				{post.data.draft && <DraftBadge />}
+				{post.data.externalUrl && (
+					<span class="ml-1.5 inline-flex shrink-0 items-center">
+						<Icon
+							name="ph:arrow-up-right"
+							class="text-muted-foreground size-4 transition-transform duration-200 group-hover/post:translate-x-0.5 group-hover/post:-translate-y-0.5"
+							aria-hidden="true"
+							focusable="false"
+						/>
+						<span class="sr-only">External post</span>
+					</span>
+				)}
 			</span>
 			<span class="text-muted-foreground shrink-0 text-sm">
 				<PostMetadata {post} {hasReadTime} {readTimeStyle} />
